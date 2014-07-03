@@ -1,5 +1,6 @@
 # [koa][koa-url]-better-body [![NPM version][npmjs-shields]][npmjs-url] [![Build Status][travis-img]][travis-url] [![Dependency Status][depstat-img]][depstat-url]
-> A [koa][koa-url] body parser middleware with support for `multipart`, `json` or `urlencoded` request bodies. Via [formidable][formidable-url] and [co-body][cobody-url].
+> A [koa][koa-url] body parser middleware with support for `multipart`, `json` or `urlencoded` request bodies.
+Via [formidable][formidable-url] (multipart) and [co-body][cobody-url] (json/urlencoded).
 
 
 ## Install [![Nodei.co stats][npmjs-install]][npmjs-url] 
