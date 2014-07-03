@@ -1,0 +1,69 @@
+{
+  "name": "koa-better-body",
+  "version": "1.0.3",
+  "description": "A koa body parser middleware with support for `multipart`, `json` or `urlencoded` request bodies. Via formidable and co-body.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --harmony-generators",
+    "examples-multer": "node --harmony examples/multer.js",
+    "examples-koa-router": "node --harmony examples/koa-router.js"
+  },
+  "repository": "tunnckoCore/koa-better-body",
+  "keywords": [
+    "koa",
+    "request",
+    "body",
+    "middleware",
+    "bodyParser",
+    "form",
+    "data",
+    "formdata",
+    "urlencoded",
+    "multipart",
+    "multiple",
+    "upload",
+    "json",
+    "formidable"
+  ],
+  "dependencies": {
+    "co-body": "*",
+    "extend": "1.3.0",
+    "formidable": "1.0.15"
+  },
+  "devDependencies": {
+    "koa": "*",
+    "koa-router": "*",
+    "koa-resource-router": "*",
+    "multiline": "*",
+    "mocha": "*",
+    "should": "*",
+    "supertest": "*"
+  },
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/tunnckoCore/koa-better-body/blob/master/license.md"
+  }],
+  "author": {
+    "name": "Charlike Mike Reagent",
+    "email": "mameto_100@mail.bg",
+    "url": "http://www.whistle-bg.tk"
+  },
+  "maintainers": [{
+    "name": "Charlike Mike Reagent",
+    "email": "mameto_100@mail.bg",
+    "url": "http://www.whistle-bg.tk"
+  },{
+    "name": "Daryl Lau",
+    "email": "daryl@weak.io",
+    "url": "https://github.com/dlau"
+  }],
+  "contributors": [{
+    "name": "Charlike Mike Reagent",
+    "email": "mameto_100@mail.bg",
+    "url": "http://www.whistle-bg.tk"
+  },{
+    "name": "Daryl Lau",
+    "email": "daryl@weak.io",
+    "url": "https://github.com/dlau"
+  }]
+}
