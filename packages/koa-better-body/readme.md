@@ -27,6 +27,8 @@ $ npm install koa-better-body
 - `formLimit` **{String|Number}** The byte limit of the form body, default `56kb`
 - `encoding` **{String}** Sets encoding for incoming form fields, default `utf-8`
 - `multipart` **{Boolean}** Support `multipart/form-data` request bodies, default `false`
+- `fieldsKey` **{String|Boolean}** Name of the key for fields in the body object, default `'fields'`
+- `filesKey` **{String|Boolean}** Name of the key for files in the body object, default `'files'`
 - `formidable` **{Object}** Options that are passing to `formidable`
 - `formidable.maxFields` **{Number}** See [formidable-options](./readme.md#formidable-options). our default `10`
 - `formidable.multiples` **{Boolean}** See [formidable-options](./readme.md#formidable-options), our default `true`
