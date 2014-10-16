@@ -22,6 +22,8 @@ var defaultOptions = {
   encoding: 'utf-8',
   jsonLimit: '1mb',
   formLimit: '56kb',
+  fieldsKey: 'fields',
+  filesKey: 'files',
   formidable: {
     multiples: true,
     keepExtensions: true,
@@ -47,6 +49,19 @@ function formy(ctx, opts) {
   };
 }
 
+function normalize(body, opts) {
+  if (typeof opts.fieldsKey !== 'string') {
+    body = body.fields;
+  } else {
+    body[opts.fieldsKey] = body.fields;
+  }
+  if (typeof opts.filesKey === 'string') {
+    body[opts.filesKey] = body.files;
+  }
+  
+  return body;
+}
+
 /**
  * ## Examples
  * > For a more comprehensive examples, see [examples](./examples) folder.
@@ -64,6 +79,8 @@ function formy(ctx, opts) {
  * @param {String|Number} `formLimit` The byte limit of the form body, default `56kb`
  * @param {String} `encoding` Sets encoding for incoming form fields, default `utf-8`
  * @param {Boolean} `multipart` Support `multipart/form-data` request bodies, default `false`
+ * @param {String|Boolean} `fieldsKey` Name of the key for fields in the body object, default `'fields'`
+ * @param {String|Boolean} `filesKey` Name of the key for files in the body object, default `'files'`
  * @param {Object} `formidable` Options that are passing to `formidable`
  * @param {Number} `formidable.maxFields` See [formidable-options](./readme.md#formidable-options). our default `10`
  * @param {Boolean} `formidable.multiples` See [formidable-options](./readme.md#formidable-options), our default `true`
@@ -88,7 +105,9 @@ module.exports = function koaBody(options) {
     else if (this.request.is('multipart') && opts.multipart) {
       body = yield formy(this, opts.formidable);
     }
-
+    
+    body = normalize(body, opts);
+    
     if (opts.patchNode) {
       this.req.body = body;
     }
