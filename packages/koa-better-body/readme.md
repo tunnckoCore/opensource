@@ -3,7 +3,7 @@
 Via [formidable][formidable-url] (multipart) and [co-body][cobody-url] (json/urlencoded).
 
 
-## Install [![Nodei.co stats][npmjs-install]][npmjs-url] 
+## Install [![Nodei.co stats][npmjs-install]][npmjs-url]
 > Install with [npm](https://npmjs.org)
 
 ```
@@ -27,12 +27,11 @@ $ npm install koa-better-body
 - `formLimit` **{String|Number}** The byte limit of the form body, default `56kb`
 - `encoding` **{String}** Sets encoding for incoming form fields, default `utf-8`
 - `multipart` **{Boolean}** Support `multipart/form-data` request bodies, default `false`
-- `fieldsKey` **{String|Boolean}** Name of the key for fields in the body object, default `'fields'`
-- `filesKey` **{String|Boolean}** Name of the key for files in the body object, default `'files'`
+- `fieldsKey` **{String|Boolean}** Name of the key for fields in the body object or `false`, default `'fields'`
 - `formidable` **{Object}** Options that are passing to `formidable`
-- `formidable.maxFields` **{Number}** See [formidable-options](./readme.md#formidable-options). our default `10`
-- `formidable.multiples` **{Boolean}** See [formidable-options](./readme.md#formidable-options), our default `true`
-- `formidable.keepExtensions` **{Boolean}** See [formidable-options](./readme.md#formidable-options), our default `true`
+  + `formidable.maxFields` **{Number}** See [formidable-options](./readme.md#formidable-options). our default `10`
+  + `formidable.multiples` **{Boolean}** See [formidable-options](./readme.md#formidable-options), our default `true`
+  + `formidable.keepExtensions` **{Boolean}** See [formidable-options](./readme.md#formidable-options), our default `true`
 - `return` **{GeneratorFunction}** That you can use with [koa][koa-url] or [co][co-url]
 
 
@@ -51,6 +50,7 @@ $ npm install koa-better-body
 > As usual - `npm test` **or** if you have [mocha][mocha-url] globally - `mocha --harmony-generators`.
 
 ```
+$ npm install
 $ npm test
 ```
 
@@ -63,14 +63,9 @@ $ npm test
 + [twitter/tunnckoCore][author-twitter]
 + [npmjs/tunnckoCore][author-npmjs]
 
-**Daryl Lau**
-+ [github/dlau][author-dlau-github]
-+ [twitter/daryllau][author-dlau-twitter]
-+ [npmjs/dlau][author-dlau-npmjs]
-
 
 ## License [![MIT license][license-img]][license-url]
-Copyright (c) 2014 [Charlike Mike Reagent][author-website], [Daryl Lau][author-dlau-website], [contributors](https://github.com/tunnckoCore/koa-better-body/graphs/contributors).  
+Copyright (c) 2014 [Charlike Mike Reagent][author-website], [contributors](https://github.com/tunnckoCore/koa-better-body/graphs/contributors).  
 Released under the [`MIT`][license-url] license.
 
 
@@ -96,17 +91,12 @@ Released under the [`MIT`][license-url] license.
 [author-website]: http://www.whistle-bg.tk
 [author-npmjs]: https://npmjs.org/~tunnckocore
 
-[author-dlau-github]: https://github.com/dlau
-[author-dlau-twitter]: https://twitter.com/daryllau
-[author-dlau-npmjs]: https://npmjs.org/~dlau
-[author-dlau-website]: http://weak.io/
-
 [cobody-url]: https://github.com/visionmedia/co-body
 [mocha-url]: https://github.com/visionmedia/mocha
 [rawbody-url]: https://github.com/stream-utils/raw-body
 [multer-url]: https://github.com/expressjs/multer
 [koa-router-url]: https://github.com/alexmingoia/koa-router
 [koa-url]: https://github.com/koajs/koa
-[formidable-url]: https://github.com/felix
+[formidable-url]: https://github.com/felixge/node-formidable
 [co-url]: https://github.com/visionmedia/co
 [extend-url]: https://github.com/justmoon/node-extend

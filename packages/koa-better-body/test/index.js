@@ -1,4 +1,4 @@
-/*!
+/**
  * koa-better-body <https://github.com/tunnckoCore/koa-better-body>
  * 
  * Copyright (c) 2014 Charlike Mike Reagent, Daryl Lau, contributors.
@@ -7,7 +7,7 @@
 
 'use strict';
 
-/*!
+/**
  * Module dependencies.
  */
 
@@ -27,7 +27,7 @@ describe('koa-body', function () {
   };
 
 
-  /*!
+  /**
    * DEFAULTS - multipart: false
    */
   it('should work with defaults - multipart: false, only `urlencoded` and `json` bodies', function (done) {
@@ -55,7 +55,7 @@ describe('koa-body', function () {
   });
 
 
-  /*!
+  /**
    * MULTIPART - FIELDS
    */
   it('should recieve `multipart` requests - fields on .body.fields object', function (done) {
@@ -99,7 +99,7 @@ describe('koa-body', function () {
 
 
 
-  /*!
+  /**
    * MULTIPART - FILES
    */
   it('should recieve multiple files via `multipart` on .body.files object', function (done) {
@@ -145,7 +145,7 @@ describe('koa-body', function () {
 
 
 
-  /*!
+  /**
    * URLENCODED request body
    */
   it('should recieve `urlencoded` request bodies', function (done) {
@@ -188,7 +188,7 @@ describe('koa-body', function () {
 
 
 
-  /*!
+  /**
    * JSON request body
    */
   it('should recieve `json` request bodies', function (done) {
@@ -232,7 +232,7 @@ describe('koa-body', function () {
 
 
 
-  /*!
+  /**
    * FORM (urlencoded) LIMIT
    */
   it('should request 413 Request Entity Too Large, because of `formLimit`', function (done) {
@@ -254,14 +254,13 @@ describe('koa-body', function () {
       .post('/users')
       .type('application/x-www-form-urlencoded')
       .send('user=www-form-urlencoded')
-      .expect(413, 'Request Entity Too Large')
-      .expect('content-length', 24)
+      .expect(413)
       .end(done);
   });
 
 
 
-  /*!
+  /**
    * JSON LIMIT
    */
   it('should request 413 Request Entity Too Large, because of `jsonLimit`', function (done) {
@@ -283,8 +282,7 @@ describe('koa-body', function () {
       .post('/users')
       .type('application/json')
       .send({name: 'some-long-name-for-limit'})
-      .expect(413, 'Request Entity Too Large')
-      .expect('content-length', 24)
+      .expect(413)
       .end(done);
   });
 });

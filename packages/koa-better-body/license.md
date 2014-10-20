@@ -1,4 +1,4 @@
-Copyright (c) 2014 [Charlike Mike Reagent][author-website], [Daryl Lau][author-dlau-website], [contributors](https://github.com/tunnckoCore/koa-better-body/graphs/contributors).  
+Copyright (c) 2014 [Charlike Mike Reagent][author-website], [contributors](https://github.com/tunnckoCore/koa-better-body/graphs/contributors).  
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
@@ -44,17 +44,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 [author-website]: http://www.whistle-bg.tk
 [author-npmjs]: https://npmjs.org/~tunnckocore
 
-[author-dlau-github]: https://github.com/dlau
-[author-dlau-twitter]: https://twitter.com/daryllau
-[author-dlau-npmjs]: https://npmjs.org/~dlau
-[author-dlau-website]: http://weak.io/
-
 [cobody-url]: https://github.com/visionmedia/co-body
 [mocha-url]: https://github.com/visionmedia/mocha
 [rawbody-url]: https://github.com/stream-utils/raw-body
 [multer-url]: https://github.com/expressjs/multer
 [koa-router-url]: https://github.com/alexmingoia/koa-router
 [koa-url]: https://github.com/koajs/koa
-[formidable-url]: https://github.com/felix
+[formidable-url]: https://github.com/felixge/node-formidable
 [co-url]: https://github.com/visionmedia/co
 [extend-url]: https://github.com/justmoon/node-extend
