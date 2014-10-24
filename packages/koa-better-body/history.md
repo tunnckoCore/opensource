@@ -1,3 +1,7 @@
+## v1.0.5 / October 25, 2014
+- add support for `application/csp-report` header (fixes #3) ref: https://mathiasbynens.be/notes/csp-reports
+- add complete name of the request headers to not lead to conflicts
+
 ## v1.0.4 / October 21, 2014
 - add `fieldsKey` optional options property (closes https://github.com/tunnckoCore/koa-better-body/issues/1) that allows custom key name if string, or false if you want field's to be in the `.body` not in `.body.fields`
 

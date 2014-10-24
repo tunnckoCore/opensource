@@ -1,13 +1,13 @@
-/*!
+/**
  * koa-better-body <https://github.com/tunnckoCore/koa-better-body>
  *
- * Copyright (c) 2014 Charlike Mike Reagent, Daryl Lau, contributors.
+ * Copyright (c) 2014 Charlike Mike Reagent, contributors.
  * Released under the MIT license.
  */
 
 'use strict';
 
-/*!
+/**
  * Module dependencies.
  */
 
@@ -69,18 +69,20 @@ var koabody = module.exports = function koabody(options) {
     var body = {},
       json, urlencoded, multipart;
 
-    if (this.request.is('json')) {
+    if (this.request.is('application/json') || this.request.is('application/csp-report')) {
       json = yield cobody.json(this, {
         encoding: opts.encoding,
         limit: opts.jsonLimit
       });
-    } else if (this.request.is('urlencoded')) {
+    } else if (this.request.is('application/x-www-form-urlencoded')) {
       urlencoded = yield cobody.form(this, {
         encoding: opts.encoding,
         limit: opts.formLimit
       });
-    } else if (this.request.is('multipart') && opts.multipart) {
+    } else if (this.request.is('multipart/form-data') && opts.multipart) {
       multipart = yield koabody.formidable(this, opts.formidable);
+    } else {
+      return yield next;
     }
 
 

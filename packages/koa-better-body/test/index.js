@@ -1,7 +1,7 @@
 /**
  * koa-better-body <https://github.com/tunnckoCore/koa-better-body>
- * 
- * Copyright (c) 2014 Charlike Mike Reagent, Daryl Lau, contributors.
+ *
+ * Copyright (c) 2014 Charlike Mike Reagent, contributors.
  * Released under the MIT license.
  */
 
@@ -71,7 +71,7 @@ describe('koa-body', function () {
     });
 
 
-    app.use(koaBody({multipart: true}));
+    app.use(koaBody({multipart: true, jsonLimit: '1mb',formLimit: '56kb'}));
     app.use(usersResource.middleware());
 
     request(http.createServer(app.callback()))
