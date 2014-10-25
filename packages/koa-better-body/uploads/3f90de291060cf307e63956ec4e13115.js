@@ -14,7 +14,6 @@
 var extend = require('extend');
 var parse = require('co-body');
 var formidable = require('formidable');
-
 var defaults = {
   patchNode: false,
   patchKoa: true,
@@ -41,7 +40,7 @@ var defaults = {
  *   - {Boolean} `multipart` default false
  *   - {Object} `formidable`
  */
-module.exports = function koaBetterBody(opts) {
+module.exports = function (opts) {
   opts = extend(true, defaults, opts || {});
 
   return function * main(next) {
@@ -51,8 +50,8 @@ module.exports = function koaBetterBody(opts) {
 
     var data = yield* handleRequest(this, opts);
 
-    opts.patchKoa ? this.request.body = data : this.request.body = null;
-    opts.patchNode ? this.req.body = data : this.req.body = null;
+    this.request.body = data && opts.patchKoa;
+    this.req.body = data && opts.patchNode;
 
     yield* next;
   };

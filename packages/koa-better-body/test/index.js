@@ -116,7 +116,7 @@ describe('koa-body', function () {
     app.use(koaBody({
       multipart: true,
       formidable: {
-        uploadDir: __dirname + '/../'
+        uploadDir: __dirname + '/../uploads'
       }
     }));
     app.use(usersResource.middleware());
@@ -242,6 +242,7 @@ describe('koa-body', function () {
       create: function* create(next) {
         //suggestions for handling?
         //what if we want to make body more user-friendly?
+        this.status = 413
         yield next;
       }
     });
@@ -270,12 +271,13 @@ describe('koa-body', function () {
       create: function* create(next) {
         //suggestions for handling?
         //what if we want to make body more user-friendly?
+        this.status = 413
         yield next;
       }
     });
 
 
-    app.use(koaBody({jsonLimit: 10 /*bytes*/}));
+    app.use(koaBody({jsonLimit: 2 /*bytes*/}));
     app.use(usersResource.middleware());
 
     request(http.createServer(app.callback()))
