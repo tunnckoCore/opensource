@@ -4,10 +4,12 @@
   "description": "A koa body parser middleware with support for `multipart`, `json`, `csp-report`or `urlencoded` request bodies. Via formidable and co-body.",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha --harmony-generators --require should",
-    "coveralls": "NODE_ENV=test node --harmony-generators node_modules/.bin/istanbul cover _mocha --report lcovonly -- --require should && cat ./coverage/lcov.info | coveralls || true",
-    "examples-multer": "NODE_ENV=test node --harmony examples/multer.js",
-    "examples-koa-router": "NODE_ENV=test node --harmony examples/koa-router.js"
+    "lint": "npm install && ./node_modules/.bin/jshint **/*.js",
+    "test": "npm run lint && NODE_ENV=test ./node_modules/.bin/mocha --require should --harmony-generators",
+    "test-cov": "npm run lint && NODE_ENV=test node --harmony-generators node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -u exports --require should",
+    "test-travis": "npm run lint && NODE_ENV=test node --harmony-generators node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -u exports --require should",
+    "examples-multer": "npm run lint && node --harmony examples/multer.js",
+    "examples-koa-router": "npm run lint && node --harmony examples/koa-router.js"
   },
   "repository": "tunnckoCore/koa-better-body",
   "keywords": [
