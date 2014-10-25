@@ -1,4 +1,4 @@
-# [koa][koa-url]-better-body [![NPM version][npmjs-shields]][npmjs-url] [![Build Status][travis-img]][travis-url] [![Dependency Status][depstat-img]][depstat-url]
+# [koa][koa-url]-better-body [![NPM version][npmjs-shields]][npmjs-url] [![Build Status][travis-img]][travis-url] [![Dependency Status][depstat-img]][depstat-url] [![Coveralls][coveralls-shields]][coveralls-url]
 > A [koa][koa-url] body parser middleware with support for `multipart`, `json`, [`csp-report`][csp-report] or `urlencoded` request bodies.
 Via [formidable][formidable-url] (multipart) and [co-body][cobody-url] (json/urlencoded).
 
@@ -73,6 +73,9 @@ Released under the [`MIT`][license-url] license.
 [npmjs-url]: http://npm.im/koa-better-body
 [npmjs-shields]: http://img.shields.io/npm/v/koa-better-body.svg
 [npmjs-install]: https://nodei.co/npm/koa-better-body.svg?mini=true
+
+[coveralls-url]: https://coveralls.io/r/tunnckoCore/koa-better-body?branch=master
+[coveralls-shields]: https://img.shields.io/coveralls/tunnckoCore/koa-better-body.svg
 
 [license-url]: https://github.com/tunnckoCore/koa-better-body/blob/master/license.md
 [license-img]: http://img.shields.io/badge/license-MIT-blue.svg

@@ -4,7 +4,7 @@
   "description": "A koa body parser middleware with support for `multipart`, `json`, `csp-report`or `urlencoded` request bodies. Via formidable and co-body.",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha --harmony-generators --require should",
+    "test": "mocha --harmony-generators --require should",
     "examples-multer": "node --harmony examples/multer.js",
     "examples-koa-router": "node --harmony examples/koa-router.js"
   },
@@ -34,10 +34,14 @@
     "koa": "*",
     "koa-router": "*",
     "koa-resource-router": "*",
-    "multiline": "*",
+    "mocha-lcov-reporter": "*",
     "mocha": "*",
+    "multiline": "*",
     "should": "*",
-    "supertest": "*"
+    "supertest": "*",
+    "coveralls": "*",
+    "istanbul-harmony": "~0.3.0",
+    "jshint": "*"
   },
   "licenses": [{
     "type": "MIT",

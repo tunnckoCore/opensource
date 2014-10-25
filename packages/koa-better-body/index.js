@@ -15,22 +15,6 @@ var cobody = require('co-body');
 var forms = require('formidable');
 var xtend = require('extend');
 
-var defaultOptions = {
-  patchNode: false,
-  patchKoa: true,
-  multipart: false,
-  fieldsKey: 'fields',
-  encoding: 'utf-8',
-  jsonLimit: '1mb',
-  formLimit: '56kb',
-  formidable: {
-    multiples: true,
-    keepExtensions: true,
-    maxFields: 10,
-  }
-};
-
-
 /**
  * ## Examples
  * > For a more comprehensive examples, see [examples](./examples) folder.
@@ -56,50 +40,60 @@ var defaultOptions = {
  * @return {GeneratorFunction} That you can use with [koa][koa-url] or [co][co-url]
  * @api public
  */
-
-var koabody = module.exports = function koabody(options) {
-  var opts = xtend(true, defaultOptions, options || {});
+module.exports = function koabody(opts) {
+  var defaultOptions = {
+    patchNode: false,
+    patchKoa: true,
+    multipart: false,
+    fieldsKey: 'fields',
+    encoding: 'utf-8',
+    jsonLimit: '1mb',
+    formLimit: '56kb',
+    formidable: {
+      multiples: true,
+      keepExtensions: true,
+      maxFields: 10,
+    }
+  };
+  opts = xtend(true, defaultOptions, opts || {});
 
   return function * koaBody(next) {
     if (this.request.method == 'GET') {
       this.request.body = this.body;
       return yield next;
     }
-
-    var body = {},
-      json, urlencoded, multipart;
+    var body = {};
+    var json = null;
+    var urlencoded = null;
+    var multipart = null;
 
     if (this.request.is('application/json') || this.request.is('application/csp-report')) {
-      json = yield cobody.json(this, {
-        encoding: opts.encoding,
-        limit: opts.jsonLimit
-      });
-    } else if (this.request.is('application/x-www-form-urlencoded')) {
-      urlencoded = yield cobody.form(this, {
-        encoding: opts.encoding,
-        limit: opts.formLimit
-      });
-    } else if (this.request.is('multipart/form-data') && opts.multipart) {
-      multipart = yield koabody.formidable(this, opts.formidable);
-    } else {
+      json = yield cobody.json(this, {encoding: opts.encoding, limit: opts.jsonLimit});
+    }
+    else if (this.request.is('application/x-www-form-urlencoded')) {
+      urlencoded = yield cobody.form(this, {encoding: opts.encoding, limit: opts.formLimit});
+    }
+    else if (this.request.is('multipart/form-data') && opts.multipart) {
+      multipart = yield formy(this, opts.formidable);
+    }
+    else {
       return yield next;
     }
 
-
     if (opts.fieldsKey === false) {
       body = json || urlencoded || multipart.fields;
-    } else if (typeof opts.fieldsKey === 'string' && opts.fieldsKey.length > 0) {
+    }
+    else if (typeof opts.fieldsKey === 'string' && opts.fieldsKey.length > 0) {
       body[opts.fieldsKey] = json || urlencoded || multipart.fields;
     }
 
-
     if (opts.patchNode) {
       this.req.body = body;
-      koabody.finalCheck(this.req, multipart);
+      finalCheck(this.req, multipart);
     }
     if (opts.patchKoa) {
       this.request.body = body;
-      koabody.finalCheck(this.request, multipart);
+      finalCheck(this.request, multipart);
     }
 
     yield next;
@@ -115,17 +109,12 @@ var koabody = module.exports = function koabody(options) {
  * @return {Function} Node-style callback, ready for yielding
  * @api private
  */
-koabody.formidable = function formy(ctx, opts) {
+function formy(ctx, opts) {
   return function (done) {
     var form = new forms.IncomingForm(opts);
     form.parse(ctx.req, function (err, fields, files) {
-      if (err) {
-        return done(err);
-      }
-      done(null, {
-        fields: fields,
-        files: files
-      });
+      if (err) return done(err);
+      done(null, {fields: fields, files: files});
     });
   };
 }
@@ -138,7 +127,7 @@ koabody.formidable = function formy(ctx, opts) {
  * @param {Object} `multipart`
  * @api private
  */
-koabody.finalCheck = function finalCheck(ctx, multipart) {
+function finalCheck(ctx, multipart) {
   if ('files' in ctx.body) {
     (multipart) ? ctx.files = multipart.files : 0;
   } else {
