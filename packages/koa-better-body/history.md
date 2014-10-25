@@ -1,3 +1,9 @@
+## v1.0.6 / October 25, 2014
+- update automation
+- improve code coverage
+- add Makefile
+- add `npm run` scripts
+
 ## v1.0.5 / October 25, 2014
 - add support for `application/csp-report` header (fixes #3) ref: https://mathiasbynens.be/notes/csp-reports
 - add complete name of the request headers to not lead to conflicts
