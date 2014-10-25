@@ -116,7 +116,7 @@ describe('koa-body', function () {
     app.use(koaBody({
       multipart: true,
       formidable: {
-        uploadDir: __dirname + '/../uploads'
+        uploadDir: __dirname + '/../'
       }
     }));
     app.use(usersResource.middleware());
