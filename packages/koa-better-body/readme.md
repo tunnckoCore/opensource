@@ -1,4 +1,4 @@
-# [koa][koa-url]-better-body [![NPM version][npmjs-shields]][npmjs-url] [![Build Status][travis-img]][travis-url] [![Dependency Status][depstat-img]][depstat-url] [![Coveralls][coveralls-shields]][coveralls-url]
+# better-body [![NPM version][npmjs-shields]][npmjs-url] [![Build Status][travis-img]][travis-url] [![Dependency Status][depstat-img]][depstat-url] [![Coveralls][coveralls-shields]][coveralls-url]
 > A [koa][koa-url] body parser middleware with support for `multipart`, `json`, [`csp-report`][csp-report] or `urlencoded` request bodies.
 Via [formidable][formidable-url] (multipart) and [co-body][cobody-url] (json/urlencoded).
 
