@@ -1,4 +1,4 @@
-## v1.0.7 & v1.0.8 / October 26, 2014
+## v1.0.7 / October 26, 2014
 - update names of some tests (rfc7231) "Request Entity Too Large" -> "Payload Too Large"
 - add doc blocks
 
