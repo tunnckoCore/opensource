@@ -50,8 +50,8 @@ $ npm install koa-better-body
 > As usual - `npm test` **or** if you have [mocha][mocha-url] globally - `mocha --harmony-generators`.
 
 ```
-$ npm install
 $ npm test
+$ #or make test
 ```
 
 

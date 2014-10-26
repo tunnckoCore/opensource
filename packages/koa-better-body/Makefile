@@ -13,7 +13,7 @@ test:
 		--harmony-generators
 
 test-cov:
-	$(MAKE) lint
+	$(MAKE) test
 	@NODE_ENV=test node --harmony-generators \
 		node_modules/.bin/istanbul cover \
 		./node_modules/.bin/_mocha \
@@ -21,7 +21,7 @@ test-cov:
 		--require should
 
 test-travis:
-	$(MAKE) lint
+	$(MAKE) test
 	@NODE_ENV=test node --harmony-generators \
 		node_modules/.bin/istanbul cover \
 		./node_modules/.bin/_mocha \
@@ -29,4 +29,4 @@ test-travis:
 		-- -u exports \
 		--require should
 
-.PHONY: test lint
+.PHONY: test

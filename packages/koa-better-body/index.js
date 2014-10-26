@@ -40,6 +40,7 @@ var defaults = {
  *   - {Boolean} `patchKoa` default true
  *   - {Boolean} `multipart` default false
  *   - {Object} `formidable`
+ * @api public
  */
 module.exports = function koaBetterBody(opts) {
   opts = extend(true, defaults, opts || {});
@@ -58,6 +59,14 @@ module.exports = function koaBetterBody(opts) {
   };
 };
 
+/**
+ * The magic. Checking and forming the request
+ *
+ * @param {Object} `that`
+ * @param {Object} `opts`
+ * @return {Object}
+ * @api private
+ */
 function* handleRequest(that, opts) {
   var copy = {};
   if (that.request.is('application/json', 'application/csp-report')) {
@@ -80,6 +89,15 @@ function* handleRequest(that, opts) {
   return copy;
 }
 
+/**
+ * Promise-like parsing incoming form
+ * and returning thunk
+ * 
+ * @param  {Object} `context`
+ * @param  {Object} `options`
+ * @return {Function} thunk
+ * @api private
+ */
 function formed(context, options) {
   return function (done) {
     var form = new formidable.IncomingForm(options);

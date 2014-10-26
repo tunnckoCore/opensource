@@ -11,12 +11,12 @@
  * Module dependencies.
  */
 
-var fs       = require('fs'),
-    koa      = require('koa'),
-    http     = require('http'),
-    request  = require('supertest'),
-    koaBody  = require('../index'),
-    Resource = require('koa-resource-router');
+var fs       = require('fs');
+var koa      = require('koa');
+var http     = require('http');
+var request  = require('supertest');
+var koaBody  = require('./index');
+var Resource = require('koa-resource-router');
 
 describe('koa-body', function () {
   var database = {
@@ -135,8 +135,9 @@ describe('koa-body', function () {
         fs.unlinkSync(res.body.files.firstField.path);
 
         res.body.files.secondField[0].name.should.equal('index.js');
-        res.body.files.secondField[1].name.should.equal('license.md');
         fs.unlinkSync(res.body.files.secondField[0].path);
+
+        res.body.files.secondField[1].name.should.equal('license.md');
         fs.unlinkSync(res.body.files.secondField[1].path);
 
         done();
@@ -235,7 +236,7 @@ describe('koa-body', function () {
   /**
    * FORM (urlencoded) LIMIT
    */
-  it('should request 413 Request Entity Too Large, because of `formLimit`', function (done) {
+  it('should recieve "413 Payload Too Large", because of `formLimit`', function (done) {
     var app = koa();
     var usersResource = new Resource('users', {
       // POST /users
@@ -264,7 +265,7 @@ describe('koa-body', function () {
   /**
    * JSON LIMIT
    */
-  it('should request 413 Request Entity Too Large, because of `jsonLimit`', function (done) {
+  it('should recieve "413 Payload Too Large", because of `jsonLimit`', function (done) {
     var app = koa();
     var usersResource = new Resource('users', {
       // POST /users
