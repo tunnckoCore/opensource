@@ -51,7 +51,6 @@ $ npm install koa-better-body
 
 ```
 $ npm test
-$ #or make test
 ```
 
 
