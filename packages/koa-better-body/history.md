@@ -1,3 +1,7 @@
+## v1.0.10 / November 27, 2014
+- docs, readme, coveralls
+- edit safeContext in `.jscsrc`
+
 ## v1.0.9 / November 27, 2014
 - bump `jscs-jsdoc` to `v0.1.0`
 - update jscs config `.jscsrc`
