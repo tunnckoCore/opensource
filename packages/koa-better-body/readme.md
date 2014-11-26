@@ -11,16 +11,14 @@ $ npm test
 ```
 
 
-## Examples
+## Usage
 > For a more comprehensive examples, see [examples](./examples) folder.
 
 - [`examples/multer`](./examples/multer.js) - usage like Express's bodyParser - [multer][multer-url] `npm run examples-multer`
 - [`examples/koa-router`](./examples/koa-router.js) - usage with Alex's [koa-router][koa-router-url] `npm run examples-koa-router`
 
 
-## API
-
-### [.koaBetterBody](index.js#L48)
+## [.koaBetterBody](index.js#L46)
 > However, `koa-better-body` have few custom options, see also [co-body][cobody-url], [raw-body][rawbody-url], [formidable][formidable-url]
 
 * `[options]` **{Object}**  
@@ -37,7 +35,7 @@ $ npm test
     + `formidable.keepExtensions` **{Boolean}** See [formidable-options](./readme.md#formidable-options), our default `true`
 * `return` **{GeneratorFunction}** That you can use with [koa][koa-url] or [co][co-url]
 
-## formidable options
+### formidable options
 > See [node-formidable][formidable-url] for a full list of options
 
 - `bytesExpected` **{Integer}** The expected number of bytes in this form, default `null`

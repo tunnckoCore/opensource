@@ -2,7 +2,7 @@
   "fileExtensions": [".js"],
   "maxErrors": 10,
   "esnext": true,
-  "safeContextKeyword": "_this",
+  "safeContextKeyword": ["self", "_this", "that"],
 
   "maximumLineLength": {
     "value": 80,
