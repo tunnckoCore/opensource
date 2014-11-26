@@ -31,7 +31,7 @@ var defaults = {
 };
 
 /**
- * @param {Object} [options]
+ * @param {Object} `[options]`
  *   @option {String} [options] `jsonLimit` default '1mb'
  *   @option {String} [options] `formLimit` default '56kb'
  *   @option {String} [options] `encoding` default 'utf-8'

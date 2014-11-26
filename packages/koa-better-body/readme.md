@@ -1,6 +1,5 @@
 # better-body [![NPM version][npmjs-shields]][npmjs-url] [![Build Status][travis-img]][travis-url] [![Dependency Status][depstat-img]][depstat-url] [![Coveralls][coveralls-shields]][coveralls-url]
-> A [koa][koa-url] body parser middleware with support for `multipart`, `json`, [`csp-report`][csp-report] or `urlencoded` request bodies.
-Via [formidable][formidable-url] (multipart) and [co-body][cobody-url] (json/urlencoded).
+> A koa body parser middleware with support for `multipart`, `json`, `csp-report` or `urlencoded` request bodies. Via formidable and co-body.
 
 
 ## Install [![Nodei.co stats][npmjs-install]][npmjs-url]
@@ -8,6 +7,7 @@ Via [formidable][formidable-url] (multipart) and [co-body][cobody-url] (json/url
 
 ```
 $ npm install koa-better-body
+$ npm test
 ```
 
 
@@ -18,22 +18,24 @@ $ npm install koa-better-body
 - [`examples/koa-router`](./examples/koa-router.js) - usage with Alex's [koa-router][koa-router-url] `npm run examples-koa-router`
 
 
-## Options
+## API
+
+### [.koaBetterBody](index.js#L48)
 > However, `koa-better-body` have few custom options, see also [co-body][cobody-url], [raw-body][rawbody-url], [formidable][formidable-url]
 
-- `patchNode` **{Boolean}** Patch request body to Node's `ctx.req` object, default `false`
-- `patchKoa` **{Boolean}** Patch request body to Koa's `ctx.request` object, default `true`
-- `jsonLimit` **{String|Number}** The byte limit of the JSON body, default `1mb`
-- `formLimit` **{String|Number}** The byte limit of the form body, default `56kb`
-- `encoding` **{String}** Sets encoding for incoming form fields, default `utf-8`
-- `multipart` **{Boolean}** Support `multipart/form-data` request bodies, default `false`
-- `fieldsKey` **{String|Boolean}** Name of the key for fields in the body object or `false`, default `'fields'`
-- `formidable` **{Object}** Options that are passing to `formidable`
-  + `formidable.maxFields` **{Number}** See [formidable-options](./readme.md#formidable-options). our default `10`
-  + `formidable.multiples` **{Boolean}** See [formidable-options](./readme.md#formidable-options), our default `true`
-  + `formidable.keepExtensions` **{Boolean}** See [formidable-options](./readme.md#formidable-options), our default `true`
-- `return` **{GeneratorFunction}** That you can use with [koa][koa-url] or [co][co-url]
-
+* `[options]` **{Object}**  
+  - `patchNode` **{Boolean}** Patch request body to Node's `ctx.req` object, default `false`
+  - `patchKoa` **{Boolean}** Patch request body to Koa's `ctx.request` object, default `true`
+  - `jsonLimit` **{String|Number}** The byte limit of the JSON body, default `1mb`
+  - `formLimit` **{String|Number}** The byte limit of the form body, default `56kb`
+  - `encoding` **{String}** Sets encoding for incoming form fields, default `utf-8`
+  - `multipart` **{Boolean}** Support `multipart/form-data` request bodies, default `false`
+  - `fieldsKey` **{String|Boolean}** Name of the key for fields in the body object or `false`, default `'fields'`
+  - `formidable` **{Object}** Options that are passing to `formidable`
+    + `formidable.maxFields` **{Number}** See [formidable-options](./readme.md#formidable-options). our default `10`
+    + `formidable.multiples` **{Boolean}** See [formidable-options](./readme.md#formidable-options), our default `true`
+    + `formidable.keepExtensions` **{Boolean}** See [formidable-options](./readme.md#formidable-options), our default `true`
+* `return` **{GeneratorFunction}** That you can use with [koa][koa-url] or [co][co-url]
 
 ## formidable options
 > See [node-formidable][formidable-url] for a full list of options
@@ -46,17 +48,8 @@ $ npm install koa-better-body
 - `multiples` **{Boolean}** Multiple file uploads or no, default `false`
 
 
-## Tests
-> As usual - `npm test` **or** if you have [mocha][mocha-url] globally - `mocha --harmony-generators`.
-
-```
-$ npm test
-```
-
-
-## Authors & Contributors [![author tips][author-gittip-img]][author-gittip]
-
-**Charlike Mike Reagent**
+## Authors & Contributors 
+**Charlike Make Reagent** [![author tips][author-gittip-img]][author-gittip]
 + [gittip/tunnckoCore][author-gittip]
 + [github/tunnckoCore][author-github]
 + [twitter/tunnckoCore][author-twitter]
@@ -64,10 +57,8 @@ $ npm test
 
 
 ## License [![MIT license][license-img]][license-url]
-Copyright (c) 2014 [Charlike Mike Reagent][author-website], [contributors](https://github.com/tunnckoCore/koa-better-body/graphs/contributors).  
+Copyright (c) 2014 [Charlike Make Reagent][author-website], [contributors](https://github.com/tunnckoCore/koa-better-body/graphs/contributors).  
 Released under the [`MIT`][license-url] license.
-
-
 
 [npmjs-url]: http://npm.im/koa-better-body
 [npmjs-shields]: http://img.shields.io/npm/v/koa-better-body.svg

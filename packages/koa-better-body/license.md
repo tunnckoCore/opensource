@@ -1,4 +1,4 @@
-Copyright (c) 2014 [Charlike Mike Reagent][author-website], [contributors](https://github.com/tunnckoCore/koa-better-body/graphs/contributors).  
+Copyright (c) 2014 [Charlike Make Reagent][author-website], [contributors](https://github.com/tunnckoCore/koa-better-body/graphs/contributors).  
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
@@ -27,6 +27,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 [npmjs-shields]: http://img.shields.io/npm/v/koa-better-body.svg
 [npmjs-install]: https://nodei.co/npm/koa-better-body.svg?mini=true
 
+[coveralls-url]: https://coveralls.io/r/tunnckoCore/koa-better-body?branch=master
+[coveralls-shields]: https://img.shields.io/coveralls/tunnckoCore/koa-better-body.svg
+
 [license-url]: https://github.com/tunnckoCore/koa-better-body/blob/master/license.md
 [license-img]: http://img.shields.io/badge/license-MIT-blue.svg
 
@@ -53,3 +56,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 [formidable-url]: https://github.com/felixge/node-formidable
 [co-url]: https://github.com/visionmedia/co
 [extend-url]: https://github.com/justmoon/node-extend
+[csp-report]: https://mathiasbynens.be/notes/csp-reports
