@@ -18,7 +18,7 @@ $ npm test
 - [`examples/koa-router`](./examples/koa-router.js) - usage with Alex's [koa-router][koa-router-url] `npm run examples-koa-router`
 
 
-## [.koaBetterBody](index.js#L46)
+## [.koaBetterBody](index.js#L45)
 > However, `koa-better-body` have few custom options, see also [co-body][cobody-url], [raw-body][rawbody-url], [formidable][formidable-url]
 
 * `[options]` **{Object}**  

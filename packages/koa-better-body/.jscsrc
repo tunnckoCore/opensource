@@ -76,8 +76,8 @@
     "beforeOpeningRoundBrace": true
   },
 
-  "additionalRules": [
-    "node_modules/jscs-jsdoc/lib/rules/*.js"
+  "plugins": [
+    "jscs-jsdoc"
   ],
   "jsDoc": {
     "checkParamNames": true,
@@ -87,7 +87,7 @@
     "checkRedundantReturns": true,
     "requireReturnTypes": true,
     "checkRedundantAccess": true,
-    "checkTypes": true,
+    "checkTypes": "capitalizedNativeCase",
     "checkAnnotations": {
       "preset": "jsdoc3",
       "extra": {
