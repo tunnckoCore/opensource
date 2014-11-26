@@ -1,3 +1,9 @@
+## v1.0.8 / November 26, 2014
+- normalize (dot)files
+- update all to apply jshint/jscs code style
+  - add .jscsrc and .jshintignore
+- update makefile and scripts in package.json
+
 ## v1.0.7 / October 26, 2014
 - update names of some tests (rfc7231) "Request Entity Too Large" -> "Payload Too Large"
 - add doc blocks
