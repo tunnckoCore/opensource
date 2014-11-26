@@ -11,14 +11,14 @@
  * Module dependencies.
  */
 
-var fs       = require('fs');
-var koa      = require('koa');
-var http     = require('http');
-var request  = require('supertest');
-var koaBody  = require('./index');
+var fs = require('fs');
+var koa = require('koa');
+var http = require('http');
+var request = require('supertest');
+var koaBody = require('./index');
 var Resource = require('koa-resource-router');
 
-describe('koa-body', function () {
+describe('koa-body', function() {
   var database = {
     users: [
       {name: 'charlike', followers: 10},
@@ -26,55 +26,55 @@ describe('koa-body', function () {
     ]
   };
 
-
   /**
    * DEFAULTS - multipart: false
    */
-  it('should work with defaults - multipart: false, only `urlencoded` and `json` bodies', function (done) {
-    var app = koa();
+  describe('should work with defaults', function() {
+    it('only `urlencoded` and `json` bodies', function(done) {
+      var app = koa();
 
-    var usersResource = new Resource('users', {
-      // GET /users
-      index: function* index(next) {
-        this.status = 200;
-        this.body = database;
-        yield next;
-      }
-    });
-
-    app.use(koaBody());
-    app.use(usersResource.middleware());
-
-    request(http.createServer(app.callback()))
-      .get('/users')
-      .expect(200, database)
-      .end(function(err) {
-        if (err) {return done(err);}
-        done();
+      var usersResource = new Resource('users', {
+        // GET /users
+        index: function * index(next) {
+          this.status = 200;
+          this.body = database;
+          yield next;
+        }
       });
+
+      app.use(koaBody());
+      app.use(usersResource.middleware());
+
+      request(http.createServer(app.callback()))
+        .get('/users')
+        .expect(200, database)
+        .end(function(err) {
+          if (err) {return done(err);}
+          done();
+        });
+    });
   });
 
-
   /**
-   * MULTIPART - FIELDS
+   * MULTIPART
    */
-  it('should recieve `multipart` requests - fields on .body.fields object', function (done) {
-    var app = koa();
-    var usersResource = new Resource('users', {
-      // POST /users
-      create: function* create(next) {
-        database.users.push(this.request.body.fields);
-        this.status = 201;
-        this.body = this.request.body;
-        yield next;
-      }
-    });
+  describe('should recieve `multipart` requests', function() {
+    it('fields on .body.fields object', function(done) {
+      var app = koa();
+      var usersResource = new Resource('users', {
+        // POST /users
+        create: function * create(next) {
+          database.users.push(this.request.body.fields);
+          this.status = 201;
+          this.body = this.request.body;
+          yield next;
+        }
+      });
 
+      app.use(koaBody({multipart: true, jsonLimit: '1mb',formLimit: '56kb'}));
+      app.use(usersResource.middleware());
 
-    app.use(koaBody({multipart: true, jsonLimit: '1mb',formLimit: '56kb'}));
-    app.use(usersResource.middleware());
-
-    request(http.createServer(app.callback()))
+      request(http.createServer(app.callback()))
       .post('/users')
       .field('name', 'daryl')
       .field('followers', 30)
@@ -94,42 +94,38 @@ describe('koa-body', function () {
 
         done();
       });
-  });
-
-
-
-
-  /**
-   * MULTIPART - FILES
-   */
-  it('should recieve multiple files via `multipart` on .body.files object', function (done) {
-    var app = koa();
-    var usersResource = new Resource('users', {
-      // POST /users
-      create: function* create(next) {
-        this.status = 201;
-        this.body = this.request.body;
-        yield next;
-      }
     });
 
-    app.use(koaBody({
-      multipart: true,
-      formidable: {
-        uploadDir: __dirname + '/../'
-      }
-    }));
-    app.use(usersResource.middleware());
+    it('files on .body.files object', function(done) {
+      var app = koa();
+      var usersResource = new Resource('users', {
+        // POST /users
+        create: function * create(next) {
+          this.status = 201;
+          this.body = this.request.body;
+          yield next;
+        }
+      });
 
-    request(http.createServer(app.callback()))
+      app.use(koaBody({
+        multipart: true,
+        formidable: {
+          uploadDir: __dirname + '/../'
+        }
+      }));
+      app.use(usersResource.middleware());
+
+      request(http.createServer(app.callback()))
       .post('/users')
       .type('multipart/form-data')
       .attach('firstField', 'package.json')
       .attach('secondField', 'index.js')
       .attach('secondField', 'license.md')
       .expect(201)
-      .end(function(err, res){
-        if (err) {return done(err);}
+      .end(function(err, res) {
+        if (err) {
+          return done(err);
+        }
 
         res.body.files.firstField.name.should.equal('package.json');
         fs.unlinkSync(res.body.files.firstField.path);
@@ -142,61 +138,59 @@ describe('koa-body', function () {
 
         done();
       });
+    });
   });
-
-
 
   /**
    * URLENCODED request body
    */
-  it('should recieve `urlencoded` request bodies', function (done) {
+  it('should recieve `urlencoded` request bodies', function(done) {
     var app = koa();
     var usersResource = new Resource('users', {
       // POST /users
-      create: function *(next) {
+      create: function * create(next) {
         database.users.push(this.request.body.fields);
         this.status = 201;
         this.body = this.request.body;
         yield next;
       }
     });
-
 
     app.use(koaBody({multipart: true}));
     app.use(usersResource.middleware());
 
     request(http.createServer(app.callback()))
-      .post('/users')
-      .type('application/x-www-form-urlencoded')
-      .send('name=example&followers=41')
-      .expect(201)
-      .end(function(err, res) {
-        if (err) {return done(err);}
+    .post('/users')
+    .type('application/x-www-form-urlencoded')
+    .send('name=example&followers=41')
+    .expect(201)
+    .end(function(err, res) {
+      if (err) {
+        return done(err);
+      }
 
-        var requested = database.users.pop();
-        res.body.fields.should.have.property('name', requested.name);
-        res.body.fields.should.have.property('followers', requested.followers);
+      var requested = database.users.pop();
+      res.body.fields.should.have.property('name', requested.name);
+      res.body.fields.should.have.property('followers', requested.followers);
 
-        res.body.fields.name.should.equal('example');
-        res.body.fields.followers.should.equal('41');
+      res.body.fields.name.should.equal('example');
+      res.body.fields.followers.should.equal('41');
 
-        res.body.fields.should.have.property('name', 'example');
-        res.body.fields.should.have.property('followers', '41');
+      res.body.fields.should.have.property('name', 'example');
+      res.body.fields.should.have.property('followers', '41');
 
-        done();
-      });
+      done();
+    });
   });
-
-
 
   /**
    * JSON request body
    */
-  it('should recieve `json` request bodies', function (done) {
+  it('should recieve `json` request bodies', function(done) {
     var app = koa();
     var usersResource = new Resource('users', {
       // POST /users
-      create: function* (next) {
+      create: function * create(next) {
         database.users.push(this.request.body.fields);
         this.status = 201;
         this.body = this.request.body;
@@ -204,88 +198,84 @@ describe('koa-body', function () {
       }
     });
 
-
     app.use(koaBody());
     app.use(usersResource.middleware());
 
     request(http.createServer(app.callback()))
-      .post('/users')
-      .type('application/json')
-      .send({name: 'json'})
-      .send({followers: 313})
-      .expect(201)
-      .end(function(err, res) {
-        if (err) {return done(err);}
+    .post('/users')
+    .type('application/json')
+    .send({name: 'json'})
+    .send({followers: 313})
+    .expect(201)
+    .end(function(err, res) {
+      if (err) {
+        return done(err);
+      }
 
-        var requested = database.users.pop();
-        res.body.fields.should.have.property('name', requested.name);
-        res.body.fields.should.have.property('followers', requested.followers);
+      var requested = database.users.pop();
+      res.body.fields.should.have.property('name', requested.name);
+      res.body.fields.should.have.property('followers', requested.followers);
 
-        res.body.fields.name.should.equal('json');
-        res.body.fields.followers.should.equal(313);
+      res.body.fields.name.should.equal('json');
+      res.body.fields.followers.should.equal(313);
 
-        res.body.fields.should.have.property('name', 'json');
-        res.body.fields.should.have.property('followers', 313);
+      res.body.fields.should.have.property('name', 'json');
+      res.body.fields.should.have.property('followers', 313);
 
-        done();
-      });
+      done();
+    });
   });
 
-
-
   /**
-   * FORM (urlencoded) LIMIT
+   * LIMITS
    */
-  it('should recieve "413 Payload Too Large", because of `formLimit`', function (done) {
-    var app = koa();
-    var usersResource = new Resource('users', {
-      // POST /users
-      create: function* create(next) {
-        //suggestions for handling?
-        //what if we want to make body more user-friendly?
-        this.status = 413
-        yield next;
-      }
-    });
+  describe('should recieve "413 Payload Too Large"', function() {
+    it('because of `formLimit`', function(done) {
+      var app = koa();
+      var usersResource = new Resource('users', {
+        // POST /users
+        create: function * create(next) {
+          //suggestions for handling?
+          //what if we want to make body more user-friendly?
+          this.status = 413
+          yield next;
+        }
+      });
 
+      // in bytes
+      app.use(koaBody({formLimit: 10}));
+      app.use(usersResource.middleware());
 
-    app.use(koaBody({formLimit: 10 /*bytes*/}));
-    app.use(usersResource.middleware());
-
-    request(http.createServer(app.callback()))
+      request(http.createServer(app.callback()))
       .post('/users')
       .type('application/x-www-form-urlencoded')
       .send('user=www-form-urlencoded')
       .expect(413)
       .end(done);
-  });
-
-
-
-  /**
-   * JSON LIMIT
-   */
-  it('should recieve "413 Payload Too Large", because of `jsonLimit`', function (done) {
-    var app = koa();
-    var usersResource = new Resource('users', {
-      // POST /users
-      create: function* create(next) {
-        //suggestions for handling?
-        //what if we want to make body more user-friendly?
-        this.status = 413
-        yield next;
-      }
     });
 
+    it('because of `jsonLimit`', function(done) {
+      var app = koa();
+      var usersResource = new Resource('users', {
+        // POST /users
+        create: function * create(next) {
+          //suggestions for handling?
+          //what if we want to make body more user-friendly?
+          this.status = 413
+          yield next;
+        }
+      });
 
-    app.use(koaBody({jsonLimit: 2 /*bytes*/}));
-    app.use(usersResource.middleware());
+      // in bytes
+      app.use(koaBody({jsonLimit: 2}));
+      app.use(usersResource.middleware());
 
-    request(http.createServer(app.callback()))
+      request(http.createServer(app.callback()))
       .post('/users')
       .type('application/json')
       .send({name: 'some-long-name-for-limit'})
       .expect(413)
       .end(done);
+    });
   });
 });

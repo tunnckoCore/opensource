@@ -26,34 +26,35 @@ var defaults = {
   formidable: {
     multiples: true,
     keepExtensions: true,
-    maxFields: 10,
+    maxFields: 10
   }
 };
 
 /**
- * @param [Object] `opts`
- *   - {String} `jsonLimit` default '1mb'
- *   - {String} `formLimit` default '56kb'
- *   - {String} `encoding` default 'utf-8'
- *   - {String} `fieldsKey` default 'fields'
- *   - {Boolean} `patchNode` default false
- *   - {Boolean} `patchKoa` default true
- *   - {Boolean} `multipart` default false
- *   - {Object} `formidable`
+ * @param {Object} [options]
+ *   @option {String} [options] `jsonLimit` default '1mb'
+ *   @option {String} [options] `formLimit` default '56kb'
+ *   @option {String} [options] `encoding` default 'utf-8'
+ *   @option {String} [options] `fieldsKey` default 'fields'
+ *   @option {Boolean} [options] `patchNode` default false
+ *   @option {Boolean} [options] `patchKoa` default true
+ *   @option {Boolean} [options] `multipart` default false
+ *   @option {Object} [options] `formidable`
+ * @return {GeneratorFunction}
  * @api public
  */
-module.exports = function koaBetterBody(opts) {
-  opts = extend(true, defaults, opts || {});
+module.exports = function koaBetterBody(options) {
+  options = extend(true, defaults, options || {});
 
   return function * main(next) {
     if (this.request.body !== undefined || this.request.method === 'GET') {
       return yield* next;
     }
 
-    var data = yield* handleRequest(this, opts);
+    var data = yield* handleRequest(this, options);
 
-    opts.patchKoa ? this.request.body = data : this.request.body = null;
-    opts.patchNode ? this.req.body = data : this.req.body = null;
+    this.request.body = options.patchKoa ? data : null;
+    this.req.body = options.patchNode ? data : null;
 
     yield* next;
   };
@@ -62,20 +63,24 @@ module.exports = function koaBetterBody(opts) {
 /**
  * The magic. Checking and forming the request
  *
- * @param {Object} `that`
- * @param {Object} `opts`
+ * @param {Object} that
+ * @param {Object} opts
  * @return {Object}
  * @api private
  */
-function* handleRequest(that, opts) {
+function * handleRequest(that, opts) {
   var copy = {};
+  var options = {
+    encoding: opts.encoding,
+    limit: opts.jsonLimit
+  };
+
   if (that.request.is('application/json', 'application/csp-report')) {
-    copy.fields = yield parse.json(that, {encoding: opts.encoding, limit: opts.jsonLimit});
-  }
-  else if (that.request.is('application/x-www-form-urlencoded')) {
-    copy.fields = yield parse.form(that, {encoding: opts.encoding, limit: opts.formLimit});
-  }
-  else if (that.request.is('multipart/form-data') && opts.multipart) {
+    copy.fields = yield parse.json(that, options);
+  } else if (that.request.is('application/x-www-form-urlencoded')) {
+    options.limit = opts.formLimit;
+    copy.fields = yield parse.form(that, options);
+  } else if (that.request.is('multipart/form-data') && opts.multipart) {
     copy = yield formed(that, opts.formidable);
   }
   if (typeof opts.fieldsKey !== 'string') {
@@ -85,23 +90,23 @@ function* handleRequest(that, opts) {
     copy[opts.fieldsKey] = copy.fields;
     copy.files = files;
   }
-  
+
   return copy;
 }
 
 /**
  * Promise-like parsing incoming form
  * and returning thunk
- * 
- * @param  {Object} `context`
- * @param  {Object} `options`
+ *
+ * @param  {Object} context
+ * @param  {Object} options
  * @return {Function} thunk
  * @api private
  */
 function formed(context, options) {
-  return function (done) {
+  return function(done) {
     var form = new formidable.IncomingForm(options);
-    form.parse(context.req, function (err, fields, files) {
+    form.parse(context.req, function(err, fields, files) {
       if (err) {return done(err);}
       done(null, {fields: fields, files: files});
     });

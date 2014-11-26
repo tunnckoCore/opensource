@@ -1,32 +1,34 @@
+# Makefile <https://github.com/tunnckoCore/dotfiles>
+#
+# Copyright (c) 2014 Charlike Mike Reagent, contributors.
+# Released under the MIT license.
+#
 
-install:
-	npm install
+JSCS      = node_modules/.bin/jscs
+MOCHA     = node_modules/.bin/mocha
+_MOCHA    = node_modules/.bin/_mocha
+JSHINT    = node_modules/.bin/jshint
+ISTANBUL  = node_modules/.bin/istanbul
+COVERALLS = node_modules/.bin/coveralls
 
 lint:
-	$(MAKE) install
-	./node_modules/.bin/jshint **/*.js
+	npm install
+	${JSHINT} .
+	${JSCS} . --reporter inline --esnext
 
-test:
-	$(MAKE) lint
-	@NODE_ENV=test ./node_modules/.bin/mocha \
-		--require should \
-		--harmony-generators
+test: lint
+	${MOCHA} --harmony-generators --require should
 
-test-cov:
-	$(MAKE) test
-	@NODE_ENV=test node --harmony-generators \
-		node_modules/.bin/istanbul cover \
-		./node_modules/.bin/_mocha \
-		-- -u exports \
-		--require should
+test-cov: lint
+	node --harmony ${ISTANBUL} cover ${_MOCHA} -- --require should
 
-test-travis:
-	$(MAKE) test
-	@NODE_ENV=test node --harmony-generators \
-		node_modules/.bin/istanbul cover \
-		./node_modules/.bin/_mocha \
-		--report lcovonly \
-		-- -u exports \
-		--require should
+test-travis: lint
+	node --harmony ${ISTANBUL} cover ${_MOCHA} --report lcovonly -- --require should
+	
+coveralls: test-travis
+	cat ./coverage/lcov.info | ${COVERALLS}
 
-.PHONY: test
+clean:
+	rm -rf node_modules coverage
+
+.PHONY: lint test coveralls clean
