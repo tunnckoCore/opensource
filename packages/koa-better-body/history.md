@@ -1,3 +1,7 @@
+## v1.0.9 / November 27, 2014
+- bump `jscs-jsdoc` to `v0.1.0`
+- update jscs config `.jscsrc`
+
 ## v1.0.8 / November 26, 2014
 - normalize (dot)files
 - update all to apply jshint/jscs code style
