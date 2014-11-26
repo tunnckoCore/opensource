@@ -7,7 +7,7 @@
     "test": "npm run lint && node_modules/.bin/mocha --harmony-generators --require should",
     "test-cov": "npm run lint && node --harmony node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --require should",
     "test-travis": "npm run lint && node --harmony node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --require should",
-    "coveralls": "npm run test-travis && cat ./coverage/lcov.info | node_modules/.bin/coveralls",
+    "coveralls": "npm run test-travis && cat coverage/lcov.info | node_modules/.bin/coveralls",
     "examples-multer": "npm run test && node --harmony examples/multer.js",
     "examples-koa-router": "npm run test && node --harmony examples/koa-router.js"
   },
