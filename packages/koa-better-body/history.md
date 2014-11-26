@@ -1,3 +1,6 @@
+## v1.0.11 / November 27, 2014
+- fix code style collisions
+
 ## v1.0.10 / November 27, 2014
 - docs, readme, coveralls
 - edit safeContext in `.jscsrc`
