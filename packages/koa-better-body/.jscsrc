@@ -86,8 +86,14 @@
     "checkReturnTypes": true,
     "checkRedundantReturns": true,
     "requireReturnTypes": true,
+    "checkRedundantAccess": true,
     "checkTypes": true,
-    "checkRedundantAccess": true
+    "checkAnnotations": {
+      "preset": "jsdoc3",
+      "extra": {
+        "api": true
+      }
+    }
   },
 
   "excludeFiles": [
