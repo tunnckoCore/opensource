@@ -20,6 +20,7 @@ var defaults = {
   patchKoa: true,
   multipart: false,
   fieldsKey: 'fields',
+  filesKey: 'files',
   encoding: 'utf-8',
   jsonLimit: '1mb',
   formLimit: '56kb',
@@ -36,6 +37,7 @@ var defaults = {
  *   @option {String} [options] `formLimit` default '56kb'
  *   @option {String} [options] `encoding` default 'utf-8'
  *   @option {String} [options] `fieldsKey` default 'fields'
+ *   @option {String} [options] `filesKey` default 'files'
  *   @option {Boolean} [options] `patchNode` default false
  *   @option {Boolean} [options] `patchKoa` default true
  *   @option {Boolean} [options] `multipart` default false
@@ -83,13 +85,15 @@ function * handleRequest(that, opts) {
   } else if (that.request.is('multipart/form-data') && opts.multipart) {
     copy = yield formed(that, opts.formidable);
   }
+  var files = copy.files;
   if (typeof opts.fieldsKey !== 'string') {
-    copy = copy.fields
+    copy = copy.fields;
   } else {
-    var files = copy.files
-    copy[opts.fieldsKey] = copy.fields;
-    copy.files = files;
+    var fields = copy.fields;
+    copy = {};
+    copy[opts.fieldsKey] = fields;
   }
+  copy[opts.filesKey] = files;
 
   return copy;
 }
