@@ -46,7 +46,7 @@ var defaults = {
  * @api public
  */
 module.exports = function koaBetterBody(options) {
-  options = extend(true, defaults, options || {});
+  options = extend(true, {}, defaults, options || {});
 
   return function * main(next) {
     if (this.request.body !== undefined || this.request.method === 'GET') {
