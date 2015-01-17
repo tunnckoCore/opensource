@@ -67,8 +67,8 @@ module.exports = function koaBetterBody(options) {
 /**
  * The magic. Checking and forming the request
  *
- * @param {Object} that
- * @param {Object} opts
+ * @param {Object} `that`
+ * @param {Object} `opts`
  * @return {Object}
  * @api private
  */

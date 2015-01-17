@@ -1,3 +1,7 @@
+## v1.0.13 / January 17, 2015
+- update dotfiles and jscs rules
+- revert back `filesKey` option
+
 ## v1.0.12 / November 27, 2014
 - bump to `jscs >= 1.8.0` and `jscs-doc >= 0.2.0`
 - update semver range
