@@ -1,3 +1,9 @@
+## v1.0.14 / January 18, 2015
+- istanbul ignore
+- coverage tweaks
+- increase max statements to 20
+- closes #10, update/add tests
+
 ## v1.0.13 / January 17, 2015
 - update dotfiles and jscs rules
 - revert back `filesKey` option

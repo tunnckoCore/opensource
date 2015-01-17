@@ -1,7 +1,7 @@
 {
   "name": "koa-better-body",
   "description": "A koa body parser middleware with support for `multipart`, `json`, `csp-report` or `urlencoded` request bodies. Via formidable and co-body.",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "scripts": {
     "lint": "jshint index.js && jscs index.js --reporter inline --esnext",
     "test": "mocha --harmony-generators --require should",
