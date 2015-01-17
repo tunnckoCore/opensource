@@ -296,20 +296,22 @@ describe('koa-body', function() {
    * LIMITS
    */
   describe('should recieve "413 Payload Too Large"', function() {
+
     it('because of `formLimit`', function(done) {
+      // in bytes
+      var opts = {formLimit: 10};
+
       var app = koa();
       var usersResource = new Resource('users', {
         // POST /users
         create: function * create(next) {
-          //suggestions for handling?
-          //what if we want to make body more user-friendly?
+          /* istanbul ignore next */
           this.status = 413
+          /* istanbul ignore next */
           yield next;
         }
       });
-
-      // in bytes
-      app.use(koaBody({formLimit: 10}));
+      app.use(koaBody(opts));
       app.use(usersResource.middleware());
 
       supertest(http.createServer(app.callback()))
@@ -327,19 +329,20 @@ describe('koa-body', function() {
     });
 
     it('because of `jsonLimit`', function(done) {
+      // in bytes
+      var opts = {jsonLimit: 2};
+
       var app = koa();
       var usersResource = new Resource('users', {
         // POST /users
         create: function * create(next) {
-          //suggestions for handling?
-          //what if we want to make body more user-friendly?
+          /* istanbul ignore next */
           this.status = 413
+          /* istanbul ignore next */
           yield next;
         }
       });
-
-      // in bytes
-      app.use(koaBody({jsonLimit: 2}));
+      app.use(koaBody(opts));
       app.use(usersResource.middleware());
 
       supertest(http.createServer(app.callback()))
