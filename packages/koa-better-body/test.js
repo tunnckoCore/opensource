@@ -1,7 +1,7 @@
 /**
  * koa-better-body <https://github.com/tunnckoCore/koa-better-body>
  *
- * Copyright (c) 2014 Charlike Mike Reagent, contributors.
+ * Copyright (c) 2015 Charlike Mike Reagent, contributors.
  * Released under the MIT license.
  */
 
