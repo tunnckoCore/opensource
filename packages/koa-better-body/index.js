@@ -50,17 +50,17 @@ var defaults = {
 module.exports = function koaBetterBody(options) {
   options = extend(true, {}, defaults, options || {});
 
-  return function * main(next) {
+  return function *main(next) {
     if (this.request.body !== undefined || this.request.method === 'GET') {
       return yield * next;
     }
 
-    var data = yield* handleRequest(this, options);
+    var data = yield * handleRequest(this, options);
 
     this.request.body = options.patchKoa ? data : null;
     this.req.body = options.patchNode ? data : null;
 
-    yield* next;
+    yield * next;
   };
 };
 
@@ -87,7 +87,7 @@ function * handleRequest(that, opts) {
   } else if (that.request.is('multipart/form-data') && opts.multipart) {
     copy = yield formed(that, opts.formidable);
   }
-  var files = copy.files;
+
   if (typeof opts.fieldsKey !== 'string') {
     copy = copy.fields;
   } else {
@@ -95,6 +95,8 @@ function * handleRequest(that, opts) {
     copy = {};
     copy[opts.fieldsKey] = fields;
   }
+
+  var files = copy.files;
   copy[opts.filesKey] = files;
 
   return copy;
@@ -104,9 +106,9 @@ function * handleRequest(that, opts) {
  * Promise-like parsing incoming form
  * and returning thunk
  *
- * @param  {Object} context
- * @param  {Object} options
- * @return {Function} thunk
+ * @param  {Object} `context`
+ * @param  {Object} `options`
+ * @return {Function} `thunk`
  * @api private
  */
 function formed(context, options) {

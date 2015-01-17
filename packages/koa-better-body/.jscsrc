@@ -66,13 +66,13 @@
   "disallowKeywordsOnNewLine": ["else"],
   "disallowSpacesInCallExpression": true,
 
-  "requireSpacesInNamedFunctionExpression": {
+  "requireSpacesInFunctionExpression": {
     "beforeOpeningCurlyBrace": true
   },
-  "requireSpacesInAnonymousFunctionExpression": {
-    "beforeOpeningCurlyBrace": true
+  "disallowSpacesInFunctionExpression": {
+    "beforeOpeningRoundBrace": true
   },
-  "disallowSpacesInAnonymousFunctionExpression": {
+  "disallowSpacesInFunctionDeclaration": {
     "beforeOpeningRoundBrace": true
   },
 
