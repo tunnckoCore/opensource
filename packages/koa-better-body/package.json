@@ -2,12 +2,11 @@
   "name": "koa-better-body",
   "description": "A koa body parser middleware with support for `multipart`, `json`, `csp-report` or `urlencoded` request bodies. Via formidable and co-body.",
   "version": "1.0.12",
-  "scripts": {
-    "lint": "npm install && node_modules/.bin/jshint . && node_modules/.bin/jscs . --reporter inline --esnext",
-    "test": "npm run lint && node_modules/.bin/mocha --harmony-generators --require should",
-    "test-cov": "npm run lint && node --harmony node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --require should",
-    "test-travis": "npm run lint && node --harmony node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --require should",
-    "coveralls": "npm run test-travis && cat coverage/lcov.info | node_modules/.bin/coveralls",
+    "scripts": {
+    "lint": "jshint index.js && jscs index.js --reporter inline",
+    "test": "mocha",
+    "test-cov": "istanbul cover _mocha",
+    "test-travis": "istanbul cover _mocha --report lcovonly",
     "examples-multer": "npm run test && node --harmony examples/multer.js",
     "examples-koa-router": "npm run test && node --harmony examples/koa-router.js"
   },
@@ -15,6 +14,10 @@
     "name": "Charlike Make Reagent",
     "email": "mameto_100@mail.bg",
     "url": "https://github.com/tunnckoCore"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tunnckoCore/koa-better-body.git"
   },
   "keywords": [
     "koa",
@@ -32,10 +35,6 @@
     "json",
     "formidable"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/tunnckoCore/koa-better-body.git"
-  },
   "license": {
     "type": "MIT",
     "url": "https://github.com/tunnckoCore/koa-better-body/blob/master/license.md"
@@ -53,13 +52,9 @@
     "should": "*",
     "supertest": "*",
 
-    "coveralls": "^2.11.2",
     "istanbul-harmony": "^0.3.1",
-    "jscs": ">=1.8.0",
-    "jscs-jsdoc": ">=0.2.0",
-    "jshint": "^2.5.10",
-    "mocha": "^2.0.1",
-    "mocha-lcov-reporter": "0.0.1"
+    "mocha": "*",
+    "mocha-lcov-reporter": "^0.0.1"
   },
   "engines": {
     "node": ">= 0.11.14",
