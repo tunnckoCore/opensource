@@ -14,8 +14,8 @@
 var fs = require('fs');
 var koa = require('koa');
 var http = require('http');
-var request = require('supertest');
 var koaBody = require('./index');
+var supertest = require('supertest');
 var Resource = require('koa-resource-router');
 
 describe('koa-body', function() {
@@ -45,7 +45,7 @@ describe('koa-body', function() {
       app.use(koaBody());
       app.use(usersResource.middleware());
 
-      request(http.createServer(app.callback()))
+      supertest(http.createServer(app.callback()))
         .get('/users')
         .expect(200, database)
         .end(function(err) {
@@ -74,7 +74,7 @@ describe('koa-body', function() {
       app.use(koaBody({multipart: true, jsonLimit: '1mb',formLimit: '56kb'}));
       app.use(usersResource.middleware());
 
-      request(http.createServer(app.callback()))
+      supertest(http.createServer(app.callback()))
       .post('/users')
       .field('name', 'daryl')
       .field('followers', 30)
@@ -96,7 +96,23 @@ describe('koa-body', function() {
       });
     });
 
+    var bodyOpts = {
+      multipart: true,
+      formidable: {
+        uploadDir: __dirname + '/../'
+      }
+    };
+
     it('files on .body.files object', function(done) {
+      multipartFilesUpload('files', bodyOpts, done);
+    });
+
+    it('custom filesKey name on .body object', function(done) {
+      bodyOpts.filesKey = 'customFilesKey';
+      multipartFilesUpload('customFilesKey', bodyOpts, done);
+    });
+
+    function multipartFilesUpload(keyName, opts, done) {
       var app = koa();
       var usersResource = new Resource('users', {
         // POST /users
@@ -107,15 +123,10 @@ describe('koa-body', function() {
         }
       });
 
-      app.use(koaBody({
-        multipart: true,
-        formidable: {
-          uploadDir: __dirname + '/../'
-        }
-      }));
+      app.use(koaBody(opts));
       app.use(usersResource.middleware());
 
-      request(http.createServer(app.callback()))
+      supertest(http.createServer(app.callback()))
       .post('/users')
       .type('multipart/form-data')
       .attach('firstField', 'package.json')
@@ -127,18 +138,18 @@ describe('koa-body', function() {
           return done(err);
         }
 
-        res.body.files.firstField.name.should.equal('package.json');
-        fs.unlinkSync(res.body.files.firstField.path);
+        res.body[keyName].firstField.name.should.equal('package.json');
+        fs.unlinkSync(res.body[keyName].firstField.path);
 
-        res.body.files.secondField[0].name.should.equal('index.js');
-        fs.unlinkSync(res.body.files.secondField[0].path);
+        res.body[keyName].secondField[0].name.should.equal('index.js');
+        fs.unlinkSync(res.body[keyName].secondField[0].path);
 
-        res.body.files.secondField[1].name.should.equal('license.md');
-        fs.unlinkSync(res.body.files.secondField[1].path);
+        res.body[keyName].secondField[1].name.should.equal('license.md');
+        fs.unlinkSync(res.body[keyName].secondField[1].path);
 
         done();
       });
-    });
+    }
   });
 
   /**
@@ -159,7 +170,7 @@ describe('koa-body', function() {
     app.use(koaBody({multipart: true}));
     app.use(usersResource.middleware());
 
-    request(http.createServer(app.callback()))
+    supertest(http.createServer(app.callback()))
     .post('/users')
     .type('application/x-www-form-urlencoded')
     .send('name=example&followers=41')
@@ -201,7 +212,7 @@ describe('koa-body', function() {
     app.use(koaBody());
     app.use(usersResource.middleware());
 
-    request(http.createServer(app.callback()))
+    supertest(http.createServer(app.callback()))
     .post('/users')
     .type('application/json')
     .send({name: 'json'})
@@ -246,7 +257,7 @@ describe('koa-body', function() {
       app.use(koaBody({formLimit: 10}));
       app.use(usersResource.middleware());
 
-      request(http.createServer(app.callback()))
+      supertest(http.createServer(app.callback()))
       .post('/users')
       .type('application/x-www-form-urlencoded')
       .send('user=www-form-urlencoded')
@@ -270,7 +281,7 @@ describe('koa-body', function() {
       app.use(koaBody({jsonLimit: 2}));
       app.use(usersResource.middleware());
 
-      request(http.createServer(app.callback()))
+      supertest(http.createServer(app.callback()))
       .post('/users')
       .type('application/json')
       .send({name: 'some-long-name-for-limit'})

@@ -50,7 +50,7 @@ var defaults = {
 module.exports = function koaBetterBody(options) {
   options = extend(true, {}, defaults, options || {});
 
-  return function *main(next) {
+  return function * main(next) {
     if (this.request.body !== undefined || this.request.method === 'GET') {
       return yield * next;
     }
@@ -88,6 +88,8 @@ function * handleRequest(that, opts) {
     copy = yield formed(that, opts.formidable);
   }
 
+  var files = copy.files;
+
   if (typeof opts.fieldsKey !== 'string') {
     copy = copy.fields;
   } else {
@@ -96,7 +98,6 @@ function * handleRequest(that, opts) {
     copy[opts.fieldsKey] = fields;
   }
 
-  var files = copy.files;
   copy[opts.filesKey] = files;
 
   return copy;
