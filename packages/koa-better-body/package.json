@@ -2,10 +2,10 @@
   "name": "koa-better-body",
   "description": "A koa body parser middleware with support for `multipart`, `json`, `csp-report` or `urlencoded` request bodies. Via formidable and co-body.",
   "version": "1.0.12",
-    "scripts": {
+  "scripts": {
     "lint": "jshint index.js && jscs index.js --reporter inline --esnext",
     "test": "mocha --harmony-generators --require should",
-    "test-cov": "node --harmony istanbul cover _mocha",
+    "test-cov": "istanbul cover _mocha",
     "test-travis": "istanbul cover _mocha --report lcovonly",
     "examples-multer": "npm run test && node --harmony examples/multer.js",
     "examples-koa-router": "npm run test && node --harmony examples/koa-router.js"
