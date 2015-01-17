@@ -29,6 +29,8 @@
     "describe": true,
     "beforeEach": true,
     "afterEach": true,
+    "before": true,
+    "after": true,
     "define": true,
     "should": true
   }

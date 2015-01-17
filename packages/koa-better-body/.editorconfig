@@ -13,7 +13,7 @@ end_of_line = lf
 insert_final_newline = false
 trim_trailing_whitespace = false
 
-[*.{json,cson,yml,yaml,md}]
+[*.{json,cson,yml,yaml,md,jade,css,stylus}]
 indent_size = 2
 
 [*.{js,php}]
@@ -21,7 +21,7 @@ indent_size = 2
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{php,html,jade,css,stylus}]
+[*.{php,html}]
 indent_size = 4
 
 [Makefile]
