@@ -59,64 +59,25 @@ describe('koa-body', function() {
    * MULTIPART
    */
   describe('should recieve `multipart` requests', function() {
-    it('fields on .body.fields object', function(done) {
-      var app = koa();
-      var usersResource = new Resource('users', {
-        // POST /users
-        create: function * create(next) {
-          database.users.push(this.request.body.fields);
-          this.status = 201;
-          this.body = this.request.body;
-          yield next;
-        }
-      });
-
-      app.use(koaBody({multipart: true, jsonLimit: '1mb',formLimit: '56kb'}));
-      app.use(usersResource.middleware());
-
-      supertest(http.createServer(app.callback()))
-      .post('/users')
-      .field('name', 'daryl')
-      .field('followers', 30)
-      .expect(201)
-      .end(function(err, res) {
-        if (err) {return done(err);}
-
-        var requested = database.users.pop();
-        res.body.fields.should.have.property('name', requested.name);
-        res.body.fields.should.have.property('followers', requested.followers);
-
-        res.body.fields.name.should.equal('daryl');
-        res.body.fields.followers.should.equal('30');
-
-        res.body.fields.should.have.property('name', 'daryl');
-        res.body.fields.should.have.property('followers', '30');
-
-        done();
-      });
-    });
-
-    var bodyOpts = {
+    var opts = {
       multipart: true,
       formidable: {
         uploadDir: __dirname + '/../'
       }
     };
 
-    it('files on .body.files object', function(done) {
-      multipartFilesUpload('files', bodyOpts, done);
-    });
-
-    it('custom filesKey name on .body object', function(done) {
-      bodyOpts.filesKey = 'customFilesKey';
-      multipartFilesUpload('customFilesKey', bodyOpts, done);
-    });
-
-    function multipartFilesUpload(keyName, opts, done) {
+    function multipartApi(opts) {
       var app = koa();
       var usersResource = new Resource('users', {
         // POST /users
         create: function * create(next) {
+          if (opts.fieldsKey === false) {
+            database.users.push(this.request.body);
+          } else {
+            var fields = opts.fieldsKey ? opts.fieldsKey : 'fields';
+            database.users.push(this.request.body[fields]);
+          }
+
           this.status = 201;
           this.body = this.request.body;
           yield next;
@@ -125,31 +86,127 @@ describe('koa-body', function() {
 
       app.use(koaBody(opts));
       app.use(usersResource.middleware());
-
-      supertest(http.createServer(app.callback()))
-      .post('/users')
-      .type('multipart/form-data')
-      .attach('firstField', 'package.json')
-      .attach('secondField', 'index.js')
-      .attach('secondField', 'license.md')
-      .expect(201)
-      .end(function(err, res) {
-        if (err) {
-          return done(err);
-        }
-
-        res.body[keyName].firstField.name.should.equal('package.json');
-        fs.unlinkSync(res.body[keyName].firstField.path);
-
-        res.body[keyName].secondField[0].name.should.equal('index.js');
-        fs.unlinkSync(res.body[keyName].secondField[0].path);
-
-        res.body[keyName].secondField[1].name.should.equal('license.md');
-        fs.unlinkSync(res.body[keyName].secondField[1].path);
-
-        done();
-      });
+      return app;
     }
+
+    describe('fields', function() {
+      function testFields(app, opts, done) {
+        supertest(http.createServer(app.callback()))
+        .post('/users')
+        .field('name', 'daryl')
+        .field('followers', 30)
+        .expect(201)
+        .end(function(err, res) {
+          if (err) {return done(err);}
+
+          var requested = database.users.pop();
+
+          if (opts.fieldsKey === false) {
+            res.body.should.have.property('name', requested.name);
+            res.body.should.have.property('followers', requested.followers);
+
+            res.body.name.should.equal('daryl');
+            res.body.followers.should.equal('30');
+
+            res.body.should.have.property('name', 'daryl');
+            res.body.should.have.property('followers', '30');
+            return done();
+          }
+
+          var fields = opts.fieldsKey ? opts.fieldsKey : 'fields';
+          res.body[fields].should.have.property('name', requested.name);
+          res.body[fields].should.have.property('followers', requested.followers);
+
+          res.body[fields]['name'].should.equal('daryl');
+          res.body[fields]['followers'].should.equal('30');
+
+          res.body[fields].should.have.property('name', 'daryl');
+          res.body[fields].should.have.property('followers', '30');
+          done();
+        });
+      }
+
+      it('fields on `.body.fields` object (default, opts.fieldsKey: \'fields\'))', function(done) {
+        opts.fieldsKey = 'fields';
+        var app = multipartApi(opts);
+        testFields(app, opts, done);
+      });
+
+      it('fields on `.body.customkey` object (opts.fieldsKey: \'customkey\')', function(done) {
+        opts.fieldsKey = 'customkey';
+        var app = multipartApi(opts);
+
+        testFields(app, opts, done);
+      });
+
+      it('fields on `.body` object (opts.fieldsKey: false)', function(done) {
+        opts.fieldsKey = false;
+        var app = multipartApi(opts);
+
+        testFields(app, opts, done);
+      });
+    });
+
+    describe('files', function() {
+      function testFiles(app, opts, done) {
+        supertest(http.createServer(app.callback()))
+        .post('/users')
+        .type('multipart/form-data')
+        .attach('firstField', 'package.json')
+        .attach('secondField', 'index.js')
+        .attach('secondField', 'license.md')
+        .expect(201)
+        .end(function(err, res) {
+          if (err) {return done(err);}
+
+          var requested = database.users.pop();
+
+          if (opts.filesKey === false) {
+            res.body.firstField.name.should.equal('package.json');
+            fs.unlinkSync(res.body.firstField.path);
+
+            res.body.secondField[0].name.should.equal('index.js');
+            fs.unlinkSync(res.body.secondField[0].path);
+
+            res.body.secondField[1].name.should.equal('license.md');
+            fs.unlinkSync(res.body.secondField[1].path);
+
+            return done();
+          }
+
+          var filesKey = opts.filesKey ? opts.filesKey : 'files';
+          res.body[filesKey].firstField.name.should.equal('package.json');
+          fs.unlinkSync(res.body[filesKey].firstField.path);
+
+          res.body[filesKey].secondField[0].name.should.equal('index.js');
+          fs.unlinkSync(res.body[filesKey].secondField[0].path);
+
+          res.body[filesKey].secondField[1].name.should.equal('license.md');
+          fs.unlinkSync(res.body[filesKey].secondField[1].path);
+          done();
+        });
+      }
+
+      it('files on `.body.files` object (default, opts.filesKey: \'files\')', function(done) {
+        opts.filesKey = 'files';
+        var app = multipartApi(opts);
+        testFiles(app, opts, done);
+      });
+
+      it('files on `.body.custom2` object (opts.filesKey: \'custom2\')', function(done) {
+        opts.filesKey = 'custom2';
+        var app = multipartApi(opts);
+
+        testFiles(app, opts, done);
+      });
+
+      it('files on `.body` object (opts.filesKey: false)', function(done) {
+        opts.filesKey = false;
+        var app = multipartApi(opts);
+
+        testFiles(app, opts, done);
+      });
+    });
   });
 
   /**

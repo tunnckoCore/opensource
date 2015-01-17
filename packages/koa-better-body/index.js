@@ -73,34 +73,37 @@ module.exports = function koaBetterBody(options) {
  * @api private
  */
 function * handleRequest(that, opts) {
-  var copy = {};
+  var cache = {};
+  var returns = {};
   var options = {
     encoding: opts.encoding,
     limit: opts.jsonLimit
   };
 
   if (that.request.is('application/json', 'application/csp-report')) {
-    copy.fields = yield parse.json(that, options);
+    cache.fields = yield parse.json(that, options);
   } else if (that.request.is('application/x-www-form-urlencoded')) {
     options.limit = opts.formLimit;
-    copy.fields = yield parse.form(that, options);
-  } else if (that.request.is('multipart/form-data') && opts.multipart) {
-    copy = yield formed(that, opts.formidable);
+    cache.fields = yield parse.form(that, options);
+  } else if (opts.multipart && that.request.is('multipart/form-data')) {
+    cache = yield formed(that, opts.formidable);
   }
 
-  var files = copy.files;
-
-  if (typeof opts.fieldsKey !== 'string') {
-    copy = copy.fields;
+  if (opts.fieldsKey === false) {
+    returns = cache.fields;
   } else {
-    var fields = copy.fields;
-    copy = {};
-    copy[opts.fieldsKey] = fields;
+    var fieldsKey = opts.fieldsKey.length ? opts.fieldsKey : defaults.fieldsKey;
+    returns[fieldsKey] = cache.fields;
   }
 
-  copy[opts.filesKey] = files;
+  if (opts.filesKey === false) {
+    returns = extend(false, {}, returns, cache.files);
+  } else {
+    var filesKey = opts.filesKey.length ? opts.filesKey : defaults.filesKey;
+    returns[filesKey] = cache.files;
+  }
 
-  return copy;
+  return returns;
 }
 
 /**
