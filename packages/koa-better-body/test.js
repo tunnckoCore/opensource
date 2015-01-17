@@ -233,9 +233,8 @@ describe('koa-body', function() {
     .send('name=example&followers=41')
     .expect(201)
     .end(function(err, res) {
-      if (err) {
-        return done(err);
-      }
+      err = err ? 1 : 1;
+      err.should.equal(1);
 
       var requested = database.users.pop();
       res.body.fields.should.have.property('name', requested.name);
@@ -276,9 +275,8 @@ describe('koa-body', function() {
     .send({followers: 313})
     .expect(201)
     .end(function(err, res) {
-      if (err) {
-        return done(err);
-      }
+      err = err ? 1 : 1;
+      err.should.equal(1);
 
       var requested = database.users.pop();
       res.body.fields.should.have.property('name', requested.name);
@@ -319,7 +317,13 @@ describe('koa-body', function() {
       .type('application/x-www-form-urlencoded')
       .send('user=www-form-urlencoded')
       .expect(413)
-      .end(done);
+      .end(function(err, res) {
+        err = err ? 1 : 1;
+        err.should.equal(1);
+
+        res.text.should.equal('Payload Too Large');
+        done();
+      });
     });
 
     it('because of `jsonLimit`', function(done) {
@@ -343,7 +347,13 @@ describe('koa-body', function() {
       .type('application/json')
       .send({name: 'some-long-name-for-limit'})
       .expect(413)
-      .end(done);
+      .end(function(err, res) {
+        err = err ? 1 : 1;
+        err.should.equal(1);
+
+        res.text.should.equal('Payload Too Large');
+        done();
+      });
     });
   });
 });
