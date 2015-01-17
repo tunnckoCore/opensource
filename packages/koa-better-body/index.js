@@ -32,6 +32,8 @@ var defaults = {
 };
 
 /**
+ * @name  koaBetterBody
+ *
  * @param {Object} `[options]`
  *   @option {String} [options] `jsonLimit` default '1mb'
  *   @option {String} [options] `formLimit` default '56kb'
@@ -50,7 +52,7 @@ module.exports = function koaBetterBody(options) {
 
   return function * main(next) {
     if (this.request.body !== undefined || this.request.method === 'GET') {
-      return yield* next;
+      return yield * next;
     }
 
     var data = yield* handleRequest(this, options);

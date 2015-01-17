@@ -1,18 +1,16 @@
-# better-body [![NPM version][npmjs-shields]][npmjs-url] [![Build Status][travis-img]][travis-url] [![Dependency Status][depstat-img]][depstat-url] [![Coveralls][coveralls-shields]][coveralls-url]
-> A koa body parser middleware with support for `multipart`, `json`, `csp-report` or `urlencoded` request bodies. Via formidable and co-body.
+## [![npm][npmjs-img]][npmjs-url] [![mit license][license-img]][license-url] [![build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![deps status][daviddm-img]][daviddm-url]
 
+> A [koa][koa-url] body parser middleware with support for `multipart`, `json`, [`csp-report`][csp-report] and `urlencoded` request bodies. Via [`formidable`][formidable-url] and [`co-body`][cobody-url].
 
-## Install [![Nodei.co stats][npmjs-install]][npmjs-url]
-> Install with [npm](https://npmjs.org)
-
-```
-$ npm install koa-better-body
-$ npm test
+## Install
+```bash
+npm install koa-better-body
+npm test
 ```
 
 
 ## Usage
-> For a more comprehensive examples, see [examples](./examples) folder.
+> For more use-cases see the [tests](./test.js) or [examples](./examples) folder.
 
 - [`examples/multer`](./examples/multer.js) - usage like Express's bodyParser - [multer][multer-url] `npm run examples-multer`
 - [`examples/koa-router`](./examples/koa-router.js) - usage with Alex's [koa-router][koa-router-url] `npm run examples-koa-router`
@@ -28,7 +26,8 @@ $ npm test
   - `formLimit` **{String|Number}** The byte limit of the form body, default `56kb`
   - `encoding` **{String}** Sets encoding for incoming form fields, default `utf-8`
   - `multipart` **{Boolean}** Support `multipart/form-data` request bodies, default `false`
-  - `fieldsKey` **{String|Boolean}** Name of the key for fields in the body object or `false`, default `'fields'`
+  - `fieldsKey` **{String|Boolean}** Name of the key for fields in the body object or `false`
+  - `filesKey` **{String|Boolean}** Name of the key for files in the body object or `false`
   - `formidable` **{Object}** Options that are passing to `formidable`
     + `formidable.maxFields` **{Number}** See [formidable-options](./readme.md#formidable-options). our default `10`
     + `formidable.multiples` **{Boolean}** See [formidable-options](./readme.md#formidable-options), our default `true`
@@ -46,49 +45,52 @@ $ npm test
 - `multiples` **{Boolean}** Multiple file uploads or no, default `false`
 
 
-## Authors & Contributors 
-**Charlike Make Reagent** [![author tips][author-gittip-img]][author-gittip]
-+ [gittip/tunnckoCore][author-gittip]
-+ [github/tunnckoCore][author-github]
+## Author
+**Charlike Mike Reagent**
++ [gratipay/tunnckoCore][author-gratipay]
 + [twitter/tunnckoCore][author-twitter]
++ [github/tunnckoCore][author-github]
 + [npmjs/tunnckoCore][author-npmjs]
++ [more ...][contrib-more]
 
 
 ## License [![MIT license][license-img]][license-url]
-Copyright (c) 2014 [Charlike Make Reagent][author-website], [contributors](https://github.com/tunnckoCore/koa-better-body/graphs/contributors).  
+Copyright (c) 2015 [Charlike Mike Reagent][contrib-more], [contributors][contrib-graf].  
 Released under the [`MIT`][license-url] license.
 
+
 [npmjs-url]: http://npm.im/koa-better-body
-[npmjs-shields]: http://img.shields.io/npm/v/koa-better-body.svg
-[npmjs-install]: https://nodei.co/npm/koa-better-body.svg?mini=true
+[npmjs-img]: https://img.shields.io/npm/v/koa-better-body.svg?style=flat&label=koa-better-body
 
 [coveralls-url]: https://coveralls.io/r/tunnckoCore/koa-better-body?branch=master
-[coveralls-shields]: https://img.shields.io/coveralls/tunnckoCore/koa-better-body.svg
+[coveralls-img]: https://img.shields.io/coveralls/tunnckoCore/koa-better-body.svg?style=flat
 
 [license-url]: https://github.com/tunnckoCore/koa-better-body/blob/master/license.md
-[license-img]: http://img.shields.io/badge/license-MIT-blue.svg
+[license-img]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
 
 [travis-url]: https://travis-ci.org/tunnckoCore/koa-better-body
-[travis-img]: https://travis-ci.org/tunnckoCore/koa-better-body.svg?branch=master
+[travis-img]: https://img.shields.io/travis/tunnckoCore/koa-better-body.svg?style=flat
 
-[depstat-url]: https://david-dm.org/tunnckoCore/koa-better-body
-[depstat-img]: https://david-dm.org/tunnckoCore/koa-better-body.svg
+[daviddm-url]: https://david-dm.org/tunnckoCore/koa-better-body
+[daviddm-img]: https://img.shields.io/david/tunnckoCore/koa-better-body.svg?style=flat
 
-[author-gittip-img]: http://img.shields.io/gittip/tunnckoCore.svg
-[author-gittip]: https://www.gittip.com/tunnckoCore
-[author-github]: https://github.com/tunnckoCore
+[author-gratipay]: https://gratipay.com/tunnckoCore
 [author-twitter]: https://twitter.com/tunnckoCore
-
-[author-website]: http://www.whistle-bg.tk
+[author-github]: https://github.com/tunnckoCore
 [author-npmjs]: https://npmjs.org/~tunnckocore
 
+[contrib-more]: http://j.mp/1stW47C
+[contrib-graf]: https://github.com/tunnckoCore/koa-better-body/graphs/contributors
+
+***
+
+_Powered and automated by [kdf](https://github.com/tunnckoCore), January 17, 2015_
+
 [cobody-url]: https://github.com/visionmedia/co-body
-[mocha-url]: https://github.com/visionmedia/mocha
 [rawbody-url]: https://github.com/stream-utils/raw-body
 [multer-url]: https://github.com/expressjs/multer
 [koa-router-url]: https://github.com/alexmingoia/koa-router
 [koa-url]: https://github.com/koajs/koa
 [formidable-url]: https://github.com/felixge/node-formidable
 [co-url]: https://github.com/visionmedia/co
-[extend-url]: https://github.com/justmoon/node-extend
 [csp-report]: https://mathiasbynens.be/notes/csp-reports
