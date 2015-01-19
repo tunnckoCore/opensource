@@ -1,3 +1,6 @@
+## v1.0.15 / January 19, 2015
+- add `encode` alias for `encoding` option
+
 ## v1.0.14 / January 18, 2015
 - istanbul ignore
 - coverage tweaks
