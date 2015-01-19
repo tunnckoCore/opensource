@@ -15,8 +15,34 @@ npm test
 - [`examples/multer`](./examples/multer.js) - usage like Express's bodyParser - [multer][multer-url] `npm run examples-multer`
 - [`examples/koa-router`](./examples/koa-router.js) - usage with Alex's [koa-router][koa-router-url] `npm run examples-koa-router`
 
+### Extending default types
+> Every new defined type, will be appended to defaults, [see defaults](./index.js#L35-51)
 
-## [.koaBetterBody](index.js#L45)
+```js
+app.use(koaBody({
+  extendTypes: {
+    // will parse application/x-javascript type body as a JSON string
+    json: ['application/x-javascript'],
+    multipart: ['multipart/mixed']
+  }
+}));
+```
+will expects request bodies
+```bash
+application/json
+application/json-patch+json
+application/vnd.api+json
+application/csp-report
+application/x-javascript
+
+application/x-www-form-urlencoded
+
+multipart/form-data
+multipart/mixed
+```
+
+
+## [.koaBetterBody](index.js#L71)
 > However, `koa-better-body` have few custom options, see also [co-body][cobody-url], [raw-body][rawbody-url], [formidable][formidable-url]
 
 * `[options]` **{Object}**  
@@ -29,6 +55,10 @@ npm test
   - `multipart` **{Boolean}** Support `multipart/form-data` request bodies, default `false`
   - `fieldsKey` **{String|Boolean}** Name of the key for fields in the body object or `false`
   - `filesKey` **{String|Boolean}** Name of the key for files in the body object or `false`
+  - `extendTypes` **{Object}** extending request types, [see defaults](./index.js#L35-51)
+    + `multipart` **{Array}** array with multipart types, default `['multipart/form-data']`
+    + `json` **{Array}** array with json types, default `['application/x-www-form-urlencoded']`
+    + `form` **{Array}** array with form types
   - `formidable` **{Object}** Options that are passing to `formidable`
     + `formidable.maxFields` **{Number}** See [formidable-options](./readme.md#formidable-options). our default `10`
     + `formidable.multiples` **{Boolean}** See [formidable-options](./readme.md#formidable-options), our default `true`
@@ -85,7 +115,7 @@ Released under the [`MIT`][license-url] license.
 
 ***
 
-_Powered and automated by [kdf](https://github.com/tunnckoCore), January 17, 2015_
+_Powered and automated by [kdf](https://github.com/tunnckoCore), January 19, 2015_
 
 [cobody-url]: https://github.com/visionmedia/co-body
 [rawbody-url]: https://github.com/stream-utils/raw-body

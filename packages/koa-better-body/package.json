@@ -40,6 +40,7 @@
     "url": "https://github.com/tunnckoCore/koa-better-body/blob/master/license.md"
   },
   "dependencies": {
+    "arr-union": "^2.0.0",
     "co-body": "*",
     "extend": "*",
     "formidable": ">=1.0.16"
@@ -51,7 +52,6 @@
     "multiline": "*",
     "should": "*",
     "supertest": "*",
-
     "istanbul-harmony": "^0.3.1",
     "mocha": "*",
     "mocha-lcov-reporter": "^0.0.1"

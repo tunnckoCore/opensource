@@ -13,6 +13,7 @@
 
 var extend = require('extend');
 var parse = require('co-body');
+var union = require('arr-union');
 var formidable = require('formidable');
 
 var defaults = {
@@ -31,6 +32,24 @@ var defaults = {
   }
 };
 
+var defaultTypes = {
+  // default json types
+  json: [
+    'application/json',
+    'application/json-patch+json',
+    'application/vnd.api+json',
+    'application/csp-report'
+  ],
+  // default form types
+  form: [
+    'application/x-www-form-urlencoded'
+  ],
+  // default multipart types
+  multipart: [
+    'multipart/form-data'
+  ]
+}
+
 /**
  * @name  koaBetterBody
  *
@@ -44,12 +63,14 @@ var defaults = {
  *   @option {Boolean} [options] `patchNode` default false
  *   @option {Boolean} [options] `patchKoa` default true
  *   @option {Boolean} [options] `multipart` default false
+ *   @option {Object} [options] `extendTypes`
  *   @option {Object} [options] `formidable`
  * @return {GeneratorFunction}
  * @api public
  */
 module.exports = function koaBetterBody(options) {
   options = extend(true, {}, defaults, options || {});
+  options.extendTypes = extendTypes(options.extendTypes || {});
 
   return function * main(next) {
     if (this.request.body !== undefined || this.request.method === 'GET') {
@@ -81,13 +102,13 @@ function * handleRequest(that, opts) {
     limit: opts.jsonLimit
   };
 
-  if (that.request.is('application/json', 'application/csp-report')) {
+  if (that.request.is(opts.extendTypes.json)) {
     cache.fields = yield parse.json(that, options);
-  } else if (that.request.is('application/x-www-form-urlencoded')) {
+  } else if (that.request.is(opts.extendTypes.form)) {
     options.limit = opts.formLimit;
     cache.fields = yield parse.form(that, options);
-  } else if (opts.multipart && that.request.is('multipart/form-data')) {
-    cache = yield formed(that, opts.formidable);
+  } else if (opts.multipart && that.request.is(opts.extendTypes.multipart)) {
+    cache = yield parse.multipart(that, opts.formidable);
   }
 
   if (opts.fieldsKey === false) {
@@ -116,7 +137,7 @@ function * handleRequest(that, opts) {
  * @return {Function} `thunk`
  * @api private
  */
-function formed(context, options) {
+parse.multipart = function formed(context, options) {
   return function(done) {
     var form = new formidable.IncomingForm(options);
     form.parse(context.req, function(err, fields, files) {
@@ -124,4 +145,17 @@ function formed(context, options) {
       done(null, {fields: fields, files: files});
     });
   };
+}
+
+function extendTypes(ret) {
+  var cache = {};
+  var json = ret.json ? ret.json : defaultTypes.json;
+  var form = ret.form ? ret.form : defaultTypes.form;
+  var multipart = ret.multipart ? ret.multipart : defaultTypes.multipart;
+
+  cache.json = union(json, defaultTypes.json);
+  cache.form = union(form, defaultTypes.form);
+  cache.multipart = union(multipart, defaultTypes.multipart);
+
+  return cache;
 }
