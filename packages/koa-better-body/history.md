@@ -1,3 +1,6 @@
+## v1.0.16 / January 19, 2015
+- add `opts.extendTypes`
+
 ## v1.0.15 / January 19, 2015
 - add `encode` alias for `encoding` option
 
