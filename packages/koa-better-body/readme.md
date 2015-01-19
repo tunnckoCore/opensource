@@ -25,6 +25,7 @@ npm test
   - `jsonLimit` **{String|Number}** The byte limit of the JSON body, default `1mb`
   - `formLimit` **{String|Number}** The byte limit of the form body, default `56kb`
   - `encoding` **{String}** Sets encoding for incoming form fields, default `utf-8`
+  - `encode` **{String}** alias of `opts.encoding`
   - `multipart` **{Boolean}** Support `multipart/form-data` request bodies, default `false`
   - `fieldsKey` **{String|Boolean}** Name of the key for fields in the body object or `false`
   - `filesKey` **{String|Boolean}** Name of the key for files in the body object or `false`

@@ -38,6 +38,7 @@ var defaults = {
  *   @option {String} [options] `jsonLimit` default '1mb'
  *   @option {String} [options] `formLimit` default '56kb'
  *   @option {String} [options] `encoding` default 'utf-8'
+ *   @option {String} [options] `encode` default 'utf-8'
  *   @option {String} [options] `fieldsKey` default 'fields'
  *   @option {String} [options] `filesKey` default 'files'
  *   @option {Boolean} [options] `patchNode` default false
@@ -76,7 +77,7 @@ function * handleRequest(that, opts) {
   var cache = {};
   var returns = {};
   var options = {
-    encoding: opts.encoding,
+    encoding: opts.encode || opts.encoding,
     limit: opts.jsonLimit
   };
 
