@@ -1,0 +1,34 @@
+# .editorconfig <https://github.com/tunnckoCore/dotfiles>
+#
+# Copyright (c) 2014-2015 Charlike Mike Reagent, contributors.
+# Released under the MIT license.
+#
+
+root = true
+
+[*]
+indent_style = space
+charset = utf-8
+end_of_line = lf
+insert_final_newline = false
+trim_trailing_whitespace = false
+
+[*.{js,php}]
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{php,html}]
+indent_size = 4
+
+[*.{json,cson,yml,yaml,html,md,jade,css,stylus}]
+indent_size = 2
+
+[Makefile]
+indent_size = 2
+indent_style = tab
+
+[.*rc]
+indent_size = 2
+indent_style = space
+trim_trailing_whitespace = true

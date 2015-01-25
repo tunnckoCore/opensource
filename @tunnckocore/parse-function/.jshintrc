@@ -1,0 +1,37 @@
+{
+  "maxerr"        : 10,
+  "indent"        : 2,
+
+  "maxparams"     : 3,
+  "maxdepth"      : 3,
+  "maxstatements" : 15,
+  "maxlen"        : 120,
+
+  "camelcase"     : true,
+  "forin"         : false,
+  "immed"         : true,
+  "newcap"        : true,
+  "quotmark"      : "single",
+
+  "asi"           : true,
+  "eqnull"        : true,
+  "esnext"        : true,
+  "funcscope"     : true,
+  "globalstrict"  : true,
+  "lastsemic"     : true,
+  "shadow"        : true,
+
+  "node"          : true,
+  "nonstandard"   : true,
+
+  "globals": {
+    "it": true,
+    "describe": true,
+    "beforeEach": true,
+    "afterEach": true,
+    "before": true,
+    "after": true,
+    "define": true,
+    "should": true
+  }
+}
