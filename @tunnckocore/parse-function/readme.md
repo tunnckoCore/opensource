@@ -17,8 +17,8 @@ npm test
 
 - `[fn]` **{Function|String}**
 - `return` **{Object}**
-  + `name` function name or `anonymous`
-  + `args` function arguments names as array (`['val', 're', 'beta']`) or `''`
+  + `name` function name or `'anonymous'`
+  + `args` function arguments names as array (`['val', 're', 'beta']`) or `[]`
   + `arguments` function arguments as string (`val, re, beta`) or `''`
   + `body` function body as string or `''`
 
