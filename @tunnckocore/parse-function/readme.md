@@ -17,10 +17,12 @@ npm test
 
 - `[fn]` **{Function|String}**
 - `return` **{Object}**
-  + `name` function name or `'anonymous'`
-  + `args` function arguments names as array (`['val', 're', 'beta']`) or `[]`
-  + `arguments` function arguments as string (`val, re, beta`) or `''`
-  + `body` function body as string or `''`
+  + `name` **{String}** function name or `'anonymous'`
+  + `params` **{String}**  function arguments names or `''`
+  + `parameters` **{String}** function arguments names or `''`
+  + `args` **{Array}** function arguments names or `[]`
+  + `arguments` **{Array}** function arguments names or `[]`
+  + `body` **{String}** function body as string or `''`
 
 **Example:**
 
@@ -31,8 +33,10 @@ var fixture = 'function testing(val, re, beta) { return true; }';
 var actual = parseFunction(fixture);
 //=> actual = {
 //  name: 'testing',
+//  params: 'val, re, beta',
+//  parameters: 'val, re, beta',
 //  args: ['val', 're', 'beta'],
-//  arguments: 'val, re, beta',
+//  arguments: ['val', 're', 'beta'],
 //  body: ' return true; '
 //};
 
@@ -40,8 +44,10 @@ var unnamed = function() {};
 var res = parseFunction(unnamed);
 //=> res = {
 //  name: 'anonymous',
+//  params: '',
+//  parameters: '',
 //  args: [],
-//  arguments: '',
+//  arguments: [],
 //  body: ''
 //};
 ```

@@ -11,7 +11,7 @@ var fnRegex = require('function-regex');
 
 /**
  * Parse given function or string to object with
- * properties `name`, `args`, `arguments` and `body`
+ * properties `name`, `params`, `parameters`, `args`, `arguments` and `body`
  *
  * **Example:**
  *
@@ -22,6 +22,8 @@ var fnRegex = require('function-regex');
  * var actual = parseFunction(fixture);
  * //=> actual = {
  * //  name: 'testing',
+ * //  params: 'val, re, beta',
+ * //  parameters: 'val, re, beta',
  * //  args: ['val', 're', 'beta'],
  * //  arguments: ['val', 're', 'beta'],
  * //  body: ' return true; '
@@ -31,8 +33,10 @@ var fnRegex = require('function-regex');
  * var res = parseFunction(unnamed);
  * //=> res = {
  * //  name: 'anonymous',
+ * //  params: '',
+ * //  parameters: '',
  * //  args: [],
- * //  arguments: '',
+ * //  arguments: [],
  * //  body: ''
  * //};
  * ```
