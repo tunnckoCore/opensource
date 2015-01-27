@@ -10,8 +10,8 @@
 var fnRegex = require('function-regex');
 
 /**
- * Parse given function or string to object with
- * properties `name`, `params`, `parameters`, `args`, `arguments` and `body`
+ * Parse a given function or string (fn.toString()) to object
+ * with `name`, `params`, `parameters`, `args`, `arguments` and `body` properties.
  *
  * **Example:**
  *

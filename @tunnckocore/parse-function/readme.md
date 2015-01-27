@@ -1,6 +1,6 @@
 ## [![npm][npmjs-img]][npmjs-url] [![mit license][license-img]][license-url] [![build status][travis-img]][travis-url] [![deps status][daviddm-img]][daviddm-url]
 
-> Parse a given function or string (fn.toString()) to object with `name`, `args` and `body` properties.
+> Parse a given function or string (fn.toString()) to object with `name`, `params`, `parameters`, `args`, `arguments` and `body` properties.
 
 ## Install
 ```bash
@@ -13,7 +13,7 @@ npm test
 > For more use-cases see the [tests](./test.js)
 
 ### [parseFunction](./index.js#L45)
-> Parse given function or string to object with properties `name`, `args`, `arguments` and `body`
+> Parse a given function or string (fn.toString()) to object with `name`, `params`, `parameters`, `args`, `arguments` and `body` properties.
 
 - `[fn]` **{Function|String}**
 - `return` **{Object}**
