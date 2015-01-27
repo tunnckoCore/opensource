@@ -16,8 +16,10 @@ describe('parse-function:', function() {
     var actual = parseFunction(fixture);
     var expected = {
       name: 'testing',
+      params: 'val, re, beta',
+      parameters: 'val, re, beta',
       args: ['val', 're', 'beta'],
-      arguments: 'val, re, beta',
+      arguments: ['val', 're', 'beta'],
       body: ' return true; '
     };
 
@@ -38,14 +40,17 @@ describe('parse-function:', function() {
     var actual = parseFunction(fixture);
     var expected = {
       name: 'yeah',
+      params: 'cmd, params, cb',
+      parameters: 'cmd, params, cb',
       args: ['cmd', 'params', 'cb'],
-      arguments: 'cmd, params, cb',
+      arguments: ['cmd', 'params', 'cb'],
       body: '\n      var fn = function beta() {};\n      var obj = {\n        one: \'two\',\n        fix: \'delta\'\n      };\n      return false;\n    '
     };
 
     assert.deepEqual(actual.args, expected.args);
     assert.strictEqual(actual.name, expected.name);
-    assert.strictEqual(actual.arguments, expected.arguments);
+    assert.strictEqual(actual.parameters, expected.parameters);
+    assert.deepEqual(actual.arguments, expected.arguments);
     assert.strictEqual(actual.body, expected.body);
     done();
   });
@@ -63,14 +68,17 @@ describe('parse-function:', function() {
     var actual = parseFunction(fixture);
     var expected = {
       name: 'anonymous',
+      params: 'cmd, params, cb',
+      parameters: 'cmd, params, cb',
       args: ['cmd', 'params', 'cb'],
-      arguments: 'cmd, params, cb',
+      arguments: ['cmd', 'params', 'cb'],
       body: '\n      var fn = function beta() {};\n      var obj = {\n        one: \'two\',\n        fix: \'delta\'\n      };\n      return false;\n    '
     };
 
     assert.deepEqual(actual.args, expected.args);
     assert.strictEqual(actual.name, expected.name);
-    assert.strictEqual(actual.arguments, expected.arguments);
+    assert.strictEqual(actual.parameters, expected.parameters);
+    assert.deepEqual(actual.arguments, expected.arguments);
     assert.strictEqual(actual.body, expected.body);
     done();
   });
@@ -87,14 +95,17 @@ describe('parse-function:', function() {
     var actual = parseFunction(fixture);
     var expected = {
       name: 'named',
+      params: '',
+      parameters: '',
       args: [],
-      arguments: '',
+      arguments: [],
       body: '\n      var obj = {\n        one: \'two\',\n        fix: \'delta\'\n      };\n      return false;\n    '
     };
 
     assert.deepEqual(actual.args, expected.args);
     assert.strictEqual(actual.name, expected.name);
-    assert.strictEqual(actual.arguments, expected.arguments);
+    assert.strictEqual(actual.parameters, expected.parameters);
+    assert.deepEqual(actual.arguments, expected.arguments);
     assert.strictEqual(actual.body, expected.body);
     done();
   });
@@ -105,14 +116,17 @@ describe('parse-function:', function() {
     var actual = parseFunction(fixture);
     var expected = {
       name: 'anonymous',
+      params: '',
+      parameters: '',
       args: [],
-      arguments: '',
+      arguments: [],
       body: ''
     };
 
     assert.deepEqual(actual.args, expected.args);
     assert.strictEqual(actual.name, expected.name);
-    assert.strictEqual(actual.arguments, expected.arguments);
+    assert.strictEqual(actual.parameters, expected.parameters);
+    assert.deepEqual(actual.arguments, expected.arguments);
     assert.strictEqual(actual.body, expected.body);
     done();
   });
