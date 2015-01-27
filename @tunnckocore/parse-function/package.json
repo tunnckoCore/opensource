@@ -1,6 +1,6 @@
 {
   "name": "parse-function",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Parse a given function or string (fn.toString()) to object with `name`, `params`, `parameters`, `args`, `arguments` and `body` properties.",
   "scripts": {
     "lint": "jshint index.js && jscs index.js --reporter inline",
@@ -52,7 +52,7 @@
     "url": "https://github.com/tunnckoCore/parse-function/blob/master/license.md"
   },
   "dependencies": {
-    "function-regex": "~1.0.0"
+    "function-regex": "~1.0.1"
   },
   "devDependencies": {
     "istanbul-harmony": "^0.3.1",
