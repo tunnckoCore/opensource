@@ -7,7 +7,7 @@
 
 'use strict';
 
-var functionRegex = require('function-regex');
+var fnRegex = require('function-regex');
 
 /**
  * Parse given function or string to object with
@@ -23,7 +23,7 @@ var functionRegex = require('function-regex');
  * //=> actual = {
  * //  name: 'testing',
  * //  args: ['val', 're', 'beta'],
- * //  arguments: 'val, re, beta',
+ * //  arguments: ['val', 're', 'beta'],
  * //  body: ' return true; '
  * //};
  *
@@ -46,12 +46,17 @@ module.exports = function parseFunction(fn) {
   if (typeof fn === 'function') {
     fn = fn.toString();
   }
-  var match = functionRegex().exec(fn);
+  var match = fnRegex().exec(fn);
+
+  var _parameters = match[2] || '';
+  var _arguments = match[2].length && match[2].replace(/\s/g, '').split(',') || [];
 
   return {
     name: match[1] || 'anonymous',
-    args: match[2].length ? match[2].replace(/\s/g, '').split(',') : [],
-    arguments: match[2] || '',
+    params: _parameters,
+    parameters: _parameters,
+    args: _arguments,
+    arguments: _arguments,
     body: match[3] || ''
   };
 };
