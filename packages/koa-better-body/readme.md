@@ -3,8 +3,8 @@
 > A [koa][koa-url] body parser middleware with support for `multipart`, `json`, [`csp-report`][csp-report] and `urlencoded` request bodies. Via [`formidable`][formidable-url] and [`co-body`][cobody-url].
 
 ## Install
-```bash
-npm install koa-better-body
+```
+npm i --save koa-better-body
 npm test
 ```
 
@@ -86,7 +86,7 @@ multipart/mixed
 
 
 ## License [![MIT license][license-img]][license-url]
-Copyright (c) 2015 [Charlike Mike Reagent][contrib-more], [contributors][contrib-graf].  
+Copyright (c) 2014-2015 [Charlike Mike Reagent][contrib-more], [contributors][contrib-graf].  
 Released under the [`MIT`][license-url] license.
 
 
@@ -115,7 +115,7 @@ Released under the [`MIT`][license-url] license.
 
 ***
 
-_Powered and automated by [kdf](https://github.com/tunnckoCore), January 19, 2015_
+_Powered and automated by [kdf](https://github.com/tunnckoCore), February 6, 2015_
 
 [cobody-url]: https://github.com/visionmedia/co-body
 [rawbody-url]: https://github.com/stream-utils/raw-body
