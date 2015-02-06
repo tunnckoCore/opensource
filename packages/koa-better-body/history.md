@@ -1,58 +1,81 @@
+
+
+## v1.0.17 / February 6, 2015
+- Release v1.0.17 / npm@v1.0.17
+- fix license range
+- run update readme
+- update keywords
+- bump deps, actually ranges to `~` only which means `only latest patch version`
+
 ## v1.0.16 / January 19, 2015
+- Release v1.0.16 / npm@v1.0.16
 - add `opts.extendTypes`
 
 ## v1.0.15 / January 19, 2015
+- Release v1.0.15 / npm@v1.0.15
 - add `encode` alias for `encoding` option
 
 ## v1.0.14 / January 18, 2015
+- Release v1.0.14 / npm@v1.0.14
 - istanbul ignore
 - coverage tweaks
 - increase max statements to 20
 - closes #10, update/add tests
 
 ## v1.0.13 / January 17, 2015
+- Release v1.0.13 / npm@v1.0.13
 - update dotfiles and jscs rules
 - revert back `filesKey` option
 
 ## v1.0.12 / November 27, 2014
+- Release v1.0.12 / npm@v1.0.12
 - bump to `jscs >= 1.8.0` and `jscs-doc >= 0.2.0`
 - update semver range
 
 ## v1.0.11 / November 27, 2014
+- Release v1.0.11 / npm@v1.0.11
 - fix code style collisions
 
 ## v1.0.10 / November 27, 2014
+- Release v1.0.10 / npm@v1.0.10
 - docs, readme, coveralls
 - edit safeContext in `.jscsrc`
 
 ## v1.0.9 / November 27, 2014
+- Release v1.0.9 / npm@v1.0.9
 - bump `jscs-jsdoc` to `v0.1.0`
 - update jscs config `.jscsrc`
 
 ## v1.0.8 / November 26, 2014
+- Release v1.0.8 / npm@v1.0.8
 - normalize (dot)files
 - update all to apply jshint/jscs code style
   - add .jscsrc and .jshintignore
 - update makefile and scripts in package.json
 
 ## v1.0.7 / October 26, 2014
+- Release v1.0.7 / npm@v1.0.7
 - update names of some tests (rfc7231) "Request Entity Too Large" -> "Payload Too Large"
 - add doc blocks
 
 ## v1.0.6 / October 25, 2014
+- Release v1.0.6 / npm@v1.0.6
 - update automation
 - improve code coverage
 - add Makefile
 - add `npm run` scripts
 
 ## v1.0.5 / October 25, 2014
+- Release v1.0.5 / npm@v1.0.5
 - add support for `application/csp-report` header (fixes #3) ref: https://mathiasbynens.be/notes/csp-reports
 - add complete name of the request headers to not lead to conflicts
 
 ## v1.0.4 / October 21, 2014
+- Release v1.0.4 / npm@v1.0.4
 - add `fieldsKey` optional options property (closes https://github.com/tunnckoCore/koa-better-body/issues/1) that allows custom key name if string, or false if you want field's to be in the `.body` not in `.body.fields`
 
 ## v1.0.3 / July 03, 2014
+- Release v1.0.3 / npm@v1.0.3
 - Pretty styling
 - auto badges
 - add history
@@ -64,6 +87,7 @@
 - ~~always `json` and `urlencoded` bodies will be pushed to request `.body.fields` object.~~ (fixed in v1.0.4)
 
 ## v1.0.0 / June 08, 2014
+- Release v1.0.0 / npm@v1.0.0
 - initial release
 
 
