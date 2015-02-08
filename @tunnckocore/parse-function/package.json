@@ -1,6 +1,6 @@
 {
   "name": "parse-function",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Parse a given function or string (fn.toString()) to object with `name`, `params`, `parameters`, `args`, `arguments` and `body` properties.",
   "scripts": {
     "lint": "jshint index.js && jscs index.js --reporter inline",

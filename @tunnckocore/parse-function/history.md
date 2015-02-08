@@ -1,5 +1,12 @@
 
 
+## v2.0.1 / February 9, 2015
+- Release v2.0.1 / npm@v2.0.1
+- remove `mocha-lcov-reporter`.. needless
+- cov stuff
+- fix tests for coverage
+- faster travis and iojs + v0.12 support
+
 ## v2.0.0 / January 27, 2015
 - Release v2.0.0 / npm@v2.0.0
 - add `parameters` and `params` properties, which are arguments as string
