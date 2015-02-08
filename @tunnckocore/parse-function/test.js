@@ -9,6 +9,21 @@
 
 var assert = require('assert');
 var parseFunction = require('./index');
+var coverageCodeRegex = require('coverage-code-regex');
+var cleanupCoverageCode = require('cleanup-coverage-code');
+
+function hackExpected(expected) {
+  expected = expected.split('var').filter(Boolean);
+  expected = expected.map(function(val) {
+    return val.replace(/\s+/g,'');
+  }).map(function(val) {
+    return val.replace(/(function|return)(?:t|f)*?(?!\{)/g,'$1 ');
+  });
+  expected = expected.filter(Boolean).join('var ');
+  expected = 'var ' + expected;
+
+  return expected;
+}
 
 describe('parse-function:', function() {
   it('should parse given string to object', function(done) {
@@ -47,6 +62,15 @@ describe('parse-function:', function() {
       body: '\n      var fn = function beta() {};\n      var obj = {\n        one: \'two\',\n        fix: \'delta\'\n      };\n      return false;\n    '
     };
 
+    // hack for coverage only
+    if (coverageCodeRegex().test(actual.body)) {
+      actual.parameters = actual.parameters.replace(/\s*/g, '');
+      expected.parameters = expected.parameters.replace(/\s*/g, '');
+      actual.body = cleanupCoverageCode(actual.body);
+      expected.body = hackExpected(expected.body);
+    }
+
+
     assert.deepEqual(actual.args, expected.args);
     assert.strictEqual(actual.name, expected.name);
     assert.strictEqual(actual.parameters, expected.parameters);
@@ -75,11 +99,19 @@ describe('parse-function:', function() {
       body: '\n      var fn = function beta() {};\n      var obj = {\n        one: \'two\',\n        fix: \'delta\'\n      };\n      return false;\n    '
     };
 
+    // hack for coverage only
+    if (coverageCodeRegex().test(actual.body)) {
+      actual.parameters = actual.parameters.replace(/\s*/g, '');
+      expected.parameters = expected.parameters.replace(/\s*/g, '');
+      actual.body = cleanupCoverageCode(actual.body);
+      expected.body = hackExpected(expected.body);
+    }
+
     assert.deepEqual(actual.args, expected.args);
     assert.strictEqual(actual.name, expected.name);
     assert.strictEqual(actual.parameters, expected.parameters);
     assert.deepEqual(actual.arguments, expected.arguments);
-    assert.strictEqual(actual.body, expected.body);
+    assert.strictEqual(cleanupCoverageCode(actual.body), expected.body);
     done();
   });
 
@@ -102,11 +134,19 @@ describe('parse-function:', function() {
       body: '\n      var obj = {\n        one: \'two\',\n        fix: \'delta\'\n      };\n      return false;\n    '
     };
 
+    // hack for coverage only
+    if (coverageCodeRegex().test(actual.body)) {
+      actual.parameters = actual.parameters.replace(/\s*/g, '');
+      expected.parameters = expected.parameters.replace(/\s*/g, '');
+      actual.body = cleanupCoverageCode(actual.body);
+      expected.body = hackExpected(expected.body);
+    }
+
     assert.deepEqual(actual.args, expected.args);
     assert.strictEqual(actual.name, expected.name);
     assert.strictEqual(actual.parameters, expected.parameters);
     assert.deepEqual(actual.arguments, expected.arguments);
-    assert.strictEqual(actual.body, expected.body);
+    assert.strictEqual(cleanupCoverageCode(actual.body), expected.body);
     done();
   });
 
@@ -122,6 +162,11 @@ describe('parse-function:', function() {
       arguments: [],
       body: ''
     };
+
+    // hack for coverage only
+    if (coverageCodeRegex().test(actual.body)) {
+      actual.body = cleanupCoverageCode(actual.body);
+    }
 
     assert.deepEqual(actual.args, expected.args);
     assert.strictEqual(actual.name, expected.name);
