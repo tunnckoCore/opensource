@@ -43,6 +43,7 @@ describe('parse-function:', function() {
   });
 
   it('should parse given function to object', function(done) {
+    /* istanbul ignore next */
     var fixture = function yeah(cmd, params, cb) {
       var fn = function beta() {};
       var obj = {
@@ -80,6 +81,7 @@ describe('parse-function:', function() {
   });
 
   it('should parse given anonymous function', function(done) {
+    /* istanbul ignore next */
     var fixture = function(cmd, params, cb) {
       var fn = function beta() {};
       var obj = {
@@ -116,6 +118,7 @@ describe('parse-function:', function() {
   });
 
   it('should have `.args` empty array and `.arguments` empty string', function(done) {
+    /* istanbul ignore next */
     var fixture = function named() {
       var obj = {
         one: 'two',
