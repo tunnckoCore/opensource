@@ -12,7 +12,7 @@
  */
 
 var extend = require('extend');
-var parse = require('co-body');
+var parse = require('co-better-body');
 var union = require('arr-union');
 var formidable = require('formidable');
 
@@ -99,7 +99,8 @@ function * handleRequest(that, opts) {
   var returns = {};
   var options = {
     encoding: opts.encode || opts.encoding,
-    limit: opts.jsonLimit
+    limit: opts.jsonLimit,
+    qs: opts.qs
   };
 
   if (that.request.is(opts.extendTypes.json)) {
