@@ -1,6 +1,6 @@
 ## [![npm][npmjs-img]][npmjs-url] [![mit license][license-img]][license-url] [![build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![deps status][daviddm-img]][daviddm-url]
 
-> A [koa][koa-url] body parser middleware with support for `multipart`, `json`, [`csp-report`][csp-report] and `urlencoded` request bodies. Via [`formidable`][formidable-url] and [`co-body`][cobody-url].
+> A [koa][koa-url] body parser middleware with support for `multipart`, `json`, [`csp-report`][csp-report] and `urlencoded` request bodies. Via [`formidable`][formidable-url] and [`co-better-body`][cobody-url].
 
 ## Install
 ```
@@ -43,7 +43,7 @@ multipart/mixed
 
 
 ## [.koaBetterBody](index.js#L71)
-> However, `koa-better-body` have few custom options, see also [co-body][cobody-url], [raw-body][rawbody-url], [formidable][formidable-url]
+> However, `koa-better-body` have few custom options, see also [co-better-body][cobody-url], [raw-body][rawbody-url], [formidable][formidable-url]
 
 * `[options]` **{Object}**  
   - `patchNode` **{Boolean}** Patch request body to Node's `ctx.req` object, default `false`
@@ -75,6 +75,12 @@ multipart/mixed
 - `hash` **{String}** If you want checksums calculated for incoming files - `'sha1'` or `'md5'`, default `false`
 - `multiples` **{Boolean}** Multiple file uploads or no, default `false`
 
+### qs options
+> See [qs][qs-url] for a full list of options
+
+- `depth` **{Integer}** The parsed object maximum hierarchy depth, default `5`
+- `delimiter` **{String|Regex}** The query string delimeter, default `&`
+- `arrayLimit` **{Integer}** Maximum array size or -1 to disable arrays, default `20`
 
 ## Author
 **Charlike Mike Reagent**
@@ -117,11 +123,12 @@ Released under the [`MIT`][license-url] license.
 
 _Powered and automated by [kdf](https://github.com/tunnckoCore), February 6, 2015_
 
-[cobody-url]: https://github.com/visionmedia/co-body
+[cobody-url]: https://github.com/zhoul-HS/co-better-body
 [rawbody-url]: https://github.com/stream-utils/raw-body
 [multer-url]: https://github.com/expressjs/multer
 [koa-router-url]: https://github.com/alexmingoia/koa-router
 [koa-url]: https://github.com/koajs/koa
 [formidable-url]: https://github.com/felixge/node-formidable
+[qs-url]: https://github.com/hapijs/qs
 [co-url]: https://github.com/visionmedia/co
 [csp-report]: https://mathiasbynens.be/notes/csp-reports
