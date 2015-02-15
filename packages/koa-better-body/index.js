@@ -64,6 +64,7 @@ var defaultTypes = {
  *   @option {Boolean} [options] `patchKoa` default true
  *   @option {Boolean} [options] `multipart` default false
  *   @option {Object} [options] `extendTypes`
+ *   @option {Object} [options] `qs`
  *   @option {Object} [options] `formidable`
  * @return {GeneratorFunction}
  * @api public
