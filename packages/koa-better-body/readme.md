@@ -43,7 +43,7 @@ multipart/mixed
 
 
 ## [.koaBetterBody](index.js#L71)
-> However, `koa-better-body` have few custom options, see also [co-better-body][cobody-url], [raw-body][rawbody-url], [formidable][formidable-url]
+> However, `koa-better-body` have few custom options, see also [co-better-body][cobody-url], [raw-body][rawbody-url] and [formidable][formidable-url]
 
 * `[options]` **{Object}**  
   - `patchNode` **{Boolean}** Patch request body to Node's `ctx.req` object, default `false`
@@ -59,6 +59,7 @@ multipart/mixed
     + `multipart` **{Array}** array with multipart types, default `['multipart/form-data']`
     + `json` **{Array}** array with json types, default `['application/x-www-form-urlencoded']`
     + `form` **{Array}** array with form types
+  - `qs` **{Object}** Options that are passing to [qs][qs-url]
   - `formidable` **{Object}** Options that are passing to `formidable`
     + `formidable.maxFields` **{Number}** See [formidable-options](./readme.md#formidable-options). our default `10`
     + `formidable.multiples` **{Boolean}** See [formidable-options](./readme.md#formidable-options), our default `true`
