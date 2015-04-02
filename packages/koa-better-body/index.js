@@ -96,7 +96,9 @@ module.exports = function koaBetterBody(options) {
  * @api private
  */
 function * handleRequest(that, opts) {
-  var cache = {};
+  var cache = {
+    fields: {}
+  };
   var returns = {};
   var options = {
     encoding: opts.encode || opts.encoding,
