@@ -2,6 +2,8 @@
 
 > A [koa][koa-url] body parser middleware with support for `multipart`, `json`, [`csp-report`][csp-report] and `urlencoded` request bodies. Via [`formidable`][formidable-url] and [`co-better-body`][cobody-url].
 
+#### [upcoming v2](https://github.com/tunnckoCore/koa-better-body/milestones/v2) soon!
+
 ## Install
 ```
 npm i --save koa-better-body
