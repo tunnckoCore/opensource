@@ -55,8 +55,8 @@ multipart/mixed
   - `encoding` **{String}** Sets encoding for incoming form fields, default `utf-8`
   - `encode` **{String}** alias of `opts.encoding`
   - `multipart` **{Boolean}** Support `multipart/form-data` request bodies, default `false`
-  - `fieldsKey` **{String|Boolean}** Name of the key for fields in the body object or `false`
-  - `filesKey` **{String|Boolean}** Name of the key for files in the body object or `false`
+  - `fieldsKey` **{String|Boolean}** Name of the key for fields in the body object or false for no key, default `fields`
+  - `filesKey` **{String|Boolean}** Name of the key for files in the body object or false for no key, default `files`
   - `extendTypes` **{Object}** extending request types, [see defaults](./index.js#L35-51)
     + `multipart` **{Array}** array with multipart types, default `['multipart/form-data']`
     + `json` **{Array}** array with json types, default `['application/x-www-form-urlencoded']`
