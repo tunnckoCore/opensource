@@ -206,6 +206,76 @@ describe('koa-body', function() {
 
         testFiles(app, opts, done);
       });
+
+      describe('formidable event', function() {
+        var opts = {
+          multipart: true,
+          formidable: {
+            uploadDir: __dirname + '/../',
+            onFileBegin: function(name, file) {
+              file.name = file.name.replace(/\.(\w+)$/, '_modified.$1');
+            }
+          }
+        };
+        function testFiles(app, opts, done) {
+          supertest(http.createServer(app.callback()))
+          .post('/users')
+          .type('multipart/form-data')
+          .attach('firstField', 'package.json')
+          .attach('secondField', 'index.js')
+          .attach('secondField', 'license.md')
+          .expect(201)
+          .end(function(err, res) {
+            if (err) {return done(err);}
+
+            var requested = database.users.pop();
+
+            if (opts.filesKey === false) {
+              res.body.firstField.name.should.equal('package_modified.json');
+              fs.unlinkSync(res.body.firstField.path);
+
+              res.body.secondField[0].name.should.equal('index_modified.js');
+              fs.unlinkSync(res.body.secondField[0].path);
+
+              res.body.secondField[1].name.should.equal('license_modified.md');
+              fs.unlinkSync(res.body.secondField[1].path);
+
+              return done();
+            }
+
+            var filesKey = opts.filesKey ? opts.filesKey : 'files';
+            res.body[filesKey].firstField.name.should.equal('package_modified.json');
+            fs.unlinkSync(res.body[filesKey].firstField.path);
+
+            res.body[filesKey].secondField[0].name.should.equal('index_modified.js');
+            fs.unlinkSync(res.body[filesKey].secondField[0].path);
+
+            res.body[filesKey].secondField[1].name.should.equal('license_modified.md');
+            fs.unlinkSync(res.body[filesKey].secondField[1].path);
+            done();
+          });
+        }
+
+        it('files on `.body.files` object and renamed (default, opts.filesKey: \'files\')', function(done) {
+          opts.filesKey = 'files';
+          var app = multipartApi(opts);
+          testFiles(app, opts, done);
+        });
+
+        it('files on `.body.custom2` object and renamed (opts.filesKey: \'custom2\')', function(done) {
+          opts.filesKey = 'custom2';
+          var app = multipartApi(opts);
+
+          testFiles(app, opts, done);
+        });
+
+        it('files on `.body` object and renamed (opts.filesKey: false)', function(done) {
+          opts.filesKey = false;
+          var app = multipartApi(opts);
+
+          testFiles(app, opts, done);
+        });
+      });
     });
   });
 
