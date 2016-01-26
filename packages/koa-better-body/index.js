@@ -48,7 +48,17 @@ var defaultTypes = {
   multipart: [
     'multipart/form-data'
   ]
-}
+};
+
+var validFormidableEvents = {
+  onFileBegin: 'fileBegin',
+  onFile: 'file',
+  onField: 'filed',
+  onError: 'error',
+  onAborted: 'aborted',
+  onEnd: 'end',
+  onProgress: 'progress'
+};
 
 /**
  * @name  koaBetterBody
@@ -144,6 +154,12 @@ function * handleRequest(that, opts) {
 parse.multipart = function formed(context, options) {
   return function(done) {
     var form = new formidable.IncomingForm(options);
+    // attach event handlers
+    for (var event in validFormidableEvents) {
+      if (typeof options[event] === 'function') {
+        form.on(validFormidableEvents[event], options[event]);
+      }
+    }
     form.parse(context.req, function(err, fields, files) {
       if (err) {return done(err);}
       done(null, {fields: fields, files: files});
