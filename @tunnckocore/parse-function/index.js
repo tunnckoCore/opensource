@@ -1,59 +1,58 @@
-/**
+/*!
  * parse-function <https://github.com/tunnckoCore/parse-function>
  *
- * Copyright (c) 2014-2015 Charlike Mike Reagent, contributors.
+ * Copyright (c) 2015-2016 Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)
  * Released under the MIT license.
  */
 
-'use strict';
+'use strict'
 
-var fnRegex = require('function-regex');
+var fnRegex = require('function-regex')
 
 /**
- * Parse a given function or string (fn.toString()) to object
- * with `name`, `params`, `parameters`, `args`, `arguments` and `body` properties.
+ * Parse a given function or string to object.
  *
- * **Example:**
+ * **Example**
  *
  * ```js
- * var parseFunction = require('parse-function');
+ * const parseFunction = require('parse-function')
  *
- * var fixture = 'function testing(val, re, beta) { return true; }';
- * var actual = parseFunction(fixture);
- * //=> actual = {
- * //  name: 'testing',
- * //  params: 'val, re, beta',
- * //  parameters: 'val, re, beta',
- * //  args: ['val', 're', 'beta'],
- * //  arguments: ['val', 're', 'beta'],
- * //  body: ' return true; '
- * //};
+ * const fixture = 'function testing (a, b, callback) { callback(null, a + b) }'
+ * const obj = parseFunction(fixture)
+ * // => {
+ * //   name: 'testing',
+ * //   params: 'a, b, callback',
+ * //   parameters: 'a, b, callback',
+ * //   args: ['a', 'b', 'callback'],
+ * //   arguments: ['a', 'b', 'callback'],
+ * //   body: ' callback(null, a + b) '
+ * // }
  *
- * var unnamed = function() {};
- * var res = parseFunction(unnamed);
- * //=> res = {
- * //  name: 'anonymous',
- * //  params: '',
- * //  parameters: '',
- * //  args: [],
- * //  arguments: [],
- * //  body: ''
- * //};
+ * const withoutName = function (x, y) {}
+ * const res = parseFunction(withoutName)
+ * // => {
+ * //   name: 'anonymous',
+ * //   params: 'x, y',
+ * //   parameters: 'x, y',
+ * //   args: ['x', 'y'],
+ * //   arguments: ['x', 'y'],
+ * //   body: ''
+ * // }
  * ```
  *
  * @name parseFunction
- * @param  {Function|String} `[fn]`
- * @return {Object}
+ * @param  {Function|String} `[fn]` function or string to parse
+ * @return {Object} with `name`, `args`, `params` and `body` properties
  * @api public
  */
-module.exports = function parseFunction(fn) {
+module.exports = function parseFunction (fn) {
   if (typeof fn === 'function') {
-    fn = fn.toString();
+    fn = fn.toString()
   }
-  var match = fnRegex().exec(fn);
+  var match = fnRegex().exec(fn)
 
-  var _parameters = match[2] || '';
-  var _arguments = match[2].length && match[2].replace(/\s/g, '').split(',') || [];
+  var _parameters = match[2] || ''
+  var _arguments = match[2].length && match[2].replace(/\s/g, '').split(',') || []
 
   return {
     name: match[1] || 'anonymous',
@@ -62,5 +61,5 @@ module.exports = function parseFunction(fn) {
     args: _arguments,
     arguments: _arguments,
     body: match[3] || ''
-  };
-};
+  }
+}

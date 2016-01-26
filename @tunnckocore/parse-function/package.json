@@ -1,63 +1,47 @@
 {
   "name": "parse-function",
   "version": "2.0.1",
-  "description": "Parse a given function or string (fn.toString()) to object with `name`, `params`, `parameters`, `args`, `arguments` and `body` properties.",
+  "description": "Parse a function, arrow function or string to object with `name`, `args`, `params` and `body` properties.",
+  "repository": "tunnckoCore/parse-function",
+  "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "lint": "jshint index.js && jscs index.js --reporter inline",
-    "test": "mocha",
-    "test-cov": "istanbul cover _mocha",
-    "test-travis": "istanbul cover _mocha --report lcovonly"
+    "test": "standard && node test.js"
   },
-  "author": {
-    "name": "Charlike Make Reagent",
-    "email": "mameto_100@mail.bg",
-    "url": "https://github.com/tunnckoCore"
+  "dependencies": {
+    "function-regex": "^1.0.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/tunnckoCore/parse-function.git"
+  "devDependencies": {
+    "assertit": "^0.1.0",
+    "cleanup-coverage-code": "^1.0.3",
+    "coverage-code-regex": "^1.0.2"
   },
+  "files": [
+    "index.js"
+  ],
   "keywords": [
     "args",
-    "argument",
     "arguments",
+    "arrow",
+    "arrowfn",
     "body",
     "fn",
     "fns",
     "func",
-    "funcs",
     "function",
-    "functions",
-    "given",
     "name",
-    "names",
     "obj",
     "object",
-    "objects",
+    "param",
+    "paramerters",
+    "params",
     "parse",
+    "parse-function",
     "parser",
-    "parsers",
-    "parses",
-    "parsing",
-    "properties",
-    "property",
+    "prop",
     "string",
-    "strings",
     "tostring",
-    "util",
-    "utils"
-  ],
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/tunnckoCore/parse-function/blob/master/license.md"
-  },
-  "dependencies": {
-    "function-regex": "~1.0.1"
-  },
-  "devDependencies": {
-    "cleanup-coverage-code": "^1.0.3",
-    "coverage-code-regex": "^1.0.2",
-    "istanbul-harmony": "^0.3.1",
-    "mocha": "~2.1.0"
-  }
+    "util"
+  ]
 }
