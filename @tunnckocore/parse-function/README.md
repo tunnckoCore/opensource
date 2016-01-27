@@ -4,6 +4,9 @@
 
 [![code climate][codeclimate-img]][codeclimate-url] [![standard code style][standard-img]][standard-url] [![travis build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![dependency status][david-img]][david-url]
 
+**Please read the [CHANGELOG](./CHANGELOG.md)** to see more info and the diffs between `v2.0.1` and `v2.1.0`.
+There's no breaking changes.
+
 
 ## Install
 ```
