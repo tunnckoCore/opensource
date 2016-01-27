@@ -21,23 +21,23 @@ var defineProp = require('define-property')
  * const obj = parseFunction(fixture)
  * // => {
  * //   name: 'testing',
+ * //   body: ' callback(null, a + b) ',
  * //   params: 'a, b, callback',
- * //   args: ['a', 'b', 'callback'],
- * //   body: ' callback(null, a + b) '
+ * //   args: ['a', 'b', 'callback']
  * // }
  *
  * const withoutName = function (x, y) {}
  * const res = parseFunction(withoutName)
  * // => {
  * //   name: 'anonymous',
+ * //   body: '',
  * //   params: 'x, y',
- * //   args: ['x', 'y'],
- * //   body: ''
+ * //   args: ['x', 'y']
  * // }
  * ```
  *
  * @name parseFunction
- * @param  {Function|String} `[val]` function or string to parse
+ * @param  {Function|ArrowFunction|String} `[val]` function or string to parse
  * @return {Object} with `name`, `args`, `params` and `body` properties
  * @api public
  */
@@ -60,18 +60,18 @@ module.exports = function parseFunction (val) {
   return data
 }
 
-const SPACE = 32 // ` `
-const GREATER_THAN = 62 // `>`
-const OPEN_PAREN = 40 // `(`
-const CLOSE_PAREN = 41 // `)`
-const OPEN_CURLY = 123 // `{`
-const CLOSE_CURLY = 125 // `}`
+var SPACE = 32 // ` `
+var GREATER_THAN = 62 // `>`
+var OPEN_PAREN = 40 // `(`
+var CLOSE_PAREN = 41 // `)`
+var OPEN_CURLY = 123 // `{`
+var CLOSE_CURLY = 125 // `}`
 
 /**
  * String walker
  *
- * @param  {[type]} str [description]
- * @return {[type]}     [description]
+ * @param  {String} `str`
+ * @return {Object}
  */
 function walk (str) {
   if (typeof str !== 'string') {
@@ -126,9 +126,9 @@ function walk (str) {
 /**
  * Build needed object from info
  *
- * @param  {[type]} info  [description]
- * @param  {[type]} parts [description]
- * @return {[type]}       [description]
+ * @param  {Object} `info`
+ * @param  {Array} `parts`
+ * @return {Object}
  */
 function build (info, parts) {
   var data = {}

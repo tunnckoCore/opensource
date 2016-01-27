@@ -18,11 +18,19 @@ npm i parse-function --save
 const parseFunction = require('parse-function')
 ```
 
-### [parseFunction](./index.js#L48)
-> Parse a given function or string to object.
+### [parseFunction](./index.js#L45)
+> Parse function, arrow function or string to object. 
 
-- `[fn]` **{Function|String}** function or string to parse    
+- `[val]` **{Function|ArrowFunction||String}** function or string to parse    
 - `returns` **{Object}** with `name`, `args`, `params` and `body` properties  
+  + `name` **{String}** name of the function or `anonymous`
+  + `body` **{String}** body of the function or `''`
+  + `params` **{String}** arguments names as string (as is) or empty string `''`
+  + `parameters` **{String}** hidden property, alias of `params`
+  + `args` **{Array}** arguments names as array, or empty array `[]`
+  + `arguments` **{Array}** hidden property, alias of `args`
+  + `value` **{String}** hidden property, string representation of the given `val`
+  + `orig` **{Function|ArrowFunction|String}** hidden property, original given `val`
 
 **Example**
 
@@ -33,22 +41,18 @@ const fixture = 'function testing (a, b, callback) { callback(null, a + b) }'
 const obj = parseFunction(fixture)
 // => {
 //   name: 'testing',
+//   body: ' callback(null, a + b) ',
 //   params: 'a, b, callback',
-//   parameters: 'a, b, callback',
-//   args: ['a', 'b', 'callback'],
-//   arguments: ['a', 'b', 'callback'],
-//   body: ' callback(null, a + b) '
+//   args: ['a', 'b', 'callback']
 // }
 
 const withoutName = function (x, y) {}
 const res = parseFunction(withoutName)
 // => {
 //   name: 'anonymous',
+//   body: '',
 //   params: 'x, y',
-//   parameters: 'x, y',
-//   args: ['x', 'y'],
-//   arguments: ['x', 'y'],
-//   body: ''
+//   args: ['x', 'y']
 // }
 ```
 
