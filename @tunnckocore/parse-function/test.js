@@ -11,163 +11,107 @@
 
 var test = require('assertit')
 var parseFunction = require('./index')
-var coverageCodeRegex = require('coverage-code-regex')
-var cleanupCoverageCode = require('cleanup-coverage-code')
 
-function hackExpected (expected) {
-  expected = expected.split('var').filter(Boolean)
-  expected = expected.map(function (val) {
-    return val.replace(/\s+/g, '')
-  }).map(function (val) {
-    return val.replace(/(function|return)(?:t|f)*?(?!\{)/g, '$1 ')
-  })
-  expected = expected.filter(Boolean).join('var ')
-  expected = 'var ' + expected
+var values = [
+  // STRINGS
+  'z => {\n  var foo = 1\n  return z * z}',
+  '(j, k) => {\n  var foo = 1\n  return j + k}',
+  '(a, b) => a * b',
+  'x => x * 2 * x',
+  'function named(a, b, cb) {\n  var foo = 1\n  cb(null, a * b)}',
+  'function spaced (y, cb) {\n  var bar = 2\n  cb(null, y * 3)}',
+  'function (a) {\n  var qux = 123\n  return a * qux}'
+]
 
-  return expected
-}
+// FUNCTIONS - works the same
+// var fns = [
+//   z => {
+//     var foo = 1
+//     return z * z
+//   },
+//   (j, k) => {
+//     var foo = 1
+//     return j + k
+//   },
+//   (a, b) => a * b,
+//   x => x * 2 * x,
+//   function named(a, b, cb) {
+//     var foo = 1
+//     cb(null, a * b)
+//   },
+//   function spaced (y, cb) {
+//     var bar = 2
+//     cb(null, y * 3)
+//   },
+//   function (a) {
+//     var foo = 1
+//     return a
+//   }
+// ]
 
-test('should parse given string to object', function (done) {
-  var fixture = 'function testing(val, re, beta) { return true }'
-  var actual = parseFunction(fixture)
-  var expected = {
-    name: 'testing',
-    params: 'val, re, beta',
-    parameters: 'val, re, beta',
-    args: ['val', 're', 'beta'],
-    arguments: ['val', 're', 'beta'],
-    body: ' return true '
-  }
-
-  test.deepEqual(actual, expected)
-  done()
-})
-
-test('should parse given function to object', function (done) {
-  /* istanbul ignore next */
-  var fixture = function yeah (cmd, params, cb) {
-    var fn = function beta () {}
-    var obj = {
-      one: 'two',
-      fix: fn
-    }
-    return obj
-  }
-  var actual = parseFunction(fixture)
-  var expected = {
-    name: 'yeah',
-    params: 'cmd, params, cb',
-    parameters: 'cmd, params, cb',
-    args: ['cmd', 'params', 'cb'],
-    arguments: ['cmd', 'params', 'cb'],
-    body: "\n    var fn = function beta () {}\n    var obj = {\n      one: 'two',\n      fix: fn\n    }\n    return obj\n  "
-  }
-
-  // hack for coverage only
-  if (coverageCodeRegex().test(actual.body)) {
-    actual.parameters = actual.parameters.replace(/\s*/g, '')
-    expected.parameters = expected.parameters.replace(/\s*/g, '')
-    actual.body = cleanupCoverageCode(actual.body).replace(/;/g, '')
-    expected.body = hackExpected(expected.body)
-  }
-
-  test.deepEqual(actual.args, expected.args)
-  test.strictEqual(actual.name, expected.name)
-  test.strictEqual(actual.parameters, expected.parameters)
-  test.deepEqual(actual.arguments, expected.arguments)
-  test.strictEqual(actual.body, expected.body)
-  done()
-})
-
-test('should parse given anonymous function', function (done) {
-  /* istanbul ignore next */
-  var fixture = function (a, b, c) {
-    var f = function beta () {}
-    var o = {
-      one: f,
-      fix: 'delta'
-    }
-    return o
-  }
-  var actual = parseFunction(fixture)
-  var expected = {
+var expected = [
+  {
     name: 'anonymous',
-    params: 'a, b, c',
-    parameters: 'a, b, c',
-    args: ['a', 'b', 'c'],
-    arguments: ['a', 'b', 'c'],
-    body: "\n    var f = function beta () {}\n    var o = {\n      one: f,\n      fix: 'delta'\n    }\n    return o\n  "
-  }
-
-  // hack for coverage only
-  if (coverageCodeRegex().test(actual.body)) {
-    actual.parameters = actual.parameters.replace(/\s*/g, '')
-    expected.parameters = expected.parameters.replace(/\s*/g, '')
-    actual.body = cleanupCoverageCode(actual.body).replace(/;/g, '')
-    expected.body = hackExpected(expected.body)
-  }
-
-  test.deepEqual(actual.args, expected.args)
-  test.strictEqual(actual.name, expected.name)
-  test.strictEqual(actual.parameters, expected.parameters)
-  test.deepEqual(actual.arguments, expected.arguments)
-  test.strictEqual(cleanupCoverageCode(actual.body), expected.body)
-  done()
-})
-
-test('should have `.args` empty array and `.params` empty string', function (done) {
-  /* istanbul ignore next */
-  var fixture = function named () {
-    return true
-  }
-  var actual = parseFunction(fixture)
-  var expected = {
+    params: 'z',
+    args: ['z'],
+    body: '\n  var foo = 1\n  return z * z',
+    value: 'z => {\n  var foo = 1\n  return z * z}'
+  },
+  {
+    name: 'anonymous',
+    params: 'j, k',
+    args: ['j', 'k'],
+    body: '\n  var foo = 1\n  return j + k',
+    value: '(j, k) => {\n  var foo = 1\n  return j + k}'
+  },
+  {
+    name: 'anonymous',
+    params: 'a, b',
+    args: ['a', 'b'],
+    body: 'a * b',
+    value: '(a, b) => a * b'
+  },
+  {
+    name: 'anonymous',
+    params: 'x',
+    args: ['x'],
+    body: 'x * 2 * x',
+    value: 'x => x * 2 * x'
+  },
+  {
     name: 'named',
-    params: '',
-    parameters: '',
-    args: [],
-    arguments: [],
-    body: '\n    return true\n  '
-  }
-
-  // hack for coverage only
-  if (coverageCodeRegex().test(actual.body)) {
-    actual.parameters = actual.parameters.replace(/\s*/g, '')
-    expected.parameters = expected.parameters.replace(/\s*/g, '')
-    actual.body = cleanupCoverageCode(actual.body).replace(/;/g, '')
-    expected.body = hackExpected(expected.body).replace('var ', '')
-  }
-
-  test.deepEqual(actual.args, expected.args)
-  test.strictEqual(actual.name, expected.name)
-  test.strictEqual(actual.parameters, expected.parameters)
-  test.deepEqual(actual.arguments, expected.arguments)
-  test.strictEqual(cleanupCoverageCode(actual.body), expected.body)
-  done()
-})
-
-test('should have default empty properties, except `.name` which is "anonymous"', function (done) {
-  var fixture = function () {}
-  var actual = parseFunction(fixture)
-  var expected = {
+    params: 'a, b, cb',
+    args: ['a', 'b', 'cb'],
+    body: '\n  var foo = 1\n  cb(null, a * b)',
+    value: 'function named(a, b, cb) {\n  var foo = 1\n  cb(null, a * b)}'
+  },
+  {
+    name: 'spaced',
+    params: 'y, cb',
+    args: ['y', 'cb'],
+    body: '\n  var bar = 2\n  cb(null, y * 3)',
+    value: 'function spaced (y, cb) {\n  var bar = 2\n  cb(null, y * 3)}'
+  },
+  {
     name: 'anonymous',
-    params: '',
-    parameters: '',
-    args: [],
-    arguments: [],
-    body: ''
+    params: 'a',
+    args: ['a'],
+    body: '\n  var qux = 123\n  return a * qux',
+    value: 'function (a) {\n  var qux = 123\n  return a * qux}'
   }
+]
 
-  // hack for coverage only
-  if (coverageCodeRegex().test(actual.body)) {
-    actual.body = cleanupCoverageCode(actual.body).replace(/;/g, '')
-  }
-
-  test.deepEqual(actual.args, expected.args)
-  test.strictEqual(actual.name, expected.name)
-  test.strictEqual(actual.parameters, expected.parameters)
-  test.deepEqual(actual.arguments, expected.arguments)
-  test.strictEqual(actual.body, expected.body)
-  done()
+values.forEach(function (val, i) {
+  var data = parseFunction(val)
+  test(data.value.replace(/\n/g, '\\n'), function (done) {
+    test.strictEqual(data.name, expected[i].name)
+    test.strictEqual(data.params, expected[i].params)
+    test.strictEqual(data.parameters, expected[i].params)
+    test.deepEqual(data.args, expected[i].args)
+    test.deepEqual(data.arguments, expected[i].args)
+    test.strictEqual(data.body, expected[i].body)
+    test.strictEqual(data.value, expected[i].value)
+    test.ok(data.orig)
+    done()
+  })
 })
-
