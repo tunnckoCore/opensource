@@ -77,6 +77,7 @@ function walk (str) {
   if (typeof str !== 'string') {
     return {}
   }
+  str = str.replace('){', ') {') // tweak
   var i = 0
   var j = 0
   var len = str.length
@@ -117,7 +118,7 @@ function walk (str) {
     }
     i++
   }
-
+  info._value = str
   info = build(info, parts)
   return info
 }
@@ -133,13 +134,13 @@ function build (info, parts) {
   var data = {}
 
   if (info.hasParen) {
-    if (info.startParen !== 1) {
-      data.name = info.hasArrow ? 'anonymous' : parts[1].trim()
-    } else {
+    if (info.startParen >= 1) {
       var last = info.openParen - parts[info.startParen - 1].length
       data.name = parts[1].slice(1, last)
+    } else {
+      data.name = info.hasArrow ? 'anonymous' : parts[1].trim()
     }
-    if (!info.hasCurly && info.openParen === 0) {
+    if (info.startParen === 0) {
       data.name = 'anonymous'
     }
     data.name = data.name.length && data.name || 'anonymous'
@@ -158,8 +159,7 @@ function build (info, parts) {
     }
   } else {
     data.body = parts.slice(info.startCurly).join('').trim().slice(1, -1)
-    data.params = parts.slice(info.startParen, info.endParen).join('').trim()
-    data.params = data.params.replace(data.name, '').slice(1, -1)
+    data.params = info._value.slice(info.openParen + 1, info.closeParen)
     data.args = data.params.split(/\,\s*/).filter(Boolean)
   }
 

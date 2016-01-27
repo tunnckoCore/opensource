@@ -16,7 +16,8 @@
   "devDependencies": {
     "assertit": "^0.1.0",
     "cleanup-coverage-code": "^1.0.3",
-    "coverage-code-regex": "^1.0.2"
+    "coverage-code-regex": "^1.0.2",
+    "for-in": "^0.1.4"
   },
   "files": [
     "index.js"
