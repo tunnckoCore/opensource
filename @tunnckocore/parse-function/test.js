@@ -127,3 +127,9 @@ test('should have `.valid/.invalid` hidden properties', function (done) {
   done()
 })
 
+test('should not fails to get .body when something after close curly (issue#3)', function (done) {
+  var actual = parseFunction('function (a) {return a * 2} foo bar')
+  test.strictEqual(actual.body, 'return a * 2')
+  done()
+})
+

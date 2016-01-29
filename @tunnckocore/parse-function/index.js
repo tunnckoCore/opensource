@@ -142,14 +142,15 @@ function build (info, parts) {
   }
   if (info.hasArrow) {
     data.body = parts.slice(info.startArrow + 1).join('').trim()
-    data.body = info.hasCurly ? data.body.slice(1, -1) : data.body
+    data.body = info.hasCurly ? data.body.slice(1, data.body.lastIndexOf('}')) : data.body
 
     if (info.hasParen) {
       data.params = parts.slice(0, info.startArrow).join('').slice(1, -1)
       data.args = data.params.split(/\,\s*/).filter(Boolean)
     }
   } else {
-    data.body = parts.slice(info.startCurly).join('').trim().slice(1, -1)
+    data.body = parts.slice(info.startCurly).join('').trim()
+    data.body = data.body.slice(1, data.body.lastIndexOf('}'))
     data.params = info._value.slice(info.openParen + 1, info.closeParen)
     data.args = data.params.split(/\,\s*/).filter(Boolean)
   }
