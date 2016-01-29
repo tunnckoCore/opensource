@@ -1,5 +1,15 @@
 
 
+## 2.2.0 - 2016-01-29
+- Release v2.2.0 / npm@v2.2.0
+- update docs
+- add new tests for `valid/invalid`
+- add two new properties in result object that are hidden by default: `valid` and `invalid`
+  + `valid` **{Boolean}** it is `true` when `val` is function, arrow function or string, `false` otherwise
+  + `invalid` **{Boolean}** opposite of `opts.valid`, when `true` the `opts.valid` is `false`
+- always return result object with default values, instead of empty object
+  + in `v2.0.1` was like that, in `v2.1.0` release that was broken by returning empty `{}` object
+
 ## 2.1.0 - 2016-01-27
 - Release v2.1.0 / npm@v2.1.0
 - update tests
