@@ -83,6 +83,8 @@ forIn(actuals, function (values, key) {
       var expects = key === 'specials' ? expected['regulars'][i > 2 ? 1 : 0] : expected[key][i]
 
       test(actual.value.replace(/\n/g, '\\n'), function (done) {
+        test.strictEqual(actual.valid, true)
+        test.strictEqual(actual.invalid, false)
         test.strictEqual(actual.name, expects.name)
         test.strictEqual(actual.params, expects.params)
         test.strictEqual(actual.parameters, expects.params)
@@ -96,3 +98,27 @@ forIn(actuals, function (values, key) {
     })
   })
 })
+
+test('should return object with default values when invalid (not a function/string)', function (done) {
+  var actual = parseFunction(123456)
+
+  test.strictEqual(actual.valid, false)
+  test.strictEqual(actual.invalid, true)
+  test.strictEqual(actual.orig, 123456)
+  test.strictEqual(actual.name, 'anonymous')
+  test.strictEqual(actual.body, '')
+  test.strictEqual(actual.params, '')
+  test.strictEqual(actual.parameters, '')
+  test.deepEqual(actual.args, [])
+  test.deepEqual(actual.arguments, [])
+  done()
+})
+
+test('should have `.valid/.invalid` hidden properties', function (done) {
+  var actual = parseFunction([1, 2, 3])
+
+  test.strictEqual(actual.valid, false)
+  test.strictEqual(actual.invalid, true)
+  done()
+})
+
