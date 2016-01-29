@@ -93,6 +93,7 @@ forIn(actuals, function (values, key) {
         test.strictEqual(actual.body, expects.body)
         test.ok(actual.orig)
         test.ok(actual.value)
+        test.ok(actual.value.length)
         done()
       })
     })
@@ -105,6 +106,8 @@ test('should return object with default values when invalid (not a function/stri
   test.strictEqual(actual.valid, false)
   test.strictEqual(actual.invalid, true)
   test.strictEqual(actual.orig, 123456)
+  test.strictEqual(actual.value, '')
+  test.strictEqual(actual.value.length, 0)
   test.strictEqual(actual.name, 'anonymous')
   test.strictEqual(actual.body, '')
   test.strictEqual(actual.params, '')
@@ -119,6 +122,8 @@ test('should have `.valid/.invalid` hidden properties', function (done) {
 
   test.strictEqual(actual.valid, false)
   test.strictEqual(actual.invalid, true)
+  test.strictEqual(actual.value, '')
+  test.strictEqual(actual.value.length, 0)
   done()
 })
 

@@ -44,8 +44,7 @@ var defineProp = require('define-property')
 module.exports = function parseFunction (val) {
   var type = typeof val
   if (type !== 'string' && type !== 'function') {
-    var strValue = Object.prototype.toString.call(val)
-    return hiddens(defaults(), val, strValue, false)
+    return hiddens(defaults(), val, '', false)
   }
   var orig = val
   if (type === 'function') {
