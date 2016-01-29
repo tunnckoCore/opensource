@@ -1,5 +1,9 @@
 
 
+## 2.2.1 - 2016-01-29
+- Release v2.2.1 / npm@v2.2.1
+- resolves [#3](https://github.com/tunnckoCore/parse-function/issues/3 "failing when something after CLOSE_CURLY")
+
 ## 2.2.0 - 2016-01-29
 - Release v2.2.0 / npm@v2.2.0
 - update docs
