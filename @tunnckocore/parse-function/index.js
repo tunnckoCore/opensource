@@ -44,20 +44,15 @@ var defineProp = require('define-property')
 module.exports = function parseFunction (val) {
   var type = typeof val
   if (type !== 'string' && type !== 'function') {
-    return {}
+    var strValue = Object.prototype.toString.call(val)
+    return hiddens(defaults(), val, strValue, false)
   }
   var orig = val
   if (type === 'function') {
     val = Function.prototype.toString.call(val)
   }
 
-  var data = walk(val)
-  defineProp(data, 'orig', orig)
-  defineProp(data, 'value', val)
-  defineProp(data, 'arguments', data.args)
-  defineProp(data, 'parameters', data.params)
-
-  return data
+  return hiddens(walk(val), orig, val, true)
 }
 
 var SPACE = 32 // ` `
@@ -74,9 +69,6 @@ var CLOSE_CURLY = 125 // `}`
  * @return {Object}
  */
 function walk (str) {
-  if (typeof str !== 'string') {
-    return {}
-  }
   str = str.replace('){', ') {') // tweak
   var i = 0
   var j = 0
@@ -163,5 +155,24 @@ function build (info, parts) {
     data.args = data.params.split(/\,\s*/).filter(Boolean)
   }
 
+  return data
+}
+
+function defaults () {
+  return {
+    name: 'anonymous',
+    body: '',
+    args: [],
+    params: ''
+  }
+}
+
+function hiddens (data, orig, val, valid) {
+  defineProp(data, 'orig', orig)
+  defineProp(data, 'value', val)
+  defineProp(data, 'arguments', data.args)
+  defineProp(data, 'parameters', data.params)
+  defineProp(data, 'valid', valid)
+  defineProp(data, 'invalid', !valid)
   return data
 }
