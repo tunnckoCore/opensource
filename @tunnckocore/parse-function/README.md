@@ -24,7 +24,7 @@ const parseFunction = require('parse-function')
 ### [parseFunction](./index.js#L45)
 > Parse function, arrow function or string to object. 
 
-- `[val]` **{Function|ArrowFunction||String}** function or string to parse    
+- `[val]` **{Function|ArrowFunction|String}** function or string to parse    
 - `returns` **{Object}** with `name`, `args`, `params` and `body` properties  
   + `name` **{String}** name of the function or `anonymous`
   + `body` **{String}** body of the function or `''`
@@ -34,6 +34,8 @@ const parseFunction = require('parse-function')
   + `arguments` **{Array}** hidden property, alias of `args`
   + `value` **{String}** hidden property, string representation of the given `val`
   + `orig` **{Function|ArrowFunction|String}** hidden property, original given `val`
+  + `valid` **{Boolean}** hidden property, `true` when `val` is function or string, `false` otherwise
+  + `invalid` **{Boolean}** hidden property, opposite of `opts.valid`
 
 **Example**
 
