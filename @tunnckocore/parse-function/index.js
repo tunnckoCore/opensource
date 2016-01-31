@@ -8,6 +8,7 @@
 'use strict'
 
 var defineProp = require('define-property')
+var stripComments = require('strip-comments')
 
 /**
  * Parse function, arrow function or string to object.
@@ -55,6 +56,7 @@ module.exports = function parseFunction (val) {
 }
 
 var SPACE = 32 // ` `
+var EQUALS = 61 // `=`
 var GREATER_THAN = 62 // `>`
 var OPEN_PAREN = 40 // `(`
 var CLOSE_PAREN = 41 // `)`
@@ -69,6 +71,7 @@ var CLOSE_CURLY = 125 // `}`
  */
 function walk (str) {
   str = str.replace('){', ') {') // tweak
+  str = stripComments(str)
   var i = 0
   var j = 0
   var len = str.length
@@ -78,7 +81,8 @@ function walk (str) {
   while (i < len) {
     var key = str[i]
     var ch = key.charCodeAt(0)
-    if (ch === GREATER_THAN) {
+    var next = str[i + 1] && str[i + 1].charCodeAt(0)
+    if (ch === EQUALS && next === GREATER_THAN) {
       info.hasArrow = true
       info.startArrow = info.startArrow || j
     }

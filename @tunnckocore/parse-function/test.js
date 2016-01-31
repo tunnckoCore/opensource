@@ -14,6 +14,11 @@ var parseFunction = require('./index')
 var forIn = require('for-in')
 
 var actuals = {
+  comments: [
+    'z => {\n  /* var foo = 1\n  return z * z*/}',
+    '(x, y) => {\n  // y = y + 2\n  return y + x}',
+    'function fn (a) {\n  // return (a) => 2 end\nreturn a > 2}'
+  ],
   arrows: [
     'z => {\n  var foo = 1\n  return z * z}',
     '(j, k) => {\n  var foo = 1\n  return j + k}',
@@ -36,6 +41,25 @@ var actuals = {
 }
 
 var expected = {
+  comments: [{
+    name: 'anonymous',
+    params: 'z',
+    args: ['z'],
+    body: '\n  ',
+    value: 'z => {\n  /* var foo = 1\n  return z * z*/}'
+  }, {
+    name: 'anonymous',
+    params: 'x, y',
+    args: ['x', 'y'],
+    body: '\n  \n  return y + x',
+    value: '(x, y) => {\n  // y = y + 2\n  return y + x}'
+  }, {
+    name: 'fn',
+    params: 'a',
+    args: ['a'],
+    body: '\n  \nreturn a > 2',
+    value: 'function fn (a) {\n  // return (a) => 2 end\nreturn a > 2}'
+  }],
   arrows: [{
     name: 'anonymous',
     params: 'z',

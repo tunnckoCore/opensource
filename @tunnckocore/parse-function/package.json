@@ -4,17 +4,20 @@
   "description": "Parse a function, arrow function or string to object with `name`, `args`, `params` and `body` properties.",
   "repository": "tunnckoCore/parse-function",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",
+  "precommit.silent": true,
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "test": "standard && node test.js"
   },
   "dependencies": {
-    "define-property": "^0.2.5"
+    "define-property": "^0.2.5",
+    "strip-comments": "^0.4.3"
   },
   "devDependencies": {
     "assertit": "^0.1.0",
-    "for-in": "^0.1.4"
+    "for-in": "^0.1.4",
+    "pre-commit": "^1.1.2"
   },
   "files": [
     "index.js"
