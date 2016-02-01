@@ -62,6 +62,14 @@ const res = parseFunction(withoutName)
 ```
 
 
+## Related
+- [function-regex](https://github.com/regexps/function-regex): Function regex. Regular expression for matching function parts. Expose match groups for function name, arguments and function body.
+- [gulp-di](https://github.com/cmtt/gulp-di): Dependency injection framework for the Gulp streaming build system
+- [is-empty-function](https://github.com/tunnckocore/is-empty-function): Check that given string, function or arrow function have empty body, using `parse-function`.
+- [is-installed](https://github.com/tunnckoCore/is-installed): Checks that given package is installed on the system - globally or locally.
+- [is-missing](https://github.com/tunnckocore/is-missing): Check that given `name` or `user/repo` exists in npm registry or in github as user repository.
+
+
 ## Contributing
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/tunnckoCore/parse-function/issues/new).  
 But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) guidelines.
