@@ -1,5 +1,12 @@
 
 
+## 2.2.2 - 2016-02-01
+- Release v2.2.2 / npm@v2.2.2
+- add related libs
+- add more tests
+- back to `regex` approach, it's 40x faster than `string looping` thing from `v2.1.0`
+  + using custom regex that match regular and arrow functions
+
 ## 2.2.1 - 2016-01-29
 - Release v2.2.1 / npm@v2.2.1
 - resolves [#3](https://github.com/tunnckoCore/parse-function/issues/3 "failing when something after CLOSE_CURLY")
