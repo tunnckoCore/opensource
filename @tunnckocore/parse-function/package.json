@@ -1,7 +1,7 @@
 {
   "name": "parse-function",
   "version": "2.2.1",
-  "description": "Parse a function, arrow function or string to object with `name`, `args`, `params` and `body` properties.",
+  "description": "Parse a function, arrow function or string to object with name, args, params and body properties.",
   "repository": "tunnckoCore/parse-function",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",
   "precommit.silent": true,
