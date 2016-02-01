@@ -8,7 +8,6 @@
 'use strict'
 
 var defineProp = require('define-property')
-var stripComments = require('strip-comments')
 
 /**
  * Parse function, arrow function or string to object.
@@ -48,118 +47,37 @@ module.exports = function parseFunction (val) {
     return hiddens(defaults(), val, '', false)
   }
   var orig = val
+  /* istanbul ignore next */
   if (type === 'function') {
     val = Function.prototype.toString.call(val)
   }
 
-  return hiddens(walk(val), orig, val, true)
+  return hiddens(parseFn(val), orig, val, true)
 }
 
-var SPACE = 32 // ` `
-var EQUALS = 61 // `=`
-var GREATER_THAN = 62 // `>`
-var OPEN_PAREN = 40 // `(`
-var CLOSE_PAREN = 41 // `)`
-var OPEN_CURLY = 123 // `{`
-var CLOSE_CURLY = 125 // `}`
+function parseFn (val) {
+  var re = /(?:function\s*([\w$]*)\s*)*\(*([\w\s,$]*)\)*(?:[\s=>]*)([\s\S]*)/
+  var match = re.exec(val)
 
-/**
- * String walker
- *
- * @param  {String} `str`
- * @return {Object}
- */
-function walk (str) {
-  str = str.replace('){', ') {') // tweak
-  str = stripComments(str)
-  var i = 0
-  var j = 0
-  var len = str.length
-  var parts = ['']
-  var info = {hasParen: false, hasCurly: false, hasArrow: false}
+  var params = match[2] && match[2].length ? match[2].replace(/\s$/, '') : ''
+  var args = params.length && params.replace(/\s/g, '').split(',') || []
+  var body = getBody(match[3] || '') || ''
 
-  while (i < len) {
-    var key = str[i]
-    var ch = key.charCodeAt(0)
-    var next = str[i + 1] && str[i + 1].charCodeAt(0)
-    if (ch === EQUALS && next === GREATER_THAN) {
-      info.hasArrow = true
-      info.startArrow = info.startArrow || j
-    }
-    if (ch === OPEN_CURLY) {
-      info.hasCurly = true
-      info.openCurly = info.openCurly || i
-      info.startCurly = info.startCurly || j
-    }
-    if (ch === CLOSE_CURLY) {
-      info.closeCurly = info.closeCurly || i
-      info.endCurly = info.endCurly || j
-    }
-    if (ch === OPEN_PAREN) {
-      info.hasParen = true
-      info.openParen = info.openParen || i
-      info.startParen = info.startParen || j
-    }
-    if (ch === CLOSE_PAREN) {
-      info.closeParen = info.closeParen || i
-      info.endParen = info.endParen || j + 1
-    }
-    if (ch === SPACE) {
-      info.firstSpace = info.firstSpace || i
-      parts.push(' ')
-      j++
-    } else {
-      parts[j] += key
-    }
-    i++
+  return {
+    name: match[1] || 'anonymous',
+    body: body,
+    args: args,
+    params: params
   }
-  info._value = str
-  info = build(info, parts)
-  return info
 }
 
-/**
- * Build needed object from info
- *
- * @param  {Object} `info`
- * @param  {Array} `parts`
- * @return {Object}
- */
-function build (info, parts) {
-  var data = {}
-
-  if (info.hasParen) {
-    if (info.startParen >= 1) {
-      var last = info.openParen - parts[info.startParen - 1].length
-      data.name = parts[1].slice(1, last)
-    } else {
-      data.name = info.hasArrow ? 'anonymous' : parts[1].trim()
-    }
-    if (info.startParen === 0) {
-      data.name = 'anonymous'
-    }
-    data.name = data.name.length && data.name || 'anonymous'
-  } else {
-    data.name = data.name || 'anonymous'
-    data.params = parts[0]
-    data.args = [parts[0]]
+function getBody (a) {
+  var len = a.length - 1
+  if (a.charCodeAt(0) === 123 && a.charCodeAt(len) === 125) {
+    return a.slice(1, -1)
   }
-  if (info.hasArrow) {
-    data.body = parts.slice(info.startArrow + 1).join('').trim()
-    data.body = info.hasCurly ? data.body.slice(1, data.body.lastIndexOf('}')) : data.body
-
-    if (info.hasParen) {
-      data.params = parts.slice(0, info.startArrow).join('').slice(1, -1)
-      data.args = data.params.split(/\,\s*/).filter(Boolean)
-    }
-  } else {
-    data.body = parts.slice(info.startCurly).join('').trim()
-    data.body = data.body.slice(1, data.body.lastIndexOf('}'))
-    data.params = info._value.slice(info.openParen + 1, info.closeParen)
-    data.args = data.params.split(/\,\s*/).filter(Boolean)
-  }
-
-  return data
+  var m = /^\{([\s\S]*)\}[\s\S]*$/.exec(a)
+  return m ? m[1] : a
 }
 
 function defaults () {
