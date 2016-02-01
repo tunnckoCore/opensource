@@ -11,14 +11,11 @@
     "test": "standard && node test.js"
   },
   "dependencies": {
-    "define-property": "^0.2.5",
-    "strip-comments": "^0.4.3"
+    "define-property": "^0.2.5"
   },
   "devDependencies": {
     "assertit": "^0.1.0",
-    "benchmarked": "^0.1.5",
     "for-in": "^0.1.4",
-    "function-regex": "^1.0.2",
     "pre-commit": "^1.1.2"
   },
   "files": [
