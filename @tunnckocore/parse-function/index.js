@@ -60,6 +60,7 @@ function walk (val) {
   var res = {name: 'anonymous', args: [], params: '', body: '', defaults: {}}
   var ast = acorn.parse_dammit(val, {ecmaVersion: 6})
   ast.body.forEach(function (obj) {
+    /* istanbul ignore next */
     if (obj.type !== 'ExpressionStatement' && obj.type !== 'FunctionDeclaration') {
       return
     }
@@ -92,7 +93,7 @@ function walk (val) {
     }
 
     res.body = val.slice(obj.body.start, obj.body.end)
-    // clean curly (almost every, expect arrow fns like `(a, b) => a *b`)
+    // clean curly (almost every val, except arrow fns like `(a, b) => a *b`)
     if (res.body.charCodeAt(0) === 123 && res.body.charCodeAt(res.body.length - 1) === 125) {
       res.body = res.body.slice(1, -1)
     }
