@@ -36,6 +36,7 @@ const parseFunction = require('parse-function')
   + `orig` **{Function|ArrowFunction|String}** hidden property, original given `val`
   + `valid` **{Boolean}** hidden property, `true` when `val` is function or string, `false` otherwise
   + `invalid` **{Boolean}** hidden property, opposite of `opts.valid`
+  + `defaults` **{Object}** hidden property, empty object or ES6 default params
 
 **Example**
 
