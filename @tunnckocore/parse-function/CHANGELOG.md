@@ -1,5 +1,19 @@
 
 
+## 2.3.0 - 2016-02-02
+- Release v2.3.0 / npm@v2.3.0
+- update docs
+- update (simplify) tests
+- add benchmarks
+- use `acorn`
+
+> ### Pro Tips (What version to use?)
+> There's no breaking changes between versions, the only version that have partial breaking change is `v2.1.x`, don't use it.
+> 
+> - use `v2.0.x` - if you don't need support for `arrow functions` and `es6 default params`.
+> - use `v2.2.x` - if you just want basic support for `es6 features` like `ES6 Arrow Functions` (faster than `v2.3.x`)
+> - use `v2.3.x` - if you want full support of `es6 arrow functions` and `es6 default params` (this uses `acorn`)
+
 ## 2.2.2 - 2016-02-01
 - Release v2.2.2 / npm@v2.2.2
 - add related libs
