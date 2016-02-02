@@ -8,6 +8,7 @@
 'use strict'
 
 var defineProp = require('define-property')
+var acorn = require('acorn/dist/acorn_loose')
 
 /**
  * Parse function, arrow function or string to object.
@@ -52,32 +53,51 @@ module.exports = function parseFunction (val) {
     val = Function.prototype.toString.call(val)
   }
 
-  return hiddens(parseFn(val), orig, val, true)
+  return hiddens(walk(val), orig, val, true)
 }
 
-function parseFn (val) {
-  var re = /(?:function\s*([\w$]*)\s*)*\(*([\w\s,$]*)\)*(?:[\s=>]*)([\s\S]*)/
-  var match = re.exec(val)
+function walk (val) {
+  var res = {name: 'anonymous', args: [], params: '', body: '', defaults: {}}
+  var ast = acorn.parse_dammit(val, {ecmaVersion: 6})
+  ast.body.forEach(function (obj) {
+    if (obj.type !== 'ExpressionStatement' && obj.type !== 'FunctionDeclaration') {
+      return
+    }
+    if (obj.type === 'ExpressionStatement' && obj.expression.type === 'ArrowFunctionExpression') {
+      obj = obj.expression
+    }
+    if (obj.type === 'FunctionDeclaration') {
+      res.name = obj.id.start === obj.id.end ? 'anonymous' : obj.id.name
+    }
+    if (!obj.body && !obj.params) {
+      return
+    }
+    if (obj.params.length) {
+      obj.params.forEach(function (param) {
+        var name = param.left && param.left.name || param.name
 
-  var params = match[2] && match[2].length ? match[2].replace(/\s$/, '') : ''
-  var args = params.length && params.replace(/\s/g, '').split(',') || []
-  var body = getBody(match[3] || '') || ''
+        res.args.push(name)
+        res.defaults[name] = param.right ? val.slice(param.right.start, param.right.end) : undefined
+      })
+      res.params = res.args.join(', ')
 
-  return {
-    name: match[1] || 'anonymous',
-    body: body,
-    args: args,
-    params: params
-  }
-}
+    // other approach:
+    // res.params = val.slice(obj.params[0].start, obj.params[obj.params.length - 1].end)
+    // obj.params.forEach(function (param) {
+    //   res.args.push(val.slice(param.start, param.end))
+    // })
+    } else {
+      res.params = ''
+      res.args = []
+    }
 
-function getBody (a) {
-  var len = a.length - 1
-  if (a.charCodeAt(0) === 123 && a.charCodeAt(len) === 125) {
-    return a.slice(1, -1)
-  }
-  var m = /^\{([\s\S]*)\}[\s\S]*$/.exec(a)
-  return m ? m[1] : a
+    res.body = val.slice(obj.body.start, obj.body.end)
+    // clean curly (almost every, expect arrow fns like `(a, b) => a *b`)
+    if (res.body.charCodeAt(0) === 123 && res.body.charCodeAt(res.body.length - 1) === 125) {
+      res.body = res.body.slice(1, -1)
+    }
+  })
+  return res
 }
 
 function defaults () {
