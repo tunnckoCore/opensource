@@ -4,8 +4,15 @@
 
 [![code climate][codeclimate-img]][codeclimate-url] [![standard code style][standard-img]][standard-url] [![travis build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![dependency status][david-img]][david-url]
 
-**Please read the [CHANGELOG](./CHANGELOG.md)** to see more info and the diffs between `v2.0.1` and `v2.1.0`.
-There's no breaking changes.
+**Please read the [CHANGELOG](./CHANGELOG.md)!**
+
+## Pro Tips (What version to use?)
+There's no breaking changes between versions, the only version that have partial breaking change is `v2.1.x`, so don't use it.
+
+- use `v2.0.x` - if you don't need support for `arrow functions` and `es6 default params`.
+- use `v2.2.x` - if you just want basic support for `es6 features` like `ES6 Arrow Functions` (faster than `v2.3.x`)
+- use `v2.3.x` - if you want full support of `es6 arrow functions` and `es6 default params` (this uses `acorn`)
+
 
 
 ## Install
