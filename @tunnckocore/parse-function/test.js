@@ -14,127 +14,141 @@ var parseFunction = require('./index')
 var forIn = require('for-in')
 
 var actuals = {
-  comments: [
-    'z => {\n  /* var foo = 1\n  return z + z */return 2\n  }',
-    '(x, y) => {\n  // y = y + 2\n  return y + x}',
-    '(n) => {\n  // function (c) {return c}\n  // (a) => {return a}\n  return n + n}',
-    'function fn (a) {\n  // return (a) => 2 end\nreturn a > 2}',
-    'function named (b) {\n  // function (c) {return c}\n return b * 3}',
-    'function no () {\n  // return false\n return true}'
+  regulars: [
+    'function (a = {foo: "ba)r", baz: 123}, cb) {return a * 3}',
+    'function (b, callback) {callback(null, b + 3)}',
+    'function (c) {return c * 3}',
+    'function () {return 321}',
+    'function () {}'
+  ],
+  named: [
+    'function named (a = {foo: "ba)r", baz: 123}, cb) {return a * 3}',
+    'function named (b, callback) {callback(null, b + 3)}',
+    'function named (c) {return c * 3}',
+    'function named () {return 321}',
+    'function named () {}'
   ],
   arrows: [
-    'z => {\n  var foo = 1\n  return z * z}',
-    '(j, k) => {\n  var foo = 1\n  return j + k}',
-    '(a, b) => a * b',
-    'x => x * 2 * x'
-  ],
-  regulars: [
-    'function named (a, b, cb) {\n  var foo = 1\n  cb(null, a * b)\n  }',
-    'function (x, y) {\n  var z = 2\n  return x + y + z)\n  }'
-  ],
-  specials: [
-    'function named(a, b, cb) {\n  var foo = 1\n  cb(null, a * b)\n  }',
-    'function named(a, b, cb){\n  var foo = 1\n  cb(null, a * b)\n  }',
-    'function named (a, b, cb){\n  var foo = 1\n  cb(null, a * b)\n  }',
-
-    'function(x, y) {\n  var z = 2\n  return x + y + z)\n  }',
-    'function(x, y){\n  var z = 2\n  return x + y + z)\n  }',
-    'function (x, y){\n  var z = 2\n  return x + y + z)\n  }'
-  ],
-  noParams: [
-    'function () {\n  return 123\n  }',
-    'function named () {\n  return 456\n  }'
+    '(foo = {done: (x) => console.log({ value: x })}, bar) => {return foo.done}',
+    '(z, cb) => {cb(null, z + 3)}',
+    '(c) => {return c * 3}',
+    '() => {return 456}',
+    '() => {}',
+    '(a) => a * 3 * a',
+    'd => d * 3 * d',
+    'e => {return e * 3 * e}',
+    '(a, b) => a + 3 + b',
+    '(x, y) => console.log({ value: x * y })'
   ]
 }
 
 var expected = {
-  comments: [{
+  regulars: [{
     name: 'anonymous',
-    params: 'z',
-    args: ['z'],
-    body: '\n  /* var foo = 1\n  return z + z */return 2\n  ',
-    value: 'z => {\n  /* var foo = 1\n  return z + z */return 2\n  }'
-  }, {
-    name: 'anonymous',
-    params: 'x, y',
-    args: ['x', 'y'],
-    body: '\n  // y = y + 2\n  return y + x',
-    value: '(x, y) => {\n  // y = y + 2\n  return y + x}'
+    params: 'a, cb',
+    args: ['a', 'cb'],
+    body: 'return a * 3',
+    defaults: {a: '{foo: "ba)r", baz: 123}', cb: undefined},
+    value: 'function (a = {foo: "ba)r", baz: 123}, cb) {return a * 3}'
   }, {
     name: 'anonymous',
-    params: 'n',
-    args: ['n'],
-    body: '\n  // function (c) {return c}\n  // (a) => {return a}\n  return n + n',
-    value: '(n) => {\n  // function (c) {return c}\n  // (a) => {return a}\n  return n + n}'
+    params: 'b, callback',
+    args: ['b', 'callback'],
+    body: 'callback(null, b + 3)',
+    defaults: {b: undefined, callback: undefined},
+    value: 'function (b, callback) {callback(null, b + 3)}'
   }, {
-    name: 'fn',
-    params: 'a',
-    args: ['a'],
-    body: '\n  // return (a) => 2 end\nreturn a > 2',
-    value: 'function fn (a) {\n  // return (a) => 2 end\nreturn a > 2}'
+    name: 'anonymous',
+    params: 'c',
+    args: ['c'],
+    body: 'return c * 3',
+    defaults: {c: undefined},
+    value: 'function (c) {return c * 3}'
   }, {
-    name: 'named',
-    params: 'b',
-    args: ['b'],
-    body: '\n  // function (c) {return c}\n return b * 3',
-    value: 'function named (b) {\n  // function (c) {return c}\n return b * 3}'
-  }, {
-    name: 'no',
+    name: 'anonymous',
     params: '',
     args: [],
-    body: '\n  // return false\n return true',
-    value: 'function no () {\n  // return false\n return true}'
+    body: 'return 321',
+    defaults: {},
+    value: 'function () {return 321}'
+  }, {
+    name: 'anonymous',
+    params: '',
+    args: [],
+    body: '',
+    defaults: {},
+    value: 'function () {}'
   }],
   arrows: [{
     name: 'anonymous',
-    params: 'z',
-    args: ['z'],
-    body: '\n  var foo = 1\n  return z * z',
-    value: 'z => {\n  var foo = 1\n  return z * z}'
+    params: 'foo, bar',
+    args: ['foo', 'bar'],
+    body: 'return foo.done',
+    defaults: {foo: '{done: (x) => console.log({ value: x })}', bar: undefined},
+    value: '(foo = {done: (x) => console.log({ value: x })}, bar) => {return foo.done}'
   }, {
     name: 'anonymous',
-    params: 'j, k',
-    args: ['j', 'k'],
-    body: '\n  var foo = 1\n  return j + k',
-    value: '(j, k) => {\n  var foo = 1\n  return j + k}'
+    params: 'z, cb',
+    args: ['z', 'cb'],
+    body: 'cb(null, z + 3)',
+    defaults: {z: undefined, cb: undefined},
+    value: '(z, cb) => {cb(null, z + 3)}'
+  }, {
+    name: 'anonymous',
+    params: 'c',
+    args: ['c'],
+    body: 'return c * 3',
+    defaults: {c: undefined},
+    value: '(c) => {return c * 3}'
+  }, {
+    name: 'anonymous',
+    params: '',
+    args: [],
+    body: 'return 456',
+    defaults: {},
+    value: '() => {return 456}'
+  }, {
+    name: 'anonymous',
+    params: '',
+    args: [],
+    body: '',
+    defaults: {},
+    value: '() => {}'
+  }, {
+    name: 'anonymous',
+    params: 'a',
+    args: ['a'],
+    body: 'a * 3 * a',
+    defaults: {a: undefined},
+    value: '(a) => a * 3 * a'
+  }, {
+    name: 'anonymous',
+    params: 'd',
+    args: ['d'],
+    body: 'd * 3 * d',
+    defaults: {d: undefined},
+    value: 'd => d * 3 * d'
+  }, {
+    name: 'anonymous',
+    params: 'e',
+    args: ['e'],
+    body: 'return e * 3 * e',
+    defaults: {e: undefined},
+    value: 'e => {return e * 3 * e}'
   }, {
     name: 'anonymous',
     params: 'a, b',
     args: ['a', 'b'],
-    body: 'a * b',
-    value: '(a, b) => a * b'
-  }, {
-    name: 'anonymous',
-    params: 'x',
-    args: ['x'],
-    body: 'x * 2 * x',
-    value: 'x => x * 2 * x'
-  }],
-  regulars: [{
-    name: 'named',
-    params: 'a, b, cb',
-    args: ['a', 'b', 'cb'],
-    body: '\n  var foo = 1\n  cb(null, a * b)\n  ',
-    value: 'function named (a, b, cb) {\n  var foo = 1\n  cb(null, a * b)\n  }'
+    body: 'a + 3 + b',
+    defaults: {a: undefined, b: undefined},
+    value: '(a, b) => a + 3 + b'
   }, {
     name: 'anonymous',
     params: 'x, y',
     args: ['x', 'y'],
-    body: '\n  var z = 2\n  return x + y + z)\n  ',
-    value: 'function (x, y) {\n  var z = 2\n  return x + y + z)\n  }'
-  }],
-  noParams: [{
-    name: 'anonymous',
-    params: '',
-    args: [],
-    body: '\n  return 123\n  ',
-    value: 'function () {\n  return 123\n  }'
-  }, {
-    name: 'named',
-    params: '',
-    args: [],
-    body: '\n  return 456\n  ',
-    value: 'function named () {\n  return 456\n  }'
+    body: 'console.log({ value: x * y })',
+    defaults: {x: undefined, y: undefined},
+    value: '(x, y) => console.log({ value: x * y })'
   }]
 }
 
@@ -142,7 +156,10 @@ forIn(actuals, function (values, key) {
   test(key, function () {
     values.forEach(function (val, i) {
       var actual = parseFunction(val)
-      var expects = key === 'specials' ? expected['regulars'][i > 2 ? 1 : 0] : expected[key][i]
+      var expects = expected[key === 'named' ? 'regulars' : key][i]
+      if (key === 'named') {
+        expects.name = 'named'
+      }
 
       test(actual.value.replace(/\n/g, '\\n'), function (done) {
         test.strictEqual(actual.valid, true)
@@ -152,6 +169,7 @@ forIn(actuals, function (values, key) {
         test.strictEqual(actual.parameters, expects.params)
         test.deepEqual(actual.args, expects.args)
         test.deepEqual(actual.arguments, expects.args)
+        test.deepEqual(actual.defaults, expects.defaults)
         test.strictEqual(actual.body, expects.body)
         test.ok(actual.orig)
         test.ok(actual.value)
