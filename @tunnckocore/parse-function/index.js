@@ -117,5 +117,6 @@ function hiddens (data, orig, val, valid) {
   defineProp(data, 'parameters', data.params)
   defineProp(data, 'valid', valid)
   defineProp(data, 'invalid', !valid)
+  defineProp(data, 'defaults', data.defaults)
   return data
 }
