@@ -1,5 +1,11 @@
 
 
+## 2.3.1 - 2016-02-13
+- Release v2.3.1 / npm@v2.3.1
+- codeclimate ignore `benchmark` folder
+- use `ecmaVersion: 7`
+- update to acorn@3.0.2
+
 ## 2.3.0 - 2016-02-02
 - Release v2.3.0 / npm@v2.3.0
 - update docs
