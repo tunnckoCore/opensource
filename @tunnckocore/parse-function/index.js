@@ -58,7 +58,7 @@ module.exports = function parseFunction (val) {
 
 function walk (val) {
   var res = {name: 'anonymous', args: [], params: '', body: '', defaults: {}}
-  var ast = acorn.parse_dammit(val, {ecmaVersion: 6})
+  var ast = acorn.parse_dammit(val, {ecmaVersion: 7})
   ast.body.forEach(function (obj) {
     /* istanbul ignore next */
     if (obj.type !== 'ExpressionStatement' && obj.type !== 'FunctionDeclaration') {
