@@ -11,7 +11,7 @@
     "test": "standard && node test.js"
   },
   "dependencies": {
-    "acorn": "^2.7.0",
+    "acorn": "^3.0.2",
     "define-property": "^0.2.5"
   },
   "devDependencies": {
