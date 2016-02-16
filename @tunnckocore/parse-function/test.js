@@ -214,12 +214,28 @@ test('should not fails to get .body when something after close curly (issue#3)',
 })
 
 test('should work when comment in arguments (see #11)', function (done) {
-  var actual = parseFunction('function (/* done */) {return 123}')
+  var actual = parseFunction('function (/* done */) { return 123 }')
   test.strictEqual(actual.params, '')
-  test.strictEqual(actual.body, 'return 123')
+  test.strictEqual(actual.body, ' return 123 ')
 
-  var res = parseFunction('function (foo/* done */, bar) {return 123}')
+  var res = parseFunction('function (foo/* done */, bar) { return 123 }')
   test.strictEqual(res.params, 'foo, bar')
-  test.strictEqual(res.body, 'return 123')
+  test.strictEqual(res.body, ' return 123 ')
+  done()
+})
+
+test('should support to parse generator functions', function (done) {
+  var actual = parseFunction('function * named (abc) { return abc + 123 }')
+  test.strictEqual(actual.name, 'named')
+  test.strictEqual(actual.params, 'abc')
+  test.strictEqual(actual.body, ' return abc + 123 ')
+  done()
+})
+
+test('should support to parse async functions (ES2016)', function (done) {
+  var actual = parseFunction('async function foo (bar) { return bar }')
+  test.strictEqual(actual.name, 'foo')
+  test.strictEqual(actual.params, 'bar')
+  test.strictEqual(actual.body, ' return bar ')
   done()
 })
