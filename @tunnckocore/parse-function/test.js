@@ -212,3 +212,14 @@ test('should not fails to get .body when something after close curly (issue#3)',
   test.strictEqual(actual.body, 'return a * 2')
   done()
 })
+
+test('should work when comment in arguments (see #11)', function (done) {
+  var actual = parseFunction('function (/* done */) {return 123}')
+  test.strictEqual(actual.params, '')
+  test.strictEqual(actual.body, 'return 123')
+
+  var res = parseFunction('function (foo/* done */, bar) {return 123}')
+  test.strictEqual(res.params, 'foo, bar')
+  test.strictEqual(res.body, 'return 123')
+  done()
+})
