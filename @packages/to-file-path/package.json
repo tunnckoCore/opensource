@@ -1,0 +1,75 @@
+{
+  "name": "to-file-path",
+  "version": "0.1.1",
+  "description": "Create a filepath from an object path (dot notation), list of arguments, array, number or Arguments object.",
+  "repository": "tunnckoCore/to-file-path",
+  "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",
+  "precommit.silent": true,
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "standard && node test.js"
+  },
+  "dependencies": {
+    "arr-map": "^2.0.0",
+    "is-arguments": "^1.0.2",
+    "isarray": "^1.0.0",
+    "lazy-cache": "^1.0.3"
+  },
+  "devDependencies": {
+    "assertit": "^0.1.0",
+    "pre-commit": "*"
+  },
+  "files": [
+    "index.js",
+    "utils.js"
+  ],
+  "keywords": [
+    "args",
+    "arguments",
+    "dot",
+    "dot-notation",
+    "file",
+    "filepath",
+    "fp",
+    "list",
+    "notation",
+    "obj",
+    "object",
+    "path",
+    "to",
+    "to-file",
+    "to-file-path",
+    "to-filepath",
+    "to-path",
+    "util",
+    "utils"
+  ],
+  "verb": {
+    "run": true,
+    "toc": false,
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "related": {
+      "list": [
+        "to-object-path",
+        "ip-filter",
+        "function-arugments",
+        "get-fn-name",
+        "arr-map",
+        "arr-includes",
+        "in-array"
+      ]
+    },
+    "reflinks": [
+      "ip-filter",
+      "to-object-path",
+      "in-array"
+    ],
+    "lint": {
+      "reflinks": true
+    }
+  }
+}
