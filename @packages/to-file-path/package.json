@@ -1,6 +1,6 @@
 {
   "name": "to-file-path",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Create a filepath from an object path (dot notation), list of arguments, array, number or Arguments object.",
   "repository": "tunnckoCore/to-file-path",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",
