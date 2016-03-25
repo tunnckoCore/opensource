@@ -18,6 +18,27 @@ npm i to-file-path --save
 const toFilePath = require('to-file-path')
 ```
 
+### [toFilePath](index.js#L33)
+> Create filepath from different type of arguments.
+
+**Params**
+
+* `args` **{String|Array|Arguments|Number|Boolean}**: Pass any type and any number of arguments.    
+* `returns` **{String}**: always slash separated filepath  
+
+**Example**
+
+```js
+var toFilePath = require('to-file-path')
+
+console.log(toFilePath('foo.bar.baz')) // => 'foo/bar/baz'
+console.log(toFilePath('foo.bar', 'qux.baz', 'xxx')) // => 'foo/bar/qux/baz/xxx'
+console.log(toFilePath('foo', 'qux', 'baz')) // => 'foo/qux/baz'
+console.log(toFilePath([1, 2, 3], 'foo', 4, 'bar')) // => '1/2/3/foo/4/bar'
+console.log(toFilePath(null, true)) // => 'null/true'
+console.log(toFilePath(1, 2, 3)) // => '1/2/3'
+```
+
 ## Related
 * [arr-includes](https://www.npmjs.com/package/arr-includes): Return true if any of passed values exists in array. Using [in-array][]. | [homepage](https://github.com/tunnckocore/arr-includes)
 * [arr-map](https://www.npmjs.com/package/arr-map): Faster, node.js focused alternative to JavaScript's native array map. | [homepage](https://github.com/jonschlinkert/arr-map)
