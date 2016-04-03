@@ -84,7 +84,7 @@ module.exports = function koaBetterBody(options) {
   options.extendTypes = extendTypes(options.extendTypes || {});
 
   return function * main(next) {
-    if (this.request.body !== undefined || this.request.method === 'GET') {
+    if (this.request.method === 'GET') {
       return yield * next;
     }
 
