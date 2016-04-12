@@ -18,7 +18,8 @@
     "assertit": "^0.1.0",
     "benchmarked": "^0.1.5",
     "for-in": "^0.1.4",
-    "pre-commit": "^1.1.2"
+    "pre-commit": "^1.1.2",
+    "semver": "^5.1.0"
   },
   "files": [
     "index.js"

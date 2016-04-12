@@ -5,13 +5,12 @@
  * Released under the MIT license.
  */
 
-/* jshint asi:true */
-
 'use strict'
 
 var test = require('assertit')
 var parseFunction = require('./index')
 var forIn = require('for-in')
+var semver = require('semver')
 
 var actuals = {
   regulars: [
@@ -239,3 +238,7 @@ test('should support to parse async functions (ES2016)', function (done) {
   test.strictEqual(actual.body, ' return bar ')
   done()
 })
+
+if (semver.gte(semver.clean(process.version), '0.13.0')) {
+  require('./test.es6.js')
+}

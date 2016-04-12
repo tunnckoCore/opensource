@@ -51,6 +51,7 @@ module.exports = function parseFunction (val) {
   /* istanbul ignore next */
   if (type === 'function') {
     val = Function.prototype.toString.call(val)
+    val = val[0] === 'f' && val[1] === 'u' ? val : 'function ' + val
   }
 
   return hiddens(walk(val), orig, val, true)
