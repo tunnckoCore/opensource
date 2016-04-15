@@ -1,5 +1,31 @@
 
 
+## 2.0.0 - 2016-04-15
+- Release v1.0.17 / npm@v2.0.0
+- in general, much things was changed and was added new and wanted features - review [the v2 PR](https://github.com/tunnckoCore/koa-better-body/pull/34)
+- closed all of the issues marked as `todo` and `v2` (the v2 milestone)
+- in short:
+  + cleared all issues marked as `todo` and `v2`
+  + still using `formidable`
+  + still can pass custom property names for `fields` and `files` - e.g. pass `options.files: 'foobar'`
+    * defaults to `this.request.fields` and `this.request.files`
+    * *almost* always `this.body` is equal to `this.request.fields` (when it make sense)
+    * `this.request.files` not exist always
+  + more flexible
+    * can pass `formidable.IncomingForm` instance through options to handle events and etc
+    * all `options` are directly passed to `formidable.IncomingForm`
+  + change `options.multipart` to be `true` be default - pass `false` if you want to disallow it
+  + add support for `text` bodies
+  + add `options.buffer` to get the body as buffer (when text type), defaults to `false`
+  + add `options.strict` mode to disallow GET, HEAD, DELETE requests, defaults to `true`
+  + add `options.jsonStrict` JSON parser will only accept arrays and objects, defaults to `true`
+    * same as [co-body's options.strict](https://github.com/cojs/co-body#options) and
+    * same as [koa-bodyparser's options.strict](https://github.com/koajs/bodyparser#options)
+    * passed to [koa-body-parsers](https://github.com/koajs/body-parsers/blob/master/index.js#L33-L39)
+  + add `options.detectJSON` #16 - same as in [koa-bodyparser]
+  + simplified tests
+  + simplify a lot of the codebase using `koa-body-parsers` under the hood
+
 ## 1.0.17 - 2015-02-06
 - Release v1.0.17 / npm@v1.0.17
 - fix license range
