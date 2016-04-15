@@ -1,8 +1,4 @@
 # .gitignore <https://github.com/tunnckoCore/dotfiles>
-#
-# Copyright (c) 2014-2015 Charlike Mike Reagent, contributors.
-# Released under the MIT license.
-#
 
 # Always-ignore dirs #
 # ####################
@@ -21,6 +17,7 @@ nbproject
 cache
 temp
 tmp
+koa-better-body
 
 # Packages #
 # ##########
@@ -53,3 +50,4 @@ Desktop.ini
 npm-debug.log
 .directory
 ._*
+lcov.info

@@ -1,68 +1,100 @@
 {
   "name": "koa-better-body",
-  "description": "A koa body parser middleware with support for `multipart`, `json`, `csp-report` or `urlencoded` request bodies. Via formidable and co-body.",
   "version": "1.0.17",
+  "description": "Full-feature [koa][] body parser! Support parsing text, buffer, json, json patch, json api, csp-report, multipart, form and urlencoded bodies. Works for koa@1, koa@2 and will work for koa@3.",
+  "repository": "tunnckoCore/koa-better-body",
+  "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",
+  "precommit.silent": true,
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "lint": "jshint index.js && jscs index.js --reporter inline --esnext",
-    "test": "mocha --harmony-generators --require should",
-    "test-cov": "node --harmony node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --require should",
-    "test-travis": "node --harmony node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --require should",
-    "examples-multer": "npm run test && node --harmony examples/multer.js",
-    "examples-koa-router": "npm run test && node --harmony examples/koa-router.js"
-  },
-  "author": {
-    "name": "Charlike Make Reagent",
-    "email": "mameto_100@mail.bg",
-    "url": "https://github.com/tunnckoCore"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/tunnckoCore/koa-better-body.git"
-  },
-  "keywords": [
-    "api",
-    "body",
-    "bodyparser",
-    "csp",
-    "csp-report",
-    "data",
-    "form",
-    "formdata",
-    "formidable",
-    "json",
-    "koa",
-    "middleware",
-    "multipart",
-    "multiple",
-    "parse",
-    "parser",
-    "report",
-    "request",
-    "upload",
-    "urlencoded"
-  ],
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/tunnckoCore/koa-better-body/blob/master/license.md"
+    "test": "standard && node test.js"
   },
   "dependencies": {
-    "arr-union": "~2.0.0",
-    "co-better-body": "^1.0.0",
-    "extend": "~2.0.0",
-    "formidable": "~1.0.16"
+    "extend-shallow": "^2.0.1",
+    "formidable": "^1.0.17",
+    "koa-body-parsers": "git+https://github.com/tunnckoCore/body-parsers.git",
+    "lazy-cache": "^1.0.3"
   },
   "devDependencies": {
-    "koa": "*",
-    "koa-router": "*",
-    "koa-resource-router": "*",
-    "multiline": "*",
-    "should": "*",
-    "supertest": "*",
-    "istanbul-harmony": "~0.3.1",
-    "mocha": "*"
+    "assertit": "^0.1.0",
+    "is-buffer": "^1.1.3",
+    "koa": "^1.2.0",
+    "pre-commit": "*",
+    "supertest": "^1.2.0"
   },
-  "engines": {
-    "node": ">=0.11.14",
-    "npm": ">=1.4.28"
+  "files": [
+    "index.js",
+    "utils.js"
+  ],
+  "keywords": [
+    "api",
+    "awesome",
+    "better",
+    "body",
+    "body-parser",
+    "buffer",
+    "csp",
+    "csp-report",
+    "error",
+    "error-handling",
+    "extendable",
+    "feature",
+    "features",
+    "flexible",
+    "form",
+    "forms",
+    "full",
+    "full-feature",
+    "handling",
+    "json",
+    "json-api",
+    "json-patch",
+    "json-strict",
+    "jsonstrict",
+    "koa",
+    "koa-better-body",
+    "multipart",
+    "parse",
+    "parser",
+    "patch",
+    "report",
+    "rfc",
+    "standard",
+    "strict",
+    "text",
+    "unopinionated",
+    "urlencoded"
+  ],
+  "verb": {
+    "run": true,
+    "toc": false,
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "related": {
+      "list": [
+        "koa",
+        "koa-ip-filter",
+        "ip-filter",
+        "formidable",
+        "koa-body-parsers",
+        "koa-bodyparser",
+        "koala"
+      ]
+    },
+    "reflinks": [
+      "koa",
+      "koa-convert",
+      "koa-body-parsers",
+      "raw-body",
+      "bytes",
+      "formidable",
+      "lazy-cache"
+    ],
+    "lint": {
+      "reflinks": true
+    }
   }
 }
