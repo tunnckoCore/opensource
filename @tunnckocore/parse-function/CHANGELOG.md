@@ -1,5 +1,12 @@
 
 
+## 2.3.2 - 2016-04-19
+- Release v2.3.2 / npm@v2.3.2
+- update acorn version to 3.1.0
+- fixes #15
+- add tests to close #12
+- add test to close #11
+
 ## 2.3.1 - 2016-02-13
 - Release v2.3.1 / npm@v2.3.1
 - codeclimate ignore `benchmark` folder
