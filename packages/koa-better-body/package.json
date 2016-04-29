@@ -14,7 +14,7 @@
     "extend-shallow": "^2.0.1",
     "formidable": "^1.0.17",
     "koa-body-parsers": "git+https://github.com/tunnckoCore/body-parsers.git",
-    "lazy-cache": "^1.0.3"
+    "lazy-cache": "^2.0.0"
   },
   "devDependencies": {
     "assertit": "^0.1.0",
