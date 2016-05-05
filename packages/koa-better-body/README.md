@@ -1,6 +1,6 @@
 # [koa-better-body][author-www-url] [![npmjs.com][npmjs-img]][npmjs-url] [![The MIT License][license-img]][license-url] [![npm downloads][downloads-img]][downloads-url] 
 
-> Full-feature [koa][] body parser! Support parsing text, buffer, json, json patch, json api, csp-report, multipart, form and urlencoded bodies. Works for koa@1, koa@2 and will work for koa@3.
+> Full-featured [koa][] body parser! Support parsing text, buffer, json, json patch, json api, csp-report, multipart, form and urlencoded bodies. Works for koa@1, koa@2 and will work for koa@3.
 
 [![code climate][codeclimate-img]][codeclimate-url] [![standard code style][standard-img]][standard-url] [![travis build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![dependency status][david-img]][david-url]
 
@@ -91,10 +91,10 @@ You can pass `strict:false`, but see [IETF HTTP/1.1 Message Semantics: Section 6
 You might also be interested in these packages:
 * [formidable](https://www.npmjs.com/package/formidable): A node.js module for parsing form data, especially file uploads. | [homepage](https://github.com/felixge/node-formidable)
 * [ip-filter](https://www.npmjs.com/package/ip-filter): Filters valid IPv4 or IPv6 against glob pattern, array, string and etc. If match… [more](https://www.npmjs.com/package/ip-filter) | [homepage](https://github.com/tunnckocore/ip-filter)
-* [koa](https://www.npmjs.com/package/koa): Koa web app framework | [homepage](https://github.com/koajs/koa)
 * [koa-body-parsers](https://www.npmjs.com/package/koa-body-parsers): collection of koa body parsers | [homepage](https://github.com/koajs/body-parsers)
 * [koa-bodyparser](https://www.npmjs.com/package/koa-bodyparser): a body parser for koa | [homepage](https://github.com/koajs/body-parser)
 * [koa-ip-filter](https://www.npmjs.com/package/koa-ip-filter): koa middleware to filter request IPs or custom ID with glob patterns, array, string,… [more](https://www.npmjs.com/package/koa-ip-filter) | [homepage](https://github.com/tunnckocore/koa-ip-filter)
+* [koa](https://www.npmjs.com/package/koa): Koa web app framework | [homepage](https://github.com/koajs/koa)
 * [koala](https://www.npmjs.com/package/koala): Koa Framework Suite | [homepage](https://github.com/koajs/koala)
 
 ## Contributing
@@ -126,8 +126,8 @@ It will help a lot, thanks in advance! :yum:
 [koa]: https://github.com/koajs/koa
 [koa-body-parsers]: https://github.com/koajs/body-parsers
 [koa-convert]: https://github.com/gyson/koa-convert
-[raw-body]: https://github.com/stream-utils/raw-body
 [lazy-cache]: https://github.com/jonschlinkert/lazy-cache
+[raw-body]: https://github.com/stream-utils/raw-body
 
 [npmjs-url]: https://www.npmjs.com/package/koa-better-body
 [npmjs-img]: https://img.shields.io/npm/v/koa-better-body.svg?label=koa-better-body
