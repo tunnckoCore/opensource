@@ -10,7 +10,7 @@
 var betterBody = require('../index')
 var isBuffer = require('is-buffer')
 var request = require('supertest')
-var test = require('assertit')
+var test = require('mukla')
 var koa = require('koa')
 
 test('should get the raw buffer body (options.buffer: true)', function (done) {

@@ -7,28 +7,20 @@
 
 'use strict'
 
-var test = require('assertit')
+// parse json body
+require('./test/json')
 
-test('parse json body', function () {
-  require('./test/json')
-})
+// parse urlencoded body
+require('./test/urlencoded')
 
-test('parse urlencoded body', function () {
-  require('./test/urlencoded')
-})
+// parse text body
+require('./test/text')
 
-test('parse text body', function () {
-  require('./test/text')
-})
+// parse buffer body
+require('./test/buffer')
 
-test('parse buffer body', function () {
-  require('./test/buffer')
-})
+// parse multipart body
+require('./test/multipart')
 
-test('parse multipart body', function () {
-  require('./test/multipart')
-})
-
-test('options and misc', function () {
-  require('./test/options')
-})
+// options and misc
+require('./test/options')

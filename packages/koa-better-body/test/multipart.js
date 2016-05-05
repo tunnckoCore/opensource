@@ -9,7 +9,7 @@
 
 var betterBody = require('../index')
 var request = require('supertest')
-var test = require('assertit')
+var test = require('mukla')
 var path = require('path')
 var koa = require('koa')
 
