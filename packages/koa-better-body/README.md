@@ -1,4 +1,4 @@
-# [koa-better-body][author-www-url] [![npmjs.com][npmjs-img]][npmjs-url] [![The MIT License][license-img]][license-url] 
+# [koa-better-body][author-www-url] [![npmjs.com][npmjs-img]][npmjs-url] [![The MIT License][license-img]][license-url] [![npm downloads][downloads-img]][downloads-url] 
 
 > Full-feature [koa][] body parser! Support parsing text, buffer, json, json patch, json api, csp-report, multipart, form and urlencoded bodies. Works for koa@1, koa@2 and will work for koa@3.
 
@@ -121,19 +121,22 @@ It will help a lot, thanks in advance! :yum:
 
 [![tunnckoCore.tk][author-www-img]][author-www-url] [![keybase tunnckoCore][keybase-img]][keybase-url] [![tunnckoCore npm][author-npm-img]][author-npm-url] [![tunnckoCore twitter][author-twitter-img]][author-twitter-url] [![tunnckoCore github][author-github-img]][author-github-url]
 
-[koa]: https://github.com/koajs/koa
-[koa-convert]: https://github.com/gyson/koa-convert
-[koa-body-parsers]: https://github.com/koajs/body-parsers
-[raw-body]: https://github.com/stream-utils/raw-body
 [bytes]: https://github.com/visionmedia/bytes.js
 [formidable]: https://github.com/felixge/node-formidable
+[koa]: https://github.com/koajs/koa
+[koa-body-parsers]: https://github.com/koajs/body-parsers
+[koa-convert]: https://github.com/gyson/koa-convert
+[raw-body]: https://github.com/stream-utils/raw-body
 [lazy-cache]: https://github.com/jonschlinkert/lazy-cache
 
 [npmjs-url]: https://www.npmjs.com/package/koa-better-body
 [npmjs-img]: https://img.shields.io/npm/v/koa-better-body.svg?label=koa-better-body
 
 [license-url]: https://github.com/tunnckoCore/koa-better-body/blob/master/LICENSE
-[license-img]: https://img.shields.io/badge/license-MIT-blue.svg
+[license-img]: https://img.shields.io/npm/l/koa-better-body.svg
+
+[downloads-url]: https://www.npmjs.com/package/koa-better-body
+[downloads-img]: https://img.shields.io/npm/dm/koa-better-body.svg
 
 [codeclimate-url]: https://codeclimate.com/github/tunnckoCore/koa-better-body
 [codeclimate-img]: https://img.shields.io/codeclimate/github/tunnckoCore/koa-better-body.svg
@@ -170,4 +173,3 @@ It will help a lot, thanks in advance! :yum:
 
 [new-message-url]: https://github.com/tunnckoCore/ama
 [new-message-img]: https://img.shields.io/badge/ask%20me-anything-green.svg
-
