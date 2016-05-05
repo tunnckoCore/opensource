@@ -1,7 +1,14 @@
 
 
+## 2.0.1 - 2016-05-05
+- Release v2.0.1 / npm@v2.0.1
+- fix typo
+- switch to use `mukla` for testing, instead of `assertit` - it is drop in replacement
+- add downloads badge
+- bump deps (lazy-cache to v2)
+
 ## 2.0.0 - 2016-04-15
-- Release v1.0.17 / npm@v2.0.0
+- Release v2.0.0 / npm@v2.0.0
 - in general, much things was changed and was added new and wanted features - review [the v2 PR](https://github.com/tunnckoCore/koa-better-body/pull/34)
 - closed all of the issues marked as `todo` and `v2` (the v2 milestone)
 - in short:
