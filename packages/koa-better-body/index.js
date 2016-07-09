@@ -23,7 +23,9 @@ var utils = require('./utils')
  * app
  *   .use(body())
  *   .use(function * () {
- *     console.log(this.body)
+ *     console.log(this.request.body)    // if buffer or text
+ *     console.log(this.request.fields)  // if json
+ *     console.log(this.request.files)   // if multipart or urlencoded
  *   })
  *   .listen(8080, function () {
  *     console.log('koa server start listening on port 8080')
