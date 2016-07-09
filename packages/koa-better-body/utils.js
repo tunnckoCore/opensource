@@ -185,24 +185,24 @@ utils.parseBody = function * parseBody (ctx, options, next) { /* eslint complexi
 
   if (options.detectJSON(ctx) || ctx.request.is(options.extendTypes.json)) {
     ctx.app.jsonStrict = typeof options.jsonStrict === 'boolean' ? options.jsonStrict : true
-    ctx.body = ctx.request[fields] = yield ctx.request.json(options.jsonLimit)
+    ctx.request[fields] = yield ctx.request.json(options.jsonLimit)
     return yield * next
   }
   if (ctx.request.is(options.extendTypes.form || options.extendTypes.urlencoded)) {
     var res = yield ctx.request.urlencoded(options.formLimit)
-    ctx.body = ctx.request[fields] = res
+    ctx.request[fields] = res
     return yield * next
   }
   if (ctx.request.is(options.extendTypes.text)) {
-    ctx.body = options.buffer
+    ctx.request.body = options.buffer
       ? yield ctx.request.buffer(options.bufferLimit || options.textLimit)
       : yield ctx.request.text(options.textLimit)
     return yield * next
   }
   if (options.multipart && ctx.request.is(options.extendTypes.multipart)) {
     var result = yield ctx.request.multipart(options, ctx)
-    ctx.body = ctx.request[fields] = result.fields
-    ctx.body[files] = ctx.request[files] = result.files
+    ctx.request[fields] = result.fields
+    ctx.request[files] = result.files
     return yield * next
   }
 }

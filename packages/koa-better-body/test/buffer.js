@@ -14,9 +14,10 @@ var test = require('mukla')
 var koa = require('koa')
 
 test('should get the raw buffer body (options.buffer: true)', function (done) {
-  var server = koa().use(betterBody({buffer: true}))
+  var server = koa().use(betterBody({ buffer: true }))
   server.use(function * () {
-    test.strictEqual(isBuffer(this.body), true)
+    test.strictEqual(isBuffer(this.request.body), true)
+    this.body = this.request.body.toString('utf8')
   })
   request(server.callback())
     .post('/')
@@ -26,7 +27,7 @@ test('should get the raw buffer body (options.buffer: true)', function (done) {
     .expect('qux', done)
 })
 test('should throw if the buffer body is too large (options.buffer: true)', function (done) {
-  var server = koa().use(betterBody({buffer: true, bufferLimit: '2b'}))
+  var server = koa().use(betterBody({ buffer: true, bufferLimit: '2b' }))
   request(server.callback())
     .post('/')
     .type('text')
@@ -36,8 +37,9 @@ test('should throw if the buffer body is too large (options.buffer: true)', func
 test('should get json if `options.buffer` is false (that is the default)', function (done) {
   var server = koa().use(betterBody())
   server.use(function * () {
-    test.strictEqual(typeof this.body, 'object')
-    test.deepEqual(this.body, {'too large': ''})
+    test.strictEqual(typeof this.request.fields, 'object')
+    test.deepEqual(this.request.fields, { 'too large': '' })
+    this.body = this.request.fields
   })
   request(server.callback())
     .post('/')

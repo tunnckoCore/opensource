@@ -16,9 +16,8 @@ test('should parse a urlencoded body', function (done) {
   var server = koa().use(betterBody())
   server.use(function * () {
     test.strictEqual(typeof this.request.fields, 'object')
-    test.strictEqual(typeof this.body, 'object')
-    test.deepEqual(this.body, {a: 'b', c: 'd'})
-    test.deepEqual(this.request.fields, {a: 'b', c: 'd'})
+    test.deepEqual(this.request.fields, { a: 'b', c: 'd' })
+    this.body = this.request.fields
   })
   request(server.callback())
     .post('/')
@@ -29,7 +28,7 @@ test('should parse a urlencoded body', function (done) {
     .expect(/"c":"d"/, done)
 })
 test('should throw if the body is too large', function (done) {
-  var server = koa().use(betterBody({formLimit: '2b'}))
+  var server = koa().use(betterBody({ formLimit: '2b' }))
   request(server.callback())
     .post('/')
     .type('application/x-www-form-urlencoded')

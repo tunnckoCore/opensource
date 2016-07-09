@@ -17,8 +17,9 @@ var app = koa().use(betterBody())
 test('should get the raw text body', function (done) {
   app.use(function * () {
     test.strictEqual(this.request.fields, undefined)
-    test.strictEqual(typeof this.body, 'string')
-    test.strictEqual(this.body, 'message=lol')
+    test.strictEqual(typeof this.request.body, 'string')
+    test.strictEqual(this.request.body, 'message=lol')
+    this.body = this.request.body
   })
   request(app.callback())
     .post('/')
@@ -28,7 +29,7 @@ test('should get the raw text body', function (done) {
     .expect('message=lol', done)
 })
 test('should throw if the body is too large', function (done) {
-  var server = koa().use(betterBody({textLimit: '2b'}))
+  var server = koa().use(betterBody({ textLimit: '2b' }))
   request(server.callback())
     .post('/')
     .type('text')

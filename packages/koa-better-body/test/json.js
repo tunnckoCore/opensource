@@ -12,7 +12,14 @@ var request = require('supertest')
 var test = require('mukla')
 var koa = require('koa')
 
-var app = koa().use(betterBody())
+function postBody () {
+  return function * (next) {
+    this.body = this.request.fields
+    yield * next
+  }
+}
+
+var app = koa().use(betterBody()).use(postBody())
 
 test('should parse a json body', function (done) {
   request(app.callback())
@@ -37,7 +44,7 @@ test('should throw on json non-object body in strict mode (default)', function (
     .expect(400, done)
 })
 test('should not throw on non-objects in non-strict mode', function (done) {
-  var server = koa().use(betterBody({jsonStrict: false}))
+  var server = koa().use(betterBody({ jsonStrict: false })).use(postBody())
   request(server.callback())
     .post('/')
     .type('json')

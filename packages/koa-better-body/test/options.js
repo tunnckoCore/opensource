@@ -36,6 +36,7 @@ test('should treat `foo/y-javascript` type as json', function (done) {
   server.use(function * () {
     test.strictEqual(typeof this.request.fields, 'object')
     test.strictEqual(this.request.fields.a, 'b')
+    this.body = this.request.fields
   })
   request(server.callback())
     .post('/')
@@ -45,7 +46,11 @@ test('should treat `foo/y-javascript` type as json', function (done) {
     .expect({a: 'b'}, done)
 })
 test('should get body on `strict:false` and DELETE request with body', function (done) {
-  var server = koa().use(betterBody({strict: false}))
+  var server = koa()
+    .use(betterBody({ strict: false }))
+    .use(function * postBody () {
+      this.body = this.request.fields
+    })
   request(server.callback())
     .delete('/')
     .type('json')
