@@ -21,7 +21,7 @@
     "koa": "^1.2.0",
     "mukla": "^0.4.1",
     "pre-commit": "*",
-    "supertest": "^1.2.0"
+    "supertest": "^2.0.0"
   },
   "files": [
     "index.js",
