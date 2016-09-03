@@ -194,7 +194,7 @@ utils.parseBody = function * parseBody (ctx, options, next) { /* eslint complexi
   var custom = options.extendTypes.custom
 
   if (custom && custom.length && ctx.request.is(custom)) {
-    yield * options.handler(ctx, options, next)
+    yield * options.handler.call(ctx, ctx, options, next)
     return yield * next
   }
   if (options.detectJSON(ctx) || ctx.request.is(options.extendTypes.json)) {

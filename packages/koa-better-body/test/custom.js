@@ -18,7 +18,12 @@ test('should accept extendTypes.custom foo/bar-x as text', function (done) {
       custom: ['foo/bar-x']
     },
     handler: function * handler (ctx, opts) {
-      ctx.request.body = yield ctx.request.text(opts)
+      test.strictEqual(typeof ctx, 'object')
+      test.strictEqual(typeof this, 'object')
+      test.strictEqual(typeof ctx.request.text, 'function')
+      test.strictEqual(typeof this.request.text, 'function')
+
+      this.request.body = yield this.request.text(opts)
     }
   }))
 
