@@ -18,7 +18,7 @@ var utils = require('lazy-cache')(require)
  */
 
 var fn = require
-require = utils // eslint-disable-line no-undef, no-native-reassign
+require = utils // eslint-disable-line no-undef, no-native-reassign, no-global-assign
 
 /**
  * Lazily required module dependencies
@@ -32,7 +32,7 @@ require('koa-body-parsers', 'bodyParsers')
  * Restore `require`
  */
 
-require = fn // eslint-disable-line no-undef, no-native-reassign
+require = fn // eslint-disable-line no-undef, no-native-reassign, no-global-assign
 
 /**
  * > Default options that will be loaded. Pass `options` to overwrite them.
