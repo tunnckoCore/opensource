@@ -45,5 +45,5 @@ test('should get json if `options.buffer` is false (that is the default)', funct
     .post('/')
     .send('too large')
     .expect(200)
-    .expect(/"too large"/, done)
+    .expect(/"too large":/, done)
 })

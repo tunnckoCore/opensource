@@ -83,6 +83,9 @@ utils.defaultTypes = function defaultTypes (types) {
     multipart: [
       'multipart/form-data'
     ],
+    buffer: [
+      'text/*'
+    ],
     text: [
       'text/*'
     ],
@@ -194,10 +197,12 @@ utils.parseBody = function * parseBody (ctx, options, next) { /* eslint complexi
     ctx.request[fields] = res
     return yield * next
   }
+  if (options.buffer && ctx.request.is(options.extendTypes.buffer)) {
+    ctx.request.body = yield ctx.request.buffer(options.bufferLimit)
+    return yield * next
+  }
   if (ctx.request.is(options.extendTypes.text)) {
-    ctx.request.body = options.buffer
-      ? yield ctx.request.buffer(options.bufferLimit || options.textLimit)
-      : yield ctx.request.text(options.textLimit)
+    ctx.request.body = yield ctx.request.text(options.textLimit)
     return yield * next
   }
   if (options.multipart && ctx.request.is(options.extendTypes.multipart)) {
