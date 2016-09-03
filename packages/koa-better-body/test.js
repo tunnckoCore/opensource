@@ -24,3 +24,6 @@ require('./test/multipart')
 
 // options and misc
 require('./test/options')
+
+// extendTypes.custom
+require('./test/custom')

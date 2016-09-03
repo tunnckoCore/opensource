@@ -61,6 +61,11 @@ utils.defaultOptions = function defaultOptions (options) {
   options.onerror = options.onЕrror || options.onerror
   options.onerror = typeof options.onerror === 'function' ? options.onerror : false
 
+  if (typeof options.handler !== 'function') {
+    options.handler = function handler (args) {
+
+    }
+  }
   if (typeof options.detectJSON !== 'function') {
     options.detectJSON = function detectJSON () {
       return false
@@ -83,9 +88,6 @@ utils.defaultTypes = function defaultTypes (types) {
     multipart: [
       'multipart/form-data'
     ],
-    buffer: [
-      'text/*'
-    ],
     text: [
       'text/*'
     ],
@@ -97,6 +99,9 @@ utils.defaultTypes = function defaultTypes (types) {
       'application/json-patch+json',
       'application/vnd.api+json',
       'application/csp-report'
+    ],
+    buffer: [
+      'text/*'
     ]
   }, types)
 }
@@ -186,7 +191,12 @@ utils.handleMultiple = function handleMultiple (res) {
 utils.parseBody = function * parseBody (ctx, options, next) { /* eslint complexity: [2, 12] */
   var fields = typeof options.fields === 'string' ? options.fields : 'fields'
   var files = typeof options.files === 'string' ? options.files : 'files'
+  var custom = options.extendTypes.custom
 
+  if (custom && custom.length && ctx.request.is(custom)) {
+    yield * options.handler(ctx, options, next)
+    return yield * next
+  }
   if (options.detectJSON(ctx) || ctx.request.is(options.extendTypes.json)) {
     ctx.app.jsonStrict = typeof options.jsonStrict === 'boolean' ? options.jsonStrict : true
     ctx.request[fields] = yield ctx.request.json(options.jsonLimit)
