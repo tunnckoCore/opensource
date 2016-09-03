@@ -56,6 +56,7 @@ utils.defaultOptions = function defaultOptions (options) {
     bufferLimit: false,
     strict: true
   }, options)
+  options.formLimit = options.formLimit || options.urlencodedLimit
   options.extendTypes = types
   options.onerror = options.onЕrror || options.onerror
   options.onerror = typeof options.onerror === 'function' ? options.onerror : false
