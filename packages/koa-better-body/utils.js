@@ -62,9 +62,7 @@ utils.defaultOptions = function defaultOptions (options) {
   options.onerror = typeof options.onerror === 'function' ? options.onerror : false
 
   if (typeof options.handler !== 'function') {
-    options.handler = function handler (args) {
-
-    }
+    options.handler = function * noopHandler () {}
   }
   if (typeof options.detectJSON !== 'function') {
     options.detectJSON = function detectJSON () {
