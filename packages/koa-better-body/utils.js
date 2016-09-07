@@ -126,7 +126,7 @@ utils.isValid = function isValid (method) {
  */
 utils.setParsers = function setParsers (ctx) {
   utils.bodyParsers(ctx)
-  ctx.request.multipart = utils.multipart
+  ctx.request.multipart = utils.multipart.bind(ctx)
   return ctx
 }
 
@@ -140,7 +140,8 @@ utils.setParsers = function setParsers (ctx) {
  * @return {Function} thunk
  * @api private
  */
-utils.multipart = function multipart (options, ctx) {
+utils.multipart = function multipart (options) {
+  var ctx = this
   options = utils.defaultOptions(options)
 
   return function thunk (done) {
@@ -151,8 +152,8 @@ utils.multipart = function multipart (options, ctx) {
       : new utils.formidable.IncomingForm(options)
 
     form.on('error', done)
-    form.on('file', utils.handleMultiple(files))
-    form.on('field', utils.handleMultiple(fields))
+    form.on('file', utils.handleMultiples(files))
+    form.on('field', utils.handleMultiples(fields))
     form.on('end', function () {
       done(null, { fields: fields, files: files })
     })
@@ -168,7 +169,7 @@ utils.multipart = function multipart (options, ctx) {
  * @return {Function} event handler for formidable `file` and `field` events
  * @api private
  */
-utils.handleMultiple = function handleMultiple (res) {
+utils.handleMultiples = function handleMultiples (res) {
   return function handleFilesAndFields (name, value) {
     res[name] = res[name] ? [res[name]] : []
     res[name].push(value)
@@ -214,7 +215,7 @@ utils.parseBody = function * parseBody (ctx, options, next) { /* eslint complexi
     return yield * next
   }
   if (options.multipart && ctx.request.is(options.extendTypes.multipart)) {
-    var result = yield ctx.request.multipart(options, ctx)
+    var result = yield ctx.request.multipart(options)
     ctx.request[fields] = result.fields
     ctx.request[files] = result.files
     return yield * next
