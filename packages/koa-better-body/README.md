@@ -38,7 +38,7 @@ npm i koa-better-body --save
 const koaBetterBody = require('koa-better-body')
 ```
 
-### [koaBetterBody](index.js#L38)
+### [koaBetterBody](index.js#L40)
 > Robust body parser for [koa][]@1, also works for `koa@2` (with deprecations). Will also work for future `koa@3` with [koa-convert][].
 
 **Params**
@@ -83,6 +83,7 @@ Accepts JSON, [JSON API v1](http://jsonapi.org/), text, buffer, [csp-report](htt
 - `onerror` **{Function}**: Custom error handle, if throw an error, you can customize the response - `onerror(err, ctx)`.
 - `extendTypes` **{Object}**: Default accepting types can find on [utils.defaultTypes function](./utils.js). Allowing you to extend what your app can accept. By default works for JSON, [JSON API v1](http://jsonapi.org/), multipart, text, urlencoded and [csp-report](https://mathiasbynens.be/notes/csp-reports).
 - `IncomingForm` **{IncomingForm}**: Pass an instance of `formidable.IncomingForm` to be able to handle formidable events.
+- `handler` **{GeneratorFunction}**: Works with `options.extendTypes.custom` to handle custom types of content-type - `handler(ctx, options, next)`.
 
 ## A note about `strict` mode
 We are trying to follow standards. :cat2:
@@ -91,13 +92,13 @@ You can pass `strict:false`, but see [IETF HTTP/1.1 Message Semantics: Section 6
 
 ## Related
 You might also be interested in these packages:
-* [formidable](https://www.npmjs.com/package/formidable): A node.js module for parsing form data, especially file uploads. | [homepage](https://github.com/felixge/node-formidable)
-* [ip-filter](https://www.npmjs.com/package/ip-filter): Filters valid IPv4 or IPv6 against glob pattern, array, string and etc. If match… [more](https://www.npmjs.com/package/ip-filter) | [homepage](https://github.com/tunnckocore/ip-filter)
-* [koa-body-parsers](https://www.npmjs.com/package/koa-body-parsers): collection of koa body parsers | [homepage](https://github.com/koajs/body-parsers)
-* [koa-bodyparser](https://www.npmjs.com/package/koa-bodyparser): a body parser for koa | [homepage](https://github.com/koajs/body-parser)
-* [koa-ip-filter](https://www.npmjs.com/package/koa-ip-filter): koa middleware to filter request IPs or custom ID with glob patterns, array, string,… [more](https://www.npmjs.com/package/koa-ip-filter) | [homepage](https://github.com/tunnckocore/koa-ip-filter)
-* [koa](https://www.npmjs.com/package/koa): Koa web app framework | [homepage](https://github.com/koajs/koa)
-* [koala](https://www.npmjs.com/package/koala): Koa Framework Suite | [homepage](https://github.com/koajs/koala)
+- [formidable](https://www.npmjs.com/package/formidable): A node.js module for parsing form data, especially file uploads. | [homepage](https://github.com/felixge/node-formidable "A node.js module for parsing form data, especially file uploads.")
+- [ip-filter](https://www.npmjs.com/package/ip-filter): Filters valid IPv4 or IPv6 against glob pattern, array, string and etc. If match… [more](https://github.com/tunnckocore/ip-filter#readme) | [homepage](https://github.com/tunnckocore/ip-filter#readme "Filters valid IPv4 or IPv6 against glob pattern, array, string and etc. If match returns passed `ip`, otherwise null is returned. Have no strict mode to check no IP values.")
+- [koa-body-parsers](https://www.npmjs.com/package/koa-body-parsers): collection of koa body parsers | [homepage](https://github.com/koajs/body-parsers#readme "collection of koa body parsers")
+- [koa-bodyparser](https://www.npmjs.com/package/koa-bodyparser): a body parser for koa | [homepage](https://github.com/koajs/body-parser "a body parser for koa")
+- [koa-ip-filter](https://www.npmjs.com/package/koa-ip-filter): koa middleware to filter request IPs or custom ID with glob patterns, array, string… [more](https://github.com/tunnckocore/koa-ip-filter#readme) | [homepage](https://github.com/tunnckocore/koa-ip-filter#readme "koa middleware to filter request IPs or custom ID with glob patterns, array, string, regexp or matcher function. Support custom `403 Forbidden` message and custom ID.")
+- [koa](https://www.npmjs.com/package/koa): Koa web app framework | [homepage](https://github.com/koajs/koa#readme "Koa web app framework")
+- [koala](https://www.npmjs.com/package/koala): Koa Framework Suite | [homepage](https://github.com/koajs/koala#readme "Koa Framework Suite")
 
 ## Contributing
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/tunnckoCore/koa-better-body/issues/new).  
@@ -125,9 +126,9 @@ It will help a lot, thanks in advance! :yum:
 
 [bytes]: https://github.com/visionmedia/bytes.js
 [formidable]: https://github.com/felixge/node-formidable
-[koa]: https://github.com/koajs/koa
 [koa-body-parsers]: https://github.com/koajs/body-parsers
 [koa-convert]: https://github.com/gyson/koa-convert
+[koa]: https://github.com/koajs/koa
 [lazy-cache]: https://github.com/jonschlinkert/lazy-cache
 [raw-body]: https://github.com/stream-utils/raw-body
 
@@ -175,3 +176,4 @@ It will help a lot, thanks in advance! :yum:
 
 [new-message-url]: https://github.com/tunnckoCore/ama
 [new-message-img]: https://img.shields.io/badge/ask%20me-anything-green.svg
+
