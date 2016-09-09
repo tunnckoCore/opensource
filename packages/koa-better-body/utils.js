@@ -27,12 +27,44 @@ require = utils // eslint-disable-line no-undef, no-native-reassign, no-global-a
 require('extend-shallow', 'extend')
 require('formidable')
 require('koa-body-parsers', 'bodyParsers')
+require('querystring')
 
 /**
  * Restore `require`
  */
 
 require = fn // eslint-disable-line no-undef, no-native-reassign, no-global-assign
+
+/**
+ * > Patch querystring logic. By default uses node's
+ * built-in `querystring` module, otherwise that is
+ * provided from `opts.querystring`. Works well with
+ * the `qs` module. You can pass it like that
+ *
+ * **Example**
+ *
+ * ```js
+ * app.use(body({
+ *   querystring: require('qs')
+ * }))
+ * ```
+ *
+ * @param  {String} `str` querystring
+ * @param  {Object} `opts` loaded options
+ * @return {Object} parsed querystring object
+ * @api private
+ */
+utils.parseQs = function parseQs (str, opts) {
+  opts = utils.extend({
+    delimiter: '&',
+    decodeURIComponent: utils.querystring.unescape,
+    maxKeys: 1000
+  }, opts)
+
+  return opts.querystring
+    ? opts.querystring.parse(str, opts)
+    : utils.querystring.parse(str, opts.delimiter, '=', opts)
+}
 
 /**
  * > Default options that will be loaded. Pass `options` to overwrite them.
@@ -127,7 +159,13 @@ utils.isValid = function isValid (method) {
  * @api private
  */
 utils.setParsers = function setParsers (ctx, opts) {
-  ctx.app.querystring = opts.querystring || ctx.app.querystring
+  ctx.app.querystring = opts.querystring ||
+    opts.qs || // alias
+    ctx.app && ctx.app.querystring ||
+    ctx.app && ctx.app.qs || // alias
+    ctx.querystring ||
+    ctx.qs // alias
+
   utils.bodyParsers(ctx)
   ctx.request.multipart = utils.multipart.bind(ctx)
   return ctx
@@ -145,38 +183,36 @@ utils.setParsers = function setParsers (ctx, opts) {
  */
 utils.multipart = function multipart (options) {
   var ctx = this
-  options = utils.defaultOptions(options)
 
   return function thunk (done) {
+    var buff = ''
     var fields = {}
-    var files = {}
+    var files = []
     var form = options.IncomingForm instanceof utils.formidable.IncomingForm
       ? options.IncomingForm
       : new utils.formidable.IncomingForm(options)
 
     form.on('error', done)
-    form.on('file', utils.handleMultiples(files))
-    form.on('field', utils.handleMultiples(fields))
+    form.on('aborted', done)
+    form.on('file', function (name, value) {
+      files.push(value)
+      fields[name] = fields[name] || []
+      fields[name].push(value)
+    })
+    form.on('field', function (name, value) {
+      buff += name + '=' + value + '&'
+    })
     form.on('end', function () {
-      done(null, { fields: fields, files: files })
+      fields = buff && buff.length
+        ? utils.extend({}, utils.parseQs(buff.slice(0, -1), options), fields)
+        : fields
+
+      done(null, {
+        fields: fields,
+        files: files
+      })
     })
     form.parse(ctx.req)
-  }
-}
-
-/**
- * > Handles setting multiple values to same key, or multiple files.
- * For example input selects or forms for uploading multiple files.
- *
- * @param  {Object} `res` result object where will be written
- * @return {Function} event handler for formidable `file` and `field` events
- * @api private
- */
-utils.handleMultiples = function handleMultiples (res) {
-  return function handleFilesAndFields (name, value) {
-    res[name] = res[name] ? [res[name]] : []
-    res[name].push(value)
-    res[name] = res[name].length > 1 ? res[name] : res[name][0]
   }
 }
 
