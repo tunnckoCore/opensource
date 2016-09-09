@@ -12,7 +12,7 @@ var request = require('supertest')
 var test = require('mukla')
 var koa = require('koa')
 
-test('should accept extendTypes.custom foo/bar-x as text', function (done) {
+test('should accept opts.extendTypes.custom `foo/bar-x` as text', function (done) {
   var app = koa().use(betterBody({
     extendTypes: {
       custom: ['foo/bar-x']

@@ -126,8 +126,8 @@ utils.isValid = function isValid (method) {
  * @api private
  */
 utils.setParsers = function setParsers (ctx, opts) {
+  ctx.app.querystring = opts.querystring || ctx.app.querystring
   utils.bodyParsers(ctx)
-  ctx.querystring = ctx.querystring || opts.querystring
   ctx.request.multipart = utils.multipart.bind(ctx)
   return ctx
 }
