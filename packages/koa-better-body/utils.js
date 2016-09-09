@@ -213,7 +213,10 @@ utils.parseBody = function * parseBody (ctx, options, next) { /* eslint complexi
     return yield * next
   }
   if (ctx.request.is(options.extendTypes.text)) {
-    ctx.request.body = yield ctx.request.text(options.textLimit)
+    var limit = options.textLimit
+    var body = yield ctx.request.text(limit)
+
+    ctx.request.body = body
     return yield * next
   }
   if (options.multipart && ctx.request.is(options.extendTypes.multipart)) {
