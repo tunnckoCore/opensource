@@ -58,7 +58,7 @@ The following items are a pre-requisite for contributing to any project. Avoid c
 
 - **Review unit tests** - one of the best ways to get familiarized with a project is through its unit tests. Of course, this depends on the type of project, complexity, test coverage, and so on. But when applicable, test are often a good source of insight.
 - **Get familiarized with the code** - If the codebase is small, and you're familiar with the language, take a moment to review the code to see if you find anything that can be improved. If the codebase is large, you might be able to provide domain expertise or fixes for specific areas.
-- **Ask questions** - Depending the project type and size, it might be good to start by searching google to find anwers to your questions. Then, check to see if the project uses [gitter]() or has a [slack]() channel, or something similar. Also visit [stackoverflow]() and do a search to see if others have already asked the same question. As a last resort, create an issue on the project's GitHub repository.
+- **Ask questions** - Depending the project type and size, it might be good to start by searching google to find anwers to your questions. Then, check to see if the project uses [gitter](https://gitter.im) or has a [slack](https://slack.com) channel, or something similar. Also visit [stackoverflow](https://stackoverflow.com) and do a search to see if others have already asked the same question. As a last resort, create an issue on the project's GitHub repository.
 
 
 ## Details of Highly Effective Bug Reports
