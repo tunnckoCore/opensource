@@ -60,10 +60,11 @@ utils.parseQs = function parseQs (str, opts) {
     decodeURIComponent: utils.querystring.unescape,
     maxKeys: 1000
   }, opts)
+  var sep = opts.delimiter || opts.sep
 
   return opts.querystring
     ? opts.querystring.parse(str, opts)
-    : utils.querystring.parse(str, opts.delimiter, '=', opts)
+    : utils.querystring.parse(str, sep, '=', opts)
 }
 
 /**
