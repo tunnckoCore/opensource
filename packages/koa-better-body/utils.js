@@ -121,11 +121,13 @@ utils.isValid = function isValid (method) {
  * also adds the formidable as multipart parser.
  *
  * @param  {Object} `ctx` koa context
+ * @param  {Object} `opts` default options
  * @return {Object} `ctx` koa context
  * @api private
  */
-utils.setParsers = function setParsers (ctx) {
+utils.setParsers = function setParsers (ctx, opts) {
   utils.bodyParsers(ctx)
+  ctx.querystring = ctx.querystring || opts.querystring
   ctx.request.multipart = utils.multipart.bind(ctx)
   return ctx
 }

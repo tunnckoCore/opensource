@@ -24,8 +24,8 @@ var utils = require('./utils')
  *   .use(body())
  *   .use(function * () {
  *     console.log(this.request.body)    // if buffer or text
- *     console.log(this.request.fields)  // if json
  *     console.log(this.request.files)   // if multipart or urlencoded
+ *     console.log(this.request.fields)  // if json
  *   })
  *   .listen(8080, function () {
  *     console.log('koa server start listening on port 8080')
@@ -46,7 +46,7 @@ module.exports = function koaBetterBody (options) {
     }
 
     try {
-      utils.setParsers(this)
+      utils.setParsers(this, options)
       yield * utils.parseBody(this, options, next)
     } catch (err) {
       if (!options.onerror) throw err
