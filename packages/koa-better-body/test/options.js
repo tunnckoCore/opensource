@@ -111,13 +111,13 @@ test('should parse bodies using custom `opts.querystring` module', function (don
   app.use(function * () {
     test.strictEqual(typeof this.request.fields, 'object')
     test.deepEqual(this.request.fields, { a: { b: { c: '1' } }, c: '2' })
-    this.body = '33okk33'
+    this.body = JSON.stringify(this.request.fields)
   })
   request(app.callback())
     .post('/')
     .type('application/x-www-form-urlencoded')
     .send('a[b][c]=1&c=2')
-    .expect(200)
-    // .expect(/"a":"b"/)
-    .expect(/33okk33/, done)
+    .expect(/{"a":{"b":{"c":"1"/)
+    .expect(/"c":"2"}/)
+    .expect(200, done)
 })
