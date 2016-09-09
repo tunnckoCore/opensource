@@ -54,6 +54,7 @@ utils.defaultOptions = function defaultOptions (options) {
     jsonStrict: true,
     detectJSON: false,
     bufferLimit: false,
+    buffer: false,
     strict: true
   }, options)
   options.formLimit = options.formLimit || options.urlencodedLimit
