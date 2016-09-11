@@ -85,6 +85,12 @@ See GitHub's guide to [Creating and highlighting code blocks][gfm] for more deta
 
 ## Submitting a pull requests
 
+**Working on your first Pull Request?**
+
+You can learn how from this *free* video series ["How to Contribute to an Open Source Project on GitHub"][howto-oss-github]
+
+**Details**
+
 - Non-trivial changes are often best discussed in an issue first, to prevent you from doing unnecessary work.
 - For ambitious tasks, you should try to get your work in front of the community for feedback as soon as possible. Open a pull request as soon as you have done the minimum needed to demonstrate your idea. At this early stage, don't worry about making things perfect, or 100% complete. Add a [WIP] prefix to the title, and describe what you still need to do. This lets reviewers know not to nit-pick small details or point out improvements you already know you need to make.
 - New features should be accompanied with tests and documentation.
@@ -124,6 +130,8 @@ This document is adapted from a few Contributing Guides. It is more general and 
 - [AVA's Contributing Guide][avajs]
 - [Amending a commit Guide][amending]
 - [Creating and highlighting code blocks][gfm]
+- [Contributing to Open Source (GitHub)][os-on-github]
+- [How to contribute to Open Source Project (Egghead.io videos)][howto-oss-github]
 
 ### Authors
 
@@ -135,10 +143,12 @@ This document is adapted from a few Contributing Guides. It is more general and 
 ## License
 
 Released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).  
-Copyright © 2016, [Charlike Mike Reagent](https://twitter.com/jonschlinkert).
+Copyright © 2016, [Charlike Mike Reagent](http://www.tunnckocore.tk).
 
 [gfm]: https://help.github.com/articles/creating-and-highlighting-code-blocks/
 [avajs]: https://github.com/avajs/ava/blob/master/contributing.md
 [idiomatic]: https://github.com/jonschlinkert/idiomatic-contributing
 [awesomelist]: https://github.com/jonschlinkert/awesome-contributing
 [amending]: https://github.com/RichardLitt/docs/blob/master/amending-a-commit-guide.md
+[os-on-github]: https://guides.github.com/activities/contributing-to-open-source/
+[howto-oss-github]: http://j.mp/how-to-contrib-on-github
