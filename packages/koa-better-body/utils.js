@@ -55,16 +55,9 @@ require = fn // eslint-disable-line no-undef, no-native-reassign, no-global-assi
  * @api private
  */
 utils.parseQs = function parseQs (str, opts) {
-  opts = utils.extend({
-    delimiter: '&',
-    decodeURIComponent: utils.querystring.unescape,
-    maxKeys: 1000
-  }, opts)
-  var sep = opts.delimiter || opts.sep
-
   return opts.querystring
     ? opts.querystring.parse(str, opts)
-    : utils.querystring.parse(str, sep, '=', opts)
+    : utils.querystring.parse(str, opts.delimiter, '=', opts)
 }
 
 /**
@@ -88,12 +81,24 @@ utils.defaultOptions = function defaultOptions (options) {
     detectJSON: false,
     bufferLimit: false,
     buffer: false,
-    strict: true
+    strict: true,
+
+    // query string `parse` options
+    delimiter: '&',
+    decodeURIComponent: utils.querystring.unescape,
+    maxKeys: 1000
   }, options)
+
+  options.delimiter = options.sep || options.delimiter
   options.formLimit = options.formLimit || options.urlencodedLimit
   options.extendTypes = types
   options.onerror = options.onЕrror || options.onerror
-  options.onerror = typeof options.onerror === 'function' ? options.onerror : false
+  options.onerror = typeof options.onerror === 'function'
+    ? options.onerror
+    : false
+  options.delimiter = typeof options.delimiter === 'string'
+    ? options.delimiter
+    : '&'
 
   if (typeof options.handler !== 'function') {
     options.handler = function * noopHandler () {}
@@ -201,7 +206,7 @@ utils.multipart = function multipart (options) {
       fields[name].push(value)
     })
     form.on('field', function (name, value) {
-      buff += name + '=' + value + '&'
+      buff += name + '=' + value + options.delimiter
     })
     form.on('end', function () {
       fields = buff && buff.length
