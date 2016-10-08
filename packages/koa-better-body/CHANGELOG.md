@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/tunnckocore/koa-better-body/compare/v3.0.0...v3.0.1) (2016-10-08)
+
+
+### Bug Fixes
+
+* **package.json:** update npm scripts, remove some devDeps ([b5265d8](https://github.com/tunnckocore/koa-better-body/commit/b5265d8))
+
+
+
 <a name="3.0.0"></a>
 ## [3.0.0](https://github.com/tunnckocore/koa-better-body/compare/v2.0.1...v3.0.0) (2016-09-12)
 
