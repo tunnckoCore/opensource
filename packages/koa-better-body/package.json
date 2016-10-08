@@ -103,13 +103,16 @@
       ]
     },
     "reflinks": [
-      "koa",
-      "koa-convert",
-      "koa-body-parsers",
-      "raw-body",
       "bytes",
       "formidable",
-      "lazy-cache"
+      "koa",
+      "koa-body-parsers",
+      "koa-convert",
+      "lazy-cache",
+      "raw-body",
+      "koa-router",
+      "micromatch",
+      "qs"
     ],
     "lint": {
       "reflinks": true
