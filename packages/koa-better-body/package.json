@@ -12,13 +12,12 @@
     "test": "npm run coverage",
     "posttest": "npm run lint:coverage",
     "coverage": "nyc node test.js",
-    "lint:coverage": "nyc check-coverage --lines 100",
+    "lint:coverage": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
     "prerelease": "npm test",
-    "release": "standard-version --sign",
-    "commitmsg": "validate-commit-msg",
-    "commit": "git add --all",
-    "postcommit": "git-cz"
+    "release": "standard-version --sign --no-verify",
+    "precommit": "git add --all",
+    "commit": "git-cz"
   },
   "dependencies": {
     "extend-shallow": "^2.0.1",
@@ -36,10 +35,10 @@
     "mukla": "^0.4.1",
     "nyc": "^8.1.0",
     "qs": "^6.2.1",
+    "pre-commit": "^1.1.3",
     "standard": "^8.0.0",
     "standard-version": "^2.4.0",
-    "supertest": "^2.0.0",
-    "validate-commit-msg": "^2.8.0"
+    "supertest": "^2.0.0"
   },
   "files": [
     "index.js",
