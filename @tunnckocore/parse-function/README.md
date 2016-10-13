@@ -99,7 +99,7 @@ But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) 
 [codeclimate-img]: https://img.shields.io/codeclimate/github/tunnckoCore/parse-function.svg
 
 [travis-url]: https://travis-ci.org/tunnckoCore/parse-function
-[travis-img]: https://img.shields.io/travis/tunnckoCore/parse-function.svg
+[travis-img]: https://img.shields.io/travis/tunnckoCore/parse-function/master.svg
 
 [coveralls-url]: https://coveralls.io/r/tunnckoCore/parse-function
 [coveralls-img]: https://img.shields.io/coveralls/tunnckoCore/parse-function.svg
