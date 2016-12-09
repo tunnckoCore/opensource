@@ -112,7 +112,7 @@ that can be useful to determine what the function is - arrow, regular, async/awa
 * `isNamed` **{Boolean}**: `true` if function has name, or `false` if is anonymous
 * `isGenerator` **{Boolean}**: `true` if the function is ES2015 generator function
 * `isAnonymous` **{Boolean}**: `true` if the function don't have name
-* `orig` **{String}**: string representation of the passed `code` argument
+* `value` **{String}**: string representation of the passed `code` argument
 
 ## Related
 - [always-done](https://www.npmjs.com/package/always-done): Handle completion and errors with elegance! Support for streams, callbacks, promises, child processes, async/await and sync functions. A drop-in replacement… [more](https://github.com/hybridables/always-done#readme) | [homepage](https://github.com/hybridables/always-done#readme "Handle completion and errors with elegance! Support for streams, callbacks, promises, child processes, async/await and sync functions. A drop-in replacement for [async-done][] - pass 100% of its tests plus more")
