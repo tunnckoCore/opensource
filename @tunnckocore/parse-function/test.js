@@ -160,7 +160,7 @@ function factory (parserName, parseFn) {
       const value = actual.orig.replace('____foo$1o__i3n8v$al4i1d____', '')
 
       test(`#${testsCount++} - ${parserName} - ${value}`, (done) => {
-        test.strictEqual(actual.valid, true)
+        test.strictEqual(actual.isValid, true)
         test.strictEqual(actual.name, expect.name)
         test.strictEqual(actual.body, expect.body)
         test.strictEqual(actual.params, expect.params)
@@ -175,7 +175,7 @@ function factory (parserName, parseFn) {
   test(`#${testsCount++} - ${parserName} - should return object with default values when invalid`, (done) => {
     const actual = parseFn(123456)
 
-    test.strictEqual(actual.valid, false)
+    test.strictEqual(actual.isValid, false)
     test.strictEqual(actual.orig, '')
     test.strictEqual(actual.name, 'anonymous')
     test.strictEqual(actual.body, '')
@@ -184,10 +184,10 @@ function factory (parserName, parseFn) {
     done()
   })
 
-  test(`#${testsCount++} - ${parserName} - should have '.valid' and few '.is*'' hidden properties`, (done) => {
+  test(`#${testsCount++} - ${parserName} - should have '.isValid' and few '.is*'' hidden properties`, (done) => {
     const actual = parseFn([1, 2, 3])
 
-    test.strictEqual(actual.valid, false)
+    test.strictEqual(actual.isValid, false)
     test.strictEqual(actual.isArrow, false)
     test.strictEqual(actual.isAsync, false)
     test.strictEqual(actual.isNamed, false)

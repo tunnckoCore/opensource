@@ -33,6 +33,7 @@ const define = require('define-property')
  * console.log(parsed.params) // => 'e, f, rest'
  *
  * // some useful `is*` properties
+ * console.log(parsed.isValid) // => true
  * console.log(parsed.isNamed) // => true
  * console.log(parsed.isArrow) // => false
  * console.log(parsed.isAnonymous) // => false
@@ -49,6 +50,7 @@ const define = require('define-property')
  * console.log(result.body) // => '1 * foo + bar'
  * console.log(result.args) // => [ 'foo', 'bar' ]
  *
+ * console.log(result.isValid) // => true
  * console.log(result.isArrow) // => true
  * console.log(result.isNamed) // => false
  * console.log(result.isAnonymous) // => true
@@ -57,14 +59,14 @@ const define = require('define-property')
  * @param  {Function|String} `code` function to be parsed, it can be string too
  * @param  {Object} `options` optional, passed directly to [babylon][] or [acorn][]
  * @param  {Function} `options.parse` custom parse function passed with `code` and `options`
- * @return {Object} always returns an object, check `result.valid`, see [result section](#result)
+ * @return {Object} always returns an object, see [result section](#result)
  * @api public
  */
 
 module.exports = function parseFunction (code, options) {
   let result = getDefaults(code)
 
-  if (!result.valid) {
+  if (!result.isValid) {
     return result
   }
   options = options && typeof options === 'object' ? options : {}
@@ -135,7 +137,7 @@ function getDefaults (code) {
 function hiddens (result, code) {
   define(result, 'defaults', {})
   define(result, 'orig', code || '')
-  define(result, 'valid', code && code.length > 0)
+  define(result, 'isValid', code && code.length > 0)
   define(result, 'isArrow', false)
   define(result, 'isAsync', false)
   define(result, 'isNamed', false)
