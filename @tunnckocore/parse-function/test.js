@@ -157,7 +157,7 @@ function factory (parserName, parseFn) {
     values.forEach((code, i) => {
       const actual = parseFn(code)
       const expect = expected[key][i]
-      const value = actual.orig.replace('____foo$1o__i3n8v$al4i1d____', '')
+      const value = actual.value.replace('____foo$1o__i3n8v$al4i1d____', '')
 
       test(`#${testsCount++} - ${parserName} - ${value}`, (done) => {
         test.strictEqual(actual.isValid, true)
@@ -166,7 +166,7 @@ function factory (parserName, parseFn) {
         test.strictEqual(actual.params, expect.params)
         test.deepEqual(actual.args, expect.args)
         test.deepEqual(actual.defaults, expect.defaults)
-        test.ok(actual.orig)
+        test.ok(actual.value)
         done()
       })
     })
@@ -176,7 +176,7 @@ function factory (parserName, parseFn) {
     const actual = parseFn(123456)
 
     test.strictEqual(actual.isValid, false)
-    test.strictEqual(actual.orig, '')
+    test.strictEqual(actual.value, '')
     test.strictEqual(actual.name, 'anonymous')
     test.strictEqual(actual.body, '')
     test.strictEqual(actual.params, '')

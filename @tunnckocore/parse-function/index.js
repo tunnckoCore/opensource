@@ -74,7 +74,7 @@ module.exports = function parseFunction (code, options) {
     ? options.parse
     : babylon.parse
 
-  const ast = options.parse(result.orig, options)
+  const ast = options.parse(result.value, options)
   const body = ast.program && ast.program.body ? ast.program.body : ast.body
 
   body.forEach((node) => {
@@ -136,7 +136,7 @@ function getDefaults (code) {
 
 function hiddens (result, code) {
   define(result, 'defaults', {})
-  define(result, 'orig', code || '')
+  define(result, 'value', code || '')
   define(result, 'isValid', code && code.length > 0)
   define(result, 'isArrow', false)
   define(result, 'isAsync', false)
@@ -229,7 +229,7 @@ function visitParams (node, result) {
 
       result.args.push(name)
       result.defaults[name] = param.right
-        ? result.orig.slice(param.right.start, param.right.end)
+        ? result.value.slice(param.right.start, param.right.end)
         : undefined
     })
     result.params = result.args.join(', ')
@@ -253,7 +253,7 @@ function visitParams (node, result) {
  */
 
 function fixBody (node, result) {
-  result.body = result.orig.slice(node.body.start, node.body.end)
+  result.body = result.value.slice(node.body.start, node.body.end)
 
   const openCurly = result.body.charCodeAt(0) === 123
   const closeCurly = result.body.charCodeAt(result.body.length - 1) === 125
