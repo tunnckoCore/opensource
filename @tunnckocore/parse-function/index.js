@@ -14,7 +14,7 @@ const define = require('define-property')
  * > Parse a function or string that contains a function,
  * using [babylon][] or [acorn][] parsers.
  * By default it uses `babylon`, but you can pass custom one
- * through `options.parser` option - for example pass `.parse: acorn.parse`
+ * through `options.parse` option - for example pass `.parse: acorn.parse`
  * to force use the `acorn` parser instead.
  *
  * **Example**
@@ -56,7 +56,7 @@ const define = require('define-property')
  *
  * @param  {Function|String} `code` function to be parsed, it can be string too
  * @param  {Object} `options` optional, passed directly to [babylon][] or [acorn][];
- *                            you can also pass custom `options.parser` parser
+ *                            you can also pass custom `options.parse` parser
  * @return {Object} always returns an object, check `result.valid`
  * @api public
  */
@@ -68,11 +68,11 @@ module.exports = function parseFunction (code, options) {
     return result
   }
   options = options && typeof options === 'object' ? options : {}
-  options.parser = typeof options.parser === 'function'
-    ? options.parser
+  options.parse = typeof options.parse === 'function'
+    ? options.parse
     : babylon.parse
 
-  const ast = options.parser(result.orig, options)
+  const ast = options.parse(result.orig, options)
   const body = ast.program && ast.program.body ? ast.program.body : ast.body
 
   body.forEach((node) => {

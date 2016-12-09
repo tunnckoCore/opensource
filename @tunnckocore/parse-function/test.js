@@ -249,14 +249,14 @@ factory('babylon', function (code) {
 
 factory('acorn', function (code) {
   return parseFunction(code, {
-    parser: acorn.parse,
+    parse: acorn.parse,
     ecmaVersion: 2017
   })
 })
 
 factory('acorn.parse_dammit', function (code) {
   return parseFunction(code, {
-    parser: require('acorn/dist/acorn_loose').parse_dammit,
+    parse: require('acorn/dist/acorn_loose').parse_dammit,
     ecmaVersion: 2017
   })
 })
