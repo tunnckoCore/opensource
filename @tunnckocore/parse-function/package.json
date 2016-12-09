@@ -94,11 +94,13 @@
       "list": [
         "always-done",
         "minibase",
-        "try-catch-core"
+        "try-catch-core",
+        "espree",
+        "babylon",
+        "acorn",
+        "parse-semver",
+        "each-promise"
       ]
-    },
-    "lint": {
-      "reflinks": true
     },
     "reflinks": [
       "always-done",
@@ -112,6 +114,9 @@
       "verb-generate-readme",
       "acorn",
       "babylon"
-    ]
+    ],
+    "lint": {
+      "reflinks": true
+    }
   }
 }
