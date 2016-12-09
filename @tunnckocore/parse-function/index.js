@@ -55,9 +55,9 @@ const define = require('define-property')
  * ```
  *
  * @param  {Function|String} `code` function to be parsed, it can be string too
- * @param  {Object} `options` optional, passed directly to [babylon][] or [acorn][];
- *                            you can also pass custom `options.parse` parser
- * @return {Object} always returns an object, check `result.valid`
+ * @param  {Object} `options` optional, passed directly to [babylon][] or [acorn][]
+ * @param  {Function} `options.parse` custom parse function passed with `code` and `options`
+ * @return {Object} always returns an object, check `result.valid`, see [result section](#result)
  * @api public
  */
 
