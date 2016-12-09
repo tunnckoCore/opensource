@@ -46,7 +46,7 @@ const parseFunction = require('parse-function')
 
 ## API
 
-### [parseFunction](index.js#L64)
+### [parseFunction](index.js#L66)
 > Parse a function or string that contains a function, using [babylon][] or [acorn][] parsers. By default it uses `babylon`, but you can pass custom one through `options.parse` option - for example pass `.parse: acorn.parse` to force use the `acorn` parser instead.
 
 **Params**
@@ -54,7 +54,7 @@ const parseFunction = require('parse-function')
 * `code` **{Function|String}**: function to be parsed, it can be string too    
 * `options` **{Object}**: optional, passed directly to [babylon][] or [acorn][]    
 * `options.parse` **{Function}**: custom parse function passed with `code` and `options`    
-* `returns` **{Object}**: always returns an object, check `result.valid`, see [result section](#result)  
+* `returns` **{Object}**: always returns an object, see [result section](#result)  
 
 **Example**
 
@@ -72,6 +72,7 @@ console.log(parsed.args) // => [ 'e', 'f', 'rest' ]
 console.log(parsed.params) // => 'e, f, rest'
 
 // some useful `is*` properties
+console.log(parsed.isValid) // => true
 console.log(parsed.isNamed) // => true
 console.log(parsed.isArrow) // => false
 console.log(parsed.isAnonymous) // => false
@@ -88,6 +89,7 @@ console.log(result.name) // => 'anonymous'
 console.log(result.body) // => '1 * foo + bar'
 console.log(result.args) // => [ 'foo', 'bar' ]
 
+console.log(result.isValid) // => true
 console.log(result.isArrow) // => true
 console.log(result.isNamed) // => false
 console.log(result.isAnonymous) // => true
@@ -104,7 +106,7 @@ that can be useful to determine what the function is - arrow, regular, async/awa
 * `params` **{String}**: comma-separated list representing the `args`
 * `defaults` **{Object}**: key/value pairs, useful when use ES2015 default arguments
 * `body` **{String}**: actual body of the function, respects trailing newlines and whitespaces
-* `valid` **{Boolean}**: is the given value valid or not, that's because it never throws!
+* `isValid` **{Boolean}**: is the given value valid or not, that's because it never throws!
 * `isAsync` **{Boolean}**: `true` if function is ES2015 async/await function
 * `isArrow` **{Boolean}**: `true` if the function is arrow function
 * `isNamed` **{Boolean}**: `true` if function has name, or `false` if is anonymous
