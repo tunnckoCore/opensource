@@ -1,244 +1,262 @@
 /*!
  * parse-function <https://github.com/tunnckoCore/parse-function>
  *
- * Copyright (c) 2015-2016 Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)
+ * Copyright (c) Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)
  * Released under the MIT license.
  */
 
+/* jshint asi:true */
+
 'use strict'
 
-var test = require('assertit')
-var parseFunction = require('./index')
-var forIn = require('for-in')
-var semver = require('semver')
+const test = require('mukla')
+const acorn = require('acorn')
+const forIn = require('for-in')
+const clone = require('clone-deep')
+const parseFunction = require('./index')
 
-var actuals = {
+const actuals = {
   regulars: [
-    'function (a = {foo: "ba)r", baz: 123}, cb) {return a * 3}',
-    'function (b, callback) {callback(null, b + 3)}',
+    'function (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3}',
+    'function (b, callback, ...restArgs) {callback(null, b + 3)}',
     'function (c) {return c * 3}',
-    'function () {return 321}',
+    'function (...restArgs) {return 321}',
     'function () {}'
   ],
   named: [
-    'function named (a = {foo: "ba)r", baz: 123}, cb) {return a * 3}',
-    'function named (b, callback) {callback(null, b + 3)}',
-    'function named (c) {return c * 3}',
-    'function named () {return 321}',
-    'function named () {}'
+    'function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3}',
+    'function namedFn (b, callback, ...restArgs) {callback(null, b + 3)}',
+    'function namedFn (c) {return c * 3}',
+    'function namedFn (...restArgs) {return 321}',
+    'function namedFn () {}'
   ],
   arrows: [
-    '(foo = {done: (x) => console.log({ value: x })}, bar) => {return foo.done}',
-    '(z, cb) => {cb(null, z + 3)}',
+    '(a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3}',
+    '(b, callback, ...restArgs) => {callback(null, b + 3)}',
     '(c) => {return c * 3}',
-    '() => {return 456}',
+    '(...restArgs) => {return 321}',
     '() => {}',
     '(a) => a * 3 * a',
-    'd => d * 3 * d',
-    'e => {return e * 3 * e}',
+    'd => d * 355 * d',
+    'e => {return e + 5235 / e}',
     '(a, b) => a + 3 + b',
-    '(x, y) => console.log({ value: x * y })'
+    '(x, y, ...restArgs) => console.log({ value: x * y })'
   ]
 }
 
-var expected = {
-  regulars: [{
-    name: 'anonymous',
-    params: 'a, cb',
-    args: ['a', 'cb'],
-    body: 'return a * 3',
-    defaults: {a: '{foo: "ba)r", baz: 123}', cb: undefined},
-    value: 'function (a = {foo: "ba)r", baz: 123}, cb) {return a * 3}'
-  }, {
-    name: 'anonymous',
-    params: 'b, callback',
-    args: ['b', 'callback'],
-    body: 'callback(null, b + 3)',
-    defaults: {b: undefined, callback: undefined},
-    value: 'function (b, callback) {callback(null, b + 3)}'
-  }, {
-    name: 'anonymous',
-    params: 'c',
-    args: ['c'],
-    body: 'return c * 3',
-    defaults: {c: undefined},
-    value: 'function (c) {return c * 3}'
-  }, {
-    name: 'anonymous',
-    params: '',
-    args: [],
-    body: 'return 321',
-    defaults: {},
-    value: 'function () {return 321}'
-  }, {
-    name: 'anonymous',
-    params: '',
-    args: [],
-    body: '',
-    defaults: {},
-    value: 'function () {}'
-  }],
-  arrows: [{
-    name: 'anonymous',
-    params: 'foo, bar',
-    args: ['foo', 'bar'],
-    body: 'return foo.done',
-    defaults: {foo: '{done: (x) => console.log({ value: x })}', bar: undefined},
-    value: '(foo = {done: (x) => console.log({ value: x })}, bar) => {return foo.done}'
-  }, {
-    name: 'anonymous',
-    params: 'z, cb',
-    args: ['z', 'cb'],
-    body: 'cb(null, z + 3)',
-    defaults: {z: undefined, cb: undefined},
-    value: '(z, cb) => {cb(null, z + 3)}'
-  }, {
-    name: 'anonymous',
-    params: 'c',
-    args: ['c'],
-    body: 'return c * 3',
-    defaults: {c: undefined},
-    value: '(c) => {return c * 3}'
-  }, {
-    name: 'anonymous',
-    params: '',
-    args: [],
-    body: 'return 456',
-    defaults: {},
-    value: '() => {return 456}'
-  }, {
-    name: 'anonymous',
-    params: '',
-    args: [],
-    body: '',
-    defaults: {},
-    value: '() => {}'
-  }, {
-    name: 'anonymous',
-    params: 'a',
-    args: ['a'],
-    body: 'a * 3 * a',
-    defaults: {a: undefined},
-    value: '(a) => a * 3 * a'
-  }, {
-    name: 'anonymous',
-    params: 'd',
-    args: ['d'],
-    body: 'd * 3 * d',
-    defaults: {d: undefined},
-    value: 'd => d * 3 * d'
-  }, {
-    name: 'anonymous',
-    params: 'e',
-    args: ['e'],
-    body: 'return e * 3 * e',
-    defaults: {e: undefined},
-    value: 'e => {return e * 3 * e}'
-  }, {
-    name: 'anonymous',
-    params: 'a, b',
-    args: ['a', 'b'],
-    body: 'a + 3 + b',
-    defaults: {a: undefined, b: undefined},
-    value: '(a, b) => a + 3 + b'
-  }, {
-    name: 'anonymous',
-    params: 'x, y',
-    args: ['x', 'y'],
-    body: 'console.log({ value: x * y })',
-    defaults: {x: undefined, y: undefined},
-    value: '(x, y) => console.log({ value: x * y })'
-  }]
+/**
+ * Merge all into one
+ * and prepend `async` keyword
+ * before each function
+ */
+
+actuals.asyncs = actuals.regulars
+  .concat(actuals.named)
+  .concat(actuals.arrows)
+  .map((item) => {
+    return `async ${item}`
+  })
+
+const regulars = [{
+  name: 'anonymous',
+  params: 'a, cb, restArgs',
+  args: ['a', 'cb', 'restArgs'],
+  body: 'return a * 3',
+  defaults: { a: '{foo: "ba)r", baz: 123}', cb: undefined, restArgs: undefined }
+}, {
+  name: 'anonymous',
+  params: 'b, callback, restArgs',
+  args: ['b', 'callback', 'restArgs'],
+  body: 'callback(null, b + 3)',
+  defaults: { b: undefined, callback: undefined, restArgs: undefined }
+}, {
+  name: 'anonymous',
+  params: 'c',
+  args: ['c'],
+  body: 'return c * 3',
+  defaults: { c: undefined }
+}, {
+  name: 'anonymous',
+  params: 'restArgs',
+  args: ['restArgs'],
+  body: 'return 321',
+  defaults: { restArgs: undefined }
+}, {
+  name: 'anonymous',
+  params: '',
+  args: [],
+  body: '',
+  defaults: {}
+}]
+
+/**
+ * All of the regular functions
+ * variants plus few more
+ */
+
+const arrows = clone(regulars).concat([{
+  name: 'anonymous',
+  params: 'a',
+  args: ['a'],
+  body: 'a * 3 * a',
+  defaults: { a: undefined }
+}, {
+  name: 'anonymous',
+  params: 'd',
+  args: ['d'],
+  body: 'd * 355 * d',
+  defaults: { d: undefined }
+}, {
+  name: 'anonymous',
+  params: 'e',
+  args: ['e'],
+  body: 'return e + 5235 / e',
+  defaults: { e: undefined }
+}, {
+  name: 'anonymous',
+  params: 'a, b',
+  args: ['a', 'b'],
+  body: 'a + 3 + b',
+  defaults: { a: undefined, b: undefined }
+}, {
+  name: 'anonymous',
+  params: 'x, y, restArgs',
+  args: ['x', 'y', 'restArgs'],
+  body: 'console.log({ value: x * y })',
+  defaults: { x: undefined, y: undefined, restArgs: undefined }
+}])
+
+/**
+ * All of the regulars, but
+ * with different name
+ */
+
+const named = clone(regulars).map((item) => {
+  item.name = 'namedFn'
+  return item
+})
+
+const expected = {
+  regulars: regulars,
+  named: named,
+  arrows: arrows,
+  asyncs: regulars.concat(named).concat(arrows)
 }
 
-forIn(actuals, function (values, key) {
-  test(key, function () {
-    values.forEach(function (val, i) {
-      var actual = parseFunction(val)
-      var expects = expected[key === 'named' ? 'regulars' : key][i]
-      if (key === 'named') {
-        expects.name = 'named'
-      }
+let testsCount = 1
 
-      test(actual.value.replace(/\n/g, '\\n'), function (done) {
+/**
+ * Factory for DRY, we run all tests
+ * over two available parsers - one
+ * is the default `babylon`, second is
+ * the `acorn.parse` method.
+ */
+
+function factory (parserName, parseFn) {
+  forIn(actuals, (values, key) => {
+    values.forEach((code, i) => {
+      const actual = parseFn(code)
+      const expect = expected[key][i]
+      const value = actual.orig.replace('____foo$1o__i3n8v$al4i1d____', '')
+
+      test(`#${testsCount++} - ${parserName} - ${value}`, (done) => {
         test.strictEqual(actual.valid, true)
-        test.strictEqual(actual.invalid, false)
-        test.strictEqual(actual.name, expects.name)
-        test.strictEqual(actual.params, expects.params)
-        test.strictEqual(actual.parameters, expects.params)
-        test.deepEqual(actual.args, expects.args)
-        test.deepEqual(actual.arguments, expects.args)
-        test.deepEqual(actual.defaults, expects.defaults)
-        test.strictEqual(actual.body, expects.body)
+        test.strictEqual(actual.name, expect.name)
+        test.strictEqual(actual.body, expect.body)
+        test.strictEqual(actual.params, expect.params)
+        test.deepEqual(actual.args, expect.args)
+        test.deepEqual(actual.defaults, expect.defaults)
         test.ok(actual.orig)
-        test.ok(actual.value)
-        test.ok(actual.value.length)
         done()
       })
     })
   })
-})
 
-test('should return object with default values when invalid (not a function/string)', function (done) {
-  var actual = parseFunction(123456)
+  test(`#${testsCount++} - ${parserName} - should return object with default values when invalid`, (done) => {
+    const actual = parseFn(123456)
 
-  test.strictEqual(actual.valid, false)
-  test.strictEqual(actual.invalid, true)
-  test.strictEqual(actual.orig, 123456)
-  test.strictEqual(actual.value, '')
-  test.strictEqual(actual.value.length, 0)
-  test.strictEqual(actual.name, 'anonymous')
-  test.strictEqual(actual.body, '')
-  test.strictEqual(actual.params, '')
-  test.strictEqual(actual.parameters, '')
-  test.deepEqual(actual.args, [])
-  test.deepEqual(actual.arguments, [])
-  done()
-})
+    test.strictEqual(actual.valid, false)
+    test.strictEqual(actual.orig, '')
+    test.strictEqual(actual.name, 'anonymous')
+    test.strictEqual(actual.body, '')
+    test.strictEqual(actual.params, '')
+    test.deepEqual(actual.args, [])
+    done()
+  })
 
-test('should have `.valid/.invalid` hidden properties', function (done) {
-  var actual = parseFunction([1, 2, 3])
+  test(`#${testsCount++} - ${parserName} - should have '.valid' and few '.is*'' hidden properties`, (done) => {
+    const actual = parseFn([1, 2, 3])
 
-  test.strictEqual(actual.valid, false)
-  test.strictEqual(actual.invalid, true)
-  test.strictEqual(actual.value, '')
-  test.strictEqual(actual.value.length, 0)
-  done()
-})
+    test.strictEqual(actual.valid, false)
+    test.strictEqual(actual.isArrow, false)
+    test.strictEqual(actual.isAsync, false)
+    test.strictEqual(actual.isNamed, false)
+    test.strictEqual(actual.isAnonymous, false)
+    test.strictEqual(actual.isGenerator, false)
+    test.strictEqual(actual.isExpression, false)
+    done()
+  })
 
-test('should not fails to get .body when something after close curly (issue#3)', function (done) {
-  var actual = parseFunction('function (a) {return a * 2} sa')
-  test.strictEqual(actual.body, 'return a * 2')
-  done()
-})
+  test(`#${testsCount++} - ${parserName} - should not fails to get .body when something after close curly (issue#3)`, (done) => {
+    const actual = parseFn('function (a) {return a * 2} sa')
+    test.strictEqual(actual.body, 'return a * 2')
+    done()
+  })
 
-test('should work when comment in arguments (see #11)', function (done) {
-  var actual = parseFunction('function (/* done */) { return 123 }')
-  test.strictEqual(actual.params, '')
-  test.strictEqual(actual.body, ' return 123 ')
+  test(`#${testsCount++} - ${parserName} - should work when comment in arguments (see #11)`, (done) => {
+    const actual = parseFn('function (/* done */) { return 123 }')
+    test.strictEqual(actual.params, '')
+    test.strictEqual(actual.body, ' return 123 ')
 
-  var res = parseFunction('function (foo/* done */, bar) { return 123 }')
-  test.strictEqual(res.params, 'foo, bar')
-  test.strictEqual(res.body, ' return 123 ')
-  done()
-})
+    const res = parseFn('function (foo/* done */, bar) { return 123 }')
+    test.strictEqual(res.params, 'foo, bar')
+    test.strictEqual(res.body, ' return 123 ')
+    done()
+  })
 
-test('should support to parse generator functions', function (done) {
-  var actual = parseFunction('function * named (abc) { return abc + 123 }')
-  test.strictEqual(actual.name, 'named')
-  test.strictEqual(actual.params, 'abc')
-  test.strictEqual(actual.body, ' return abc + 123 ')
-  done()
-})
+  test(`#${testsCount++} - ${parserName} - should support to parse generator functions`, (done) => {
+    const actual = parseFn('function * named (abc) { return abc + 123 }')
+    test.strictEqual(actual.name, 'named')
+    test.strictEqual(actual.params, 'abc')
+    test.strictEqual(actual.body, ' return abc + 123 ')
+    done()
+  })
 
-test('should support to parse async functions (ES2016)', function (done) {
-  var actual = parseFunction('async function foo (bar) { return bar }')
-  test.strictEqual(actual.name, 'foo')
-  test.strictEqual(actual.params, 'bar')
-  test.strictEqual(actual.body, ' return bar ')
-  done()
-})
+  test(`#${testsCount++} - ${parserName} - should support to parse async functions (ES2016)`, (done) => {
+    const actual = parseFn('async function foo (bar) { return bar }')
+    test.strictEqual(actual.name, 'foo')
+    test.strictEqual(actual.params, 'bar')
+    test.strictEqual(actual.body, ' return bar ')
+    done()
+  })
 
-if (semver.gte(semver.clean(process.version), '0.13.0')) {
-  require('./test.es6.js')
+  test(`#${testsCount++} - ${parserName} - should parse a real function which is passed`, (done) => {
+    const actual = parseFn(function fooBar (a, bc) { return a + bc })
+    test.strictEqual(actual.name, 'fooBar')
+    test.strictEqual(actual.params, 'a, bc')
+    test.strictEqual(actual.body, ' return a + bc ')
+    done()
+  })
 }
+
+/**
+ * Actually run all the tests
+ */
+
+factory('babylon', function (code) {
+  return parseFunction(code)
+})
+
+factory('acorn', function (code) {
+  return parseFunction(code, {
+    parser: acorn.parse,
+    ecmaVersion: 2017
+  })
+})
+
+factory('acorn.parse_dammit', function (code) {
+  return parseFunction(code, {
+    parser: require('acorn/dist/acorn_loose').parse_dammit,
+    ecmaVersion: 2017
+  })
+})

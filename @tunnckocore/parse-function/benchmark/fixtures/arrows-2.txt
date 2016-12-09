@@ -1,1 +1,0 @@
-(a, cb) => {return a * 3}

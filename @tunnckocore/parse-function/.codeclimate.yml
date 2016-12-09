@@ -1,8 +1,0 @@
-languages:
-  JavaScript: true
-exclude_paths:
-- "benchmark/**/*"
-- "benchmark/*.js"
-- "benchmark/**/*.js"
-- "benchmark/**.js"
-- "test.js"
