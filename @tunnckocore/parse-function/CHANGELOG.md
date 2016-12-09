@@ -1,3 +1,51 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/tunnckocore/parse-function/compare/v2.3.2...v3.0.0) (2016-12-09)
+
+
+* v3 (#24) ([a428b90](https://github.com/tunnckocore/parse-function/commit/a428b90))
+
+
+### Bug Fixes
+
+* **options:** rename "parser" options to -> "parse" - make more sense ([ee75cb7](https://github.com/tunnckocore/parse-function/commit/ee75cb7))
+* **package:** add engines field ([c11669a](https://github.com/tunnckocore/parse-function/commit/c11669a))
+* **rename:** rename "result.valid" to "result.isValid" ([2959f06](https://github.com/tunnckocore/parse-function/commit/2959f06))
+* **rename:** the "result.orig" to "result.value" ([080a720](https://github.com/tunnckocore/parse-function/commit/080a720))
+
+
+### Features
+
+* **benchmarks:** add benchmarks ([e3030a1](https://github.com/tunnckocore/parse-function/commit/e3030a1))
+
+
+### BREAKING CHANGES
+
+* Drop support for node < v4; use babylon as default parser instead of acorn; expose
+
+options param, that is directly passed to the given options.parser parser
+
+* fix(*): small tweak
+
+* fix(else): don't like "else"es, so remove it
+
+* test(start): start rewriting tests
+
+* test(update): improve tests, add over 130+ tests
+
+tests against babylon, acorn, and acorn_loose parsers
+
+* style(chore): es2015ify var -> const
+
+* docs(readme): generate
+
+* docs(api): docs
+
+
+
 
 
 ## 2.3.2 - 2016-04-19

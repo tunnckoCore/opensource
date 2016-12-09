@@ -1,6 +1,6 @@
 {
   "name": "parse-function",
-  "version": "2.3.2",
+  "version": "3.0.0",
   "description": "Parse a function to an object that has its name, body, args and few more useful properties. Support regular functions, async/await, arrow and generator functions.",
   "repository": "tunnckoCore/parse-function",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)",
