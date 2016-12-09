@@ -260,3 +260,10 @@ factory('acorn.parse_dammit', function (code) {
     ecmaVersion: 2017
   })
 })
+
+factory('espree', function (code) {
+  return parseFunction(code, {
+    parse: require('espree').parse,
+    ecmaVersion: 8
+  })
+})
