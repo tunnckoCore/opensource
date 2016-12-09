@@ -20,8 +20,6 @@ const define = require('define-property')
  * **Example**
  *
  * ```js
- * const acorn = require('acorn')
- * const acornLoose = require('acorn/dist/acorn_loose')
  * const parseFunction = require('parse-function')
  *
  * const myFn = function abc (e, f, ...rest) { return 1 + e + 2 + f }
@@ -40,9 +38,10 @@ const define = require('define-property')
  * console.log(parsed.isGenerator) // => false
  *
  * // use `acorn` parser
+ * const acorn = require('acorn')
  * const someArrow = (foo, bar) => 1 * foo + bar
  * const result = parseFunction(someArrow, {
- *   parser: acorn.parse,
+ *   parse: acorn.parse,
  *   ecmaVersion: 2017
  * })
  *
@@ -54,6 +53,23 @@ const define = require('define-property')
  * console.log(result.isArrow) // => true
  * console.log(result.isNamed) // => false
  * console.log(result.isAnonymous) // => true
+ *
+ * // or use "loose mode" of the acorn parser
+ * const acornLoose = require('acorn/dist/acorn_loose')
+ * const fooBarFn = async (a, b, ...c) => {
+ *   return Promise.resolve([a, b].concat(c))
+ * }
+ * const res = parseFunction(fooBarFn, {
+ *   parse: acornLoose.parse_dammit
+ * })
+ *
+ * console.log(res.body) // => '\n  return Promise.resolve([a, b].concat(c))\n'
+ * console.log(res.args) // => ['a', 'b', 'c']
+ * console.log(res.isValid) // => true
+ * console.log(res.isAsync) // => true
+ * console.log(res.isArrow) // => true
+ * console.log(res.isNamed) // => false
+ * console.log(res.isAnonymous) // => true
  * ```
  *
  * @param  {Function|String} `code` function to be parsed, it can be string too

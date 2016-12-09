@@ -46,7 +46,7 @@ const parseFunction = require('parse-function')
 
 ## API
 
-### [parseFunction](index.js#L66)
+### [parseFunction](index.js#L82)
 > Parse a function or string that contains a function, using [babylon][] or [acorn][] parsers. By default it uses `babylon`, but you can pass custom one through `options.parse` option - for example pass `.parse: acorn.parse` to force use the `acorn` parser instead.
 
 **Params**
@@ -59,8 +59,6 @@ const parseFunction = require('parse-function')
 **Example**
 
 ```js
-const acorn = require('acorn')
-const acornLoose = require('acorn/dist/acorn_loose')
 const parseFunction = require('parse-function')
 
 const myFn = function abc (e, f, ...rest) { return 1 + e + 2 + f }
@@ -79,9 +77,10 @@ console.log(parsed.isAnonymous) // => false
 console.log(parsed.isGenerator) // => false
 
 // use `acorn` parser
+const acorn = require('acorn')
 const someArrow = (foo, bar) => 1 * foo + bar
 const result = parseFunction(someArrow, {
-  parser: acorn.parse,
+  parse: acorn.parse,
   ecmaVersion: 2017
 })
 
@@ -93,13 +92,30 @@ console.log(result.isValid) // => true
 console.log(result.isArrow) // => true
 console.log(result.isNamed) // => false
 console.log(result.isAnonymous) // => true
+
+// or use "loose mode" of the acorn parser
+const acornLoose = require('acorn/dist/acorn_loose')
+const fooBarFn = async (a, b, ...c) => {
+  return Promise.resolve([a, b].concat(c))
+}
+const res = parseFunction(fooBarFn, {
+  parse: acornLoose.parse_dammit
+})
+
+console.log(res.body) // => '\n  return Promise.resolve([a, b].concat(c))\n'
+console.log(res.args) // => ['a', 'b', 'c']
+console.log(res.isValid) // => true
+console.log(res.isAsync) // => true
+console.log(res.isArrow) // => true
+console.log(res.isNamed) // => false
+console.log(res.isAnonymous) // => true
 ```
 
 ### Result
 > In the result object you have `name`, `args`, `params`, `body` and few hidden properties
 that can be useful to determine what the function is - arrow, regular, async/await or generator.
 
-**It never throws!** You should check `result.valid` property.
+**It never throws!** You should check `result.isValid` property.
 
 * `name` **{String}**: name of the passed function
 * `args` **{Array}**: arguments of the function
