@@ -1,35 +1,35 @@
 'use strict'
 
-// function app (model) {
-//   let state = model.state
-//   const routes = model.view || {}
-//   const effects = model.effects || {}
-//   const reducers = model.reducers || {}
-//   const subscibes = model.subscibes || {}
-//   const hooks = Object.assign({
-//     onAction: () => {},
-//     onUpdate: () => {},
-//     onError: (er) => { throw er }
-//   }, model.hooks)
+function app (model) {
+  let state = model.state
+  const routes = model.view || {}
+  const effects = model.effects || {}
+  const reducers = model.reducers || {}
+  const subscibes = model.subscibes || {}
+  const hooks = Object.assign({
+    onAction: () => {},
+    onUpdate: () => {},
+    onError: (er) => { throw er }
+  }, model.hooks)
 
-//   const actions = {}
-//   for (let name in Object.assign(reducers, effects)) {
-//     actions[name] = (data) => {
-//       hooks.onAction(name, data)
+  const actions = {}
+  for (let name in Object.assign(reducers, effects)) {
+    actions[name] = (data) => {
+      hooks.onAction(name, data)
 
-//       if (effects[name]) {
-//         return effects[name](state, actions, data, hooks.onError)
-//       }
+      if (effects[name]) {
+        return effects[name](state, actions, data, hooks.onError)
+      }
 
-//       const oldState = state
-//       state = reducers[name](state, data)
+      const oldState = state
+      state = reducers[name](state, data)
 
-//       // re-render view
+      // re-render view
 
-//       hooks.onUpdate(oldState, state, data)
-//     }
-//   }
-// }
+      hooks.onUpdate(oldState, state, data)
+    }
+  }
+}
 
 // const html = require('bel')
 // const gibon = require('../dist/gibon.cjs')

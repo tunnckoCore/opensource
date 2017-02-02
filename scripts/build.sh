@@ -17,8 +17,8 @@ _compress () {
 build_dev () {
   rm -rf dist/
   mkdir -p dist/
-  rollup -c -f cjs -i index.js -o dist/gibon.cjs.js
-  rollup -c -f umd -i index.js -o dist/gibon.umd.js -n gibon
+  rollup -c -f cjs -i src/index.js -o dist/gibon.cjs.js
+  rollup -c -f umd -i src/index.js -o dist/gibon.umd.js -n gibon
 }
 
 build_min () {
