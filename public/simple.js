@@ -1,7 +1,13 @@
 'use strict'
 
 const html = require('bel')
-const gibon = require('../dist/gibon.cjs')
+
+const mainView = ({ params, pathname }, msg) => {
+  return html`<div>
+    <h1>${pathname}</h1>
+    <h2>${JSON.stringify(params)}</h2>
+  </div>`
+}
 
 const start = gibon({
   '/': mainView,
@@ -11,15 +17,8 @@ const start = gibon({
   '/groups/:group/users/:user/edit': mainView
 })
 
-function mainView ({ params, pathname }) {
-  return html`<div>
-    <h1>${pathname}</h1>
-    <h2>params: ${JSON.stringify(params, null, 2)}</h2>
-  </div>`
-}
-
-const el = start() // start listening on routes
+// returns what the view returns
+const el = start()
 const main = document.querySelector('#app')
 
-// mount
 main.appendChild(el)

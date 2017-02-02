@@ -7,50 +7,53 @@
  * Released under the MIT license.
  */
 
-var index = function (routes, hash) { return function start () {
-  hash = !(history && history.pushState); // eslint-disable-line no-undef
-  if (hash) { throw new Error('Not supported') }
+function gibon (routes, dom) {
+  return function app (model, onRoute) {
+    onRoute = onRoute || (function (view, context) { return view(context); });
 
-  var dom = document.createElement('p');
-  var handler = function (_re) {
-    var loc = window.location;
-    var pathname = normalize(loc.pathname);
-    var context = {
-      loc: loc,
-      params: {},
-      pathname: pathname
-    };
+    return model ? _start : _start()
 
-    for (var route in routes) {
+    function _start () {
+      window.onpopstate = handler;
+      handler();
+      return dom
+    }
+
+    function handler (_re) {
+      var loc = window.location;
+      var pathname = loc.pathname.replace(/^\/+/, '/').replace(/\/+$/, '');
+      pathname = pathname || '/';
+
+      var context = {
+        loc: loc,
+        params: {},
+        pathname: pathname
+      };
+
       if (routes[pathname]) {
-        return (dom = routes[pathname](context))
+        dom = onRoute(routes[pathname], context, dom, model);
       }
-      _re = regexify(route);
-      if (_re.regex.test(pathname)) {
-        pathname.replace(_re.regex, function () {
-          var arguments$1 = arguments;
 
-          for (var i = 1; i < arguments.length - 2; i++) {
-            context.params[_re.keys.shift()] = arguments$1[i];
+      for (var route in routes) {
+        _re = regexify(route);
+        if (_re.regex.test(pathname)) {
+          pathname.replace(_re.regex, function () {
+            var arguments$1 = arguments;
+
+            for (var i = 1; i < arguments.length - 2; i++) {
+              context.params[_re.keys.shift()] = arguments$1[i];
+            }
+            _re.match = 1;
+          });
+
+          if (_re.match) {
+            dom = onRoute(routes[route], context, dom, model);
+            break
           }
-          _re.match = true;
-        });
-
-        if (_re.match) {
-          return (dom = routes[route](context))
         }
       }
     }
-  };
-
-  window.onpopstate = handler;
-  handler();
-
-  return dom
-}; };
-
-function normalize (s) {
-  return s === '/' ? s : s.replace(/^\/+/, '/').replace(/\/+$/, '')
+  }
 }
 
 function regexify (route, _regex) {
@@ -68,5 +71,4 @@ function regexify (route, _regex) {
   }
 }
 
-module.exports = index;
-//# sourceMappingURL=gibon.cjs.js.map
+module.exports = gibon;

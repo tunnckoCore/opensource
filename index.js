@@ -7,48 +7,51 @@
 
 'use strict'
 
-export default (routes, hash) => function start () {
-  hash = !(history && history.pushState) // eslint-disable-line no-undef
-  if (hash) throw new Error('Not supported')
+export default function gibon (routes, dom) {
+  return function app (model, onRoute) {
+    onRoute = onRoute || ((view, context) => view(context))
 
-  let dom = document.createElement('p')
-  const handler = (_re) => {
-    let loc = window.location
-    let pathname = normalize(loc.pathname)
-    let context = {
-      loc,
-      params: {},
-      pathname
+    return model ? _start : _start()
+
+    function _start () {
+      window.onpopstate = handler
+      handler()
+      return dom
     }
 
-    for (let route in routes) {
-      if (routes[pathname]) {
-        return (dom = routes[pathname](context))
-      }
-      _re = regexify(route)
-      if (_re.regex.test(pathname)) {
-        pathname.replace(_re.regex, function () {
-          for (let i = 1; i < arguments.length - 2; i++) {
-            context.params[_re.keys.shift()] = arguments[i]
-          }
-          _re.match = true
-        })
+    function handler (_re) {
+      let loc = window.location
+      let pathname = loc.pathname.replace(/^\/+/, '/').replace(/\/+$/, '')
+      pathname = pathname || '/'
 
-        if (_re.match) {
-          return (dom = routes[route](context))
+      let context = {
+        loc,
+        params: {},
+        pathname
+      }
+
+      if (routes[pathname]) {
+        dom = onRoute(routes[pathname], context, dom, model)
+      }
+
+      for (let route in routes) {
+        _re = regexify(route)
+        if (_re.regex.test(pathname)) {
+          pathname.replace(_re.regex, function () {
+            for (let i = 1; i < arguments.length - 2; i++) {
+              context.params[_re.keys.shift()] = arguments[i]
+            }
+            _re.match = 1
+          })
+
+          if (_re.match) {
+            dom = onRoute(routes[route], context, dom, model)
+            break
+          }
         }
       }
     }
   }
-
-  window.onpopstate = handler
-  handler()
-
-  return dom
-}
-
-function normalize (s) {
-  return s === '/' ? s : s.replace(/^\/+/, '/').replace(/\/+$/, '')
 }
 
 function regexify (route, _regex) {
@@ -65,4 +68,3 @@ function regexify (route, _regex) {
     keys
   }
 }
-
