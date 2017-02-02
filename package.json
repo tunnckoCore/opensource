@@ -1,0 +1,75 @@
+{
+  "name": "gibon",
+  "version": "0.1.0",
+  "description": "Modern UI router in ~500 bytes, built on pushState API.",
+  "repository": "tunnckoCore/gibon",
+  "author": "Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)",
+  "precommit.silent": true,
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "standard src/index.js --fix --verbose",
+    "test": "npm run lint",
+    "prerelease": "npm test",
+    "release": "standard-version --sign --no-verify",
+    "precommit": "git add --all",
+    "commit": "git-cz",
+    "budo": "budo public/client.js:client.js --pushstate --dir public",
+    "dev": "scripts/build.sh dev",
+    "gzip": "scripts/build.sh gzip",
+    "prebuild": "npm run dev",
+    "build": "npm run gzip",
+    "postbuild": "ls -al dist"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "bel": "^4.5.1",
+    "budo": "^9.4.7",
+    "commitizen": "^2.9.2",
+    "cz-conventional-changelog": "^1.2.0",
+    "mukla": "^0.4.8",
+    "pre-commit": "^1.2.2",
+    "rollup": "^0.41.4",
+    "rollup-plugin-buble": "^0.15.0",
+    "standard": "^8.6.0",
+    "standard-version": "^4.0.0",
+    "uglify-js": "^2.7.5"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "verb": {
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 3,
+      "footer": ""
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "related": {
+      "list": [
+        "always-done",
+        "minibase",
+        "try-catch-core"
+      ],
+      "highlight": "always-done"
+    },
+    "lint": {
+      "reflinks": true
+    }
+  },
+  "engines": {
+    "node": ">=4",
+    "npm": ">=2"
+  }
+}
