@@ -84,7 +84,8 @@ Object with key/value pairs, where key is the **route** and **value** should be 
 
 The route path syntax is based on the same syntax found in Express.
 
-**Example**
+<details>
+<summary><strong>Example</strong></summary>
 
 ```js
 const userView = (ctx, params) => {
@@ -98,6 +99,8 @@ const router = gibon({
 router.start()
 ```
 
+</details>
+
 #### onRoute - optional
 
 It should be `function` that is triggered every time when given route is accessed. Completely optional, but useful for higher level things such as seen in [hyperapp][].
@@ -108,7 +111,8 @@ It is passed with `(view, state, el)` signature. See [public/dom.js](./public/do
 - `state` - empty object or what is passed as second argument `.render` method
 - `el` - previous dom element (if `bel` is used for example) or `undefined`
 
-**Example**
+<details>
+<summary><strong>Example</strong></summary>
 
 ```js
 const html = requre('bel')
@@ -139,6 +143,8 @@ const router = gibon(routes, onRoute)
 router.start()
 ```
 
+</details>
+
 For complete working example see [public/nanomorph.js](./public/nanomorph.js), which uses [nanomorph][] to do the diffing and updating only needed dom elements.
 
 #### onClick - optional
@@ -168,7 +174,8 @@ the view returns a DOM element, then `el` will be that element.
 - `view` - string path to route, or function like `userView`
 - `state` - optional, it will be the `ctx` argument
 
-**Example**
+<details>
+<summary><strong>Example 1</strong></summary>
 
 ```js
 const router = gibon()
@@ -180,11 +187,14 @@ const userView = (ctx, params) => {
 router.render(userView, { title: 'hello world' })
 ```
 
+</details>
+
 The cool thing comes when you use some Virtual or Real DOM builder, such as [bel][] or [hyperx].
 
 In the next example we are using `bel` to define some HTML without breaking the JavaScript and we "render" some specific route with some context/state, and finally we append it ot the page body.
 
-**Example 2**
+<details>
+<summary><strong>Example 2</strong></summary>
 
 ```js
 const html = require('bel')
@@ -198,6 +208,8 @@ const router = gibon({
 const el = router.render('/users/tunnckoCore', { title: 'hello world' })
 document.body.appendChild(el)
 ```
+
+</details>
 
 So we'll get such that div in the document body
 
