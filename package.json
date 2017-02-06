@@ -5,9 +5,9 @@
   "repository": "tunnckoCore/gibon",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)",
   "precommit.silent": true,
-  "browser": "dist/gibon-iife.js",
+  "browser": "dist/gibon.iife.js",
   "module": "src/index.js",
-  "main": "dist/gibon-umd.js",
+  "main": "dist/gibon.umd.js",
   "license": "MIT",
   "scripts": {
     "lint": "standard src/index.js --fix --verbose",
@@ -22,10 +22,11 @@
     "example:dom": "budo -P public/dom.js:client.js --dir public",
     "clean": "rimraf dist",
     "build": "npm-run-all -s clean rollup compress",
+    "postbuild": "ls -al dist/",
     "rollup": "rollup -c",
     "compress": "npm-run-all compress:*",
-    "compress:iife": "zopfli dist/gibon.iife.js -i2000",
-    "compress:umd": "zopfli dist/gibon.umd.js -i2000"
+    "compress:iife": "zopfli $npm_package_browser -i2000",
+    "compress:umd": "zopfli $npm_package_main -i2000"
   },
   "dependencies": {},
   "devDependencies": {
