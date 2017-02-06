@@ -1,7 +1,7 @@
 /*!
  * gibon <https://github.com/tunnckoCore/gibon>
  *
- * Copyright (c) Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)
+ * Copyright (c) Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)
  * Released under the MIT license.
  */
 

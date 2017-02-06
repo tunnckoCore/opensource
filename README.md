@@ -296,7 +296,7 @@ $ npm install && npm test
 + [codementor/tunnckoCore](https://codementor.io/tunnckoCore)
 
 ## License
-Copyright © 2016-2017, [Charlike Mike Reagent](http://i.am.charlike.online). Released under the [MIT license](LICENSE).
+Copyright © 2016-2017, [Charlike Mike Reagent](https://i.am.charlike.online). Released under the [MIT license](LICENSE).
 
 ***
 
