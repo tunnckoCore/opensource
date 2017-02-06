@@ -8,12 +8,14 @@
 'use strict'
 
 export default function gibon (routes, onRoute, onClick, el) {
-  onRoute = onRoute || ((view, state) => view(state))
-  onClick = onClick || ((e, loc) => {
+  onRoute = onRoute || (function onroute (view, state) {
+    return view(state)
+  })
+  onClick = onClick || (function onclick (e, loc) {
     if (e.metaKey || e.shiftKey || e.ctrlKey || e.altKey) {
       return
     }
-    let t = e.target
+    var t = e.target
 
     while (t && t.localName !== 'a') {
       t = t.parentNode
@@ -27,11 +29,13 @@ export default function gibon (routes, onRoute, onClick, el) {
   })
 
   function start (handle) {
-    handle = () => render(window.location.pathname)
+    handle = function handle_ () {
+      return render(window.location.pathname)
+    }
 
     handle()
     window.addEventListener('onpopstate', handle)
-    window.onclick = (e) => onClick(e, render)
+    window.onclick = function onclick__ (e) { onClick(e, render) }
   }
 
   function render (view, state) {
@@ -46,8 +50,8 @@ export default function gibon (routes, onRoute, onClick, el) {
   }
 
   return {
-    start,
-    render
+    start: start,
+    render: render
   }
 }
 
@@ -60,20 +64,19 @@ function getRoute (routes, pathname, _re) {
     return routes[pathname]
   }
 
-  for (let route in routes) {
+  for (var route in routes) {
     _re = regexify(route)
     if (_re.regex.test(pathname)) {
-      const params = {}
+      var params = {}
       pathname.replace(_re.regex, function () {
-        for (let i = 1; i < arguments.length - 2; i++) {
+        for (var i = 1; i < arguments.length - 2; i++) {
           params[_re.keys.shift()] = arguments[i]
         }
         _re.match = 1
       })
 
       if (_re.match) {
-        // if arrow function, buble throws
-        return function (state, actions) {
+        return function _view (state, actions) {
           actions = actions || params
           return routes[route](state, actions, params)
         }
@@ -83,16 +86,16 @@ function getRoute (routes, pathname, _re) {
 }
 
 function regexify (route, _regex) {
-  const keys = []
+  var keys = []
   _regex = '^' + route
     .replace(/\//g, '\\/')
-    .replace(/:(\w+)/g, (_, name) => {
+    .replace(/:(\w+)/g, function _replace (_, name) {
       keys.push(name)
       return '(\\w+)'
     }) + '$'
 
   return {
     regex: new RegExp(_regex, 'i'),
-    keys
+    keys: keys
   }
 }
