@@ -101,6 +101,10 @@ router.start()
 
 </details>
 
+**[back to top][toc]**
+
+***
+
 #### onRoute - optional
 
 It should be `function` that is triggered every time when given route is accessed. Completely optional, but useful for higher level things such as seen in [hyperapp][].
@@ -147,6 +151,10 @@ router.start()
 
 For complete working example see [public/nanomorph.js](./public/nanomorph.js), which uses [nanomorph][] to do the diffing and updating only needed dom elements.
 
+**[back to top][toc]**
+
+***
+
 #### onClick - optional
 
 It should be `function` that controls behaviour of clicking on links. We intercept all `<a href="/path">...</a>` clicks. If you want to opt out of this, add the custom attribute `data-no-routing` to any anchor element that should be handled differently.
@@ -160,9 +168,17 @@ All that just means that it is perfectly configured by default to work on pushSt
 
 Try out some of the provided [examples](#examples) in `public/`.
 
+**[back to top][toc]**
+
+***
+
 ### router.start()
 
 Starts the router. Function that starts the router to listen on routes. If you not call it, it won't attach any listeners, so it won't work.
+
+**[back to top][toc]**
+
+***
 
 ### el = router.render(view, state)
 
@@ -219,6 +235,8 @@ So we'll get such that div in the document body
   <h2>user is tunnckoCore</h2>
 </div>
 ```
+
+**[back to top][toc]**
 
 ## Examples
 
@@ -320,4 +338,6 @@ _Project scaffolded using [charlike][] cli._
 
 [standard-url]: https://github.com/feross/standard
 [standard-img]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
+
+[toc]: https://github.com/tunnckoCore/gibon#table-of-contents
 
