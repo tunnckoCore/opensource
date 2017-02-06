@@ -8,10 +8,8 @@
 'use strict'
 
 export default function gibon (routes, onRoute, onClick, el) {
-  onRoute = onRoute || (function onroute (view, state) {
-    return view(state)
-  })
-  onClick = onClick || (function onclick (e, loc) {
+  onRoute = onRoute || ((view, state) => view(state))
+  onClick = onClick || ((e, loc) => {
     if (e.metaKey || e.shiftKey || e.ctrlKey || e.altKey) {
       return
     }
@@ -29,13 +27,11 @@ export default function gibon (routes, onRoute, onClick, el) {
   })
 
   function start (handle) {
-    handle = function handle_ () {
-      return render(window.location.pathname)
-    }
+    handle = () => render(window.location.pathname)
 
     handle()
     window.addEventListener('onpopstate', handle)
-    window.onclick = function onclick__ (e) { onClick(e, render) }
+    window.onclick = (e) => onClick(e, render)
   }
 
   function render (view, state) {
@@ -50,8 +46,8 @@ export default function gibon (routes, onRoute, onClick, el) {
   }
 
   return {
-    start: start,
-    render: render
+    start,
+    render
   }
 }
 
@@ -67,16 +63,17 @@ function getRoute (routes, pathname, _re) {
   for (var route in routes) {
     _re = regexify(route)
     if (_re.regex.test(pathname)) {
-      var params = {}
-      pathname.replace(_re.regex, function () {
-        for (var i = 1; i < arguments.length - 2; i++) {
-          params[_re.keys.shift()] = arguments[i]
+      let params = {}
+      pathname.replace(_re.regex, function (args) {
+        args = arguments
+        for (var i = 1; i < args.length - 2; i++) {
+          params[_re.keys.shift()] = args[i]
         }
         _re.match = 1
       })
 
       if (_re.match) {
-        return function _view (state, actions) {
+        return (state, actions) => {
           actions = actions || params
           return routes[route](state, actions, params)
         }
@@ -86,16 +83,16 @@ function getRoute (routes, pathname, _re) {
 }
 
 function regexify (route, _regex) {
-  var keys = []
+  const keys = []
   _regex = '^' + route
     .replace(/\//g, '\\/')
-    .replace(/:(\w+)/g, function _replace (_, name) {
+    .replace(/:(\w+)/g, (_, name) => {
       keys.push(name)
       return '(\\w+)'
     }) + '$'
 
   return {
     regex: new RegExp(_regex, 'i'),
-    keys: keys
+    keys
   }
 }

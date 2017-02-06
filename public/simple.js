@@ -1,5 +1,6 @@
 'use strict'
 
+const gibon = require('../dist/gibon-umd')
 const router = gibon({
   '/': (ctx) => console.log('home'),
   '/about': (ctx) => console.log('about'),
@@ -13,9 +14,3 @@ const router = gibon({
 })
 
 router.start()
-
-
-// html`<div>
-//   <h1>${state.title}</h1>
-//   <h2>${JSON.stringify(params)}</h2>
-// </div>`

@@ -1,5 +1,6 @@
 'use strict'
 
+const gibon = require('../dist/gibon-umd')
 const html = require('bel')
 
 const routes = {
