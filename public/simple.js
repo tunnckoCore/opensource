@@ -1,24 +1,21 @@
 'use strict'
 
-const html = require('bel')
-
-const mainView = ({ params, pathname }, msg) => {
-  return html`<div>
-    <h1>${pathname}</h1>
-    <h2>${JSON.stringify(params)}</h2>
-  </div>`
-}
-
-const start = gibon({
-  '/': mainView,
-  '/about': mainView,
-  '/users/:user': mainView,
-  '/users/:user/edit': mainView,
-  '/groups/:group/users/:user/edit': mainView
+const router = gibon({
+  '/': (ctx) => console.log('home'),
+  '/about': (ctx) => console.log('about'),
+  '/users/:user': (ctx, params) => console.log('user:', params.user),
+  '/users/:user/edit': (ctx, params) => console.log('edit user:', params.user),
+  '/groups/:group/users/:user/edit': (ctx, params) => {
+    console.log('edit user from group')
+    console.log('group:', params.group)
+    console.log('user:', params.user)
+  }
 })
 
-// returns what the view returns
-const el = start()
-const main = document.querySelector('#app')
+router.start()
 
-main.appendChild(el)
+
+// html`<div>
+//   <h1>${state.title}</h1>
+//   <h2>${JSON.stringify(params)}</h2>
+// </div>`

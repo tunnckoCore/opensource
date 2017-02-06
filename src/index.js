@@ -7,47 +7,77 @@
 
 'use strict'
 
-export default function gibon (routes, dom) {
-  return function app (model, onRoute) {
-    onRoute = onRoute || ((view, context) => view(context))
+export default function gibon (routes, onRoute, onClick) {
+  let el = document.createElement('p')
 
-    return model ? _start : _start()
+  onRoute = onRoute || ((view, state) => view(state))
+  onClick = onClick || ((e, loc) => {
+    if (e.metaKey || e.shiftKey || e.ctrlKey || e.altKey) {
+      return
+    }
+    let t = e.target
 
-    function _start () {
-      window.onpopstate = handler
-      handler()
-      return dom
+    while (t && t.localName !== 'a') {
+      t = t.parentNode
     }
 
-    function handler (_re) {
-      let loc = window.location
-      let pathname = loc.pathname.replace(/^\/+/, '/').replace(/\/+$/, '')
-      pathname = pathname || '/'
+    loc = window.location
+    if (t && t.host === loc.host && !t.hasAttribute('data-no-routing')) {
+      render(t.pathname)
+      e.preventDefault()
+    }
+  })
 
-      let context = {
-        loc,
-        params: {},
-        pathname
-      }
+  function start (handle) {
+    handle = () => render(window.location.pathname)
 
-      if (routes[pathname]) {
-        dom = onRoute(routes[pathname], context, dom, model)
-      }
+    handle()
+    window.addEventListener('onpopstate', handle)
+    window.onclick = (e) => onClick(e, render)
+  }
 
-      for (let route in routes) {
-        _re = regexify(route)
-        if (_re.regex.test(pathname)) {
-          pathname.replace(_re.regex, function () {
-            for (let i = 1; i < arguments.length - 2; i++) {
-              context.params[_re.keys.shift()] = arguments[i]
-            }
-            _re.match = 1
-          })
+  function render (view, state) {
+    view = typeof view === 'string' ? getView(view) : view
+    return (el = onRoute(view, state || {}, el))
+  }
 
-          if (_re.match) {
-            dom = onRoute(routes[route], context, dom, model)
-            break
-          }
+  function getView (pathname) {
+    pathname = pathname.replace(/^\/+/, '/').replace(/\/+$/, '') || '/'
+    window.history.pushState({}, '', pathname)
+    return getRoute(routes, pathname)
+  }
+
+  return {
+    start,
+    render
+  }
+}
+
+function getRoute (routes, pathname, _re) {
+  if (typeof routes === 'function') {
+    return routes
+  }
+
+  if (routes[pathname]) {
+    return routes[pathname]
+  }
+
+  for (let route in routes) {
+    _re = regexify(route)
+    if (_re.regex.test(pathname)) {
+      const params = {}
+      pathname.replace(_re.regex, function () {
+        for (let i = 1; i < arguments.length - 2; i++) {
+          params[_re.keys.shift()] = arguments[i]
+        }
+        _re.match = 1
+      })
+
+      if (_re.match) {
+        // if arrow function, buble throws
+        return function (state, actions) {
+          actions = actions || params
+          return routes[route](state, actions, params)
         }
       }
     }
