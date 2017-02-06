@@ -1,7 +1,7 @@
 {
   "name": "gibon",
   "version": "0.1.0",
-  "description": "Modern & functional UI router in ~700 bytes, built on HTML5 History API",
+  "description": "Modern & functional UI router in ~600 bytes, built on HTML5 History API",
   "repository": "tunnckoCore/gibon",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)",
   "precommit.silent": true,
