@@ -23,8 +23,6 @@ const routes = {
   </div>`
 }
 
-document.querySelector('#app').appendChild(document.createElement('div'))
-
 const main = document.querySelector('#app div')
 const update = nanomorph(main)
 

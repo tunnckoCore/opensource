@@ -19,11 +19,12 @@
     "example:nanomorph": "budo -P public/nanomorph.js:client.js --dir public",
     "example:simple": "budo -P public/simple.js:client.js --dir public",
     "example:dom": "budo -P public/dom.js:client.js --dir public",
+    "prebuild": "rm -rf dist/ && rm -rf public/dist/",
     "build": "npm run rollup && npm run minify && npm run compress",
     "postbuild": "cp -R dist/ public/",
     "rollup": "rollup -c -i src/index.js -o dist/gibon.js -f umd -n gibon",
-    "minify": "uglifyjs dist/gibon.js -o dist/gibon.js -cm -p relative --source-map dist/gibon.js.map",
-    "compress": "zopfli dist/gibon.js -i2000"
+    "minify": "uglifyjs dist/gibon.js -o dist/gibon.min.js -cm",
+    "compress": "zopfli dist/gibon.min.js -i2000"
   },
   "dependencies": {},
   "devDependencies": {

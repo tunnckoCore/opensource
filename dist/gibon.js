@@ -1,2 +1,114 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):e.gibon=t()}(this,function(){"use strict";function e(e,n,r){function o(e){e=function(){return i(window.location.pathname)},e(),window.addEventListener("onpopstate",e),window.onclick=function(e){return r(e,i)}}function i(e,t){return e="string"==typeof e?u(e):e,f=n(e,t||{},f)}function u(n){return n=n.replace(/^\/+/,"/").replace(/\/+$/,"")||"/",window.history.pushState({},"",n),t(e,n)}var f=document.createElement("p");return n=n||function(e,t){return e(t)},r=r||function(e,t){if(!(e.metaKey||e.shiftKey||e.ctrlKey||e.altKey)){for(var n=e.target;n&&"a"!==n.localName;)n=n.parentNode;t=window.location,n&&n.host===t.host&&!n.hasAttribute("data-no-routing")&&(i(n.pathname),e.preventDefault())}},{start:o,render:i}}function t(e,t,r){if("function"==typeof e)return e;if(e[t])return e[t];var o=function(o){if(r=n(o),r.regex.test(t)){var i={};if(t.replace(r.regex,function(){for(var e=arguments,t=1;t<arguments.length-2;t++)i[r.keys.shift()]=e[t];r.match=1}),r.match)return{v:function(t,n){return n=n||i,e[o](t,n,i)}}}};for(var i in e){var u=o(i);if(u)return u.v}}function n(e,t){var n=[];return t="^"+e.replace(/\//g,"\\/").replace(/:(\w+)/g,function(e,t){return n.push(t),"(\\w+)"})+"$",{regex:new RegExp(t,"i"),keys:n}}return e});
-//# sourceMappingURL=gibon.js.map
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.gibon = factory());
+}(this, (function () { 'use strict';
+
+/*!
+ * gibon <https://github.com/tunnckoCore/gibon>
+ *
+ * Copyright (c) Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)
+ * Released under the MIT license.
+ */
+
+function gibon (routes, onRoute, onClick, el) {
+  onRoute = onRoute || (function (view, state) { return view(state); });
+  onClick = onClick || (function (e, loc) {
+    if (e.metaKey || e.shiftKey || e.ctrlKey || e.altKey) {
+      return
+    }
+    var t = e.target;
+
+    while (t && t.localName !== 'a') {
+      t = t.parentNode;
+    }
+
+    loc = window.location;
+    if (t && t.host === loc.host && !t.hasAttribute('data-no-routing')) {
+      render(t.pathname);
+      e.preventDefault();
+    }
+  });
+
+  function start (handle) {
+    handle = function () { return render(window.location.pathname); };
+
+    handle();
+    window.addEventListener('onpopstate', handle);
+    window.onclick = function (e) { return onClick(e, render); };
+  }
+
+  function render (view, state) {
+    view = typeof view === 'string' ? getView(view) : view;
+    return (el = onRoute(view, state || {}, el))
+  }
+
+  function getView (pathname) {
+    pathname = pathname.replace(/^\/+/, '/').replace(/\/+$/, '') || '/';
+    window.history.pushState(0, 0, pathname);
+    return getRoute(routes, pathname)
+  }
+
+  return {
+    start: start,
+    render: render
+  }
+}
+
+function getRoute (routes, pathname, _re) {
+  if (typeof routes === 'function') {
+    return routes
+  }
+
+  if (routes[pathname]) {
+    return routes[pathname]
+  }
+
+  var loop = function ( route ) {
+    _re = regexify(route);
+    if (_re.regex.test(pathname)) {
+      var params = {};
+      pathname.replace(_re.regex, function () {
+        var arguments$1 = arguments;
+
+        for (var i = 1; i < arguments.length - 2; i++) {
+          params[_re.keys.shift()] = arguments$1[i];
+        }
+        _re.match = 1;
+      });
+
+      if (_re.match) {
+        // if arrow function, buble throws
+        return { v: function (state, actions) {
+          actions = actions || params;
+          return routes[route](state, actions, params)
+        } }
+      }
+    }
+  };
+
+  for (var route in routes) {
+    var returned = loop( route );
+
+    if ( returned ) return returned.v;
+  }
+}
+
+function regexify (route, _regex) {
+  var keys = [];
+  _regex = '^' + route
+    .replace(/\//g, '\\/')
+    .replace(/:(\w+)/g, function (_, name) {
+      keys.push(name);
+      return '(\\w+)'
+    }) + '$';
+
+  return {
+    regex: new RegExp(_regex, 'i'),
+    keys: keys
+  }
+}
+
+return gibon;
+
+})));

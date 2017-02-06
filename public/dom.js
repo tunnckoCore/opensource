@@ -1,7 +1,5 @@
 'use strict'
 
-document.querySelector('#app').appendChild(document.createElement('div'))
-
 const html = require('bel')
 
 const routes = {
