@@ -5,6 +5,7 @@
   "repository": "tunnckoCore/gibon",
   "author": "Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)",
   "precommit.silent": true,
+  "browser": "dist/gibon.min.js",
   "module": "src/index.js",
   "main": "dist/gibon.js",
   "license": "MIT",
