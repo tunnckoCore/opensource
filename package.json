@@ -82,15 +82,17 @@
       "always-done",
       "async-done",
       "base",
+      "bel",
       "charlike",
       "commitizen",
       "dezalgo",
+      "hyperx",
       "once",
       "standard-version",
       "verb",
       "verb-generate-readme",
-      "bel",
-      "hyperx"
+      "hyperapp",
+      "nanomorph"
     ],
     "lint": {
       "reflinks": true
