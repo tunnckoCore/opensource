@@ -87,9 +87,11 @@ const userView = (ctx, params) => {
   console.log('user:', params.user)
 }
 
-gibon({
+const router = gibon({
   '/users/:user': userView
 })
+
+router.start()
 ```
 
 ### router.start()
