@@ -48,7 +48,24 @@
     "src/",
     "dist/"
   ],
-  "keywords": [],
+  "keywords": [
+    "dom",
+    "functional",
+    "history",
+    "push",
+    "pushstate",
+    "html5",
+    "javascript",
+    "minimal",
+    "minimalist",
+    "modern",
+    "router",
+    "routing",
+    "ui",
+    "vanilla",
+    "virtual-dom",
+    "virtual"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
