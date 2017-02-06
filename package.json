@@ -54,14 +54,13 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "engines": {
+    "node": ">=4",
+    "npm": ">=2"
+  },
   "verb": {
     "run": true,
-    "toc": {
-      "render": true,
-      "method": "preWrite",
-      "maxdepth": 3,
-      "footer": ""
-    },
+    "toc": true,
     "layout": "empty",
     "tasks": [
       "readme"
@@ -70,12 +69,14 @@
       "list": [
         "always-done",
         "minibase",
-        "try-catch-core"
+        "try-catch-core",
+        "nanomorph",
+        "bel",
+        "hyperx",
+        "redom",
+        "hyperapp"
       ],
       "highlight": "always-done"
-    },
-    "lint": {
-      "reflinks": true
     },
     "reflinks": [
       "always-done",
@@ -90,10 +91,9 @@
       "verb-generate-readme",
       "bel",
       "hyperx"
-    ]
-  },
-  "engines": {
-    "node": ">=4",
-    "npm": ">=2"
+    ],
+    "lint": {
+      "reflinks": true
+    }
   }
 }
