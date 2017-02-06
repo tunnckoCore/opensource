@@ -18,6 +18,7 @@ You might also be interested in [always-done](https://github.com/hybridables/alw
   * [router = gibon(routes)](#router--gibonroutes)
   * [router.start()](#routerstart)
   * [el = router.render(view[, state])](#el--routerrenderview-state)
+- [Examples](#examples)
 - [Related](#related)
 - [Contributing](#contributing)
 - [Building docs](#building-docs)
@@ -146,6 +147,16 @@ So we'll get such that div in the document body
   <h1>hello world</h1>
   <h2>user is tunnckoCore</h2>
 </div>
+```
+
+## Examples
+
+Run some of the examples by cloning the repo and calling them through npm scripts
+
+```
+npm run example:nanomorph
+npm run example:simple
+npm run example:dom
 ```
 
 ## Related
