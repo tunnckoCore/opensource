@@ -1,6 +1,5 @@
 'use strict'
 
-const gibon = require('../dist/gibon-umd')
 const nanomorph = require('nanomorph/update')
 const html = require('bel')
 
