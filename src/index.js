@@ -40,7 +40,7 @@ export default function gibon (routes, onRoute, onClick, el) {
   }
 
   function getView (pathname) {
-    pathname = pathname.replace(/^\/+/, '/').replace(/\/+$/, '') || '/'
+    pathname = pathname || '/'
     window.history.pushState(0, 0, pathname)
     return getRoute(routes, pathname)
   }
