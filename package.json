@@ -21,12 +21,9 @@
     "example:simple": "budo -P public/simple.js:client.js --dir public",
     "example:dom": "budo -P public/dom.js:client.js --dir public",
     "clean": "rimraf dist",
-    "build": "npm-run-all -s clean rollup compress",
-    "postbuild": "ls -al dist/",
-    "rollup": "rollup -c",
-    "compress": "npm-run-all compress:*",
-    "compress:iife": "zopfli $npm_package_browser -i2000",
-    "compress:umd": "zopfli $npm_package_main -i2000"
+    "build": "npm-run-all -s clean rollup",
+    "postbuild": "ls -al dist",
+    "rollup": "rollup -c"
   },
   "dependencies": {},
   "devDependencies": {

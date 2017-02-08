@@ -1,15 +1,16 @@
-'use strict'
+import buble from 'rollup-plugin-buble'
+import uglify from 'rollup-plugin-uglify'
+import zopfli from 'rollup-plugin-zopfli'
 
-const buble = require('rollup-plugin-buble')
-const uglify = require('rollup-plugin-uglify')
-
-module.exports = {
-  entry: './src/index.js',
+export default {
+  entry: 'src/index.js',
   moduleName: 'gibon',
-  sourceMap: true,
+  useStrict: false,
+  // sourceMap: true,
   plugins: [
     buble(),
-    uglify({ compress: { warnings: false } })
+    uglify({ compress: { warnings: false } }),
+    zopfli({ options: { numiterations: 1000 } })
   ],
   targets: [
     { dest: 'dist/gibon.iife.js', format: 'iife' },
