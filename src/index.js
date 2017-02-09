@@ -7,9 +7,10 @@
 
 'use strict'
 
+// `el` placeholder
 export default function gibon (routes, onRoute, onClick, el) {
   onRoute = onRoute || ((view, state) => view(state))
-  onClick = onClick || ((e, loc) => {
+  onClick = onClick || ((e, loc) => { // `loc` is placeholder
     if (e.metaKey || e.shiftKey || e.ctrlKey || e.altKey) {
       return
     }
@@ -26,6 +27,7 @@ export default function gibon (routes, onRoute, onClick, el) {
     }
   })
 
+  // `handle` is placeholder
   function start (handle) {
     handle = () => render(window.location.pathname)
 
@@ -51,7 +53,8 @@ export default function gibon (routes, onRoute, onClick, el) {
   }
 }
 
-function getRoute (routes, pathname, _re) {
+// `_re` and `_route` are placeholders
+function getRoute (routes, pathname, _re, _route) {
   if (typeof routes === 'function') {
     return routes
   }
@@ -60,8 +63,8 @@ function getRoute (routes, pathname, _re) {
     return routes[pathname]
   }
 
-  for (var route in routes) {
-    _re = regexify(route)
+  for (_route in routes) {
+    _re = regexify(_route)
     if (_re.regex.test(pathname)) {
       let params = {}
       pathname.replace(_re.regex, function (args) {
@@ -75,7 +78,7 @@ function getRoute (routes, pathname, _re) {
       if (_re.match) {
         return (state, actions) => {
           actions = actions || params
-          return routes[route](state, actions, params)
+          return routes[_route](state, actions, params)
         }
       }
     }
