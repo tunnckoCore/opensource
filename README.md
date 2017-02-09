@@ -1,6 +1,6 @@
 # gibon [![NPM version](https://img.shields.io/npm/v/gibon.svg?style=flat)](https://www.npmjs.com/package/gibon) [![NPM monthly downloads](https://img.shields.io/npm/dm/gibon.svg?style=flat)](https://npmjs.org/package/gibon) [![npm total downloads][downloads-img]][downloads-url]
 
-> Modern & functional UI router in ~600 bytes, built on HTML5 History API
+> Functional client-side router in ~570 bytes, built on HTML5 History API
 
 [![code climate][codeclimate-img]][codeclimate-url]
 [![standard code style][standard-img]][standard-url]
