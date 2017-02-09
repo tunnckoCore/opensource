@@ -6,7 +6,7 @@ export default {
   entry: 'src/index.js',
   moduleName: 'gibon',
   useStrict: false,
-  // sourceMap: true,
+  sourceMap: true,
   plugins: [
     buble(),
     uglify({ compress: { warnings: false } }),
