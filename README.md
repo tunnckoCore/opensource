@@ -9,7 +9,9 @@
 [![coverage status][coveralls-img]][coveralls-url]
 [![dependency status][david-img]][david-url]
 
-You might also be interested in [always-done](https://github.com/hybridables/always-done#readme).
+_You might also be interested in [mitt][] - a 200 bytes event emitter, and [hyperapp][] - build rich UI apps with 1kb._
+
+**:sparkles: Pull requests for client-side tests or any other features/fixes are welcome! :rocket:**
 
 ## Table of Contents
 - [Install](#install)
@@ -341,3 +343,4 @@ _Project scaffolded using [charlike][] cli._
 
 [toc]: https://github.com/tunnckoCore/gibon#table-of-contents
 
+[mitt]: https://github.com/developit/mitt
