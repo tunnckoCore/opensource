@@ -1,6 +1,6 @@
 {
   "name": "gibon",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Functional client-side router in ~570 bytes, built on HTML5 History API",
   "repository": "tunnckoCore/gibon",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",

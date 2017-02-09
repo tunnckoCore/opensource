@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/tunnckocore/gibon/compare/v0.3.1...v0.3.2) (2017-02-09)
+
+
+### Bug Fixes
+
+* **index.js:** remove normalization ([094d2a6](https://github.com/tunnckocore/gibon/commit/094d2a6))
+* **package:** add missing npm-run-all devDependency ([861606b](https://github.com/tunnckocore/gibon/commit/861606b))
+* **package:** update description ([1900e84](https://github.com/tunnckocore/gibon/commit/1900e84))
+* **rollup:** enable sourcemaps ([10372f5](https://github.com/tunnckocore/gibon/commit/10372f5))
+* **views:** state could be falsey value too ([bc47df9](https://github.com/tunnckocore/gibon/commit/bc47df9))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/tunnckocore/gibon/compare/v0.3.0...v0.3.1) (2017-02-06)
 
