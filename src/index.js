@@ -38,7 +38,7 @@ export default function gibon (routes, onRoute, onClick, el) {
 
   function render (view, state) {
     view = typeof view === 'string' ? getView(view) : view
-    return (el = onRoute(view, state || {}, el))
+    return (el = onRoute(view, state, el))
   }
 
   function getView (pathname) {
