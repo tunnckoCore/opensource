@@ -13,10 +13,6 @@ _You might also be interested in [mitt][] - a 200 bytes event emitter, and [hype
 
 **:sparkles: Pull requests for client-side tests or any other features/fixes are welcome! :rocket:**
 
-We are [Trending JavaScript](https://github.com/trending/javascript):
-
-<a href="https://github.com/trending/javascript"><img src="./trending.png"></a>
-
 ## Table of Contents
 - [Install](#install)
 - [Usage](#usage)
