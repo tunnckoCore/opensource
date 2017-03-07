@@ -9,4 +9,4 @@ node_js:
 notifications:
   email: false
 
-after_success: npm run report-coverage
+after_success: bash <(curl -s https://codecov.io/bash)
