@@ -32,9 +32,9 @@ Run the benchamrks to see the diffs. The `v2.0.x` is the fastest one, but it has
 - [Usage](#usage)
 - [API](#api)
   * [parseFunction](#parsefunction)
-  * [.define](#define)
-  * [.use](#use)
   * [.parse](#parse)
+  * [.use](#use)
+  * [.define](#define)
   * [Result](#result)
 - [Related](#related)
 - [Contributing](#contributing)
@@ -104,11 +104,78 @@ console.log(result.args) // => ['a', 'b', 'c']
 console.log(result.params) // => 'a, b, c'
 ```
 
-### [.define](index.js#L80)
+### [.parse](index.js#L107)
+> Parse a given `code` and returns a `result` object with useful properties - such as `name`, `body` and `args`. By default it uses Babylon parser, but you can switch it by passing `options.parse` - for example `options.parse: acorn.parse`. In the below example will show how to use `acorn` parser, instead of the default one.
 
-> Define a non-enumerable property on an object. Just
-a convenience mirror of the [define-property][] library,
-so check out its docs.
+**Params**
+
+* `code` **{Function|String}**: any kind of function or string to be parsed    
+* `options` **{Object}**: directly passed to the parser - babylon, acorn, espree    
+* `options.parse` **{Function}**: by default `babylon.parseExpression`, all `options` are passed as second argument to that provided function    
+* `returns` **{Object}** `result`: see [result section](#result) for more info  
+
+**Example**
+
+```js
+const acorn = require('acorn')
+const parseFn = require('parse-function')
+const app = parseFn()
+
+const fn = function foo (bar, baz) { return bar * baz }
+const result = app.parse(fn, {
+  parse: acorn.parse,
+  ecmaVersion: 2017
+})
+
+console.log(result.name) // => 'foo'
+console.log(result.args) // => ['bar', 'baz']
+console.log(result.body) // => ' return bar * baz '
+console.log(result.isNamed) // => true
+console.log(result.isArrow) // => false
+console.log(result.isAnonymous) // => false
+console.log(result.isGenerator) // => false
+```
+
+### [.use](index.js#L179)
+> Add a plugin `fn` function for extending the API or working on the AST nodes. The `fn` is immediately invoked and passed with `app` argument which is instance of `parseFunction()` call. That `fn` may return another function that accepts `(node, result)` signature, where `node` is an AST node and `result` is an object which will be returned [result](#result) from the `.parse` method. This retuned function is called on each node only when `.parse` method is called.
+
+**Params**
+
+* `fn` **{Function}**: plugin to be called    
+* `returns` **{Object}** `app`: instance for chaining  
+
+**Example**
+
+```js
+// plugin extending the `app`
+app.use((app) => {
+  app.define(app, 'hello', (place) => `Hello ${place}!`)
+})
+
+const hi = app.hello('World')
+console.log(hi) // => 'Hello World!'
+
+// or plugin that works on AST nodes
+app.use((app) => (node, result) => {
+  if (node.type === 'ArrowFunctionExpression') {
+    result.thatIsArrow = true
+  }
+  return result
+})
+
+const result = app.parse((a, b) => (a + b + 123))
+console.log(result.name) // => null
+console.log(result.isArrow) // => true
+console.log(result.thatIsArrow) // => true
+
+const result = app.parse(function foo () { return 123 })
+console.log(result.name) // => 'foo'
+console.log(result.isArrow) // => false
+console.log(result.thatIsArrow) // => undefined
+```
+
+### [.define](index.js#L239)
+> Define a non-enumerable property on an object. Just a convenience mirror of the [define-property][] library, so check out its docs. Useful to be used in plugins.
 
 **Params**
 
@@ -117,34 +184,47 @@ so check out its docs.
 * `val` **{Any}**: the descriptor for the property being defined or modified    
 * `returns` **{Object}** `obj`: the passed object, but modified  
 
-### [.use](index.js#L97)
+**Example**
 
-> Plugin for extending the API or working on the
-AST nodes. The `fn` is immediately invoked and pass
-with `app` argument which is instance of `parseFunction()` call.
-That `fn` may return another function that
-accepts `(node, result)` signature, where `node` is an AST node
-and `result` is an object which will be returned
-from the `.parse` method.
+```js
+const parseFunction = require('parse-function')
+const app = parseFunction()
 
-**Params**
+// use it like `define-property` lib
+const obj = {}
+app.define(obj, 'hi', 'world')
+console.log(obj) // => { hi: 'world' }
 
-* `fn` **{Function}**: plugin to be called    
-* `returns` **{Object}** `app`: instance for chaining  
+// or define a custom plugin that adds `.foo` property
+// to the end result, returned from `app.parse`
+app.use((app) => {
+  return (node, result) => {
+    // this function is called
+    // only when `.parse` is called
 
-### [.parse](index.js#L118)
+    app.define(result, 'foo', 123)
 
-> Parse a given `code` and returns a `result` object
-with useful properties - such as `name`, `body` and `args`.
-By default it uses Babylon parser, but you can switch it by
-passing `options.parse` - for example `options.parse: acorn.parse`.
+    return result
+  }
+})
 
-**Params**
+// fixture function to be parsed
+const asyncFn = async (qux) => {
+  const bar = await Promise.resolve(qux)
+  return bar
+}
 
-* `code` **{Function|String}**: any kind of function or string to be parsed    
-* `options` **{Object}**: directly passed to the parser - babylon, acorn, espree    
-* `options.parse` **{Function}**: by default `babylon.parse`, all `options` are passed as second argument to that provided function    
-* `returns` **{Object}** `result`: see [result section](#result) for more info  
+const result = app.parse(asyncFn)
+
+console.log(result.name) // => null
+console.log(result.foo) // => 123
+console.log(result.args) // => ['qux']
+
+console.log(result.isAsync) // => true
+console.log(result.isArrow) // => true
+console.log(result.isNamed) // => false
+console.log(result.isAnonymous) // => true
+```
 
 ### Result
 > In the result object you have `name`, `args`, `params`, `body` and few hidden properties
