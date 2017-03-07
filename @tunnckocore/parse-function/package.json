@@ -108,15 +108,18 @@
       "async-done",
       "babylon",
       "base",
+      "charlike",
       "commitizen",
+      "coveralls-img",
+      "coveralls-url",
       "dezalgo",
       "once",
       "standard-version",
       "verb",
       "verb-generate-readme",
-      "charlike",
-      "coveralls-img",
-      "coveralls-url"
+      "define-property",
+      "espree",
+      "function-arguments"
     ],
     "lint": {
       "reflinks": true
