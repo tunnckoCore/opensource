@@ -78,6 +78,11 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "standard": {
+    "ingore": [
+      "benchmark"
+    ]
+  },
   "verb": {
     "run": true,
     "toc": {
