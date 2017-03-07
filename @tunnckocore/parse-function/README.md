@@ -62,6 +62,11 @@ $ yarn add parse-function
 
 ```js
 const parseFunction = require('parse-function')
+const app = parseFunction()
+
+console.log(app.use) // => function
+console.log(app.parse) // => function
+console.log(app.define) // => function
 ```
 
 ## API
@@ -293,7 +298,7 @@ $ npm install && npm test
 + [codementor/tunnckoCore](https://codementor.io/tunnckoCore)
 
 ## Logo
-The logo is [Menorah with nine branches Emoji](https://cdn.jsdelivr.net/emojione/assets/svg/1f54e.svg) from [EmojiOne.com](http://emojione.com/). Released under the [CC BY 4.0](http://emojione.com/licensing/) license.
+The logo is [Menorah Emoji](https://cdn.jsdelivr.net/emojione/assets/svg/1f54e.svg) from [EmojiOne.com](http://emojione.com/). Released under the [CC BY 4.0](http://emojione.com/licensing/) license.
 
 ## License
 Copyright © 2015, 2017, [Charlike Mike Reagent](https://i.am.charlike.online). Released under the [MIT License](LICENSE).
