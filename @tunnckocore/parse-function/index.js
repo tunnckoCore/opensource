@@ -7,6 +7,7 @@
 
 'use strict'
 
+const arrayify = require('arrify')
 const babylon = require('babylon')
 const define = require('define-property')
 
@@ -85,34 +86,34 @@ module.exports = function parseFunction (code, options) {
   if (!result.isValid) {
     return result
   }
-  options = options && typeof options === 'object' ? options : {}
-  options.parse = typeof options.parse === 'function'
-    ? options.parse
-    : babylon.parse
 
-  const ast = options.parse(result.value, options)
-  const body = ast.program && ast.program.body ? ast.program.body : ast.body
+  let node = null
+  const opts = Object.assign({}, options)
+  opts.use = [defaultPlugin].concat(arrayify(opts.use))
 
-  body.forEach((node) => {
-    /* istanbul ignore next */
-    if (node.type !== 'ExpressionStatement' && node.type !== 'FunctionDeclaration') {
-      return
-    }
+  let val = result.value
+  let starts = val.startsWith('function') || val.startsWith('async function')
 
-    node = update(node, result)
-    node = visitArrows(node, result)
-    node = visitFunctions(node, result)
+  if (starts || /=>/.test(val)) {
+    result.value = val
+  } else {
+    result.value = `{ ${val} }`
+  }
 
-    if (!node.body && !node.params) {
-      return
-    }
+  if (typeof opts.parse === 'function') {
+    result.value = `( ${result.value} )`
 
-    result = visitParams(node, result)
-    result = fixBody(node, result)
-  })
+    const ast = opts.parse(result.value, opts)
+    const body = ast.program && ast.program.body || ast.body
 
-  result = fixName(result)
-  return result
+    node = body[0].expression
+  } else {
+    node = babylon.parseExpression(result.value, opts)
+  }
+
+  return opts.use.reduce((res, plugin) => {
+    return plugin(node, res) || res
+  }, result)
 }
 
 /**
@@ -126,16 +127,19 @@ module.exports = function parseFunction (code, options) {
 
 function getDefaults (code) {
   const result = {
-    name: 'anonymous',
+    name: null,
     body: '',
     args: [],
     params: ''
   }
 
-  code = typeof code === 'function' ? code.toString('utf8') : code
-  code = typeof code === 'string'
-    ? code.replace(/function *\(/, 'function ____foo$1o__i3n8v$al4i1d____(')
-    : false
+  if (typeof code === 'function') {
+    code = code.toString('utf8')
+  }
+
+  if (typeof code !== 'string') {
+    code = '' // makes result.isValid === false
+  }
 
   return hiddens(result, code)
 }
@@ -152,8 +156,8 @@ function getDefaults (code) {
 
 function hiddens (result, code) {
   define(result, 'defaults', {})
-  define(result, 'value', code || '')
-  define(result, 'isValid', code && code.length > 0)
+  define(result, 'value', code)
+  define(result, 'isValid', code.length > 0)
   define(result, 'isArrow', false)
   define(result, 'isAsync', false)
   define(result, 'isNamed', false)
@@ -165,100 +169,97 @@ function hiddens (result, code) {
 }
 
 /**
- * > Update the result object with some
- * useful information like is given function
- * is async, generator or it is a FunctionExpression.
- *
- * @param  {Object} `node`
- * @param  {Object} `result`
- * @return {Object} `node`
- * @api private
- */
-
-function update (node, result) {
-  const asyncExpr = node.expression && node.expression.async
-  const genExpr = node.expression && node.expression.generator
-
-  define(result, 'isAsync', node.async || asyncExpr || false)
-  define(result, 'isGenerator', node.generator || genExpr || false)
-  define(result, 'isExpression', !node.expression || false)
-
-  return node
-}
-
-/**
- * > Visit each arrow expression.
- *
- * @param  {Object} `node`
- * @param  {Object} `result`
- * @return {Object} `node`
- * @api private
- */
-function visitArrows (node, result) {
-  const isArrow = node.expression.type === 'ArrowFunctionExpression'
-
-  if (node.type === 'ExpressionStatement' && isArrow) {
-    define(result, 'isArrow', true)
-    node = node.expression
-  }
-
-  return node
-}
-
-/**
- * > Visit each function declaration.
- *
- * @param  {Object} `node`
- * @param  {Object} `result`
- * @return {Object} `node`
- * @api private
- */
-function visitFunctions (node, result) {
-  if (node.type === 'FunctionDeclaration') {
-    result.name = node.id.name
-  }
-
-  return node
-}
-
-/**
- * > Visit each of the params in the
- * given function.
+ * > Default plugin to handle functions. It has two
+ * child "micro plugins" - one for collecting
+ * the params/arguments, and second one to get
+ * the actual function body - preserving the
+ * whitespaces and newlines.
  *
  * @param  {Object} `node`
  * @param  {Object} `result`
  * @return {Object} `result`
  * @api private
  */
-function visitParams (node, result) {
-  if (node.params.length) {
-    node.params.forEach(function (param) {
-      const defaultArgsName = param.type === 'AssignmentPattern' &&
-        param.left &&
-        param.left.name
 
-      const restArgName = param.type === 'RestElement' &&
-        param.argument &&
-        param.argument.name
+function defaultPlugin (node, result) {
+  const isFn = node.type.endsWith('FunctionExpression')
+  const isMethod = node.type === 'ObjectExpression'
 
-      const name = param.name || defaultArgsName || restArgName
-
-      result.args.push(name)
-      result.defaults[name] = param.right
-        ? result.value.slice(param.right.start, param.right.end)
-        : undefined
-    })
-    result.params = result.args.join(', ')
-    return result
+  // only if function, arrow function,
+  // generator function or object method
+  /* istanbul ignore next */
+  if (!isFn && !isMethod) {
+    return
   }
 
-  result.params = ''
-  result.args = []
+  node = isMethod ? node.properties[0] : node
+  node.id = isMethod ? node.key : node.id
+
+  // babylon node.properties[0] is ObjectMethod that has `params` and `body`
+  // acorn node.properties[0] is Property that has `value`
+  if (node.type === 'Property') {
+    var id = node.key
+    node = node.value
+    node.id = id
+  }
+
+  define(result, 'isArrow', node.type.startsWith('Arrow'))
+  define(result, 'isAsync', node.async || false)
+  define(result, 'isGenerator', node.generator || false)
+  define(result, 'isExpression', node.expression || false)
+  define(result, 'isAnonymous', node.id === null)
+  define(result, 'isNamed', !result.isAnonymous)
+
+  // if real anonymous set to null,
+  // notice that you can name you function `anonymous`, haha
+  // and it won't be "real" anonymous, so `isAnonymous` will be `false`
+  result.name = result.isAnonymous ? null : node.id.name
+
+  // kind of micro plugins
+  result = getParams(node, result)
+  result = getBody(node, result)
+
   return result
 }
 
 /**
- * > Gets the raw body, without the
+ * > Micro plugin to visit each of the params
+ * in the given function.
+ *
+ * @param  {Object} `node`
+ * @param  {Object} `result`
+ * @return {Object} `result`
+ * @api private
+ */
+
+function getParams (node, result) {
+  if (!node.params.length) {
+    return result
+  }
+
+  node.params.forEach((param) => {
+    const defaultArgsName = param.type === 'AssignmentPattern' &&
+      param.left &&
+      param.left.name
+
+    const restArgName = param.type === 'RestElement' &&
+      param.argument &&
+      param.argument.name
+
+    const name = param.name || defaultArgsName || restArgName
+
+    result.args.push(name)
+    result.defaults[name] = param.right
+      ? result.value.slice(param.right.start, param.right.end)
+      : undefined
+  })
+  result.params = result.args.join(', ')
+
+  return result
+}
+
+/**
+ * > Micro plugin to get the raw body, without the
  * surrounding curly braces. It also preserves
  * the whitespaces and newlines - they are original.
  *
@@ -268,7 +269,7 @@ function visitParams (node, result) {
  * @api private
  */
 
-function fixBody (node, result) {
+function getBody (node, result) {
   result.body = result.value.slice(node.body.start, node.body.end)
 
   const openCurly = result.body.charCodeAt(0) === 123
@@ -277,28 +278,6 @@ function fixBody (node, result) {
   if (openCurly && closeCurly) {
     result.body = result.body.slice(1, -1)
   }
-
-  return result
-}
-
-/**
- * > Tweak the names. Each anonymous function
- * initially are renamed to some unique name
- * and it is restore to be `anonymous`.
- *
- * @param  {Object} `result`
- * @return {Object} `result`
- * @api private
- */
-
-function fixName (result) {
-  // tweak throwing if anonymous function
-  const isAnon = result.name === '____foo$1o__i3n8v$al4i1d____'
-  result.name = isAnon ? 'anonymous' : result.name
-
-  // more checking stuff
-  define(result, 'isAnonymous', result.name === 'anonymous')
-  define(result, 'isNamed', result.name !== 'anonymous')
 
   return result
 }

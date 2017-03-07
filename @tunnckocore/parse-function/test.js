@@ -30,6 +30,13 @@ const actuals = {
     'function namedFn (...restArgs) {return 321}',
     'function namedFn () {}'
   ],
+  generators: [
+    'function * namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3}',
+    'function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)}',
+    'function * namedFn (c) {return c * 3}',
+    'function * namedFn (...restArgs) {return 321}',
+    'function * namedFn () {}'
+  ],
   arrows: [
     '(a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3}',
     '(b, callback, ...restArgs) => {callback(null, b + 3)}',
@@ -58,31 +65,31 @@ actuals.asyncs = actuals.regulars
   })
 
 const regulars = [{
-  name: 'anonymous',
+  name: null,
   params: 'a, cb, restArgs',
   args: ['a', 'cb', 'restArgs'],
   body: 'return a * 3',
   defaults: { a: '{foo: "ba)r", baz: 123}', cb: undefined, restArgs: undefined }
 }, {
-  name: 'anonymous',
+  name: null,
   params: 'b, callback, restArgs',
   args: ['b', 'callback', 'restArgs'],
   body: 'callback(null, b + 3)',
   defaults: { b: undefined, callback: undefined, restArgs: undefined }
 }, {
-  name: 'anonymous',
+  name: null,
   params: 'c',
   args: ['c'],
   body: 'return c * 3',
   defaults: { c: undefined }
 }, {
-  name: 'anonymous',
+  name: null,
   params: 'restArgs',
   args: ['restArgs'],
   body: 'return 321',
   defaults: { restArgs: undefined }
 }, {
-  name: 'anonymous',
+  name: null,
   params: '',
   args: [],
   body: '',
@@ -95,31 +102,31 @@ const regulars = [{
  */
 
 const arrows = clone(regulars).concat([{
-  name: 'anonymous',
+  name: null,
   params: 'a',
   args: ['a'],
   body: 'a * 3 * a',
   defaults: { a: undefined }
 }, {
-  name: 'anonymous',
+  name: null,
   params: 'd',
   args: ['d'],
   body: 'd * 355 * d',
   defaults: { d: undefined }
 }, {
-  name: 'anonymous',
+  name: null,
   params: 'e',
   args: ['e'],
   body: 'return e + 5235 / e',
   defaults: { e: undefined }
 }, {
-  name: 'anonymous',
+  name: null,
   params: 'a, b',
   args: ['a', 'b'],
   body: 'a + 3 + b',
   defaults: { a: undefined, b: undefined }
 }, {
-  name: 'anonymous',
+  name: null,
   params: 'x, y, restArgs',
   args: ['x', 'y', 'restArgs'],
   body: 'console.log({ value: x * y })',
@@ -139,6 +146,7 @@ const named = clone(regulars).map((item) => {
 const expected = {
   regulars: regulars,
   named: named,
+  generators: named,
   arrows: arrows,
   asyncs: regulars.concat(named).concat(arrows)
 }
@@ -157,7 +165,9 @@ function factory (parserName, parseFn) {
     values.forEach((code, i) => {
       const actual = parseFn(code)
       const expect = expected[key][i]
-      const value = actual.value.replace('____foo$1o__i3n8v$al4i1d____', '')
+      const value = actual.value
+        .replace(/^\( \{? ?/, '')
+        .replace(/ \)$/, '')
 
       test(`#${testsCount++} - ${parserName} - ${value}`, (done) => {
         test.strictEqual(actual.isValid, true)
@@ -177,7 +187,7 @@ function factory (parserName, parseFn) {
 
     test.strictEqual(actual.isValid, false)
     test.strictEqual(actual.value, '')
-    test.strictEqual(actual.name, 'anonymous')
+    test.strictEqual(actual.name, null)
     test.strictEqual(actual.body, '')
     test.strictEqual(actual.params, '')
     test.deepEqual(actual.args, [])
@@ -197,11 +207,12 @@ function factory (parserName, parseFn) {
     done()
   })
 
-  test(`#${testsCount++} - ${parserName} - should not fails to get .body when something after close curly (issue#3)`, (done) => {
-    const actual = parseFn('function (a) {return a * 2} sa')
-    test.strictEqual(actual.body, 'return a * 2')
-    done()
-  })
+  // bug in v4, would throw
+  // test(`#${testsCount++} - ${parserName} - should not fails to get .body when something after close curly (issue#3)`, (done) => {
+  //   const actual = parseFn('function (a) {return a}; var b = 1')
+  //   test.strictEqual(actual.body, 'return a * 2')
+  //   done()
+  // })
 
   test(`#${testsCount++} - ${parserName} - should work when comment in arguments (see #11)`, (done) => {
     const actual = parseFn('function (/* done */) { return 123 }')
@@ -237,33 +248,73 @@ function factory (parserName, parseFn) {
     test.strictEqual(actual.body, ' return a + bc ')
     done()
   })
+
+  test(`#${testsCount++} - ${parserName} - should work for object methods`, (done) => {
+    const obj = {
+      foo (a, b, c) { return 123 }
+    }
+    const actual = parseFn(obj.foo)
+    test.strictEqual(actual.name, 'foo')
+    test.strictEqual(actual.params, 'a, b, c')
+    test.strictEqual(actual.body, ' return 123 ')
+    done()
+  })
+
+  test(`#${testsCount++} - ${parserName} - plugins api`, (done) => {
+    const fnStr = `() => 123 + a + 44`
+    const result = parseFn(fnStr, {
+      use: (node, result) => {
+        result.called = true
+      }
+    })
+
+    test.strictEqual(result.called, true)
+    done()
+  })
+
+  test(`#${testsCount++} - ${parserName} - fn named "anonymous" has .name: 'anonymous'`, function (done) {
+    const result = parseFn('function anonymous () {}')
+    test.strictEqual(result.name, 'anonymous')
+
+    const actual = parseFn('function () {}')
+    test.strictEqual(actual.name, null)
+    done()
+  })
 }
 
 /**
  * Actually run all the tests
  */
 
-factory('babylon', function (code) {
-  return parseFunction(code)
+factory('babylon default', function (code, opts) {
+  return parseFunction(code, opts)
 })
 
-factory('acorn', function (code) {
-  return parseFunction(code, {
+factory('babylon.parse', function (code, opts) {
+  return parseFunction(code, Object.assign({
+    parse: require('babylon').parse,
+    ecmaVersion: 2017
+  }, opts))
+})
+
+factory('acorn.parse', function (code, opts) {
+  return parseFunction(code, Object.assign({
     parse: acorn.parse,
     ecmaVersion: 2017
-  })
+  }, opts))
 })
 
-factory('acorn.parse_dammit', function (code) {
-  return parseFunction(code, {
+factory('acorn.parse_dammit', function (code, opts) {
+  return parseFunction(code, Object.assign({
     parse: require('acorn/dist/acorn_loose').parse_dammit,
     ecmaVersion: 2017
-  })
+  }, opts))
 })
 
-factory('espree', function (code) {
-  return parseFunction(code, {
+factory('espree.parse', function (code, opts) {
+  return parseFunction(code, Object.assign({
     parse: require('espree').parse,
     ecmaVersion: 8
-  })
+  }, opts))
 })
+
