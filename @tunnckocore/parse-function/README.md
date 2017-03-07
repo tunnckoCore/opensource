@@ -38,6 +38,7 @@ solution and need for just getting the names of the function arguments._
   * [Throws in one specific case](#throws-in-one-specific-case)
   * [Function named _"anonymous"_](#function-named-_anonymous_)
   * [Real anonymous function](#real-anonymous-function)
+  * [Plugins Architecture](#plugins-architecture)
 - [API](#api)
   * [parseFunction](#parsefunction)
   * [.parse](#parse)
@@ -132,6 +133,55 @@ in fact it's a named function.
 
 Only if you pass really an anonymous function you will get `result.name` equal to `null`, 
 `result.isAnonymous` equal to `true` and `result.isNamed` equal to `false`.
+
+### Plugins Architecture
+
+A more human description of the plugin mechanism. Plugins are **synchronous** - no support
+and no need for **async** plugins here, but notice that you can do that manually, because 
+that exact architecture.
+
+The first function that is passed to the [.use](#use) method is used for extending the core API, 
+for example adding a new method to the `app` instance. That function is immediately invoked.
+
+```js
+const parseFunction = require('parse-function')
+const app = parseFunction()
+
+app.use((self) => {
+  // self is same as `app`
+  console.log(self.use)
+  console.log(self.parse)
+  console.log(self.define)
+
+  self.define(self, 'foo', (bar) => bar + 1)
+})
+
+console.log(app.foo(2)) // => 3
+```
+
+On the other side, if you want to access the AST of the parser, you should return a function 
+from that plugin, which function is passed with `(node, result)` signature.
+
+This function is lazy plugin, it is called only when the [.parse](#parse) method is called.
+
+```js
+const parseFunction = require('parse-function')
+const app = parseFunction()
+
+app.use((self) => {
+  console.log('immediately called')
+
+  return (node, result) => {
+    console.log('called only when .parse is invoked')
+    console.log(node)
+    console.log(result)
+  } 
+})
+```
+
+Where **1)** the `node` argument is an object - actual and real AST Node coming from the parser 
+and **2)** the `result` is an object too - the end [Result](#result), on which 
+you can add more properties if you want.
 
 ## API
 
@@ -243,7 +293,7 @@ console.log(result.isArrow) // => false
 console.log(result.thatIsArrow) // => undefined
 ```
 
-### [.define](index.js#L239)
+### [.define](index.js#L242)
 > Define a non-enumerable property on an object. Just a convenience mirror of the [define-property][] library, so check out its docs. Useful to be used in plugins.
 
 **Params**
