@@ -1,9 +1,9 @@
 {
   "name": "parse-function",
   "version": "3.0.0",
-  "description": "Parse a function to an object that has its name, body, args and few more useful properties. Support regular functions, async/await, arrow and generator functions.",
+  "description": "Parse a function into an object that has its name, body, args and a few more useful properties.",
   "repository": "tunnckoCore/parse-function",
-  "author": "Charlike Mike Reagent <@tunnckoCore> (http://i.am.charlike.online)",
+  "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
   "precommit.silent": true,
   "main": "index.js",
   "license": "MIT",
@@ -104,8 +104,10 @@
       ]
     },
     "reflinks": [
+      "acorn",
       "always-done",
       "async-done",
+      "babylon",
       "base",
       "commitizen",
       "dezalgo",
@@ -113,8 +115,9 @@
       "standard-version",
       "verb",
       "verb-generate-readme",
-      "acorn",
-      "babylon"
+      "charlike",
+      "coveralls-img",
+      "coveralls-url"
     ],
     "lint": {
       "reflinks": true
