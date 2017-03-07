@@ -81,35 +81,25 @@ const define = require('define-property')
  */
 
 module.exports = function parseFunction (code, options) {
-  let result = getDefaults(code)
+  let result = setDefaults(code)
 
   if (!result.isValid) {
     return result
   }
 
-  let node = null
   const opts = Object.assign({}, options)
   opts.use = [defaultPlugin].concat(arrayify(opts.use))
 
   let val = result.value
   let starts = val.startsWith('function') || val.startsWith('async function')
 
-  if (starts || /=>/.test(val)) {
+  if (starts || /\=>/.test(val)) { // eslint-disable-line no-useless-escape
     result.value = val
   } else {
     result.value = `{ ${val} }`
   }
 
-  if (typeof opts.parse === 'function') {
-    result.value = `( ${result.value} )`
-
-    const ast = opts.parse(result.value, opts)
-    const body = ast.program && ast.program.body || ast.body
-
-    node = body[0].expression
-  } else {
-    node = babylon.parseExpression(result.value, opts)
-  }
+  let node = getNode(result, opts)
 
   return opts.use.reduce((res, plugin) => {
     return plugin(node, res) || res
@@ -125,7 +115,7 @@ module.exports = function parseFunction (code, options) {
  * @api private
  */
 
-function getDefaults (code) {
+function setDefaults (code) {
   const result = {
     name: null,
     body: '',
@@ -141,7 +131,7 @@ function getDefaults (code) {
     code = '' // makes result.isValid === false
   }
 
-  return hiddens(result, code)
+  return setHiddenDefaults(result, code)
 }
 
 /**
@@ -154,7 +144,7 @@ function getDefaults (code) {
  * @api private
  */
 
-function hiddens (result, code) {
+function setHiddenDefaults (result, code) {
   define(result, 'defaults', {})
   define(result, 'value', code)
   define(result, 'isValid', code.length > 0)
@@ -166,6 +156,29 @@ function hiddens (result, code) {
   define(result, 'isExpression', false)
 
   return result
+}
+
+/**
+ * > Get needed AST tree, depending on what
+ * parse method is used.
+ *
+ * @param  {Object} `result`
+ * @param  {Object} `opts`
+ * @return {Object} `node`
+ * @api private
+ */
+
+function getNode (result, opts) {
+  if (typeof opts.parse === 'function') {
+    result.value = `( ${result.value} )`
+
+    const ast = opts.parse(result.value, opts)
+    const body = ast.program && ast.program.body || ast.body
+
+    return body[0].expression
+  }
+
+  return babylon.parseExpression(result.value, opts)
 }
 
 /**
@@ -187,6 +200,7 @@ function defaultPlugin (node, result) {
 
   // only if function, arrow function,
   // generator function or object method
+
   /* istanbul ignore next */
   if (!isFn && !isMethod) {
     return
@@ -195,14 +209,34 @@ function defaultPlugin (node, result) {
   node = isMethod ? node.properties[0] : node
   node.id = isMethod ? node.key : node.id
 
-  // babylon node.properties[0] is ObjectMethod that has `params` and `body`
-  // acorn node.properties[0] is Property that has `value`
+  // babylon node.properties[0] is `ObjectMethod` that has `params` and `body`;
+  // acorn node.properties[0] is `Property` that has `value`;
   if (node.type === 'Property') {
     var id = node.key
     node = node.value
     node.id = id
   }
 
+  // kind of micro plugins
+  result = setProps(node, result)
+  result = getParams(node, result)
+  result = getBody(node, result)
+
+  return result
+}
+
+/**
+ * > Set couple of hidden properties and
+ * the name of the given function to
+ * the returned result object
+ *
+ * @param  {Object} `node`
+ * @param  {Object} `result`
+ * @return {Object} `result`
+ * @api private
+ */
+
+function setProps (node, result) {
   define(result, 'isArrow', node.type.startsWith('Arrow'))
   define(result, 'isAsync', node.async || false)
   define(result, 'isGenerator', node.generator || false)
@@ -210,14 +244,10 @@ function defaultPlugin (node, result) {
   define(result, 'isAnonymous', node.id === null)
   define(result, 'isNamed', !result.isAnonymous)
 
-  // if real anonymous set to null,
+  // if real anonymous -> set to null,
   // notice that you can name you function `anonymous`, haha
   // and it won't be "real" anonymous, so `isAnonymous` will be `false`
   result.name = result.isAnonymous ? null : node.id.name
-
-  // kind of micro plugins
-  result = getParams(node, result)
-  result = getBody(node, result)
 
   return result
 }
