@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.0.0"></a>
+# [4.0.0](https://github.com/tunnckocore/parse-function/compare/v3.0.0...v4.0.0) (2017-03-07)
+
+
+### Bug Fixes
+
+* **.use:** allow plugins that just extends the core api and not return a function to work ([efa6b72](https://github.com/tunnckocore/parse-function/commit/efa6b72))
+* **codeclimate:** analize lib folder ([1db83ff](https://github.com/tunnckocore/parse-function/commit/1db83ff))
+* **codeclimate:** xx ([957e994](https://github.com/tunnckocore/parse-function/commit/957e994))
+* **package:** bump to babylon[@next](https://github.com/next) ([0e54780](https://github.com/tunnckocore/parse-function/commit/0e54780))
+* **package:** fix linting ([707e7e1](https://github.com/tunnckocore/parse-function/commit/707e7e1))
+* **package:** force update yarn ([d85a25b](https://github.com/tunnckocore/parse-function/commit/d85a25b))
+* **package:** update deps and npm scripts, fix travis/appveyor ([f4414d0](https://github.com/tunnckocore/parse-function/commit/f4414d0))
+* **style:** codeclimate issues ([8f38ad1](https://github.com/tunnckocore/parse-function/commit/8f38ad1))
+
+
+### Code Refactoring
+
+* **index:** plugins api, more tests, support es6 method notation ([8dbfa15](https://github.com/tunnckocore/parse-function/commit/8dbfa15)), closes [#27](https://github.com/tunnckocore/parse-function/issues/27)
+
+
+### Features
+
+* **methods:** reorganize repo, introduce ".use" and ".parse" methods ([91e1b4c](https://github.com/tunnckocore/parse-function/commit/91e1b4c))
+
+
+### BREAKING CHANGES
+
+* methods: main export is singleton function that returns an object with ".use" and ".parse"
+methods; so to parse a function or string use "app.parse(fn)", where "app" is result of calling
+"parseFunction()" which is the main export
+* index: result.name is now "null" if function is real anonymous and "anonymous" if the name
+
+of the function is exactly that; switch to use babylon.parseExpression, so maybe it would be faster;
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/tunnckocore/parse-function/compare/v2.3.2...v3.0.0) (2016-12-09)
 

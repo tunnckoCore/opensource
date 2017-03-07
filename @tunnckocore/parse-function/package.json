@@ -1,6 +1,6 @@
 {
   "name": "parse-function",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Parse a function into an object that has its name, body, args and a few more useful properties.",
   "repository": "tunnckoCore/parse-function",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
