@@ -272,12 +272,17 @@ function factory (parserName, parseFn) {
     done()
   })
 
-  test(`#${testsCount++} - ${parserName} - fn named "anonymous" has .name: 'anonymous'`, function (done) {
+  test(`#${testsCount++} - ${parserName} - fn named "anonymous" has .name: 'anonymous'`, (done) => {
     const result = parseFn('function anonymous () {}')
     test.strictEqual(result.name, 'anonymous')
+    test.strictEqual(result.isAnonymous, false)
+    done()
+  })
 
+  test(`#${testsCount++} - ${parserName} - real anonymous fn has .name: null`, (done) => {
     const actual = parseFn('function () {}')
     test.strictEqual(actual.name, null)
+    test.strictEqual(actual.isAnonymous, true)
     done()
   })
 }
