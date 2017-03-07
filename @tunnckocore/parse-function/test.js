@@ -322,4 +322,3 @@ factory('espree.parse', function (code, opts) {
     ecmaVersion: 8
   }, opts))
 })
-

@@ -8,7 +8,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "lint": "standard **/*.js --fix --verbose",
+    "lint": "standard index.js test.js --fix --verbose",
     "test": "npm-run-all -s lint test:*",
     "test:api": "nyc --reporter lcov node test.js",
     "test:report": "nyc report",
@@ -77,11 +77,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "standard": {
-    "ingore": [
-      "benchmark"
-    ]
   },
   "verb": {
     "run": true,

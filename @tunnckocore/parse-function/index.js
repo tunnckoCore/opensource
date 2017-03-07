@@ -173,7 +173,7 @@ function getNode (result, opts) {
     result.value = `( ${result.value} )`
 
     const ast = opts.parse(result.value, opts)
-    const body = ast.program && ast.program.body || ast.body
+    const body = (ast.program && ast.program.body) || ast.body
 
     return body[0].expression
   }
