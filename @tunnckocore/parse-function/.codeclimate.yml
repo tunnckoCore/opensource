@@ -1,0 +1,14 @@
+engines:
+  eslint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+ratings:
+  paths:
+  - "**.js"
+exclude_paths:
+- "benchmark/"
+- "test.js"
