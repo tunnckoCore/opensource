@@ -56,19 +56,65 @@ const initial = require('./lib/plugins/initial')
  * ```
  *
  * @name   parseFunction
- * @param  {Object} `opts` optional, used merged with options passed to `.parse` method
+ * @param  {Object} `opts` optional, merged with options passed to `.parse` method
  * @return {Object} `app` object with `.use` and `.parse` methods
  * @api public
  */
 
-module.exports = (opts) => {
+module.exports = function parseFunction (opts) {
   const plugins = []
   const app = {
+    /**
+     * > Define a non-enumerable property on an object. Just
+     * a convenience mirror of the [define-property][] library,
+     * so check out its docs.
+     *
+     * @name   .define
+     * @param  {Object} `obj` the object on which to define the property
+     * @param  {String} `prop` the name of the property to be defined or modified
+     * @param  {Any} `val` the descriptor for the property being defined or modified
+     * @return {Object} `obj` the passed object, but modified
+     * @api public
+     */
+
     define: utils.define,
+
+    /**
+     * > Plugin for extending the API or working on the
+     * AST nodes. The `fn` is immediately invoked and pass
+     * with `app` argument which is instance of `parseFunction()` call.
+     * That `fn` may return another function that
+     * accepts `(node, result)` signature, where `node` is an AST node
+     * and `result` is an object which will be returned
+     * from the `.parse` method.
+     *
+     * @name   .use
+     * @param  {Function} `fn` plugin to be called
+     * @return {Object} `app` instance for chaining
+     * @api public
+     */
+
     use: (fn) => {
       plugins.push(fn(app))
       return app
     },
+
+    /**
+     * > Parse a given `code` and returns a `result` object
+     * with useful properties - such as `name`, `body` and `args`.
+     * By default it uses Babylon parser, but you can switch it by
+     * passing `options.parse` - for example `options.parse: acorn.parse`.
+     *
+     * @name   .parse
+     * @param  {Function|String} `code` any kind of function or string to be parsed
+     * @param  {Object} `options` directly passed to the parser - babylon, acorn, espree
+     * @param  {Function} `options.parse` by default `babylon.parse`,
+     *                                    all `options` are passed as second argument
+     *                                    to that provided function
+     * @return {Object} `result` see [result section](#result) for more info
+     * @api public
+     */
+
     parse: (code, options) => {
       let result = utils.setDefaults(code)
 

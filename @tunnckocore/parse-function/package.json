@@ -8,7 +8,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "lint": "standard index.js test.js --fix --verbose",
+    "lint": "standard index.js test.js lib/utils.js lib/**/*.js --fix --verbose",
     "test": "npm-run-all -s lint test:*",
     "test:api": "nyc --reporter lcov node test.js",
     "test:report": "nyc report",
