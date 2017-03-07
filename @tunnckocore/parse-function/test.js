@@ -334,3 +334,33 @@ factory('espree.parse', (code, opts, plugin) => {
   if (plugin) app.use(plugin)
   return app.parse(code, opts)
 })
+
+test('should just extend the core API, not the end result', (done) => {
+  const app = parseFunction()
+  app.use((inst) => {
+    app.define(inst, 'hello', (place) => `Hello ${place}!!`)
+  })
+  const ret = app.hello('pinky World')
+  test.strictEqual(ret, 'Hello pinky World!!')
+  done()
+})
+
+test('should call fn returned from plugin only when `parse` is called', (done) => {
+  const app = parseFunction({
+    ecmaVersion: 2017
+  })
+  let called = 0
+  app.use((app) => {
+    called = 1
+    return (node, result) => {
+      called = 2
+    }
+  })
+
+  test.strictEqual(called, 1)
+
+  let res = app.parse('(a, b) => {}')
+  test.strictEqual(called, 2)
+  test.strictEqual(res.params, 'a, b')
+  done()
+})

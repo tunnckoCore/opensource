@@ -177,7 +177,10 @@ module.exports = function parseFunction (opts) {
      */
 
     use: (fn) => {
-      plugins.push(fn(app))
+      const ret = fn(app)
+      if (typeof ret === 'function') {
+        plugins.push(ret)
+      }
       return app
     },
 
