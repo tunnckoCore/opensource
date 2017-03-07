@@ -262,11 +262,13 @@ function factory (parserName, parseFn) {
 
   test(`#${testsCount++} - ${parserName} - plugins api`, (done) => {
     const fnStr = `() => 123 + a + 44`
-    const result = parseFn(fnStr, {
-      use: (node, result) => {
-        result.called = true
-      }
-    })
+    const plugin = (app) => (node, result) => {
+      result.called = true
+      // you may want to return the `result`,
+      // but it is the same as not return it
+      // return result
+    }
+    const result = parseFn(fnStr, {}, plugin)
 
     test.strictEqual(result.called, true)
     done()
@@ -291,34 +293,44 @@ function factory (parserName, parseFn) {
  * Actually run all the tests
  */
 
-factory('babylon default', function (code, opts) {
-  return parseFunction(code, opts)
+factory('babylon default', (code, opts, plugin) => {
+  const app = parseFunction()
+  if (plugin) app.use(plugin)
+  return app.parse(code, opts)
 })
 
-factory('babylon.parse', function (code, opts) {
-  return parseFunction(code, Object.assign({
+factory('babylon.parse', (code, opts, plugin) => {
+  const app = parseFunction({
     parse: require('babylon').parse,
     ecmaVersion: 2017
-  }, opts))
+  })
+  if (plugin) app.use(plugin)
+  return app.parse(code, opts)
 })
 
-factory('acorn.parse', function (code, opts) {
-  return parseFunction(code, Object.assign({
+factory('acorn.parse', (code, opts, plugin) => {
+  const app = parseFunction({
     parse: acorn.parse,
     ecmaVersion: 2017
-  }, opts))
+  })
+  if (plugin) app.use(plugin)
+  return app.parse(code, opts)
 })
 
-factory('acorn.parse_dammit', function (code, opts) {
-  return parseFunction(code, Object.assign({
+factory('acorn.parse_dammit', (code, opts, plugin) => {
+  const app = parseFunction()
+  if (plugin) app.use(plugin)
+  return app.parse(code, Object.assign({
     parse: require('acorn/dist/acorn_loose').parse_dammit,
     ecmaVersion: 2017
   }, opts))
 })
 
-factory('espree.parse', function (code, opts) {
-  return parseFunction(code, Object.assign({
+factory('espree.parse', (code, opts, plugin) => {
+  const app = parseFunction({
     parse: require('espree').parse,
     ecmaVersion: 8
-  }, opts))
+  })
+  if (plugin) app.use(plugin)
+  return app.parse(code, opts)
 })
