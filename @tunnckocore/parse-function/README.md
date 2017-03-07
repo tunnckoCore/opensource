@@ -22,8 +22,8 @@ solution and need for just getting the names of the function arguments._
 
 ## Features
 
-- **Smart Plugins:** for extending the core API or the end [Result](#result), see the [.use](#use) method
-- **Extensible:** using plugins for working directly on AST nodes, see the [.use](#use) method
+- **Smart Plugins:** for extending the core API or the end [Result](#result), see [.use](#use) method and [Plugins Architecture](#plugins-architecture)
+- **Extensible:** using plugins for working directly on AST nodes, see the [Plugins Architecture](#plugins-architecture)
 - **ES2017 Ready:** by using `.parseExpression` method of the [babylon][] `v7.x` parser
 - **Customization:** allows switching the parser, through `options.parse`
 - **Support for:** arrow functions, default parameters, generators and async/await functions
@@ -78,6 +78,8 @@ console.log(app.parse) // => function
 console.log(app.define) // => function
 ```
 
+**[back to top](#readme)**
+
 ## Which version to use?
 
 There's no breaking changes between the `v2.x` version. The only breaking is `v2.1` which also is not
@@ -107,8 +109,10 @@ parse function to the `options.parse` option. **From this version we require `no
 **Use v4.x**
 
 When you want full customization and most stable support for old and modern features. This version
-uses `babylon.parseExpression` for parsing and provides a [Plugins API](#use). 
+uses `babylon.parseExpression` for parsing and provides a [Plugins API](#plugins-architecture). 
 See the [Features](#features) section for more info.
+
+**[back to top](#readme)**
 
 ## Notes
 
@@ -134,7 +138,11 @@ in fact it's a named function.
 Only if you pass really an anonymous function you will get `result.name` equal to `null`, 
 `result.isAnonymous` equal to `true` and `result.isNamed` equal to `false`.
 
+**[back to top](#readme)**
+
 ### Plugins Architecture
+
+> _see: the [.use](#use) method and [test.js#338-L366](https://github.com/tunnckoCore/parse-function/blob/master/test.js#338-L366)_
 
 A more human description of the plugin mechanism. Plugins are **synchronous** - no support
 and no need for **async** plugins here, but notice that you can do that manually, because 
@@ -182,6 +190,8 @@ app.use((self) => {
 Where **1)** the `node` argument is an object - actual and real AST Node coming from the parser 
 and **2)** the `result` is an object too - the end [Result](#result), on which 
 you can add more properties if you want.
+
+**[back to top](#readme)**
 
 ## API
 
@@ -255,8 +265,10 @@ console.log(result.isAnonymous) // => false
 console.log(result.isGenerator) // => false
 ```
 
-### [.use](index.js#L179)
+### [.use](index.js#L181)
 > Add a plugin `fn` function for extending the API or working on the AST nodes. The `fn` is immediately invoked and passed with `app` argument which is instance of `parseFunction()` call. That `fn` may return another function that accepts `(node, result)` signature, where `node` is an AST node and `result` is an object which will be returned [result](#result) from the `.parse` method. This retuned function is called on each node only when `.parse` method is called.
+
+_See [Plugins Architecture](#plugins-architecture) section._
 
 **Params**
 
@@ -293,7 +305,7 @@ console.log(result.isArrow) // => false
 console.log(result.thatIsArrow) // => undefined
 ```
 
-### [.define](index.js#L242)
+### [.define](index.js#L244)
 > Define a non-enumerable property on an object. Just a convenience mirror of the [define-property][] library, so check out its docs. Useful to be used in plugins.
 
 **Params**
@@ -345,6 +357,8 @@ console.log(result.isNamed) // => false
 console.log(result.isAnonymous) // => true
 ```
 
+**[back to top](#readme)**
+
 ### Result
 > In the result object you have `name`, `args`, `params`, `body` and few hidden properties
 that can be useful to determine what the function is - arrow, regular, async/await or generator.
@@ -360,6 +374,8 @@ that can be useful to determine what the function is - arrow, regular, async/awa
 * `isNamed` **{Boolean}**: `true` if function has name, or `false` if is anonymous
 * `isGenerator` **{Boolean}**: `true` if the function is ES2015 generator function
 * `isAnonymous` **{Boolean}**: `true` if the function don't have name
+
+**[back to top](#readme)**
 
 ## Related
 - [acorn](https://www.npmjs.com/package/acorn): ECMAScript parser | [homepage](https://github.com/ternjs/acorn "ECMAScript parser")

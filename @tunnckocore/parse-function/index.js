@@ -140,6 +140,8 @@ module.exports = function parseFunction (opts) {
      * from the `.parse` method. This retuned function is called on each
      * node only when `.parse` method is called.
      *
+     * _See [Plugins Architecture](#plugins-architecture) section._
+     *
      * **Example**
      *
      * ```js
