@@ -8,7 +8,9 @@ engines:
       - javascript
 ratings:
   paths:
-  - "**.js"
+  - "index.js"
+  - "lib/utils.js"
+  - "lib/plugins/**.js"
 exclude_paths:
 - "benchmark/"
 - "test.js"
