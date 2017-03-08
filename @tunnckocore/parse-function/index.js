@@ -115,16 +115,14 @@ module.exports = function parseFunction (opts) {
 
       const isFunction = result.value.startsWith('function')
       const isAsyncFn = result.value.startsWith('async function')
-
       // eslint-disable-next-line no-useless-escape
-      if (isFunction || isAsyncFn || /\=>/.test(result.value)) {
-        result.value = result.value
-      } else {
+      const isMethod = /^\*?.+\([^\)]*\)\s*\{/i.test(result.value)
+
+      if (!(isFunction || isAsyncFn) && isMethod) {
         result.value = `{ ${result.value} }`
       }
 
       let node = utils.getNode(result, opts)
-
       return plugins.reduce((res, fn) => {
         return fn(node, res) || res
       }, result)

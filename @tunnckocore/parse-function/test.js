@@ -251,12 +251,22 @@ function factory (parserName, parseFn) {
 
   test(`#${testsCount++} - ${parserName} - should work for object methods`, (done) => {
     const obj = {
-      foo (a, b, c) { return 123 }
+      foo (a, b, c) { return 123 },
+      bar (a) { return () => a },
+      * gen (a) {}
     }
+
     const actual = parseFn(obj.foo)
     test.strictEqual(actual.name, 'foo')
     test.strictEqual(actual.params, 'a, b, c')
     test.strictEqual(actual.body, ' return 123 ')
+
+    const bar = parseFn(obj.bar)
+    test.strictEqual(bar.name, 'bar')
+    test.strictEqual(bar.body, ' return () => a ')
+
+    const gen = parseFn(obj.gen)
+    test.strictEqual(gen.name, 'gen')
     done()
   })
 

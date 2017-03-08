@@ -79,7 +79,7 @@ utils.setHiddenDefaults = function setHiddenDefaults (result, code) {
 
 utils.getNode = function getNode (result, opts) {
   if (typeof opts.parse === 'function') {
-    result.value = `( ${result.value} )`
+    result.value = `(${result.value})`
 
     const ast = opts.parse(result.value, opts)
     const body = (ast.program && ast.program.body) || ast.body
