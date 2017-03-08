@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.0.1"></a>
+## [4.0.1](https://github.com/tunnckocore/parse-function/compare/v4.0.0...v4.0.1) (2017-03-08)
+
+
+### Bug Fixes
+
+* **arrows:** bug when found arrow on function body ([3f6db26](https://github.com/tunnckocore/parse-function/commit/3f6db26)), closes [#30](https://github.com/tunnckocore/parse-function/issues/30)
+* **package:** include files in npm package ([9f1bc4f](https://github.com/tunnckocore/parse-function/commit/9f1bc4f)), closes [#29](https://github.com/tunnckocore/parse-function/issues/29)
+
+
+
 <a name="4.0.0"></a>
 # [4.0.0](https://github.com/tunnckocore/parse-function/compare/v3.0.0...v4.0.0) (2017-03-07)
 
