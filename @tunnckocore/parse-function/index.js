@@ -116,7 +116,7 @@ module.exports = function parseFunction (opts) {
       const isFunction = result.value.startsWith('function')
       const isAsyncFn = result.value.startsWith('async function')
       // eslint-disable-next-line no-useless-escape
-      const isMethod = /^\*?.+\([^\)]*\)\s*\{/i.test(result.value)
+      const isMethod = /^\*?.+\([\s\S\w\W]*\)\s*\{/i.test(result.value)
 
       if (!(isFunction || isAsyncFn) && isMethod) {
         result.value = `{ ${result.value} }`

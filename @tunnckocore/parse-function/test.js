@@ -166,8 +166,8 @@ function factory (parserName, parseFn) {
       const actual = parseFn(code)
       const expect = expected[key][i]
       const value = actual.value
-        .replace(/^\( \{? ?/, '')
-        .replace(/ \)$/, '')
+        .replace(/^\(\{? ?/, '')
+        .replace(/\)$/, '')
 
       test(`#${testsCount++} - ${parserName} - ${value}`, (done) => {
         test.strictEqual(actual.isValid, true)
@@ -253,7 +253,8 @@ function factory (parserName, parseFn) {
     const obj = {
       foo (a, b, c) { return 123 },
       bar (a) { return () => a },
-      * gen (a) {}
+      * gen (a) {},
+      namedFn (a = {foo: 'ba)r', baz: 123}, cb, ...restArgs) { return a * 3 }
     }
 
     const actual = parseFn(obj.foo)
@@ -267,6 +268,11 @@ function factory (parserName, parseFn) {
 
     const gen = parseFn(obj.gen)
     test.strictEqual(gen.name, 'gen')
+
+    const named = parseFn(obj.namedFn)
+    test.strictEqual(named.name, 'namedFn')
+    test.strictEqual(named.args.length, 3)
+    test.strictEqual(named.body, ' return a * 3 ')
     done()
   })
 
