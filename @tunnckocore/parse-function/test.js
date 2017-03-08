@@ -253,8 +253,7 @@ function factory (parserName, parseFn) {
     const obj = {
       foo (a, b, c) { return 123 },
       bar (a) { return () => a },
-      * gen (a) {},
-      namedFn (a = {foo: 'ba)r', baz: 123}, cb, ...restArgs) { return a * 3 }
+      * gen (a) {}
     }
 
     const actual = parseFn(obj.foo)
@@ -269,7 +268,8 @@ function factory (parserName, parseFn) {
     const gen = parseFn(obj.gen)
     test.strictEqual(gen.name, 'gen')
 
-    const named = parseFn(obj.namedFn)
+    const namedFn = `namedFn (a = {foo: 'ba)r', baz: 123}, cb, ...restArgs) { return a * 3 }`
+    const named = parseFn(namedFn)
     test.strictEqual(named.name, 'namedFn')
     test.strictEqual(named.args.length, 3)
     test.strictEqual(named.body, ' return a * 3 ')
