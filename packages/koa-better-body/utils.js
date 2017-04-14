@@ -36,31 +36,6 @@ require('querystring')
 require = fn // eslint-disable-line no-undef, no-native-reassign, no-global-assign
 
 /**
- * > Patch querystring logic. By default uses node's
- * built-in `querystring` module, otherwise that is
- * provided from `opts.querystring`. Works well with
- * the `qs` module. You can pass it like that
- *
- * **Example**
- *
- * ```js
- * app.use(body({
- *   querystring: require('qs')
- * }))
- * ```
- *
- * @param  {String} `str` querystring
- * @param  {Object} `opts` loaded options
- * @return {Object} parsed querystring object
- * @api private
- */
-utils.parseQs = function parseQs (str, opts) {
-  return opts.querystring
-    ? opts.querystring.parse(str, opts)
-    : utils.querystring.parse(str, opts.delimiter, '=', opts)
-}
-
-/**
  * > Default options that will be loaded. Pass `options` to overwrite them.
  *
  * @param  {Object} `options`
@@ -191,8 +166,8 @@ utils.multipart = function multipart (options) {
   var ctx = this
 
   return function thunk (done) {
-    var buff = ''
     var fields = {}
+    var fileFields = {}
     var files = []
     var form = options.IncomingForm instanceof utils.formidable.IncomingForm
       ? options.IncomingForm
@@ -202,19 +177,23 @@ utils.multipart = function multipart (options) {
     form.on('aborted', done)
     form.on('file', function (name, value) {
       files.push(value)
-      fields[name] = fields[name] || []
-      fields[name].push(value)
+      fileFields[name] = fileFields[name] || []
+      fileFields[name].push(value)
     })
     form.on('field', function (name, value) {
-      buff += name + '=' + value + options.delimiter
+      if (fields.hasOwnProperty(name)) {
+        if (Array.isArray(fields[name])) {
+          fields[name].push(value)
+        } else {
+          fields[name] = [fields[name], value]
+        }
+      } else {
+        fields[name] = value
+      }
     })
     form.on('end', function () {
-      fields = buff && buff.length
-        ? utils.extend({}, utils.parseQs(buff.slice(0, -1), options), fields)
-        : fields
-
       done(null, {
-        fields: fields,
+        fields: Object.assign({}, fields, fileFields),
         files: files
       })
     })

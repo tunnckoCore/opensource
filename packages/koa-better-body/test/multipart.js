@@ -65,6 +65,7 @@ test('should get multipart files and fields', function (done) {
     test.strictEqual(this.request.files[0].name, 'package.json')
     test.strictEqual(this.request.fields.a, 'b')
     test.strictEqual(this.request.fields.pkg[0].name, 'package.json')
+    this.body = 'ok1'
   })
   request(server.callback())
     .post('/')
@@ -72,8 +73,22 @@ test('should get multipart files and fields', function (done) {
     .field('a', 'b')
     .attach('pkg', filepath('package.json'))
     .expect(200, done)
-  done()
 })
+
+test('should escape ampersand on multipart form', function (done) {
+  var server = koa().use(betterBody())
+  server.use(function * () {
+    test.ok(this.request.fields)
+    test.deepEqual(this.request.fields.a, 'B&W')
+    this.body = 'ok13'
+  })
+  request(server.callback())
+    .post('/')
+    .type('multipart/form-data')
+    .field('a', 'B&W')
+    .expect(200, done)
+})
+
 test('should get multiple files on same field name', function (done) {
   var server = koa().use(betterBody())
   server.use(function * () {
@@ -108,6 +123,22 @@ test('should get multiple fields on same field name', function (done) {
     .field('baz', 'qux')
     .expect(200)
     .expect('ok3', done)
+})
+test('should get 3 or more fields on same field name', function (done) {
+  var server = koa().use(betterBody())
+  server.use(function * () {
+    test.ok(this.request.fields)
+    test.deepEqual(this.request.fields.foo, ['bar', 'baz', 'bop'])
+    this.body = 'ok'
+  })
+  request(server.callback())
+    .post('/')
+    .type('multipart/form-data')
+    .field('foo', 'bar')
+    .field('foo', 'baz')
+    .field('foo', 'bop')
+    .expect(200)
+    .expect('ok', done)
 })
 test('should **conflicts** between fields and files', function (done) {
   var server = koa().use(betterBody())
