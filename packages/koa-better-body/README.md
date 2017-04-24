@@ -120,7 +120,7 @@ Accepts JSON, [JSON API v1](http://jsonapi.org/), text, buffer, [csp-report](htt
 - `detectJSON` **{Function}**: Custom JSON request detect function - `detectJSON(ctx)`.
 - `strict` **{Boolean}**: Default `true`. Pass `false` if you want to allow parsing GET, DELETE and HEAD requests.
 - `onerror` **{Function}**: Custom error handle, if throw an error, you can customize the response - `onerror(err, ctx)`.
-- `extendTypes` **{Object}**: Default accepting types can find on [utils.defaultTypes function](./utils.js#L83-L104). Allowing you to extend what your app can accept. By default works for JSON, [JSON API v1](http://jsonapi.org/), multipart, text, urlencoded and [csp-report](https://mathiasbynens.be/notes/csp-reports).
+- `extendTypes` **{Object}**: Default accepting types can find on [utils.defaultTypes function](./utils.js#L97-L119). Allowing you to extend what your app can accept. By default works for JSON, [JSON API v1](http://jsonapi.org/), multipart, text, urlencoded and [csp-report](https://mathiasbynens.be/notes/csp-reports).
 - `IncomingForm` **{IncomingForm}**: Pass an instance of `formidable.IncomingForm` to be able to handle formidable events.
 - `handler` **{GeneratorFunction}**: Works with `options.extendTypes.custom` to handle custom types of content-type - `handler(ctx, options, next)`. More info below.
 - `querystring` **{Object}**: Querystring module to be used. By default builtin [`querystring`](https://nodejs.org/api/querystring.html). More info below.
@@ -131,7 +131,7 @@ Accepts JSON, [JSON API v1](http://jsonapi.org/), text, buffer, [csp-report](htt
 
 ## Note about `options.extendTypes`
 
-ExandTypes option gives you a flexible way to handle different content-types and modify the defaults which can be found [at utils.defaultTypes function](./utils.js#L83-L104). In addition you can pass combination of `options.extendTypes.custom` and `options.handler`. When the request has some of the "custom" content type, this middleware will call the `handler` **generator** function with `ctx, options, next`. You can see more at [issue #52](https://github.com/tunnckoCore/koa-better-body/issues/52).
+ExandTypes option gives you a flexible way to handle different content-types and modify the defaults which can be found [at utils.defaultTypes function](./utils.js#L97-L119). In addition you can pass combination of `options.extendTypes.custom` and `options.handler`. When the request has some of the "custom" content type, this middleware will call the `handler` **generator** function with `ctx, options, next`. You can see more at [issue #52](https://github.com/tunnckoCore/koa-better-body/issues/52).
 
 For example manually handle such content types `foo/bar-x`, `text/quix`:
 
