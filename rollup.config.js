@@ -1,6 +1,8 @@
 import gzip from 'rollup-plugin-gzip'
 import buble from 'rollup-plugin-buble'
 import uglify from 'rollup-plugin-uglify'
+import resolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
 
 const name = 'gibon'
 let config = {
@@ -15,6 +17,8 @@ if (process.env.BROWSER) {
     useStrict: false,
     sourceMap: true,
     plugins: [
+      resolve(),
+      commonjs(),
       buble({
         target: {
           ie: '10',
@@ -35,6 +39,7 @@ if (process.env.BROWSER) {
         target: { node: '4' }
       })
     ],
+    external: ['dush', 'dush-router'],
     targets: [
       { dest: `dist/${name}.es.js`, format: 'es' },
       { dest: `dist/${name}.common.js`, format: 'cjs' }

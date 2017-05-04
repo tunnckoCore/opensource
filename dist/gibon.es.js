@@ -1,3 +1,6 @@
+import dush from 'dush';
+import router from 'dush-router';
+
 /*!
  * gibon <https://github.com/tunnckoCore/gibon>
  *
@@ -5,101 +8,95 @@
  * Released under the MIT license.
  */
 
-// `el` placeholder
-function gibon (routes, onRoute, onClick, el) {
-  onRoute = onRoute || ((view, state) => view(state));
-  onClick = onClick || defaultOnClick;
+function gibon (routes) {
+  return dush().use(router()).use((app) => {
+    // A bit backward compatibility
+    Object.keys(routes).forEach((route) => {
+      app.addRoute(route, routes[route]);
+    });
 
-  function defaultOnClick (e, loc) {
-    // `loc` is placeholder
-    if (e.metaKey || e.shiftKey || e.ctrlKey || e.altKey) {
+    onHistoryChange((node, e) => {
+      app.emit('historyChange', node, e);
+    });
+    onHrefChange((node, e) => {
+      app.emit('hrefChange', node, e);
+    });
+  })
+}
+
+/**
+ * Utils
+ */
+
+function onHistoryChange (cb) {
+  window.addEventListener('popstate', function onpopstate (e) {
+    const obj = {
+      pathname: window.location.pathname,
+      search: window.location.search,
+      href: window.location.href,
+      hash: window.location.hash
+    };
+
+    cb(obj, e);
+  });
+}
+
+function onHrefChange (cb) {
+  window.addEventListener('click', function onclick (e) {
+    if (which(e) !== 1) {
       return
     }
-    var t = e.target;
-
-    while (t && t.localName !== 'a') {
-      t = t.parentNode;
+    // clicks with combination
+    // of some common meta keys
+    if (
+      e.metaKey ||
+      e.ctrlKey ||
+      e.shiftKey ||
+      e.altKey ||
+      e.defaultPrevented
+    ) {
+      return
     }
 
-    loc = window.location;
-    if (t && t.host === loc.host && !t.hasAttribute('data-no-routing')) {
-      render(t.pathname, {}, true);
+    // ensure link
+    // use shadow dom when available
+    var el = e.path ? e.path[0] : e.target;
+    while (el && el.nodeName !== 'A') {
+      el = el.parentNode;
+    }
+
+    if (!el || el.nodeName !== 'A') {
+      return
+    }
+
+    // allow mailto links to work normally
+    var link = el.getAttribute('href');
+    if (link && link.indexOf('mailto:') > -1) {
+      return
+    }
+
+    // allow external links to work normally
+    var sameHost = el.host === window.location.host;
+    if (!sameHost) {
+      return
+    }
+
+    // prevent default behaviour on internal links
+    if (sameHost || el.pathname === window.location.pathname) {
       e.preventDefault();
     }
-  }
 
-  // `handle` is placeholder
-  function start (handle) {
-    handle = () => render(window.location.pathname);
-
-    handle();
-    window.addEventListener('onpopstate', handle);
-    window.onclick = (e) => onClick(e, render);
-  }
-
-  function render (view, state) {
-    view = typeof view === 'string' ? getView(view) : view;
-    return (el = onRoute(view, state, el))
-  }
-
-  function getView (pathname) {
-    pathname = pathname || '/';
-    window.history.pushState(0, 0, pathname);
-    return getRoute(routes, pathname)
-  }
-
-  return {
-    start,
-    render
-  }
-}
-
-// `_re` and `_route` are placeholders
-function getRoute (routes, pathname, _re, _route) {
-  if (typeof routes === 'function') {
-    return routes
-  }
-
-  if (routes[pathname]) {
-    return routes[pathname]
-  }
-
-  for (_route in routes) {
-    _re = regexify(_route);
-    if (_re.regex.test(pathname)) {
-      let params = {};
-      pathname.replace(_re.regex, function (args) {
-        args = arguments;
-        for (var i = 1; i < args.length - 2; i++) {
-          params[_re.keys.shift()] = args[i];
-        }
-        _re.match = 1;
-      });
-
-      if (_re.match) {
-        return (state, actions) => {
-          actions = actions || params;
-          return routes[_route](state, actions, params)
-        }
-      }
+    // allow opt out when custom attribute
+    if (!el.hasAttribute('data-no-routing')) {
+      cb(el, e);
+      return
     }
-  }
+  });
 }
 
-function regexify (route, _regex) {
-  const keys = [];
-  _regex =
-    '^' +
-    route.replace(/\//g, '\\/').replace(/:(\w+)/g, (_, name) => {
-      keys.push(name);
-      return '(\\w+)'
-    }) +
-    '$';
-
-  return {
-    regex: new RegExp(_regex, 'i'),
-    keys
-  }
+function which (e) {
+  e = e || window.event;
+  return e.which === null ? e.button : e.which
 }
 
 export default gibon;
