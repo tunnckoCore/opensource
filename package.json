@@ -37,6 +37,7 @@
     "mukla": "^0.4.9",
     "nanomorph": "^4.0.5",
     "npm-run-all": "^4.0.2",
+    "nyc": "^10.3.0",
     "pre-commit": "^1.2.2",
     "rimraf": "^2.6.1",
     "rollup": "^0.41.6",
