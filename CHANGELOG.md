@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/tunnckoCore/gibon/compare/v0.3.2...v0.4.0) (2017-05-04)
+
+
+### Bug Fixes
+
+* **misc:** reformat with prettier (Atom); fix bundling ([8f79545](https://github.com/tunnckoCore/gibon/commit/8f79545)), closes [#6](https://github.com/tunnckoCore/gibon/issues/6)
+* **bundles:** fix missing deps, readme and bundles ([7289659](https://github.com/tunnckoCore/gibon/commit/7289659))
+
+
 <a name="0.3.2"></a>
 ## [0.3.2](https://github.com/tunnckocore/gibon/compare/v0.3.1...v0.3.2) (2017-02-09)
 
