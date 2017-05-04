@@ -10,7 +10,7 @@
 'use strict'
 
 const test = require('mukla')
-// const gibon = require('./dist/gibon')
+// const gibon = require('./dist/gibon.common')
 
 test('gibon', (done) => {
   // gibon()

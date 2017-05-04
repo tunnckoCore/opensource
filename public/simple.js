@@ -1,5 +1,6 @@
 'use strict'
 
+const gibon = require('../dist/gibon.common')
 const router = gibon({
   '/': (ctx) => console.log('home'),
   '/about': (ctx) => console.log('about'),

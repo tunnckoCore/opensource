@@ -1,0 +1,11 @@
+{
+  "extends": "standard",
+  "rules": {
+    "computed-property-spacing": ["error", "never"],
+    "object-curly-spacing": ["error", "always"],
+    "arrow-parens": ["error", "always"],
+    "max-nested-callbacks": ["error", { "max": 5 }],
+    "max-depth": ["error", { "max": 5 }],
+    "no-empty": ["error", { "allowEmptyCatch": true }]
+  }
+}

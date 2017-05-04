@@ -1,6 +1,7 @@
 'use strict'
 
-const nanomorph = require('nanomorph/update')
+const gibon = require('../dist/gibon.common')
+const nanomorph = require('nanomorph')
 const html = require('bel')
 
 const routes = {
@@ -24,13 +25,12 @@ const routes = {
 }
 
 const main = document.querySelector('#app div')
-const update = nanomorph(main)
 
 const state = {
   title: 'hello world'
 }
 
-const onRoute = (view, ctx, oldEl) => update(view(state), oldEl)
+const onRoute = (view, ctx, oldEl) => nanomorph(oldEl || main, view(state))
 const router = gibon(routes, onRoute)
 
 router.start()
