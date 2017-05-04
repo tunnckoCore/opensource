@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.1"></a>
+## [0.4.1](https://github.com/tunnckoCore/gibon/compare/v0.4.0...v0.4.1) (2017-05-04)
+
+
+### Bug Fixes
+
+* **ci:** use appveyor-retry ([5eba66c](https://github.com/tunnckoCore/gibon/commit/5eba66c))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/tunnckoCore/gibon/compare/v0.3.2...v0.4.0) (2017-05-04)
 
