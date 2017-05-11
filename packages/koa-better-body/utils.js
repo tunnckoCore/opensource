@@ -144,7 +144,6 @@ utils.setParsers = function setParsers (ctx, opts) {
     opts.qs || // alias
     ctx.app && ctx.app.querystring ||
     ctx.app && ctx.app.qs || // alias
-    ctx.querystring ||
     ctx.qs // alias
 
   utils.bodyParsers(ctx)
