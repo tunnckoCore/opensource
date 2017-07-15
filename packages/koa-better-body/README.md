@@ -38,14 +38,14 @@ npm i koa-better-body --save
 const koaBetterBody = require('koa-better-body')
 ```
 
-## Working with [koa-router][]
+## Working with [koa-router][] and [koa-better-router](https://github.com/tunnckoCore/koa-better-router)
 
 ```js
 'use strict'
 
 var app = require('koa')()
 var body = require('koa-better-body')
-var router = require('koa-router')()
+var router = require('koa-better-router')().loadMethods()
 
 router.post('/upload', body(), function * (next) {
   console.log(this.request.files)
@@ -65,7 +65,7 @@ router.post('/upload', body(), function * (next) {
   yield next
 })
 
-app.use(router.routes())
+app.use(router.middleware())
 app.listen(4292)
 
 var format = require('util').format
