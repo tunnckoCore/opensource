@@ -1,6 +1,7 @@
 {
   "extends": "standard",
   "rules": {
+    "generator-star-spacing": ["error", { "before": true, "after": true }],
     "computed-property-spacing": ["error", "never"],
     "object-curly-spacing": ["error", "always"],
     "space-before-function-paren": ["error", "always"],
@@ -23,7 +24,6 @@
       {
         "allowEmptyCatch": true
       }
-    ],
-    "generator-star-spacing": ["error", { "before": true, "after": true }]
+    ]
   }
 }

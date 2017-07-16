@@ -7,7 +7,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "lint": "standard --verbose",
+    "lint": "eslint --fix ./*.js ./test/*.js",
     "pretest": "npm run lint",
     "test": "npm run coverage",
     "posttest": "npm run lint:coverage",
@@ -22,28 +22,25 @@
   "dependencies": {
     "extend-shallow": "^2.0.1",
     "formidable": "^1.0.17",
-    "koa-body-parsers": "git+https://github.com/tunnckoCore/body-parsers.git",
-    "lazy-cache": "^2.0.1"
+    "koa-body-parsers": "git+https://github.com/tunnckoCore/body-parsers.git"
   },
   "devDependencies": {
     "commitizen": "^2.8.6",
     "coveralls": "^2.11.12",
     "cz-conventional-changelog": "^1.2.0",
+    "eslint": "^4.2.0",
     "is-buffer": "^1.1.3",
     "koa": "^1.2.4",
     "koa-route": "^2.4.2",
     "mukla": "^0.4.1",
     "nyc": "^8.1.0",
-    "qs": "^6.2.1",
     "pre-commit": "^1.1.3",
+    "qs": "^6.2.1",
     "standard": "^10.0.2",
     "standard-version": "^2.4.0",
     "supertest": "^2.0.0"
   },
-  "files": [
-    "index.js",
-    "utils.js"
-  ],
+  "files": ["index.js", "utils.js"],
   "keywords": [
     "api",
     "awesome",
@@ -87,9 +84,7 @@
     "run": true,
     "toc": false,
     "layout": "empty",
-    "tasks": [
-      "readme"
-    ],
+    "tasks": ["readme"],
     "related": {
       "list": [
         "koa",
