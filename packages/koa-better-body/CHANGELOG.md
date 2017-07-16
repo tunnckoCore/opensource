@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.4"></a>
+## [3.0.4](https://github.com/tunnckoCore/koa-better-body/compare/v3.0.3...v3.0.4) (2017-07-16)
+
+
+### Bug Fixes
+
+* **lint:** update linting, remove lazy-cache ([e4ba8da](https://github.com/tunnckoCore/koa-better-body/commit/e4ba8da))
+* **package:** update scripts and travis ([63a08ea](https://github.com/tunnckoCore/koa-better-body/commit/63a08ea))
+* **prettier:** format codebase ([e0407cc](https://github.com/tunnckoCore/koa-better-body/commit/e0407cc))
+* **style:** proper naming ([66b91b9](https://github.com/tunnckoCore/koa-better-body/commit/66b91b9))
+* **style:** update standard and format codebase ([e087f02](https://github.com/tunnckoCore/koa-better-body/commit/e087f02))
+* **travis:** install more stable npm for better results ([2d4b122](https://github.com/tunnckoCore/koa-better-body/commit/2d4b122))
+
+
+
 <a name="3.0.3"></a>
 ## [3.0.3](https://github.com/tunnckoCore/koa-better-body/compare/v3.0.2...v3.0.3) (2017-07-16)
 
