@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.3"></a>
+## [3.0.3](https://github.com/tunnckoCore/koa-better-body/compare/v3.0.2...v3.0.3) (2017-07-16)
+
+
+### Bug Fixes
+
+* **ampersand:** bug when value has ampersand ([b4d33f6](https://github.com/tunnckoCore/koa-better-body/commit/b4d33f6))
+* **doc:** update extendTypes link (#82) ([280bb1a](https://github.com/tunnckoCore/koa-better-body/commit/280bb1a))
+* **koa2:** remove ctx.querystring (#84) ([e42fdca](https://github.com/tunnckoCore/koa-better-body/commit/e42fdca)), closes [#77](https://github.com/tunnckoCore/koa-better-body/issues/77)
+* **readme:** update router example ([36e1897](https://github.com/tunnckoCore/koa-better-body/commit/36e1897))
+
+
+
 <a name="3.0.2"></a>
 ## [3.0.2](https://github.com/tunnckocore/koa-better-body/compare/v3.0.1...v3.0.2) (2016-10-08)
 
