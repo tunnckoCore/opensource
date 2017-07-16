@@ -16,17 +16,23 @@ var controller = {
     </form>`
   },
   upload: function * (next) {
-    this.body = JSON.stringify({
-      files: this.request.files,
-      fields: this.request.fields
-    }, null, 2)
+    this.body = JSON.stringify(
+      {
+        files: this.request.files,
+        fields: this.request.fields
+      },
+      null,
+      2
+    )
   }
 }
 
-app.use(body({
-  querystring: require('qs'),
-  formLimit: '6mb'
-}))
+app.use(
+  body({
+    querystring: require('qs'),
+    formLimit: '6mb'
+  })
+)
 app.use(route.get('/', controller.home))
 app.use(route.post('/', controller.upload))
 app.listen(4290)

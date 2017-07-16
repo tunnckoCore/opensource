@@ -17,7 +17,9 @@ function filepath (name) {
   return path.join(__dirname, '../', name)
 }
 
-test('should not get multipart body if options.multipart: false', function (done) {
+test('should not get multipart body if options.multipart: false', function (
+  done
+) {
   var server = koa().use(betterBody({ multipart: false }))
   server.use(function * () {
     test.strictEqual(this.body, undefined)
@@ -44,8 +46,16 @@ test('should get multipart body by default', function (done) {
     // test.strictEqual(this.request.fields.foo[1].name, 'README.md')
     // test.strictEqual(this.request.fields.bar[0].name, 'utils.js')
     test.strictEqual(this.request.files.length, 3, 'should be 3 files')
-    test.strictEqual(this.request.fields.foo.length, 2, 'should fields.foo to have 2 files')
-    test.strictEqual(this.request.fields.bar.length, 1, 'should fields.bar to have 1 file')
+    test.strictEqual(
+      this.request.fields.foo.length,
+      2,
+      'should fields.foo to have 2 files'
+    )
+    test.strictEqual(
+      this.request.fields.bar.length,
+      1,
+      'should fields.bar to have 1 file'
+    )
     this.body = 'ok1'
   })
   request(server.callback())

@@ -35,7 +35,9 @@ test('should throw if the body is too large', function (done) {
     .send({ foo: { bar: 'qux' } })
     .expect(413, done)
 })
-test('should parse a nested body when `app.querystring` passed', function (done) {
+test('should parse a nested body when `app.querystring` passed', function (
+  done
+) {
   var app = koa()
   app.querystring = require('qs')
 

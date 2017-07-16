@@ -13,11 +13,15 @@ router.post('/upload', body(), function * (next) {
   console.log(this.request.body)
 
   // print it to the API requester
-  this.body = JSON.stringify({
-    fields: this.request.fields,
-    files: this.request.files,
-    body: this.request.body || null
-  }, null, 2)
+  this.body = JSON.stringify(
+    {
+      fields: this.request.fields,
+      files: this.request.files,
+      body: this.request.body || null
+    },
+    null,
+    2
+  )
 
   yield next
 })

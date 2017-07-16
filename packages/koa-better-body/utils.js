@@ -77,7 +77,7 @@ utils.defaultOptions = function defaultOptions (options) {
     typeof options.delimiter === 'string' ? options.delimiter : '&'
 
   if (typeof options.handler !== 'function') {
-    options.handler = function* noopHandler () {}
+    options.handler = function * noopHandler () {}
   }
   if (typeof options.detectJSON !== 'function') {
     options.detectJSON = function detectJSON () {
@@ -209,7 +209,7 @@ utils.multipart = function multipart (options) {
  * @api private
  */
 // eslint-disable-next-line complexity
-utils.parseBody = function* parseBody (ctx, options, next) {
+utils.parseBody = function * parseBody (ctx, options, next) {
   var fields = typeof options.fields === 'string' ? options.fields : 'fields'
   var files = typeof options.files === 'string' ? options.files : 'files'
   var custom = options.extendTypes.custom

@@ -26,7 +26,9 @@ test('should get the raw buffer body (options.buffer: true)', function (done) {
     .expect(200)
     .expect('qux', done)
 })
-test('should throw if the buffer body is too large (options.buffer: true)', function (done) {
+test('should throw if the buffer body is too large (options.buffer: true)', function (
+  done
+) {
   var server = koa().use(betterBody({ buffer: true, bufferLimit: '2b' }))
   request(server.callback())
     .post('/')
@@ -34,7 +36,9 @@ test('should throw if the buffer body is too large (options.buffer: true)', func
     .send('too large')
     .expect(413, done)
 })
-test('should get json if `options.buffer` is false (that is the default)', function (done) {
+test('should get json if `options.buffer` is false (that is the default)', function (
+  done
+) {
   var server = koa().use(betterBody())
   server.use(function * () {
     test.strictEqual(typeof this.request.fields, 'object')

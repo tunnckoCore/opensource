@@ -36,12 +36,10 @@ test('should parse a string json body', function (done) {
     .expect(200)
     .expect({ fao: 'nato' }, done)
 })
-test('should throw on json non-object body in strict mode (default)', function (done) {
-  request(app.callback())
-    .post('/')
-    .type('json')
-    .send('"lol"')
-    .expect(400, done)
+test('should throw on json non-object body in strict mode (default)', function (
+  done
+) {
+  request(app.callback()).post('/').type('json').send('"lol"').expect(400, done)
 })
 test('should not throw on non-objects in non-strict mode', function (done) {
   var server = koa().use(betterBody({ jsonStrict: false })).use(postBody())

@@ -24,9 +24,11 @@ form.on('end', function (name, file) {
 })
 
 app
-  .use(body({
-    IncomingForm: form
-  }))
+  .use(
+    body({
+      IncomingForm: form
+    })
+  )
   .use(function * () {
     console.log(this.body.user) // => test
     console.log(this.request.files) // or `this.body.files`
@@ -36,5 +38,8 @@ app
 
 app.listen(4290, function () {
   console.log('Koa server start listening on port 4290')
-  console.log('curl -i http://localhost:4290/ -F "foo=@%s/README.md" -F user=test', __dirname)
+  console.log(
+    'curl -i http://localhost:4290/ -F "foo=@%s/README.md" -F user=test',
+    __dirname
+  )
 })
