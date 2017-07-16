@@ -133,7 +133,7 @@ utils.setParsers = function setParsers (ctx, opts) {
  * @return {Function} thunk
  * @api private
  */
-utils.multipart = function multipart (options) {
+utils.multipart = function multipart (opts) {
   var ctx = this
 
   return function thunk (done) {
@@ -141,26 +141,26 @@ utils.multipart = function multipart (options) {
     var fileFields = {}
     var files = []
     var form =
-      options.IncomingForm instanceof utils.formidable.IncomingForm
-        ? options.IncomingForm
-        : new utils.formidable.IncomingForm(options)
+      opts.IncomingForm instanceof utils.formidable.IncomingForm
+        ? opts.IncomingForm
+        : new utils.formidable.IncomingForm(opts)
 
     form.on('error', done)
     form.on('aborted', done)
-    form.on('file', function (name, value) {
-      files.push(value)
+    form.on('file', function (name, file) {
+      files.push(file)
       fileFields[name] = fileFields[name] || []
-      fileFields[name].push(value)
+      fileFields[name].push(file)
     })
-    form.on('field', function (name, value) {
+    form.on('field', function (name, field) {
       if (fields.hasOwnProperty(name)) {
         if (Array.isArray(fields[name])) {
-          fields[name].push(value)
+          fields[name].push(field)
         } else {
-          fields[name] = [fields[name], value]
+          fields[name] = [fields[name], field]
         }
       } else {
-        fields[name] = value
+        fields[name] = field
       }
     })
     form.on('end', function () {
