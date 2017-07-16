@@ -6,6 +6,9 @@
 
 You might also be interested in our [recipes](./recipes) - working examples, answers, tips & tricks. [Contribute a recipe?](#contributing-recipes)
 
+## Upcoming New Release!
+Hey there! We are thinking for [v4 release soon (#90)](https://github.com/tunnckoCore/koa-better-body/issues/90), so any feedback is welcome!
+
 ## Install
 ```
 npm i koa-better-body --save
