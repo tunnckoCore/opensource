@@ -45,38 +45,39 @@ require = fn // eslint-disable-line no-undef, no-native-reassign, no-global-assi
 utils.defaultOptions = function defaultOptions (options) {
   options = typeof options === 'object' ? options : {}
   var types = utils.defaultTypes(options.extendTypes)
-  options = utils.extend({
-    fields: false,
-    files: false,
-    multipart: true,
-    textLimit: false,
-    formLimit: false,
-    jsonLimit: false,
-    jsonStrict: true,
-    detectJSON: false,
-    bufferLimit: false,
-    buffer: false,
-    strict: true,
+  options = utils.extend(
+    {
+      fields: false,
+      files: false,
+      multipart: true,
+      textLimit: false,
+      formLimit: false,
+      jsonLimit: false,
+      jsonStrict: true,
+      detectJSON: false,
+      bufferLimit: false,
+      buffer: false,
+      strict: true,
 
-    // query string `parse` options
-    delimiter: '&',
-    decodeURIComponent: utils.querystring.unescape,
-    maxKeys: 1000
-  }, options)
+      // query string `parse` options
+      delimiter: '&',
+      decodeURIComponent: utils.querystring.unescape,
+      maxKeys: 1000
+    },
+    options
+  )
 
   options.delimiter = options.sep || options.delimiter
   options.formLimit = options.formLimit || options.urlencodedLimit
   options.extendTypes = types
   options.onerror = options.onЕrror || options.onerror
-  options.onerror = typeof options.onerror === 'function'
-    ? options.onerror
-    : false
-  options.delimiter = typeof options.delimiter === 'string'
-    ? options.delimiter
-    : '&'
+  options.onerror =
+    typeof options.onerror === 'function' ? options.onerror : false
+  options.delimiter =
+    typeof options.delimiter === 'string' ? options.delimiter : '&'
 
   if (typeof options.handler !== 'function') {
-    options.handler = function * noopHandler () {}
+    options.handler = function* noopHandler () {}
   }
   if (typeof options.detectJSON !== 'function') {
     options.detectJSON = function detectJSON () {
@@ -96,26 +97,21 @@ utils.defaultOptions = function defaultOptions (options) {
  */
 utils.defaultTypes = function defaultTypes (types) {
   types = typeof types === 'object' ? types : {}
-  return utils.extend({
-    multipart: [
-      'multipart/form-data'
-    ],
-    text: [
-      'text/*'
-    ],
-    form: [
-      'application/x-www-form-urlencoded'
-    ],
-    json: [
-      'application/json',
-      'application/json-patch+json',
-      'application/vnd.api+json',
-      'application/csp-report'
-    ],
-    buffer: [
-      'text/*'
-    ]
-  }, types)
+  return utils.extend(
+    {
+      multipart: ['multipart/form-data'],
+      text: ['text/*'],
+      form: ['application/x-www-form-urlencoded'],
+      json: [
+        'application/json',
+        'application/json-patch+json',
+        'application/vnd.api+json',
+        'application/csp-report'
+      ],
+      buffer: ['text/*']
+    },
+    types
+  )
 }
 
 /**
@@ -140,10 +136,11 @@ utils.isValid = function isValid (method) {
  * @api private
  */
 utils.setParsers = function setParsers (ctx, opts) {
-  ctx.app.querystring = opts.querystring ||
+  ctx.app.querystring =
+    opts.querystring ||
     opts.qs || // alias
-    ctx.app && ctx.app.querystring ||
-    ctx.app && ctx.app.qs || // alias
+    (ctx.app && ctx.app.querystring) ||
+    (ctx.app && ctx.app.qs) || // alias
     ctx.qs // alias
 
   utils.bodyParsers(ctx)
@@ -168,9 +165,10 @@ utils.multipart = function multipart (options) {
     var fields = {}
     var fileFields = {}
     var files = []
-    var form = options.IncomingForm instanceof utils.formidable.IncomingForm
-      ? options.IncomingForm
-      : new utils.formidable.IncomingForm(options)
+    var form =
+      options.IncomingForm instanceof utils.formidable.IncomingForm
+        ? options.IncomingForm
+        : new utils.formidable.IncomingForm(options)
 
     form.on('error', done)
     form.on('aborted', done)
@@ -210,7 +208,8 @@ utils.multipart = function multipart (options) {
  * @param {Function} `next` next middleware
  * @api private
  */
-utils.parseBody = function * parseBody (ctx, options, next) { /* eslint complexity: [2, 12] */
+// eslint-disable-next-line complexity
+utils.parseBody = function* parseBody (ctx, options, next) {
   var fields = typeof options.fields === 'string' ? options.fields : 'fields'
   var files = typeof options.files === 'string' ? options.files : 'files'
   var custom = options.extendTypes.custom
@@ -220,11 +219,14 @@ utils.parseBody = function * parseBody (ctx, options, next) { /* eslint complexi
     return yield * next
   }
   if (options.detectJSON(ctx) || ctx.request.is(options.extendTypes.json)) {
-    ctx.app.jsonStrict = typeof options.jsonStrict === 'boolean' ? options.jsonStrict : true
+    ctx.app.jsonStrict =
+      typeof options.jsonStrict === 'boolean' ? options.jsonStrict : true
     ctx.request[fields] = yield ctx.request.json(options.jsonLimit)
     return yield * next
   }
-  if (ctx.request.is(options.extendTypes.form || options.extendTypes.urlencoded)) {
+  if (
+    ctx.request.is(options.extendTypes.form || options.extendTypes.urlencoded)
+  ) {
     var res = yield ctx.request.urlencoded(options.formLimit)
     ctx.request[fields] = res
     return yield * next
