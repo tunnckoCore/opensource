@@ -10,7 +10,7 @@
   "assignees": [
     "charlike"
   ],
-  "automerge": "minor",
+  "automerge": "any",
   "automergeType": "branch-push",
   "prCreation": "not-pending"
 }
