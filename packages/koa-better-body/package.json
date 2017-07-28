@@ -38,7 +38,7 @@
     "qs": "6.5.0",
     "standard": "10.0.2",
     "standard-version": "4.2.0",
-    "supertest": "2.0.1"
+    "supertest": "3.0.0"
   },
   "files": [
     "index.js",
