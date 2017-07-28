@@ -26,7 +26,7 @@
   "devDependencies": {
     "commitizen": "2.9.6",
     "coveralls": "2.13.1",
-    "cz-conventional-changelog": "1.2.0",
+    "cz-conventional-changelog": "2.0.0",
     "eslint": "4.3.0",
     "is-buffer": "1.1.5",
     "koa": "1.4.0",
