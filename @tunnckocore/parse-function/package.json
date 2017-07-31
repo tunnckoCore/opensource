@@ -25,7 +25,7 @@
     "define-property": "^1.0.0"
   },
   "devDependencies": {
-    "acorn": "4.0.13",
+    "acorn": "5.1.1",
     "benchmarked": "0.2.6",
     "clone-deep": "0.2.4",
     "commitizen": "2.9.6",
