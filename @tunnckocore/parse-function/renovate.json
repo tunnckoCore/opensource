@@ -1,0 +1,26 @@
+{
+  "enabled": true,
+  "pinVersions": true,
+  "rebaseStalePrs": true,
+  "semanticCommits": true,
+  "labels": [
+    "renovate",
+    "deps"
+  ],
+  "assignees": [
+    "charlike"
+  ],
+  "automerge": "any",
+  "automergeType": "branch-push",
+  "prCreation": "not-pending",
+  "depTypes": [
+    {
+      "depType": "dependencies",
+      "semanticPrefix": "fix(renovate/deps): "
+    },
+    {
+      "depType": "devDependencies",
+      "semanticPrefix": "chore(renovate/devDeps): "
+    }
+  ]
+}
