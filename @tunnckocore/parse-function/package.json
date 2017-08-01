@@ -35,7 +35,7 @@
     "function-regex": "1.0.2",
     "mukla": "0.4.9",
     "npm-run-all": "4.0.2",
-    "nyc": "10.3.2",
+    "nyc": "11.1.0",
     "pre-commit": "1.2.2",
     "standard": "9.0.2",
     "standard-version": "4.2.0"
