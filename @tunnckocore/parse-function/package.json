@@ -29,7 +29,7 @@
     "benchmarked": "1.1.1",
     "clone-deep": "1.0.0",
     "commitizen": "2.9.6",
-    "cz-conventional-changelog": "1.2.0",
+    "cz-conventional-changelog": "2.0.0",
     "espree": "3.4.3",
     "for-in": "0.1.8",
     "function-regex": "1.0.2",
