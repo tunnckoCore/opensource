@@ -27,7 +27,7 @@
   "devDependencies": {
     "acorn": "5.1.1",
     "benchmarked": "1.1.1",
-    "clone-deep": "0.2.4",
+    "clone-deep": "1.0.0",
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "1.2.0",
     "espree": "3.4.3",
