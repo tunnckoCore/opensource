@@ -30,7 +30,7 @@
     "clone-deep": "1.0.0",
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.0.0",
-    "espree": "3.4.3",
+    "espree": "3.5.0",
     "for-in": "1.0.2",
     "function-regex": "1.0.2",
     "mukla": "0.4.9",
