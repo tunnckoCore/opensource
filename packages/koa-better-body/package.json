@@ -36,7 +36,7 @@
     "nyc": "11.1.0",
     "pre-commit": "1.2.2",
     "qs": "6.5.0",
-    "standard": "10.0.2",
+    "standard": "10.0.3",
     "standard-version": "4.2.0",
     "supertest": "3.0.0"
   },
