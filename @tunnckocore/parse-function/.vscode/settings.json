@@ -1,0 +1,68 @@
+{
+  "workbench.colorTheme": "Sublime Material Theme - Dark",
+  "files.autoSave": "onFocusChange",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.parameterHints": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.fontSize": 14,
+  "editor.fontFamily": "'Liberation Mono', 'Druid Sans Mono'",
+  "editor.fontLigatures": true,
+  "editor.tabSize": 2,
+  "editor.autoClosingBrackets": true,
+  "editor.formatOnSave": true,
+  "editor.tabCompletion": true,
+  "editor.quickSuggestions": true,
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.wordBasedSuggestions": true,
+  "editor.snippetSuggestions": "top",
+  "editor.minimap.enabled": true,
+  "editor.folding": false,
+  "editor.rulers": [
+    80,
+    100
+  ],
+  "editor.quickSuggestionsDelay": 3,
+  "docthis.automaticForBlockComments": false,
+  "docthis.inferTypesFromNames": true,
+  "extensions.autoUpdate": true,
+  "window.menuBarVisibility": "toggle",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.statusBar.visible": true,
+  "explorer.openEditors.visible": 0,
+  "eslint.run": "onSave",
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false,
+    "files.insertFinalNewline": false
+  },
+  "prettier.eslintIntegration": true,
+  "prettier.printWidth": 80,
+  "prettier.tabWidth": 2,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.bracketSpacing": true,
+  "prettier.jsxBracketSameLine": true,
+  "prettier.parser": "babylon",
+  "prettier.semi": false,
+  "prettier.useTabs": false,
+  "prettier.javascriptEnable": [
+    "javascript",
+    "javascriptreact"
+  ],
+  "prettier.typescriptEnable": [],
+  "prettier.cssEnable": [
+    "css",
+    "less",
+    "scss"
+  ],
+  "prettier.jsonEnable": [],
+  "prettier.graphqlEnable": [
+    "graphql"
+  ],
+  "workbench.startupEditor": "newUntitledFile",
+  "javascript.format.enable": false,
+  "javascript.validate.enable": false,
+  "json.format.enable": true
+}

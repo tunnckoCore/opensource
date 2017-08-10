@@ -7,7 +7,7 @@
 
 'use strict'
 
-var defineProp = require('define-property')
+let defineProp = require('define-property')
 
 /**
  * Parse function, arrow function or string to object.
@@ -41,12 +41,12 @@ var defineProp = require('define-property')
  * @return {Object} with `name`, `args`, `params` and `body` properties
  * @api public
  */
-module.exports = function parseFunction (val) {
-  var type = typeof val
+module.exports = function parseFunction(val) {
+  let type = typeof val
   if (type !== 'string' && type !== 'function') {
     return hiddens(defaults(), val, '', false)
   }
-  var orig = val
+  let orig = val
   /* istanbul ignore next */
   if (type === 'function') {
     val = Function.prototype.toString.call(val)
@@ -55,41 +55,41 @@ module.exports = function parseFunction (val) {
   return hiddens(parseFn(val), orig, val, true)
 }
 
-function parseFn (val) {
-  var re = /(?:function\s*([\w$]*)\s*)*\(*([\w\s,$]*)\)*(?:[\s=>]*)([\s\S]*)/
-  var match = re.exec(val)
+function parseFn(val) {
+  let re = /(?:function\s*([\w$]*)\s*)*\(*([\w\s,$]*)\)*(?:[\s=>]*)([\s\S]*)/
+  let match = re.exec(val)
 
-  var params = match[2] && match[2].length ? match[2].replace(/\s$/, '') : ''
-  var args = params.length && params.replace(/\s/g, '').split(',') || []
-  var body = getBody(match[3] || '') || ''
+  let params = match[2] && match[2].length ? match[2].replace(/\s$/, '') : ''
+  let args = (params.length && params.replace(/\s/g, '').split(',')) || []
+  let body = getBody(match[3] || '') || ''
 
   return {
     name: match[1] || 'anonymous',
     body: body,
     args: args,
-    params: params
+    params: params,
   }
 }
 
-function getBody (a) {
-  var len = a.length - 1
+function getBody(a) {
+  let len = a.length - 1
   if (a.charCodeAt(0) === 123 && a.charCodeAt(len) === 125) {
     return a.slice(1, -1)
   }
-  var m = /^\{([\s\S]*)\}[\s\S]*$/.exec(a)
+  let m = /^\{([\s\S]*)\}[\s\S]*$/.exec(a)
   return m ? m[1] : a
 }
 
-function defaults () {
+function defaults() {
   return {
     name: 'anonymous',
     body: '',
     args: [],
-    params: ''
+    params: '',
   }
 }
 
-function hiddens (data, orig, val, valid) {
+function hiddens(data, orig, val, valid) {
   defineProp(data, 'orig', orig)
   defineProp(data, 'value', val)
   defineProp(data, 'arguments', data.args)

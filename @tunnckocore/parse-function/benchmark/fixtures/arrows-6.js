@@ -1,3 +1,1 @@
-module.exports = [
-  '(a) => a * 3 * a'
-]
+module.exports = ['(a) => a * 3 * a']

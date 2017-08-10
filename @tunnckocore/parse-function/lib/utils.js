@@ -1,11 +1,11 @@
 /*!
  * parse-function <https://github.com/tunnckoCore/parse-function>
  *
- * Copyright (c) Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)
+ * Copyright (c) 2017 Charlike Mike Reagent <open.source.charlike@gmail.com> (https://i.am.charlike.online)
  * Released under the MIT license.
  */
 
-'use strict'
+/* eslint-disable jsdoc/require-param-description */
 
 const arrayify = require('arrify')
 const babylon = require('babylon')
@@ -19,17 +19,16 @@ utils.arrayify = arrayify
  * > Create default result object,
  * and normalize incoming arguments.
  *
- * @param  {Function|String} `code`
+ * @param  {Function|String} code
  * @return {Object} result
- * @api private
+ * @private
  */
-
 utils.setDefaults = function setDefaults (code) {
   const result = {
     name: null,
     body: '',
     args: [],
-    params: ''
+    params: '',
   }
 
   if (typeof code === 'function') {
@@ -47,12 +46,11 @@ utils.setDefaults = function setDefaults (code) {
  * > Create hidden properties into
  * the result object.
  *
- * @param  {Object} `result`
+ * @param  {Object} result
  * @param  {Function|String} code
  * @return {Object} result
- * @api private
+ * @private
  */
-
 utils.setHiddenDefaults = function setHiddenDefaults (result, code) {
   utils.define(result, 'defaults', {})
   utils.define(result, 'value', code)
@@ -71,12 +69,11 @@ utils.setHiddenDefaults = function setHiddenDefaults (result, code) {
  * > Get needed AST tree, depending on what
  * parse method is used.
  *
- * @param  {Object} `result`
- * @param  {Object} `opts`
- * @return {Object} `node`
- * @api private
+ * @param  {Object} result
+ * @param  {Object} opts
+ * @return {Object} node
+ * @private
  */
-
 utils.getNode = function getNode (result, opts) {
   if (typeof opts.parse === 'function') {
     result.value = `(${result.value})`

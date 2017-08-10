@@ -7,7 +7,7 @@
 
 'use strict'
 
-var fnRegex = require('function-regex')
+let fnRegex = require('function-regex')
 
 /**
  * Parse a given function or string (fn.toString()) to object
@@ -46,14 +46,15 @@ var fnRegex = require('function-regex')
  * @return {Object}
  * @api public
  */
-module.exports = function parseFunction (fn) {
+module.exports = function parseFunction(fn) {
   if (typeof fn === 'function') {
     fn = fn.toString()
   }
-  var match = fnRegex().exec(fn)
+  let match = fnRegex().exec(fn)
 
-  var _parameters = match[2] || ''
-  var _arguments = match[2].length && match[2].replace(/\s/g, '').split(',') || []
+  let _parameters = match[2] || ''
+  let _arguments =
+    (match[2].length && match[2].replace(/\s/g, '').split(',')) || []
 
   return {
     name: match[1] || 'anonymous',
@@ -61,6 +62,6 @@ module.exports = function parseFunction (fn) {
     parameters: _parameters,
     args: _arguments,
     arguments: _arguments,
-    body: match[3] || ''
+    body: match[3] || '',
   }
 }

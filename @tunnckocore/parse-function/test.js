@@ -1,15 +1,14 @@
 /*!
  * parse-function <https://github.com/tunnckoCore/parse-function>
  *
- * Copyright (c) Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)
+ * Copyright (c) 2017 Charlike Mike Reagent <open.source.charlike@gmail.com> (https://i.am.charlike.online)
  * Released under the MIT license.
  */
 
-/* jshint asi:true */
+/* eslint-disable max-len */
 
-'use strict'
+const test = require('mukla') // eslint-disable-line
 
-const test = require('mukla')
 const acorn = require('acorn')
 const forIn = require('for-in')
 const clone = require('clone-deep')
@@ -21,21 +20,21 @@ const actuals = {
     'function (b, callback, ...restArgs) {callback(null, b + 3)}',
     'function (c) {return c * 3}',
     'function (...restArgs) {return 321}',
-    'function () {}'
+    'function () {}',
   ],
   named: [
     'function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3}',
     'function namedFn (b, callback, ...restArgs) {callback(null, b + 3)}',
     'function namedFn (c) {return c * 3}',
     'function namedFn (...restArgs) {return 321}',
-    'function namedFn () {}'
+    'function namedFn () {}',
   ],
   generators: [
     'function * namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3}',
     'function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)}',
     'function * namedFn (c) {return c * 3}',
     'function * namedFn (...restArgs) {return 321}',
-    'function * namedFn () {}'
+    'function * namedFn () {}',
   ],
   arrows: [
     '(a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3}',
@@ -47,8 +46,8 @@ const actuals = {
     'd => d * 355 * d',
     'e => {return e + 5235 / e}',
     '(a, b) => a + 3 + b',
-    '(x, y, ...restArgs) => console.log({ value: x * y })'
-  ]
+    '(x, y, ...restArgs) => console.log({ value: x * y })',
+  ],
 }
 
 /**
@@ -60,78 +59,92 @@ const actuals = {
 actuals.asyncs = actuals.regulars
   .concat(actuals.named)
   .concat(actuals.arrows)
-  .map((item) => {
-    return `async ${item}`
-  })
+  .map((item) => `async ${item}`)
 
-const regulars = [{
-  name: null,
-  params: 'a, cb, restArgs',
-  args: ['a', 'cb', 'restArgs'],
-  body: 'return a * 3',
-  defaults: { a: '{foo: "ba)r", baz: 123}', cb: undefined, restArgs: undefined }
-}, {
-  name: null,
-  params: 'b, callback, restArgs',
-  args: ['b', 'callback', 'restArgs'],
-  body: 'callback(null, b + 3)',
-  defaults: { b: undefined, callback: undefined, restArgs: undefined }
-}, {
-  name: null,
-  params: 'c',
-  args: ['c'],
-  body: 'return c * 3',
-  defaults: { c: undefined }
-}, {
-  name: null,
-  params: 'restArgs',
-  args: ['restArgs'],
-  body: 'return 321',
-  defaults: { restArgs: undefined }
-}, {
-  name: null,
-  params: '',
-  args: [],
-  body: '',
-  defaults: {}
-}]
+const regulars = [
+  {
+    name: null,
+    params: 'a, cb, restArgs',
+    args: ['a', 'cb', 'restArgs'],
+    body: 'return a * 3',
+    defaults: {
+      a: '{foo: "ba)r", baz: 123}',
+      cb: undefined,
+      restArgs: undefined,
+    },
+  },
+  {
+    name: null,
+    params: 'b, callback, restArgs',
+    args: ['b', 'callback', 'restArgs'],
+    body: 'callback(null, b + 3)',
+    defaults: { b: undefined, callback: undefined, restArgs: undefined },
+  },
+  {
+    name: null,
+    params: 'c',
+    args: ['c'],
+    body: 'return c * 3',
+    defaults: { c: undefined },
+  },
+  {
+    name: null,
+    params: 'restArgs',
+    args: ['restArgs'],
+    body: 'return 321',
+    defaults: { restArgs: undefined },
+  },
+  {
+    name: null,
+    params: '',
+    args: [],
+    body: '',
+    defaults: {},
+  },
+]
 
 /**
  * All of the regular functions
  * variants plus few more
  */
 
-const arrows = clone(regulars).concat([{
-  name: null,
-  params: 'a',
-  args: ['a'],
-  body: 'a * 3 * a',
-  defaults: { a: undefined }
-}, {
-  name: null,
-  params: 'd',
-  args: ['d'],
-  body: 'd * 355 * d',
-  defaults: { d: undefined }
-}, {
-  name: null,
-  params: 'e',
-  args: ['e'],
-  body: 'return e + 5235 / e',
-  defaults: { e: undefined }
-}, {
-  name: null,
-  params: 'a, b',
-  args: ['a', 'b'],
-  body: 'a + 3 + b',
-  defaults: { a: undefined, b: undefined }
-}, {
-  name: null,
-  params: 'x, y, restArgs',
-  args: ['x', 'y', 'restArgs'],
-  body: 'console.log({ value: x * y })',
-  defaults: { x: undefined, y: undefined, restArgs: undefined }
-}])
+const arrows = clone(regulars).concat([
+  {
+    name: null,
+    params: 'a',
+    args: ['a'],
+    body: 'a * 3 * a',
+    defaults: { a: undefined },
+  },
+  {
+    name: null,
+    params: 'd',
+    args: ['d'],
+    body: 'd * 355 * d',
+    defaults: { d: undefined },
+  },
+  {
+    name: null,
+    params: 'e',
+    args: ['e'],
+    body: 'return e + 5235 / e',
+    defaults: { e: undefined },
+  },
+  {
+    name: null,
+    params: 'a, b',
+    args: ['a', 'b'],
+    body: 'a + 3 + b',
+    defaults: { a: undefined, b: undefined },
+  },
+  {
+    name: null,
+    params: 'x, y, restArgs',
+    args: ['x', 'y', 'restArgs'],
+    body: 'console.log({ value: x * y })',
+    defaults: { x: undefined, y: undefined, restArgs: undefined },
+  },
+])
 
 /**
  * All of the regulars, but
@@ -148,7 +161,7 @@ const expected = {
   named: named,
   generators: named,
   arrows: arrows,
-  asyncs: regulars.concat(named).concat(arrows)
+  asyncs: regulars.concat(named).concat(arrows),
 }
 
 let testsCount = 1
@@ -165,9 +178,7 @@ function factory (parserName, parseFn) {
     values.forEach((code, i) => {
       const actual = parseFn(code)
       const expect = expected[key][i]
-      const value = actual.value
-        .replace(/^\(\{? ?/, '')
-        .replace(/\)$/, '')
+      const value = actual.value.replace(/^\(\{? ?/, '').replace(/\)$/, '')
 
       test(`#${testsCount++} - ${parserName} - ${value}`, (done) => {
         test.strictEqual(actual.isValid, true)
@@ -242,28 +253,34 @@ function factory (parserName, parseFn) {
   })
 
   test(`#${testsCount++} - ${parserName} - should parse a real function which is passed`, (done) => {
-    const actual = parseFn(function fooBar (a, bc) { return a + bc })
+    const actual = parseFn(function fooBar (a, bc) {
+      return a + bc
+    })
     test.strictEqual(actual.name, 'fooBar')
     test.strictEqual(actual.params, 'a, bc')
-    test.strictEqual(actual.body, ' return a + bc ')
+    test.strictEqual(actual.body, '\n      return a + bc\n    ')
     done()
   })
 
   test(`#${testsCount++} - ${parserName} - should work for object methods`, (done) => {
     const obj = {
-      foo (a, b, c) { return 123 },
-      bar (a) { return () => a },
-      * gen (a) {}
+      foo (a, b, c) {
+        return 123
+      },
+      bar (a) {
+        return () => a
+      },
+      * gen (a) {},
     }
 
     const actual = parseFn(obj.foo)
     test.strictEqual(actual.name, 'foo')
     test.strictEqual(actual.params, 'a, b, c')
-    test.strictEqual(actual.body, ' return 123 ')
+    test.strictEqual(actual.body, '\n        return 123\n      ')
 
     const bar = parseFn(obj.bar)
     test.strictEqual(bar.name, 'bar')
-    test.strictEqual(bar.body, ' return () => a ')
+    test.strictEqual(bar.body, '\n        return () => a\n      ')
 
     const gen = parseFn(obj.gen)
     test.strictEqual(gen.name, 'gen')
@@ -318,7 +335,7 @@ factory('babylon default', (code, opts, plugin) => {
 factory('babylon.parse', (code, opts, plugin) => {
   const app = parseFunction({
     parse: require('babylon').parse,
-    ecmaVersion: 2017
+    ecmaVersion: 2017,
   })
   if (plugin) app.use(plugin)
   return app.parse(code, opts)
@@ -327,7 +344,7 @@ factory('babylon.parse', (code, opts, plugin) => {
 factory('acorn.parse', (code, opts, plugin) => {
   const app = parseFunction({
     parse: acorn.parse,
-    ecmaVersion: 2017
+    ecmaVersion: 2017,
   })
   if (plugin) app.use(plugin)
   return app.parse(code, opts)
@@ -336,16 +353,22 @@ factory('acorn.parse', (code, opts, plugin) => {
 factory('acorn.parse_dammit', (code, opts, plugin) => {
   const app = parseFunction()
   if (plugin) app.use(plugin)
-  return app.parse(code, Object.assign({
-    parse: require('acorn/dist/acorn_loose').parse_dammit,
-    ecmaVersion: 2017
-  }, opts))
+  return app.parse(
+    code,
+    Object.assign(
+      {
+        parse: require('acorn/dist/acorn_loose').parse_dammit,
+        ecmaVersion: 2017,
+      },
+      opts
+    )
+  )
 })
 
 factory('espree.parse', (code, opts, plugin) => {
   const app = parseFunction({
     parse: require('espree').parse,
-    ecmaVersion: 8
+    ecmaVersion: 8,
   })
   if (plugin) app.use(plugin)
   return app.parse(code, opts)
@@ -363,7 +386,7 @@ test('should just extend the core API, not the end result', (done) => {
 
 test('should call fn returned from plugin only when `parse` is called', (done) => {
   const app = parseFunction({
-    ecmaVersion: 2017
+    ecmaVersion: 2017,
   })
   let called = 0
   app.use((app) => {

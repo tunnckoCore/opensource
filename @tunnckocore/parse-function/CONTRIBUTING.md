@@ -1,154 +1,90 @@
-# Contributing to parse-function
+# Contributing Guide :100: 
 
-:sparkles: Thanks for your contribution in advance! :tada:
+> _Hello stranger! :sparkles: Please, read the [Code Of Conduct](./CODE_OF_CONDUCT.md) and the full guide at [tunnckoCore/contributing](https://github.com/tunnckoCore/contributing)!  
+> Even if you are an experienced developer or active open source maintainer, it worth look over there._
 
-First and foremost, thank you! We appreciate that you want to contribute to `parse-function`, your time is valuable, and your contributions mean a lot to us.
+![welcome-teal](https://cloud.githubusercontent.com/assets/194400/22215755/76cb4dbc-e194-11e6-95ed-7def95e68f14.png)
 
-## What does "contributing" mean?
+> “_Every thought, **every word**, and **every action**
+that **adds to** the **positive** is a **contribution to peace**. <br />
+Each and **every one** of us is **capable** of making such a **contribution**_.”
+~ [Aung San Suu Kyi](https://en.wikipedia.org/wiki/Aung_San_Suu_Kyi)
 
-There are many ways to contribute to an open source project, including:
+Firstly, a ***heartfelt thank you*** for making time to contribute to this project! <br />
 
-- Updating or correcting documentation
-- Feature requests
-- Submitting bug reports
+<!-- Part 1 -->
 
-But you aren't limited to these things. Use your imagination. If you like a project, and you see something that can or should be improved, then you have an opportunity (but not an obligation) to contribute. 
+## Are you new to Open Source?
 
-### Improve documentation
+If you’re a **new** open source contributor, the process can be intimidating.  
+_What if you don’t know how to code?_ What if something goes wrong? **Don't worry!**
 
-As a user of `parse-function` you're the perfect candidate to help us improve our documentation. Typo corrections, error fixes, better explanations, more examples, etc. Open issues for things that could be improved. Anything. Even improvements to this document.
+**You don’t have to contribute code!** A common misconception about contributing to open source is that you need to _contribute code_. In fact, it’s often the other parts of a project that are most neglected or overlooked. You’ll do the project a _huge favor_ by offering to pitch in with these types of **contributions**!
 
-Use the [`docs` label](https://github.com/tunnckoCore/parse-function/labels/docs) to find suggestions for what we'd love to see more documentation on.
+**Even if you like to write code**, other types of contributions are a great way to get involved with a project and meet other community members. Building those relationships will give you opportunities to work on other parts of the project.
 
-### Improve issues
+- **Yes:** [Step to the full guide](https://github.com/tunnckoCore/contributing) if you are _new_, **super curious** _OR_ if you're **really really new** and need more depth.
+- **No:** Then continue reading, if you **know** for _what is all that_ or you're **familiar** with [@tunnckoCore](https://github.com/tunnckoCore) projects.
 
-Some issues are created with missing information, not reproducible, or plain invalid. Help make them easier to resolve. Handling issues takes a lot of time that we could rather spend on fixing bugs and adding features.
+<!-- Part 2 -->
 
-### Give feedback on issues
+## Opening an issue
 
-We're always looking for more opinions on discussions in the issue tracker. It's a good opportunity to influence the future direction of `parse-function`.
+You should usually open an issue in the following situations:
 
-The [`question` label](https://github.com/tunnckoCore/parse-function/labels/question%20%2F%20discussion) is a good place to find ongoing discussions.
+- Report an error you can't solve yourself
+- Discuss a high-level topic or idea (ex. community, vision, policies)
+- Propose a new feature or other project idea
 
+### Tips for communicating on issues:
 
-## Why should I contribute?
+- **If you see an open issue that you want to tackle,** comment on the issue to let people know you're on it. That way, people are less likely to duplicate your work.
+- **If an issue was opened a while ago,** it's possible that it's being addressed somewhere else, or has already been resolved, so comment to ask for confirmation before starting work.
+- **If you opened an issue, but figured out the answer later on your own,** comment on the issue to let people know, then close the issue. Even documenting that outcome is a contribution to the project.
+- **Please be patient** and _wait_ a response from maintainer or somebody else. Check out [_"What to do next?"_](https://github.com/tunnckoCore/contributing#what-can-i-do-while-im-waiting).
 
-Regardless of the details, being an effective contributor means that you're adding _adding value_ to a project.
+### Include Any/All _Relevant_ Information in the _Issue Description_
 
-Here are just a few of the advantages of adding value to a project:
+- Please _include_ as much ***relevant information*** as you can like versions and operating system.
+- A _good_ issue _describes_ the idea in a _**concise** and **user-focused**_ way.
+- ***Never*** leave the issue _description_ blank even when you are in a "rush" - the point of issues is to _communicate_.
 
-- you gain the appreciation and respect of the project's maintainers and community
-- you gain valuable experience
-- you get noticed by job recruiters
-- you become more attrative to potential employers. 
+**Why not empty description?** You _wouldn't_ send a _blank email_ to hundreds of your friends (_unless you wanted to freak them out!_), right? Submitting _blank issues_ is doing **exactly** that! It sends a ["_I have **no idea** what I'm doing_"](https://www.google.com/search?q=i+have+no+idea+what+i%27m+doing&tbm=isch) **message** to your _peers_.
 
-## Getting familiarized with a project
+<!-- Part 3 -->
 
-Before you attempt to contribute to a project, take a moment to get familiarized with it. In most cases you can learn all you need to know within a couple of minutes. 
+## Opening a pull request
 
-### Required
+> _If this is your first pull request, check out [Make a Pull Request](http://makeapullrequest.com/) by [**@kentcdodds**](https://github.com/kentcdodds)._
 
-The following items are a pre-requisite for contributing to any project. Avoid creating issues or doing pull requests until you've done all of these things:
+![get-it-done](https://cloud.githubusercontent.com/assets/194400/22265743/44a2ca72-e275-11e6-819d-2c5a1958ea11.png)
 
-- **Review the readme**: Oftentimes a project readme has links to documentation, advice on creating issues or bug reports, and so on.
-- **Read contributing guidelines**: look for a `CONTRIBUTING.md` file and, if one exists, read it in its entirety before creating issues or doing a pull request. Typically this is in the root of the project, but it might be in `.github/CONTRIBUTING.md`.
-- **Search issues**: Before creating bug reports, feature requests, or submitting issues of any kind, you should always search for existing issues (closed or open) that address the same thing. 
+You should usually open a pull request in the following situations:
 
-### Recommended
+- Submit trivial fixes (ex. a typo, broken link, or obvious error)
+- Start work on a contribution that was already asked for, or that you've already discussed, in an issue
 
-- **Review unit tests** - one of the best ways to get familiarized with a project is through its unit tests. Of course, this depends on the type of project, complexity, test coverage, and so on. But when applicable, test are often a good source of insight.
-- **Get familiarized with the code** - If the codebase is small, and you're familiar with the language, take a moment to review the code to see if you find anything that can be improved. If the codebase is large, you might be able to provide domain expertise or fixes for specific areas.
-- **Ask questions** - Depending the project type and size, it might be good to start by searching google to find anwers to your questions. Then, check to see if the project uses [gitter](https://gitter.im) or has a [slack](https://slack.com) channel, or something similar. Also visit [stackoverflow](https://stackoverflow.com) and do a search to see if others have already asked the same question. As a last resort, create an issue on the project's GitHub repository.
+A pull request doesn't have to represent finished work. It's usually better to open a pull request early on, so others can watch or give feedback on your progress. Just mark it as a "WIP" (Work in Progress) in the subject line. You can always add more commits later.
 
+### Pro Tips to follow
 
-## Details of Highly Effective Bug Reports
+- **Don't mind about the style** because we use [StandardJS](https://github.com/standard/standard), [ESLint](https://github.com/eslint/eslint) and [Prettier](https://github.com/prettier/prettier). Use `npm run lint` command.
+- **Don't change the markdown files**, because the README is generated (it isn't hand written) and the API section is from JSDoc code comments. Let this step to us when _and if_ pull request is merged.
+- **Dont't comment tests**, instead use `test.skip`. They'll still be shown in the output, but are never run.
 
-### Rationale
+### How to submit a pull request
 
-The easier you make it for a maintainter or members of the community to react, the more likely it is for them to react quickly. 
+There are just **8 easy steps** you should do. _**Please**_, follow them in _that exact_ order.
 
-Like you, maintainers have to make decisions about where to spend their time. Not only within a given project, but oftentimes across multiple projects. If you're experiencing a bug and you want to make a report, bug reports that are clearly described and organized are much more likely to get addressed by the maintainers or member of the community.
+1. **[Fork the repository](https://guides.github.com/activities/forking/)** and clone it locally.
+2. **[Create a branch](https://guides.github.com/introduction/flow/)** for your edits.
+3. **Install dependencies** by running `npm install` command.
+4. **Test everything is working** before you start _doing anything_ with `npm test` command. If something is wrong, please report it first and don't continue if you can't skip the problem easily.
+5. **Reference any relevant issues** or supporting documentation or information in your PR (ex. "Closes #37.")
+6. **Test again or add new ones!** Run `npm test` again to _make sure_ your changes don't break existing tests.
+7. **Commit your changes** by running `npm run commit`. It _will lead you_ through what the commit message _should look like_ and will run more tasks **to ensure** that code style and tests are okey. 
+8. **Wait response!** What to do in that time? Check out [_**"What to do next?"**_](https://github.com/tunnckoCore/contributing#what-can-i-do-while-im-waiting).
 
-Providing these details up front will make everyone happy. If you don't provide these details, maintainers will have to ask you for them, which can be annoying for experienced maintainers who have had to ask for these crucial details many times. 
+:star: **You did it**! :star: _Congratulations on becoming one of the [Open Source](https://opensource.guide) contributors!_
 
-### The details
-
-Always include the following essential details in every bug report:
-
-1. **version**: what version of `parse-function` were you using when you experienced the bug?
-2. **description**: clear description of the bug, and minimum steps to reproduce it.
-3. **error messages**: paste any error messages into the issue or a [github gist](https://gist.github.com/), use [gfm code blocks][gfm].
-4. **code**: paste any code necessary for reproducing the bug and use [gfm code blocks][gfm] to wrap the code.
-5. **title**: use a clear and descriptive title.
-
-See GitHub's guide to [Creating and highlighting code blocks][gfm] for more details.
-
-## Submitting a pull requests
-
-**Working on your first Pull Request?**
-
-You can learn how from this *free* video series ["How to Contribute to an Open Source Project on GitHub"][howto-oss-github]
-
-**Details**
-
-- Non-trivial changes are often best discussed in an issue first, to prevent you from doing unnecessary work.
-- For ambitious tasks, you should try to get your work in front of the community for feedback as soon as possible. Open a pull request as soon as you have done the minimum needed to demonstrate your idea. At this early stage, don't worry about making things perfect, or 100% complete. Add a [WIP] prefix to the title, and describe what you still need to do. This lets reviewers know not to nit-pick small details or point out improvements you already know you need to make.
-- New features should be accompanied with tests and documentation.
-- Don't include unrelated changes.
-- Lint and test immediately after you fork by running `$ npm test`.
-- Lint and test before submitting the pull request by running `$ npm test`.
-- Make the pull request from a [topic branch](https://github.com/dchelimsky/rspec/wiki/Topic-Branches), not master.
-- Use a clear and descriptive title for the pull request and commits.
-- Write a convincing description of why we should land your pull request. It's your job to convince us. Answer "why" it's needed and provide use-cases.
-- You might be asked to do changes to your pull request. There's never a need to open another pull request. [Just update the existing one.][amending]
-
-## Other ways to contribute
-
-### Show your support
-
-Sometimes we find a project we like but just don't have time to contribute. That's okay, there are other ways to show support:
-
-- Star the project
-- Tweet about it
-- Tell your friends
-
-### Show your appreciation
-
-Maintainers are people too. You can make someone's day by letting them know you appreciate their work. If you use a library in one of your own projects, let the author know you care:
-
-- Add a link to the project on your project's readme
-- Say "thanks" on twitter
-
-## Attribution
-
-This document is adapted from a few Contributing Guides. It is more general and can apply in most cases. Everyone is free to re-use it or re-adapt it.
-
-### Good to read
-
-- [Awesome Contributing][awesomelist]
-- [Idiomatic Contributing][idiomatic]
-- [AVA's Contributing Guide][avajs]
-- [Amending a commit Guide][amending]
-- [Creating and highlighting code blocks][gfm]
-- [Contributing to Open Source (GitHub)][os-on-github]
-- [How to contribute to Open Source Project (Egghead.io videos)][howto-oss-github]
-
-### Authors
-
-**Charlike Mike Reagent**
-
-* [github/tunnckoCore](https://github.com/tunnckoCore)
-* [twitter/tunnckoCore](http://twitter.com/tunnckoCore)
-
-## License
-
-Released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).  
-Copyright © 2016, [Charlike Mike Reagent](http://www.tunnckocore.tk).
-
-[gfm]: https://help.github.com/articles/creating-and-highlighting-code-blocks/
-[avajs]: https://github.com/avajs/ava/blob/master/contributing.md
-[idiomatic]: https://github.com/jonschlinkert/idiomatic-contributing
-[awesomelist]: https://github.com/jonschlinkert/awesome-contributing
-[amending]: https://github.com/RichardLitt/docs/blob/master/amending-a-commit-guide.md
-[os-on-github]: https://guides.github.com/activities/contributing-to-open-source/
-[howto-oss-github]: http://j.mp/how-to-contrib-on-github
+![thank-you-green-large](https://cloud.githubusercontent.com/assets/194400/22229077/5b0695ee-e1cd-11e6-9001-e5ff53afce36.jpg)

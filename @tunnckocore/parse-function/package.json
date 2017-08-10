@@ -1,24 +1,30 @@
 {
   "name": "parse-function",
-  "version": "4.0.3",
-  "description": "Parse a function into an object that has its name, body, args and a few more useful properties.",
+  "version": "0.0.0-semantic-release",
+  "description": "Parse a function into an object using espree, acorn or babylon parsers. Extensible through Smart Plugins",
   "repository": "tunnckoCore/parse-function",
+  "homepage": "https://github.com/tunnckoCore/parse-function",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
-  "precommit.silent": true,
-  "main": "index.js",
+  "nspId": "5d75a388-acfe-4668-ad18-e98564e387e1",
+  "main": "./index.js",
   "license": "MIT",
   "scripts": {
-    "lint": "standard index.js test.js lib/utils.js lib/**/*.js --fix --verbose",
-    "test": "npm-run-all -s lint test:*",
-    "test:api": "nyc --reporter lcov node test.js",
-    "test:report": "nyc report",
-    "prerelease": "npm test",
-    "release": "standard-version --sign --no-verify",
-    "git": "npm-run-all -s git:*",
-    "git:add": "git add --all",
-    "git:cz": "git-cz",
-    "commit": "npm-run-all -s test git"
+    "renovate": "hela renovate",
+    "lint": "hela lint -c .eslintrc.json",
+    "test": "hela test node test.js",
+    "precommit": "hela precommit",
+    "commit": "hela commit",
+    "postcommit": "git push",
+    "semantic-release": "hela release"
   },
+  "engines": {
+    "node": ">=6",
+    "npm": ">=5"
+  },
+  "files": [
+    "index.js",
+    "lib/"
+  ],
   "dependencies": {
     "arrify": "1.0.1",
     "babylon": "7.0.0-beta.19",
@@ -28,22 +34,14 @@
     "acorn": "5.1.1",
     "benchmarked": "1.1.1",
     "clone-deep": "1.0.0",
-    "commitizen": "2.9.6",
-    "cz-conventional-changelog": "2.0.0",
+    "eslint": "4.4.1",
+    "eslint-config-standard-tunnckocore": "1.0.0",
     "espree": "3.5.0",
     "for-in": "1.0.2",
-    "function-regex": "1.0.2",
-    "mukla": "0.4.9",
-    "npm-run-all": "4.0.2",
-    "nyc": "11.1.0",
-    "pre-commit": "1.2.2",
-    "standard": "10.0.3",
-    "standard-version": "4.2.0"
+    "hela": "0.2.8",
+    "husky": "0.14.3",
+    "semantic-release": "^6.3.6"
   },
-  "files": [
-    "index.js",
-    "lib/"
-  ],
   "keywords": [
     "args",
     "arguments",
@@ -74,67 +72,26 @@
     "tostring",
     "util"
   ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "verb": {
     "run": true,
     "toc": {
       "render": true,
       "method": "preWrite",
-      "maxdepth": 3,
-      "footer": ""
+      "maxdepth": 3
     },
     "layout": "empty",
     "tasks": [
       "readme"
     ],
     "related": {
-      "list": [
-        "always-done",
-        "minibase",
-        "try-catch-core",
-        "espree",
-        "babylon",
-        "acorn",
-        "parse-semver",
-        "each-promise"
-      ]
+      "list": []
     },
-    "reflinks": [
-      "acorn",
-      "always-done",
-      "async-done",
-      "babylon",
-      "base",
-      "charlike",
-      "commitizen",
-      "coveralls-img",
-      "coveralls-url",
-      "dezalgo",
-      "once",
-      "standard-version",
-      "verb",
-      "verb-generate-readme",
-      "define-property",
-      "espree",
-      "function-arguments"
-    ],
+    "reflinks": [],
     "lint": {
       "reflinks": true
     }
   },
-  "engines": {
-    "node": ">=4",
-    "npm": ">=3"
-  },
-  "nyc": {
-    "check-coverage": true,
-    "statements": 100,
-    "functions": 100,
-    "branches": 100,
-    "lines": 100
+  "release": {
+    "analyzeCommits": "simple-commit-message"
   }
 }

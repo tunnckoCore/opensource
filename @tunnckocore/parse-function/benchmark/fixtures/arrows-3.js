@@ -1,3 +1,1 @@
-module.exports = [
-  '(a) => {return a * 3}'
-]
+module.exports = ['(a) => {return a * 3}']

@@ -1,3 +1,1 @@
-module.exports = [
-  'function (a, cb) {return a * 3}'
-]
+module.exports = ['function (a, cb) {return a * 3}']

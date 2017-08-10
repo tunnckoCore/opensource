@@ -1,11 +1,9 @@
 /*!
  * parse-function <https://github.com/tunnckoCore/parse-function>
  *
- * Copyright (c) Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)
+ * Copyright (c) 2017 Charlike Mike Reagent <open.source.charlike@gmail.com> (https://i.am.charlike.online)
  * Released under the MIT license.
  */
-
-'use strict'
 
 /**
  * Utilities
@@ -56,11 +54,10 @@ const initial = require('./lib/plugins/initial')
  * ```
  *
  * @name   parseFunction
- * @param  {Object} `opts` optional, merged with options passed to `.parse` method
+ * @param  {Object} opts optional, merged with options passed to `.parse` method
  * @return {Object} `app` object with `.use` and `.parse` methods
- * @api public
+ * @public
  */
-
 module.exports = function parseFunction (opts) {
   const plugins = []
   const app = {
@@ -95,15 +92,14 @@ module.exports = function parseFunction (opts) {
      * ```
      *
      * @name   .parse
-     * @param  {Function|String} `code` any kind of function or string to be parsed
-     * @param  {Object} `options` directly passed to the parser - babylon, acorn, espree
-     * @param  {Function} `options.parse` by default `babylon.parseExpression`,
+     * @param  {Function|String} code any kind of function or string to be parsed
+     * @param  {Object} options directly passed to the parser - babylon, acorn, espree
+     * @param  {Function} options.parse by default `babylon.parseExpression`,
      *                                    all `options` are passed as second argument
      *                                    to that provided function
      * @return {Object} `result` see [result section](#result) for more info
-     * @api public
+     * @public
      */
-
     parse: (code, options) => {
       let result = utils.setDefaults(code)
 
@@ -123,9 +119,7 @@ module.exports = function parseFunction (opts) {
       }
 
       let node = utils.getNode(result, opts)
-      return plugins.reduce((res, fn) => {
-        return fn(node, res) || res
-      }, result)
+      return plugins.reduce((res, fn) => fn(node, res) || res, result)
     },
 
     /**
@@ -171,11 +165,10 @@ module.exports = function parseFunction (opts) {
      * ```
      *
      * @name   .use
-     * @param  {Function} `fn` plugin to be called
+     * @param  {Function} fn plugin to be called
      * @return {Object} `app` instance for chaining
-     * @api public
+     * @public
      */
-
     use: (fn) => {
       const ret = fn(app)
       if (typeof ret === 'function') {
@@ -232,14 +225,13 @@ module.exports = function parseFunction (opts) {
      * ```
      *
      * @name   .define
-     * @param  {Object} `obj` the object on which to define the property
-     * @param  {String} `prop` the name of the property to be defined or modified
-     * @param  {Any} `val` the descriptor for the property being defined or modified
+     * @param  {Object} obj the object on which to define the property
+     * @param  {String} prop the name of the property to be defined or modified
+     * @param  {Any} val the descriptor for the property being defined or modified
      * @return {Object} `obj` the passed object, but modified
-     * @api public
+     * @public
      */
-
-    define: utils.define
+    define: utils.define,
   }
 
   app.use(initial)

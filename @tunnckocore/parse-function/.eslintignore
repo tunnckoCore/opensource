@@ -15,6 +15,7 @@ nbproject
 cache
 temp
 tmp
+benchmark
 
 # Packages #
 # ##########
@@ -51,7 +52,6 @@ npm-debug.log
 .directory
 ._*
 lcov.info
-yarn.lock
 
 # Runtime data
 pids

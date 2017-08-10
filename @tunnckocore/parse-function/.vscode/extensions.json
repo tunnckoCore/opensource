@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "flowtype.flow-for-vscode",
+    "ms-vscode.sublime-keybindings",
+    "tunnckocore.modern-javascript-snippets"
+  ]
+}

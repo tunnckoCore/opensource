@@ -1,11 +1,9 @@
 /*!
  * parse-function <https://github.com/tunnckoCore/parse-function>
  *
- * Copyright (c) Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)
+ * Copyright (c) 2017 Charlike Mike Reagent <open.source.charlike@gmail.com> (https://i.am.charlike.online)
  * Released under the MIT license.
  */
-
-'use strict'
 
 /**
  * > Micro plugin to get the raw body, without the
