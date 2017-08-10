@@ -1,6 +1,6 @@
 {
   "name": "parse-function",
-  "version": "0.0.0-development",
+  "version": "0.0.0-semantic-release",
   "description": "Parse a function into an object using espree, acorn or babylon parsers. Extensible through Smart Plugins",
   "repository": "tunnckoCore/parse-function",
   "homepage": "https://github.com/tunnckoCore/parse-function",
@@ -15,7 +15,7 @@
     "precommit": "hela precommit",
     "commit": "hela commit",
     "postcommit": "git push",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "hela renovate"
   },
   "engines": {
     "node": ">=6",
