@@ -1,6 +1,6 @@
-<section align="center">
-  <img src="https://cdn.jsdelivr.net/emojione/assets/svg/1f54e.svg" width="256" height="256" alt="Parse a function">
-</section>
+<p align="center">
+  <img align="center" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f54e.svg" width="256" height="256" alt="Parse a function">
+</p>
 
 # parse-function [![npm version][npmv-img]][npmv-url] [![github release][github-release-img]][github-release-url] [![mit License][license-img]][license-url] [![NPM Downloads Weekly][downloads-weekly-img]][downloads-weekly-url] [![NPM Downloads Total][downloads-total-img]][downloads-total-url] 
 
