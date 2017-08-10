@@ -102,7 +102,9 @@
       "charlike-cli",
       "define-property",
       "execa",
-      "function-arguments"
+      "function-arguments",
+      "acorn",
+      "espree"
     ]
   },
   "release": {
