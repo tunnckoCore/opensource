@@ -23,9 +23,7 @@ const initial = require('./lib/plugins/initial')
  * with `.use` and `.parse` methods. The default parse which
  * is used is [babylon][]'s `.parseExpression` method from `v7`.
  *
- * **Example**
- *
- * ```js
+ * @example
  * const parseFunction = require('parse-function')
  *
  * const app = parseFunction({
@@ -51,11 +49,10 @@ const initial = require('./lib/plugins/initial')
  *
  * // comma-separated names of the arguments
  * console.log(result.params) // => 'a, b, c'
- * ```
  *
- * @name   parseFunction
  * @param  {Object} opts optional, merged with options passed to `.parse` method
  * @return {Object} `app` object with `.use` and `.parse` methods
+ * @name   parseFunction
  * @public
  */
 module.exports = function parseFunction (opts) {
@@ -69,9 +66,7 @@ module.exports = function parseFunction (opts) {
      * In the below example will show how to use `acorn` parser, instead
      * of the default one.
      *
-     * **Example**
-     *
-     * ```js
+     * @example
      * const acorn = require('acorn')
      * const parseFn = require('parse-function')
      * const app = parseFn()
@@ -89,15 +84,14 @@ module.exports = function parseFunction (opts) {
      * console.log(result.isArrow) // => false
      * console.log(result.isAnonymous) // => false
      * console.log(result.isGenerator) // => false
-     * ```
      *
-     * @name   .parse
      * @param  {Function|String} code any kind of function or string to be parsed
      * @param  {Object} options directly passed to the parser - babylon, acorn, espree
      * @param  {Function} options.parse by default `babylon.parseExpression`,
      *                                    all `options` are passed as second argument
      *                                    to that provided function
      * @return {Object} `result` see [result section](#result) for more info
+     * @name   .parse
      * @public
      */
     parse: (code, options) => {
@@ -134,9 +128,7 @@ module.exports = function parseFunction (opts) {
      *
      * _See [Plugins Architecture](#plugins-architecture) section._
      *
-     * **Example**
-     *
-     * ```js
+     * @example
      * // plugin extending the `app`
      * app.use((app) => {
      *   app.define(app, 'hello', (place) => `Hello ${place}!`)
@@ -162,11 +154,10 @@ module.exports = function parseFunction (opts) {
      * console.log(result.name) // => 'foo'
      * console.log(result.isArrow) // => false
      * console.log(result.thatIsArrow) // => undefined
-     * ```
      *
-     * @name   .use
      * @param  {Function} fn plugin to be called
      * @return {Object} `app` instance for chaining
+     * @name   .use
      * @public
      */
     use: (fn) => {
@@ -182,9 +173,7 @@ module.exports = function parseFunction (opts) {
      * a convenience mirror of the [define-property][] library,
      * so check out its docs. Useful to be used in plugins.
      *
-     * **Example**
-     *
-     * ```js
+     * @example
      * const parseFunction = require('parse-function')
      * const app = parseFunction()
      *
@@ -222,13 +211,12 @@ module.exports = function parseFunction (opts) {
      * console.log(result.isArrow) // => true
      * console.log(result.isNamed) // => false
      * console.log(result.isAnonymous) // => true
-     * ```
      *
-     * @name   .define
      * @param  {Object} obj the object on which to define the property
      * @param  {String} prop the name of the property to be defined or modified
      * @param  {Any} val the descriptor for the property being defined or modified
      * @return {Object} `obj` the passed object, but modified
+     * @name   .define
      * @public
      */
     define: utils.define,
