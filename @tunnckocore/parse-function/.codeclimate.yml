@@ -6,11 +6,14 @@ engines:
     config:
       languages:
       - javascript
+    checks:
+      Similar code:
+        enabled: false
 ratings:
   paths:
-  - "index.js"
-  - "lib/utils.js"
-  - "lib/plugins/**.js"
+  - index.js
+  - lib/utils.js
+  - lib/plugins/**
 exclude_paths:
-- "benchmark/"
-- "test.js"
+- benchmark/**
+- test.js

@@ -15,7 +15,7 @@
     "precommit": "hela precommit",
     "commit": "hela commit",
     "postcommit": "git push",
-    "semantic-release": "hela renovate"
+    "semantic-release": "hela release"
   },
   "engines": {
     "node": ">=6",
