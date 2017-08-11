@@ -39,7 +39,7 @@
     "eslint-config-standard-tunnckocore": "1.0.3",
     "espree": "3.5.0",
     "for-in": "1.0.2",
-    "hela": "0.3.2",
+    "hela": "0.3.3",
     "husky": "0.14.3",
     "semantic-release": "^6.3.6"
   },
