@@ -17,7 +17,7 @@
       "depType": "dependencies",
       "semanticPrefix": "fix(deps): ",
       "automerge": "minor",
-      "automergeType": "pr",
+      "automergeType": "branch-push",
       "assignees": [
         "charlike"
       ]
