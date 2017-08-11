@@ -10,6 +10,7 @@
   "main": "./dest/index.js",
   "license": "MIT",
   "scripts": {
+    "fresh": "hela fresh",
     "renovate": "hela renovate",
     "lint": "hela lint -c .eslintrc.json",
     "pretest": "hela build && hela pretest",
@@ -39,7 +40,7 @@
     "eslint-config-standard-tunnckocore": "1.0.3",
     "espree": "3.5.0",
     "for-in": "1.0.2",
-    "hela": "0.3.3",
+    "hela": "0.4.0",
     "husky": "0.14.3",
     "semantic-release": "^6.3.6"
   },
