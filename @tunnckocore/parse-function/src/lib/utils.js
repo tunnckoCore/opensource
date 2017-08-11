@@ -7,9 +7,9 @@
 
 /* eslint-disable jsdoc/require-param-description */
 
-const arrayify = require('arrify')
-const babylon = require('babylon')
-const define = require('define-property')
+import arrayify from 'arrify'
+import babylon from 'babylon'
+import define from 'define-property'
 
 const utils = {}
 utils.define = define
@@ -87,4 +87,4 @@ utils.getNode = function getNode (result, opts) {
   return babylon.parseExpression(result.value, opts)
 }
 
-module.exports = utils
+export default utils

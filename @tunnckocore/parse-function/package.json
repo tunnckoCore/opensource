@@ -6,12 +6,15 @@
   "homepage": "https://github.com/tunnckoCore/parse-function",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
   "nspId": "5d75a388-acfe-4668-ad18-e98564e387e1",
-  "main": "./index.js",
+  "module": "./dest/index.mjs",
+  "main": "./dest/index.js",
   "license": "MIT",
   "scripts": {
     "renovate": "hela renovate",
     "lint": "hela lint -c .eslintrc.json",
+    "pretest": "hela build && hela pretest",
     "test": "hela test node test.js",
+    "posttest": "hela posttest",
     "precommit": "hela precommit",
     "commit": "hela commit",
     "postcommit": "git push",
@@ -22,8 +25,7 @@
     "npm": ">=5"
   },
   "files": [
-    "index.js",
-    "lib/"
+    "dest/"
   ],
   "dependencies": {
     "arrify": "1.0.1",

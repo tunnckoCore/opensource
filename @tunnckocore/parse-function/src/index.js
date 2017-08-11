@@ -9,13 +9,13 @@
  * Utilities
  */
 
-const utils = require('./lib/utils')
+import utils from './lib/utils.js'
 
 /**
  * Core plugins
  */
 
-const initial = require('./lib/plugins/initial')
+import initial from './lib/plugins/initial.js'
 
 /**
  * > Initializes with optional `opts` object which is passed directly
@@ -55,7 +55,7 @@ const initial = require('./lib/plugins/initial')
  * @name   parseFunction
  * @public
  */
-module.exports = function parseFunction (opts) {
+export default function parseFunction (opts) {
   const plugins = []
   const app = {
     /**

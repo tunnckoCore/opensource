@@ -5,22 +5,23 @@
  * Released under the MIT license.
  */
 
-const body = require('./body')
-const props = require('./props')
-const params = require('./params')
+/* eslint-disable jsdoc/require-param-description, jsdoc/check-param-names */
+
+import body from './body.js'
+import props from './props.js'
+import params from './params.js'
 
 /**
  * > Default plugin that handles regular functions,
  * arrow functions, generator functions
  * and ES6 object method notation.
  *
- * @param  {Object} `node`
- * @param  {Object} `result`
- * @return {Object} `result`
- * @api private
+ * @param  {Object} node
+ * @param  {Object} result
+ * @return {Object} resul
+ * @private
  */
-
-module.exports = (app) => (node, result) => {
+export default (app) => (node, result) => {
   const isFn = node.type.endsWith('FunctionExpression')
   const isMethod = node.type === 'ObjectExpression'
 

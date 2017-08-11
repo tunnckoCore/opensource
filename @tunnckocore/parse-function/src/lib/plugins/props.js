@@ -5,6 +5,8 @@
  * Released under the MIT license.
  */
 
+/* eslint-disable jsdoc/require-param-description, jsdoc/check-param-names */
+
 /**
  * > Set couple of hidden properties and
  * the name of the given function to
@@ -15,13 +17,12 @@
  * only when function is really anonymous and don't have
  * any name.
  *
- * @param  {Object} `node`
- * @param  {Object} `result`
- * @return {Object} `result`
- * @api private
+ * @param  {Object} node
+ * @param  {Object} result
+ * @return {Object} result
+ * @private
  */
-
-module.exports = (app) => (node, result) => {
+export default (app) => (node, result) => {
   app.define(result, 'isArrow', node.type.startsWith('Arrow'))
   app.define(result, 'isAsync', node.async || false)
   app.define(result, 'isGenerator', node.generator || false)

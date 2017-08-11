@@ -5,18 +5,19 @@
  * Released under the MIT license.
  */
 
+/* eslint-disable jsdoc/require-param-description, jsdoc/check-param-names */
+
 /**
  * > Micro plugin to visit each of the params
  * in the given function and collect them into
  * an `result.args` array and `result.params` string.
  *
- * @param  {Object} `node`
- * @param  {Object} `result`
- * @return {Object} `result`
- * @api private
+ * @param  {Object} node
+ * @param  {Object} result
+ * @return {Object} result
+ * @private
  */
-
-module.exports = (app) => (node, result) => {
+export default (app) => (node, result) => {
   if (!node.params.length) {
     return result
   }

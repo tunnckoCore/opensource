@@ -12,7 +12,7 @@ const test = require('mukla') // eslint-disable-line
 const acorn = require('acorn')
 const forIn = require('for-in')
 const clone = require('clone-deep')
-const parseFunction = require('./index')
+const parseFunction = require('./src/index')
 
 const actuals = {
   regulars: [

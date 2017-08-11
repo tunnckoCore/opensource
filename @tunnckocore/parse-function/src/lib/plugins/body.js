@@ -5,18 +5,19 @@
  * Released under the MIT license.
  */
 
+/* eslint-disable jsdoc/require-param-description, jsdoc/check-param-names */
+
 /**
  * > Micro plugin to get the raw body, without the
  * surrounding curly braces. It also preserves
  * the whitespaces and newlines - they are original.
  *
- * @param  {Object} `node`
- * @param  {Object} `result`
- * @return {Object} `result`
- * @api private
+ * @param  {Object} node
+ * @param  {Object} result
+ * @return {Object} result
+ * @private
  */
-
-module.exports = (app) => (node, result) => {
+export default (app) => (node, result) => {
   result.body = result.value.slice(node.body.start, node.body.end)
 
   const openCurly = result.body.charCodeAt(0) === 123
