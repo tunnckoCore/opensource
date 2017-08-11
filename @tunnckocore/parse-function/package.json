@@ -32,7 +32,6 @@
   },
   "devDependencies": {
     "acorn": "5.1.1",
-    "benchmarked": "1.1.1",
     "clone-deep": "1.0.0",
     "eslint": "4.4.1",
     "eslint-config-standard-tunnckocore": "1.0.3",

@@ -15,5 +15,4 @@ ratings:
   - lib/utils.js
   - lib/plugins/**
 exclude_paths:
-- benchmark/**
 - test.js
