@@ -9,9 +9,6 @@
     "renovate"
   ],
   "prCreation": "not-pending",
-  "schedule": [
-    "every 15 mins every weekday"
-  ],
   "depTypes": [
     {
       "depType": "dependencies",
