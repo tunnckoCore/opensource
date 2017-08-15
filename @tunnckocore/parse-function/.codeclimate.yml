@@ -11,8 +11,6 @@ engines:
         enabled: false
 ratings:
   paths:
-  - index.js
-  - lib/utils.js
-  - lib/plugins/**
+  - src/**
 exclude_paths:
 - test.js
