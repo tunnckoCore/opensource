@@ -9,12 +9,13 @@
     "renovate"
   ],
   "prCreation": "not-pending",
+  "commitMessage": "update dependency {{depName}} to {{newVersion}}\n\nSigned-off-by: renovate[bot] <renovate[bot]@users.noreply.github.com>",
   "depTypes": [
     {
       "depType": "dependencies",
       "semanticPrefix": "fix(deps): ",
       "automerge": "minor",
-      "automergeType": "branch-push",
+      "automergeType": "pr",
       "assignees": [
         "charlike"
       ]
@@ -23,7 +24,7 @@
       "depType": "devDependencies",
       "semanticPrefix": "chore(devDeps): ",
       "automerge": "any",
-      "automergeType": "branch-push"
+      "automergeType": "pr"
     }
   ],
   "packageRules": [
