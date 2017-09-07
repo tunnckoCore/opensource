@@ -41,7 +41,7 @@
     "eslint-config-standard-tunnckocore": "1.0.7",
     "espree": "3.5.0",
     "for-in": "1.0.2",
-    "hela": "0.7.5",
+    "hela": "0.7.6",
     "husky": "0.14.3",
     "semantic-release": "^7.0.0"
   },
@@ -61,7 +61,6 @@
     "gen",
     "generators",
     "name",
-    "obj",
     "object",
     "param",
     "paramerters",
