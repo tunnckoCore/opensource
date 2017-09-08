@@ -1,0 +1,18 @@
+{
+  "extends": ["airbnb-base", "prettier"],
+  "plugins": ["prettier", "jest"],
+  "rules": {
+    "no-underscore-dangle": 0,
+    "arrow-body-style": 0,
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "all"
+      }
+    ]
+  },
+  "env": {
+    "jest/globals": true
+  }
+}
