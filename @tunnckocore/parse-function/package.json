@@ -39,7 +39,7 @@
     "clone-deep": "1.0.0",
     "eslint": "4.7.0",
     "eslint-config-standard-tunnckocore": "1.0.7",
-    "espree": "3.5.0",
+    "espree": "3.5.1",
     "for-in": "1.0.2",
     "hela": "0.7.7",
     "husky": "0.14.3",
