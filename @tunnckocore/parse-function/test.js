@@ -403,3 +403,16 @@ test('should call fn returned from plugin only when `parse` is called', (done) =
   test.strictEqual(res.params, 'a, b')
   done()
 })
+
+// https://github.com/tunnckoCore/parse-function/issues/61
+test('should work with an async arrow function with an `if` statement', (done) => {
+  const app = parseFunction()
+  const parsed = app.parse('async (v) => { if (v) {} }')
+  test.deepEqual(parsed, {
+    name: null,
+    body: ' if (v) {} ',
+    args: [ 'v' ],
+    params: 'v'
+  })
+  done()
+})

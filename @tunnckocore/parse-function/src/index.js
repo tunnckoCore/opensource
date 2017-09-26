@@ -105,10 +105,12 @@ export default function parseFunction (opts) {
 
       const isFunction = result.value.startsWith('function')
       const isAsyncFn = result.value.startsWith('async function')
+      const isAsyncArrow = result.value.startsWith('async')
+        && result.value.includes('=>')
       // eslint-disable-next-line no-useless-escape
       const isMethod = /^\*?.+\([\s\S\w\W]*\)\s*\{/i.test(result.value)
 
-      if (!(isFunction || isAsyncFn) && isMethod) {
+      if (!(isFunction || isAsyncFn || isAsyncArrow) && isMethod) {
         result.value = `{ ${result.value} }`
       }
 
