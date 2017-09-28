@@ -38,7 +38,7 @@
     "acorn": "5.1.2",
     "clone-deep": "1.0.0",
     "eslint": "4.7.1",
-    "eslint-config-standard-tunnckocore": "1.0.9",
+    "eslint-config-standard-tunnckocore": "1.0.10",
     "espree": "3.5.1",
     "for-in": "1.0.2",
     "hela": "0.7.7",
