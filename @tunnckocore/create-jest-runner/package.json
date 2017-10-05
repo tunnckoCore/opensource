@@ -1,15 +1,12 @@
 {
-  "name": "jest-runner-utils",
+  "name": "create-jest-runner",
   "version": "0.2.1",
   "main": "build/index.js",
   "author": "Rogelio Guzman <rogelioguzmanh@gmail.com>",
-  "description": "A set of utility functions for Jest runners",
+  "description": "A simple way of creating a Jest runner",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rogeliog/jest-runner-utils.git"
-  },
-  "homepage": "https://github.com/rogeliog/jest-runner-utils",
+  "repository": "https://github.com/rogeliog/create-jest-runner.git",
+  "homepage": "https://github.com/rogeliog/create-jest-runner",
   "files": ["build/"],
   "scripts": {
     "test": "jest",
@@ -42,7 +39,7 @@
     "eslint-plugin-jest": "20.0.3",
     "eslint-plugin-prettier": "2.2.0",
     "execa": "0.8.0",
-    "jest": "21.0.1",
+    "jest": "^21.0.2",
     "prettier": "1.5.3"
   }
 }

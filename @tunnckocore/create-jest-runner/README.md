@@ -1,36 +1,88 @@
-# jest-runner-mocha
+# create-jest-runner
 
-[![Build Status](https://travis-ci.org/rogeliog/jest-runner-mocha.svg?branch=master)](https://travis-ci.org/rogeliog/jest-runner-mocha) [![npm version](https://badge.fury.io/js/jest-runner-mocha.svg)](https://badge.fury.io/js/jest-runner-mocha)
+## Install
 
-An experimental Mocha runner for Jest
-
-This makes it easy to integrate existing Mocha projects with Jest.
-
-![runner](https://user-images.githubusercontent.com/574806/30088955-728bf97e-925e-11e7-9b25-6aac237085ca.gif)
-
+```bash
+yarn add create-jest-runner
+```
 
 ## Usage
 
-### Install
+create-jest-runner takes care of handling the appropriate parallelization and creating a worker farm for your runner.
 
-Install `jest`_(it needs Jest 21+)_ and `jest-runner-mocha`
 
-```bash
-yarn add --dev jest jest-runner-mocha
+You simply need two files:
+* Entry file: Used by Jest as an entrypoint to your runner.
+* Run file: Contains the domain logic of your runner.
 
-# or with NPM
+### 1) Create your entry file
 
-npm install --save-dev jest jest-runner-mocha
-
+```js
+// index.js
+const createRunner = require('create-jest-runner');
+module.exports = createRunner('/path/to/run.js')
 ```
 
-### Add it to your Jest config
+### 2) Create your run file
+
+
+```js
+// run.js
+module.exports = (options, workerCallback) => {
+ // ... 
+}
+```
+
+## Run File API
+
+This file should export a function that receives two parameters `(options, workerCallback)`
+
+### `options: { testPath, config, globalConfig }`
+  - `testPath`: Path of the file that is going to be tests
+  - `config`: Jest Project config used by this file
+  - `globalConfig`: Jest global config
+
+### `workerCallback: (error, testResult) => void`
+_Use this callback function to report back the results (needs to be called exactly one time)._
+  - `error`: Any Javascript error or a string.
+  - `testResult`: Needs to be an object of type https://github.com/facebook/jest/blob/master/types/TestResult.js#L131-L157
+
+### Reporting test results
+
+#### Passing test suite
+```js
+// run.js
+module.exports = (options, workerCallback) => {
+  if (/* something */) {
+    workerCallback(new Error('my message'));
+  }
+}
+```
+#### Failing test suite
+
+### Reporting an error
+You can report other errors by calling the `workerCallback` with the appropriate error.
+```js
+// run.js
+module.exports = (options, workerCallback) => {
+  if (/* something */) {
+    workerCallback(new Error('my message'));
+  }
+}
+```
+
+
+
+
+## Add your runner to Jest config
+
+Once you have your Jest runner you can add it to your Jest config.
 
 In your `package.json`
 ```json
 {
   "jest": {
-    "runner": "jest-runner-mocha"
+    "runner": "/path/to/my-runner"
   }
 }
 ```
@@ -38,7 +90,7 @@ In your `package.json`
 Or in `jest.config.js`
 ```js
 module.exports = {
-  runner: 'jest-runner-mocha',
+  runner: '/path/to/my-runner',
 }
 ```
 
@@ -46,38 +98,3 @@ module.exports = {
 ```bash
 yarn jest
 ```
-
-### Coverage
-
-Coverage works outside of the box, simply `yarn jest -- --coverage`
-
-You can also use other Jest options like [coveragePathIgnorePatterns](http://facebook.github.io/jest/docs/en/configuration.html#coveragepathignorepatterns-array-string) and [coverageReporters](http://facebook.github.io/jest/docs/en/configuration.html#coveragereporters-array-string)
-
-## Custom config options
-
-Create a `jest-runner-mocha.config.js` at the `<rootDir>` or your Jest project.
-
-- `ui`: (Optional) the UI used by mocha
-```js
-// example
-module.exports = {
-  ui: 'tdd',
-}
-```
-
-- `compiler`: (Optional) the used for adding a compile step to your mocha tests
-
-```js
-// example
-module.exports = {
-  compiler: '/absolute/path/to/babel-register/or/other/compiler',
-}
-```
-
-_NOTE: Eventually Jest will eventually have an option for configuring runners that will eliminate the need for `jest-runner-mocha.config.js`_
-
-
-## Known issues
-- It does not support any Mocha options except for `ui` and `compiler`
-- Support for compilers is very limited.
-- Does not support `jest --runInBand`
