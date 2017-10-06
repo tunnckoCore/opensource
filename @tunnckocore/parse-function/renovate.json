@@ -1,21 +1,5 @@
 {
   "extends": [
-    ":base",
-    ":automergePr",
-    ":automergeMinor",
-    ":preserveSemverRanges"
-  ],
-  "labels": [
-    "deps",
-    "renovate"
-  ],
-  "assignees": [
-    "charlike"
-  ],
-  "ignoreDeps": [
-    "semantic-release"
-  ],
-  "pinVersions": false,
-  "rebaseStalePrs": true,
-  "semanticCommits": true
+    "tunnckocore"
+  ]
 }
