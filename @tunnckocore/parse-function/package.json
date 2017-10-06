@@ -26,20 +26,20 @@
     "dist/"
   ],
   "dependencies": {
-    "arrify": "^1.0.1",
-    "babylon": "^7.0.0-beta.27",
-    "define-property": "^1.0.0"
+    "arrify": "1.0.1",
+    "babylon": "7.0.0-beta.27",
+    "define-property": "1.0.0"
   },
   "devDependencies": {
-    "acorn": "^5.1.2",
-    "clone-deep": "^1.0.0",
-    "eslint-config-standard-tunnckocore": "^1.0.10",
-    "espree": "^3.5.1",
-    "for-in": "^1.0.2",
-    "hela": "^1.1.1",
-    "hela-preset-tunnckocore": "^0.5.15",
-    "husky": "^0.14.3",
-    "mukla": "^0.4.9",
+    "acorn": "5.1.2",
+    "clone-deep": "1.0.0",
+    "eslint-config-standard-tunnckocore": "1.0.10",
+    "espree": "3.5.1",
+    "for-in": "1.0.2",
+    "hela": "1.1.2",
+    "hela-preset-tunnckocore": "0.5.19",
+    "husky": "0.14.3",
+    "mukla": "0.4.9",
     "semantic-release": "^7.0.2"
   },
   "keywords": [
