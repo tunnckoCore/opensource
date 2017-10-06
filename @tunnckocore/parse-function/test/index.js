@@ -1,6 +1,6 @@
 /**
  * @author Charlike Mike Reagent <open.source.charlike@gmail.com>
- * @copyright 2017 @tunnckoCore/team and contributors
+ * @copyright 2016-present @tunnckoCore/team and contributors
  * @license MIT
  */
 
