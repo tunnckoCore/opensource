@@ -9,8 +9,12 @@ engines:
     checks:
       Similar code:
         enabled: false
+
 ratings:
   paths:
-  - src/**
+  - src/**/*.js
+
 exclude_paths:
-- test.js
+- src/cli.js
+- test/**/*.js
+- config/**/*.js

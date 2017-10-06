@@ -1,0 +1,9 @@
+{
+  "presets": "tunnckocore",
+  "tasks": {
+    "build": [
+      "hela clean",
+      "hela build:node"
+    ]
+  }
+}

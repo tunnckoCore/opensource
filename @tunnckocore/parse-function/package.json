@@ -6,44 +6,40 @@
   "homepage": "https://github.com/tunnckoCore/parse-function",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
   "nspId": "5d75a388-acfe-4668-ad18-e98564e387e1",
-  "module": "./dest/index.mjs",
-  "main": "./dest/index.js",
-  "license": "MIT",
+  "src": "./src/**/*.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
   "scripts": {
-    "fresh": "hela fresh",
-    "contrib": "hela contrib",
-    "renovate": "hela renovate",
-    "lint": "hela lint -c .eslintrc.json",
-    "pretest": "hela build && hela pretest",
-    "test": "hela test node test.js",
-    "posttest": "hela posttest",
-    "precommit": "hela precommit",
-    "commit": "hela commit",
-    "postcommit": "git push",
-    "semantic-release": "hela release"
+    "start": "hela",
+    "test": "yarn start test",
+    "precommit": "yarn start precommit",
+    "commit": "yarn start commit"
   },
+  "license": "MIT",
   "engines": {
     "node": ">=6",
-    "npm": ">=5"
+    "npm": ">=5",
+    "yarn": ">=1"
   },
   "files": [
-    "dest/"
+    "dist/"
   ],
   "dependencies": {
-    "arrify": "1.0.1",
-    "babylon": "7.0.0-beta.27",
-    "define-property": "1.0.0"
+    "arrify": "^1.0.1",
+    "babylon": "^7.0.0-beta.27",
+    "define-property": "^1.0.0"
   },
   "devDependencies": {
-    "acorn": "5.1.2",
-    "clone-deep": "1.0.0",
-    "eslint": "4.8.0",
-    "eslint-config-standard-tunnckocore": "1.0.10",
-    "espree": "3.5.1",
-    "for-in": "1.0.2",
-    "hela": "0.7.7",
-    "husky": "0.14.3",
-    "semantic-release": "^7.0.0"
+    "acorn": "^5.1.2",
+    "clone-deep": "^1.0.0",
+    "eslint-config-standard-tunnckocore": "^1.0.10",
+    "espree": "^3.5.1",
+    "for-in": "^1.0.2",
+    "hela": "^1.1.1",
+    "hela-preset-tunnckocore": "^0.5.12",
+    "husky": "^0.14.3",
+    "mukla": "^0.4.9",
+    "semantic-release": "^7.0.2"
   },
   "keywords": [
     "args",

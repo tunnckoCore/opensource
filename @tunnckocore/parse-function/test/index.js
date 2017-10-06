@@ -1,18 +1,26 @@
-/*!
- * parse-function <https://github.com/tunnckoCore/parse-function>
- *
- * Copyright (c) 2017 Charlike Mike Reagent <open.source.charlike@gmail.com> (https://i.am.charlike.online)
- * Released under the MIT license.
+/**
+ * @author Charlike Mike Reagent <open.source.charlike@gmail.com>
+ * @copyright 2017 @tunnckoCore/team and contributors
+ * @license MIT
  */
 
 /* eslint-disable max-len */
 
-const test = require('mukla') // eslint-disable-line
+import test from 'mukla'
 
-const acorn = require('acorn')
-const forIn = require('for-in')
-const clone = require('clone-deep')
-const parseFunction = require('./src/index')
+import espree from 'espree'
+import babylon from 'babylon'
+import acornLoose from 'acorn/dist/acorn_loose'
+
+import acorn from 'acorn'
+import forIn from 'for-in'
+import clone from 'clone-deep'
+import parseFunction from '../src/index'
+
+const acornParse = acorn.parse
+const espreeParse = espree.parse
+const babylonParse = babylon.parse
+const acornLooseParse = acornLoose.parse_dammit
 
 const actuals = {
   regulars: [
@@ -218,9 +226,10 @@ function factory (parserName, parseFn) {
     done()
   })
 
-  // bug in v4, would throw
-  // test(`#${testsCount++} - ${parserName} - should not fails to get .body when something after close curly (issue#3)`, (done) => {
-  //   const actual = parseFn('function (a) {return a}; var b = 1')
+  // bug in v4 and v5
+  // https://github.com/tunnckoCore/parse-function/issues/3
+  // test(`#${testsCount++} - ${parserName} - should not fails to get .body when something after close curly`, (done) => {
+  //   const actual = parseFn('function (a) {return a * 2}; var b = 1')
   //   test.strictEqual(actual.body, 'return a * 2')
   //   done()
   // })
@@ -258,7 +267,7 @@ function factory (parserName, parseFn) {
     })
     test.strictEqual(actual.name, 'fooBar')
     test.strictEqual(actual.params, 'a, bc')
-    test.strictEqual(actual.body, '\n      return a + bc\n    ')
+    test.strictEqual(actual.body, '\n      return a + bc;\n    ')
     done()
   })
 
@@ -276,11 +285,11 @@ function factory (parserName, parseFn) {
     const actual = parseFn(obj.foo)
     test.strictEqual(actual.name, 'foo')
     test.strictEqual(actual.params, 'a, b, c')
-    test.strictEqual(actual.body, '\n        return 123\n      ')
+    test.strictEqual(actual.body, '\n        return 123;\n      ')
 
     const bar = parseFn(obj.bar)
     test.strictEqual(bar.name, 'bar')
-    test.strictEqual(bar.body, '\n        return () => a\n      ')
+    test.strictEqual(bar.body, '\n        return () => a;\n      ')
 
     const gen = parseFn(obj.gen)
     test.strictEqual(gen.name, 'gen')
@@ -334,7 +343,7 @@ factory('babylon default', (code, opts, plugin) => {
 
 factory('babylon.parse', (code, opts, plugin) => {
   const app = parseFunction({
-    parse: require('babylon').parse,
+    parse: babylonParse,
     ecmaVersion: 2017,
   })
   if (plugin) app.use(plugin)
@@ -343,7 +352,7 @@ factory('babylon.parse', (code, opts, plugin) => {
 
 factory('acorn.parse', (code, opts, plugin) => {
   const app = parseFunction({
-    parse: acorn.parse,
+    parse: acornParse,
     ecmaVersion: 2017,
   })
   if (plugin) app.use(plugin)
@@ -357,7 +366,7 @@ factory('acorn.parse_dammit', (code, opts, plugin) => {
     code,
     Object.assign(
       {
-        parse: require('acorn/dist/acorn_loose').parse_dammit,
+        parse: acornLooseParse,
         ecmaVersion: 2017,
       },
       opts
@@ -367,7 +376,7 @@ factory('acorn.parse_dammit', (code, opts, plugin) => {
 
 factory('espree.parse', (code, opts, plugin) => {
   const app = parseFunction({
-    parse: require('espree').parse,
+    parse: espreeParse,
     ecmaVersion: 8,
   })
   if (plugin) app.use(plugin)
@@ -411,8 +420,8 @@ test('should work with an async arrow function with an `if` statement', (done) =
   test.deepEqual(parsed, {
     name: null,
     body: ' if (v) {} ',
-    args: [ 'v' ],
-    params: 'v'
+    args: ['v'],
+    params: 'v',
   })
   done()
 })

@@ -1,9 +1,10 @@
 {
-  "enabled": true,
-  "pinVersions": true,
-  "rebaseStalePrs": true,
-  "semanticCommits": true,
-  "unpublishSafe": false,
+  "extends": [
+    ":base",
+    ":automergePr",
+    ":automergeMinor",
+    ":preserveSemverRanges"
+  ],
   "labels": [
     "deps",
     "renovate"
@@ -11,30 +12,10 @@
   "assignees": [
     "charlike"
   ],
-  "prCreation": "not-pending",
-  "commitMessage": "update dependency {{depName}} to {{newVersion}}\n\nSigned-off-by: renovate[bot] <renovate[bot]@users.noreply.github.com>",
-  "depTypes": [
-    {
-      "depType": "dependencies",
-      "semanticPrefix": "fix(deps): ",
-      "automerge": "minor",
-      "automergeType": "pr"
-    },
-    {
-      "depType": "devDependencies",
-      "semanticPrefix": "chore(devDeps): ",
-      "automerge": "any",
-      "automergeType": "pr"
-    }
+  "ignoreDeps": [
+    "semantic-release"
   ],
-  "packageRules": [
-    {
-      "packageNames": [
-        "semantic-release"
-      ],
-      "automerge": "minor",
-      "automergeType": "pr",
-      "pinVersions": false
-    }
-  ]
+  "pinVersions": false,
+  "rebaseStalePrs": true,
+  "semanticCommits": true
 }
