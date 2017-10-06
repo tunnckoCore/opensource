@@ -37,7 +37,7 @@
     "espree": "^3.5.1",
     "for-in": "^1.0.2",
     "hela": "^1.1.1",
-    "hela-preset-tunnckocore": "^0.5.14",
+    "hela-preset-tunnckocore": "^0.5.15",
     "husky": "^0.14.3",
     "mukla": "^0.4.9",
     "semantic-release": "^7.0.2"
