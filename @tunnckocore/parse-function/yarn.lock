@@ -998,11 +998,11 @@ browser-resolve@^1.11.0:
     resolve "1.1.7"
 
 browserslist@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.4.0.tgz#693ee93d01e66468a6348da5498e011f578f87f8"
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.5.1.tgz#68e4bc536bbcc6086d62843a2ffccea8396821c6"
   dependencies:
-    caniuse-lite "^1.0.30000718"
-    electron-to-chromium "^1.3.18"
+    caniuse-lite "^1.0.30000744"
+    electron-to-chromium "^1.3.24"
 
 buf-compare@^1.0.0:
   version "1.0.1"
@@ -1053,9 +1053,9 @@ camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
-caniuse-lite@^1.0.30000718:
-  version "1.0.30000744"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000744.tgz#860fa5c83ba34fe619397d607f30bb474821671b"
+caniuse-lite@^1.0.30000744:
+  version "1.0.30000745"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000745.tgz#20d6fede1157a4935133502946fc7e0e6b880da5"
 
 caseless@~0.11.0:
   version "0.11.0"
@@ -1595,7 +1595,7 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
-electron-to-chromium@^1.3.18:
+electron-to-chromium@^1.3.24:
   version "1.3.24"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.24.tgz#9b7b88bb05ceb9fa016a177833cc2dde388f21b6"
 
@@ -4191,7 +4191,7 @@ safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
 
-semantic-release@^7.0.2:
+semantic-release@7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-7.0.2.tgz#3d418df4070b1fbd4ff2b7b75676322330c2b049"
   dependencies:
