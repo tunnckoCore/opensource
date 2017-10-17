@@ -1,10 +1,4 @@
-require('babel-polyfill');
-const throat = require('throat');
-const pify = require('pify');
-const workerFarm = require('worker-farm');
-const path = require('path');
-
-const runPath = path.resolve(__dirname, 'run.js');
+const Worker = require('jest-worker');
 
 class CancelRun extends Error {
   constructor(message) {
@@ -13,7 +7,7 @@ class CancelRun extends Error {
   }
 }
 
-const createRunner = (fn, { extraOptions } = {}) => {
+const createRunner = runPath => {
   class BaseTestRunner {
     constructor(globalConfig) {
       this._globalConfig = globalConfig;
@@ -21,45 +15,28 @@ const createRunner = (fn, { extraOptions } = {}) => {
 
     // eslint-disable-next-line
     async runTests(tests, watcher, onStart, onResult, onFailure, options) {
-      const farm = workerFarm(
-        {
-          autoStart: true,
-          maxConcurrentCallsPerWorker: 1,
-          maxConcurrentWorkers: this._globalConfig.maxWorkers,
-          maxRetries: 2, // Allow for a couple of transient errors.
-        },
-        runPath,
-      );
+      const worker = new Worker(runPath, {
+        exposedMethods: ['default'],
+        numWorkers: this._globalConfig.maxWorkers,
+      });
 
-      const mutex = throat(this._globalConfig.maxWorkers);
-      const worker = pify(farm);
+      const runTestInWorker = async test => {
+        if (watcher.isInterrupted()) {
+          throw new CancelRun();
+        }
+        await onStart(test);
+        const baseOptions = {
+          config: test.context.config,
+          globalConfig: this._globalConfig,
+          testPath: test.path,
+          rawModuleMap: watcher.isWatchMode()
+            ? test.context.moduleMap.getRawModuleMap()
+            : null,
+          options,
+        };
 
-      const runTestInWorker = test =>
-        mutex(async () => {
-          if (watcher.isInterrupted()) {
-            throw new CancelRun();
-          }
-          await onStart(test);
-          const baseOptions = {
-            config: test.context.config,
-            globalConfig: this._globalConfig,
-            testPath: test.path,
-            rawModuleMap: watcher.isWatchMode()
-              ? test.context.moduleMap.getRawModuleMap()
-              : null,
-            options,
-          };
-
-          if (extraOptions) {
-            return Object.assign(
-              {},
-              baseOptions,
-              extraOptions(baseOptions, tests),
-            );
-          }
-
-          return worker(baseOptions);
-        });
+        return worker.default(baseOptions);
+      };
 
       const onError = async (err, test) => {
         await onFailure(test, err);
@@ -89,7 +66,7 @@ const createRunner = (fn, { extraOptions } = {}) => {
         ),
       );
 
-      const cleanup = () => workerFarm.end(farm);
+      const cleanup = () => worker.end();
 
       return Promise.race([runAllTests, onInterrupt]).then(cleanup, cleanup);
     }

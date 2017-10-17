@@ -7,7 +7,9 @@
   "license": "MIT",
   "repository": "https://github.com/rogeliog/create-jest-runner.git",
   "homepage": "https://github.com/rogeliog/create-jest-runner",
-  "files": ["build/"],
+  "files": [
+    "build/"
+  ],
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
@@ -20,6 +22,7 @@
     "babel-plugin-istanbul": "4.1.4",
     "babel-polyfill": "^6.26.0",
     "babel-register": "6.26.0",
+    "jest-worker": "21.3.0-beta.2",
     "lodash": "4.17.4",
     "minimatch": "3.0.4",
     "mocha": "3.5.0",
