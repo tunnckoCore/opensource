@@ -1,21 +1,22 @@
 {
   "name": "create-jest-runner",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "build/index.js",
   "author": "Rogelio Guzman <rogelioguzmanh@gmail.com>",
   "description": "A simple way of creating a Jest runner",
   "license": "MIT",
   "repository": "https://github.com/rogeliog/create-jest-runner.git",
   "homepage": "https://github.com/rogeliog/create-jest-runner",
-  "files": ["build/"],
+  "files": [
+    "build/"
+  ],
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
     "watch": "babel lib -w --ignore **/*.test.js,integration -d build",
     "build": "babel lib --ignore **/*.test.js,integration -d build",
     "prepublish": "yarn build",
-    "format":
-      "prettier --single-quote --trailing-comma all --write \"!(build)/**/*.js\""
+    "format": "prettier --single-quote --trailing-comma all --write \"!(build)/**/*.js\""
   },
   "dependencies": {
     "babel-plugin-istanbul": "4.1.4",
