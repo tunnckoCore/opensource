@@ -1,5 +1,7 @@
 # create-jest-runner
 
+A highly opinionated way for creating Jest Runners
+
 ## Install
 
 ```bash
@@ -13,65 +15,71 @@ create-jest-runner takes care of handling the appropriate parallelization and cr
 
 You simply need two files:
 * Entry file: Used by Jest as an entrypoint to your runner.
-* Run file: Contains the domain logic of your runner.
+* Run file: Runs once per test file, and it encapsulates the logic of your runner
 
 ### 1) Create your entry file
 
 ```js
 // index.js
-const createRunner = require('create-jest-runner');
-module.exports = createRunner('/path/to/run.js')
+const { createJestRunner } = require('create-jest-runner');
+module.exports = createJestRunner(require.resolve('./run'));
 ```
 
 ### 2) Create your run file
 
-
 ```js
-// run.js
-module.exports = (options, workerCallback) => {
- // ... 
-}
+module.exports = (options) => {
+};
 ```
 
-## Run File API
+### Run File API
 
-This file should export a function that receives two parameters `(options, workerCallback)`
+This file should export a function that receives one parameter with the options
 
-### `options: { testPath, config, globalConfig }`
+#### `options: { testPath, config, globalConfig }`
   - `testPath`: Path of the file that is going to be tests
   - `config`: Jest Project config used by this file
   - `globalConfig`: Jest global config
 
-### `workerCallback: (error, testResult) => void`
-_Use this callback function to report back the results (needs to be called exactly one time)._
-  - `error`: Any Javascript error or a string.
-  - `testResult`: Needs to be an object of type https://github.com/facebook/jest/blob/master/types/TestResult.js#L131-L157
+You can return one of the following values:
+- `testResult`: Needs to be an object of type https://github.com/facebook/jest/blob/master/types/TestResult.js#L131-L157
+- `Promise<testResult|Error>`: needs to be of above type.
+- `Error`: good for reporting system error, not failed tests.
 
-### Reporting test results
 
-#### Passing test suite
+
+## Example of a runner
+
+This runner "blade-runner" makes sure that these two emojis `⚔️ 🏃` are present in every file
+
+
 ```js
-// run.js
-module.exports = (options, workerCallback) => {
-  if (/* something */) {
-    workerCallback(new Error('my message'));
-  }
-}
-```
-#### Failing test suite
-
-### Reporting an error
-You can report other errors by calling the `workerCallback` with the appropriate error.
-```js
-// run.js
-module.exports = (options, workerCallback) => {
-  if (/* something */) {
-    workerCallback(new Error('my message'));
-  }
-}
+// index.js
+const { createJestRunner } = require('create-jest-runner');
+module.exports = createJestRunner(require.resolve('./run'));
 ```
 
+```js
+// run.js
+const fs = require('fs');
+const { pass, fail } = require('create-jest-runner');
 
+module.exports = ({ testPath }) => {
+  const start = +new Date();
+  const contents = fs.readFileSync(testPath, 'utf8');
+  const end = +new Date();
+
+  if (contents.includes('⚔️🏃')) {
+    return pass({ start, end, test: { path: testPath } });
+  }
+  const errorMessage = 'Company policies require ⚔️ 🏃 in every file';
+  return fail({
+    start,
+    end,
+    test: { path: testPath, errorMessage, title: 'Check for ⚔️ 🏃' },
+  });
+};
+```
 
 
 ## Add your runner to Jest config
