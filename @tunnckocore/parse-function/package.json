@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "acorn": "5.2.1",
-    "clone-deep": "1.0.0",
+    "clone-deep": "2.0.1",
     "eslint-config-standard-tunnckocore": "1.0.10",
     "espree": "3.5.2",
     "for-in": "1.0.2",
