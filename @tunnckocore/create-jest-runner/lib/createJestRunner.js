@@ -18,6 +18,7 @@ const createRunner = runPath => {
       const worker = new Worker(runPath, {
         exposedMethods: ['default'],
         numWorkers: this._globalConfig.maxWorkers,
+        forkOptions: { stdio: 'inherit' },
       });
 
       const runTestInWorker = test => {

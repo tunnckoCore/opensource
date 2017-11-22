@@ -22,7 +22,7 @@
     "babel-plugin-istanbul": "4.1.4",
     "babel-polyfill": "^6.26.0",
     "babel-register": "6.26.0",
-    "jest-worker": "21.3.0-beta.2",
+    "jest-worker": "21.3.0-beta.9",
     "lodash": "4.17.4",
     "minimatch": "3.0.4",
     "mocha": "3.5.0",
