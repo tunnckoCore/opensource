@@ -1530,11 +1530,12 @@ define-properties@^1.1.2:
     foreach "^2.0.5"
     object-keys "^1.0.8"
 
-define-property@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/define-property/-/define-property-1.0.0.tgz#769ebaaf3f4a63aad3af9e8d304c9bbe79bfb0e6"
+define-property@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/define-property/-/define-property-2.0.0.tgz#db0cd7e880bf3d2a8bc60f03ffae43a4b7015140"
   dependencies:
-    is-descriptor "^1.0.0"
+    is-descriptor "^1.0.1"
+    kind-of "^6.0.1"
 
 del@^2.0.2:
   version "2.2.2"
@@ -2621,7 +2622,7 @@ is-date-object@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-date-object/-/is-date-object-1.0.1.tgz#9aa20eb6aeebbff77fbd33e74ca01b33581d3a16"
 
-is-descriptor@^1.0.0:
+is-descriptor@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-descriptor/-/is-descriptor-1.0.1.tgz#2c6023599bde2de9d5d2c8b9a9d94082036b6ef2"
   dependencies:
@@ -2991,6 +2992,10 @@ kind-of@^5.0.0:
 kind-of@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.0.tgz#3606e9e2fa960e7ddaa8898c03804e47e5d66644"
+
+kind-of@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.1.tgz#4948e6263553ac3712fc44d305b77851d9e40ea4"
 
 largest-semantic-change@1.0.0:
   version "1.0.0"
