@@ -27,7 +27,7 @@
   ],
   "dependencies": {
     "arrify": "1.0.1",
-    "babylon": "7.0.0-beta.36",
+    "babylon": "7.0.0-beta.37",
     "define-property": "2.0.0"
   },
   "devDependencies": {
