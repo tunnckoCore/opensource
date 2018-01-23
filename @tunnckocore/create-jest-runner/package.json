@@ -1,6 +1,6 @@
 {
   "name": "create-jest-runner",
-  "version": "0.1.1",
+  "version": "0.2.0-0",
   "main": "build/index.js",
   "author": "Rogelio Guzman <rogelioguzmanh@gmail.com>",
   "description": "A simple way of creating a Jest runner",
