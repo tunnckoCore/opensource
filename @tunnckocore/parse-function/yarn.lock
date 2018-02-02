@@ -52,9 +52,9 @@ acorn-jsx@^3.0.0:
   dependencies:
     acorn "^3.0.4"
 
-acorn@5.4.0:
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.4.0.tgz#51c581c9d4b1943dda59a3e73bcf02661ac727ea"
+acorn@5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.4.1.tgz#fdc58d9d17f4a4e98d102ded826a9b9759125102"
 
 acorn@^3.0.4:
   version "3.3.0"
