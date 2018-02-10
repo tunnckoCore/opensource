@@ -32,9 +32,23 @@ export default (app) => (node, result) => {
     const name = param.name || defaultArgsName || restArgName
 
     result.args.push(name)
-    result.defaults[name] = param.right
-      ? result.value.slice(param.right.start, param.right.end)
-      : undefined
+
+    if (param.right && param.right.type === 'SequenceExpression') {
+      let value
+      let lastExpression = param.right.expressions.pop()
+
+      if (lastExpression.type === 'NullLiteral') {
+        value = null
+      } else {
+        value = lastExpression.value
+      }
+
+      result.defaults[name] = value
+    } else {
+      result.defaults[name] = param.right
+        ? result.value.slice(param.right.start, param.right.end)
+        : undefined
+    }
   })
   result.params = result.args.join(', ')
 

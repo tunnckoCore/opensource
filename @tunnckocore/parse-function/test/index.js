@@ -29,6 +29,9 @@ const actuals = {
     'function (c) {return c * 3}',
     'function (...restArgs) {return 321}',
     'function () {}',
+    'function (a = (true, false)) {}',
+    'function (a = (true, null)) {}',
+    'function (a, b = (i++, true)) {}',
   ],
   named: [
     'function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3}',
@@ -36,6 +39,9 @@ const actuals = {
     'function namedFn (c) {return c * 3}',
     'function namedFn (...restArgs) {return 321}',
     'function namedFn () {}',
+    'function namedFn(a = (true, false)) {}',
+    'function namedFn(a = (true, null)) {}',
+    'function namedFn(a, b = (i++, true)) {}',
   ],
   generators: [
     'function * namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3}',
@@ -43,6 +49,9 @@ const actuals = {
     'function * namedFn (c) {return c * 3}',
     'function * namedFn (...restArgs) {return 321}',
     'function * namedFn () {}',
+    'function * namedFn(a = (true, false)) {}',
+    'function * namedFn(a = (true, null)) {}',
+    'function * namedFn(a, b = (i++, true)) {}',
   ],
   arrows: [
     '(a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3}',
@@ -50,6 +59,9 @@ const actuals = {
     '(c) => {return c * 3}',
     '(...restArgs) => {return 321}',
     '() => {}',
+    '(a = (true, false)) => {}',
+    '(a = (true, null)) => {}',
+    '(a, b = (i++, true)) => {}',
     '(a) => a * 3 * a',
     'd => d * 355 * d',
     'e => {return e + 5235 / e}',
@@ -108,6 +120,27 @@ const regulars = [
     args: [],
     body: '',
     defaults: {},
+  },
+  {
+    name: null,
+    params: 'a',
+    args: ['a'],
+    body: '',
+    defaults: {a: false},
+  },
+  {
+    name: null,
+    params: 'a',
+    args: ['a'],
+    body: '',
+    defaults: {a: null},
+  },
+  {
+    name: null,
+    params: 'a, b',
+    args: ['a', 'b'],
+    body: '',
+    defaults: {a: undefined, b: true},
   },
 ]
 
