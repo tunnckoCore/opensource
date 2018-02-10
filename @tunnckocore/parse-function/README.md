@@ -12,7 +12,6 @@ You might also be interested in [hela](https://github.com/tunnckoCore/hela#readm
 
 ## Quality Assurance :100:
 
-[![Code Climate][codeclimate-img]][codeclimate-url] 
 [![Code Style Standard][standard-img]][standard-url] 
 [![Linux Build][travis-img]][travis-url] 
 [![Code Coverage][codecov-img]][codecov-url] 
@@ -468,8 +467,8 @@ Project scaffolded and managed with [hela][].
 <!-- the original color of nsp: 
 [nodesec-img]: https://img.shields.io/badge/nsp-no_known_vulns-35a9e0.svg -->
 
-[semantic-release-url]: https://github.com/semantic-release/semantic-release
-[semantic-release-img]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[semantic-release-url]: https://github.com/apps/new-release
+[semantic-release-img]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-new--release-e10079.svg
 
 [ccommits-url]: https://conventionalcommits.org/
 [ccommits-img]: https://img.shields.io/badge/conventional_commits-1.0.0-yellow.svg
