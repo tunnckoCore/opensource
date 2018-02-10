@@ -1,6 +1,6 @@
 {
   "name": "parse-function",
-  "version": "0.0.0-semantic-release",
+  "version": "5.1.1",
   "description": "Parse a function into an object using espree, acorn or babylon parsers. Extensible through Smart Plugins",
   "repository": "tunnckoCore/parse-function",
   "homepage": "https://github.com/tunnckoCore/parse-function",
