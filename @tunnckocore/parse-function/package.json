@@ -11,9 +11,10 @@
   "module": "./dist/index.es.js",
   "scripts": {
     "start": "hela",
-    "test": "yarn start test",
-    "precommit": "yarn start precommit",
-    "commit": "yarn start commit"
+    "test": "NODE_ENV=test yarn hela test",
+    "precommit": "yarn hela precommit",
+    "commit": "yarn hela commit",
+    "release": "new-release"
   },
   "license": "MIT",
   "licenseStart": 2016,
@@ -40,7 +41,7 @@
     "hela-preset-tunnckocore": "0.5.19",
     "husky": "0.14.3",
     "mukla": "0.4.9",
-    "semantic-release": "7.0.2"
+    "new-release": "4.0.1"
   },
   "keywords": [
     "args",
