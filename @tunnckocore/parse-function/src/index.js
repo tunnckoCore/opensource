@@ -23,7 +23,7 @@ import initial from './lib/plugins/initial.js'
  * with `.use` and `.parse` methods. The default parse which
  * is used is [babylon][]'s `.parseExpression` method from `v7`.
  *
- * @example
+ * ```js
  * const parseFunction = require('parse-function')
  *
  * const app = parseFunction({
@@ -49,12 +49,14 @@ import initial from './lib/plugins/initial.js'
  *
  * // comma-separated names of the arguments
  * console.log(result.params) // => 'a, b, c'
+ * ```
  *
- * @param  {Object} opts optional, merged with options passed to `.parse` method
+ * @param  {Object} `opts` optional, merged with options passed to `.parse` method
  * @return {Object} `app` object with `.use` and `.parse` methods
  * @name   parseFunction
- * @public
+ * @api public
  */
+
 export default function parseFunction (opts) {
   const plugins = []
   const app = {
@@ -66,7 +68,7 @@ export default function parseFunction (opts) {
      * In the below example will show how to use `acorn` parser, instead
      * of the default one.
      *
-     * @example
+     * ```js
      * const acorn = require('acorn')
      * const parseFn = require('parse-function')
      * const app = parseFn()
@@ -84,17 +86,19 @@ export default function parseFunction (opts) {
      * console.log(result.isArrow) // => false
      * console.log(result.isAnonymous) // => false
      * console.log(result.isGenerator) // => false
+     * ```
      *
-     * @param  {Function|String} code any kind of function or string to be parsed
-     * @param  {Object} options directly passed to the parser - babylon, acorn, espree
-     * @param  {Function} options.parse by default `babylon.parseExpression`,
+     * @param  {Function|String} `code` any kind of function or string to be parsed
+     * @param  {Object} `options` directly passed to the parser - babylon, acorn, espree
+     * @param  {Function} `options.parse` by default `babylon.parseExpression`,
      *                                    all `options` are passed as second argument
      *                                    to that provided function
      * @return {Object} `result` see [result section](#result) for more info
      * @name   .parse
-     * @public
+     * @api public
      */
-    parse: (code, options) => {
+
+    parse (code, options) {
       let result = utils.setDefaults(code)
 
       if (!result.isValid) {
@@ -132,7 +136,7 @@ export default function parseFunction (opts) {
      *
      * _See [Plugins Architecture](#plugins-architecture) section._
      *
-     * @example
+     * ```js
      * // plugin extending the `app`
      * app.use((app) => {
      *   app.define(app, 'hello', (place) => `Hello ${place}!`)
@@ -158,13 +162,15 @@ export default function parseFunction (opts) {
      * console.log(result.name) // => 'foo'
      * console.log(result.isArrow) // => false
      * console.log(result.thatIsArrow) // => undefined
+     * ```
      *
-     * @param  {Function} fn plugin to be called
+     * @param  {Function} `fn` plugin to be called
      * @return {Object} `app` instance for chaining
      * @name   .use
-     * @public
+     * @api public
      */
-    use: (fn) => {
+
+    use (fn) {
       const ret = fn(app)
       if (typeof ret === 'function') {
         plugins.push(ret)
@@ -177,7 +183,7 @@ export default function parseFunction (opts) {
      * a convenience mirror of the [define-property][] library,
      * so check out its docs. Useful to be used in plugins.
      *
-     * @example
+     * ```js
      * const parseFunction = require('parse-function')
      * const app = parseFunction()
      *
@@ -215,14 +221,16 @@ export default function parseFunction (opts) {
      * console.log(result.isArrow) // => true
      * console.log(result.isNamed) // => false
      * console.log(result.isAnonymous) // => true
+     * ```
      *
-     * @param  {Object} obj the object on which to define the property
-     * @param  {String} prop the name of the property to be defined or modified
-     * @param  {Any} val the descriptor for the property being defined or modified
+     * @param  {Object} `obj` the object on which to define the property
+     * @param  {String} `prop` the name of the property to be defined or modified
+     * @param  {Any} `val` the descriptor for the property being defined or modified
      * @return {Object} `obj` the passed object, but modified
      * @name   .define
-     * @public
+     * @api public
      */
+
     define: utils.define,
   }
 

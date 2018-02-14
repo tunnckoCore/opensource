@@ -1,11 +1,11 @@
 {
   "name": "parse-function",
-  "version": "5.1.2",
+  "version": "5.1.4",
   "description": "Parse a function into an object using espree, acorn or babylon parsers. Extensible through Smart Plugins",
   "repository": "tunnckoCore/parse-function",
   "homepage": "https://github.com/tunnckoCore/parse-function",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
-  "nspId": "5d75a388-acfe-4668-ad18-e98564e387e1",
+  "nspId": "42a5e14a-70da-49ee-86e7-d1f39ed08603",
   "src": "./src/**/*.js",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
@@ -39,8 +39,7 @@
     "hela": "1.1.3",
     "hela-preset-tunnckocore": "0.5.19",
     "husky": "0.14.3",
-    "mukla": "0.4.9",
-    "new-release": "4.0.1"
+    "mukla": "0.4.9"
   },
   "keywords": [
     "args",
@@ -106,8 +105,5 @@
       "acorn",
       "espree"
     ]
-  },
-  "release": {
-    "analyzeCommits": "simple-commit-message"
   }
 }

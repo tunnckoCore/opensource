@@ -12,7 +12,6 @@ You might also be interested in [hela](https://github.com/tunnckoCore/hela#readm
 
 ## Quality Assurance :100:
 
-[![Code Climate][codeclimate-img]][codeclimate-url] 
 [![Code Style Standard][standard-img]][standard-url] 
 [![Linux Build][travis-img]][travis-url] 
 [![Code Coverage][codecov-img]][codecov-url] 
@@ -50,6 +49,10 @@ You may also read the [Contributing Guide](./CONTRIBUTING.md). There, beside _"H
   * [Real anonymous function](#real-anonymous-function)
   * [Plugins Architecture](#plugins-architecture)
 - [API](#api)
+  * [parseFunction](#parsefunction)
+  * [.parse](#parse)
+  * [.use](#use)
+  * [.define](#define)
   * [Result](#result)
 - [Related](#related)
 - [Contributing](#contributing)
@@ -186,6 +189,168 @@ you can add more properties if you want.
 ## API
 Review carefully the provided examples and the working [tests](./test/index.js).
 
+### [parseFunction](src/index.js#L60)
+> Initializes with optional `opts` object which is passed directly to the desired parser and returns an object with `.use` and `.parse` methods. The default parse which is used is [babylon][]'s `.parseExpression` method from `v7`.
+
+**Params**
+
+* `opts` **{Object}**: optional, merged with options passed to `.parse` method    
+* `returns` **{Object}** `app`: object with `.use` and `.parse` methods  
+
+**Example**
+
+```js
+const parseFunction = require('parse-function')
+
+const app = parseFunction({
+  ecmaVersion: 2017
+})
+
+const fixtureFn = (a, b, c) => {
+  a = b + c
+  return a + 2
+}
+
+const result = app.parse(fixtureFn)
+console.log(result)
+
+// see more
+console.log(result.name) // => null
+console.log(result.isNamed) // => false
+console.log(result.isArrow) // => true
+console.log(result.isAnonymous) // => true
+
+// array of names of the arguments
+console.log(result.args) // => ['a', 'b', 'c']
+
+// comma-separated names of the arguments
+console.log(result.params) // => 'a, b, c'
+```
+
+### [.parse](src/index.js#L101)
+> Parse a given `code` and returns a `result` object with useful properties - such as `name`, `body` and `args`. By default it uses Babylon parser, but you can switch it by passing `options.parse` - for example `options.parse: acorn.parse`. In the below example will show how to use `acorn` parser, instead of the default one.
+
+**Params**
+
+* `code` **{Function|String}**: any kind of function or string to be parsed    
+* `options` **{Object}**: directly passed to the parser - babylon, acorn, espree    
+* `options.parse` **{Function}**: by default `babylon.parseExpression`, all `options` are passed as second argument to that provided function    
+* `returns` **{Object}** `result`: see [result section](#result) for more info  
+
+**Example**
+
+```js
+const acorn = require('acorn')
+const parseFn = require('parse-function')
+const app = parseFn()
+
+const fn = function foo (bar, baz) { return bar * baz }
+const result = app.parse(fn, {
+  parse: acorn.parse,
+  ecmaVersion: 2017
+})
+
+console.log(result.name) // => 'foo'
+console.log(result.args) // => ['bar', 'baz']
+console.log(result.body) // => ' return bar * baz '
+console.log(result.isNamed) // => true
+console.log(result.isArrow) // => false
+console.log(result.isAnonymous) // => false
+console.log(result.isGenerator) // => false
+```
+
+### [.use](src/index.js#L173)
+> Add a plugin `fn` function for extending the API or working on the AST nodes. The `fn` is immediately invoked and passed with `app` argument which is instance of `parseFunction()` call. That `fn` may return another function that accepts `(node, result)` signature, where `node` is an AST node and `result` is an object which will be returned [result](#result) from the `.parse` method. This retuned function is called on each node only when `.parse` method is called.
+
+_See [Plugins Architecture](#plugins-architecture) section._
+
+**Params**
+
+* `fn` **{Function}**: plugin to be called    
+* `returns` **{Object}** `app`: instance for chaining  
+
+**Example**
+
+```js
+// plugin extending the `app`
+app.use((app) => {
+  app.define(app, 'hello', (place) => `Hello ${place}!`)
+})
+
+const hi = app.hello('World')
+console.log(hi) // => 'Hello World!'
+
+// or plugin that works on AST nodes
+app.use((app) => (node, result) => {
+  if (node.type === 'ArrowFunctionExpression') {
+    result.thatIsArrow = true
+  }
+  return result
+})
+
+const result = app.parse((a, b) => (a + b + 123))
+console.log(result.name) // => null
+console.log(result.isArrow) // => true
+console.log(result.thatIsArrow) // => true
+
+const result = app.parse(function foo () { return 123 })
+console.log(result.name) // => 'foo'
+console.log(result.isArrow) // => false
+console.log(result.thatIsArrow) // => undefined
+```
+
+### [.define](src/index.js#L234)
+> Define a non-enumerable property on an object. Just a convenience mirror of the [define-property][] library, so check out its docs. Useful to be used in plugins.
+
+**Params**
+
+* `obj` **{Object}**: the object on which to define the property    
+* `prop` **{String}**: the name of the property to be defined or modified    
+* `val` **{Any}**: the descriptor for the property being defined or modified    
+* `returns` **{Object}** `obj`: the passed object, but modified  
+
+**Example**
+
+```js
+const parseFunction = require('parse-function')
+const app = parseFunction()
+
+// use it like `define-property` lib
+const obj = {}
+app.define(obj, 'hi', 'world')
+console.log(obj) // => { hi: 'world' }
+
+// or define a custom plugin that adds `.foo` property
+// to the end result, returned from `app.parse`
+app.use((app) => {
+  return (node, result) => {
+    // this function is called
+    // only when `.parse` is called
+
+    app.define(result, 'foo', 123)
+
+    return result
+  }
+})
+
+// fixture function to be parsed
+const asyncFn = async (qux) => {
+  const bar = await Promise.resolve(qux)
+  return bar
+}
+
+const result = app.parse(asyncFn)
+
+console.log(result.name) // => null
+console.log(result.foo) // => 123
+console.log(result.args) // => ['qux']
+
+console.log(result.isAsync) // => true
+console.log(result.isArrow) // => true
+console.log(result.isNamed) // => false
+console.log(result.isAnonymous) // => true
+```
+
 **[back to top](#thetop)**
 
 ### Result
@@ -249,7 +414,7 @@ Project scaffolded and managed with [hela][].
 [github-release-img]: https://img.shields.io/github/release/tunnckoCore/parse-function.svg
 
 [license-url]: https://github.com/tunnckoCore/parse-function/blob/master/LICENSE
-[license-img]: https://img.shields.io/npm/l/parse-function.svg
+[license-img]: https://img.shields.io/npm/l/parse-function.svg?colorB=blue
 
 [downloads-weekly-url]: https://www.npmjs.com/package/parse-function
 [downloads-weekly-img]: https://img.shields.io/npm/dw/parse-function.svg
@@ -284,13 +449,13 @@ Project scaffolded and managed with [hela][].
 [prettier-url]: https://github.com/prettier/prettier
 [prettier-img]: https://img.shields.io/badge/styled_with-prettier-f952a5.svg
 
-[nodesecurity-url]: https://nodesecurity.io/orgs/tunnckocore-dev/projects/5d75a388-acfe-4668-ad18-e98564e387e1
-[nodesecurity-img]: https://nodesecurity.io/orgs/tunnckocore-dev/projects/5d75a388-acfe-4668-ad18-e98564e387e1/badge
+[nodesecurity-url]: https://nodesecurity.io/orgs/tunnckocore/projects/42a5e14a-70da-49ee-86e7-d1f39ed08603
+[nodesecurity-img]: https://nodesecurity.io/orgs/tunnckocore/projects/42a5e14a-70da-49ee-86e7-d1f39ed08603/badge
 <!-- the original color of nsp: 
 [nodesec-img]: https://img.shields.io/badge/nsp-no_known_vulns-35a9e0.svg -->
 
-[semantic-release-url]: https://github.com/semantic-release/semantic-release
-[semantic-release-img]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[semantic-release-url]: https://github.com/apps/new-release
+[semantic-release-img]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-new--release-e10079.svg
 
 [ccommits-url]: https://conventionalcommits.org/
 [ccommits-img]: https://img.shields.io/badge/conventional_commits-1.0.0-yellow.svg

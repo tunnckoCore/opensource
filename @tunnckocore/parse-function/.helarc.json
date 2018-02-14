@@ -4,12 +4,6 @@
     "build": [
       "hela clean",
       "hela build:node"
-    ],
-    "release": [
-      "hela style",
-      "hela build",
-      "rm -rf ./dist/test.js",
-      "npx -p node@8 new-release"
     ]
   }
 }
