@@ -414,7 +414,7 @@ Project scaffolded and managed with [hela][].
 [github-release-img]: https://img.shields.io/github/release/tunnckoCore/parse-function.svg
 
 [license-url]: https://github.com/tunnckoCore/parse-function/blob/master/LICENSE
-[license-img]: https://img.shields.io/npm/l/parse-function.svg?colorB=blue
+[license-img]: https://img.shields.io/badge/license-MIT-blue.svg
 
 [downloads-weekly-url]: https://www.npmjs.com/package/parse-function
 [downloads-weekly-img]: https://img.shields.io/npm/dw/parse-function.svg
