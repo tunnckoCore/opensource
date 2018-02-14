@@ -13,8 +13,7 @@
     "start": "hela",
     "test": "NODE_ENV=test yarn hela test",
     "precommit": "yarn hela precommit",
-    "commit": "yarn hela commit",
-    "release": "new-release"
+    "commit": "yarn hela commit"
   },
   "license": "MIT",
   "licenseStart": 2016,
