@@ -42,7 +42,7 @@ This file should export a function that receives one parameter with the options
   - `globalConfig`: Jest global config
 
 You can return one of the following values:
-- `testResult`: Needs to be an object of type https://github.com/facebook/jest/blob/master/types/TestResult.js#L131-L157
+- `testResult`: Needs to be an object of type https://github.com/facebook/jest/blob/master/types/TestResult.js#L137-L165
 - `Promise<testResult|Error>`: needs to be of above type.
 - `Error`: good for reporting system error, not failed tests.
 
