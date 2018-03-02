@@ -34,16 +34,12 @@ export default (app) => (node, result) => {
     result.args.push(name)
 
     if (param.right && param.right.type === 'SequenceExpression') {
-      let value
       let lastExpression = param.right.expressions.pop()
 
-      if (lastExpression.type === 'NullLiteral') {
-        value = null
-      } else {
-        value = lastExpression.value
-      }
-
-      result.defaults[name] = value
+      result.defaults[name] = result.value.slice(
+        lastExpression.start,
+        lastExpression.end
+      )
     } else {
       result.defaults[name] = param.right
         ? result.value.slice(param.right.start, param.right.end)
