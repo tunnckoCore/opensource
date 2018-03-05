@@ -18,7 +18,8 @@ os: linux
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
-  - yarn global add npx
+  - export CIRCLECI=true
+  - yarn global add npx new-release
 
 install: npx -p node@8 yarn install
 
@@ -26,6 +27,7 @@ script: yarn test
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - npx -p node@8 new-release
 
 branches:
   except:

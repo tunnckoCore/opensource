@@ -40,7 +40,8 @@
     "hela": "1.1.3",
     "hela-preset-tunnckocore": "0.5.19",
     "husky": "0.14.3",
-    "mukla": "0.4.9"
+    "mukla": "0.4.9",
+    "new-release": "4.0.1"
   },
   "keywords": [
     "args",
