@@ -21,7 +21,7 @@ jobs:
       - *restore_modules_cache
       - run:
           name: Installing dependencies
-          command: yarn global add npm@latest && npx -p node@8 yarn install
+          command: yarn add -D npx@latest && npx -p node@8 yarn install
       - save_cache:
           key: parse-function-{{ checksum "yarn.lock" }}
           paths: node_modules
@@ -48,10 +48,10 @@ jobs:
       - *restore_modules_cache
       - run:
           name: Building dist files
-          command: yarn global add npm@latest && npx -p node@8 yarn build
+          command: yarn add -D npx@latest && npx -p node@8 yarn build
       - run:
           name: Releasing and publishing
-          command: yarn global add npm@latest && npx -p node@8 new-release
+          command: yarn add -D npx@latest && npx -p node@8 new-release
 
 workflows:
   version: 2
