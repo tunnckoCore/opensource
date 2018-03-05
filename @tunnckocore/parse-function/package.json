@@ -13,6 +13,7 @@
     "start": "hela",
     "test": "NODE_ENV=test yarn hela test",
     "build": "yarn hela build",
+    "release": "yarn new-release",
     "precommit": "yarn hela precommit",
     "commit": "yarn hela commit"
   },
@@ -98,14 +99,16 @@
       "reflinks": true
     },
     "reflinks": [
+      "acorn",
       "babylon",
       "charlike",
       "charlike-cli",
       "define-property",
+      "espree",
       "execa",
       "function-arguments",
-      "acorn",
-      "espree"
+      "hela",
+      "new-release"
     ]
   },
   "release": {

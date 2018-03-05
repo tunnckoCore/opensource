@@ -3,7 +3,7 @@ version: 2
 defaults: &defaults
   working_directory: ~/parse-function
   docker:
-    - image: circleci/node:6
+    - image: circleci/node:8
 
 restore_modules_cache: &restore_modules_cache
   restore_cache:
@@ -20,8 +20,8 @@ jobs:
       - checkout
       - *restore_modules_cache
       - run:
-          name: Installing dependencies
-          command: yarn add -D npx@latest && npx -p node@8 yarn install
+          name: Installing Dependencies
+          command: yarn install
       - save_cache:
           key: parse-function-{{ checksum "yarn.lock" }}
           paths: node_modules
@@ -48,10 +48,10 @@ jobs:
       - *restore_modules_cache
       - run:
           name: Building dist files
-          command: yarn add -D npx@latest && npx -p node@8 yarn build
+          command: yarn build
       - run:
           name: Releasing and publishing
-          command: yarn add -D npx@latest && npx -p node@8 new-release
+          command: yarn run release
 
 workflows:
   version: 2
