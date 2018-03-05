@@ -21,13 +21,14 @@ before_install:
   - export CIRCLECI="true"
   - yarn global add npx
 
-install: npx -p node@8 yarn install
+install:
+  - npx -p node@8 yarn install
 
-script: yarn test
+script:
+  - yarn test
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - npx -p node@8 new-release
 
 branches:
   except:
