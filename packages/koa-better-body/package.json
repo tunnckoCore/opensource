@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "extend-shallow": "3.0.2",
-    "formidable": "1.1.1",
+    "formidable": "1.2.0",
     "koa-body-parsers": "git+https://github.com/tunnckoCore/body-parsers.git"
   },
   "devDependencies": {
