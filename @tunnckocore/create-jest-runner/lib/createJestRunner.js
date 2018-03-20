@@ -1,3 +1,4 @@
+const throat = require('throat');
 const Worker = require('jest-worker').default;
 
 class CancelRun extends Error {
@@ -21,25 +22,28 @@ const createRunner = runPath => {
         forkOptions: { stdio: 'inherit' },
       });
 
+      const mutex = throat(this._globalConfig.maxWorkers);
+
       const runTestInWorker = test => {
-        if (watcher.isInterrupted()) {
-          throw new CancelRun();
-        }
+        mutex(async () => {
+          if (watcher.isInterrupted()) {
+            throw new CancelRun();
+          }
 
-        return onStart(test).then(() => {
-          const baseOptions = {
-            config: test.context.config,
-            globalConfig: this._globalConfig,
-            testPath: test.path,
-            rawModuleMap: watcher.isWatchMode()
-              ? test.context.moduleMap.getRawModuleMap()
-              : null,
-            options,
-          };
+          return onStart(test).then(() => {
+            const baseOptions = {
+              config: test.context.config,
+              globalConfig: this._globalConfig,
+              testPath: test.path,
+              rawModuleMap: watcher.isWatchMode()
+                ? test.context.moduleMap.getRawModuleMap()
+                : null,
+              options,
+            };
 
-          return worker.default(baseOptions);
+            return worker.default(baseOptions);
+          });
         });
-      };
 
       const onError = (err, test) => {
         return onFailure(test, err).then(() => {
