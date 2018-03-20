@@ -25,7 +25,7 @@ const createRunner = runPath => {
       const mutex = throat(this._globalConfig.maxWorkers);
 
       const runTestInWorker = test =>
-        mutex(async () => {
+        mutex(() => {
           if (watcher.isInterrupted()) {
             throw new CancelRun();
           }
