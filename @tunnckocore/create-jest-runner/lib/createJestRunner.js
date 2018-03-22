@@ -14,8 +14,76 @@ const createRunner = runPath => {
       this._globalConfig = globalConfig;
     }
 
-    // eslint-disable-next-line
     runTests(tests, watcher, onStart, onResult, onFailure, options) {
+      return options.serial
+        ? this._createInBandTestRun(
+            tests,
+            watcher,
+            onStart,
+            onResult,
+            onFailure,
+            options,
+          )
+        : this._createParallelTestRun(
+            tests,
+            watcher,
+            onStart,
+            onResult,
+            onFailure,
+            options,
+          );
+    }
+
+    _createInBandTestRun(
+      tests,
+      watcher,
+      onStart,
+      onResult,
+      onFailure,
+      options,
+    ) {
+      return tests.reduce(
+        (promise, test) =>
+          promise
+            .then(() => {
+              if (watcher.isInterrupted()) {
+                throw new CancelRun();
+              }
+
+              return onStart(test).then(() => {
+                // eslint-disable-next-line import/no-dynamic-require, global-require
+                const runner = require(runPath);
+                const baseOptions = {
+                  config: test.context.config,
+                  globalConfig: this._globalConfig,
+                  testPath: test.path,
+                  rawModuleMap: watcher.isWatchMode()
+                    ? test.context.moduleMap.getRawModuleMap()
+                    : null,
+                  options,
+                };
+
+                if (typeof runner.default === 'function') {
+                  return runner.default(baseOptions);
+                }
+
+                return runner(baseOptions);
+              });
+            })
+            .then(result => onResult(test, result))
+            .catch(err => onFailure(test, err)),
+        Promise.resolve(),
+      );
+    }
+
+    _createParallelTestRun(
+      tests,
+      watcher,
+      onStart,
+      onResult,
+      onFailure,
+      options,
+    ) {
       const worker = new Worker(runPath, {
         exposedMethods: ['default'],
         numWorkers: this._globalConfig.maxWorkers,
