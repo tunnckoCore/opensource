@@ -1,11 +1,4 @@
-const createJestRunner = require('./createJestRunner');
-const fail = require('./fail');
-const pass = require('./pass');
-const skip = require('./skip');
-
-module.exports = {
-  createJestRunner,
-  fail,
-  pass,
-  skip,
-};
+export { default as createJestRunner } from './createJestRunner';
+export { default as fail } from './fail';
+export { default as pass } from './pass';
+export { default as skip } from './skip';

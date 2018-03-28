@@ -1,4 +1,4 @@
-const toTestResult = require('./toTestResult');
+import toTestResult from './toTestResult';
 
 const pass = ({ start, end, test }) =>
   toTestResult({
@@ -13,4 +13,4 @@ const pass = ({ start, end, test }) =>
     jestTestPath: test.path,
   });
 
-module.exports = pass;
+export default pass;

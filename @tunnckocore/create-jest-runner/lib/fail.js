@@ -1,4 +1,4 @@
-const toTestResult = require('./toTestResult');
+import toTestResult from './toTestResult';
 
 const fail = ({ start, end, test, errorMessage }) =>
   toTestResult({
@@ -14,4 +14,4 @@ const fail = ({ start, end, test, errorMessage }) =>
     jestTestPath: test.path,
   });
 
-module.exports = fail;
+export default fail;

@@ -41,4 +41,4 @@ const toTestResult = ({
   };
 };
 
-module.exports = toTestResult;
+export default toTestResult;

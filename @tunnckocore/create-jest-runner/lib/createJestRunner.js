@@ -1,5 +1,5 @@
-const throat = require('throat');
-const Worker = require('jest-worker').default;
+import throat from 'throat';
+import Worker from 'jest-worker';
 
 class CancelRun extends Error {
   constructor(message) {
@@ -151,4 +151,4 @@ const createRunner = runPath => {
   return BaseTestRunner;
 };
 
-module.exports = createRunner;
+export default createRunner;

@@ -1,4 +1,4 @@
-const toTestResult = require('./toTestResult');
+import toTestResult from './toTestResult';
 
 const skip = ({ start, end, test }) =>
   toTestResult({
@@ -14,4 +14,4 @@ const skip = ({ start, end, test }) =>
     jestTestPath: test.path,
   });
 
-module.exports = skip;
+export default skip;
