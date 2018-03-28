@@ -3,7 +3,7 @@ version: 2
 defaults: &defaults
   working_directory: ~/parse-function
   docker:
-    - image: circleci/node:8
+    - image: circleci/node:8@sha256:257fdc7e2949a9576e1a96364e0428d461d0505167c70dcc3e6c3825ce8a6557
 
 restore_modules_cache: &restore_modules_cache
   restore_cache:
