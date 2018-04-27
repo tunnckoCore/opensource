@@ -1,5 +1,8 @@
 ## master
 
+### Fixes
+* Use a mutex when running in band as well ([#7](https://github.com/rogeliog/create-jest-runner/pull/7))
+
 ## 0.3.0
 
 ### Fixes

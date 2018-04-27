@@ -42,36 +42,39 @@ const createRunner = runPath => {
       onFailure,
       options,
     ) {
+      const mutex = throat(1);
       return tests.reduce(
         (promise, test) =>
-          promise
-            .then(() => {
-              if (watcher.isInterrupted()) {
-                throw new CancelRun();
-              }
-
-              return onStart(test).then(() => {
-                // eslint-disable-next-line import/no-dynamic-require, global-require
-                const runner = require(runPath);
-                const baseOptions = {
-                  config: test.context.config,
-                  globalConfig: this._globalConfig,
-                  testPath: test.path,
-                  rawModuleMap: watcher.isWatchMode()
-                    ? test.context.moduleMap.getRawModuleMap()
-                    : null,
-                  options,
-                };
-
-                if (typeof runner.default === 'function') {
-                  return runner.default(baseOptions);
+          mutex(() =>
+            promise
+              .then(() => {
+                if (watcher.isInterrupted()) {
+                  throw new CancelRun();
                 }
 
-                return runner(baseOptions);
-              });
-            })
-            .then(result => onResult(test, result))
-            .catch(err => onFailure(test, err)),
+                return onStart(test).then(() => {
+                  // eslint-disable-next-line import/no-dynamic-require, global-require
+                  const runner = require(runPath);
+                  const baseOptions = {
+                    config: test.context.config,
+                    globalConfig: this._globalConfig,
+                    testPath: test.path,
+                    rawModuleMap: watcher.isWatchMode()
+                      ? test.context.moduleMap.getRawModuleMap()
+                      : null,
+                    options,
+                  };
+
+                  if (typeof runner.default === 'function') {
+                    return runner.default(baseOptions);
+                  }
+
+                  return runner(baseOptions);
+                });
+              })
+              .then(result => onResult(test, result))
+              .catch(err => onFailure(test, err)),
+          ),
         Promise.resolve(),
       );
     }
