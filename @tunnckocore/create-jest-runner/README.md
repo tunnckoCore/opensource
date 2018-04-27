@@ -1,5 +1,7 @@
 # create-jest-runner
 
+[![Build Status](https://travis-ci.org/jest-community/create-jest-runner.svg?branch=master)](https://travis-ci.org/jest-community/create-jest-runner)
+
 A highly opinionated way for creating Jest Runners
 
 ## Install
