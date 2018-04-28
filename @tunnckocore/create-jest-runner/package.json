@@ -19,30 +19,23 @@
     "format": "prettier --single-quote --trailing-comma all --write \"!(build)/**/*.js\""
   },
   "dependencies": {
-    "babel-plugin-istanbul": "4.1.4",
-    "babel-polyfill": "^6.26.0",
-    "babel-register": "6.26.0",
-    "jest-worker": "21.3.0-beta.9",
-    "lodash": "4.17.4",
-    "minimatch": "3.0.4",
-    "mocha": "3.5.0",
-    "pify": "3.0.0",
-    "throat": "4.1.0",
-    "worker-farm": "1.5.0"
+    "jest-worker": "^22.0.0",
+    "throat": "^4.1.0"
   },
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-jest": "21.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^21.0.0",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "1.6.0",
-    "eslint": "4.5.0",
-    "eslint-config-airbnb-base": "11.3.2",
-    "eslint-config-prettier": "2.3.0",
-    "eslint-plugin-import": "2.7.0",
-    "eslint-plugin-jest": "20.0.3",
-    "eslint-plugin-prettier": "2.2.0",
-    "execa": "0.8.0",
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.15.1",
+    "eslint-plugin-prettier": "^2.2.0",
+    "execa": "^0.10.0",
     "jest": "^21.0.2",
-    "prettier": "1.7.4"
+    "prettier": "^1.7.4"
   }
 }
