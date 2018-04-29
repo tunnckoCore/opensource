@@ -1,7 +1,11 @@
 ## master
 
+## 0.3.1
+
 ### Fixes
 * Use a mutex when running in band as well ([#7](https://github.com/rogeliog/create-jest-runner/pull/7))
+* Use import/export ([#8](https://github.com/rogeliog/create-jest-runner/pull/8))
+* Removing un-needed packages ([#1](https://github.com/rogeliog/create-jest-runner/pull/1))
 
 ## 0.3.0
 
