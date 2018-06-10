@@ -8,7 +8,7 @@ class CancelRun extends Error {
   }
 }
 
-const createRunner = runPath => {
+const createRunner = (runPath, { getExtraOptions } = {}) => {
   class BaseTestRunner {
     constructor(globalConfig) {
       this._globalConfig = globalConfig;
@@ -63,6 +63,7 @@ const createRunner = runPath => {
                       ? test.context.moduleMap.getRawModuleMap()
                       : null,
                     options,
+                    extraOptions: getExtraOptions ? getExtraOptions() : {},
                   };
 
                   if (typeof runner.default === 'function') {
@@ -110,6 +111,7 @@ const createRunner = runPath => {
                 ? test.context.moduleMap.getRawModuleMap()
                 : null,
               options,
+              extraOptions: getExtraOptions ? getExtraOptions() : {},
             };
 
             return worker.default(baseOptions);
