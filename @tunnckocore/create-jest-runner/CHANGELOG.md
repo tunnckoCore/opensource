@@ -1,5 +1,7 @@
 ## master
 
+## 0.4.0
+
 ### Features
 
 * Add `getExtraOptions` to entry file ([#12](https://github.com/rogeliog/create-jest-runner/pull/12))
