@@ -1147,6 +1147,16 @@ cross-spawn@^5.0.1, cross-spawn@^5.1.0:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
+cross-spawn@^6.0.0:
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
+  dependencies:
+    nice-try "^1.0.4"
+    path-key "^2.0.1"
+    semver "^5.5.0"
+    shebang-command "^1.2.0"
+    which "^1.2.9"
+
 d3-helpers@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/d3-helpers/-/d3-helpers-0.3.0.tgz#4b31dce4a2121a77336384574d893fbed5fb293d"
@@ -1512,12 +1522,25 @@ esutils@^2.0.0, esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
 
-execa-pro@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/execa-pro/-/execa-pro-1.0.2.tgz#7450a3ca7ece202bcb12ac0ee5e09bd8a0420746"
+execa-pro@1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/execa-pro/-/execa-pro-1.0.6.tgz#dc04ef4bb0937aabfa1a3e9e3cc8aeb14dff572d"
   dependencies:
-    execa "0.8.0"
+    execa "0.10.0"
     p-map-series "1.0.0"
+    split-cmd "^1.0.0"
+
+execa@0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-0.10.0.tgz#ff456a8f53f90f8eccc71a96d11bdfc7f082cb50"
+  dependencies:
+    cross-spawn "^6.0.0"
+    get-stream "^3.0.0"
+    is-stream "^1.1.0"
+    npm-run-path "^2.0.0"
+    p-finally "^1.0.0"
+    signal-exit "^3.0.0"
+    strip-eof "^1.0.0"
 
 execa@0.8.0:
   version "0.8.0"
@@ -2647,17 +2670,21 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-new-release@4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.2.tgz#0a7d2760ec47a226f4637e9d223f3f6d8136e344"
+new-release@4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.3.tgz#d046a859f55306a9142bdecaef31e1150cdede26"
   dependencies:
     detect-next-version "2.0.2"
-    execa-pro "1.0.2"
+    execa-pro "1.0.6"
     is-ci "1.1.0"
     latest-version "4.0.0"
     minimist "1.2.0"
     parse-git-log "0.2.1"
     semver "5.5.0"
+
+nice-try@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.4.tgz#d93962f6c52f2c1558c0fbda6d512819f1efe1c4"
 
 node-fetch@^1.0.1:
   version "1.7.3"
@@ -2911,7 +2938,7 @@ path-is-inside@^1.0.1, path-is-inside@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
 
-path-key@^2.0.0:
+path-key@^2.0.0, path-key@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/path-key/-/path-key-2.0.1.tgz#411cadb574c5a140d3a4b1910d40d80cc9f40b40"
 
@@ -3503,6 +3530,10 @@ spdx-expression-parse@~1.0.0:
 spdx-license-ids@^1.0.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-1.2.2.tgz#c9df7a3424594ade6bd11900d596696dc06bac57"
+
+split-cmd@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/split-cmd/-/split-cmd-1.0.0.tgz#9a5eabce3e580b22e599295b994d93e0739b6c6f"
 
 split2@^2.1.0:
   version "2.2.0"
