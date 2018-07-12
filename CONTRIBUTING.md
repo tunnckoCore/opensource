@@ -33,14 +33,14 @@ The [`question` label](https://github.com/tunnckoCore/gibon/labels/question%20%2
 
 ## Why should I contribute?
 
-Regardless of the details, being an effective contributor means that you're adding _adding value_ to a project.
+Regardless of the details, being an effective contributor means that you're _adding value_ to a project.
 
 Here are just a few of the advantages of adding value to a project:
 
 - you gain the appreciation and respect of the project's maintainers and community
 - you gain valuable experience
 - you get noticed by job recruiters
-- you become more attrative to potential employers. 
+- you become more attractive to potential employers. 
 
 ## Getting familiarized with a project
 
