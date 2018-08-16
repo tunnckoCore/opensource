@@ -966,6 +966,10 @@ ci-info@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-1.1.1.tgz#47b44df118c48d2597b56d342e7e25791060171a"
 
+ci-info@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-1.3.0.tgz#ea8219b0355a58692b762baf1cdd76ceb4503283"
+
 circular-json@^0.3.1:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/circular-json/-/circular-json-0.3.3.tgz#815c99ea84f6809529d2f45791bdf82711352d66"
@@ -2097,11 +2101,11 @@ is-child-process@^1.0.0, is-child-process@^1.0.2:
     is-node-emitter "^1.0.2"
     isarray "^1.0.0"
 
-is-ci@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/is-ci/-/is-ci-1.1.0.tgz#247e4162e7860cebbdaf30b774d6b0ac7dcfe7a5"
+is-ci@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/is-ci/-/is-ci-1.2.0.tgz#3f4a08d6303a09882cef3f0fb97439c5f5ce2d53"
   dependencies:
-    ci-info "^1.0.0"
+    ci-info "^1.3.0"
 
 is-ci@^1.0.10:
   version "1.0.10"
@@ -2672,13 +2676,13 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-new-release@4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.3.tgz#d046a859f55306a9142bdecaef31e1150cdede26"
+new-release@4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.4.tgz#dcfc4062a1c81d4bbdb100d41e901192db7b2288"
   dependencies:
     detect-next-version "2.0.2"
     execa-pro "1.0.6"
-    is-ci "1.1.0"
+    is-ci "1.2.0"
     latest-version "4.0.0"
     minimist "1.2.0"
     parse-git-log "0.2.1"
