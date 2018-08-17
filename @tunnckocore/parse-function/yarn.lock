@@ -2676,9 +2676,9 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-new-release@4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.4.tgz#dcfc4062a1c81d4bbdb100d41e901192db7b2288"
+new-release@4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.5.tgz#32bcb54240913ad54605cad0c3db92e5a9c4939b"
   dependencies:
     detect-next-version "2.0.2"
     execa-pro "1.0.6"
@@ -2686,7 +2686,7 @@ new-release@4.0.4:
     latest-version "4.0.0"
     minimist "1.2.0"
     parse-git-log "0.2.1"
-    semver "5.5.0"
+    semver "5.5.1"
 
 nice-try@^1.0.4:
   version "1.0.4"
@@ -3432,7 +3432,11 @@ semver@5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
 
-semver@5.5.0, semver@^5.5.0:
+semver@5.5.1:
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.1.tgz#7dfdd8814bdb7cabc7be0fb1d734cfb66c940477"
+
+semver@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
 
