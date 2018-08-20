@@ -1290,6 +1290,12 @@ encoding@^0.1.11:
   dependencies:
     iconv-lite "~0.4.13"
 
+end-of-stream@^1.1.0:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.4.1.tgz#ed29634d19baba463b6ce6b80a37213eab71ec43"
+  dependencies:
+    once "^1.4.0"
+
 error-ex@^1.2.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/error-ex/-/error-ex-1.3.1.tgz#f855a86ce61adc4e8621c3cda21e7a7612c3a8dc"
@@ -1528,20 +1534,20 @@ esutils@^2.0.0, esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
 
-execa-pro@1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/execa-pro/-/execa-pro-1.0.6.tgz#dc04ef4bb0937aabfa1a3e9e3cc8aeb14dff572d"
+execa-pro@1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/execa-pro/-/execa-pro-1.0.7.tgz#8bdfd19fdfcd8365bb75452a445ae94654741acb"
   dependencies:
-    execa "0.10.0"
+    execa "0.11.0"
     p-map-series "1.0.0"
     split-cmd "^1.0.0"
 
-execa@0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-0.10.0.tgz#ff456a8f53f90f8eccc71a96d11bdfc7f082cb50"
+execa@0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-0.11.0.tgz#0b3c71daf9b9159c252a863cd981af1b4410d97a"
   dependencies:
     cross-spawn "^6.0.0"
-    get-stream "^3.0.0"
+    get-stream "^4.0.0"
     is-stream "^1.1.0"
     npm-run-path "^2.0.0"
     p-finally "^1.0.0"
@@ -1760,6 +1766,12 @@ get-fn-name@^1.0.0:
 get-stream@3.0.0, get-stream@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
+
+get-stream@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-4.0.0.tgz#9e074cb898bd2b9ebabb445a1766d7f43576d977"
+  dependencies:
+    pump "^3.0.0"
 
 ggit@1.23.1:
   version "1.23.1"
@@ -2676,12 +2688,12 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-new-release@4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.5.tgz#32bcb54240913ad54605cad0c3db92e5a9c4939b"
+new-release@4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.6.tgz#d284c6ff83cffda260eeb947c3e65b6ef6ef56dd"
   dependencies:
     detect-next-version "2.0.2"
-    execa-pro "1.0.6"
+    execa-pro "1.0.7"
     is-ci "1.2.0"
     latest-version "4.0.0"
     minimist "1.2.0"
@@ -2794,7 +2806,7 @@ on-stream-end@^1.0.0:
     is-request-stream "^1.0.1"
     onetime "^1.0.0"
 
-once@^1.3.0, once@^1.4.0:
+once@^1.3.0, once@^1.3.1, once@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/once/-/once-1.4.0.tgz#583b1aa775961d4b113ac17d9c50baef9dd76bd1"
   dependencies:
@@ -3051,6 +3063,13 @@ prop-types@^15.5.10:
 pseudomap@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
+
+pump@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/pump/-/pump-3.0.0.tgz#b4a2116815bde2f4e1ea602354e8c75565107a64"
+  dependencies:
+    end-of-stream "^1.1.0"
+    once "^1.3.1"
 
 q@1.5.0:
   version "1.5.0"
