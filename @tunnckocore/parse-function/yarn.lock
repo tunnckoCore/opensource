@@ -1538,25 +1538,13 @@ esutils@^2.0.0, esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
 
-execa-pro@1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/execa-pro/-/execa-pro-1.0.7.tgz#8bdfd19fdfcd8365bb75452a445ae94654741acb"
+execa-pro@1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/execa-pro/-/execa-pro-1.0.8.tgz#9e5a901934a66a21425438974d5dcef9150303d3"
   dependencies:
-    execa "0.11.0"
+    execa "1.0.0"
     p-map-series "1.0.0"
     split-cmd "^1.0.0"
-
-execa@0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-0.11.0.tgz#0b3c71daf9b9159c252a863cd981af1b4410d97a"
-  dependencies:
-    cross-spawn "^6.0.0"
-    get-stream "^4.0.0"
-    is-stream "^1.1.0"
-    npm-run-path "^2.0.0"
-    p-finally "^1.0.0"
-    signal-exit "^3.0.0"
-    strip-eof "^1.0.0"
 
 execa@0.8.0:
   version "0.8.0"
@@ -1564,6 +1552,18 @@ execa@0.8.0:
   dependencies:
     cross-spawn "^5.0.1"
     get-stream "^3.0.0"
+    is-stream "^1.1.0"
+    npm-run-path "^2.0.0"
+    p-finally "^1.0.0"
+    signal-exit "^3.0.0"
+    strip-eof "^1.0.0"
+
+execa@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-1.0.0.tgz#c6236a5bb4df6d6f15e88e7f017798216749ddd8"
+  dependencies:
+    cross-spawn "^6.0.0"
+    get-stream "^4.0.0"
     is-stream "^1.1.0"
     npm-run-path "^2.0.0"
     p-finally "^1.0.0"
@@ -2692,12 +2692,12 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-new-release@4.0.6:
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.6.tgz#d284c6ff83cffda260eeb947c3e65b6ef6ef56dd"
+new-release@4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.7.tgz#c83ae9cb5c648d141587ec98921231936b9f5caa"
   dependencies:
     detect-next-version "2.0.2"
-    execa-pro "1.0.7"
+    execa-pro "1.0.8"
     is-ci "1.2.0"
     latest-version "4.0.0"
     minimist "1.2.0"
