@@ -441,8 +441,8 @@ _Project automation and management with [hela][] task framework._
 [circleci-url]: https://circleci.com/gh/tunnckoCoreLabs/parse-function/tree/master
 [circleci-img]: https://img.shields.io/circleci/project/github/tunnckoCoreLabs/parse-function/master.svg
 
-[codecov-url]: https://codecov.io/gh/tunnckoCore/parse-function
-[codecov-img]: https://img.shields.io/codecov/c/github/tunnckoCore/parse-function/master.svg
+[codecov-url]: https://codecov.io/gh/tunnckoCoreLabs/parse-function
+[codecov-img]: https://img.shields.io/codecov/c/github/tunnckoCoreLabs/parse-function/master.svg
 
 [bithound-deps-url]: https://www.bithound.io/github/tunnckoCore/parse-function/dependencies/npm
 [bithound-deps-img]: https://www.bithound.io/github/tunnckoCore/parse-function/badges/dependencies.svg
