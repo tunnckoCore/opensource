@@ -2,7 +2,7 @@
 const execa = require('execa');
 const path = require('path');
 
-const rootDir = path.join(__dirname, '..');
+const rootDir = path.resolve(__dirname, '..');
 
 const normalize = output =>
   output
@@ -28,10 +28,9 @@ const runJest = (project, options = []) => {
     ].concat(options),
     {
       env: process.env,
+      reject: false,
     },
-  )
-    .catch(t => t)
-    .then(({ stdout, stderr }) => `${normalize(stderr)}\n${normalize(stdout)}`);
+  ).then(({ stdout, stderr }) => `${normalize(stderr)}\n${normalize(stdout)}`);
 };
 
 module.exports = runJest;

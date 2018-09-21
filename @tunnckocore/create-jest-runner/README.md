@@ -72,9 +72,9 @@ const fs = require('fs');
 const { pass, fail } = require('create-jest-runner');
 
 module.exports = ({ testPath }) => {
-  const start = +new Date();
+  const start = Date.now();
   const contents = fs.readFileSync(testPath, 'utf8');
-  const end = +new Date();
+  const end = Date.now();
 
   if (contents.includes('⚔️🏃')) {
     return pass({ start, end, test: { path: testPath } });

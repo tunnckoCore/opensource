@@ -12,8 +12,8 @@ const toTestResult = ({
     numPassingTests: stats.passes,
     numPendingTests: stats.pending,
     perfStats: {
-      end: +new Date(stats.end),
-      start: +new Date(stats.start),
+      end: new Date(stats.end).getTime(),
+      start: new Date(stats.start).getTime(),
     },
     skipped,
     snapshot: {

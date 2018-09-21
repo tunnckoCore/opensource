@@ -19,23 +19,23 @@
     "format": "prettier --single-quote --trailing-comma all --write \"!(build)/**/*.js\""
   },
   "dependencies": {
-    "jest-worker": "^22.0.0",
+    "jest-worker": "^23.2.0",
     "throat": "^4.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.46",
-    "@babel/core": "^7.0.0-beta.46",
-    "@babel/preset-env": "^7.0.0-beta.46",
-    "babel-core": "^7.0.0-0",
-    "babel-jest": "^22.4.3",
-    "eslint": "^4.5.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-prettier": "^2.3.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-prettier": "^2.2.0",
-    "execa": "^0.10.0",
-    "jest": "^22.4.3",
+    "execa": "^1.0.0",
+    "jest": "^23.6.0",
     "prettier": "^1.7.4"
   }
 }
