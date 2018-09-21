@@ -438,8 +438,8 @@ _Project automation and management with [hela][] task framework._
 [standard-url]: https://github.com/airbnb/javascript
 [standard-img]: https://img.shields.io/badge/code_style-airbnb-brightgreen.svg
 
-[circleci-url]: https://circleci.com/gh/tunnckoCore/parse-function/tree/master
-[circleci-img]: https://img.shields.io/circleci/project/github/tunnckoCore/parse-function/master.svg
+[circleci-url]: https://circleci.com/gh/tunnckoCoreLabs/parse-function/tree/master
+[circleci-img]: https://img.shields.io/circleci/project/github/tunnckoCoreLabs/parse-function/master.svg
 
 [codecov-url]: https://codecov.io/gh/tunnckoCore/parse-function
 [codecov-img]: https://img.shields.io/codecov/c/github/tunnckoCore/parse-function/master.svg
