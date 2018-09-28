@@ -27,7 +27,7 @@
     "commitizen": "2.10.1",
     "coveralls": "3.0.2",
     "cz-conventional-changelog": "2.1.0",
-    "eslint": "5.6.0",
+    "eslint": "5.6.1",
     "is-buffer": "2.0.3",
     "koa": "2.5.3",
     "koa-route": "3.2.0",
