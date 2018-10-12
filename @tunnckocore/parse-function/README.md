@@ -23,7 +23,6 @@ You may also read the [Contributing Guide](./CONTRIBUTING.md). There, beside _"H
 
 [![Make A Pull Request][prs-welcome-img]][prs-welcome-url] 
 [![Code Format Prettier][prettier-img]][prettier-url] 
-[![Node Security Status][nodesecurity-img]][nodesecurity-url] 
 [![Conventional Commits][ccommits-img]][ccommits-url] 
 [![Semantically Released][new-release-img]][new-release-url] 
 [![Renovate App Status][renovate-img]][renovate-url] 
