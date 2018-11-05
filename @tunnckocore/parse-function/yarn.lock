@@ -6,6 +6,15 @@
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
 
+"@tunnckocore/execa@>= 0.1.0 < 3":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/execa/-/execa-2.1.1.tgz#4123475347bb9131ef93e0cdd3511c3f23c7419f"
+  dependencies:
+    esm "^3.0.84"
+    execa "^1.0.0"
+    p-map-series "^1.0.0"
+    split-cmd "^1.0.0"
+
 acorn-jsx@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-3.0.1.tgz#afdf9488fb1ecefc8348f6fb22f464e32a58b36b"
@@ -1499,6 +1508,10 @@ eslint@^4.1.1, eslint@^4.8.0:
     table "^4.0.1"
     text-table "~0.2.0"
 
+esm@^3.0.84:
+  version "3.0.84"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.84.tgz#bb108989f4673b32d4f62406869c28eed3815a63"
+
 espree@4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/espree/-/espree-4.1.0.tgz#728d5451e0fd156c04384a7ad89ed51ff54eb25f"
@@ -1551,13 +1564,11 @@ esutils@^2.0.0, esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
 
-execa-pro@1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/execa-pro/-/execa-pro-1.0.8.tgz#9e5a901934a66a21425438974d5dcef9150303d3"
+execa-pro@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/execa-pro/-/execa-pro-1.1.1.tgz#e4a0438096012dcac66d4dcc89e803e98d7852e6"
   dependencies:
-    execa "1.0.0"
-    p-map-series "1.0.0"
-    split-cmd "^1.0.0"
+    "@tunnckocore/execa" ">= 0.1.0 < 3"
 
 execa@0.8.0:
   version "0.8.0"
@@ -1565,18 +1576,6 @@ execa@0.8.0:
   dependencies:
     cross-spawn "^5.0.1"
     get-stream "^3.0.0"
-    is-stream "^1.1.0"
-    npm-run-path "^2.0.0"
-    p-finally "^1.0.0"
-    signal-exit "^3.0.0"
-    strip-eof "^1.0.0"
-
-execa@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-1.0.0.tgz#c6236a5bb4df6d6f15e88e7f017798216749ddd8"
-  dependencies:
-    cross-spawn "^6.0.0"
-    get-stream "^4.0.0"
     is-stream "^1.1.0"
     npm-run-path "^2.0.0"
     p-finally "^1.0.0"
@@ -1601,6 +1600,18 @@ execa@^0.9.0:
   dependencies:
     cross-spawn "^5.0.1"
     get-stream "^3.0.0"
+    is-stream "^1.1.0"
+    npm-run-path "^2.0.0"
+    p-finally "^1.0.0"
+    signal-exit "^3.0.0"
+    strip-eof "^1.0.0"
+
+execa@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-1.0.0.tgz#c6236a5bb4df6d6f15e88e7f017798216749ddd8"
+  dependencies:
+    cross-spawn "^6.0.0"
+    get-stream "^4.0.0"
     is-stream "^1.1.0"
     npm-run-path "^2.0.0"
     p-finally "^1.0.0"
@@ -2750,12 +2761,12 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-new-release@4.0.8:
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.8.tgz#6e13ccc773d4d5f08c7c52f29dafde919da63e5e"
+new-release@4.0.9:
+  version "4.0.9"
+  resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.9.tgz#068fc5341100393cd17c29c7b8f073c8e8df8339"
   dependencies:
     detect-next-version "2.0.2"
-    execa-pro "1.0.8"
+    execa-pro "1.1.1"
     is-ci "1.2.1"
     latest-version "4.0.0"
     minimist "1.2.0"
@@ -2948,7 +2959,7 @@ p-locate@^3.0.0:
   dependencies:
     p-limit "^2.0.0"
 
-p-map-series@1.0.0:
+p-map-series@1.0.0, p-map-series@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-map-series/-/p-map-series-1.0.0.tgz#bf98fe575705658a9e1351befb85ae4c1f07bdca"
   dependencies:
