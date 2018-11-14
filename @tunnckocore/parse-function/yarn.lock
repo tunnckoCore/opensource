@@ -2773,9 +2773,9 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-new-release@5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/new-release/-/new-release-5.0.3.tgz#8a3ff6a71b24c3a70008578dabfe3e4cf88a8c39"
+new-release@5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/new-release/-/new-release-5.0.4.tgz#ff68e097ee0ab197836b51970ffb4e597de00fbf"
   dependencies:
     "@tunnckocore/release-cli" "^1.3.1"
     esm "^3.0.84"
