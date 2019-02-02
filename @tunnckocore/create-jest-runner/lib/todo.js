@@ -1,12 +1,12 @@
 import toTestResult from './toTestResult';
 
-const pass = ({ start, end, test }) =>
+const todo = ({ start, end, test }) =>
   toTestResult({
     stats: {
       failures: 0,
       pending: 0,
-      passes: 1,
-      todo: 0,
+      passes: 0,
+      todo: 1,
       start,
       end,
     },
@@ -14,4 +14,4 @@ const pass = ({ start, end, test }) =>
     jestTestPath: test.path,
   });
 
-export default pass;
+export default todo;

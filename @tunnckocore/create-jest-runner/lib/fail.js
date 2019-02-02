@@ -7,6 +7,7 @@ const fail = ({ start, end, test, errorMessage }) =>
       failures: 1,
       pending: 0,
       passes: 0,
+      todo: 0,
       start,
       end,
     },

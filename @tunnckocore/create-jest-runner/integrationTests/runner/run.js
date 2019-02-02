@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { pass, fail, skip } = require('../../');
+const { pass, fail, skip, todo } = require('../../');
 
 module.exports = ({ testPath }) => {
   const start = Date.now();
@@ -11,6 +11,9 @@ module.exports = ({ testPath }) => {
   }
   if (contents.includes('🙈')) {
     return skip({ start, end, test: { path: testPath } });
+  }
+  if (contents.includes('📃')) {
+    return todo({ start, end, test: { path: testPath } });
   }
   const errorMessage = 'Company policies require ⚔️ 🏃 in every file';
   return fail({

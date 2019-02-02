@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-const execa = require('execa');
+const execa = require('execa'); // eslint-disable-line import/no-extraneous-dependencies
 const path = require('path');
 
 const rootDir = path.resolve(__dirname, '..');
@@ -16,7 +15,7 @@ const normalize = output =>
 
 const runJest = (project, options = []) => {
   // eslint-disable-next-line
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
+  jest.setTimeout(15000);
   return execa(
     'jest',
     [

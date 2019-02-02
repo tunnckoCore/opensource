@@ -6,6 +6,7 @@ const skip = ({ start, end, test }) =>
       failures: 0,
       pending: 1,
       passes: 0,
+      todo: 0,
       start,
       end,
     },

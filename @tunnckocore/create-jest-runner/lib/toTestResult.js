@@ -11,6 +11,7 @@ const toTestResult = ({
     numFailingTests: stats.failures,
     numPassingTests: stats.passes,
     numPendingTests: stats.pending,
+    numTodoTests: stats.todo,
     perfStats: {
       end: new Date(stats.end).getTime(),
       start: new Date(stats.start).getTime(),
