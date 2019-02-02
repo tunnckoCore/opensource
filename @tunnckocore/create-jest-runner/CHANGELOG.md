@@ -1,5 +1,15 @@
 ## master
 
+## 0.5.0
+
+### Features
+
+* Add support for the new test status `todo`, introduced in Jest 24 ([#14](https://github.com/jest-community/create-jest-runner/pull/14))
+
+### Chore
+
+* Upgrade to `jest-worker@24` ([#14](https://github.com/jest-community/create-jest-runner/pull/14))
+
 ## 0.4.0
 
 ### Features
