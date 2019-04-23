@@ -52,7 +52,7 @@ This file should export a function that receives one parameter with the options
 
 You can return one of the following values:
 
-* `testResult`: Needs to be an object of type https://github.com/facebook/jest/blob/master/types/TestResult.js#L137-L165
+* `testResult`: Needs to be an object of type https://github.com/facebook/jest/blob/4d3c1a187bd429fd8611f6b0f19e4aa486fa2a85/packages/jest-test-result/src/types.ts#L103-L135
 * `Promise<testResult|Error>`: needs to be of above type.
 * `Error`: good for reporting system error, not failed tests.
 
