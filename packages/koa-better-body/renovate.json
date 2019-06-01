@@ -1,16 +1,16 @@
 {
-  "enabled": true,
-  "pinVersions": true,
-  "rebaseStalePrs": true,
-  "semanticCommits": true,
-  "labels": [
-    "renovate",
-    "deps"
-  ],
-  "assignees": [
-    "charlike"
-  ],
-  "automerge": "any",
-  "automergeType": "branch-push",
-  "prCreation": "not-pending"
+  "extends": [
+    "config:base",
+    ":onlyNpm",
+    ":gitSignOff",
+    ":automergePr",
+    ":automergeAll",
+    ":respectLatest",
+    ":rebaseStalePrs",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(fix)",
+    ":disableRateLimiting",
+    ":preserveSemverRanges",
+    ":maintainLockFilesWeekly"
+  ]
 }
