@@ -8,7 +8,7 @@
     ":respectLatest",
     ":rebaseStalePrs",
     ":semanticCommits",
-    ":semanticCommitTypeAll(fix)",
+    ":semanticPrefixFixDepsChoreOthers",
     ":disableRateLimiting",
     ":preserveSemverRanges",
     ":maintainLockFilesWeekly"
