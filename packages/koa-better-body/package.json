@@ -37,7 +37,7 @@
     "pre-commit": "1.2.2",
     "qs": "6.6.0",
     "standard": "11.0.1",
-    "standard-version": "4.4.0",
+    "standard-version": "6.0.1",
     "supertest": "4.0.2"
   },
   "files": [
