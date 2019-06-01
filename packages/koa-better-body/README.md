@@ -2,7 +2,7 @@
 
 > Full-featured [koa][] body parser! Support parsing text, buffer, json, json patch, json api, csp-report, multipart, form and urlencoded bodies. Works for koa@1, koa@2 and will work for koa@3.
 
-[![code climate][codeclimate-img]][codeclimate-url] [![standard code style][standard-img]][standard-url] [![travis build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![dependency status][david-img]][david-url]
+[![standard code style][standard-img]][standard-url] [![travis build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![dependency status][david-img]][david-url]
 
 You might also be interested in our [recipes](./recipes) - working examples, answers, tips & tricks. [Contribute a recipe?](#contributing-recipes)
 
@@ -231,19 +231,16 @@ It will help a lot, thanks in advance! :yum:
 [raw-body]: https://github.com/stream-utils/raw-body
 
 [npmjs-url]: https://www.npmjs.com/package/koa-better-body
-[npmjs-img]: https://img.shields.io/npm/v/koa-better-body.svg?label=koa-better-body
+[npmjs-img]: https://badgen.net/npm/v/koa-better-body
 
 [license-url]: https://github.com/tunnckoCore/koa-better-body/blob/master/LICENSE
-[license-img]: https://img.shields.io/npm/l/koa-better-body.svg
+[license-img]: https://badgen.net/npm/license/koa-better-body
 
 [downloads-url]: https://www.npmjs.com/package/koa-better-body
 [downloads-img]: https://img.shields.io/npm/dm/koa-better-body.svg
 
-[codeclimate-url]: https://codeclimate.com/github/tunnckoCore/koa-better-body
-[codeclimate-img]: https://img.shields.io/codeclimate/github/tunnckoCore/koa-better-body.svg
-
-[travis-url]: https://travis-ci.org/tunnckoCore/koa-better-body
-[travis-img]: https://img.shields.io/travis/tunnckoCore/koa-better-body/master.svg
+[travis-url]: https://travis-ci.org/tunnckoCoreLabs/koa-better-body/builds
+[travis-img]: https://badgen.net/travis/tunnckoCoreLabs/koa-better-body/master
 
 [coveralls-url]: https://coveralls.io/r/tunnckoCore/koa-better-body
 [coveralls-img]: https://img.shields.io/coveralls/tunnckoCore/koa-better-body.svg
