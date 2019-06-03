@@ -10,5 +10,5 @@ node_js:
 notifications:
   email: false
 
-before_install:
-  - npm install --global npm@latest
+#before_install:
+#  - npm install --global npm@latest
