@@ -19,6 +19,7 @@
     "format": "prettier --single-quote --trailing-comma all --write \"!(build)/**/*.js\""
   },
   "dependencies": {
+    "chalk": "^2.4.2",
     "jest-worker": "^24.0.0",
     "throat": "^4.1.0"
   },
@@ -36,5 +37,8 @@
     "execa": "^1.0.0",
     "jest": "^24.0.0",
     "prettier": "^1.7.4"
+  },
+  "bin": {
+    "create-jest-runner": "./generator/index.js"
   }
 }

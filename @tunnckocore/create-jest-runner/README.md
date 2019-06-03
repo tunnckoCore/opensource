@@ -88,6 +88,18 @@ module.exports = ({ testPath }) => {
 };
 ```
 
+## Create runner from binary
+
+```shell
+yarn create jest-runner my-runner
+
+# Or with npm
+npm init jest-runner my-runner
+```
+
+**Note:** You will have to update the package name in `package.json` of the
+generated runner
+
 ## Add your runner to Jest config
 
 Once you have your Jest runner you can add it to your Jest config.
