@@ -1,6 +1,6 @@
 {
   "name": "create-jest-runner",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "main": "build/index.js",
   "author": "Rogelio Guzman <rogelioguzmanh@gmail.com>",
   "description": "A simple way of creating a Jest runner",
@@ -8,7 +8,8 @@
   "repository": "https://github.com/rogeliog/create-jest-runner.git",
   "homepage": "https://github.com/rogeliog/create-jest-runner",
   "files": [
-    "build/"
+    "build/",
+    "generator/"
   ],
   "scripts": {
     "test": "jest",
