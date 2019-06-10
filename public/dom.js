@@ -1,7 +1,7 @@
 'use strict'
 
 const gibon = require('../dist/gibon.common')
-const html = require('bel')
+const html = require('nanohtml')
 
 const routes = {
   '/': (ctx) => html`<h1>home</h1>`,

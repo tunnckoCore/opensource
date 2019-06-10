@@ -2,7 +2,7 @@
 
 const gibon = require('../dist/gibon.common')
 const nanomorph = require('nanomorph')
-const html = require('bel')
+const html = require('nanohtml')
 
 /**
  * Some sample App with optional `initialState`

@@ -33,11 +33,11 @@
     "dush-router": "^1.0.3"
   },
   "devDependencies": {
-    "bel": "^4.6.1",
     "budo": "^10.0.3",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
     "mukla": "^0.4.9",
+    "nanohtml": "^1.6.3",
     "nanomorph": "^4.0.5",
     "npm-run-all": "^4.0.2",
     "nyc": "^10.3.0",
