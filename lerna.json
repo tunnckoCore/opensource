@@ -1,0 +1,9 @@
+{
+  "packages": [
+    "packages/*",
+    "@tunnckocore/*"
+  ],
+  "useWorkspaces": true,
+  "npmClient": "yarn",
+  "version": "independent"
+}
