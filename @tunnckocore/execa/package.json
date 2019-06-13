@@ -49,6 +49,5 @@
     "@tunnckocore/scripts": "^1.2.5",
     "asia": "^1.0.0-rc.7",
     "esm": "^3.2.25"
-  },
-  "gitHead": "45511e6cc1fbe58cd66a4fb6935bebc28ac9b6bb"
+  }
 }
