@@ -1,7 +1,7 @@
 {
   "name": "@tunnckocore/eslint-config",
   "description": "Shareable ESLint config based on Jest, React, Babel, TypeScript, Unicorns, Promises, Nodes, and AirBnB & Prettier",
-  "version": "3.2.0",
+  "version": "3.4.111111111",
   "license": "Apache-2.0",
   "files": [
     "dist-*/",

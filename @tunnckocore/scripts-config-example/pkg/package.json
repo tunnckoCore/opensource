@@ -1,7 +1,7 @@
 {
   "name": "@tunnckocore/scripts-config-example",
   "description": "Example shareable config for @tunnckocore/scripts",
-  "version": "3.2.0",
+  "version": "3.4.111111111",
   "license": "Apache-2.0",
   "files": [
     "dist-*/",
@@ -25,7 +25,7 @@
     "directory": "@tunnckocore/scripts-config-example"
   },
   "dependencies": {
-    "@tunnckocore/scripts-config": "^3.2.0"
+    "@tunnckocore/scripts-config": "^3.4.111111111"
   },
   "devDependencies": {
     "@tunnckocore/scripts": "^1.2.5"

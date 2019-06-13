@@ -40,5 +40,6 @@
   ],
   "devDependencies": {
     "@tunnckocore/scripts": "^1.2.5"
-  }
+  },
+  "gitHead": "37820d784affb9fc455bff50d32025686f029788"
 }
