@@ -1,5 +1,5 @@
 {
-  "version": "3.4.111111111",
+  "version": "3.5.0-1",
   "name": "@tunnckocore/scripts-config",
   "description": "Shareable config for the @tunnckocore/scripts runner",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
