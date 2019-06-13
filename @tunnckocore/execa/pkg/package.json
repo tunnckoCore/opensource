@@ -1,0 +1,41 @@
+{
+  "name": "@tunnckocore/execa",
+  "description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence",
+  "version": "3.2.0",
+  "license": "Apache-2.0",
+  "files": [
+    "dist-*/",
+    "bin/"
+  ],
+  "esnext": "dist-src/index.js",
+  "main": "dist-node/index.js",
+  "module": "dist-web/index.js",
+  "pika": true,
+  "sideEffects": false,
+  "keywords": [
+    "tunnckocorehq",
+    "scripts",
+    "example"
+  ],
+  "homepage": "https://github.com/tunnckocorehq/opensource",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCoreHQ/opensource.git",
+    "directory": "@tunnckocore/execa"
+  },
+  "dependencies": {
+    "execa": "^1.0.0",
+    "p-map-series": "^2.0.0",
+    "split-cmd": "^1.0.0"
+  },
+  "devDependencies": {
+    "@tunnckocore/scripts": "^1.2.5",
+    "asia": "^1.0.0-rc.7",
+    "esm": "^3.2.25"
+  },
+  "publishConfig": {
+    "directory": "pkg",
+    "access": "public",
+    "tag": "latest"
+  }
+}

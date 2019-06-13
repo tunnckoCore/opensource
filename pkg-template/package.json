@@ -1,0 +1,45 @@
+{
+  "version": "0.1.0",
+  "name": "<%= project.name %>",
+  "description": "wipwipwipwip",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+  "homepage": "https://github.com/tunnckocorehq/opensource",
+  "license": "Apache-2.0",
+  "licenseStart": "2019",
+  "module": "src/index.js",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "scripts",
+    "extends": "@tunnckocore/scripts-config"
+  },
+  "publishConfig": {
+    "directory": "pkg",
+    "access": "public",
+    "tag": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCoreHQ/opensource.git",
+    "directory": "<%= project.name %>"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg"
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ]
+    ]
+  },
+  "keywords": [
+    "tunnckocorehq"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@tunnckocore/scripts": "^1.2.5"
+  }
+}

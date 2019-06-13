@@ -1,0 +1,38 @@
+{
+  "name": "@tunnckocore/scripts-config-example",
+  "description": "Example shareable config for @tunnckocore/scripts",
+  "version": "3.2.0",
+  "license": "Apache-2.0",
+  "files": [
+    "dist-*/",
+    "bin/"
+  ],
+  "esnext": "dist-src/index.js",
+  "main": "dist-node/index.js",
+  "module": "dist-web/index.js",
+  "pika": true,
+  "sideEffects": false,
+  "keywords": [
+    "tunnckocorehq",
+    "scripts",
+    "scripts-config",
+    "example"
+  ],
+  "homepage": "https://github.com/tunnckocorehq/opensource",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCoreHQ/opensource.git",
+    "directory": "@tunnckocore/scripts-config-example"
+  },
+  "dependencies": {
+    "@tunnckocore/scripts-config": "^3.2.0"
+  },
+  "devDependencies": {
+    "@tunnckocore/scripts": "^1.2.5"
+  },
+  "publishConfig": {
+    "directory": "pkg",
+    "access": "public",
+    "tag": "latest"
+  }
+}
