@@ -1,5 +1,5 @@
 {
-  "version": "3.2.0",
+  "version": "3.4.111111111",
   "name": "@tunnckocore/scripts-config-example",
   "description": "Example shareable config for @tunnckocore/scripts",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
@@ -43,7 +43,7 @@
     "example"
   ],
   "dependencies": {
-    "@tunnckocore/scripts-config": "^3.2.0"
+    "@tunnckocore/scripts-config": "^3.4.111111111"
   },
   "devDependencies": {
     "@tunnckocore/scripts": "^1.2.5"

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.111111111](https://github.com/tunnckoCoreHQ/opensource/compare/v3.2.0...v3.4.111111111) (2019-06-13)
+
+**Note:** Version bump only for package @tunnckocore/eslint-config
+
+
+
+
+
 # 3.1.0 (2019-06-13)
 
 
