@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('eslint-config-tunnckocore');
+module.exports = require('@tunnckocore/eslint-config');

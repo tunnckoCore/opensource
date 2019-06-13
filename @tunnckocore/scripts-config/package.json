@@ -1,9 +1,9 @@
 {
   "version": "0.1.0",
   "name": "@tunnckocore/scripts-config",
-  "description": "Shareable config only for the scripts-cli",
+  "description": "Shareable config for the @tunnckocore/scripts runner",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-  "homepage": "https://github.com/tunnckocorehq/scripts-config",
+  "homepage": "https://github.com/tunnckocorehq/opensource",
   "license": "Apache-2.0",
   "module": "src/index.js",
   "main": "src/index.js",

@@ -3,10 +3,10 @@
   "name": "@tunnckocore/config",
   "description": "All the configs for all the tools, in one place - plus their dependencies and peerDeps",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-  "homepage": "https://github.com/tunnckocorehq/config",
+  "homepage": "https://github.com/tunnckocorehq/opensource",
   "license": "Apache-2.0",
   "scripts": {
-    "start": "NODE_ENV=configSelf scripts",
+    "start": "scripts",
     "extends": "./scripts.js"
   },
   "files": [
@@ -28,9 +28,9 @@
   ],
   "dependencies": {
     "@tunnckocore/scripts-config": "0.1.0",
+    "@tunnckocore/eslint-config": "^3.0.0",
     "docks": "^0.7.0",
     "eslint": "^5.16.0",
-    "eslint-config-tunnckocore": "^3.0.0",
     "gitcommit": "^1.0.14",
     "prettier": "^1.18.2"
   },

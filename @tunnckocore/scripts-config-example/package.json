@@ -3,7 +3,7 @@
   "name": "@tunnckocore/scripts-config-example",
   "description": "Example shareable config for @tunnckocore/scripts",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-  "homepage": "https://github.com/tunnckocorehq/scripts-config-example",
+  "homepage": "https://github.com/tunnckocorehq/opensource",
   "license": "Apache-2.0",
   "module": "src/index.js",
   "main": "src/index.js",
