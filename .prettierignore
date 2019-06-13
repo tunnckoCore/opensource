@@ -1,13 +1,15 @@
 node_modules
 coverage
 build
-pkg
 dist
 
-.npmrc
 *.log
+*.lock
 *~
+.*
 package-lock.json
 shrinkwrap.json
-.eslintcache
-.config-*.js
+
+LICENSE
+CHANGELOG.md
+README.md
