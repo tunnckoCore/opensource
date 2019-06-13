@@ -1558,17 +1558,55 @@
   resolved "https://registry.yarnpkg.com/@pika/types/-/types-0.4.0.tgz#e55f4ddca4d1e6362b7f43ee7afc494c114a7d58"
   integrity sha512-vgNcz+tvlWtHzLRmuGfpUU8I3tRTfv4YFnhrx8ZXag2kE3kPw/DnC4yMVCx9wgimI1iptyXGDTNYui+kyBGoDg==
 
-"@tunnckocore/config@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@tunnckocore/config/-/config-3.0.2.tgz#e92f0b55126da5055e5987b3ccc12cef1cfa71f5"
-  integrity sha512-qFsHjOGBAQGY4TXAk7TrAkX1eSyuhbdmXoFwWtjPQibcoU7FxONED25Lzi9msayYMobr0l9LFxD/HP7l9qPP7g==
+"@tunnckocore/config@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/config/-/config-4.0.0.tgz#67d6b8aa1f050ca0bad683b85b5a1749c0e13003"
+  integrity sha512-omDx9nBNQfmkcV3fVLJYO9LWQQr/STLou841D9ku/Y3FPWUB1ZREUnsp/MGyC+H3QhXDj2qluTUln5DgT6iCTw==
   dependencies:
-    "@tunnckocore/eslint-config" "*"
-    "@tunnckocore/scripts-config" "*"
+    "@tunnckocore/eslint-config" "^4.0.0"
+    "@tunnckocore/scripts-config" "^4.0.0"
     docks "^0.7.0"
     eslint "^5.16.0"
     gitcommit "^1.0.14"
     prettier "^1.18.2"
+
+"@tunnckocore/eslint-config@^3.2.0":
+  version "3.4.111111111"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/eslint-config/-/eslint-config-3.4.111111111.tgz#ca29a19c3e8f46fd9249f9537316e5f0c071fc0d"
+  integrity sha512-j9Bs3gLWo+6Wmw/6QYGGzY2M0shsxsPn6SuF7AwM38NEyrncaUaZD+S0+hY2wdaJf5ID3zMqH9twNUL+9Wd8hw==
+  dependencies:
+    babel-eslint "^10.0.1"
+    eslint-config-airbnb "^17.1.0"
+    eslint-config-prettier "^4.3.0"
+    eslint-plugin-import "^2.17.3"
+    eslint-plugin-jest "^22.6.4"
+    eslint-plugin-jsx-a11y "^6.2.1"
+    eslint-plugin-markdown "^1.0.0"
+    eslint-plugin-node "^9.1.0"
+    eslint-plugin-prettier "^3.1.0"
+    eslint-plugin-promise "^4.1.1"
+    eslint-plugin-react "^7.13.0"
+    eslint-plugin-react-hooks "^1.6.0"
+    eslint-plugin-unicorn "^9.1.0"
+
+"@tunnckocore/eslint-config@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/eslint-config/-/eslint-config-4.0.0.tgz#63f9da9a3f03563caa6e6bebfd006b9d91dc6942"
+  integrity sha512-Y7SFxo7LPe/+cCaNQdAOrIuQGeaNg+Uac2HRZkIbmKFDaGHzmtrLLcGBasOGZioPfKTuv6/2BetS39/Is0yJLA==
+  dependencies:
+    babel-eslint "^10.0.1"
+    eslint-config-airbnb "^17.1.0"
+    eslint-config-prettier "^4.3.0"
+    eslint-plugin-import "^2.17.3"
+    eslint-plugin-jest "^22.6.4"
+    eslint-plugin-jsx-a11y "^6.2.1"
+    eslint-plugin-markdown "^1.0.0"
+    eslint-plugin-node "^9.1.0"
+    eslint-plugin-prettier "^3.1.0"
+    eslint-plugin-promise "^4.1.1"
+    eslint-plugin-react "^7.13.0"
+    eslint-plugin-react-hooks "^1.6.0"
+    eslint-plugin-unicorn "^9.1.0"
 
 "@tunnckocore/execa@^2.2.1":
   version "2.2.1"
@@ -1579,6 +1617,16 @@
     execa "^1.0.0"
     p-map-series "^1.0.0"
     split-cmd "^1.0.0"
+
+"@tunnckocore/scripts-config@^3.2.0":
+  version "3.4.111111111"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/scripts-config/-/scripts-config-3.4.111111111.tgz#741061b05b25aa14beafce8ed945f64a85ae90e9"
+  integrity sha512-9abemXS/l9/8490GveRtL/dktRVkIhKdD0y4TmRV//NBrtLsm3mNK2lHZUzyoxJicxooQ0CphMt7fVUNo5zjEA==
+
+"@tunnckocore/scripts-config@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/scripts-config/-/scripts-config-4.0.0.tgz#5f586a42b8903239a232eefef2a774699cb48005"
+  integrity sha512-MAitx+7bJy4ebkEpKoP0+d1lPSrSqwnkfk+73+LYkKnl+KeJ/CVvmoWZQ61TWSY9LiyfmchYS2dieQgmCiw9AQ==
 
 "@tunnckocore/scripts@^1.2.5":
   version "1.2.5"

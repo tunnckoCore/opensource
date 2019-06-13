@@ -21,7 +21,7 @@
     "@pika/plugin-build-node": "^0.4.0",
     "@pika/plugin-build-web": "^0.4.0",
     "@pika/plugin-standard-pkg": "^0.4.0",
-    "@tunnckocore/config": "^3.0.2",
+    "@tunnckocore/config": "^4.0.0",
     "@tunnckocore/eslint-config": "^3.2.0",
     "@tunnckocore/scripts": "^1.2.5",
     "@tunnckocore/scripts-config": "^3.2.0",
