@@ -14,7 +14,7 @@ export function build2() {
 }
 export const ball = [cfg, build2];
 export function ver(scripts, args) {
-  const defaultArgs = ['--sign-git-commit', '--sign-git-tag', '--conventional-commits'].concat(args);
+  const defaultArgs = ['--no-push', '--sign-git-commit', '--sign-git-tag', '--conventional-commits'].concat(args);
   const {
     sub,
     flags

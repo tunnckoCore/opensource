@@ -9,7 +9,6 @@
   ],
   "esnext": "dist-src/index.js",
   "main": "dist-node/index.js",
-  "module": "dist-web/index.js",
   "pika": true,
   "sideEffects": false,
   "keywords": [
@@ -55,6 +54,6 @@
   "publishConfig": {
     "directory": "pkg",
     "access": "public",
-    "tag": "latest"
+    "tag": "beta-testing-lerna"
   }
 }

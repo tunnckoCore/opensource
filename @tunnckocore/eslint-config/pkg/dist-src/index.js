@@ -1,4 +1,4 @@
-export default {
+const CONFIG = {
   settings: {
     'import/resolver': {
       node: {
@@ -204,3 +204,4 @@ export default {
     }]
   }
 };
+module.exports = CONFIG;

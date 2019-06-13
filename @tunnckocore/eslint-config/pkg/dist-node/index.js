@@ -1,8 +1,6 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var index = {
+const CONFIG = {
   settings: {
     'import/resolver': {
       node: {
@@ -208,5 +206,4 @@ var index = {
     }]
   }
 };
-
-exports.default = index;
+module.exports = CONFIG;

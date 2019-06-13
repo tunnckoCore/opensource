@@ -25,6 +25,7 @@ export const ball = [cfg, build2];
 
 export function ver(scripts, args) {
   const defaultArgs = [
+    '--no-push',
     '--sign-git-commit',
     '--sign-git-tag',
     '--conventional-commits',
@@ -43,6 +44,7 @@ export function pub(scripts, args) {
 function subCommandHelper(args) {
   const flags = args.filter(Boolean).filter((x) => x.startsWith('-'));
   const [sub] = args.filter((x) => !x.startsWith('-')).filter(Boolean);
+
   if (!sub) {
     throw new Error('requires patch|minor|major|from-package|from-git ');
   }

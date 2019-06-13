@@ -29,6 +29,6 @@
   "publishConfig": {
     "directory": "pkg",
     "access": "public",
-    "tag": "latest"
+    "tag": "beta-testing-lerna"
   }
 }
