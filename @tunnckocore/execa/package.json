@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "3.1.0",
   "name": "@tunnckocore/execa",
   "description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
