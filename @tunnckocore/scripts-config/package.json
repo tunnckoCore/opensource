@@ -1,0 +1,44 @@
+{
+  "version": "0.1.0",
+  "name": "@tunnckocore/scripts-config",
+  "description": "Shareable config only for the scripts-cli",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+  "homepage": "https://github.com/tunnckocorehq/scripts-config",
+  "license": "Apache-2.0",
+  "module": "src/index.js",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "scripts",
+    "extends": "./src/index.js"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCoreHQ/opensource.git",
+    "directory": "@tunnckocore/scripts-config"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg"
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ]
+    ]
+  },
+  "keywords": [
+    "tunnckocorehq",
+    "scripts-config"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@tunnckocore/scripts": "^1.2.5"
+  }
+}

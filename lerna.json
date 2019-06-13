@@ -1,8 +1,5 @@
 {
-  "packages": [
-    "packages/*",
-    "@tunnckocore/*"
-  ],
+  "packages": ["@hela/*", "@tunnckocore/*"],
   "useWorkspaces": true,
   "npmClient": "yarn",
   "version": "independent"
