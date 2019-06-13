@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0",
+  "version": "0.1.0",
   "name": "@tunnckocore/eslint-config",
   "description": "Shareable ESLint config based on Jest, React, Babel, TypeScript, Unicorns, Promises, Nodes, and AirBnB & Prettier",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
@@ -12,6 +12,7 @@
     "extends": "@tunnckocore/scripts-config"
   },
   "publishConfig": {
+    "directory": "pkg",
     "access": "public",
     "tag": "latest"
   },

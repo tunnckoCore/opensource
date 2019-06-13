@@ -1,5 +1,5 @@
 {
-  "version": "2.2.1",
+  "version": "0.1.0",
   "name": "@tunnckocore/execa",
   "description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
@@ -13,6 +13,7 @@
     "test": "node --require esm __tests__/index.js"
   },
   "publishConfig": {
+    "directory": "pkg",
     "access": "public",
     "tag": "latest"
   },

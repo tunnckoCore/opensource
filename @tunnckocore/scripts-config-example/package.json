@@ -1,5 +1,5 @@
 {
-  "version": "0.1.1",
+  "version": "0.1.0",
   "name": "@tunnckocore/scripts-config-example",
   "description": "Example shareable config for @tunnckocore/scripts",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
@@ -14,6 +14,7 @@
     "tryme": "~~overriden by the config~~"
   },
   "publishConfig": {
+    "directory": "pkg",
     "access": "public",
     "tag": "latest"
   },

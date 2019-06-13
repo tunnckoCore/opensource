@@ -12,6 +12,7 @@
     "extends": "./src/index.js"
   },
   "publishConfig": {
+    "directory": "pkg",
     "access": "public",
     "tag": "latest"
   },
@@ -37,7 +38,6 @@
     "tunnckocorehq",
     "scripts-config"
   ],
-  "dependencies": {},
   "devDependencies": {
     "@tunnckocore/scripts": "^1.2.5"
   }
