@@ -1,15 +1,12 @@
 {
   "name": "@tunnckocore/scripts-config",
   "description": "Shareable config for the @tunnckocore/scripts runner",
-  "version": "3.4.111111111",
+  "version": "4.0.2",
   "license": "Apache-2.0",
   "files": [
     "dist-*/",
     "bin/"
   ],
-  "esnext": "dist-src/index.js",
-  "main": "dist-node/index.js",
-  "module": "dist-web/index.js",
   "pika": true,
   "sideEffects": false,
   "keywords": [
@@ -24,11 +21,13 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@tunnckocore/scripts": "^1.2.5"
+    "@tunnckocore/scripts": "^1.3.0"
   },
   "publishConfig": {
-    "directory": "pkg",
     "access": "public",
-    "tag": "beta-testing-lerna"
-  }
+    "tag": "latest"
+  },
+  "esnext": "dist-src/index.js",
+  "main": "dist-node/index.js",
+  "module": "dist-web/index.js"
 }

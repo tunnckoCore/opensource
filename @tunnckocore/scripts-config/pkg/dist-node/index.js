@@ -2,21 +2,22 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-// import path from 'path';
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var proc = _interopDefault(require('process'));
+
 // import { fileURLToPath } from 'url';
 // const PKG_ROOT = fileURLToPath(path.dirname(path.dirname(import.meta.url)));
+
 const build = (scripts, args) => {
-  const [pkgRoot] = args;
-  return pkgRoot ? `yarn scripts pika-pack build --emoji --cwd "${pkgRoot}"` : 'echo "Skipping..."';
+  const [pkgRoot = proc.cwd()] = args;
+  return pkgRoot || args.includes('--force') ? `yarn scripts pika-pack build --emoji --cwd "${pkgRoot}"` : 'echo "Skipping..."';
 };
 const help = 'echo "TODO: help"';
-function cfg() {
-  return "lerna exec 'yarn start build \\\"$PWD\\\"' --scope='@tunnckocore/scripts-config'";
+function build2(scripts, args) {
+  const serial = args.includes('--serial') ? '--concurency 1' : '';
+  return `lerna exec ${serial} 'yarn start build \\"$PWD\\"\'`; // return 'yarn workspaces run start build';
 }
-function build2() {
-  return "lerna exec 'yarn start build \\\"$PWD\\\"' --ignore='@tunnckocore/scripts-config'";
-}
-const ball = [cfg, build2];
 function ver(scripts, args) {
   const defaultArgs = ['--no-push', '--sign-git-commit', '--sign-git-tag', '--conventional-commits'].concat(args);
   const {
@@ -47,10 +48,13 @@ function subCommandHelper(args) {
   };
 }
 
-exports.ball = ball;
+function mk(scripts, [name, dest]) {
+  return [`yarn scripts charlike -t ./pkg-template --name ${name} --desc wipwipwip --dest ${dest}`];
+}
+
 exports.build = build;
 exports.build2 = build2;
-exports.cfg = cfg;
 exports.help = help;
+exports.mk = mk;
 exports.pub = pub;
 exports.ver = ver;

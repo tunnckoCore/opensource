@@ -10,21 +10,20 @@
   "scripts": {
     "postinstall": "lerna bootstrap",
     "start": "scripts",
-    "extends": "@tunnckocore/scripts-config"
+    "extends": "./@tunnckocore/scripts-config/src/index.js"
   },
   "workspaces": [
     "@hela/*",
     "@tunnckocore/*"
   ],
   "devDependencies": {
-    "@pika/pack": "^0.3.7",
+    "@pika/pack": "^0.4.0",
     "@pika/plugin-build-node": "^0.4.0",
     "@pika/plugin-build-web": "^0.4.0",
     "@pika/plugin-standard-pkg": "^0.4.0",
-    "@tunnckocore/config": "^3.0.2",
-    "@tunnckocore/eslint-config": "^3.2.0",
-    "@tunnckocore/scripts": "^1.2.5",
-    "@tunnckocore/scripts-config": "^3.2.0",
+    "@tunnckocore/config": "^4.0.1",
+    "@tunnckocore/eslint-config": "^4.0.1",
+    "@tunnckocore/scripts": "^1.3.0",
     "cross-env": "^5.2.0",
     "lerna": "^3.15.0"
   },

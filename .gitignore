@@ -2,8 +2,8 @@ node_modules
 coverage
 build
 dist
+pkg
 
-.npmrc
 *.log
 *~
 package-lock.json

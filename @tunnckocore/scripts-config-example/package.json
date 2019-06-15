@@ -14,9 +14,8 @@
     "tryme": "~~overriden by the config~~"
   },
   "publishConfig": {
-    "directory": "pkg",
     "access": "public",
-    "tag": "beta-testing-lerna"
+    "tag": "latest"
   },
   "repository": {
     "type": "git",
@@ -43,10 +42,10 @@
     "example"
   ],
   "dependencies": {
-    "@tunnckocore/scripts-config": "^3.5.0-1"
+    "@tunnckocore/scripts-config": "^4.0.2"
   },
   "devDependencies": {
-    "@tunnckocore/scripts": "^1.2.5"
+    "@tunnckocore/scripts": "^1.3.0"
   },
   "gitHead": "37820d784affb9fc455bff50d32025686f029788"
 }

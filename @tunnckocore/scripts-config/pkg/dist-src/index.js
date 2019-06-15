@@ -1,18 +1,16 @@
-// import path from 'path';
+import proc from 'process'; // import path from 'path';
 // import { fileURLToPath } from 'url';
 // const PKG_ROOT = fileURLToPath(path.dirname(path.dirname(import.meta.url)));
+
 export const build = (scripts, args) => {
-  const [pkgRoot] = args;
-  return pkgRoot ? `yarn scripts pika-pack build --emoji --cwd "${pkgRoot}"` : 'echo "Skipping..."';
+  const [pkgRoot = proc.cwd()] = args;
+  return pkgRoot || args.includes('--force') ? `yarn scripts pika-pack build --emoji --cwd "${pkgRoot}"` : 'echo "Skipping..."';
 };
 export const help = 'echo "TODO: help"';
-export function cfg() {
-  return "lerna exec 'yarn start build \\\"$PWD\\\"' --scope='@tunnckocore/scripts-config'";
+export function build2(scripts, args) {
+  const serial = args.includes('--serial') ? '--concurency 1' : '';
+  return `lerna exec ${serial} 'yarn start build \\"$PWD\\"\'`; // return 'yarn workspaces run start build';
 }
-export function build2() {
-  return "lerna exec 'yarn start build \\\"$PWD\\\"' --ignore='@tunnckocore/scripts-config'";
-}
-export const ball = [cfg, build2];
 export function ver(scripts, args) {
   const defaultArgs = ['--no-push', '--sign-git-commit', '--sign-git-tag', '--conventional-commits'].concat(args);
   const {
@@ -41,4 +39,8 @@ function subCommandHelper(args) {
     flags,
     sub
   };
+}
+
+export function mk(scripts, [name, dest]) {
+  return [`yarn scripts charlike -t ./pkg-template --name ${name} --desc wipwipwip --dest ${dest}`];
 }
