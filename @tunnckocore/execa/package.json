@@ -40,7 +40,7 @@
     "example"
   ],
   "dependencies": {
-    "execa": "^1.0.0",
+    "execa": "^2.0.0",
     "p-map-series": "^2.1.0",
     "split-cmd": "^1.0.0"
   },
