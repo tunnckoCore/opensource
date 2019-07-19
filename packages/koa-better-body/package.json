@@ -24,7 +24,7 @@
     "koa-body-parsers": "git+https://github.com/tunnckoCore/body-parsers.git"
   },
   "devDependencies": {
-    "commitizen": "4.0.1",
+    "commitizen": "4.0.2",
     "coveralls": "3.0.5",
     "cz-conventional-changelog": "2.1.0",
     "eslint": "5.16.0",
