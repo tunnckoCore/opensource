@@ -1,0 +1,38 @@
+{
+  "private": true,
+  "name": "@tunnckocore/opensource",
+  "homepage": "https://github.com/tunnckocore/opensource",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "setup": "yarn && lerna bootstrap",
+    "setup:ci": "yarn --frozen-lockfile && lerna bootstrap"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@tunnckocore/eslint-config": "^4.1.4",
+    "@tunnckocore/prettier-config": "^0.2.2",
+    "@tunnckocore/typescript-config": "^0.3.1",
+    "eslint": "^6.4.0",
+    "lerna": "^3.16.4",
+    "prettier": "^1.18.2",
+    "typescript": "^3.6.3"
+  },
+  "prettier": "@tunnckocore/prettier-config",
+  "eslintConfig": {
+    "extends": "@tunnckocore/eslint-config"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo 'yarn test:commit'",
+      "commit-msg": "echo 'commitlint -E HUSKY_GIT_PARAMS'"
+    }
+  }
+}
