@@ -1,0 +1,73 @@
+# Always-ignore dirs #
+# ####################
+_gh_pages
+node_modules
+jspm_packages
+bower_components
+components
+vendor
+build
+dest
+dist
+src
+lib-cov
+coverage
+nbproject
+cache
+temp
+tmp
+koa-better-body
+
+# Packages #
+# ##########
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# OS, Logs and databases #
+# #########################
+logs
+*.pid
+*.dat
+*.log
+*.sql
+*.sqlite
+*~
+~*
+
+# Another files #
+# ###############
+Icon?
+.DS_Store*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+npm-debug.log
+.directory
+._*
+lcov.info
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+# see here: http://gruntjs.com/creating-plugins#storing-task-files
+.grunt
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
