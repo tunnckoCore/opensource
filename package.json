@@ -3,7 +3,8 @@
   "name": "@tunnckocore/opensource",
   "homepage": "https://github.com/tunnckocore/opensource",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "@tunnckocore/*"
   ],
   "scripts": {
     "setup": "yarn && lerna bootstrap",
