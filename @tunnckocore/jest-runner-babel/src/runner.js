@@ -1,3 +1,6 @@
+/* eslint-disable no-loop-func */
+/* eslint-disable max-statements */
+/* eslint-disable no-restricted-syntax */
 const os = require('os');
 const fs = require('fs');
 const path = require('path');
@@ -11,87 +14,101 @@ const isWin32 = os.platform() === 'win32';
 
 module.exports = async ({ testPath, config }) => {
   const start = new Date();
-  const options = normalizeRunnerConfig(explorer.searchSync());
+  let options = normalizeRunnerConfig(explorer.searchSync());
+  const babelConfigs = [].concat(options.babel).filter(Boolean);
 
-  let result = null;
+  // let index = 1;
 
-  try {
-    result = babel.transformFileSync(testPath, options.babel);
-  } catch (err) {
-    return fail({
-      start,
-      end: new Date(),
-      test: { path: testPath, title: 'Babel', errorMessage: err.message },
-    });
-  }
+  const res = await Promise.all(
+    babelConfigs.map(({ config: babelCfg, ...opts }) => {
+      // for (const { config: babelCfg, ...opts } of babelConfigs) {
+      options = { ...options, ...opts };
+      let result = null;
+      // index += 1;
 
-  // Classics in the genre! Yes, it's possible, sometimes.
-  // Old habit for ensurance
-  if (!result) {
-    return fail({
-      start,
-      end: new Date(),
-      test: {
-        path: testPath,
-        title: 'Babel',
-        errorMessage: 'Babel failing to transform...',
-      },
-    });
-  }
-
-  let relativeTestPath = path.relative(config.rootDir, testPath);
-
-  if (isWin32 && !relativeTestPath.includes('/')) {
-    relativeTestPath = relativeTestPath.replace(/\\/g, '/');
-  }
-
-  // [ 'index.js' ]
-  // [ 'src', 'index.js' ]
-  // [ 'src', 'some', 'index.js' ]
-  // [ 'packages', 'foo', 'index.js' ]
-  // [ 'packages', 'foo', 'src', 'index.js' ]
-  // [ 'packages', 'foo', 'src', 'some', 'index.js' ]
-  // so usually need to get the first 2 items
-
-  // if not in monorepo, the `outs.dir` will be empty
-  const outs = relativeTestPath.split('/').reduce(
-    (acc, item, index) => {
-      // only if we are in monorepo we want to get the first 2 items
-      if (options.isMonorepo(config.cwd) && index < 2) {
-        return { ...acc, dir: acc.dir.concat(item) };
+      try {
+        result = babel.transformFileSync(testPath, babelCfg);
+      } catch (err) {
+        return fail({
+          start,
+          end: new Date(),
+          test: { path: testPath, title: 'Babel', errorMessage: err.message },
+        });
       }
 
-      return {
-        ...acc,
-        file: acc.file
-          .concat(item === options.srcDir ? null : item)
-          .filter(Boolean),
-      };
-    },
-    { file: [], dir: [] },
+      // Classics in the genre! Yes, it's possible, sometimes.
+      // Old habit for ensurance
+      if (!result) {
+        return fail({
+          start,
+          end: new Date(),
+          test: {
+            path: testPath,
+            title: 'Babel',
+            errorMessage: 'Babel failing to transform...',
+          },
+        });
+      }
+
+      let relativeTestPath = path.relative(config.rootDir, testPath);
+
+      if (isWin32 && !relativeTestPath.includes('/')) {
+        relativeTestPath = relativeTestPath.replace(/\\/g, '/');
+      }
+
+      // [ 'index.js' ]
+      // [ 'src', 'index.js' ]
+      // [ 'src', 'some', 'index.js' ]
+      // [ 'packages', 'foo', 'index.js' ]
+      // [ 'packages', 'foo', 'src', 'index.js' ]
+      // [ 'packages', 'foo', 'src', 'some', 'index.js' ]
+      // so usually need to get the first 2 items
+
+      // if not in monorepo, the `outs.dir` will be empty
+      const outs = relativeTestPath.split('/').reduce(
+        (acc, item, idx) => {
+          // only if we are in monorepo we want to get the first 2 items
+          if (options.isMonorepo(config.cwd) && idx < 2) {
+            return { ...acc, dir: acc.dir.concat(item) };
+          }
+
+          return {
+            ...acc,
+            file: acc.file
+              .concat(item === options.srcDir ? null : item)
+              .filter(Boolean),
+          };
+        },
+        { file: [], dir: [] },
+      );
+
+      let outFile = path.join(
+        config.rootDir,
+        ...outs.dir.filter(Boolean),
+        options.outDir,
+        ...outs.file.filter(Boolean),
+      );
+
+      const outDir = path.dirname(outFile);
+      outFile = path.join(
+        outDir,
+        `${path.basename(outFile, path.extname(outFile))}.js`,
+      );
+
+      fs.mkdirSync(outDir, { recursive: true });
+      fs.writeFileSync(outFile, result.code);
+
+      // if (index === babelConfigs.length) {
+      return pass({
+        start,
+        end: new Date(),
+        test: { path: outFile, title: 'Babel' },
+      });
+      // }
+    }),
   );
 
-  let outFile = path.join(
-    config.rootDir,
-    ...outs.dir.filter(Boolean),
-    options.outDir,
-    ...outs.file.filter(Boolean),
-  );
-
-  const outDir = path.dirname(outFile);
-  outFile = path.join(
-    outDir,
-    `${path.basename(outFile, path.extname(outFile))}.js`,
-  );
-
-  fs.mkdirSync(outDir, { recursive: true });
-  fs.writeFileSync(outFile, result.code);
-
-  return pass({
-    start,
-    end: new Date(),
-    test: { path: outFile, title: 'Babel' },
-  });
+  return res[0];
 };
 
 function normalizeRunnerConfig(val) {
