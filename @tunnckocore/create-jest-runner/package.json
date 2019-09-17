@@ -12,7 +12,7 @@
     "generator/"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "jest --no-colors",
     "lint": "eslint .",
     "watch": "babel lib -w --ignore **/*.test.js,integration -d build",
     "build": "babel lib --ignore **/*.test.js,integration -d build",
