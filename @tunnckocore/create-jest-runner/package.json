@@ -12,11 +12,13 @@
     "generator/"
   ],
   "scripts": {
+    "pre-commit": "yarn test && yarn lint",
+    "pretest": "yarn build",
     "test": "jest --no-colors",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "watch": "babel lib -w --ignore **/*.test.js,integration -d build",
     "build": "babel lib --ignore **/*.test.js,integration -d build",
-    "prepublishOnly": "yarn lint && yarn test && yarn build",
+    "prepublishOnly": "yarn pre-commit",
     "format": "prettier --single-quote --trailing-comma all --write \"!(build)/**/*.js\""
   },
   "dependencies": {
