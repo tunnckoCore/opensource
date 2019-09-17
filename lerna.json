@@ -1,9 +1,23 @@
 {
-  "packages": [
-    "@hela/*",
-    "@tunnckocore/*"
-  ],
-  "useWorkspaces": true,
+  "$schema": "http://json.schemastore.org/lerna",
+  "version": "independent",
   "npmClient": "yarn",
-  "version": "4.0.0"
+  "useWorkspaces": true,
+  "packages": [
+    "packages/*"
+  ],
+  "changelog": {
+    "cacheDir": ".cache",
+    "ignoreCommitters": [
+      "*bot"
+    ],
+    "nextVersion": "Unreleased"
+  },
+  "command": {
+    "version": {
+      "conventionalCommits": true,
+      "createRelease": "github",
+      "message": "chore: release package(s)"
+    }
+  }
 }
