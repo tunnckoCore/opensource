@@ -1,5 +1,5 @@
 {
-  "name": "@tunnckocore/create-jest-runner",
+  "name": "create-jest-runner",
   "version": "0.5.3",
   "main": "build/index.js",
   "author": "Rogelio Guzman <rogelioguzmanh@gmail.com>",
