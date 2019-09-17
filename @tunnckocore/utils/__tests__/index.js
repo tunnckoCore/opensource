@@ -41,6 +41,7 @@ test('createAliases return correct aliases', () => {
   const cwd = path.join(__dirname, 'fixtures', 'yarn-workspaces');
   const result = createAliases(cwd);
 
+  // eslint-disable-next-line unicorn/consistent-function-scoping
   const toAliases = (src) =>
     ['@hela/foo', '@tunnckocore/bar'].reduce((acc, name) => {
       acc[name] = path.join(cwd, name, src);

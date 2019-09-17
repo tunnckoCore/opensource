@@ -38,10 +38,10 @@ import pMap from 'p-map';
  */
 export async function exec(cmds, options) {
   const commands = [].concat(cmds).filter(Boolean);
-  const { concurrency = Infinity, ...opts } = Object.assign(
-    { preferLocal: true },
-    options,
-  );
+  const { concurrency = Infinity, ...opts } = {
+    preferLocal: true,
+    ...options,
+  };
 
   return pMap(commands, (cmd) => execa.command(cmd, opts), { concurrency });
 }
@@ -92,7 +92,7 @@ export async function exec(cmds, options) {
  * @public
  */
 export function shell(cmds, options) {
-  return exec(cmds, Object.assign({}, options, { shell: true }));
+  return exec(cmds, { ...options, shell: true });
 }
 
 /**

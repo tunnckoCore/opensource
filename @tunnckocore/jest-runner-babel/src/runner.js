@@ -5,27 +5,18 @@ const { pass, fail } = require('create-jest-runner');
 const babel = require('@babel/core');
 const cosmiconfig = require('cosmiconfig');
 
-const explorer = cosmiconfig('jest-runner-babel');
+const explorer = cosmiconfig('jest-runner');
 
 const isWin32 = os.platform() === 'win32';
 
 module.exports = async ({ testPath, config }) => {
   const start = new Date();
-  const cfg = explorer.searchSync();
-  const runnerConfig = Object.assign(
-    { monorepo: false, outDir: 'dist', srcDir: 'src' },
-    cfg.config,
-  );
-
-  runnerConfig.isMonorepo =
-    typeof runnerConfig.isMonorepo === 'function'
-      ? runnerConfig.isMonorepo
-      : () => runnerConfig.monorepo;
+  const options = normalizeRunnerConfig(explorer.searchSync());
 
   let result = null;
 
   try {
-    result = babel.transformFileSync(testPath, runnerConfig.babel);
+    result = babel.transformFileSync(testPath, options.babel);
   } catch (err) {
     return fail({
       start,
@@ -48,17 +39,7 @@ module.exports = async ({ testPath, config }) => {
     });
   }
 
-  runnerConfig.outDir = runnerConfig.outDir || runnerConfig.outdir;
-
-  if (typeof runnerConfig.outDir !== 'string') {
-    runnerConfig.outDir = 'dist';
-  }
-  if (typeof runnerConfig.srcDir !== 'string') {
-    runnerConfig.srcDir = 'src';
-  }
-
-  let { rootDir } = config;
-  let relativeTestPath = path.relative(rootDir, testPath);
+  let relativeTestPath = path.relative(config.rootDir, testPath);
 
   if (isWin32 && !relativeTestPath.includes('/')) {
     relativeTestPath = relativeTestPath.replace(/\\/g, '/');
@@ -72,20 +53,18 @@ module.exports = async ({ testPath, config }) => {
   // [ 'packages', 'foo', 'src', 'some', 'index.js' ]
   // so usually need to get the first 2 items
 
-  const segments = relativeTestPath.split('/');
-
   // if not in monorepo, the `outs.dir` will be empty
-  const outs = segments.reduce(
+  const outs = relativeTestPath.split('/').reduce(
     (acc, item, index) => {
       // only if we are in monorepo we want to get the first 2 items
-      if (runnerConfig.isMonorepo(config.cwd) && index < 2) {
+      if (options.isMonorepo(config.cwd) && index < 2) {
         return { ...acc, dir: acc.dir.concat(item) };
       }
 
       return {
         ...acc,
         file: acc.file
-          .concat(item === runnerConfig.srcDir ? null : item)
+          .concat(item === options.srcDir ? null : item)
           .filter(Boolean),
       };
     },
@@ -93,16 +72,17 @@ module.exports = async ({ testPath, config }) => {
   );
 
   let outFile = path.join(
-    rootDir,
+    config.rootDir,
     ...outs.dir.filter(Boolean),
-    runnerConfig.outDir,
+    options.outDir,
     ...outs.file.filter(Boolean),
   );
 
-  const filename = path.basename(outFile, path.extname(outFile));
-
   const outDir = path.dirname(outFile);
-  outFile = path.join(outDir, `${filename}.js`);
+  outFile = path.join(
+    outDir,
+    `${path.basename(outFile, path.extname(outFile))}.js`,
+  );
 
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(outFile, result.code);
@@ -110,6 +90,32 @@ module.exports = async ({ testPath, config }) => {
   return pass({
     start,
     end: new Date(),
-    test: { path: outFile },
+    test: { path: outFile, title: 'Babel' },
   });
 };
+
+function normalizeRunnerConfig(val) {
+  const cfg = val && val.config ? val.config : {};
+  const runnerConfig = {
+    monorepo: false,
+    outDir: 'dist',
+    srcDir: 'src',
+    ...cfg,
+  };
+
+  runnerConfig.outDir = runnerConfig.outDir || runnerConfig.outdir;
+
+  if (typeof runnerConfig.outDir !== 'string') {
+    runnerConfig.outDir = 'dist';
+  }
+  if (typeof runnerConfig.srcDir !== 'string') {
+    runnerConfig.srcDir = 'src';
+  }
+
+  runnerConfig.isMonorepo =
+    typeof runnerConfig.isMonorepo === 'function'
+      ? runnerConfig.isMonorepo
+      : () => runnerConfig.monorepo;
+
+  return runnerConfig;
+}
