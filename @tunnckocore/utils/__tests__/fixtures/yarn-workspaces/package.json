@@ -1,0 +1,10 @@
+{
+  "extensions": [
+    "js",
+    "ts"
+  ],
+  "workspaces": [
+    "@tunnckocore/*",
+    "@hela/*"
+  ]
+}
