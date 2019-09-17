@@ -1,6 +1,6 @@
 {
-  "name": "create-jest-runner",
-  "version": "0.5.3",
+  "name": "@tunnckocore/create-jest-runner",
+  "version": "0.5.4",
   "main": "build/index.js",
   "author": "Rogelio Guzman <rogelioguzmanh@gmail.com>",
   "description": "A simple way of creating a Jest runner",
@@ -12,6 +12,7 @@
     "generator/"
   ],
   "scripts": {
+    "pre-commit": "yarn lint && yarn test && yarn build",
     "test": "jest --no-colors",
     "lint": "eslint .",
     "watch": "babel lib -w --ignore **/*.test.js,integration -d build",
