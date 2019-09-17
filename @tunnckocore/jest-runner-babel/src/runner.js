@@ -1,7 +1,7 @@
 const os = require('os');
 const fs = require('fs');
 const path = require('path');
-const { pass, fail } = require('create-jest-runner');
+const { pass, fail } = require('@tunnckocore/create-jest-runner');
 const { transformFileSync } = require('@babel/core');
 const cosmiconfig = require('cosmiconfig');
 
@@ -92,11 +92,7 @@ module.exports = async ({ testPath, config }) => {
     }),
   );
 
-  // ! todo: when PR patch to create-jest-runner #20
-  // ! See: https://github.com/jest-community/create-jest-runner/issues/20
-  // return testResults;
-
-  return testResults[0];
+  return testResults;
 };
 
 function normalizeRunnerConfig(val) {

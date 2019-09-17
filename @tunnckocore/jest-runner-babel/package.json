@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "@babel/core": "^7.6.0",
-    "cosmiconfig": "^5.2.1",
-    "create-jest-runner": "^0.5.3"
+    "@tunnckocore/create-jest-runner": "^0.5.4",
+    "cosmiconfig": "^5.2.1"
   },
   "devDependencies": {},
   "peerDependencies": {},

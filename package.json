@@ -9,6 +9,7 @@
   "scripts": {
     "setup": "yarn && lerna bootstrap",
     "setup:ci": "yarn --frozen-lockfile && lerna bootstrap",
+    "fresh": "lerna clean -y && rm -rf node_modules && yarn setup",
     "pre-commit": "jest -c jest.config.js",
     "build": "jest -c jest.build.config.js",
     "test": "jest -c jest.test.config.js",

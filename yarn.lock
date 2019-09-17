@@ -2237,6 +2237,15 @@
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
     babel-preset-proposal-typescript "^1.4.1"
 
+"@tunnckocore/create-jest-runner@^0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/create-jest-runner/-/create-jest-runner-0.5.4.tgz#212a2d5f2e0e14ab984070ed1fd279b15981d14f"
+  integrity sha512-GWRiqCfNTYU60OCa4251hvATQm+0uZ3mtDjb7nLa/U8OnVMkbgGZDeJYh4cLr4+2LLwY4uPTS/oqqMCdT1ADYQ==
+  dependencies:
+    chalk "^2.4.2"
+    jest-worker "^24.0.0"
+    throat "^4.1.0"
+
 "@tunnckocore/eslint-config@^4.1.4":
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/@tunnckocore/eslint-config/-/eslint-config-4.1.4.tgz#e6a58d6c9620579d1a55be2db28cd119d1a54e2a"
