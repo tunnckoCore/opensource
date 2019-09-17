@@ -1,3 +1,10 @@
+const options = {
+  modules: 'commonjs',
+  react: true,
+  typescript: true,
+  node: '8',
+};
+
 module.exports = {
   monorepo: true,
   eslint: {
@@ -10,17 +17,7 @@ module.exports = {
   babel: [
     {
       config: {
-        presets: [
-          [
-            '@tunnckocore/babel-preset',
-            {
-              modules: 'commonjs',
-              react: true,
-              typescript: true,
-              node: '8',
-            },
-          ],
-        ],
+        presets: [['@tunnckocore/babel-preset', options]],
         comments: false,
       },
       outDir: 'dist/main',
@@ -28,15 +25,7 @@ module.exports = {
     {
       config: {
         presets: [
-          [
-            '@tunnckocore/babel-preset',
-            {
-              modules: false,
-              react: true,
-              typescript: true,
-              node: '10.13',
-            },
-          ],
+          ['@tunnckocore/babel-preset', { ...options, modules: false }],
         ],
         comments: false,
       },
