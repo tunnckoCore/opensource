@@ -1,7 +1,7 @@
 {
-  "version": "0.4.1",
-  "name": "@tunnckocore/utils",
-  "description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence with control for concurrency",
+  "version": "3.0.0",
+  "name": "@tunnckocore/jest-runner-babel",
+  "description": "WIP",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
   "homepage": "https://github.com/tunnckoCore/opensource",
   "license": "MPL-2.0",
@@ -20,9 +20,13 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
-    "directory": "@tunnckocore/utils"
+    "directory": "@tunnckocore/jest-runner-babel"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@babel/core": "^7.6.0",
+    "cosmiconfig": "^5.2.1",
+    "create-jest-runner": "^0.5.3"
+  },
   "devDependencies": {},
   "peerDependencies": {},
   "files": [

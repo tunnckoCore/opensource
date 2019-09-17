@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const { getWorkspacesAndExtensions, createAliases } = require('../src/index');
 
