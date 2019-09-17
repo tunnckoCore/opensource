@@ -1,11 +1,8 @@
-/* eslint-disable no-loop-func */
-/* eslint-disable max-statements */
-/* eslint-disable no-restricted-syntax */
 const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const { pass, fail } = require('create-jest-runner');
-const babel = require('@babel/core');
+const { transformFileSync } = require('@babel/core');
 const cosmiconfig = require('cosmiconfig');
 
 const explorer = cosmiconfig('jest-runner');
@@ -15,19 +12,16 @@ const isWin32 = os.platform() === 'win32';
 module.exports = async ({ testPath, config }) => {
   const start = new Date();
   let options = normalizeRunnerConfig(explorer.searchSync());
-  const babelConfigs = [].concat(options.babel).filter(Boolean);
+  const cfgs = [].concat(options.babel).filter(Boolean);
 
-  // let index = 1;
-
-  const res = await Promise.all(
-    babelConfigs.map(({ config: babelCfg, ...opts }) => {
-      // for (const { config: babelCfg, ...opts } of babelConfigs) {
+  const testResults = await Promise.all(
+    cfgs.map(({ config: cfg, ...opts }) => {
       options = { ...options, ...opts };
       let result = null;
       // index += 1;
 
       try {
-        result = babel.transformFileSync(testPath, babelCfg);
+        result = transformFileSync(testPath, cfg);
       } catch (err) {
         return fail({
           start,
@@ -45,7 +39,7 @@ module.exports = async ({ testPath, config }) => {
           test: {
             path: testPath,
             title: 'Babel',
-            errorMessage: 'Babel failing to transform...',
+            errorMessage: `Babel runner fails...`,
           },
         });
       }
@@ -55,14 +49,6 @@ module.exports = async ({ testPath, config }) => {
       if (isWin32 && !relativeTestPath.includes('/')) {
         relativeTestPath = relativeTestPath.replace(/\\/g, '/');
       }
-
-      // [ 'index.js' ]
-      // [ 'src', 'index.js' ]
-      // [ 'src', 'some', 'index.js' ]
-      // [ 'packages', 'foo', 'index.js' ]
-      // [ 'packages', 'foo', 'src', 'index.js' ]
-      // [ 'packages', 'foo', 'src', 'some', 'index.js' ]
-      // so usually need to get the first 2 items
 
       // if not in monorepo, the `outs.dir` will be empty
       const outs = relativeTestPath.split('/').reduce(
@@ -98,17 +84,19 @@ module.exports = async ({ testPath, config }) => {
       fs.mkdirSync(outDir, { recursive: true });
       fs.writeFileSync(outFile, result.code);
 
-      // if (index === babelConfigs.length) {
       return pass({
         start,
         end: new Date(),
         test: { path: outFile, title: 'Babel' },
       });
-      // }
     }),
   );
 
-  return res[0];
+  // ! todo: when PR patch to create-jest-runner #20
+  // ! See: https://github.com/jest-community/create-jest-runner/issues/20
+  // return testResults;
+
+  return testResults[0];
 };
 
 function normalizeRunnerConfig(val) {
