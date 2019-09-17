@@ -8,7 +8,10 @@
   ],
   "scripts": {
     "setup": "yarn && lerna bootstrap",
-    "setup:ci": "yarn --frozen-lockfile && lerna bootstrap"
+    "setup:ci": "yarn --frozen-lockfile && lerna bootstrap",
+    "pre-commit": "jest -c jest.config.js",
+    "test": "jest -c jest.test.config.js",
+    "lint": "jest -c jest.lint.config.js"
   },
   "dependencies": {
     "@commitlint/cli": "^8.2.0",
@@ -21,6 +24,9 @@
     "lerna": "^3.16.4",
     "prettier": "^1.18.2",
     "typescript": "^3.6.3"
+  },
+  "devDependencies": {
+    "eslint-plugin-node": "^10.0.0"
   },
   "prettier": "@tunnckocore/prettier-config",
   "eslintConfig": {

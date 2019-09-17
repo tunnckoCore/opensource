@@ -1,79 +1,27 @@
-// const os = require('os');
-// const path = require('path');
 const Module = require('module');
 
 const { pass, fail, skip } = require('create-jest-runner');
 
-// const utils = require('@tunnckocore/utils');
 const cosmiconfig = require('cosmiconfig');
 const { CLIEngine } = require('eslint');
 
-// const DEFAULT_IGNORE = [
-//   '**/node_modules/**',
-//   '**/bower_components/**',
-//   'flow-typed/**',
-//   'coverage/**',
-//   '{tmp,temp}/**',
-//   '**/*.min.js',
-//   '**/bundle.js',
-//   'vendor/**',
-//   'dist/**',
-// ];
-
-// const DEFAULT_EXTENSIONS = ['js', 'jsx', 'mjs', 'ts', 'tsx'];
-
 const explorer = cosmiconfig('jest-runner');
 
-// function normalizeOptions(options) {
-//   const result = explorer.searchSync(options.rootDir);
-//   const opts = Object.assign(
-//     {
-//       exit: true,
-//       warnings: false,
-//       reporter: 'codeframe',
-//       input: DEFAULT_INPUTS,
-//       ignore: DEFAULT_IGNORE,
-//       extensions: DEFAULT_EXTENSIONS,
-//     },
-//     options,
-//     result && result.config,
-//     {
-//       fix: true,
-//       cache: true,
-//       cacheLocation: path.join(os.homedir() || os.tmpdir(), '.xaxa-cache'),
-//       reportUnusedDisableDirectives: true,
-//       useEslintrc: false,
-//       baseConfig: {
-//         extends: ['@tunnckocore'],
-//       },
-//     },
-//   );
-
-//   const flat = (...args) => [].concat(...args).filter(Boolean);
-//   opts.input = flat(opts.input);
-//   opts.ignore = DEFAULT_IGNORE.concat(flat(opts.ignore));
-//   opts.extensions = flat(opts.extensions);
-
-//   return opts;
-// }
-
-module.exports = async ({ testPath }) => {
+module.exports = async ({ testPath, config }) => {
   const start = Date.now();
   const options = normalizeOptions(explorer.searchSync());
 
-  // if (config.setupTestFrameworkScriptFile) {
-  //   // eslint-disable-next-line import/no-dynamic-require,global-require
-  //   require(config.setupTestFrameworkScriptFile);
-  // }
-  // const opts = normalizeOptions({ ...extraOptions, rootDir: config.rootDir });
+  if (config.setupTestFrameworkScriptFile) {
+    // eslint-disable-next-line import/no-dynamic-require,global-require
+    require(config.setupTestFrameworkScriptFile);
+  }
 
   const engine = new CLIEngine(options.eslint);
 
   if (engine.isPathIgnored(testPath)) {
-    const end = Date.now();
     return skip({
       start,
-      end,
+      end: Date.now(),
       test: {
         path: testPath,
         title: 'ESLint',
@@ -87,7 +35,6 @@ module.exports = async ({ testPath }) => {
     CLIEngine.outputFixes(report);
   }
 
-  const end = Date.now();
   const message = engine.getFormatter(options.reporter)(
     options.quiet ? CLIEngine.getErrorResults(report.results) : report.results,
   );
@@ -95,7 +42,7 @@ module.exports = async ({ testPath }) => {
   if (report.errorCount > 0) {
     return fail({
       start,
-      end,
+      end: Date.now(),
       test: {
         path: testPath,
         title: 'ESLint',
@@ -110,7 +57,7 @@ module.exports = async ({ testPath }) => {
   if (tooManyWarnings) {
     return fail({
       start,
-      end,
+      end: Date.now(),
       test: {
         path: testPath,
         title: 'ESLint',
@@ -121,7 +68,7 @@ module.exports = async ({ testPath }) => {
 
   const result = pass({
     start,
-    end,
+    end: Date.now(),
     test: {
       path: testPath,
       title: 'ESLint',
