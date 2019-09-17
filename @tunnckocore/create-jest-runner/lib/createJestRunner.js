@@ -142,8 +142,18 @@ const createRunner = (runPath, { getExtraOptions } = {}) => {
       const runAllTests = Promise.all(
         tests.map(test =>
           runTestInWorker(test)
-            .then(testResult => onResult(test, testResult))
-            .catch(error => onError(error, test)),
+            .then(testResult => {
+              if (Array.isArray(testResult)) {
+                testResult.forEach(result =>
+                  result.errorMessage && result.stats.failures > 0
+                    ? onError(new Error(result.errorMessage), test)
+                    : onResult(test, result),
+                );
+                return;
+              }
+              onResult(test, testResult);
+            })
+            .catch(err => onError(err, test)),
         ),
       );
 
