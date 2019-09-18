@@ -1,13 +1,13 @@
-const Module = require('module');
+import Module from 'module';
 
-const { pass, fail, skip } = require('create-jest-runner');
+import { pass, fail, skip } from '@tunnckocore/create-jest-runner';
 
-const cosmiconfig = require('cosmiconfig');
-const { CLIEngine } = require('eslint');
+import cosmiconfig from 'cosmiconfig';
+import { CLIEngine } from 'eslint';
 
 const explorer = cosmiconfig('jest-runner');
 
-module.exports = async ({ testPath, config }) => {
+export default async function jestRunnerESLint({ testPath, config }) {
   const start = Date.now();
   const options = normalizeOptions(explorer.searchSync());
 
@@ -86,7 +86,7 @@ module.exports = async ({ testPath, config }) => {
   }
 
   return result;
-};
+}
 
 function normalizeOptions(val) {
   const cfg = val && val.config ? val.config : {};

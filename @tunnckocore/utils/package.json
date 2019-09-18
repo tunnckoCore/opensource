@@ -1,13 +1,13 @@
 {
-  "version": "0.4.1",
+  "version": "0.4.2",
   "name": "@tunnckocore/utils",
   "description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence with control for concurrency",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
   "homepage": "https://github.com/tunnckoCore/opensource",
   "license": "MPL-2.0",
   "licenseStart": 2019,
-  "main": "dist/main/index.js",
-  "module": "dist/module/index.js",
+  "main": "src/index.js",
+  "module": "src/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {},
   "publishConfig": {

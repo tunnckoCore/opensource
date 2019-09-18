@@ -10,7 +10,7 @@ const explorer = cosmiconfig('jest-runner');
 
 const isWin32 = os.platform() === 'win32';
 
-export default async ({ testPath, config }) => {
+export default async function jetRunnerBabel({ testPath, config }) {
   const start = new Date();
   let options = normalizeRunnerConfig(explorer.searchSync());
   const cfgs = [].concat(options.babel).filter(Boolean);
@@ -94,7 +94,7 @@ export default async ({ testPath, config }) => {
   );
 
   return testResults;
-};
+}
 
 function normalizeRunnerConfig(val) {
   const cfg = val && val.config ? val.config : {};
