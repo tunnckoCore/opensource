@@ -1,4 +1,4 @@
-const utils = require('./@tunnckocore/utils/src');
+const utils = require('@tunnckocore/utils');
 
 const { alias, exts } = utils.createAliases();
 
@@ -18,5 +18,5 @@ module.exports = {
   ],
   moduleNameMapper: alias,
   moduleFileExtensions: exts,
-  runner: './@tunnckocore/jest-runner-eslint/dist/main/index.js',
+  runner: '@tunnckocore/jest-runner-eslint',
 };

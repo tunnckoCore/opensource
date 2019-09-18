@@ -7,12 +7,16 @@ test('get extensions and workspaces - no workspaces', () => {
   const rootDir = path.dirname(__dirname);
   const result = getWorkspacesAndExtensions(rootDir);
 
-  /* {
-    workspaces: [],
-    extensions: ['.ts', '.tsx', '.jsx', '.js', '.mjs'],
-    exts: ['ts', 'tsx', 'jsx', 'js', 'mjs'],
-  } */
-  expect(result).toMatchSnapshot();
+  expect(result.workspaces).toStrictEqual([]);
+  expect(result.lerna).toStrictEqual({});
+  expect(result.exts).toStrictEqual(['tsx', 'ts', 'jsx', 'js', 'mjs']);
+  expect(result.extensions).toStrictEqual([
+    '.tsx',
+    '.ts',
+    '.jsx',
+    '.js',
+    '.mjs',
+  ]);
 });
 
 test('getWorkspacesAndExtensions - correct workspaces', () => {

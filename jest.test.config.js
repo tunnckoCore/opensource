@@ -1,4 +1,4 @@
-const utils = require('./@tunnckocore/utils/src');
+const utils = require('@tunnckocore/utils');
 
 const { alias, exts } = utils.createAliases();
 
