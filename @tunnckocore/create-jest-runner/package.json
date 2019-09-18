@@ -1,5 +1,5 @@
 {
-  "version": "0.5.4",
+  "version": "0.5.5",
   "name": "@tunnckocore/create-jest-runner",
   "description": "WIP",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
@@ -32,7 +32,6 @@
     "execa": "^1.0.0",
     "jest": "^24.0.0"
   },
-  "peerDependencies": {},
   "files": [
     "dist",
     "generator"

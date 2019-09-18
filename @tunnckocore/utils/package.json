@@ -1,5 +1,5 @@
 {
-  "version": "0.4.2",
+  "version": "0.5.0",
   "name": "@tunnckocore/utils",
   "description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence with control for concurrency",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
@@ -22,9 +22,6 @@
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "@tunnckocore/utils"
   },
-  "dependencies": {},
-  "devDependencies": {},
-  "peerDependencies": {},
   "files": [
     "dist"
   ],
