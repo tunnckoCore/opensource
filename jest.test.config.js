@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-const utils = require('@tunnckocore/utils');
+const utils = require('./@tunnckocore/utils/src');
 
 const { alias, exts } = utils.createAliases();
 

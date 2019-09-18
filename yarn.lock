@@ -2254,11 +2254,12 @@
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
     babel-preset-proposal-typescript "^1.4.1"
 
-"@tunnckocore/eslint-config@^4.1.4":
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/@tunnckocore/eslint-config/-/eslint-config-4.1.4.tgz#e6a58d6c9620579d1a55be2db28cd119d1a54e2a"
-  integrity sha512-0HJQ8AapHTvOq0erg3bzCLddqHe7/DNhCvaniXQg1Xr/lC3T7ew6zooIRQ1eDQ6VMRuyxVu5sQFZFR3/b3DuLQ==
+"@tunnckocore/eslint-config@^4.1.5":
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/eslint-config/-/eslint-config-4.1.5.tgz#ea6e63b60f8e9b0f088274ab0c3f74ccfc68b9ac"
+  integrity sha512-xLuXLQt9GLrcBJefdBucTdbFEZSgPXSRatXe7OrqoKYwGZEnC27jOB2TrfU8fB7cHIloP5ATx+r0Mp4BGaA2jA==
   dependencies:
+    "@tunnckocore/utils" "^0.5.1"
     "@typescript-eslint/eslint-plugin" "^2.3.0"
     "@typescript-eslint/parser" "^2.3.0"
     babel-eslint "^10.0.3"

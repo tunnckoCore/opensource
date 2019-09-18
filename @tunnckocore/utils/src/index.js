@@ -35,7 +35,9 @@ function createAliases(cwd = process.cwd(), sourceDirectory) {
 
       const packages = fs
         .readdirSync(workspace)
+        .filter((x) => !result.workspaces.find((z) => z.endsWith(x)))
         .map((directory) => {
+          // console.log(workspace);
           const pkgDirectory = path.join(workspace, directory);
           const pkgJsonPath = path.join(pkgDirectory, 'package.json');
 
@@ -47,15 +49,17 @@ function createAliases(cwd = process.cwd(), sourceDirectory) {
 
           /* istanbul ignore next */
           if (Object.keys(packageJson).length === 0) {
-            throw new Error(
-              `Cannot find package.json or cannot parse it: ${pkgJsonPath}`,
-            );
+            return null;
+            // throw new Error(
+            //   `Cannot find package.json or cannot parse it: ${pkgJsonPath}`,
+            // );
           }
           return [pkgDirectory, packageJson];
         });
 
-      return acc.concat(packages);
+      return acc.concat(packages).filter(Boolean);
     }, [])
+    .filter(Boolean)
     .reduce((acc, [pkgDirectory, packageJson]) => {
       if (typeof sourceDirectory === 'string') {
         acc[packageJson.name] = path.join(pkgDirectory, sourceDirectory);
@@ -86,7 +90,7 @@ function getWorkspacesAndExtensions(cwd = process.cwd()) {
     .filter(Boolean)
     .reduce((acc, ws) => acc.concat(ws.split(',')), [])
     .map((ws) => path.dirname(ws));
-
+  // console.log('workspaces', workspaces);
   let exts = [].concat(pkg.extensions).filter(Boolean);
 
   if (exts.length === 0) {
