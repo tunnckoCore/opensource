@@ -3,6 +3,7 @@
   "name": "@tunnckocore/opensource",
   "homepage": "https://github.com/tunnckocore/opensource",
   "workspaces": [
+    "shared/*",
     "packages/*",
     "@tunnckocore/*"
   ],
