@@ -2,6 +2,7 @@ import Module from 'module';
 
 import { pass, fail, skip } from '@tunnckocore/create-jest-runner';
 
+import { getExtensionsAndWorkspaces } from '@tunnckocore/utils';
 import cosmiconfig from 'cosmiconfig';
 import { CLIEngine } from 'eslint';
 
@@ -9,7 +10,7 @@ const explorer = cosmiconfig('jest-runner');
 
 export default async function jestRunnerESLint({ testPath, config }) {
   const start = Date.now();
-  const options = normalizeOptions(explorer.searchSync());
+  const options = normalizeOptions(explorer.searchSync(), config.rootDir);
 
   if (config.setupTestFrameworkScriptFile) {
     // eslint-disable-next-line import/no-dynamic-require,global-require
@@ -88,7 +89,8 @@ export default async function jestRunnerESLint({ testPath, config }) {
   return result;
 }
 
-function normalizeOptions(val) {
+function normalizeOptions(val, rootDir) {
+  const { extensions } = getExtensionsAndWorkspaces(rootDir);
   const cfg = val && val.config ? val.config : {};
   const eslintOptions = {
     // ignore: DEFAULT_IGNORE,
@@ -96,8 +98,7 @@ function normalizeOptions(val) {
     warnings: false,
     maxWarnings: 10,
     reporter: 'codeframe',
-    // eslint-disable-next-line no-underscore-dangle
-    extensions: Object.keys(Module._extensions),
+    extensions,
     fix: true,
     reportUnusedDisableDirectives: true,
     ...cfg.eslint,
