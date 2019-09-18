@@ -72,7 +72,7 @@ function getWorkspacesAndExtensions(cwd = process.cwd()) {
   const workspaces = [].concat(rootLerna.packages || rootPackage.workspaces || []).filter(x => typeof x === 'string').filter(Boolean).reduce((acc, ws) => acc.concat(ws.split(',')), []).map(ws => path.dirname(ws));
   let exts = [].concat(rootPackage.extensions).filter(Boolean);
 
-  if (exts.length > 0) {
+  if (exts.length === 0) {
     exts = ['ts', 'tsx', ...EXTENSIONS];
   }
 

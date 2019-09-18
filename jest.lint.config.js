@@ -1,3 +1,7 @@
+const utils = require('./@tunnckocore/utils/src');
+
+const { alias, exts } = utils.createAliases();
+
 module.exports = {
   displayName: 'lint',
   rootDir: __dirname,
@@ -7,7 +11,12 @@ module.exports = {
   ],
   testPathIgnorePatterns: [
     /node_modules/.toString(),
-    /.+\/fixtures\/.+/.toString(),
+    /.+\/fixtures?\/.+/.toString(),
+    /.+\/__fixtures?__\/.+/.toString(),
+    /.+\/support\/.+/.toString(),
+    /.+\/__support__\/.+/.toString(),
   ],
+  moduleNameMapper: alias,
+  moduleFileExtensions: exts,
   runner: './@tunnckocore/jest-runner-eslint/dist/main/index.js',
 };

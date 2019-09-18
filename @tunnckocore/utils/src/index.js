@@ -83,7 +83,7 @@ function getWorkspacesAndExtensions(cwd = process.cwd()) {
 
   let exts = [].concat(rootPackage.extensions).filter(Boolean);
 
-  if (exts.length > 0) {
+  if (exts.length === 0) {
     exts = ['ts', 'tsx', ...EXTENSIONS];
   }
   exts = exts.map((extension) =>

@@ -35,7 +35,7 @@ test('createAliases return correct aliases', () => {
 
   // eslint-disable-next-line unicorn/consistent-function-scoping
   const toAliases = (src) =>
-    ['@hela/foo2', '@tunnckocore/qux'].reduce((acc, name) => {
+    ['@hela/fab', '@tunnckocore/qux'].reduce((acc, name) => {
       acc[name] = path.join(cwd, name, src);
       return acc;
     }, {});
