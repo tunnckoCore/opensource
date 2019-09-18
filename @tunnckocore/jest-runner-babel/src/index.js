@@ -1,3 +1,3 @@
-const { createJestRunner } = require('@tunnckocore/create-jest-runner');
+import { createJestRunner } from '@tunnckocore/create-jest-runner';
 
-module.exports = createJestRunner(require.resolve('./runner'));
+export default createJestRunner(require.resolve('./runner'));

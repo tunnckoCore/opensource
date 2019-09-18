@@ -1,4 +1,4 @@
-const runner = require('../src/index');
+import runner from '../src';
 
 test('todo', () => {
   expect(typeof runner).toStrictEqual('function');

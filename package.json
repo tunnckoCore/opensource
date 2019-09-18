@@ -11,17 +11,20 @@
     "setup:ci": "yarn --frozen-lockfile && lerna bootstrap",
     "fresh": "lerna clean -y && rm -rf node_modules && yarn setup",
     "pre-commit": "jest -c jest.config.js",
-    "build": "jest -c jest.build.config.js",
+    "lint": "jest -c jest.lint.config.js",
     "test": "jest -c jest.test.config.js",
-    "lint": "jest -c jest.lint.config.js"
+    "build": "jest -c jest.build.config.js"
   },
   "dependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "@tunnckocore/babel-preset": "^0.2.1",
     "@tunnckocore/eslint-config": "^4.1.4",
     "@tunnckocore/prettier-config": "^0.2.2",
     "@tunnckocore/typescript-config": "^0.3.1",
+    "babel-plugin-add-module-exports": "^1.0.2",
     "eslint": "^6.4.0",
     "jest": "^24.9.0",
     "lerna": "^3.16.4",

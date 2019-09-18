@@ -1,15 +1,16 @@
-const os = require('os');
-const fs = require('fs');
-const path = require('path');
-const { pass, fail } = require('@tunnckocore/create-jest-runner');
-const { transformFileSync } = require('@babel/core');
-const cosmiconfig = require('cosmiconfig');
+import os from 'os';
+import fs from 'fs';
+import path from 'path';
+
+import { pass, fail } from '@tunnckocore/create-jest-runner';
+import { transformFileSync } from '@babel/core';
+import cosmiconfig from 'cosmiconfig';
 
 const explorer = cosmiconfig('jest-runner');
 
 const isWin32 = os.platform() === 'win32';
 
-module.exports = async ({ testPath, config }) => {
+export default async ({ testPath, config }) => {
   const start = new Date();
   let options = normalizeRunnerConfig(explorer.searchSync());
   const cfgs = [].concat(options.babel).filter(Boolean);

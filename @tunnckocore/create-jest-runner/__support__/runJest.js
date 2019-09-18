@@ -5,8 +5,8 @@ const { stripColor } = require('ansi-colors');
 
 const rootDir = path.dirname(__dirname);
 
-const normalize = (output) =>
-  output
+function normalize(output) {
+  return output
     .replace(/\(?\d*\.?\d+m?s\)?/g, '')
     .replace(/, estimated/g, '')
     .replace(new RegExp(rootDir, 'g'), '/mocked-path-to-jest-runner-mocha')
@@ -14,8 +14,9 @@ const normalize = (output) =>
     .replace(/.*at .*\\n/g, 'mocked-stack-trace')
     .replace(/(mocked-stack-trace)+/, '      at mocked-stack-trace')
     .replace(/\s+\n/g, '\n');
+}
 
-const runJest = (project, options = []) => {
+export default function runJest(project, options = []) {
   // eslint-disable-next-line no-undef
   jest.setTimeout(15000);
 
@@ -37,6 +38,4 @@ const runJest = (project, options = []) => {
     ({ stdout, stderr }) =>
       `${stripColor(normalize(stderr))}\n${stripColor(normalize(stdout))}`,
   );
-};
-
-module.exports = runJest;
+}

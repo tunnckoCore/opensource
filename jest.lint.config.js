@@ -9,5 +9,5 @@ module.exports = {
     /node_modules/.toString(),
     /.+\/fixtures\/.+/.toString(),
   ],
-  runner: './@tunnckocore/jest-runner-eslint/src/index.js',
+  runner: './@tunnckocore/jest-runner-eslint/dist/main/index.js',
 };
