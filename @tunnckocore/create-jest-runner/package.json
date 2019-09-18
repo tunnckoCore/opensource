@@ -1,25 +1,26 @@
 {
-  "name": "create-jest-runner",
-  "version": "0.5.3",
-  "main": "build/index.js",
-  "author": "Rogelio Guzman <rogelioguzmanh@gmail.com>",
-  "description": "A simple way of creating a Jest runner",
-  "license": "MIT",
-  "repository": "https://github.com/rogeliog/create-jest-runner.git",
-  "homepage": "https://github.com/rogeliog/create-jest-runner",
-  "files": [
-    "build/",
-    "generator/"
-  ],
-  "scripts": {
-    "pre-commit": "yarn test && yarn lint",
-    "pretest": "yarn build",
-    "test": "jest --no-colors",
-    "lint": "eslint . --fix",
-    "watch": "babel lib -w --ignore **/*.test.js,integration -d build",
-    "build": "babel lib --ignore **/*.test.js,integration -d build",
-    "prepublishOnly": "yarn pre-commit",
-    "format": "prettier --single-quote --trailing-comma all --write \"!(build)/**/*.js\""
+  "version": "0.5.4",
+  "name": "@tunnckocore/create-jest-runner",
+  "description": "WIP",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+  "homepage": "https://github.com/tunnckoCore/opensource",
+  "license": "MPL-2.0",
+  "licenseStart": 2019,
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {},
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "engines": {
+    "node": ">=8.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@tunnckocore/create-jest-runner"
   },
   "dependencies": {
     "chalk": "^2.4.2",
@@ -27,20 +28,15 @@
     "throat": "^4.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "babel-jest": "^24.0.0",
-    "eslint": "^5.6.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jest": "^22.2.2",
-    "eslint-plugin-prettier": "^3.0.1",
+    "ansi-colors": "^4.1.1",
     "execa": "^1.0.0",
-    "jest": "^24.0.0",
-    "prettier": "^1.7.4"
+    "jest": "^24.0.0"
   },
+  "peerDependencies": {},
+  "files": [
+    "dist",
+    "generator"
+  ],
   "bin": {
     "create-jest-runner": "./generator/index.js"
   }

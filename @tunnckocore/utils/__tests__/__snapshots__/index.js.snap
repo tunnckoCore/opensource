@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`get extensions and workspaces - no workspaces 1`] = `
+Object {
+  "extensions": Array [],
+  "exts": Array [],
+  "workspaces": Array [],
+}
+`;
+
+exports[`getWorkspacesAndExtensions - correct workspaces 1`] = `
+Object {
+  "extensions": Array [
+    ".ts",
+    ".tsx",
+    ".js",
+    ".json",
+    ".node",
+    ".mjs",
+    ".jsx",
+  ],
+  "exts": Array [
+    "ts",
+    "tsx",
+    "js",
+    "json",
+    "node",
+    "mjs",
+    "jsx",
+  ],
+  "workspaces": Array [
+    "@tunnckocore",
+    "@hela",
+  ],
+}
+`;

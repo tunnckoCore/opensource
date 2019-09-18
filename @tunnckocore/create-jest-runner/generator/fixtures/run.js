@@ -1,5 +1,6 @@
 const fs = require('fs');
-const { pass, fail } = require('create-jest-runner');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const { pass, fail } = require('@tunnckocore/create-jest-runner');
 
 module.exports = ({ testPath }) => {
   const start = Date.now();

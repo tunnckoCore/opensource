@@ -2237,15 +2237,6 @@
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
     babel-preset-proposal-typescript "^1.4.1"
 
-"@tunnckocore/create-jest-runner@^0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@tunnckocore/create-jest-runner/-/create-jest-runner-0.5.4.tgz#212a2d5f2e0e14ab984070ed1fd279b15981d14f"
-  integrity sha512-GWRiqCfNTYU60OCa4251hvATQm+0uZ3mtDjb7nLa/U8OnVMkbgGZDeJYh4cLr4+2LLwY4uPTS/oqqMCdT1ADYQ==
-  dependencies:
-    chalk "^2.4.2"
-    jest-worker "^24.0.0"
-    throat "^4.1.0"
-
 "@tunnckocore/eslint-config@^4.1.4":
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/@tunnckocore/eslint-config/-/eslint-config-4.1.4.tgz#e6a58d6c9620579d1a55be2db28cd119d1a54e2a"
@@ -2607,6 +2598,11 @@ always-done@^1.1.0:
     on-stream-end "^1.0.0"
     stream-exhaust "^1.0.1"
     try-catch-core "^2.0.2"
+
+ansi-colors@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.1.tgz#cbb9ae256bf750af1eab344f229aa27fe94ba348"
+  integrity sha512-JoX0apGbHaUJBNl6yF+p6JAFYZ666/hhCGKN5t9QFjbJQKUU/g8MNbFDbvfrgKXvI1QpZplPOnwIo99lX/AAmA==
 
 ansi-escapes@^3.0.0, ansi-escapes@^3.2.0:
   version "3.2.0"
@@ -6802,7 +6798,7 @@ jest-worker@^24.0.0, jest-worker@^24.6.0, jest-worker@^24.9.0:
     merge-stream "^2.0.0"
     supports-color "^6.1.0"
 
-jest@^24.9.0:
+jest@^24.0.0, jest@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest/-/jest-24.9.0.tgz#987d290c05a08b52c56188c1002e368edb007171"
   integrity sha512-YvkBL1Zm7d2B1+h5fHEOdyjCG+sGMz4f8D86/0HiqJ6MB4MnDc8FgP5vdWsGnemOQro7lnYo8UakZ3+5A0jxGw==
