@@ -104,7 +104,7 @@ async function jestRunnerESLint({
 function normalizeOptions(val, rootDir) {
   const {
     extensions
-  } = (0, _utils.getExtensionsAndWorkspaces)(rootDir);
+  } = (0, _utils.getWorkspacesAndExtensions)(rootDir);
   const cfg = val && val.config ? val.config : {};
 
   const eslintOptions = _objectSpread({

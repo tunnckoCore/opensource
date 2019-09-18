@@ -1,6 +1,6 @@
 import { pass, fail, skip } from '@tunnckocore/create-jest-runner';
 
-import { getExtensionsAndWorkspaces } from '@tunnckocore/utils';
+import { getWorkspacesAndExtensions } from '@tunnckocore/utils';
 import cosmiconfig from 'cosmiconfig';
 import { CLIEngine } from 'eslint';
 
@@ -88,7 +88,7 @@ export default async function jestRunnerESLint({ testPath, config }) {
 }
 
 function normalizeOptions(val, rootDir) {
-  const { extensions } = getExtensionsAndWorkspaces(rootDir);
+  const { extensions } = getWorkspacesAndExtensions(rootDir);
   const cfg = val && val.config ? val.config : {};
   const eslintOptions = {
     // ignore: DEFAULT_IGNORE,
