@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-eslint@0.2.0...@tunnckocore/jest-runner-eslint@0.2.1) (2019-09-18)
+
+
+### Bug Fixes
+
+* use utils in eslint for getting extensions ([fc4cdf7](https://github.com/tunnckoCore/opensource/commit/fc4cdf7))
+
+
+
+
+
 # 0.2.0 (2019-09-18)
 
 

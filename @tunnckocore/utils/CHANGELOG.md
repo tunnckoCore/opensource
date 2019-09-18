@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@0.5.0...@tunnckocore/utils@0.5.1) (2019-09-18)
+
+
+### Bug Fixes
+
+* **@tunnckocore/utils:** update tests ([58b6c82](https://github.com/tunnckoCore/opensource/commit/58b6c82))
+
+
+
+
+
 # 0.5.0 (2019-09-18)
 
 
