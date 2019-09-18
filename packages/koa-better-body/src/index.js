@@ -5,9 +5,7 @@
  * Released under the MIT license.
  */
 
-'use strict'
-
-var utils = require('./utils')
+import { defaultOptions, setParsers, isValid, parseBody } from './utils';
 
 /**
  * > Robust body parser for [koa][]@1, also works for `koa@2` (with deprecations).
@@ -37,22 +35,23 @@ var utils = require('./utils')
  * @api public
  */
 
-module.exports = function koaBetterBody (options) {
-  options = utils.defaultOptions(options)
+export default function koaBetterBody(options) {
+  const opts = defaultOptions(options);
 
-  return function * plugin (next) {
-    if (options.strict && !utils.isValid(this.method)) {
-      return yield * next
+  // eslint-disable-next-line consistent-return
+  return function* plugin(next) {
+    if (opts.strict && !isValid(this.method)) {
+      return yield* next;
     }
 
     try {
-      utils.setParsers(this, options)
-      yield * utils.parseBody(this, options, next)
+      setParsers(this, opts);
+      yield* parseBody(this, opts, next);
     } catch (err) {
-      if (!options.onerror) throw err
-      options.onerror(err, this)
+      if (!opts.onError) throw err;
+      opts.onError(err, this);
     }
 
-    yield * next
-  }
+    yield* next;
+  };
 }

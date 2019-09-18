@@ -18,7 +18,7 @@ module.exports = {
     /.+\/__shared__\/.+/.toString(),
 
     // ! todo remove when fixed
-    /koa-better-body/.toString(),
+    // /koa-better-body/.toString(),
   ],
   moduleNameMapper: alias,
   moduleFileExtensions: exts,

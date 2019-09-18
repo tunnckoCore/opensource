@@ -6,7 +6,7 @@ module.exports = {
   displayName: 'build',
   rootDir: __dirname,
   testMatch: [
-    // '<rootDir>/packages/*/src/**/*',
+    '<rootDir>/packages/*/src/**/*',
     '<rootDir>/@tunnckocore/*/src/**/*',
   ],
   testPathIgnorePatterns: [
