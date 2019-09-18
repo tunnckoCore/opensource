@@ -4,8 +4,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import Module from 'module';
 import { pass, fail, skip } from '@tunnckocore/create-jest-runner';
+import { getExtensionsAndWorkspaces } from '@tunnckocore/utils';
 import cosmiconfig from 'cosmiconfig';
 import { CLIEngine } from 'eslint';
 const explorer = cosmiconfig('jest-runner');
@@ -14,7 +14,7 @@ export default async function jestRunnerESLint({
   config
 }) {
   const start = Date.now();
-  const options = normalizeOptions(explorer.searchSync());
+  const options = normalizeOptions(explorer.searchSync(), config.rootDir);
 
   if (config.setupTestFrameworkScriptFile) {
     require(config.setupTestFrameworkScriptFile);
@@ -87,7 +87,10 @@ export default async function jestRunnerESLint({
   return result;
 }
 
-function normalizeOptions(val) {
+function normalizeOptions(val, rootDir) {
+  const {
+    extensions
+  } = getExtensionsAndWorkspaces(rootDir);
   const cfg = val && val.config ? val.config : {};
 
   const eslintOptions = _objectSpread({
@@ -95,7 +98,7 @@ function normalizeOptions(val) {
     warnings: false,
     maxWarnings: 10,
     reporter: 'codeframe',
-    extensions: Object.keys(Module._extensions),
+    extensions,
     fix: true,
     reportUnusedDisableDirectives: true
   }, cfg.eslint, {

@@ -1,5 +1,3 @@
-import Module from 'module';
-
 import { pass, fail, skip } from '@tunnckocore/create-jest-runner';
 
 import { getExtensionsAndWorkspaces } from '@tunnckocore/utils';

@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = jestRunnerESLint;
 
-var _module = _interopRequireDefault(require("module"));
-
 var _createJestRunner = require("@tunnckocore/create-jest-runner");
+
+var _utils = require("@tunnckocore/utils");
 
 var _cosmiconfig = _interopRequireDefault(require("cosmiconfig"));
 
@@ -28,7 +28,7 @@ async function jestRunnerESLint({
   config
 }) {
   const start = Date.now();
-  const options = normalizeOptions(explorer.searchSync());
+  const options = normalizeOptions(explorer.searchSync(), config.rootDir);
 
   if (config.setupTestFrameworkScriptFile) {
     require(config.setupTestFrameworkScriptFile);
@@ -101,7 +101,10 @@ async function jestRunnerESLint({
   return result;
 }
 
-function normalizeOptions(val) {
+function normalizeOptions(val, rootDir) {
+  const {
+    extensions
+  } = (0, _utils.getExtensionsAndWorkspaces)(rootDir);
   const cfg = val && val.config ? val.config : {};
 
   const eslintOptions = _objectSpread({
@@ -109,7 +112,7 @@ function normalizeOptions(val) {
     warnings: false,
     maxWarnings: 10,
     reporter: 'codeframe',
-    extensions: Object.keys(_module.default._extensions),
+    extensions,
     fix: true,
     reportUnusedDisableDirectives: true
   }, cfg.eslint, {
