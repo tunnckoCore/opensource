@@ -1,0 +1,16 @@
+{
+    "name": "generated-jest-runner",
+    "version": "1.0.0",
+    "description": "A generated jest runner",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "jest": {
+        "runner": "./test/runner"
+    },
+    "dependencies": {
+        "jest": "^24.6.0",
+        "create-jest-runner": "^0.5.0"
+    }
+}

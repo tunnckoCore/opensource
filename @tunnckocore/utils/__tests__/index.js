@@ -2,15 +2,10 @@ const path = require('path');
 const { getWorkspacesAndExtensions, createAliases } = require('../src/index');
 
 test('get extensions and workspaces - no workspaces', () => {
-  const cwd = path.dirname(path.dirname(__dirname));
+  const cwd = path.dirname(__dirname);
 
   const result = getWorkspacesAndExtensions(cwd);
-
-  expect(result).toStrictEqual({
-    workspaces: [],
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs'],
-    exts: ['js', 'jsx', 'ts', 'tsx', 'mjs'],
-  });
+  expect(result).toMatchSnapshot();
 });
 
 test('getWorkspacesAndExtensions - correct workspaces', () => {
@@ -18,22 +13,19 @@ test('getWorkspacesAndExtensions - correct workspaces', () => {
 
   const result = getWorkspacesAndExtensions(cwd);
 
-  expect(result).toStrictEqual({
-    workspaces: ['@tunnckocore', '@hela'],
-    extensions: ['.js', '.ts'],
-    exts: ['js', 'ts'],
-  });
+  expect(result).toMatchSnapshot();
 });
 
 test('createAliases return empty alias object', () => {
-  const cwd = path.dirname(path.dirname(__dirname));
+  const cwd = path.dirname(__dirname);
   const result = createAliases(cwd);
 
   expect(result).toStrictEqual({
-    cwd,
     alias: {},
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs'],
-    exts: ['js', 'jsx', 'ts', 'tsx', 'mjs'],
+    cwd,
+    extensions: [],
+    exts: [],
+    workspaces: [],
   });
 });
 
@@ -43,25 +35,27 @@ test('createAliases return correct aliases', () => {
 
   // eslint-disable-next-line unicorn/consistent-function-scoping
   const toAliases = (src) =>
-    ['@hela/foo2', '@tunnckocore/barry'].reduce((acc, name) => {
+    ['@hela/foo2', '@tunnckocore/qux'].reduce((acc, name) => {
       acc[name] = path.join(cwd, name, src);
       return acc;
     }, {});
 
+  // // ! todo
+
   expect(result).toStrictEqual({
+    alias: toAliases(''),
     cwd,
-    // { '@hela/foo': 'full/file/path/to/@hela/foo/src'}
-    alias: toAliases('src'),
-    extensions: ['.js', '.ts'],
-    exts: ['js', 'ts'],
+    extensions: ['.ts', '.tsx', '.js', '.json', '.node', '.mjs', '.jsx'],
+    exts: ['ts', 'tsx', 'js', 'json', 'node', 'mjs', 'jsx'],
+    workspaces: ['@tunnckocore', '@hela'],
   });
 
   const res = createAliases(cwd, 'source');
-
   expect(res).toStrictEqual({
-    cwd,
     alias: toAliases('source'),
-    extensions: ['.js', '.ts'],
-    exts: ['js', 'ts'],
+    cwd,
+    extensions: ['.ts', '.tsx', '.js', '.json', '.node', '.mjs', '.jsx'],
+    exts: ['ts', 'tsx', 'js', 'json', 'node', 'mjs', 'jsx'],
+    workspaces: ['@tunnckocore', '@hela'],
   });
 });

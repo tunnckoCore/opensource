@@ -5,7 +5,7 @@ const Module = require('module');
 /* eslint-disable import/no-dynamic-require, global-require */
 
 // eslint-disable-next-line no-underscore-dangle
-const EXTENSIONS = Object.keys(Module._extensions);
+const EXTENSIONS = Object.keys(Module._extensions).concat('.jsx');
 
 module.exports = { createAliases, getWorkspacesAndExtensions, isMonorepo };
 

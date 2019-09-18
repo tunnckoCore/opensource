@@ -1,0 +1,43 @@
+{
+  "version": "0.5.4",
+  "name": "@tunnckocore/create-jest-runner",
+  "description": "WIP",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+  "homepage": "https://github.com/tunnckoCore/opensource",
+  "license": "MPL-2.0",
+  "licenseStart": 2019,
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {},
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "engines": {
+    "node": ">=8.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@tunnckocore/create-jest-runner"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "jest-worker": "^24.0.0",
+    "throat": "^4.1.0"
+  },
+  "devDependencies": {
+    "ansi-colors": "^4.1.1",
+    "execa": "^1.0.0",
+    "jest": "^24.0.0"
+  },
+  "peerDependencies": {},
+  "files": [
+    "dist",
+    "generator"
+  ],
+  "bin": {
+    "create-jest-runner": "./generator/index.js"
+  }
+}
