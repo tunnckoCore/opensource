@@ -2,35 +2,78 @@
 
 exports[`get extensions and workspaces - no workspaces 1`] = `
 Object {
-  "extensions": Array [],
-  "exts": Array [],
-  "workspaces": Array [],
-}
-`;
-
-exports[`getWorkspacesAndExtensions - correct workspaces 1`] = `
-Object {
   "extensions": Array [
-    ".ts",
     ".tsx",
-    ".js",
-    ".json",
-    ".node",
-    ".mjs",
+    ".ts",
     ".jsx",
+    ".js",
+    ".mjs",
   ],
   "exts": Array [
-    "ts",
     "tsx",
-    "js",
-    "json",
-    "node",
-    "mjs",
+    "ts",
     "jsx",
+    "js",
+    "mjs",
   ],
-  "workspaces": Array [
-    "@tunnckocore",
-    "@hela",
-  ],
+  "lerna": Object {},
+  "lernaPath": "/home/charlike/github/tunnckoCore/opensource/@tunnckocore/utils/lerna.json",
+  "packagePath": "/home/charlike/github/tunnckoCore/opensource/@tunnckocore/utils/package.json",
+  "pkg": Object {
+    "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+    "dependencies": Object {},
+    "description": "Thin layer on top of \`execa\` that allows executing multiple commands in parallel or in sequence with control for concurrency",
+    "devDependencies": Object {},
+    "engines": Object {
+      "node": ">=8.11",
+    },
+    "files": Array [
+      "dist",
+    ],
+    "homepage": "https://github.com/tunnckoCore/opensource",
+    "keywords": Array [
+      "tunnckocorehq",
+      "develop",
+      "parallel",
+      "series",
+      "concurrency",
+      "sequence",
+      "exec",
+      "child",
+      "process",
+      "execute",
+      "fork",
+      "execfile",
+      "execa",
+      "spawn",
+      "file",
+      "shell",
+      "bin",
+      "binary",
+      "binaries",
+      "npm",
+      "path",
+      "local",
+    ],
+    "license": "MPL-2.0",
+    "licenseStart": 2019,
+    "main": "src/index.js",
+    "module": "src/index.js",
+    "name": "@tunnckocore/utils",
+    "peerDependencies": Object {},
+    "publishConfig": Object {
+      "access": "public",
+      "tag": "latest",
+    },
+    "repository": Object {
+      "directory": "@tunnckocore/utils",
+      "type": "git",
+      "url": "https://github.com/tunnckoCore/opensource.git",
+    },
+    "scripts": Object {},
+    "types": "dist/types/index.d.ts",
+    "version": "0.4.2",
+  },
+  "workspaces": Array [],
 }
 `;

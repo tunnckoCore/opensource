@@ -1,6 +1,8 @@
 {
+  "name": "lerna-monorepo",
   "extensions": [
     "js",
+    "jsx",
     "ts"
   ]
 }

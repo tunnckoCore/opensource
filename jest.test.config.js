@@ -1,3 +1,7 @@
+const utils = require('./@tunnckocore/utils/src');
+
+const { alias, exts } = utils.createAliases();
+
 module.exports = {
   displayName: 'test',
   rootDir: __dirname,
@@ -15,5 +19,7 @@ module.exports = {
     // ! todo remove when fixed
     /koa-better-body/.toString(),
   ],
+  // moduleNameMapper: alias,
+  // moduleFileExtensions: exts,
   // runner: './@tunnckocore/jest-runner-babel/src/index.js',
 };

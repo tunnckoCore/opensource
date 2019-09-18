@@ -1,61 +1,95 @@
+'use strict';
+
 const path = require('path');
-const { getWorkspacesAndExtensions, createAliases } = require('../src/index');
+const { isMonorepo, getWorkspacesAndExtensions, createAliases } = require('..');
 
 test('get extensions and workspaces - no workspaces', () => {
-  const cwd = path.dirname(__dirname);
+  const rootDir = path.dirname(__dirname);
+  const result = getWorkspacesAndExtensions(rootDir);
 
-  const result = getWorkspacesAndExtensions(cwd);
+  /* {
+    workspaces: [],
+    extensions: ['.ts', '.tsx', '.jsx', '.js', '.mjs'],
+    exts: ['ts', 'tsx', 'jsx', 'js', 'mjs'],
+  } */
   expect(result).toMatchSnapshot();
 });
 
 test('getWorkspacesAndExtensions - correct workspaces', () => {
-  const cwd = path.join(__dirname, 'fixtures', 'lerna');
+  const rootDir = path.join(__dirname, 'fixtures', 'lerna');
 
-  const result = getWorkspacesAndExtensions(cwd);
+  const result = getWorkspacesAndExtensions(rootDir);
 
-  expect(result).toMatchSnapshot();
-});
-
-test('createAliases return empty alias object', () => {
-  const cwd = path.dirname(__dirname);
-  const result = createAliases(cwd);
-
-  expect(result).toStrictEqual({
-    alias: {},
-    cwd,
-    extensions: [],
-    exts: [],
-    workspaces: [],
+  expect(result.workspaces).toStrictEqual(['@tunnckocore', '@helios']);
+  expect(result.extensions).toStrictEqual(['.js', '.jsx', '.ts']);
+  expect(result.exts).toStrictEqual(['js', 'jsx', 'ts']);
+  expect(result.lerna).toStrictEqual({
+    packages: ['@tunnckocore/*', '@helios/*'],
+  });
+  expect(result.pkg).toStrictEqual({
+    name: 'lerna-monorepo',
+    extensions: result.exts,
   });
 });
 
-test('createAliases return correct aliases', () => {
-  const cwd = path.join(__dirname, 'fixtures', 'yarn-workspaces');
+test('createAliases return empty alias object', () => {
+  const cwd = path.dirname(path.dirname(__dirname));
   const result = createAliases(cwd);
+
+  expect(result.alias).toStrictEqual({});
+});
+
+test('createAliases return correct aliases for yarn workspaces', () => {
+  const yarnRoot = path.join(__dirname, 'fixtures', 'yarn-workspaces');
+  const result = createAliases(yarnRoot);
 
   // eslint-disable-next-line unicorn/consistent-function-scoping
   const toAliases = (src) =>
     ['@hela/fab', '@tunnckocore/qux'].reduce((acc, name) => {
-      acc[name] = path.join(cwd, name, src);
+      acc[name] = path.join(yarnRoot, name, src);
       return acc;
     }, {});
 
-  // // ! todo
-
-  expect(result).toStrictEqual({
-    alias: toAliases(''),
-    cwd,
-    extensions: ['.ts', '.tsx', '.js', '.json', '.node', '.mjs', '.jsx'],
-    exts: ['ts', 'tsx', 'js', 'json', 'node', 'mjs', 'jsx'],
-    workspaces: ['@tunnckocore', '@hela'],
+  expect(result.alias).toStrictEqual(toAliases('src'));
+  expect(result.lerna).toStrictEqual({});
+  expect(result.exts).toStrictEqual(['js', 'ts']);
+  expect(result.pkg).toStrictEqual({
+    extensions: result.exts,
+    workspaces: ['@tunnckocore/*', '@hela/*'],
   });
+  expect(result.lernaPath).toStrictEqual(path.join(yarnRoot, 'lerna.json'));
+  expect(result.packagePath).toStrictEqual(path.join(yarnRoot, 'package.json'));
+});
 
-  const res = createAliases(cwd, 'source');
-  expect(res).toStrictEqual({
-    alias: toAliases('source'),
-    cwd,
-    extensions: ['.ts', '.tsx', '.js', '.json', '.node', '.mjs', '.jsx'],
-    exts: ['ts', 'tsx', 'js', 'json', 'node', 'mjs', 'jsx'],
-    workspaces: ['@tunnckocore', '@hela'],
+test('createAliases return correct aliases for Lerna workspaces', () => {
+  const lernaRoot = path.join(__dirname, 'fixtures', 'lerna');
+  const res = createAliases(lernaRoot);
+
+  // eslint-disable-next-line unicorn/consistent-function-scoping
+  const toAliases = (src) =>
+    ['@helios/foo', '@tunnckocore/barry'].reduce((acc, name) => {
+      acc[name] = path.join(lernaRoot, name, src);
+      return acc;
+    }, {});
+
+  expect(res.alias).toStrictEqual(toAliases(''));
+  expect(res.lerna).toStrictEqual({
+    packages: ['@tunnckocore/*', '@helios/*'],
   });
+  expect(res.exts).toStrictEqual(['js', 'jsx', 'ts']);
+  expect(res.pkg).toStrictEqual({
+    name: 'lerna-monorepo',
+    extensions: ['js', 'jsx', 'ts'],
+  });
+  expect(res.lernaPath).toStrictEqual(path.join(lernaRoot, 'lerna.json'));
+  expect(res.packagePath).toStrictEqual(path.join(lernaRoot, 'package.json'));
+});
+
+test('isMonorepo - true for workspaces root', () => {
+  const lernaRepo = path.join(__dirname, 'fixtures', 'lerna');
+  expect(isMonorepo(lernaRepo)).toStrictEqual(true);
+});
+
+test('isMonorepo - false regular repository', () => {
+  expect(isMonorepo(path.dirname(__dirname))).toStrictEqual(false);
 });

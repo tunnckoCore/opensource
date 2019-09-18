@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const Module = require('module');
 
-/* eslint-disable import/no-dynamic-require, global-require */
-
 // eslint-disable-next-line no-underscore-dangle
-const EXTENSIONS = Object.keys(Module._extensions).concat('.jsx');
+const EXTENSIONS = Object.keys(Module._extensions).filter(
+  (x) => x !== '.json' && x !== '.node',
+);
 
 module.exports = { createAliases, getWorkspacesAndExtensions, isMonorepo };
 
@@ -25,9 +25,10 @@ function isMonorepo(cwd = process.cwd()) {
  * We just don't use regex, we precompute them.
  */
 function createAliases(cwd = process.cwd(), sourceDirectory) {
-  const { workspaces, extensions, exts } = getWorkspacesAndExtensions(cwd);
+  // const { workspaces, extensions, exts } = getWorkspacesAndExtensions(cwd);
+  const result = getWorkspacesAndExtensions(cwd);
 
-  const alias = workspaces
+  const alias = result.workspaces
     .filter(Boolean)
     .reduce((acc, ws) => {
       const workspace = path.join(cwd, ws);
@@ -42,7 +43,13 @@ function createAliases(cwd = process.cwd(), sourceDirectory) {
         })
         .map(({ pkgDirectory, pkgJsonPath }) => {
           // package specific package.json
-          const packageJson = require(pkgJsonPath);
+          const packageJson = parseJson(pkgJsonPath, 'utf8');
+
+          if (Object.keys(packageJson).length === 0) {
+            throw new Error(
+              `Cannot find package.json or cannot parse it: ${pkgJsonPath}`,
+            );
+          }
           return [pkgDirectory, packageJson];
         });
 
@@ -58,33 +65,31 @@ function createAliases(cwd = process.cwd(), sourceDirectory) {
       return acc;
     }, {});
 
-  return {
-    cwd,
-    extensions,
-    exts,
-    alias,
-    workspaces,
-  };
+  return { ...result, alias };
+}
+
+function parseJson(fp) {
+  return fs.existsSync(fp) ? JSON.parse(fs.readFileSync(fp, 'utf8')) : {};
 }
 
 function getWorkspacesAndExtensions(cwd = process.cwd()) {
   const fromRoot = (...x) => path.resolve(cwd, ...x);
-  const rootPackage = require(fromRoot('package.json'));
-  const rootLerna = fs.existsSync(fromRoot('lerna.json'))
-    ? require(fromRoot('lerna.json'))
-    : {};
+  const packagePath = fromRoot('package.json');
+  const lernaPath = fromRoot('lerna.json');
+  const pkg = parseJson(packagePath);
+  const lerna = parseJson(lernaPath);
 
   const workspaces = []
-    .concat(rootLerna.packages || (rootPackage.workspaces || []))
+    .concat(lerna.packages || (pkg.workspaces || []))
     .filter((x) => typeof x === 'string')
     .filter(Boolean)
     .reduce((acc, ws) => acc.concat(ws.split(',')), [])
     .map((ws) => path.dirname(ws));
 
-  let exts = [].concat(rootPackage.extensions).filter(Boolean);
+  let exts = [].concat(pkg.extensions).filter(Boolean);
 
   if (exts.length === 0) {
-    exts = ['ts', 'tsx', ...EXTENSIONS];
+    exts = ['tsx', 'ts', 'jsx', ...EXTENSIONS];
   }
   exts = exts.map((extension) =>
     extension.startsWith('.') ? extension.slice(1) : extension,
@@ -92,5 +97,5 @@ function getWorkspacesAndExtensions(cwd = process.cwd()) {
 
   const extensions = exts.map((x) => `.${x}`);
 
-  return { workspaces, extensions, exts };
+  return { workspaces, extensions, exts, lerna, lernaPath, pkg, packagePath };
 }
