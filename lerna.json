@@ -4,7 +4,6 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "packages": [
-    "shared/*",
     "packages/*",
     "@tunnckocore/*"
   ],
@@ -19,11 +18,7 @@
     "version": {
       "conventionalCommits": true,
       "createRelease": "github",
-      "message": "chore: release package(s)",
-      "ignoreChanges": [
-        "**/__shared__/**",
-        "**/shared/**"
-      ]
+      "message": "chore: release package(s)"
     }
   }
 }

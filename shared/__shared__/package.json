@@ -1,9 +1,0 @@
-{
-  "name": "@tunnckocore/shared-support",
-  "version": "0.2.0",
-  "dependencies": {
-    "@tunnckocore/jest-runner-babel": "^3.1.0",
-    "@tunnckocore/jest-runner-eslint": "^0.3.0",
-    "@tunnckocore/utils": "^0.5.1"
-  }
-}
