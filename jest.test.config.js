@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const utils = require('@tunnckocore/utils');
 
 const { alias, exts } = utils.createAliases();
@@ -15,6 +16,7 @@ module.exports = {
     /.+\/__fixtures?__\/.+/.toString(),
     /.+\/support\/.+/.toString(),
     /.+\/__support__\/.+/.toString(),
+    /.+\/__shared__\/.+/.toString(),
 
     // ! todo remove when fixed
     /koa-better-body/.toString(),
