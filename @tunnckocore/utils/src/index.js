@@ -45,6 +45,7 @@ function createAliases(cwd = process.cwd(), sourceDirectory) {
           // package specific package.json
           const packageJson = parseJson(pkgJsonPath, 'utf8');
 
+          /* istanbul ignore next */
           if (Object.keys(packageJson).length === 0) {
             throw new Error(
               `Cannot find package.json or cannot parse it: ${pkgJsonPath}`,
