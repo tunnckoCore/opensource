@@ -15,12 +15,6 @@ var _eslint = require("eslint");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 const explorer = (0, _cosmiconfig.default)('jest-runner');
 
 async function jestRunnerESLint({
@@ -106,22 +100,20 @@ function normalizeOptions(val, rootDir) {
     extensions
   } = (0, _utils.getWorkspacesAndExtensions)(rootDir);
   const cfg = val && val.config ? val.config : {};
-
-  const eslintOptions = _objectSpread({
+  const eslintOptions = {
     exit: true,
     warnings: false,
     maxWarnings: 10,
     reporter: 'codeframe',
     extensions,
     fix: true,
-    reportUnusedDisableDirectives: true
-  }, cfg.eslint, {
+    reportUnusedDisableDirectives: true,
+    ...cfg.eslint,
     cache: true
-  });
-
-  return _objectSpread({}, cfg, {
+  };
+  return { ...cfg,
     eslint: eslintOptions
-  });
+  };
 }
 
 module.exports = exports.default;

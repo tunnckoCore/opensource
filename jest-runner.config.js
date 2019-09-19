@@ -2,7 +2,7 @@ const options = {
   modules: 'commonjs',
   react: true,
   typescript: true,
-  node: '8',
+  node: '8.11',
 };
 
 const addModuleExports = [
