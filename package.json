@@ -42,6 +42,9 @@
   "eslintConfig": {
     "extends": "@tunnckocore"
   },
+  "renovate": {
+    "extends": "@tunnckocore"
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"

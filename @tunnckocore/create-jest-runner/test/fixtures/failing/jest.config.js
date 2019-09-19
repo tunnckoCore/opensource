@@ -1,4 +1,4 @@
 module.exports = {
-  runner: require.resolve('../../../__support__/runner'),
+  runner: require.resolve('../../support/runner'),
   testMatch: ['**/__src__/**/*.js'],
 };

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { pass, fail, skip, todo } = require('../../');
+const { pass, fail, skip, todo } = require('../../../');
 
 module.exports = ({ testPath }) => {
   const start = Date.now();

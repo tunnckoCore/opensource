@@ -3,7 +3,7 @@ const execa = require('execa');
 const path = require('path');
 const { stripColor } = require('ansi-colors');
 
-const rootDir = path.dirname(__dirname);
+const rootDir = path.dirname(path.dirname(__dirname));
 
 function normalize(output) {
   return output
@@ -27,7 +27,7 @@ export default function runJest(project, options = []) {
       '--no-watchman',
       '--no-cache',
       '--projects',
-      path.join(rootDir, '__tests__', '__fixtures__', project),
+      path.join(path.dirname(__dirname), 'fixtures', project),
     ].concat(options),
     {
       env: process.env,

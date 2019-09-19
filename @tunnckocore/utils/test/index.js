@@ -1,7 +1,11 @@
 'use strict';
 
 const path = require('path');
-const { isMonorepo, getWorkspacesAndExtensions, createAliases } = require('..');
+const {
+  isMonorepo,
+  getWorkspacesAndExtensions,
+  createAliases,
+} = require('../src');
 
 test('get extensions and workspaces - no workspaces', () => {
   const rootDir = path.dirname(__dirname);
