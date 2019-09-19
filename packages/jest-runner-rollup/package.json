@@ -1,0 +1,57 @@
+{
+  "version": "0.1.0",
+  "name": "jest-runner-rollup",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+  "homepage": "https://github.com/tunnckoCore/opensource",
+  "license": "MPL-2.0",
+  "licenseStart": 2019,
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {},
+  "engines": {
+    "node": ">=8.11"
+  },
+  "dependencies": {
+    "@tunnckocore/create-jest-runner": "^0.5.6",
+    "@tunnckocore/utils": "^0.5.3",
+    "@wessberg/rollup-plugin-ts": "^1.1.64",
+    "builtin-modules": "^3.1.0",
+    "cosmiconfig": "^5.2.1",
+    "rollup": "^1.21.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-terser": "^5.1.2",
+    "umd-globals": "^0.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tunnckoCore/opensource.git",
+    "directory": "packages/jest-runner-rollup"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "tunnckocorehq",
+    "tunnckocore-oss",
+    "hela",
+    "development",
+    "developer-experience",
+    "dx",
+    "jest-runner-rollup",
+    "jest",
+    "jest-runner",
+    "rollup",
+    "bundling",
+    "tooling",
+    "transpile"
+  ]
+}
