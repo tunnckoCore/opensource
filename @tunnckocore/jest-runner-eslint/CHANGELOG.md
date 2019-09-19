@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-eslint@0.3.2...@tunnckocore/jest-runner-eslint@0.3.3) (2019-09-19)
+
+
+### Bug Fixes
+
+* build to node 8.11, ignore dist again ([15481ed](https://github.com/tunnckoCore/opensource/commit/15481ed))
+* delete dist files ([e602f7e](https://github.com/tunnckoCore/opensource/commit/e602f7e))
+* resque script for use after clone ([31cfc15](https://github.com/tunnckoCore/opensource/commit/31cfc15))
+
+
+
+
+
 ## [0.3.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-eslint@0.3.1...@tunnckocore/jest-runner-eslint@0.3.2) (2019-09-18)
 
 **Note:** Version bump only for package @tunnckocore/jest-runner-eslint
