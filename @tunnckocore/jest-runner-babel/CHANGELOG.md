@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-babel@3.2.0...@tunnckocore/jest-runner-babel@3.2.1) (2019-09-19)
+
+
+### Bug Fixes
+
+* babel runner tweaks ([333ddd1](https://github.com/tunnckoCore/opensource/commit/333ddd1))
+
+
+
+
+
 # [3.2.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-babel@3.1.1...@tunnckocore/jest-runner-babel@3.2.0) (2019-09-19)
 
 
