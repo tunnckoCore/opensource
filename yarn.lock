@@ -2240,10 +2240,10 @@
     "@styled-system/core" "^5.1.2"
     "@styled-system/css" "^5.0.23"
 
-"@tunnckocore/babel-preset@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@tunnckocore/babel-preset/-/babel-preset-0.2.1.tgz#3f1f5fd77ce5eae38e21193579110c5764235800"
-  integrity sha512-93W5MApFwsxo9KdpCbMbeLeM8hS9npfuA4H2/CtK9M4zb7A8o/NUgcTWsACcWdn6MONAYjpU35hfKN0xKpIemw==
+"@tunnckocore/babel-preset@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/babel-preset/-/babel-preset-0.2.2.tgz#b9681c06e6f06a5bd52f4fc2f1235b7cd602aa65"
+  integrity sha512-Fr5D85fZJLnXAgVXk+ROj+NWUrhGqSH6Q6opub3DFw62fZZ15RMzBlyqu1rmaihTe1c7qwVDMPG3SGU52yrVoQ==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/parser" "^7.6.0"

@@ -7,22 +7,25 @@
     "@tunnckocore/*"
   ],
   "scripts": {
-    "setup": "yarn && lerna bootstrap",
+    "setup": "yarn && lerna bootstrap --since",
     "setup:ci": "yarn --frozen-lockfile && lerna bootstrap",
-    "fresh": "lerna clean -y && rm -rf node_modules && yarn setup",
-    "pre-commit": "jest -c jest.config.js",
+    "cleanup": "yarn clean:dist && yarn clean:fresh",
+    "clean:fresh": "lerna clean -y && rm -rf node_modules && yarn setup",
+    "clean:dist": "rm -rf packages/*/dist @tunnckocore/*/dist",
+    "pre-commit": "jest -c jest.config.js || (yarn resque && yarn pre-commit)",
     "lint": "jest -c jest.lint.config.js",
     "test": "jest -c jest.test.config.js",
     "build": "jest -c jest.build.config.js",
     "release": "lerna version && lerna publish from-package",
-    "cr": "node create-package.js"
+    "cr": "node create-package.js",
+    "resque": "lerna exec 'babel src -d dist/main --presets @tunnckocore' --stream"
   },
   "dependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
-    "@tunnckocore/babel-preset": "^0.2.1",
+    "@tunnckocore/babel-preset": "^0.2.2",
     "@tunnckocore/eslint-config": "^4.1.6",
     "@tunnckocore/jest-runner-babel": "^3.1.0",
     "@tunnckocore/jest-runner-eslint": "^0.3.2",

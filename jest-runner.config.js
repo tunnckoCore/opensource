@@ -1,14 +1,8 @@
-const options = {
-  modules: 'commonjs',
+const presetOptions = {
   react: true,
   typescript: true,
   node: '8.11',
 };
-
-const addModuleExports = [
-  'babel-plugin-add-module-exports',
-  { addDefaultProperty: true },
-];
 
 module.exports = {
   monorepo: true,
@@ -22,8 +16,7 @@ module.exports = {
   babel: [
     {
       config: {
-        presets: [['@tunnckocore/babel-preset', options]],
-        plugins: [addModuleExports],
+        presets: [['@tunnckocore/babel-preset', presetOptions]],
         comments: false,
       },
       outDir: 'dist/main',
@@ -31,9 +24,8 @@ module.exports = {
     {
       config: {
         presets: [
-          ['@tunnckocore/babel-preset', { ...options, modules: false }],
+          ['@tunnckocore/babel-preset', { ...presetOptions, modules: false }],
         ],
-        plugins: [addModuleExports],
         comments: false,
       },
       outDir: 'dist/module',
