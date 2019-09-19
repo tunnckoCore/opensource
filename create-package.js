@@ -151,73 +151,9 @@ test('make tests for ${answers.name} package', async () => {
   const pkgPath = path.join(__dirname, answers.location, 'package.json');
   fs.writeFileSync(pkgPath, pkgFile);
 }
-main();
 
-// const res = new Toggle({
-//   message: 'Want to answer?',
-//   enabled: 'Yep',
-//   disabled: 'Nope',
-// });
-
-// res
-//   .run()
-//   .then((answer) => console.log('Answer:', answer))
-//   .catch(console.error);
-
-// const prompt = new Snippet({
-//   name: 'username',
-//   message: 'Fill out the fields in package.json',
-//   required: true,
-//   fields: [
-//     {
-//       name: 'version',
-//       validate(value, state, item) {
-//         if (item && item.name === 'version' && !semver.valid(value)) {
-//           return prompt.styles.danger('version should be a valid semver value');
-//         }
-//         return true;
-//       },
-//     },
-//   ],
-//   template: `{
-//   "version": "{{version:0.1.0}}",
-//   "name": "{{name}}",
-//   "description": "{{description}}",
-//   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-//   "homepage": "https://github.com/tunnckoCore/opensource",
-//   "license": "{{license:MPL-2.0}}",
-//   "licenseStart": {{licenseStart}},
-//   "main": "dist/main/index.js",
-//   "module": "dist/module/index.js",
-//   "types": "dist/types/index.d.ts",
-//   "scripts": {},
-//   "engines": {
-//     "node": ">=8.11"
-//   },
-//   "repository": {
-//     "type": "git",
-//     "url": "git@github.com:tunnckoCore/opensource.git",
-//     "directory": "{{name}}"
-//   },
-//   "publishConfig": {
-//     "access": "public",
-//     "tag": "latest"
-//   },
-//   "files": [
-//     "dist"
-//   ],
-//   "keywords": [
-//     "tunnckocorehq",
-//     "tunnckocore-oss",
-//     "opensource",
-//     "develop",
-//     "hela"
-//   ]
-// }
-// `,
-// });
-
-// prompt
-//   .run()
-//   .then((answer) => console.log('Answer:', typeof answer.result))
-//   .catch(console.error);
+// eslint-disable-next-line promise/prefer-await-to-callbacks
+main().catch(() => {
+  // eslint-disable-next-line unicorn/no-process-exit
+  process.exit(1);
+});
