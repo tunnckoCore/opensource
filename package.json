@@ -22,7 +22,7 @@
     "build": "jest -c jest.build.config.js",
     "release": "lerna version && lerna publish from-package",
     "cr": "node create-package.js",
-    "resque": "lerna exec 'babel src -d dist/main --presets @tunnckocore --source-maps both' --stream"
+    "resque": "lerna exec 'babel src -d dist/main --presets @tunnckocore --source-maps both' --stream --scope '@tunnckocore/*jest-runner*' --scope 'jest-runner-rollup'"
   },
   "dependencies": {
     "@babel/cli": "^7.6.0",

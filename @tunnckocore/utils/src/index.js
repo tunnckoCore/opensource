@@ -79,19 +79,19 @@ function parseJson(fp) {
 
 function getWorkspacesAndExtensions(cwd = process.cwd()) {
   const fromRoot = (...x) => path.resolve(cwd, ...x);
-  const packagePath = fromRoot('package.json');
-  const lernaPath = fromRoot('lerna.json');
-  const pkg = parseJson(packagePath);
-  const lerna = parseJson(lernaPath);
+  const packageJsonPath = fromRoot('package.json');
+  const lernaJsonPath = fromRoot('lerna.json');
+  const packageJson = parseJson(packageJsonPath);
+  const lernaJson = parseJson(lernaJsonPath);
 
   const workspaces = []
-    .concat(lerna.packages || (pkg.workspaces || []))
+    .concat(lernaJson.packages || (packageJson.workspaces || []))
     .filter((x) => typeof x === 'string')
     .filter(Boolean)
     .reduce((acc, ws) => acc.concat(ws.split(',')), [])
     .map((ws) => path.dirname(ws));
   // console.log('workspaces', workspaces);
-  let exts = [].concat(pkg.extensions).filter(Boolean);
+  let exts = [].concat(packageJson.extensions).filter(Boolean);
 
   if (exts.length === 0) {
     exts = ['tsx', 'ts', 'jsx', ...EXTENSIONS];
@@ -102,5 +102,17 @@ function getWorkspacesAndExtensions(cwd = process.cwd()) {
 
   const extensions = exts.map((x) => `.${x}`);
 
-  return { workspaces, extensions, exts, lerna, lernaPath, pkg, packagePath };
+  const fpath = [lernaJsonPath, packageJsonPath].find((x) => fs.existsSync(x));
+  const packageRootPath = fpath ? path.dirname(fpath) : null;
+
+  return {
+    workspaces,
+    extensions,
+    exts,
+    lernaJson,
+    lernaJsonPath,
+    packageJson,
+    packageJsonPath,
+    packageRootPath,
+  };
 }
