@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-babel@3.1.1...@tunnckocore/jest-runner-babel@3.2.0) (2019-09-19)
+
+
+### Features
+
+* babel runner support sourcemaps generation ([199b4b2](https://github.com/tunnckoCore/opensource/commit/199b4b2))
+
+
+
+
+
 ## [3.1.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-babel@3.1.0...@tunnckocore/jest-runner-babel@3.1.1) (2019-09-19)
 
 
