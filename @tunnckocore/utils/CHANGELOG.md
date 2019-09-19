@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@0.5.3...@tunnckocore/utils@0.6.0) (2019-09-19)
+
+
+### Features
+
+* **utils:** rename props, provide packageRootPath ([f31e802](https://github.com/tunnckoCore/opensource/commit/f31e802))
+
+
+
+
+
 ## [0.5.3](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@0.5.2...@tunnckocore/utils@0.5.3) (2019-09-19)
 
 **Note:** Version bump only for package @tunnckocore/utils
