@@ -14,7 +14,8 @@
     "lint": "jest -c jest.lint.config.js",
     "test": "jest -c jest.test.config.js",
     "build": "jest -c jest.build.config.js",
-    "release": "lerna version && lerna publish from-package"
+    "release": "lerna version && lerna publish from-package",
+    "cr": "node create-package.js"
   },
   "dependencies": {
     "@babel/cli": "^7.6.0",
@@ -28,11 +29,12 @@
     "@tunnckocore/prettier-config": "^0.2.2",
     "@tunnckocore/typescript-config": "^0.3.1",
     "babel-plugin-add-module-exports": "^1.0.2",
-    "create-jest-runner": "^0.5.3",
+    "enquirer": "^2.3.2",
     "eslint": "^6.4.0",
     "jest": "^24.9.0",
     "lerna": "^3.16.4",
     "prettier": "^1.18.2",
+    "semver": "^6.3.0",
     "typescript": "^3.6.3"
   },
   "devDependencies": {

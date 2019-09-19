@@ -1,6 +1,6 @@
 const utils = require('./@tunnckocore/utils/src');
 
-const { alias, exts } = utils.createAliases();
+const { exts } = utils.getWorkspacesAndExtensions(__dirname);
 
 module.exports = {
   displayName: 'build',
@@ -18,7 +18,7 @@ module.exports = {
     /.+\/__shared__\/.+/.toString(),
     /.+\/@tunnckocore\/utils\/.+/.toString(),
   ],
-  moduleNameMapper: alias,
+  // moduleNameMapper: alias,
   moduleFileExtensions: exts,
   runner: '@tunnckocore/jest-runner-babel',
 };

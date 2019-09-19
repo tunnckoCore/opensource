@@ -1,6 +1,6 @@
 const utils = require('./@tunnckocore/utils/src');
 
-const { alias } = utils.createAliases();
+const { alias } = utils.createAliases(__dirname, 'src');
 
 module.exports = {
   displayName: 'test',
