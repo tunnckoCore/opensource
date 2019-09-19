@@ -18,6 +18,7 @@ module.exports = {
       config: {
         presets: [['@tunnckocore/babel-preset', presetOptions]],
         comments: false,
+        sourceMaps: 'both',
       },
       outDir: 'dist/main',
     },
@@ -27,6 +28,7 @@ module.exports = {
           ['@tunnckocore/babel-preset', { ...presetOptions, modules: false }],
         ],
         comments: false,
+        sourceMaps: 'both',
       },
       outDir: 'dist/module',
     },
