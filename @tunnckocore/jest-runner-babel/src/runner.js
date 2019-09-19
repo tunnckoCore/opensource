@@ -24,7 +24,6 @@ export default async function jetRunnerBabel({ testPath, config }) {
 
       const babelConfig = { ...cfg };
 
-      // sasa;
       try {
         result = transformFileSync(testPath, babelConfig);
       } catch (err) {
@@ -93,16 +92,18 @@ export default async function jetRunnerBabel({ testPath, config }) {
       fs.mkdirSync(outDir, { recursive: true });
       fs.writeFileSync(outFile, result.code);
 
+      const passing = pass({
+        start,
+        end: new Date(),
+        test: { path: outFile, title: 'Babel' },
+      });
+
       if (result.map || babelConfig.sourceMaps === true) {
         const mapFile = `${outFile}.map`;
         fs.writeFileSync(mapFile, JSON.stringify(result.map));
 
         return acc.concat(
-          pass({
-            start,
-            end: new Date(),
-            test: { path: outFile, title: 'Babel' },
-          }),
+          passing,
           pass({
             start,
             end: new Date(),
@@ -111,13 +112,7 @@ export default async function jetRunnerBabel({ testPath, config }) {
         );
       }
 
-      return acc.concat(
-        pass({
-          start,
-          end: new Date(),
-          test: { path: outFile, title: 'Babel' },
-        }),
-      );
+      return acc.concat(passing);
     }, []),
   );
 
