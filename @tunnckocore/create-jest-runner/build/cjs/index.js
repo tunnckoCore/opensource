@@ -1,11 +1,13 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var throat = _interopDefault(require('throat'));
+var Worker = _interopDefault(require('jest-worker'));
+
 /* eslint-disable promise/prefer-await-to-callbacks */
-/* eslint-disable max-params */
-/* eslint-disable promise/prefer-await-to-then */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable max-classes-per-file */
-import throat from 'throat';
-import Worker from 'jest-worker';
-import Debug from 'debug';
 
 class CancelRunError extends Error {
   constructor(message) {
@@ -13,8 +15,6 @@ class CancelRunError extends Error {
     this.name = 'CancelRunError';
   }
 }
-
-const debug = Debug('rollup-runner');
 
 const createRunner = (runPath, { getExtraOptions } = {}) => {
   class BaseTestRunner {
@@ -152,26 +152,16 @@ const createRunner = (runPath, { getExtraOptions } = {}) => {
           runTestInWorker(test)
             .then((testResult) => {
               if (Array.isArray(testResult)) {
-                // debug('after worker, testResult is array %O', testResult);
-                // debug('on test match %O', test);
-
-                testResult.forEach((result) => {
-                  if (result.numFailingTests > 0) {
-                    debug('every failing result %O', test);
-                    // onError(new Error(result.errorMessage), test);
-                  } else {
-                    // debug('every passing result %O', result);
-                    onResult(test, result);
-                  }
-                });
+                testResult.forEach((result) =>
+                  result.errorMessage && result.stats.failures > 0
+                    ? onError(new Error(result.errorMessage), test)
+                    : onResult(test, result),
+                );
                 return;
               }
-
               onResult(test, testResult);
             })
-            .catch((err) => {
-              onError(err, test);
-            }),
+            .catch((err) => onError(err, test)),
         ),
       );
 
@@ -184,4 +174,106 @@ const createRunner = (runPath, { getExtraOptions } = {}) => {
   return BaseTestRunner;
 };
 
-export default createRunner;
+const toTestResult = ({
+  stats,
+  skipped,
+  errorMessage,
+  tests,
+  jestTestPath,
+}) => ({
+  console: null,
+  failureMessage: errorMessage,
+  numFailingTests: stats.failures,
+  numPassingTests: stats.passes,
+  numPendingTests: stats.pending,
+  numTodoTests: stats.todo,
+  perfStats: {
+    end: new Date(stats.end).getTime(),
+    start: new Date(stats.start).getTime(),
+  },
+  skipped,
+  snapshot: {
+    added: 0,
+    fileDeleted: false,
+    matched: 0,
+    unchecked: 0,
+    unmatched: 0,
+    updated: 0,
+  },
+  sourceMaps: {},
+  testExecError: null,
+  testFilePath: jestTestPath,
+  testResults: tests.map((test) => ({
+    ancestorTitles: [],
+    duration: test.duration,
+    failureMessages: [test.errorMessage],
+    fullName: test.testPath,
+    numPassingAsserts: test.errorMessage ? 1 : 0,
+    status: test.errorMessage ? 'failed' : 'passed',
+    title: test.title || '',
+  })),
+});
+
+const fail = ({ start, end, test, errorMessage }) =>
+  toTestResult({
+    errorMessage: errorMessage || test.errorMessage,
+    stats: {
+      failures: 1,
+      pending: 0,
+      passes: 0,
+      todo: 0,
+      start,
+      end,
+    },
+    tests: [{ duration: end - start, ...test }],
+    jestTestPath: test.path,
+  });
+
+const pass = ({ start, end, test }) =>
+  toTestResult({
+    stats: {
+      failures: 0,
+      pending: 0,
+      passes: 1,
+      todo: 0,
+      start,
+      end,
+    },
+    tests: [{ duration: end - start, ...test }],
+    jestTestPath: test.path,
+  });
+
+const skip = ({ start, end, test }) =>
+  toTestResult({
+    stats: {
+      failures: 0,
+      pending: 1,
+      passes: 0,
+      todo: 0,
+      start,
+      end,
+    },
+    skipped: true,
+    tests: [{ duration: end - start, ...test }],
+    jestTestPath: test.path,
+  });
+
+const todo = ({ start, end, test }) =>
+  toTestResult({
+    stats: {
+      failures: 0,
+      pending: 0,
+      passes: 0,
+      todo: 1,
+      start,
+      end,
+    },
+    tests: [{ duration: end - start, ...test }],
+    jestTestPath: test.path,
+  });
+
+exports.createJestRunner = createRunner;
+exports.fail = fail;
+exports.pass = pass;
+exports.skip = skip;
+exports.todo = todo;

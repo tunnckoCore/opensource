@@ -2304,7 +2304,7 @@
   resolved "https://registry.yarnpkg.com/@tunnckocore/typescript-config/-/typescript-config-0.3.1.tgz#2ec44bc5e4e7cad023e5e2f34360c0bc0f5cd597"
   integrity sha512-SNrvUSzWuMi5Qp9SMGrJAlir7zn7xEQOquRxv8Y71stf4v+OkHGs+yl2N51Hb2DdlAg/ouMdFzqhiXmXlTZnSw==
 
-"@tunnckocore/utils@^0.5.2", "@tunnckocore/utils@^0.5.3":
+"@tunnckocore/utils@^0.5.2":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@tunnckocore/utils/-/utils-0.5.3.tgz#1d2f442c7803dc620f56487a10a72043d4d91b57"
   integrity sha512-tMpAQyWZk0u+g7U5zBorPIjXzI4C3mbWz7DYpqMh/deEmwS6HDzEWY9s/HfJLeciZmtAASN37zfvqzgqEzwK2Q==
@@ -7492,6 +7492,11 @@ p-map-series@^1.0.0:
   dependencies:
     p-reduce "^1.0.0"
 
+p-map-series@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/p-map-series/-/p-map-series-2.1.0.tgz#7560d4c452d9da0c07e692fdbfe6e2c81a2a91f2"
+  integrity sha512-RpYIIK1zXSNEOdwxcfe7FdvGcs7+y5n8rifMhMNWvaxRNMPINJHF5GDeuVxWqnfrcHPSCnp7Oo5yNXHId9Av2Q==
+
 p-map@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/p-map/-/p-map-2.1.0.tgz#310928feef9c9ecc65b68b17693018a665cea175"
@@ -7520,6 +7525,11 @@ p-reduce@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-reduce/-/p-reduce-1.0.0.tgz#18c2b0dd936a4690a529f8231f58a0fdb6a47dfa"
   integrity sha1-GMKw3ZNqRpClKfgjH1ig/bakffo=
+
+p-reduce@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/p-reduce/-/p-reduce-2.1.0.tgz#09408da49507c6c274faa31f28df334bc712b64a"
+  integrity sha512-2USApvnsutq8uoxZBGbbWM0JIYLiEMJ9RlaN7fAzVNb9OZN0SHjjTTfIcb667XynS5Y1VhwDJVDa72TnPzAYWw==
 
 p-try@^1.0.0:
   version "1.0.0"

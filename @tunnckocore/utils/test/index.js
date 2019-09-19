@@ -51,7 +51,7 @@ test('createAliases return empty alias object', () => {
   expect(typeof result.lernaJsonPath).toStrictEqual('string');
   expect(result.lernaJsonPath.startsWith(cwd)).toStrictEqual(true);
 
-  expect(result.packageRootPath).toStrictEqual(null);
+  expect(result.workspaceRootPath).toStrictEqual(null);
 });
 
 test('createAliases return correct aliases for yarn workspaces', () => {
@@ -119,10 +119,10 @@ test('correct *Path properties when Lerna monorepo', () => {
 
   expect(typeof result.lernaJsonPath).toStrictEqual('string');
   expect(typeof result.packageJsonPath).toStrictEqual('string');
-  expect(typeof result.packageRootPath).toStrictEqual('string');
+  expect(typeof result.workspaceRootPath).toStrictEqual('string');
 
   expect(path.dirname(result.lernaJsonPath)).toStrictEqual(
-    result.packageRootPath,
+    result.workspaceRootPath,
   );
 
   expect(result.packageJson).toBeTruthy();
@@ -135,10 +135,10 @@ test('correct *Path properties when Yarn Workspaces monorepo', () => {
 
   expect(typeof result.lernaJsonPath).toStrictEqual('string');
   expect(typeof result.packageJsonPath).toStrictEqual('string');
-  expect(typeof result.packageRootPath).toStrictEqual('string');
+  expect(typeof result.workspaceRootPath).toStrictEqual('string');
 
   expect(path.dirname(result.packageJsonPath)).toStrictEqual(
-    result.packageRootPath,
+    result.workspaceRootPath,
   );
 
   expect(result.packageJson).toBeTruthy();

@@ -28,6 +28,7 @@ function createAliases(cwd = process.cwd(), sourceDirectory) {
   // const { workspaces, extensions, exts } = getWorkspacesAndExtensions(cwd);
   const result = getWorkspacesAndExtensions(cwd);
 
+  const info = {};
   const alias = result.workspaces
     .filter(Boolean)
     .reduce((acc, ws) => {
@@ -41,9 +42,9 @@ function createAliases(cwd = process.cwd(), sourceDirectory) {
           const pkgDirectory = path.join(workspace, directory);
           const pkgJsonPath = path.join(pkgDirectory, 'package.json');
 
-          return { pkgDirectory, pkgJsonPath };
+          return { pkgDirectory, pkgJsonPath, directory };
         })
-        .map(({ pkgDirectory, pkgJsonPath }) => {
+        .map(({ pkgDirectory, pkgJsonPath, directory }) => {
           // package specific package.json
           const packageJson = parseJson(pkgJsonPath, 'utf8');
 
@@ -54,23 +55,41 @@ function createAliases(cwd = process.cwd(), sourceDirectory) {
             //   `Cannot find package.json or cannot parse it: ${pkgJsonPath}`,
             // );
           }
-          return [pkgDirectory, packageJson];
+          const workspaceName = ws;
+          const packageFolder = directory;
+
+          return { pkgDirectory, packageJson, workspaceName, packageFolder };
         });
 
       return acc.concat(packages).filter(Boolean);
     }, [])
     .filter(Boolean)
-    .reduce((acc, [pkgDirectory, packageJson]) => {
-      if (typeof sourceDirectory === 'string') {
-        acc[packageJson.name] = path.join(pkgDirectory, sourceDirectory);
-      } else {
-        const source = path.join(pkgDirectory, 'src');
-        acc[packageJson.name] = fs.existsSync(source) ? source : pkgDirectory;
-      }
-      return acc;
-    }, {});
+    .reduce(
+      (acc, { pkgDirectory, packageJson, workspaceName, packageFolder }) => {
+        const name = path.join(workspaceName, packageFolder);
+        if (sourceDirectory && typeof sourceDirectory === 'string') {
+          acc[packageJson.name] = path.join(pkgDirectory, sourceDirectory);
+          info[packageJson.name] = path.dirname(acc[packageJson.name]);
+          info[name] = path.dirname(acc[packageJson.name]);
+        } else {
+          const source = path.join(pkgDirectory, 'src');
 
-  return { ...result, alias };
+          if (fs.existsSync(source)) {
+            acc[packageJson.name] = source;
+            info[packageJson.name] = path.dirname(acc[packageJson.name]);
+            info[name] = path.dirname(acc[packageJson.name]);
+          } else {
+            acc[packageJson.name] = pkgDirectory;
+            info[packageJson.name] = pkgDirectory;
+            info[name] = path.dirname(acc[packageJson.name]);
+          }
+        }
+        return acc;
+      },
+      {},
+    );
+
+  return { ...result, alias, info };
 }
 
 function parseJson(fp) {
@@ -103,7 +122,7 @@ function getWorkspacesAndExtensions(cwd = process.cwd()) {
   const extensions = exts.map((x) => `.${x}`);
 
   const fpath = [lernaJsonPath, packageJsonPath].find((x) => fs.existsSync(x));
-  const packageRootPath = fpath ? path.dirname(fpath) : null;
+  const workspaceRootPath = fpath ? path.dirname(fpath) : null;
 
   return {
     workspaces,
@@ -113,6 +132,6 @@ function getWorkspacesAndExtensions(cwd = process.cwd()) {
     lernaJsonPath,
     packageJson,
     packageJsonPath,
-    packageRootPath,
+    workspaceRootPath,
   };
 }

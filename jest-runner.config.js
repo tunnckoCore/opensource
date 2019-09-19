@@ -33,6 +33,10 @@ module.exports = {
       outDir: 'dist/module',
     },
   ],
+
+  rollup: {
+    outDir: 'build',
+  },
 };
 
 // 1. hash of full versions of all packages
