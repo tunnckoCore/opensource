@@ -150,7 +150,7 @@ const createRunner = (runPath, { getExtraOptions } = {}) => {
             .then((testResult) => {
               if (Array.isArray(testResult)) {
                 testResult.forEach((result) =>
-                  result.errorMessage && result.stats.failures > 0
+                  result.numFailingTests > 0
                     ? onError(new Error(result.errorMessage), test)
                     : onResult(test, result),
                 );
