@@ -25,7 +25,7 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "jest-worker": "^24.0.0",
-    "throat": "^4.1.0"
+    "throat": "^5.0.0"
   },
   "devDependencies": {
     "ansi-colors": "^4.1.1",
