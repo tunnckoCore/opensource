@@ -9,6 +9,8 @@ const EXTENSIONS = Object.keys(Module._extensions).filter(
 
 module.exports = { createAliases, getWorkspacesAndExtensions, isMonorepo };
 
+// we cannot test it because we are in monorepo where the cwd is.
+/* istanbul ignore next */
 function isMonorepo(cwd = process.cwd()) {
   const { workspaces } = getWorkspacesAndExtensions(cwd);
 
@@ -25,7 +27,6 @@ function isMonorepo(cwd = process.cwd()) {
  * We just don't use regex, we precompute them.
  */
 function createAliases(cwd = process.cwd(), sourceDirectory) {
-  // const { workspaces, extensions, exts } = getWorkspacesAndExtensions(cwd);
   const result = getWorkspacesAndExtensions(cwd);
 
   const alias = result.workspaces
@@ -37,7 +38,6 @@ function createAliases(cwd = process.cwd(), sourceDirectory) {
         .readdirSync(workspace)
         .filter((x) => !result.workspaces.find((z) => z.endsWith(x)))
         .map((directory) => {
-          // console.log(workspace);
           const pkgDirectory = path.join(workspace, directory);
           const pkgJsonPath = path.join(pkgDirectory, 'package.json');
 
@@ -50,6 +50,7 @@ function createAliases(cwd = process.cwd(), sourceDirectory) {
           /* istanbul ignore next */
           if (Object.keys(packageJson).length === 0) {
             return null;
+            // skip silently
             // throw new Error(
             //   `Cannot find package.json or cannot parse it: ${pkgJsonPath}`,
             // );
@@ -74,7 +75,15 @@ function createAliases(cwd = process.cwd(), sourceDirectory) {
 }
 
 function parseJson(fp) {
-  return fs.existsSync(fp) ? JSON.parse(fs.readFileSync(fp, 'utf8')) : {};
+  if (fs.existsSync(fp)) {
+    let res = {};
+    try {
+      res = JSON.parse(fs.readFileSync(fp, 'utf8'));
+    } catch (err) {}
+    return res;
+  }
+
+  return {};
 }
 
 function getWorkspacesAndExtensions(cwd = process.cwd()) {
@@ -103,7 +112,7 @@ function getWorkspacesAndExtensions(cwd = process.cwd()) {
   const extensions = exts.map((x) => `.${x}`);
 
   const fpath = [lernaJsonPath, packageJsonPath].find((x) => fs.existsSync(x));
-  const packageRootPath = fpath ? path.dirname(fpath) : null;
+  const workspaceRootPath = fpath ? path.dirname(fpath) : null;
 
   return {
     workspaces,
@@ -113,6 +122,6 @@ function getWorkspacesAndExtensions(cwd = process.cwd()) {
     lernaJsonPath,
     packageJson,
     packageJsonPath,
-    packageRootPath,
+    workspaceRootPath,
   };
 }
