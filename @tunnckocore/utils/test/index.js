@@ -28,11 +28,11 @@ test('getWorkspacesAndExtensions - correct workspaces', () => {
 
   const result = getWorkspacesAndExtensions(rootDir);
 
-  expect(result.workspaces).toStrictEqual(['@tunnckocore', '@helios']);
+  expect(result.workspaces).toStrictEqual(['@tunnckocore', 'packages']);
   expect(result.extensions).toStrictEqual(['.js', '.jsx', '.ts']);
   expect(result.exts).toStrictEqual(['js', 'jsx', 'ts']);
   expect(result.lernaJson).toStrictEqual({
-    packages: ['@tunnckocore/*', '@helios/*'],
+    packages: ['@tunnckocore/*', 'packages/*'],
   });
   expect(result.packageJson).toStrictEqual({
     name: 'lerna-monorepo',
@@ -51,7 +51,7 @@ test('createAliases return empty alias object', () => {
   expect(typeof result.lernaJsonPath).toStrictEqual('string');
   expect(result.lernaJsonPath.startsWith(cwd)).toStrictEqual(true);
 
-  expect(result.packageRootPath).toStrictEqual(null);
+  expect(result.workspaceRootPath).toStrictEqual(null);
 });
 
 test('createAliases return correct aliases for yarn workspaces', () => {
@@ -80,18 +80,40 @@ test('createAliases return correct aliases for yarn workspaces', () => {
 
 test('createAliases return correct aliases for Lerna workspaces', () => {
   const lernaRoot = path.join(__dirname, 'fixtures', 'lerna');
-  const res = createAliases(lernaRoot);
+  const res = createAliases(lernaRoot, 'source');
 
-  // eslint-disable-next-line unicorn/consistent-function-scoping
-  const toAliases = (src) =>
-    ['@helios/foo', '@tunnckocore/barry'].reduce((acc, name) => {
-      acc[name] = path.join(lernaRoot, name, src);
-      return acc;
-    }, {});
+  /**
+   * The scenario is that we have package named `@helios/qux` inside `packages/foo`
+   * and that's the correct result of `alias`.
+   * The key is the package name the value is path to source directory, not its root.
+   * {
+   *  '@tunnckocore/barry': '/home/charlike//fixtures/lerna/@tunnckocore/barry/source',
+   *  '@helios/qux': '/home/charlike/fixtures/lerna/packages/foo/source',
+   *   numb: '/home/charlike/fixtures/lerna/packages/numb/source'
+   * }
+   */
 
-  expect(res.alias).toStrictEqual(toAliases(''));
+  expect(Object.keys(res.alias)).toStrictEqual([
+    '@tunnckocore/barry',
+    '@helios/qux',
+    'numb',
+  ]);
+
+  const bases = Object.values(res.alias).map((filepath) =>
+    filepath
+      .split('/')
+      .slice(-3)
+      .join('/'),
+  );
+
+  // These are the real actual directories of above packages
+  expect(bases).toStrictEqual([
+    '@tunnckocore/barry/source',
+    'packages/foo/source',
+    'packages/numb/source',
+  ]);
   expect(res.lernaJson).toStrictEqual({
-    packages: ['@tunnckocore/*', '@helios/*'],
+    packages: ['@tunnckocore/*', 'packages/*'],
   });
   expect(res.exts).toStrictEqual(['js', 'jsx', 'ts']);
   expect(res.packageJson).toStrictEqual({
@@ -109,8 +131,11 @@ test('isMonorepo - true for workspaces root', () => {
   expect(isMonorepo(lernaRepo)).toStrictEqual(true);
 });
 
-test('isMonorepo - false regular repository', () => {
+test('isMonorepo - false, regular repository', () => {
   expect(isMonorepo(path.dirname(__dirname))).toStrictEqual(false);
+
+  // we cannot test it, because we are in monorepo where the cwd is.
+  // expect(isMonorepo()).toStrictEqual(false);
 });
 
 test('correct *Path properties when Lerna monorepo', () => {
@@ -119,10 +144,10 @@ test('correct *Path properties when Lerna monorepo', () => {
 
   expect(typeof result.lernaJsonPath).toStrictEqual('string');
   expect(typeof result.packageJsonPath).toStrictEqual('string');
-  expect(typeof result.packageRootPath).toStrictEqual('string');
+  expect(typeof result.workspaceRootPath).toStrictEqual('string');
 
   expect(path.dirname(result.lernaJsonPath)).toStrictEqual(
-    result.packageRootPath,
+    result.workspaceRootPath,
   );
 
   expect(result.packageJson).toBeTruthy();
@@ -135,10 +160,10 @@ test('correct *Path properties when Yarn Workspaces monorepo', () => {
 
   expect(typeof result.lernaJsonPath).toStrictEqual('string');
   expect(typeof result.packageJsonPath).toStrictEqual('string');
-  expect(typeof result.packageRootPath).toStrictEqual('string');
+  expect(typeof result.workspaceRootPath).toStrictEqual('string');
 
   expect(path.dirname(result.packageJsonPath)).toStrictEqual(
-    result.packageRootPath,
+    result.workspaceRootPath,
   );
 
   expect(result.packageJson).toBeTruthy();
