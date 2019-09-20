@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@0.6.0...@tunnckocore/utils@0.7.0) (2019-09-20)
+
+
+### Features
+
+* improve tests, rename packageRootPath -> workspaceRootPath ([25b60ee](https://github.com/tunnckoCore/opensource/commit/25b60ee))
+
+
+
+
+
 # [0.6.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@0.5.3...@tunnckocore/utils@0.6.0) (2019-09-19)
 
 
