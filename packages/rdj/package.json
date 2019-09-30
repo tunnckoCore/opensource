@@ -1,0 +1,49 @@
+{
+  "version": "0.1.0",
+  "name": "rdj",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+  "homepage": "https://github.com/tunnckoCore/opensource",
+  "license": "MPL-2.0",
+  "licenseStart": 2019,
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {},
+  "engines": {
+    "node": ">=8.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tunnckoCore/opensource.git",
+    "directory": "packages/rdj"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "tunnckocorehq",
+    "tunnckocore-oss",
+    "hela",
+    "development",
+    "developer-experience",
+    "dx",
+    "rdj",
+    "hela",
+    "drollup",
+    "rollup-config",
+    "rolldown"
+  ],
+  "dependencies": {
+    "@wessberg/rollup-plugin-ts": "^1.1.64",
+    "ky": "^0.14.0",
+    "ky-universal": "^0.3.0",
+    "rollup": "^1.21.4",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-esm-import-to-url": "^2.0.0",
+    "rollup-plugin-json": "^4.0.0"
+  }
+}

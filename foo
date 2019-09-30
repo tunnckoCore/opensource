@@ -1,0 +1,31 @@
+
+const commit = {
+  header: {
+    type: 'feat',
+    scope: null,
+    subject: 'some some thing'
+  },
+  body: 'foo qux\n\nbar\n\nzero barry',
+  footer: {
+    raw: `Reviewed-by: Zzz oops
+Some-thing: Multiline important
+
+trailer woohoo
+meow meow
+
+Why not?
+yup!
+
+Signed-off-by: Foo <bar@qux.com>`,
+    trailers: [
+      'Reviewed-by: Zzz oops',
+      'Some-thing: Multiline important\n\ntrailer woohoo\nmeow meow\n\nWhy not?\nyup!',
+      'Signed-off-by: Foo <bar@qux.com>'
+    ],
+    trailer: {
+      'Reviewed-by': 'Zzz ooops',
+      'Some-thing': 'Multiline important\n\ntrailer woohoo\nmeow meow\n\nWhy not?\nyup!',
+      'Signed-off-by': 'Foo <bar@qux.com>',
+    },
+  },
+};
