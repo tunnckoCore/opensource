@@ -11,11 +11,7 @@ module.exports = {
   ],
   testPathIgnorePatterns: [
     /node_modules/.toString(),
-    /.+\/fixtures?\/.+/.toString(),
-    /.+\/__fixtures?__\/.+/.toString(),
-    /.+\/support\/.+/.toString(),
-    /.+\/__support__\/.+/.toString(),
-    /.+\/__shared__\/.+/.toString(),
+    /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),
   ],
   moduleNameMapper: alias,
   moduleFileExtensions: exts,

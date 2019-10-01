@@ -1,3 +1,7 @@
+// const builtins = require('builtin-modules');
+// const nodeResolve = require('rollup-plugin-node-resolve');
+// const commonjs = require('rollup-plugin-commonjs');
+
 const presetOptions = {
   react: true,
   typescript: true,
@@ -33,6 +37,25 @@ module.exports = {
       outDir: 'dist/module',
     },
   ],
+
+  // rollup: 'fooo',
+  // rolldowxn: {
+  //   external: builtins,
+  //   inlineDynamicImports: true,
+  //   experimentalTopLevelAwait: true,
+  //   plugins: [
+  //     nodeResolve({
+  //       preferBuiltins: true,
+  //       mainFields: ['module', 'main'],
+  //     }),
+  //     commonjs({
+  //       // extensions,
+  //     }),
+  //   ],
+  //   output: {
+  //     format: 'esm',
+  //   },
+  // },
 };
 
 // 1. hash of full versions of all packages

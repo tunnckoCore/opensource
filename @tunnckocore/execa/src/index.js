@@ -1,3 +1,4 @@
+import { join as pathJoin } from 'path';
 import execa from 'execa';
 import pMap from 'p-map';
 
@@ -40,6 +41,7 @@ export async function exec(cmds, options) {
   const commands = [].concat(cmds).filter(Boolean);
   const { concurrency = Infinity, ...opts } = {
     preferLocal: true,
+    foobie: pathJoin.join('foo', 'bar'),
     ...options,
   };
 
