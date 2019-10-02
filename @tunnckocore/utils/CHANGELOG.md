@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.4](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/@tunnckocore/utils@0.8.3...@tunnckocore/utils@0.8.4) (2019-10-02)
+
+**Note:** Version bump only for package @tunnckocore/utils
+
+
+
+
+
 ## [0.8.3](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/@tunnckocore/utils@0.8.2...@tunnckocore/utils@0.8.3) (2019-10-02)
 
 
