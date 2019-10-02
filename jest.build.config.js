@@ -14,6 +14,7 @@ module.exports = {
     /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),
     /.+\/@tunnckocore\/utils\/.+/.toString(),
     /.+\/jest-runner-rollup\/.+/.toString(),
+    /.+\/koa-better-body\/.+/.toString(),
   ],
   // moduleNameMapper: alias,
   moduleFileExtensions: exts,
