@@ -125,27 +125,27 @@ async function run() {
   modField = modField || (type === 'source' ? 'src/index.js' : modField);
 
   const pkg = {
-    version: answers.version,
     name: answers.name,
-    description: answers.description,
-    author: `Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)`,
+    version: answers.version,
+    description: 'WIP',
     repository: `https://github.com/tunnckoCore/opensource/tree/master/${answers.location}`,
     homepage: `https://tunnckocore.com/opensource`,
+    author: `Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)`,
     license: answers.license,
-    licenseStart: parseInt(answers.licenseStart, 10),
-    main: mainField,
-    module: modField,
-    types: 'dist/types/index.d.ts',
-    scripts: {},
     engines: {
       node: '>=8.11',
     },
+    main: mainField,
+    module: modField,
+    types: 'dist/types/index.d.ts',
+    files: [/build|bundle/.test(answers.publishType) ? 'dist' : 'src'],
+    keywords: answers.keywords,
+    scripts: {},
     publishConfig: {
       access: 'public',
       tag: 'latest',
     },
-    files: [/build|bundle/.test(answers.publishType) ? 'dist' : 'src'],
-    keywords: answers.keywords,
+    licenseStart: parseInt(answers.licenseStart, 10),
   };
 
   const srcDir = path.join(__dirname, answers.location, 'src');
