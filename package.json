@@ -40,15 +40,9 @@
     "jest": "^24.9.0",
     "lerna": "^3.16.4",
     "prettier": "^1.18.2",
+    "react": "^16.10.1",
     "semver": "^6.3.0",
     "typescript": "^3.6.3"
-  },
-  "devDependencies": {
-    "eslint-plugin-node": "^10.0.0"
-  },
-  "prettier": "@tunnckocore/prettier-config",
-  "eslintConfig": {
-    "extends": "@tunnckocore"
   },
   "renovate": {
     "extends": "@tunnckocore"

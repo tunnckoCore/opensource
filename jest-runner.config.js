@@ -39,7 +39,7 @@ module.exports = {
   ],
 
   // rollup: 'fooo',
-  // rolldowxn: {
+  // rolldown: {
   //   external: builtins,
   //   inlineDynamicImports: true,
   //   experimentalTopLevelAwait: true,
@@ -57,8 +57,3 @@ module.exports = {
   //   },
   // },
 };
-
-// 1. hash of full versions of all packages
-// 2. hash of major versions of all packages
-// 3. hash of date timestamp (e.g. Date.now())
-// 4. hash of 1, 2 and 3

@@ -8,7 +8,7 @@ module.exports = {
   testMatch: [
     // '<rootDir>/src/index.ts',
     // '<rootDir>/packages/*/src/**/*',
-    `<rootDir>/@tunnckocore/execa/src/index.js`,
+    `<rootDir>/@tunnckocore/*/src/index.js`,
     // `<rootDir>/src/zzz*`,
   ],
   testPathIgnorePatterns: [

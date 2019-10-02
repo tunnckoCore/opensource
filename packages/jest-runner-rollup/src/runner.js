@@ -15,48 +15,98 @@ const rollupConfigFile = cosmiconfig('rollup');
 
 module.exports = async function jetRunnerRollup({ testPath, config }) {
   const start = new Date();
+
+  /** Load config from possible places */
   const cfg = await tryLoadConfig({ testPath, config, start });
   if (cfg.hasError) return cfg.error;
 
+  /** Find input file */
   const hasExtension = path.extname(testPath).length > 0;
   const inputFile = await tryCatch(testPath, start, () =>
     hasExtension ? testPath : tryExtensions(testPath, config),
   );
   if (inputFile.hasError) return inputFile.error;
 
+  const { pkgHook, ...rollupConfig } = cfg;
+  const pkgHookFn = typeof pkgHook === 'function' ? pkgHook : () => {};
+
+  /** Rull that bundle */
   const bundle = await tryCatch(inputFile, start, () =>
-    rollup({ ...cfg, input: inputFile }),
+    rollup({ ...rollupConfig, input: inputFile }),
   );
   if (bundle.hasError) return bundle.error;
 
+  /** Find correct root path */
   const pkgRoot = isMonorepo(config.cwd)
     ? path.dirname(path.dirname(inputFile))
     : config.rootDir;
 
-  console.log({ a: config.rootDir });
-  const outputOptions = { dest: 'builds', file: 'index.js', ...cfg.output };
+  /** Normalize outputs */
+  const outputOpts = [].concat(cfg.output).filter(Boolean);
+  const outputOptions = outputOpts.map((opt) => {
+    const opts = { file: 'dist/index.js', ...opt };
 
-  const outDir = outputOptions.dest.replace(/^\/|\/$/, '');
-  let outFile = outputOptions.file.replace(/^\/|\/$/, '');
-  outFile = outFile.startsWith(outDir) ? outFile.slice(outDir.length) : outFile;
-  outFile = outFile.replace(/^\/|\/$/, '');
-  const outputFile = path.join(pkgRoot, outDir, outFile);
+    const dest = path.dirname(opts.file);
+    const dist = opts.file.includes(
+      opts.format,
+    ) /*  || outputOpts.length === 1 */
+      ? dest
+      : path.join(dest, opts.format);
 
-  // console.log({ pkgRoot, outDir, outFile, outputFile });
+    const outputFile = path.join(pkgRoot, dist, path.basename(opts.file));
 
+    return { ...opts, dist, file: outputFile };
+  });
+
+  /** Write output file for each format */
   const res = await tryCatch(inputFile, start, () =>
-    bundle.write({ ...outputOptions, file: outputFile }),
+    Promise.all(
+      outputOptions.map((outputOpt) =>
+        bundle
+          .write(outputOpt)
+          .then(() =>
+            /** If bundled without problems, print the output file filename */
+            pass({
+              start,
+              end: Date.now(),
+              test: {
+                path: outputOpt.file,
+                title: 'Rollup',
+              },
+            }),
+          )
+          .catch((err) => {
+            /** If there is problem bundling, re-throw appending output filename */
+            err.outputFile = outputOpt.file;
+            throw err;
+          }),
+      ),
+    )
+      /** Bundling process for each format completed successfuly */
+      .then(async (testRes) => {
+        await pkgHookFn({
+          ...rollupConfig,
+          pkgRoot,
+          output: outputOptions,
+        });
+        return testRes;
+      })
+      /** Bundling for some of the formats failed */
+      .catch((err) =>
+        fail({
+          start,
+          end: new Date(),
+          test: {
+            path: err.outputFile,
+            title: 'Rollup',
+            errorMessage: `jest-runner-rollup: ${err.message}`,
+          },
+        }),
+      ),
   );
   if (res.hasError) return res.error;
 
-  return pass({
-    start,
-    end: Date.now(),
-    test: {
-      path: outputFile,
-      title: 'Rollup',
-    },
-  });
+  return res;
 };
 
 async function tryCatch(testPath, start, fn) {

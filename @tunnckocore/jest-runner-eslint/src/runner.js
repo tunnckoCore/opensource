@@ -1,7 +1,7 @@
 import { pass, fail, skip } from '@tunnckocore/create-jest-runner';
 
-import { getWorkspacesAndExtensions } from '@tunnckocore/utils';
 import cosmiconfig from 'cosmiconfig';
+import { getWorkspacesAndExtensions } from '@tunnckocore/utils';
 import { CLIEngine } from 'eslint';
 
 const explorer = cosmiconfig('jest-runner');
@@ -15,7 +15,7 @@ export default async function jestRunnerESLint({ testPath, config }) {
     require(config.setupTestFrameworkScriptFile);
   }
 
-  const engine = new CLIEngine(options.eslint);
+  const engine = new CLIEngine(options);
 
   if (engine.isPathIgnored(testPath)) {
     return skip({
@@ -30,7 +30,7 @@ export default async function jestRunnerESLint({ testPath, config }) {
 
   const report = engine.executeOnFiles([testPath]);
 
-  if (options.eslint.fix && !options.fixDryRun) {
+  if (options.fix && !options.fixDryRun) {
     CLIEngine.outputFixes(report);
   }
 
@@ -90,9 +90,11 @@ export default async function jestRunnerESLint({ testPath, config }) {
 function normalizeOptions(val, rootDir) {
   const { extensions } = getWorkspacesAndExtensions(rootDir);
   const cfg = val && val.config ? val.config : {};
+
   const eslintOptions = {
     // ignore: DEFAULT_IGNORE,
     exit: true,
+    quiet: true,
     warnings: false,
     maxWarnings: 10,
     reporter: 'codeframe',
@@ -109,6 +111,6 @@ function normalizeOptions(val, rootDir) {
 
   return {
     ...cfg,
-    eslint: eslintOptions,
+    ...eslintOptions,
   };
 }

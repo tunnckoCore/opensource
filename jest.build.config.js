@@ -13,7 +13,7 @@ module.exports = {
     /node_modules/.toString(),
     /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),
     /.+\/@tunnckocore\/utils\/.+/.toString(),
-    // /.+\/jest-runner-rollup\/.+/.toString(),
+    /.+\/jest-runner-rollup\/.+/.toString(),
   ],
   // moduleNameMapper: alias,
   moduleFileExtensions: exts,

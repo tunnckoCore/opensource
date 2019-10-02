@@ -15,6 +15,7 @@ module.exports = {
 
     // ! todo remove when fixed
     /koa-better-body/.toString(),
+    /jest-runner-rollup/.toString(),
   ],
   moduleNameMapper: alias,
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
