@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@0.7.0...@tunnckocore/utils@0.8.0) (2019-10-02)
+
+
+### Features
+
+* add jest runner rollup ([#56](https://github.com/tunnckoCore/opensource/issues/56)) ([b49a662](https://github.com/tunnckoCore/opensource/commit/b49a662))
+
+
+
+
+
 # [0.7.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@0.6.0...@tunnckocore/utils@0.7.0) (2019-09-20)
 
 

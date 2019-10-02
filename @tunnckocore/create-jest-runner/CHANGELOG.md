@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/create-jest-runner@0.5.6...@tunnckocore/create-jest-runner@0.6.0) (2019-10-02)
+
+
+### Bug Fixes
+
+* create jest runner bug ([05ba8f9](https://github.com/tunnckoCore/opensource/commit/05ba8f9))
+* update inBand runs failing, reorganize jest configs ([684a758](https://github.com/tunnckoCore/opensource/commit/684a758))
+
+
+### Features
+
+* add jest runner rollup ([#56](https://github.com/tunnckoCore/opensource/issues/56)) ([b49a662](https://github.com/tunnckoCore/opensource/commit/b49a662))
+
+
+
+
+
 ## [0.5.6](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/create-jest-runner@0.5.5...@tunnckocore/create-jest-runner@0.5.6) (2019-09-19)
 
 
