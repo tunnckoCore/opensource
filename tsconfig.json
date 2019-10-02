@@ -3,7 +3,11 @@
   "extends": "@tunnckocore/typescript-config/monorepo.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "declarationDir": "dist/types"
+    "declarationDir": "dist/types",
+    "paths": {
+      "*": ["packages/*", "@tunnckocore/*"]
+    }
   },
+  "include": ["packages/*", "@tunnckocore/*"],
   "exclude": ["node_modules"]
 }
