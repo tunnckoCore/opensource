@@ -20,8 +20,7 @@
       "createRelease": "github",
       "message": "chore: release package(s)",
       "ignoreChanges": [
-        "**/koa-better-body/**",
-        "**/jest-runner-rollup/**"
+        "**/koa-better-body/**"
       ]
     }
   }
