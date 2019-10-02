@@ -1,10 +1,12 @@
-const utils = require('./@tunnckocore/utils/src');
+const path = require('path');
+const utils = require('../@tunnckocore/utils/src');
 
-const { exts } = utils.getWorkspacesAndExtensions(__dirname);
+const ROOT = path.dirname(__dirname);
+const { exts } = utils.getWorkspacesAndExtensions(ROOT);
 
 module.exports = {
+  rootDir: ROOT,
   displayName: 'build',
-  rootDir: __dirname,
   testMatch: [
     '<rootDir>/packages/*/src/**/*',
     '<rootDir>/@tunnckocore/*/src/**/*',

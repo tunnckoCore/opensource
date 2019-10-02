@@ -1,14 +1,16 @@
-const utils = require('./@tunnckocore/utils/src');
+const path = require('path');
+const utils = require('../@tunnckocore/utils/src');
 
-const { exts } = utils.getWorkspacesAndExtensions(__dirname);
+const ROOT = path.dirname(__dirname);
+const { exts } = utils.getWorkspacesAndExtensions(ROOT);
 
 module.exports = {
+  rootDir: ROOT,
   displayName: 'bundle',
-  rootDir: __dirname,
   testMatch: [
     // '<rootDir>/src/index.ts',
     // '<rootDir>/packages/*/src/**/*',
-    `<rootDir>/@tunnckocore/*/src/index.js`,
+    `<rootDir>/@tunnckocore/execa/src/index.js`,
     // `<rootDir>/src/zzz*`,
   ],
   testPathIgnorePatterns: [
@@ -18,5 +20,5 @@ module.exports = {
   ],
   // moduleNameMapper: alias,
   moduleFileExtensions: exts,
-  runner: './packages/jest-runner-rollup/src/index.js',
+  runner: path.join(ROOT, 'packages/jest-runner-rollup/src/index.js'),
 };

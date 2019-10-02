@@ -78,7 +78,18 @@ const createRunner = (runPath, { getExtraOptions } = {}) => {
                   return runner(baseOptions);
                 });
               })
-              .then((result) => onResult(test, result))
+              .then((testResult) => {
+                if (Array.isArray(testResult)) {
+                  testResult.forEach((result) =>
+                    result.numFailingTests > 0
+                      ? onFailure(test, new Error(result.errorMessage))
+                      : onResult(test, result),
+                  );
+                  return;
+                }
+
+                onResult(test, testResult);
+              })
               .catch((err) => onFailure(test, err)),
           ),
         Promise.resolve(),

@@ -1,10 +1,12 @@
-const utils = require('./@tunnckocore/utils/src');
+const path = require('path');
+const utils = require('../@tunnckocore/utils/src');
 
-const { alias, exts } = utils.createAliases(__dirname, 'src');
+const ROOT = path.dirname(__dirname);
+const { alias, exts } = utils.createAliases(ROOT, 'src');
 
 module.exports = {
+  rootDir: ROOT,
   displayName: 'lint',
-  rootDir: __dirname,
   testMatch: [
     '<rootDir>/packages/*/src/**/*',
     '<rootDir>/@tunnckocore/*/src/**/*',
