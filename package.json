@@ -23,7 +23,8 @@
     "bundle": "jest -c jest.bundle.config.js",
     "release": "lerna version && lerna publish from-package",
     "cr": "node create-package.js",
-    "resque": "lerna exec 'babel src -d dist/main --presets @tunnckocore --source-maps both' --stream --scope 'jest-runner-rollup' --scope '@tunnckocore/*jest-runner*'"
+    "fmt": "prettier '**/*' --write --check",
+    "resque": "lerna exec 'babel src -d dist/main --presets @tunnckocore --source-maps both' --stream --scope '@tunnckocore/*jest-runner*'"
   },
   "dependencies": {
     "@babel/cli": "^7.6.0",
@@ -40,9 +41,9 @@
     "enquirer": "^2.3.2",
     "eslint": "^6.4.0",
     "jest": "^24.9.0",
-    "jest-runner-prettier": "^0.3.1",
     "lerna": "^3.16.4",
     "prettier": "^1.18.2",
+    "prettier-plugin-sh": "^0.2.0",
     "react": "^16.10.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",

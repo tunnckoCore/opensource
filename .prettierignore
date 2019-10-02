@@ -1,1 +1,15 @@
 CHANGELOG.md
+dist
+build
+fixture
+fixtures
+__fixture__
+__fixtures__
+.gitkeep
+*.map
+*.lock
+.npmrc
+.yarnrc
+.cache
+.*cache
+*.cache
