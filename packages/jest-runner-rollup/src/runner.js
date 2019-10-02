@@ -58,7 +58,7 @@ module.exports = async function jetRunnerRollup({ testPath, config }) {
 
     const outputFile = path.join(pkgRoot, dist, path.basename(opts.file));
 
-    return hooks.formatHsdfsdfook({
+    return hooks.formatHook({
       outputOptions: { ...opts, dist, file: outputFile },
       testPath,
       pkgRoot,
