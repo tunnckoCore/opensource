@@ -2,8 +2,9 @@
   "version": "0.6.3",
   "name": "@tunnckocore/create-jest-runner",
   "description": "WIP",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-  "homepage": "https://github.com/tunnckoCore/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/create-jest-runner",
   "license": "MPL-2.0",
   "licenseStart": 2019,
   "main": "src/index.js",
@@ -15,11 +16,6 @@
   },
   "engines": {
     "node": ">=8.11"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tunnckoCore/opensource.git",
-    "directory": "@tunnckocore/create-jest-runner"
   },
   "dependencies": {
     "chalk": "^2.4.2",

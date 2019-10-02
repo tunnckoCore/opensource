@@ -2,8 +2,9 @@
   "version": "4.4.6",
   "name": "@tunnckocore/execa",
   "description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence with control for concurrency",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-  "homepage": "https://github.com/tunnckoCore/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/execa",
   "license": "MPL-2.0",
   "licenseStart": 2017,
   "main": "dist/cjs/index.js",
@@ -16,11 +17,6 @@
   },
   "engines": {
     "node": ">=8.11"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tunnckoCore/opensource.git",
-    "directory": "./@tunnckocore/execa"
   },
   "devDependencies": {
     "execa": "^2.0.3",

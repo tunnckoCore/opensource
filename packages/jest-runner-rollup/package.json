@@ -1,8 +1,9 @@
 {
   "version": "0.2.3",
   "name": "jest-runner-rollup",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-  "homepage": "https://github.com/tunnckoCore/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils",
   "license": "MPL-2.0",
   "licenseStart": 2019,
   "main": "src/index.js",
@@ -10,11 +11,6 @@
   "scripts": {},
   "engines": {
     "node": ">=8.11"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:tunnckoCore/opensource.git",
-    "directory": "packages/jest-runner-rollup"
   },
   "publishConfig": {
     "access": "public",
