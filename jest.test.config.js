@@ -11,12 +11,11 @@ module.exports = {
   ],
   testPathIgnorePatterns: [
     /node_modules/.toString(),
-    /__(?:fixtures?|supports?|shared)__/.toString(),
-    /(?:fixtures?|supports?|shared)/.toString(),
-    /__shared__/.toString(),
+    /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),
 
     // ! todo remove when fixed
     /koa-better-body/.toString(),
+    /jest-runner-rollup/.toString(),
   ],
   moduleNameMapper: alias,
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],

@@ -20,9 +20,10 @@
     "lint": "jest -c jest.lint.config.js",
     "test": "jest -c jest.test.config.js",
     "build": "jest -c jest.build.config.js",
+    "bundle": "jest -c jest.bundle.config.js",
     "release": "lerna version && lerna publish from-package",
     "cr": "node create-package.js",
-    "resque": "lerna exec 'babel src -d dist/main --presets @tunnckocore --source-maps both' --stream --scope '@tunnckocore/*jest-runner*' --scope 'jest-runner-rollup'"
+    "resque": "lerna exec 'babel src -d dist/main --presets @tunnckocore --source-maps both' --stream --scope 'jest-runner-rollup' --scope '@tunnckocore/*jest-runner*'"
   },
   "dependencies": {
     "@babel/cli": "^7.6.0",
@@ -40,15 +41,9 @@
     "jest": "^24.9.0",
     "lerna": "^3.16.4",
     "prettier": "^1.18.2",
+    "react": "^16.10.1",
     "semver": "^6.3.0",
     "typescript": "^3.6.3"
-  },
-  "devDependencies": {
-    "eslint-plugin-node": "^10.0.0"
-  },
-  "prettier": "@tunnckocore/prettier-config",
-  "eslintConfig": {
-    "extends": "@tunnckocore"
   },
   "renovate": {
     "extends": "@tunnckocore"

@@ -1,3 +1,7 @@
+// const builtins = require('builtin-modules');
+// const nodeResolve = require('rollup-plugin-node-resolve');
+// const commonjs = require('rollup-plugin-commonjs');
+
 const presetOptions = {
   react: true,
   typescript: true,
@@ -33,9 +37,23 @@ module.exports = {
       outDir: 'dist/module',
     },
   ],
-};
 
-// 1. hash of full versions of all packages
-// 2. hash of major versions of all packages
-// 3. hash of date timestamp (e.g. Date.now())
-// 4. hash of 1, 2 and 3
+  // rollup: 'fooo',
+  // rolldown: {
+  //   external: builtins,
+  //   inlineDynamicImports: true,
+  //   experimentalTopLevelAwait: true,
+  //   plugins: [
+  //     nodeResolve({
+  //       preferBuiltins: true,
+  //       mainFields: ['module', 'main'],
+  //     }),
+  //     commonjs({
+  //       // extensions,
+  //     }),
+  //   ],
+  //   output: {
+  //     format: 'esm',
+  //   },
+  // },
+};

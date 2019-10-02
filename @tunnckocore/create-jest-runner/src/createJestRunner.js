@@ -156,9 +156,12 @@ const createRunner = (runPath, { getExtraOptions } = {}) => {
                 );
                 return;
               }
+
               onResult(test, testResult);
             })
-            .catch((err) => onError(err, test)),
+            .catch((err) => {
+              onError(err, test);
+            }),
         ),
       );
 
