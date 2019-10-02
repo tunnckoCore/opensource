@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.7](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/execa/compare/@tunnckocore/execa@4.4.6...@tunnckocore/execa@4.4.7) (2019-10-02)
+
+
+### Bug Fixes
+
+* packages metadata, repo and homepage fields ([6a28998](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/execa/commit/6a28998))
+
+
+
+
+
 ## [4.4.6](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@4.4.5...@tunnckocore/execa@4.4.6) (2019-10-02)
 
 
