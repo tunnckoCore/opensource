@@ -8,14 +8,12 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap --since",
-    "setup": "yarn refresh && yarn pre-commit",
-    "setup:ci": "yarn refresh:ci && yarn pre-commit",
-    "refresh": "yarn && yarn bootstrap",
-    "refresh:ci": "yarn --frozen-lockfile && yarn bootstrap",
-    "fresh": "yarn clean:dist && yarn clean:fresh",
-    "clean:fresh": "lerna clean -y && rm -rf node_modules",
+    "refresh": "yarn cleanup && yarn setup",
+    "setup": "yarn && yarn bootstrap",
+    "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
+    "cleanup": "yarn clean:dist && yarn clean:fresh",
     "clean:dist": "rm -rf packages/*/dist @tunnckocore/*/dist",
-    "pre-commit": "yarn jest:all || (yarn resque && yarn jest:all)",
+    "clean:fresh": "lerna clean -y && rm -rf node_modules",
     "jest:all": "jest -c jest/full.js",
     "lint": "jest -c jest/lint.js",
     "test": "jest -c jest/test.js",
@@ -23,8 +21,7 @@
     "bundle": "jest -c jest/bundle.js",
     "release": "lerna version && lerna publish from-package",
     "cr": "node create-package.js",
-    "fmt": "prettier '**/*' --write --check",
-    "resque": "lerna exec 'babel src -d dist/main --presets @tunnckocore --source-maps both' --stream --scope '@tunnckocore/*jest-runner*'"
+    "fmt": "prettier '**/*' --write --check"
   },
   "dependencies": {
     "@babel/cli": "^7.6.0",
@@ -33,8 +30,6 @@
     "@commitlint/config-conventional": "^8.2.0",
     "@tunnckocore/babel-preset": "*",
     "@tunnckocore/eslint-config": "*",
-    "@tunnckocore/jest-runner-babel": "*",
-    "@tunnckocore/jest-runner-eslint": "*",
     "@tunnckocore/prettier-config": "*",
     "@tunnckocore/typescript-config": "*",
     "builtin-modules": "^3.1.0",
