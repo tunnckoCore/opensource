@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.5](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@4.4.4...@tunnckocore/execa@4.4.5) (2019-10-02)
+
+
+### Bug Fixes
+
+* execa deps ([07321b4](https://github.com/tunnckoCore/opensource/commit/07321b4))
+* execa optional deps ([753ae5e](https://github.com/tunnckoCore/opensource/commit/753ae5e))
+* execa to dev deps ([57b6fc8](https://github.com/tunnckoCore/opensource/commit/57b6fc8))
+
+
+
+
+
 ## [4.4.4](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@4.4.3...@tunnckocore/execa@4.4.4) (2019-10-02)
 
 
