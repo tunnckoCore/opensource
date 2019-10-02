@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.11](https://github.com/tunnckoCore/opensource/tree/master/packages/koa-better-body/compare/koa-better-body@3.0.10...koa-better-body@3.0.11) (2019-10-02)
+
+
+### Bug Fixes
+
+* **koa-better-body:** add old changelog entries/versions ([35362e5](https://github.com/tunnckoCore/opensource/tree/master/packages/koa-better-body/commit/35362e5))
+
+
+
+
+
 ## [3.0.10](https://github.com/tunnckoCore/opensource/tree/master/packages/koa-better-body/compare/koa-better-body@3.0.9...koa-better-body@3.0.10) (2019-10-02)
 
 
