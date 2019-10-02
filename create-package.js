@@ -18,16 +18,18 @@ const answers = {
 
 function onSubmit(name, value) {
   if (name === 'keywords') {
-    const val = answers.keywords.concat(value.split(',')).filter(Boolean);
+    const kws = typeof value === 'string' ? value.split(',') : [];
+    const val = answers.keywords.concat(kws).filter(Boolean);
     answers[name] = val;
 
     return val;
   }
+
   answers[name] = value;
   return value;
 }
 
-async function main() {
+async function run() {
   await prompt([
     {
       message: 'Name of the package?',
@@ -79,6 +81,17 @@ async function main() {
       },
     },
     {
+      type: 'select',
+      name: 'publishType',
+      message: 'What type of publishing?',
+      choices: ['build', 'bundle', 'source'],
+      initial: 0,
+      onSubmit,
+      result(value) {
+        answers.publishType = value;
+      },
+    },
+    {
       type: 'input',
       name: 'licenseStart',
       message: 'When the package is first published?',
@@ -101,31 +114,37 @@ async function main() {
     },
   ]);
 
+  const { publishType: type } = answers;
+
+  let mainField = type === 'build' ? 'dist/main/index.js' : null;
+  mainField = mainField || (type === 'bundle' ? 'dist/cjs/index.js' : null);
+  mainField = mainField || (type === 'source' ? 'src/index.js' : mainField);
+
+  let modField = type === 'build' ? 'dist/module/index.js' : null;
+  modField = modField || (type === 'bundle' ? 'dist/esm/index.js' : null);
+  modField = modField || (type === 'source' ? 'src/index.js' : modField);
+
   const pkg = {
     version: answers.version,
     name: answers.name,
     description: answers.description,
-    author: 'Charlike Mike Reagent <opensource@tunnckocore.com>',
-    homepage: 'https://github.com/tunnckoCore/opensource',
+    author: `Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)`,
+    repository: `https://github.com/tunnckoCore/opensource/tree/master/${answers.location}`,
+    homepage: `https://tunnckocore.com/opensource`,
     license: answers.license,
     licenseStart: parseInt(answers.licenseStart, 10),
-    main: 'dist/main/index.js',
-    module: 'dist/module/index.js',
+    main: mainField,
+    module: modField,
     types: 'dist/types/index.d.ts',
     scripts: {},
     engines: {
       node: '>=8.11',
     },
-    repository: {
-      type: 'git',
-      url: 'git@github.com:tunnckoCore/opensource.git',
-      directory: answers.location,
-    },
     publishConfig: {
       access: 'public',
       tag: 'latest',
     },
-    files: ['dist'],
+    files: [/build|bundle/.test(answers.publishType) ? 'dist' : 'src'],
     keywords: answers.keywords,
   };
 
@@ -153,7 +172,7 @@ test('make tests for ${answers.name} package', async () => {
 }
 
 // eslint-disable-next-line promise/prefer-await-to-callbacks
-main().catch(() => {
+run().catch(() => {
   // eslint-disable-next-line unicorn/no-process-exit
   process.exit(1);
 });
