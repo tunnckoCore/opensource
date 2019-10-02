@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/eslint-config",
-  "version": "4.1.10",
+  "version": "4.2.0",
   "description": "Shareable ESLint config for all @tunnckoCore projects",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/eslint-config",
   "homepage": "https://tunnckocore.com/opensource",
@@ -56,7 +56,7 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "@tunnckocore/utils": "^0.8.4",
+    "@tunnckocore/utils": "^0.9.0",
     "@typescript-eslint/eslint-plugin": "^2.3.2",
     "@typescript-eslint/parser": "^2.3.2",
     "babel-eslint": "^10.0.3",
@@ -80,7 +80,6 @@
     "eslint-plugin-react-hooks": "^2.1.1",
     "eslint-plugin-unicorn": "^12.0.1"
   },
-  "devDependencies": {},
   "publishConfig": {
     "access": "public",
     "tag": "latest"

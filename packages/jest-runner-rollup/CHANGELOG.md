@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/jest-runner-rollup@0.2.5...jest-runner-rollup@0.3.0) (2019-10-02)
+
+
+### Features
+
+* merge configs repo here, unify pkg json, fmt ([0dd53f2](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/commit/0dd53f2))
+
+
+
+
+
 ## [0.2.5](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/jest-runner-rollup@0.2.4...jest-runner-rollup@0.2.5) (2019-10-02)
 
 **Note:** Version bump only for package jest-runner-rollup

@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/browserslist-config",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Shareable Browserslist config for all @tunnckoCore projects",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/browserslist-config",
   "homepage": "https://tunnckocore.com/opensource",
@@ -41,8 +41,6 @@
   "peerDependencies": {
     "browserslist": "^4.7.0"
   },
-  "dependencies": {},
-  "devDependencies": {},
   "publishConfig": {
     "access": "public",
     "tag": "latest"

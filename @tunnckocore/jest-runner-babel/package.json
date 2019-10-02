@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/jest-runner-babel",
-  "version": "3.2.7",
+  "version": "3.3.0",
   "description": "WIP",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel",
   "homepage": "https://tunnckocore.com/opensource",
@@ -40,13 +40,11 @@
     "tunnckocorehq"
   ],
   "scripts": {},
-  "peerDependencies": {},
   "dependencies": {
     "@babel/core": "^7.6.0",
-    "@tunnckocore/create-jest-runner": "^0.6.5",
+    "@tunnckocore/create-jest-runner": "^0.7.0",
     "cosmiconfig": "^5.2.1"
   },
-  "devDependencies": {},
   "publishConfig": {
     "access": "public",
     "tag": "latest"

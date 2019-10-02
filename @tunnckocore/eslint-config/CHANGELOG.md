@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 4.2.0 (2019-10-02)
+
+
+### Features
+
+* merge configs repo here, unify pkg json, fmt ([0dd53f2](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/eslint-config/commit/0dd53f2))
+* tweaks, add scoped eslint-config ([27f12c0](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/eslint-config/commit/27f12c0))
+
+
+
+
+
 ## [4.1.10](https://github.com/tunnckocore/configs/compare/@tunnckocore/eslint-config@4.1.9...@tunnckocore/eslint-config@4.1.10) (2019-09-21)
 
 

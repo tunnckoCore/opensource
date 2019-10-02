@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/babel-preset",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Shareable Babel config/preset for all @tunnckoCore projects",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/babel-preset",
   "homepage": "https://tunnckocore.com/opensource",
@@ -54,7 +54,6 @@
     "babel-plugin-add-module-exports": "^1.0.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24"
   },
-  "devDependencies": {},
   "publishConfig": {
     "access": "public",
     "tag": "latest"

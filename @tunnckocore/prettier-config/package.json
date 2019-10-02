@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/prettier-config",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Shareable Prettier config for all @tunnckoCore projects",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/prettier-config",
   "homepage": "https://tunnckocore.com/opensource",
@@ -41,8 +41,6 @@
   "peerDependencies": {
     "prettier": "^1.18.2"
   },
-  "dependencies": {},
-  "devDependencies": {},
   "publishConfig": {
     "access": "public",
     "tag": "latest"

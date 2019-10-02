@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/typescript-config",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Shareable TypeScript configs for all @tunnckoCore projects",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/typescript-config",
   "homepage": "https://tunnckocore.com/opensource",
@@ -34,8 +34,6 @@
     "tslib": "^1.10.0",
     "typescript": "^3.7.0-beta"
   },
-  "dependencies": {},
-  "devDependencies": {},
   "publishConfig": {
     "access": "public",
     "tag": "latest"

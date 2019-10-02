@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/@tunnckocore/utils@0.8.4...@tunnckocore/utils@0.9.0) (2019-10-02)
+
+
+### Features
+
+* merge configs repo here, unify pkg json, fmt ([0dd53f2](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/commit/0dd53f2))
+
+
+
+
+
 ## [0.8.4](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/@tunnckocore/utils@0.8.3...@tunnckocore/utils@0.8.4) (2019-10-02)
 
 **Note:** Version bump only for package @tunnckocore/utils
