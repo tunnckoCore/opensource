@@ -58,7 +58,7 @@
     "koa-body-parsers": "git+https://github.com/tunnckoCore/body-parsers.git"
   },
   "devDependencies": {
-    "is-buffer": "2.0.3",
+    "is-buffer": "2.0.4",
     "koa": "1.6.2",
     "koa-route": "3.2.0",
     "qs": "6.8.0",
