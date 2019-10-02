@@ -5,7 +5,7 @@
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "homepage": "https://tunnckocore.com/opensource",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/packages/koa-better-body",
-  "main": "index.js",
+  "main": "dist/main/index.js",
   "license": "MIT",
   "scripts": {},
   "dependencies": {
