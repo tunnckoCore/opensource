@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.0.1",
   "name": "jest-runner-rollup",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
   "homepage": "https://github.com/tunnckoCore/opensource",
@@ -22,7 +22,7 @@
     "tag": "latest"
   },
   "files": [
-    "dist"
+    "src"
   ],
   "keywords": [
     "tunnckocorehq",
