@@ -22,7 +22,7 @@
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "@tunnckocore/execa"
   },
-  "optionalDependencies": {
+  "devDependencies": {
     "execa": "^2.0.3",
     "p-map": "^3.0.0"
   },
