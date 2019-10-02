@@ -18,10 +18,7 @@
     "version": {
       "conventionalCommits": true,
       "createRelease": "github",
-      "message": "chore: release package(s)",
-      "ignoreChanges": [
-        "**/koa-better-body/**"
-      ]
+      "message": "chore: release package(s)"
     }
   }
 }
