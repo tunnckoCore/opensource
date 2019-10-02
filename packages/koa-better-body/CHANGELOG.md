@@ -1,0 +1,12 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [3.0.6](https://github.com/tunnckoCore/koa-better-body/compare/koa-better-body@3.0.5...koa-better-body@3.0.6) (2019-10-02)
+
+
+### Bug Fixes
+
+* build to node 8.11, ignore dist again ([15481ed](https://github.com/tunnckoCore/koa-better-body/commit/15481ed))
+* delete dist files ([e602f7e](https://github.com/tunnckoCore/koa-better-body/commit/e602f7e))
