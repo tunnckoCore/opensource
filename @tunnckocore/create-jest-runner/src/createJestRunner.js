@@ -5,7 +5,6 @@
 /* eslint-disable max-classes-per-file */
 import throat from 'throat';
 import Worker from 'jest-worker';
-import Debug from 'debug';
 
 class CancelRunError extends Error {
   constructor(message) {
@@ -13,8 +12,6 @@ class CancelRunError extends Error {
     this.name = 'CancelRunError';
   }
 }
-
-const debug = Debug('rollup-runner');
 
 const createRunner = (runPath, { getExtraOptions } = {}) => {
   class BaseTestRunner {
