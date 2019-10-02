@@ -6,8 +6,7 @@
   "license": "MPL-2.0",
   "licenseStart": 2019,
   "main": "src/index.js",
-  "module": "src/index.js",
-  "types": "dist/types/index.d.ts",
+  "types": "index.d.ts",
   "scripts": {},
   "engines": {
     "node": ">=8.11"
@@ -22,7 +21,8 @@
     "tag": "latest"
   },
   "files": [
-    "src"
+    "src",
+    "index.d.ts"
   ],
   "keywords": [
     "tunnckocorehq",

@@ -17,5 +17,5 @@ module.exports = {
   ],
   moduleNameMapper: alias,
   moduleFileExtensions: exts,
-  runner: path.join(ROOT, '@tunnckocore/jest-runner-eslint/dist/main/index.js'),
+  runner: path.join(ROOT, '@tunnckocore/jest-runner-eslint/src/index.js'),
 };

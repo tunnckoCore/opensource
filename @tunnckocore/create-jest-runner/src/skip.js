@@ -1,7 +1,7 @@
-import toTestResult from './toTestResult';
+const toTestResult = require('./toTestResult');
 
-const skip = ({ start, end, test }) =>
-  toTestResult({
+module.exports = function skip({ start, end, test }) {
+  return toTestResult({
     stats: {
       failures: 0,
       pending: 1,
@@ -14,5 +14,4 @@ const skip = ({ start, end, test }) =>
     tests: [{ duration: end - start, ...test }],
     jestTestPath: test.path,
   });
-
-export default skip;
+};

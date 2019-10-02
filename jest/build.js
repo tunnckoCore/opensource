@@ -15,10 +15,10 @@ module.exports = {
     /node_modules/.toString(),
     /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),
     /.+\/@tunnckocore\/utils\/.+/.toString(),
-    /.+\/jest-runner-rollup\/.+/.toString(),
+    /.+jest-runner.+/.toString(),
     /.+\/koa-better-body\/.+/.toString(),
   ],
   // moduleNameMapper: alias,
   moduleFileExtensions: exts,
-  runner: path.join(ROOT, '@tunnckocore/jest-runner-babel/dist/main/index.js'),
+  runner: path.join(ROOT, '@tunnckocore/jest-runner-babel/src/index.js'),
 };

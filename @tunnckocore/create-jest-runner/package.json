@@ -6,9 +6,8 @@
   "homepage": "https://github.com/tunnckoCore/opensource",
   "license": "MPL-2.0",
   "licenseStart": 2019,
-  "main": "dist/main/index.js",
-  "module": "dist/module/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "src/index.js",
+  "types": "index.d.ts",
   "scripts": {},
   "publishConfig": {
     "access": "public",
@@ -33,7 +32,8 @@
     "jest": "^24.0.0"
   },
   "files": [
-    "dist",
+    "src",
+    "index.d.ts",
     "generator"
   ],
   "bin": {

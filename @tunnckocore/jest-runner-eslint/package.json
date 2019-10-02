@@ -6,9 +6,8 @@
   "homepage": "https://github.com/tunnckoCore/opensource",
   "license": "MPL-2.0",
   "licenseStart": 2019,
-  "main": "dist/main/index.js",
-  "module": "dist/module/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "src/index.js",
+  "types": "index.d.ts",
   "scripts": {},
   "publishConfig": {
     "access": "public",
@@ -25,11 +24,14 @@
   "dependencies": {
     "@tunnckocore/create-jest-runner": "^0.6.2",
     "@tunnckocore/utils": "^0.8.2",
-    "cosmiconfig": "^5.2.1",
+    "cosmiconfig": "^5.2.1"
+  },
+  "peerDependencies": {
     "eslint": "^6.4.0"
   },
   "files": [
-    "dist"
+    "src",
+    "index.d.ts"
   ],
   "keywords": [
     "tunnckocorehq",

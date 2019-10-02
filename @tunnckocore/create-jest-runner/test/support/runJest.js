@@ -16,7 +16,7 @@ function normalize(output) {
     .replace(/\s+\n/g, '\n');
 }
 
-export default function runJest(project, options = []) {
+module.exports = function runJest(project, options = []) {
   // eslint-disable-next-line no-undef
   jest.setTimeout(15000);
 
@@ -38,4 +38,4 @@ export default function runJest(project, options = []) {
     ({ stdout, stderr }) =>
       `${stripColor(normalize(stderr))}\n${stripColor(normalize(stdout))}`,
   );
-}
+};

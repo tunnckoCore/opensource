@@ -1,7 +1,7 @@
-import toTestResult from './toTestResult';
+const toTestResult = require('./toTestResult');
 
-const fail = ({ start, end, test, errorMessage }) =>
-  toTestResult({
+module.exports = function fail({ start, end, test, errorMessage }) {
+  return toTestResult({
     errorMessage: errorMessage || test.errorMessage,
     stats: {
       failures: 1,
@@ -14,5 +14,4 @@ const fail = ({ start, end, test, errorMessage }) =>
     tests: [{ duration: end - start, ...test }],
     jestTestPath: test.path,
   });
-
-export default fail;
+};

@@ -1,7 +1,7 @@
-import toTestResult from './toTestResult';
+const toTestResult = require('./toTestResult');
 
-const todo = ({ start, end, test }) =>
-  toTestResult({
+module.exports = function todo({ start, end, test }) {
+  return toTestResult({
     stats: {
       failures: 0,
       pending: 0,
@@ -13,5 +13,4 @@ const todo = ({ start, end, test }) =>
     tests: [{ duration: end - start, ...test }],
     jestTestPath: test.path,
   });
-
-export default todo;
+};

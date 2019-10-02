@@ -122,7 +122,7 @@ module.exports = async function jetRunnerRollup({ testPath, config }) {
 
 async function tryCatch(testPath, start, fn) {
   try {
-    return fn();
+    return await fn();
   } catch (err) {
     return {
       hasError: true,

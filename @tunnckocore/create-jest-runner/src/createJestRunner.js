@@ -3,8 +3,8 @@
 /* eslint-disable promise/prefer-await-to-then */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-classes-per-file */
-import throat from 'throat';
-import Worker from 'jest-worker';
+const throat = require('throat');
+const JestWorker = require('jest-worker').default;
 
 class CancelRunError extends Error {
   constructor(message) {
@@ -13,7 +13,7 @@ class CancelRunError extends Error {
   }
 }
 
-const createRunner = (runPath, { getExtraOptions } = {}) => {
+module.exports = function createRunner(runPath, { getExtraOptions } = {}) {
   class BaseTestRunner {
     constructor(globalConfig) {
       this._globalConfig = globalConfig;
@@ -103,7 +103,7 @@ const createRunner = (runPath, { getExtraOptions } = {}) => {
       onFailure,
       options,
     ) {
-      const worker = new Worker(runPath, {
+      const worker = new JestWorker(runPath, {
         exposedMethods: ['default'],
         numWorkers: this._globalConfig.maxWorkers,
         forkOptions: { stdio: 'inherit' },
@@ -183,5 +183,3 @@ const createRunner = (runPath, { getExtraOptions } = {}) => {
 
   return BaseTestRunner;
 };
-
-export default createRunner;
