@@ -1,5 +1,5 @@
 {
-  "version": "0.2.2",
+  "version": "0.2.3",
   "name": "jest-runner-rollup",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
   "homepage": "https://github.com/tunnckoCore/opensource",
@@ -40,7 +40,7 @@
     "build"
   ],
   "dependencies": {
-    "@tunnckocore/create-jest-runner": "^0.6.2",
+    "@tunnckocore/create-jest-runner": "^0.6.3",
     "@tunnckocore/utils": "^0.8.2",
     "cosmiconfig": "^5.2.1",
     "rollup": "^1.22.0"

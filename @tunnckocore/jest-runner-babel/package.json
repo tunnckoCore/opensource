@@ -1,5 +1,5 @@
 {
-  "version": "3.2.4",
+  "version": "3.2.5",
   "name": "@tunnckocore/jest-runner-babel",
   "description": "WIP",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.6.0",
-    "@tunnckocore/create-jest-runner": "^0.6.2",
+    "@tunnckocore/create-jest-runner": "^0.6.3",
     "cosmiconfig": "^5.2.1"
   },
   "files": [

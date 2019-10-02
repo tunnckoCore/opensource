@@ -1,5 +1,5 @@
 {
-  "version": "0.4.2",
+  "version": "0.4.3",
   "name": "@tunnckocore/jest-runner-eslint",
   "description": "WIP",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
@@ -22,7 +22,7 @@
     "directory": "@tunnckocore/jest-runner-eslint"
   },
   "dependencies": {
-    "@tunnckocore/create-jest-runner": "^0.6.2",
+    "@tunnckocore/create-jest-runner": "^0.6.3",
     "@tunnckocore/utils": "^0.8.2",
     "cosmiconfig": "^5.2.1"
   },

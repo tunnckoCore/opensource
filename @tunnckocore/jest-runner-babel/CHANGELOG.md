@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.5](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-babel@3.2.4...@tunnckocore/jest-runner-babel@3.2.5) (2019-10-02)
+
+
+### Bug Fixes
+
+* no build step for *jest-runner* packages ([ba8a7ac](https://github.com/tunnckoCore/opensource/commit/ba8a7ac))
+
+
+
+
+
 ## [3.2.4](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-babel@3.2.3...@tunnckocore/jest-runner-babel@3.2.4) (2019-10-02)
 
 **Note:** Version bump only for package @tunnckocore/jest-runner-babel

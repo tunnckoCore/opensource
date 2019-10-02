@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.4](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@4.4.3...@tunnckocore/execa@4.4.4) (2019-10-02)
+
+
+### Bug Fixes
+
+* **execa:** bundled deps ([a428e85](https://github.com/tunnckoCore/opensource/commit/a428e85))
+
+
+
+
+
 ## [4.4.3](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@4.4.2...@tunnckocore/execa@4.4.3) (2019-10-02)
 
 **Note:** Version bump only for package @tunnckocore/execa

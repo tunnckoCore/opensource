@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/tunnckoCore/opensource/compare/jest-runner-rollup@0.2.2...jest-runner-rollup@0.2.3) (2019-10-02)
+
+
+### Bug Fixes
+
+* no build step for *jest-runner* packages ([ba8a7ac](https://github.com/tunnckoCore/opensource/commit/ba8a7ac))
+
+
+
+
+
 ## [0.2.2](https://github.com/tunnckoCore/opensource/compare/jest-runner-rollup@0.2.1...jest-runner-rollup@0.2.2) (2019-10-02)
 
 **Note:** Version bump only for package jest-runner-rollup
