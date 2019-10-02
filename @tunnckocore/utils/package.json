@@ -1,34 +1,38 @@
 {
-  "version": "0.8.4",
   "name": "@tunnckocore/utils",
+  "version": "0.8.4",
   "description": "Utility functions and helpers for internal usage and monorepos",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "homepage": "https://tunnckocore.com/opensource",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils",
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",
-  "licenseStart": 2019,
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
-  "scripts": {},
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
   "engines": {
     "node": ">=8.11"
   },
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "src/index.d.ts",
   "files": [
     "src"
   ],
   "keywords": [
-    "tunnckocorehq",
     "develop",
     "hela",
-    "tunnckocore",
+    "helpers",
     "monorepo",
     "monorepo helpers",
-    "helpers",
-    "utils",
-    "utilities"
-  ]
+    "tunnckocore",
+    "tunnckocorehq",
+    "utilities",
+    "utils"
+  ],
+  "scripts": {},
+  "peerDependencies": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "licenseStart": 2019
 }

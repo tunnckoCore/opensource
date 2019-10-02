@@ -1,52 +1,46 @@
 {
-  "private": true,
   "name": "@tunnckocore/opensource",
   "homepage": "https://github.com/tunnckocore/opensource",
+  "private": true,
   "workspaces": [
     "packages/*",
     "@tunnckocore/*"
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap --since",
-    "refresh": "yarn cleanup && yarn setup",
-    "setup": "yarn && yarn bootstrap",
-    "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
-    "cleanup": "yarn clean:dist && yarn clean:fresh",
-    "clean:dist": "rm -rf packages/*/dist @tunnckocore/*/dist",
-    "clean:fresh": "lerna clean -y && rm -rf node_modules",
-    "jest:all": "jest -c jest/full.js",
-    "lint": "jest -c jest/lint.js",
-    "test": "jest -c jest/test.js",
     "build": "jest -c jest/build.js",
     "bundle": "jest -c jest/bundle.js",
-    "release": "lerna version && lerna publish from-package",
+    "clean:dist": "rm -rf packages/*/dist @tunnckocore/*/dist",
+    "clean:fresh": "lerna clean -y && rm -rf node_modules",
+    "cleanup": "yarn clean:dist && yarn clean:fresh",
     "cr": "node create-package.js",
-    "fmt": "prettier '**/*' --write --check"
+    "fmt": "prettier '**/*' --write --check",
+    "jest:all": "jest -c jest/full.js",
+    "lint": "jest -c jest/lint.js",
+    "refresh": "yarn cleanup && yarn setup",
+    "release": "lerna version && lerna publish from-package",
+    "setup": "yarn && yarn bootstrap",
+    "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
+    "test": "jest -c jest/test.js"
   },
   "dependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
-    "@tunnckocore/babel-preset": "*",
-    "@tunnckocore/eslint-config": "*",
-    "@tunnckocore/prettier-config": "*",
-    "@tunnckocore/typescript-config": "*",
     "builtin-modules": "^3.1.0",
     "enquirer": "^2.3.2",
     "eslint": "^6.4.0",
     "jest": "^24.9.0",
     "lerna": "^3.16.4",
     "prettier": "^1.18.2",
+    "prettier-plugin-pkg": "^0.4.4",
     "prettier-plugin-sh": "^0.2.0",
     "react": "^16.10.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "semver": "^6.3.0",
-    "typescript": "^3.6.3"
-  },
-  "renovate": {
-    "extends": "@tunnckocore"
+    "typescript": "^3.7.0-beta"
   },
   "commitlint": {
     "extends": [
@@ -58,5 +52,8 @@
       "pre-commit": "echo 'yarn test:commit'",
       "commit-msg": "echo 'commitlint -E HUSKY_GIT_PARAMS'"
     }
+  },
+  "renovate": {
+    "extends": "@tunnckocore"
   }
 }

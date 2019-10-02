@@ -1,0 +1,73 @@
+{
+  "name": "@tunnckocore/renovate-config",
+  "version": "0.2.3",
+  "description": "Shareable Renovate config for all @tunnckoCore projects",
+  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/renovate-config",
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "license": "MPL-2.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "dependency updates",
+    "deps",
+    "devest",
+    "esmodules",
+    "hela",
+    "renovate",
+    "renovate-config",
+    "renovate-preset",
+    "renovateapp",
+    "renovatebot",
+    "security",
+    "shareable-configs",
+    "tunnckocorehq"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "licenseStart": 2017,
+  "renovate-config": {
+    "default": {
+      "extends": [
+        "config:base",
+        ":onlyNpm",
+        ":enableVulnerabilityAlerts",
+        ":maintainLockFilesWeekly",
+        ":preserveSemverRanges",
+        ":separateMultipleMajorReleases",
+        ":prHourlyLimitNone",
+        ":prNotPending",
+        ":prConcurrentLimit20",
+        ":automergePr",
+        ":automergeMajor",
+        ":automergeAll",
+        ":automergeLinters",
+        ":automergeTypes",
+        ":rebaseStalePrs",
+        ":semanticCommits",
+        ":gitSignOff",
+        ":label(dependencies)",
+        ":assignee(@tunnckoCore)"
+      ],
+      "rollbackPrs": true,
+      "vulnerabilityAlerts": {
+        "enabled": true,
+        "labels": [
+          "security"
+        ],
+        "extends": [
+          ":assignAndReview(@tunnckoCore)"
+        ]
+      }
+    }
+  }
+}

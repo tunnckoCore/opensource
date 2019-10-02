@@ -1,44 +1,46 @@
 {
-  "version": "0.2.5",
   "name": "jest-runner-rollup",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "homepage": "https://tunnckocore.com/opensource",
+  "version": "0.2.5",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils",
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",
-  "licenseStart": 2019,
-  "main": "src/index.js",
-  "types": "index.d.ts",
-  "scripts": {},
   "engines": {
     "node": ">=8.11"
   },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "typings": "dist/types/index.d.ts",
   "files": [
-    "src",
-    "index.d.ts"
+    "src"
   ],
   "keywords": [
-    "tunnckocorehq",
-    "tunnckocore-oss",
-    "hela",
-    "development",
-    "developer-experience",
-    "dx",
-    "rollup",
-    "jest",
-    "jest-runner",
-    "rollup-config",
+    "build",
     "bundle",
     "bundling",
-    "build"
+    "developer-experience",
+    "development",
+    "dx",
+    "hela",
+    "jest",
+    "jest-runner",
+    "rollup",
+    "rollup-config",
+    "tunnckocore-oss",
+    "tunnckocorehq"
   ],
+  "scripts": {},
+  "peerDependencies": {},
   "dependencies": {
     "@tunnckocore/create-jest-runner": "^0.6.5",
     "@tunnckocore/utils": "^0.8.4",
     "cosmiconfig": "^5.2.1",
     "rollup": "^1.22.0"
-  }
+  },
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "licenseStart": 2019
 }

@@ -1,0 +1,51 @@
+{
+  "name": "@tunnckocore/prettier-config",
+  "version": "0.2.2",
+  "description": "Shareable Prettier config for all @tunnckoCore projects",
+  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/prettier-config",
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "license": "MPL-2.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "main": "index.js",
+  "module": "index.js",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "index.js",
+    "angular.js",
+    "vue.js"
+  ],
+  "keywords": [
+    "browser-config",
+    "browsers",
+    "browserslist",
+    "browserslist-config",
+    "browserslist-preset",
+    "chrome",
+    "config",
+    "devest",
+    "env",
+    "esmodules",
+    "evergreen",
+    "hela",
+    "preset-env",
+    "prettier",
+    "prettier-config",
+    "react",
+    "shareable-configs",
+    "tunnckocorehq"
+  ],
+  "scripts": {},
+  "peerDependencies": {
+    "prettier": "^1.18.2"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "licenseStart": 2019
+}

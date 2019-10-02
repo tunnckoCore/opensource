@@ -1,53 +1,55 @@
 {
-  "version": "3.2.7",
   "name": "@tunnckocore/jest-runner-babel",
+  "version": "3.2.7",
   "description": "WIP",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "homepage": "https://tunnckocore.com/opensource",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel",
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",
-  "licenseStart": 2019,
-  "main": "src/index.js",
-  "types": "index.d.ts",
-  "scripts": {},
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
   "engines": {
     "node": ">=8.11"
   },
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "bin",
+    "binaries",
+    "binary",
+    "child",
+    "concurrency",
+    "develop",
+    "exec",
+    "execa",
+    "execfile",
+    "execute",
+    "file",
+    "fork",
+    "local",
+    "npm",
+    "parallel",
+    "path",
+    "process",
+    "sequence",
+    "series",
+    "shell",
+    "spawn",
+    "tunnckocorehq"
+  ],
+  "scripts": {},
+  "peerDependencies": {},
   "dependencies": {
     "@babel/core": "^7.6.0",
     "@tunnckocore/create-jest-runner": "^0.6.5",
     "cosmiconfig": "^5.2.1"
   },
-  "files": [
-    "src",
-    "index.d.ts"
-  ],
-  "keywords": [
-    "tunnckocorehq",
-    "develop",
-    "parallel",
-    "series",
-    "concurrency",
-    "sequence",
-    "exec",
-    "child",
-    "process",
-    "execute",
-    "fork",
-    "execfile",
-    "execa",
-    "spawn",
-    "file",
-    "shell",
-    "bin",
-    "binary",
-    "binaries",
-    "npm",
-    "path",
-    "local"
-  ]
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "licenseStart": 2019
 }

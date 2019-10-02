@@ -2,8 +2,6 @@ CHANGELOG.md
 *.d.ts
 recipes
 
-koa-better-body
-
 *.tsbuildinfo
 .cache
 .*cache

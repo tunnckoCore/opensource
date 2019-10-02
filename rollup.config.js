@@ -1,9 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-Xdisable import/no-extraneous-dependencies */
 const builtins = require('builtin-modules');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
 
-const fs = require('fs');
+// const fs = require('fs');
 const path = require('path');
 
 const tunnckocoreInterop = `const ___exportsWithoutDefault = Object.keys(exports)
@@ -20,9 +20,9 @@ module.exports = {
   formatHook: (ctx) => {
     if (path.basename(ctx.testPath).includes('runner')) {
       const { file } = ctx.outputOptions;
-      console.log(ctx.outputOptions);
+
       ctx.outputOptions.file = path.join(path.dirname(file), 'runner.js');
-      console.log(ctx.outputOptions);
+
       return ctx;
     }
 

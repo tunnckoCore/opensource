@@ -1,0 +1,63 @@
+{
+  "name": "@tunnckocore/babel-preset",
+  "version": "0.2.3",
+  "description": "Shareable Babel config/preset for all @tunnckoCore projects",
+  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/babel-preset",
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "license": "MPL-2.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "develop",
+    "hela",
+    "helpers",
+    "monorepo",
+    "monorepo helpers",
+    "tunnckocore-opensource",
+    "tunnckocore-oss",
+    "tunnckocorehq",
+    "utilities",
+    "utils",
+    "babel-preset",
+    "babel-typescript",
+    "dynamic-import",
+    "env",
+    "hela",
+    "import-meta",
+    "preset",
+    "preset-env",
+    "preset-react",
+    "proposal-typescript",
+    "react",
+    "shareable configs",
+    "typescript"
+  ],
+  "scripts": {},
+  "peerDependencies": {
+    "@babel/core": "^7.6.2"
+  },
+  "dependencies": {
+    "@babel/helper-plugin-utils": "^7.0.0",
+    "@babel/parser": "^7.6.2",
+    "@babel/plugin-syntax-import-meta": "^7.2.0",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24"
+  },
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "licenseStart": 2019
+}

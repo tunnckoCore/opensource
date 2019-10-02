@@ -1,56 +1,57 @@
 {
-  "version": "0.4.5",
   "name": "@tunnckocore/jest-runner-eslint",
+  "version": "0.4.5",
   "description": "WIP",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "homepage": "https://tunnckocore.com/opensource",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint",
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",
-  "licenseStart": 2019,
-  "main": "src/index.js",
-  "types": "index.d.ts",
-  "scripts": {},
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
   "engines": {
     "node": ">=8.11"
+  },
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "bin",
+    "binaries",
+    "binary",
+    "child",
+    "concurrency",
+    "develop",
+    "exec",
+    "execa",
+    "execfile",
+    "execute",
+    "file",
+    "fork",
+    "local",
+    "npm",
+    "parallel",
+    "path",
+    "process",
+    "sequence",
+    "series",
+    "shell",
+    "spawn",
+    "tunnckocorehq"
+  ],
+  "scripts": {},
+  "peerDependencies": {
+    "eslint": "^6.4.0"
   },
   "dependencies": {
     "@tunnckocore/create-jest-runner": "^0.6.5",
     "@tunnckocore/utils": "^0.8.4",
     "cosmiconfig": "^5.2.1"
   },
-  "peerDependencies": {
-    "eslint": "^6.4.0"
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
   },
-  "files": [
-    "src",
-    "index.d.ts"
-  ],
-  "keywords": [
-    "tunnckocorehq",
-    "develop",
-    "parallel",
-    "series",
-    "concurrency",
-    "sequence",
-    "exec",
-    "child",
-    "process",
-    "execute",
-    "fork",
-    "execfile",
-    "execa",
-    "spawn",
-    "file",
-    "shell",
-    "bin",
-    "binary",
-    "binaries",
-    "npm",
-    "path",
-    "local"
-  ]
+  "licenseStart": 2019
 }

@@ -26,14 +26,15 @@ function isMonorepo(cwd = process.cwd()) {
  * can be very big mistake ;]
  * We just don't use regex, we precompute them.
  */
-function createAliases(cwd = process.cwd(), sourceDirectory) {
-  const result = getWorkspacesAndExtensions(cwd);
+function createAliases(cwd, sourceDirectory) {
+  const CWD = cwd || process.cwd();
+  const result = getWorkspacesAndExtensions(CWD);
 
   const info = {};
   const alias = result.workspaces
     .filter(Boolean)
     .reduce((acc, ws) => {
-      const workspace = path.join(cwd, ws);
+      const workspace = path.join(CWD, ws);
 
       const packages = fs
         .readdirSync(workspace)
@@ -118,7 +119,7 @@ function getWorkspacesAndExtensions(cwd = process.cwd()) {
     .filter(Boolean)
     .reduce((acc, ws) => acc.concat(ws.split(',')), [])
     .map((ws) => path.dirname(ws));
-  // console.log('workspaces', workspaces);
+
   let exts = [].concat(packageJson.extensions).filter(Boolean);
 
   if (exts.length === 0) {

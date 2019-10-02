@@ -1,52 +1,54 @@
 {
-  "version": "4.4.8",
   "name": "@tunnckocore/execa",
+  "version": "4.4.8",
   "description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence with control for concurrency",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "homepage": "https://tunnckocore.com/opensource",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/execa",
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",
-  "licenseStart": 2017,
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
-  "scripts": {},
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
   "engines": {
     "node": ">=8.11"
   },
-  "devDependencies": {
-    "execa": "^2.0.3",
-    "p-map": "^3.0.0"
-  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
   "keywords": [
-    "tunnckocorehq",
-    "develop",
-    "parallel",
-    "series",
-    "concurrency",
-    "sequence",
-    "exec",
-    "child",
-    "process",
-    "execute",
-    "fork",
-    "execfile",
-    "execa",
-    "spawn",
-    "file",
-    "shell",
     "bin",
-    "binary",
     "binaries",
+    "binary",
+    "child",
+    "concurrency",
+    "develop",
+    "exec",
+    "execa",
+    "execfile",
+    "execute",
+    "file",
+    "fork",
+    "local",
     "npm",
+    "parallel",
     "path",
-    "local"
-  ]
+    "process",
+    "sequence",
+    "series",
+    "shell",
+    "spawn",
+    "tunnckocorehq"
+  ],
+  "scripts": {},
+  "peerDependencies": {},
+  "dependencies": {},
+  "devDependencies": {
+    "execa": "^2.0.3",
+    "p-map": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "licenseStart": 2017
 }
