@@ -10,8 +10,11 @@ module.exports = {
   testMatch: [
     // '<rootDir>/src/index.ts',
     // '<rootDir>/packages/*/src/**/*',
-    `<rootDir>/@tunnckocore/execa/src/index.js`,
-    // `<rootDir>/src/zzz*`,
+    '<rootDir>/@tunnckocore/*/src/index.js',
+    '<rootDir>/@tunnckocore/jest-runner-*/src/runner.js',
+    // '<rootDir>/packages/jest-runner-rollup/src/index.js',
+    // '<rootDir>/packages/jest-runner-rollup/src/runner.js',
+    // '<rootDir>/src/zzz*',
   ],
   testPathIgnorePatterns: [
     /node_modules/.toString(),

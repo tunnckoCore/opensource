@@ -2321,6 +2321,11 @@
   resolved "https://registry.yarnpkg.com/@tunnckocore/typescript-config/-/typescript-config-0.3.1.tgz#2ec44bc5e4e7cad023e5e2f34360c0bc0f5cd597"
   integrity sha512-SNrvUSzWuMi5Qp9SMGrJAlir7zn7xEQOquRxv8Y71stf4v+OkHGs+yl2N51Hb2DdlAg/ouMdFzqhiXmXlTZnSw==
 
+"@tunnckocore/utils@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/utils/-/utils-0.7.0.tgz#3cd04575a524de1c0f9561532c2ec1d923c2a870"
+  integrity sha512-eMnfEa8hOcJeXunk9ATD8UslE/wi0m/CLtr5wOhWCFxT/chwbPfM5Y0fDhzM+L4VNm4BRVcDH95LuCOunszRKQ==
+
 "@types/babel__core@^7.1.0":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.3.tgz#e441ea7df63cd080dfcd02ab199e6d16a735fc30"

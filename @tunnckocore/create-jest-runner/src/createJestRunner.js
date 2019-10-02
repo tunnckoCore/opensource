@@ -80,15 +80,14 @@ const createRunner = (runPath, { getExtraOptions } = {}) => {
               })
               .then((testResult) => {
                 if (Array.isArray(testResult)) {
-                  testResult.forEach((result) =>
+                  return testResult.map((result) =>
                     result.numFailingTests > 0
-                      ? onFailure(test, new Error(result.errorMessage))
+                      ? onFailure(test, new Error(result.failureMessage))
                       : onResult(test, result),
                   );
-                  return;
                 }
 
-                onResult(test, testResult);
+                return onResult(test, testResult);
               })
               .catch((err) => onFailure(test, err)),
           ),
@@ -134,7 +133,7 @@ const createRunner = (runPath, { getExtraOptions } = {}) => {
           });
         });
 
-      const onError = (err, test) =>
+      const onError = (test, err) =>
         onFailure(test, err).then(() => {
           if (err.type === 'ProcessTerminatedError') {
             // eslint-disable-next-line no-console
@@ -162,7 +161,7 @@ const createRunner = (runPath, { getExtraOptions } = {}) => {
               if (Array.isArray(testResult)) {
                 testResult.forEach((result) =>
                   result.numFailingTests > 0
-                    ? onError(new Error(result.errorMessage), test)
+                    ? onError(test, new Error(result.failureMessage))
                     : onResult(test, result),
                 );
                 return;

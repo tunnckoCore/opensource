@@ -20,5 +20,5 @@ module.exports = {
   ],
   // moduleNameMapper: alias,
   moduleFileExtensions: exts,
-  runner: '@tunnckocore/jest-runner-babel',
+  runner: path.join(ROOT, '@tunnckocore/jest-runner-babel/dist/main/index.js'),
 };
