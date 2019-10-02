@@ -171,7 +171,7 @@ test('make tests for ${answers.name} package', async () => {
   fs.writeFileSync(pkgPath, pkgFile);
 }
 
-// eslint-disable-next-line promise/prefer-await-to-callbacks
+// eslint-Xdisable-next-line promise/prefer-await-to-callbacks
 run().catch(() => {
   // eslint-disable-next-line unicorn/no-process-exit
   process.exit(1);
