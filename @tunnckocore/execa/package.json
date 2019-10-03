@@ -48,5 +48,22 @@
     "access": "public",
     "tag": "latest"
   },
-  "licenseStart": 2017
+  "licenseStart": 2017,
+  "verb": {
+    "readme": "../../readme-template.md",
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 4
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": []
+  }
 }

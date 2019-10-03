@@ -1,6 +1,7 @@
 {
   "name": "jest-runner-rollup",
   "version": "0.3.1",
+  "description": "WIP",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils",
   "homepage": "https://tunnckocore.com/opensource",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
@@ -40,5 +41,22 @@
     "access": "public",
     "tag": "latest"
   },
-  "licenseStart": 2019
+  "licenseStart": 2019,
+  "verb": {
+    "readme": "../../readme-template.md",
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 4
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": []
+  }
 }

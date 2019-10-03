@@ -68,10 +68,14 @@
     "access": "public",
     "tag": "latest"
   },
-  "licenseStart": 2019,
+  "licenseStart": 2014,
   "verb": {
     "run": true,
-    "toc": false,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 4
+    },
     "layout": "empty",
     "tasks": [
       "readme"

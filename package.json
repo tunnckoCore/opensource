@@ -41,7 +41,9 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "semver": "^6.3.0",
-    "typescript": "^3.7.0-beta"
+    "typescript": "^3.7.0-beta",
+    "verb": "verbose/verb#dev",
+    "verb-generate-readme": "^0.8.0"
   },
   "commitlint": {
     "extends": [

@@ -11,7 +11,7 @@ module.exports = {
   testPathIgnorePatterns: [
     /node_modules/.toString(),
     /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),
-    /.+(?:-config|babel-preset).+/.toString(),
+    // /.+(?:-config|babel-preset).+/.toString(),
   ],
   // moduleNameMapper: alias,
   moduleFileExtensions: exts,

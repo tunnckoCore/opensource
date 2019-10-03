@@ -38,7 +38,7 @@ module.exports = function docks(filepath, pkgRoot) {
         .map((tag) => {
           const descr = tag.description.replace(/-\s+/, '');
           const description = descr.length > 0 ? ` - ${descr}` : '';
-          return `- **${tag.name}**${description}`;
+          return `- \`${tag.name}\`${description}`;
         })
         .join('\n');
 

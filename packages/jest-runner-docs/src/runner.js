@@ -17,17 +17,22 @@ module.exports = async function jetRunnerDocs({ testPath, config }) {
   const conf = await tryLoadConfig(testPath, start);
   if (conf.hasError) return conf.error;
 
-  const docksConfig = { promo: true, outfile: 'docs/README.md', ...conf };
+  const docksConfig = {
+    promo: true,
+    force: true,
+    outfile: 'docs/README.md',
+    ...conf,
+  };
+
+  /** Find correct root path */
+  const pkgRoot = isMonorepo(config.cwd)
+    ? path.dirname(path.dirname(testPath))
+    : config.rootDir;
 
   const outfile = await tryCatch(testPath, start, () => {
-    /** Find correct root path */
-    const pkgRoot = isMonorepo(config.cwd)
-      ? path.dirname(path.dirname(testPath))
-      : config.rootDir;
-
     const { contents: apidocsContent } = docks(testPath, pkgRoot);
 
-    if (apidocsContent.length === 0) {
+    if (apidocsContent.length === 0 && !docksConfig.force) {
       return {
         skip: skip({
           start,
@@ -78,6 +83,13 @@ module.exports = async function jetRunnerDocs({ testPath, config }) {
 
   if (outfile.hasError) return outfile.error;
   if (outfile.skip) return outfile.skip;
+
+  const postHook =
+    typeof docksConfig.postHook === 'function'
+      ? docksConfig.postHook
+      : () => {};
+
+  await postHook({ pkgRoot, jestConfig: config, docksConfig, outfile });
 
   return pass({
     start,

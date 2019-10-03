@@ -2,6 +2,8 @@
 // const nodeResolve = require('rollup-plugin-node-resolve');
 // const commonjs = require('rollup-plugin-commonjs');
 
+const { exec } = require('./@tunnckocore/execa');
+
 const presetOptions = {
   react: true,
   typescript: true,
@@ -17,7 +19,10 @@ module.exports = {
     // },
   },
   docs: {
-    outfile: 'README.md',
+    outfile: '.verb.md',
+    postHook: async ({ pkgRoot }) => {
+      await exec('verb', { cwd: pkgRoot });
+    },
   },
 
   babel: [

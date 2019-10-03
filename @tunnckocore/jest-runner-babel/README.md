@@ -1,4 +1,4 @@
-# jest-runner-rollup [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url]
+# @tunnckocore/jest-runner-babel [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url]
 
 > WIP
 
@@ -73,7 +73,7 @@ This project requires [**Node.js**](https://nodejs.org) **>=8.11** _(see [Suppor
 _We highly recommend to use Yarn when you think to contribute to this project._
 
 ```bash
-$ yarn add jest-runner-rollup
+$ yarn add @tunnckocore/jest-runner-babel
 ```
 
 ## API
@@ -98,7 +98,7 @@ Consider reading the [Support and Release Policy](https://github.com/tunnckoCore
 
 ### Support the project
 
-[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/jest-runner-rollup) sites too! :rocket:
+[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/@tunnckocore/jest-runner-babel) sites too! :rocket:
 
 Not financial support? Okey! [Pull requests](https://github.com/tunnckoCoreLabs/contributing#opening-a-pull-request), stars and all kind of [contributions](https://opensource.guide/how-to-contribute/#what-it-means-to-contribute) are always
 welcome. :sparkles:
@@ -143,17 +143,17 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- Heading badges -->
 
-[npmv-url]: https://www.npmjs.com/package/jest-runner-rollup
-[npmv-img]: https://badgen.net/npm/v/jest-runner-rollup?icon=npm
-[nodejs-img]: https://badgen.net/npm/node/jest-runner-rollup
+[npmv-url]: https://www.npmjs.com/package/@tunnckocore/jest-runner-babel
+[npmv-img]: https://badgen.net/npm/v/@tunnckocore/jest-runner-babel?icon=npm
+[nodejs-img]: https://badgen.net/npm/node/@tunnckocore/jest-runner-babel
 
 <!--
 [ghrelease-url]: https://github.com/tunnckoCore/opensource/releases/latest
 [ghrelease-img]: https://badgen.net/github/release/tunnckoCore/opensource?icon=github
 -->
 
-[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/jest-runner-rollup/LICENSE
-[license-img]: https://badgen.net/npm/license/jest-runner-rollup
+[license-url]: https://github.com/tunnckoCore/opensource/blob/master/@tunnckocore/jest-runner-babel/LICENSE
+[license-img]: https://badgen.net/npm/license/@tunnckocore/jest-runner-babel
 
 <!-- Front line badges -->
 
@@ -173,9 +173,9 @@ Released under the [MPL-2.0 License][license-url].
 [community-url]: https://github.com/tunnckocorehq/community
 [last-commit-img]: https://badgen.net/github/last-commit/tunnckoCore/opensource/master
 [last-commit-url]: https://github.com/tunnckoCore/opensource/commits/master
-[downloads-weekly-img]: https://badgen.net/npm/dw/jest-runner-rollup?icon=npm
-[downloads-monthly-img]: https://badgen.net/npm/dm/jest-runner-rollup?icon=npm
-[downloads-total-img]: https://badgen.net/npm/dt/jest-runner-rollup?icon=npm
+[downloads-weekly-img]: https://badgen.net/npm/dw/@tunnckocore/jest-runner-babel?icon=npm
+[downloads-monthly-img]: https://badgen.net/npm/dm/@tunnckocore/jest-runner-babel?icon=npm
+[downloads-total-img]: https://badgen.net/npm/dt/@tunnckocore/jest-runner-babel?icon=npm
 [renovateapp-url]: https://renovatebot.com
 [renovateapp-img]: https://badgen.net/badge/renovate/enabled/green
 [prs-welcome-img]: https://badgen.net/badge/PRs/welcome/green
