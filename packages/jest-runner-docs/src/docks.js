@@ -35,7 +35,11 @@ module.exports = function docks(filepath, pkgRoot) {
         .map((tag) =>
           /returns?/.test(tag.title) ? { ...tag, name: 'returns' } : tag,
         )
-        .map((tag) => `- **${tag.name}** - ${tag.description}`)
+        .map((tag) => {
+          const descr = tag.description.replace(/-\s+/, '');
+          const description = descr.length > 0 ? ` - ${descr}` : '';
+          return `- **${tag.name}**${description}`;
+        })
         .join('\n');
 
       const str = `### [${name}](./${locUrl})\n\n${

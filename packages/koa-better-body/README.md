@@ -107,7 +107,7 @@ function(options)
 **Params**
 
 - **options** - see more on [options section](#options)
-- **returns** - - plugin for Koa
+- **returns** - plugin for Koa
 
 **Example**
 

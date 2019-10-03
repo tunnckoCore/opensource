@@ -13,7 +13,6 @@ yarn add @tunnckocore/execa
 ## API
 
 <!-- docks-start -->
-
 _Generated using [jest-runner-docs@v0.1.0](https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs)._
 
 ### [.exec](./src/index.js#L39)
@@ -29,7 +28,7 @@ instead of in parallel which is the default behavior.
 **Signature**
 
 ```ts
-function(cmds, options)
+function(cmds, options) 
 ```
 
 **Params**
@@ -39,7 +38,7 @@ function(cmds, options)
 - **returns** - resolved or rejected promises
 
 > It also can accept array of multiple strings of commands that will be
-> executed in series or in parallel (default).
+executed in series or in parallel (default).
 
 **Example**
 
@@ -52,13 +51,10 @@ async function main() {
   await exec('echo "hello world"', { stdio: 'inherit' });
 
   // executes in series (because `concurrency` option is set to `1`)
-  await exec(
-    [
-      'prettier-eslint --write foobar.js',
-      'eslint --format codeframe foobar.js --fix',
-    ],
-    { stdio: 'inherit', preferLocal: true, concurrency: 1 },
-  );
+  await exec([
+    'prettier-eslint --write foobar.js',
+    'eslint --format codeframe foobar.js --fix'
+  ], { stdio: 'inherit', preferLocal: true, concurrency: 1 });
 }
 
 main();
@@ -71,7 +67,7 @@ Similar to `exec`, but also **can** access the system's environment variables fr
 **Signature**
 
 ```ts
-function(cmds, options)
+function(cmds, options) 
 ```
 
 **Params**
@@ -79,6 +75,8 @@ function(cmds, options)
 - **cmds** - a commands to execute in parallel or series
 - **options** - directly passed to `execa`
 - **returns** - resolved or rejected promises
+
+
 
 **Example**
 
@@ -89,13 +87,18 @@ import { shell } from '@tunnckocore/execa';
 
 async function main() {
   // executes in series
-  await shell(['echo unicorns', 'echo "foo-$HOME-bar"', 'echo dragons'], {
-    stdio: 'inherit',
-  });
+  await shell([
+    'echo unicorns',
+    'echo "foo-$HOME-bar"',
+    'echo dragons'
+  ], { stdio: 'inherit' });
 
   // exits with code 3
   try {
-    await shell(['exit 3', 'echo nah']);
+    await shell([
+      'exit 3',
+      'echo nah'
+    ]);
   } catch (er) {
     console.error(er);
     // => {
@@ -122,7 +125,7 @@ Think of this as a mix of `child_process.execFile()` and `child_process.spawn()`
 **Signature**
 
 ```ts
-function(file, args, options)
+function(file, args, options) 
 ```
 
 **Params**
@@ -131,10 +134,12 @@ function(file, args, options)
 - **args** - arguments / flags to be passed to `file`
 - **options** - optional options, passed to `child_process`'s methods
 
+
+
 **Example**
 
 ```js
-import execa from '@tunnckocore/execa';
+import execa from '@tunnckocore/execa'
 // or
 // const execa = require('@tunnckocore/execa');
 
