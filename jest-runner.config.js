@@ -16,6 +16,9 @@ module.exports = {
     //   extends: '@tunnckocore',
     // },
   },
+  docs: {
+    outfile: 'README.md',
+  },
 
   babel: [
     {

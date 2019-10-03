@@ -11,9 +11,7 @@ import { defaultOptions, setParsers, isValid, parseBody } from './utils';
  * > Robust body parser for [koa][]@1, also works for `koa@2` (with deprecations).
  * Will also work for future `koa@3` with [koa-convert][].
  *
- * **Example**
- *
- * ```js
+ * @example
  * var koa = require('koa')
  * var body = require('koa-better-body')
  * var app = koa()
@@ -28,10 +26,10 @@ import { defaultOptions, setParsers, isValid, parseBody } from './utils';
  *   .listen(8080, function () {
  *     console.log('koa server start listening on port 8080')
  *   })
- * ```
  *
+ * @name   koaBetterBody
  * @param  {Object} `options` see more on [options section](#options)
- * @return {GeneratorFunction}
+ * @return {GeneratorFunction} - plugin for Koa
  * @api public
  */
 

@@ -1,9 +1,12 @@
 const fs = require('fs');
+const path = require('path');
 const Comments = require('parse-comments');
 
 const parser = new Comments();
 
-module.exports = function docks(filepath) {
+module.exports = function docks(filepath, pkgRoot) {
+  const relativePath = path.relative(pkgRoot, filepath);
+
   const comments = parser.parse(fs.readFileSync(filepath, 'utf8'));
   const contents = comments
     .filter((cmt) =>
@@ -13,13 +16,15 @@ module.exports = function docks(filepath) {
       ),
     )
     .reduce((acc, comment) => {
+      const locUrl = `${relativePath}#L${comment.code.loc.start.line}`;
+
       const tagName = comment.tags.find((tag) => tag.title === 'name');
       const tags = tagName
         ? comment.tags.filter((x) => x.title !== 'name')
         : comment.tags;
 
-      let name = (tagName && tagName.name) || comment.code.context.name;
-      name = !name.startsWith('.') ? `.${name}` : name;
+      const name = (tagName && tagName.name) || comment.code.context.name;
+      // name = !name.startsWith('.') ? `.${name}` : name;
 
       const index = comment.code.value.indexOf('(');
       const signature = comment.code.value.slice(index, -1);
@@ -33,7 +38,7 @@ module.exports = function docks(filepath) {
         .map((tag) => `- **${tag.name}** - ${tag.description}`)
         .join('\n');
 
-      const str = `### ${name}\n\n${
+      const str = `### [${name}](./${locUrl})\n\n${
         comment.description
       }\n\n**Signature**\n${signatureBlock}\n**Params**\n\n${tagsString}\n${comment.examples
         .map(

@@ -14,6 +14,7 @@
     "clean:fresh": "lerna clean -y && rm -rf node_modules",
     "cleanup": "yarn clean:dist && yarn clean:fresh",
     "cr": "node create-package.js",
+    "docs": "jest -c jest/docs.js",
     "fmt": "prettier '**/*' --write --check",
     "jest:all": "jest -c jest/full.js",
     "lint": "jest -c jest/lint.js",

@@ -1,3 +1,4 @@
+/* eslint-disable max-statements */
 const fs = require('fs');
 const path = require('path');
 
@@ -6,18 +7,27 @@ const { isMonorepo } = require('@tunnckocore/utils');
 
 const cosmiconfig = require('cosmiconfig');
 const docks = require('./docks');
+const pkgJson = require('../package.json');
 
-// const jestRunnerConfig = cosmiconfig('jest-runner');
-// const jestRunnerDocks = cosmiconfig('docks');
+const jestRunnerConfig = cosmiconfig('jest-runner');
+const jestRunnerDocks = cosmiconfig('docks');
 
-// ! todo: support multiple entry files, not only "index"
 module.exports = async function jetRunnerDocs({ testPath, config }) {
   const start = new Date();
+  const conf = await tryLoadConfig(testPath, start);
+  if (conf.hasError) return conf.error;
 
-  const outputFile = await tryCatch(testPath, start, () => {
-    const { contents } = docks(testPath);
+  const docksConfig = { promo: true, outfile: 'docs/README.md', ...conf };
 
-    if (contents.length === 0) {
+  const outfile = await tryCatch(testPath, start, () => {
+    /** Find correct root path */
+    const pkgRoot = isMonorepo(config.cwd)
+      ? path.dirname(path.dirname(testPath))
+      : config.rootDir;
+
+    const { contents: apidocsContent } = docks(testPath, pkgRoot);
+
+    if (apidocsContent.length === 0) {
       return {
         skip: skip({
           start,
@@ -30,33 +40,71 @@ module.exports = async function jetRunnerDocs({ testPath, config }) {
       };
     }
 
-    /** Find correct root path */
-    const pkgRoot = isMonorepo(config.cwd)
-      ? path.dirname(path.dirname(testPath))
-      : config.rootDir;
+    const outputFile = path.resolve(
+      pkgRoot,
+      docksConfig.outfile || docksConfig.outFile,
+    );
 
-    // ! todo: better structure
-    const outFile = path.join(pkgRoot, 'docs', 'README.md');
-    const outDir = path.dirname(outFile);
+    const promo = docksConfig.promo
+      ? `_Generated using [${pkgJson.name}@v${pkgJson.version}](${pkgJson.repository})._`
+      : '';
 
+    const docksStart = '<!-- docks-start -->';
+    const docksEnd = '<!-- docks-end -->';
+    const contents = `${docksStart}\n${promo}${apidocsContent}\n\n${docksEnd}`;
+
+    if (fs.existsSync(outputFile)) {
+      const fileContent = fs.readFileSync(outputFile, 'utf8');
+
+      if (fileContent.includes(docksStart) && fileContent.includes(docksEnd)) {
+        const idxStart = fileContent.indexOf(docksStart);
+        const idxEnd = fileContent.indexOf(docksEnd) + docksEnd.length;
+        const apiPart = fileContent.slice(idxStart, idxEnd);
+        const newContents = fileContent.replace(apiPart, contents);
+
+        fs.writeFileSync(outputFile, newContents);
+        return outputFile;
+      }
+
+      // probably never gets here
+      throw new Error(`Outfile doesn't contain placeholders.`);
+    }
+
+    const outDir = path.dirname(outputFile);
     fs.mkdirSync(outDir, { recursive: true });
-    fs.writeFileSync(outFile, contents);
-
-    return outFile;
+    fs.writeFileSync(outputFile, contents);
+    return outputFile;
   });
-  if (outputFile.hasError) return outputFile.error;
 
-  if (outputFile.skip) return outputFile.skip;
+  if (outfile.hasError) return outfile.error;
+  if (outfile.skip) return outfile.skip;
 
   return pass({
     start,
     end: Date.now(),
     test: {
-      path: outputFile,
+      path: outfile,
       title: 'Docks',
     },
   });
 };
+
+async function tryLoadConfig(testPath, start) {
+  return tryCatch(testPath, start, () => {
+    const cfg = jestRunnerDocks.searchSync();
+
+    if (!cfg || (cfg && !cfg.config)) {
+      const runnersConf = jestRunnerConfig.searchSync();
+
+      if (!runnersConf || (runnersConf && !runnersConf.config)) {
+        return {};
+      }
+      return runnersConf.config.docks || runnersConf.config.docs;
+    }
+
+    return cfg.config;
+  });
+}
 
 async function tryCatch(testPath, start, fn) {
   try {
@@ -76,60 +124,6 @@ async function tryCatch(testPath, start, fn) {
     };
   }
 }
-
-// async function tryLoadConfig({ testPath, config: jestConfig, start }) {
-//   const cfg = await tryCatch(testPath, start, () => {
-//     let result = null;
-//     result = jestRunnerConfig.searchSync();
-
-//     if (
-//       // if `jest-runner.config.js` not found
-//       !result ||
-//       // or found
-//       (result && // but // the `rollup` property is not an object
-//         ((result.config.docs && typeof result.config.docs !== 'object') ||
-//           // or, the `rolldown` property is not an object
-//           (result.config.docks && typeof result.config.docks !== 'object') ||
-//           // or, there is not such fields
-//           (!result.config.docs || !result.config.docks)))
-//     ) {
-//       // then we trying `jest-runner-rollup.config.js`
-//       result = jestRunnerDocks.searchSync();
-//     } else {
-//       // if `jest-runner.config.js` found, we try one of both properties
-//       result = {
-//         ...result,
-//         config: result.config.docs || result.config.docks,
-//       };
-//     }
-
-//     return result;
-//   });
-
-//   if (cfg.hasError) return cfg;
-
-//   if (!cfg || (cfg && !cfg.config)) {
-//     const filepath = cfg && path.relative(cfg.filepath, jestConfig.cwd);
-//     const message = cfg
-//       ? `Empty configuration, found at: ${filepath}`
-//       : 'Cannot find configuration for Docks.';
-
-//     return {
-//       hasError: true,
-//       error: fail({
-//         start,
-//         end: new Date(),
-//         test: {
-//           path: testPath,
-//           title: 'Docks',
-//           errorMessage: `jest-runner-docs: ${message}`,
-//         },
-//       }),
-//     };
-//   }
-
-//   return cfg.config;
-// }
 
 // function tryExtensions(filepath, config) {
 //   const { extensions } = getWorkspacesAndExtensions(config.cwd);

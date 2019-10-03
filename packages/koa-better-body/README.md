@@ -87,14 +87,27 @@ console.log('Try it out with below CURL for `koa-better-body` repository.');
 console.log(format(cmd, host, __dirname));
 ```
 
-### [koaBetterBody](index.js#L40)
+## API
 
-> Robust body parser for [koa][]@1, also works for `koa@2` (with deprecations). Will also work for future `koa@3` with [koa-convert][].
+<!-- docks-start -->
+
+_Generated using [jest-runner-docs@v0.1.0](https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs)._
+
+### [koaBetterBody](./src/index.js#L36)
+
+> Robust body parser for [koa][]@1, also works for `koa@2` (with deprecations).
+> Will also work for future `koa@3` with [koa-convert][].
+
+**Signature**
+
+```ts
+function(options)
+```
 
 **Params**
 
-- `options` **{Object}**: see more on [options section](#options)
-- `returns` **{GeneratorFunction}**
+- **options** - see more on [options section](#options)
+- **returns** - - plugin for Koa
 
 **Example**
 
@@ -114,6 +127,8 @@ app
     console.log('koa server start listening on port 8080');
   });
 ```
+
+<!-- docks-end -->
 
 ## Options
 
@@ -211,7 +226,7 @@ You might also be interested in these packages:
 
 ## Contributing
 
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/tunnckoCore/koa-better-body/issues/new).  
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/tunnckoCore/koa-better-body/issues/new).
 But before doing anything, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) guidelines.
 
 ### Contributing Recipes

@@ -1,4 +1,4 @@
-import execa from 'execa';
+import execaOrig from 'execa';
 import pMap from 'p-map';
 
 /**
@@ -43,7 +43,7 @@ export async function exec(cmds, options) {
     ...options,
   };
 
-  return pMap(commands, (cmd) => execa.command(cmd, opts), { concurrency });
+  return pMap(commands, (cmd) => execaOrig.command(cmd, opts), { concurrency });
 }
 
 /**
@@ -97,6 +97,7 @@ export function shell(cmds, options) {
 
 /**
  * Same as [execa][]'s default export, see its documentation.
+ * Think of this as a mix of `child_process.execFile()` and `child_process.spawn()`.
  *
  * @example
  * import execa from '@tunnckocore/execa'
@@ -104,12 +105,25 @@ export function shell(cmds, options) {
  * // const execa = require('@tunnckocore/execa');
  *
  * async function main() {
- *   await execa('npm', ['install'], { stdio: 'inherit' });
+ *   await execa('npm', ['install', '--save-dev', 'react'], { stdio: 'inherit' });
  * }
  *
  * main();
  *
- * @name   execa
+ * @name  execa
+ * @param {string} file executable to run
+ * @param {Array<string>} args arguments / flags to be passed to `file`
+ * @param {object} options optional options, passed to `child_process`'s methods
  * @public
  */
-export default execa;
+
+function execa(file, args, options) {
+  // ! this is just a tweak because the docs generation (parse-comments bugs)...
+  return execaOrig(file, args, options);
+}
+
+// ! this is just a tweak because the docs generation (parse-comments bugs)...
+execaOrig.execa = execa;
+
+// ! this is just a tweak because the docs generation (parse-comments bugs)...
+export default execaOrig;
