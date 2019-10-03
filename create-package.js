@@ -114,6 +114,40 @@ async function run() {
     },
   ]);
 
+  const pkg = createPkgJson();
+
+  const srcDir = path.join(__dirname, answers.location, 'src');
+  const testDir = path.join(__dirname, answers.location, 'test');
+
+  fs.mkdirSync(srcDir, { recursive: true });
+  fs.mkdirSync(testDir, { recursive: true });
+
+  const pkgFile = JSON.stringify(pkg, null, 2);
+  const srcFile =
+    answers.publishType === 'source'
+      ? `module.exports = () => {};\n`
+      : `export default () => {};\n`;
+
+  const baseLine =
+    answers.publishType === 'source'
+      ? "const mod = require('../src');"
+      : "import mod from '../src'";
+
+  const testFile = `${baseLine};
+
+test('todo tests for ${answers.name} package', async () => {
+  expect(typeof mod).toStrictEqual('function');
+});
+`;
+
+  fs.writeFileSync(path.join(srcDir, 'index.js'), srcFile);
+  fs.writeFileSync(path.join(testDir, 'index.js'), testFile);
+
+  const pkgPath = path.join(__dirname, answers.location, 'package.json');
+  fs.writeFileSync(pkgPath, pkgFile);
+}
+
+function createPkgJson() {
   const { publishType: type } = answers;
 
   let mainField = type === 'build' ? 'dist/main/index.js' : null;
@@ -124,7 +158,7 @@ async function run() {
   modField = modField || (type === 'bundle' ? 'dist/esm/index.js' : null);
   modField = modField || (type === 'source' ? 'src/index.js' : modField);
 
-  const pkg = {
+  return {
     name: answers.name,
     version: answers.version,
     description: 'WIP',
@@ -147,28 +181,6 @@ async function run() {
     },
     licenseStart: parseInt(answers.licenseStart, 10),
   };
-
-  const srcDir = path.join(__dirname, answers.location, 'src');
-  const testDir = path.join(__dirname, answers.location, 'test');
-
-  fs.mkdirSync(srcDir, { recursive: true });
-  fs.mkdirSync(testDir, { recursive: true });
-
-  const pkgFile = JSON.stringify(pkg, null, 2);
-  const srcFile = `export default () => {};\n`;
-  const testFile = `import mod from '../src';
-
-test('make tests for ${answers.name} package', async () => {
-  expect(typeof mod).toStrictEqual('function');
-  mod();
-});
-`;
-
-  fs.writeFileSync(path.join(srcDir, 'index.js'), srcFile);
-  fs.writeFileSync(path.join(testDir, 'index.js'), testFile);
-
-  const pkgPath = path.join(__dirname, answers.location, 'package.json');
-  fs.writeFileSync(pkgPath, pkgFile);
 }
 
 // eslint-Xdisable-next-line promise/prefer-await-to-callbacks
