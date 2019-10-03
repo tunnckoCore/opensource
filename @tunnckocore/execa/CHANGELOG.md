@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.1](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/execa/compare/@tunnckocore/execa@4.5.0...@tunnckocore/execa@4.5.1) (2019-10-03)
+
+
+### Bug Fixes
+
+* docs runner; gen docs for execa and koa-better-body ([93f9638](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/execa/commit/93f9638))
+* normalize dashes on param descriptions ([5645b72](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/execa/commit/5645b72))
+
+
+
+
+
 # [4.5.0](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/execa/compare/@tunnckocore/execa@4.4.8...@tunnckocore/execa@4.5.0) (2019-10-02)
 
 
