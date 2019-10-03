@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/typescript-config/compare/@tunnckocore/typescript-config@0.4.0...@tunnckocore/typescript-config@0.4.1) (2019-10-03)
+
+
+### Bug Fixes
+
+* docs runner updates; use verb; gen readmes ([d6a04fe](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/typescript-config/commit/d6a04fe))
+
+
+
+
+
 # 0.4.0 (2019-10-02)
 
 

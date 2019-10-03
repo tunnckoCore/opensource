@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.1](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@3.3.0...@tunnckocore/jest-runner-babel@3.3.1) (2019-10-03)
+
+
+### Bug Fixes
+
+* docs runner updates; use verb; gen readmes ([d6a04fe](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/commit/d6a04fe))
+
+
+
+
+
 # [3.3.0](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@3.2.7...@tunnckocore/jest-runner-babel@3.3.0) (2019-10-02)
 
 

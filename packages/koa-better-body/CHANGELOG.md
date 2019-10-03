@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://github.com/tunnckoCore/opensource/tree/master/packages/koa-better-body/compare/koa-better-body@3.1.1...koa-better-body@3.1.2) (2019-10-03)
+
+
+### Bug Fixes
+
+* docs runner updates; use verb; gen readmes ([d6a04fe](https://github.com/tunnckoCore/opensource/tree/master/packages/koa-better-body/commit/d6a04fe))
+
+
+
+
+
 ## [3.1.1](https://github.com/tunnckoCore/opensource/tree/master/packages/koa-better-body/compare/koa-better-body@3.1.0...koa-better-body@3.1.1) (2019-10-03)
 
 

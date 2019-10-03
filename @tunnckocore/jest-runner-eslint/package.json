@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/jest-runner-eslint",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "WIP",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint",
   "homepage": "https://tunnckocore.com/opensource",
@@ -44,8 +44,8 @@
     "eslint": "^6.4.0"
   },
   "dependencies": {
-    "@tunnckocore/create-jest-runner": "^0.7.0",
-    "@tunnckocore/utils": "^0.9.0",
+    "@tunnckocore/create-jest-runner": "^0.7.1",
+    "@tunnckocore/utils": "^0.9.1",
     "cosmiconfig": "^5.2.1"
   },
   "publishConfig": {

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/prettier-config/compare/@tunnckocore/prettier-config@0.3.0...@tunnckocore/prettier-config@0.3.1) (2019-10-03)
+
+
+### Bug Fixes
+
+* docs runner updates; use verb; gen readmes ([d6a04fe](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/prettier-config/commit/d6a04fe))
+
+
+
+
+
 # 0.3.0 (2019-10-02)
 
 
