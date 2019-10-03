@@ -1,0 +1,48 @@
+{
+  "name": "jest-runner-docs",
+  "version": "0.0.1",
+  "description": "WIP",
+  "repository": "https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs",
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "license": "MPL-2.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "tunnckocorehq",
+    "tunnckocore-oss",
+    "hela",
+    "development",
+    "developer-experience",
+    "dx",
+    "docs",
+    "documentation",
+    "typescript",
+    "tsc",
+    "parse-comments",
+    "comments",
+    "jsdoc",
+    "tsdoc"
+  ],
+  "scripts": {},
+  "peerDependencies": {},
+  "dependencies": {
+    "@tunnckocore/create-jest-runner": "^0.7.0",
+    "@tunnckocore/utils": "^0.9.0",
+    "cosmiconfig": "^5.2.1",
+    "parse-comments": "^1.0.0"
+  },
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "licenseStart": 2019
+}
