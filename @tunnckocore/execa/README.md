@@ -83,7 +83,7 @@ $ yarn add @tunnckocore/execa
 
 ## API
 
-_Generated using [jest-runner-docs@v0.1.2](https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs)._
+_Generated using [jest-runner-docs](https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs)._
 
 ### [.exec](./src/index.js#L39)
 

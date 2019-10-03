@@ -58,7 +58,6 @@ Project is [semantically](https://semver.org) versioned & automatically released
 - [Install](#install)
 - [Features](#features)
 - [API](#api)
-- [API](#api-1)
   - [koaBetterBody](#koabetterbody)
 - [Working with [koa-router][]](#working-with-koa-router)
 - [Options](#options)
@@ -105,13 +104,11 @@ $ yarn add koa-better-body
 - Passing a custom `formidable.IncomingForm` instance, allowing awesome customization
 - Passing all options to `formidable.IncomingForm`, allowing awesome control
 
-## API
-
 <!-- docks-start -->
 
 ## API
 
-_Generated using [jest-runner-docs@v0.1.2](https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs)._
+_Generated using [jest-runner-docs](https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs)._
 
 ### [koaBetterBody](./src/index.js#L36)
 
