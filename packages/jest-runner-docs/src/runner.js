@@ -20,6 +20,7 @@ module.exports = async function jetRunnerDocs({ testPath, config }) {
   const docksConfig = {
     promo: true,
     force: true,
+    includeHeader: true,
     outfile: 'docs/README.md',
     ...conf,
   };
@@ -54,9 +55,10 @@ module.exports = async function jetRunnerDocs({ testPath, config }) {
       ? `_Generated using [${pkgJson.name}@v${pkgJson.version}](${pkgJson.repository})._`
       : '';
 
+    const header = docksConfig.includeHeader ? '## API\n\n' : '';
     const docksStart = '<!-- docks-start -->';
     const docksEnd = '<!-- docks-end -->';
-    const contents = `${docksStart}\n${promo}${apidocsContent}\n\n${docksEnd}`;
+    const contents = `${docksStart}\n${header}${promo}${apidocsContent}\n\n${docksEnd}`;
 
     if (fs.existsSync(outputFile)) {
       const fileContent = fs.readFileSync(outputFile, 'utf8');

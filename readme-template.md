@@ -67,8 +67,6 @@ _We highly recommend to use Yarn when you think to contribute to this project._
 $ yarn add {%= name %}
 ```
 
-## API
-
 {%= ifExists([process.cwd() + '/.verb.md'], include(process.cwd() + '/.verb.md')) %}
 
 **[back to top](#thetop)**

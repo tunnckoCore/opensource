@@ -79,11 +79,11 @@ _We highly recommend to use Yarn when you think to contribute to this project._
 $ yarn add @tunnckocore/execa
 ```
 
-## API
-
 <!-- docks-start -->
 
-_Generated using [jest-runner-docs@v0.1.1](https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs)._
+## API
+
+_Generated using [jest-runner-docs@v0.1.2](https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs)._
 
 ### [.exec](./src/index.js#L39)
 
