@@ -6,7 +6,6 @@
  * Released under the MIT license.
  */
 
-import { promisify } from 'util';
 import request from 'supertest';
 import koa from 'koa';
 import betterBody from '../src';
@@ -14,32 +13,29 @@ import betterBody from '../src';
 test('should parse a urlencoded body', async () => {
   const app = koa().use(betterBody());
   app.use(function* sasa() {
-    test.strictEqual(typeof this.request.fields, 'object');
-    test.deepEqual(this.request.fields, { a: 'b', c: 'd' });
+    expect(this.request.fields).toMatchObject({ a: 'b', c: 'd' });
     this.body = this.request.fields;
   });
 
-  await promisify(
-    request(app.callback())
-      .post('/')
-      .type('application/x-www-form-urlencoded')
-      .send('a=b&c=d')
-      .expect(200)
-      .expect(/"a":"b"/)
-      .expect(/"c":"d"/).end,
-  )();
+  await request(app.callback())
+    .post('/')
+    .type('application/x-www-form-urlencoded')
+    .send('a=b&c=d')
+    .expect(200)
+    .expect(/"a":"b"/)
+    .expect(/"c":"d"/);
 });
+
 test('should throw if the body is too large', async () => {
   const app = koa().use(betterBody({ formLimit: '2b' }));
 
-  await promisify(
-    request(app.callback())
-      .post('/')
-      .type('application/x-www-form-urlencoded')
-      .send({ foo: { bar: 'qux' } })
-      .expect(413).end,
-  )();
+  await request(app.callback())
+    .post('/')
+    .type('application/x-www-form-urlencoded')
+    .send({ foo: { bar: 'qux' } })
+    .expect(413);
 });
+
 test('should parse a nested body when `app.querystring` passed', async () => {
   const app = koa();
   // eslint-disable-next-line global-require
@@ -47,8 +43,7 @@ test('should parse a nested body when `app.querystring` passed', async () => {
 
   app.use(betterBody({ formLimit: '2mb' }));
   app.use(function* sasa() {
-    test.strictEqual(typeof this.request.fields, 'object');
-    test.deepEqual(this.request.fields, {
+    expect(this.request.fields).toMatchObject({
       foo: {
         bar: {
           baz: 'qux',
@@ -60,14 +55,12 @@ test('should parse a nested body when `app.querystring` passed', async () => {
     this.body = JSON.stringify(this.request.fields);
   });
 
-  await promisify(
-    request(app.callback())
-      .post('/')
-      .type('application/x-www-form-urlencoded')
-      .send('foo[bar][baz]=qux&foo[bar][cc]=ccc&foo[aa]=bb')
-      .expect(/"foo":{"bar":/)
-      .expect(/"baz":"qux","cc":"ccc"}/)
-      .expect(/"aa":"bb"}}/)
-      .expect(200).end,
-  )();
+  await request(app.callback())
+    .post('/')
+    .type('application/x-www-form-urlencoded')
+    .send('foo[bar][baz]=qux&foo[bar][cc]=ccc&foo[aa]=bb')
+    .expect(/"foo":{"bar":/)
+    .expect(/"baz":"qux","cc":"ccc"}/)
+    .expect(/"aa":"bb"}}/)
+    .expect(200);
 });

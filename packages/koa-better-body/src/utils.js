@@ -114,6 +114,11 @@ export function setParsers(ctx, opts) {
     ctx.qs; // alias
 
   bodyParsers(ctx);
+
+  // to do: when using koa-body-parsers v3.1 - it adds support for this and
+  // probably will break us in some way.
+  // delete ctx.request.body;
+
   ctx.request.multipart = multipart.bind(ctx);
   return ctx;
 }

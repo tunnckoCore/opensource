@@ -53,9 +53,9 @@
   ],
   "scripts": {},
   "dependencies": {
-    "extend-shallow": "3.0.2",
-    "formidable": "1.2.1",
-    "koa-body-parsers": "git+https://github.com/tunnckoCore/body-parsers.git"
+    "extend-shallow": "^3.0.2",
+    "formidable": "^1.2.1",
+    "koa-body-parsers": "tunnckoCore/body-parsers#patch-1"
   },
   "devDependencies": {
     "is-buffer": "2.0.3",

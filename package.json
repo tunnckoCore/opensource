@@ -32,6 +32,7 @@
     "builtin-modules": "^3.1.0",
     "enquirer": "^2.3.2",
     "eslint": "^6.4.0",
+    "esm": "^3.2.25",
     "jest": "^24.9.0",
     "lerna": "^3.16.4",
     "prettier": "^1.18.2",

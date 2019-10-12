@@ -5,7 +5,6 @@
  * Released under the MIT license.
  */
 
-import { promisify } from 'util';
 import request from 'supertest';
 import koa from 'koa';
 import betterBody from '../src';
@@ -16,11 +15,12 @@ test('should accept opts.extendTypes.custom `foo/bar-x` as text', async () => {
       extendTypes: {
         custom: ['foo/bar-x'],
       },
+
       handler: function* handler(ctx, opts) {
-        test.strictEqual(typeof ctx, 'object');
-        test.strictEqual(typeof this, 'object');
-        test.strictEqual(typeof ctx.request.text, 'function');
-        test.strictEqual(typeof this.request.text, 'function');
+        expect(typeof ctx).toStrictEqual('object');
+        expect(typeof this).toStrictEqual('object');
+        expect(typeof ctx.request.text).toStrictEqual('function');
+        expect(typeof this.request.text).toStrictEqual('function');
 
         this.request.body = yield this.request.text(opts);
       },
@@ -29,22 +29,19 @@ test('should accept opts.extendTypes.custom `foo/bar-x` as text', async () => {
 
   app = app
     .use(function* abc(next) {
-      test.strictEqual(typeof this.request.body, 'string');
-      test.strictEqual(this.request.body, 'message=lol');
+      expect(this.request.body).toStrictEqual('message=lol');
       this.body = this.request.body;
       yield* next;
     })
     // eslint-disable-next-line require-yield
     .use(function* abc() {
-      test.strictEqual(this.body, 'message=lol');
+      expect(this.body).toStrictEqual('message=lol');
     });
 
-  await promisify(
-    request(app.callback())
-      .post('/')
-      .type('foo/bar-x')
-      .send('message=lol')
-      .expect(200)
-      .expect('message=lol').end,
-  )();
+  await request(app.callback())
+    .post('/')
+    .type('foo/bar-x')
+    .send('message=lol')
+    .expect(200)
+    .expect('message=lol');
 });
