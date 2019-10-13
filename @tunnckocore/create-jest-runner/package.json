@@ -16,11 +16,12 @@
     "dist"
   ],
   "scripts": {},
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "chalk": "^2.4.2",
     "jest-worker": "^24.0.0",
-    "throat": "^4.1.0",
+    "throat": "^4.1.0"
+  },
+  "devDependencies": {
     "ansi-colors": "^4.1.1",
     "execa": "^1.0.0",
     "jest": "^24.0.0"

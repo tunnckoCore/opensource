@@ -7,7 +7,9 @@ const { exts, workspaces } = utils.createAliases(ROOT);
 module.exports = {
   rootDir: ROOT,
   displayName: 'docs',
-  testMatch: workspaces.map((ws) => `<rootDir>/${ws}/*/src/index.js`),
+  testMatch: workspaces.map(
+    (ws) => `<rootDir>/${ws}/*/src/index.{${exts.join(',')}}`,
+  ),
   testPathIgnorePatterns: [
     /node_modules/.toString(),
     /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),
@@ -15,5 +17,5 @@ module.exports = {
   ],
   // moduleNameMapper: alias,
   moduleFileExtensions: exts,
-  runner: path.join(ROOT, 'packages/jest-runner-docs/dist/cjs/index.js'),
+  runner: path.join(ROOT, 'packages/jest-runner-docs/src/index.js'),
 };

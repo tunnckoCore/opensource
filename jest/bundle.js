@@ -8,14 +8,9 @@ module.exports = {
   rootDir: ROOT,
   displayName: 'bundle',
   // testMatch: ['<rootDir>/@tunnckocore/execa/src/index.js'],
-  testMatch: workspaces
-    .map(
-      (ws) => `<rootDir>/${ws}/!(jest-runner-*)/src/index.{${exts.join(',')}}`,
-    )
-    .concat([
-      `<rootDir>/@tunnckocore/jest-runner-*/src/runner.js`,
-      `<rootDir>/packages/jest-runner-*/src/runner.js`,
-    ]),
+  testMatch: workspaces.map(
+    (ws) => `<rootDir>/${ws}/!(*jest-runner*)/src/index.{${exts.join(',')}}`,
+  ),
   testPathIgnorePatterns: [
     /node_modules/.toString(),
     /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),

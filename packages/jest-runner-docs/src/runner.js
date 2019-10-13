@@ -1,17 +1,17 @@
 /* eslint-disable max-statements */
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
-import { pass, fail, skip } from '@tunnckocore/create-jest-runner';
-import { isMonorepo } from '@tunnckocore/utils';
+const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
+const { isMonorepo } = require('@tunnckocore/utils');
 
-import cosmiconfig from 'cosmiconfig';
-import docks from './docks';
+const cosmiconfig = require('cosmiconfig');
+const docks = require('./docks');
 
 const jestRunnerConfig = cosmiconfig('jest-runner');
 const jestRunnerDocks = cosmiconfig('docks');
 
-export default async function jetRunnerDocs({ testPath, config }) {
+module.exports = async function jestRunnerDocs({ testPath, config }) {
   const start = new Date();
   const conf = await tryLoadConfig(testPath, start);
   if (conf.hasError) return conf.error;
@@ -100,7 +100,7 @@ export default async function jetRunnerDocs({ testPath, config }) {
       title: 'Docks',
     },
   });
-}
+};
 
 async function tryLoadConfig(testPath, start) {
   return tryCatch(testPath, start, () => {

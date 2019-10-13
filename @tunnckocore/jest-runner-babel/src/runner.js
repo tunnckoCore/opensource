@@ -10,7 +10,7 @@ const explorer = cosmiconfig('jest-runner');
 const isWin32 = os.platform() === 'win32';
 
 /* eslint max-statements: ["error", 25] */
-module.exports = async function jetRunnerBabel({ testPath, config }) {
+module.exports = async function jestRunnerBabel({ testPath, config }) {
   const start = new Date();
   let options = normalizeRunnerConfig(explorer.searchSync());
   const cfgs = [].concat(options.babel).filter(Boolean);
