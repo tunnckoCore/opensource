@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.2](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/@tunnckocore/utils@0.9.1...@tunnckocore/utils@0.9.2) (2019-10-13)
+
+
+### Bug Fixes
+
+* docs runner readme gen tweaks ([87e32b9](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/commit/87e32b9))
+* remove version from the "promo" part, regen docs ([f0dd7ef](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/commit/f0dd7ef))
+* update readmes, build koa-better-body ([698c8d8](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/commit/698c8d8))
+
+
+
+
+
 ## [0.9.1](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/@tunnckocore/utils@0.9.0...@tunnckocore/utils@0.9.1) (2019-10-03)
 
 

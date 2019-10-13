@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint/compare/@tunnckocore/jest-runner-eslint@0.5.1...@tunnckocore/jest-runner-eslint@0.5.2) (2019-10-13)
+
+
+### Bug Fixes
+
+* docs runner readme gen tweaks ([87e32b9](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint/commit/87e32b9))
+* remove version from the "promo" part, regen docs ([f0dd7ef](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint/commit/f0dd7ef))
+* update readmes, build koa-better-body ([698c8d8](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint/commit/698c8d8))
+
+
+
+
+
 ## [0.5.1](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint/compare/@tunnckocore/jest-runner-eslint@0.5.0...@tunnckocore/jest-runner-eslint@0.5.1) (2019-10-03)
 
 

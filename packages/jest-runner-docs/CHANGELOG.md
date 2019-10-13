@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs/compare/jest-runner-docs@0.1.2...jest-runner-docs@0.1.3) (2019-10-13)
+
+
+### Bug Fixes
+
+* docs runner readme gen tweaks ([87e32b9](https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs/commit/87e32b9))
+* remove version from the "promo" part, regen docs ([f0dd7ef](https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs/commit/f0dd7ef))
+* update readmes, build koa-better-body ([698c8d8](https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs/commit/698c8d8))
+
+
+
+
+
 ## [0.1.2](https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs/compare/jest-runner-docs@0.1.1...jest-runner-docs@0.1.2) (2019-10-03)
 
 
