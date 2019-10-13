@@ -52,7 +52,7 @@ module.exports = async function jetRunnerDocs({ testPath, config }) {
     );
 
     const promo = docksConfig.promo
-      ? `_Generated using [${pkgJson.name}](${pkgJson.repository})._`
+      ? `_Generated using [${pkgJson.name}](https://npmjs.com/package/jest-runner-docs)._`
       : '';
 
     const header = docksConfig.includeHeader ? '## API\n\n' : '';

@@ -41,7 +41,6 @@ Project is [semantically](https://semver.org) versioned & automatically released
 | For any critical problems and security reports                   |     ![tunnckocore_security][tunnckocore_security] |
 | Consulting, professional support, personal or team training      | ![tunnckocore_consulting][tunnckocore_consulting] |
 | For any questions about Open Source, partnerships and sponsoring | ![tunnckocore_opensource][tunnckocore_opensource] |
-| Curited interesting news, announcements, articles, and thoughts  | ![tunnckocore_newsletter][tunnckocore_newsletter] |
 
 <!-- Logo when needed:
 
