@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.6](https://github.com/tunnckoCore/opensource/tree/master/packages/koa-better-body/compare/koa-better-body@3.1.5...koa-better-body@3.1.6) (2019-10-13)
+
+
+### Bug Fixes
+
+* run prettier on everything ([ee3c299](https://github.com/tunnckoCore/opensource/tree/master/packages/koa-better-body/commit/ee3c299))
+
+
+
+
+
 ## [3.1.5](https://github.com/tunnckoCore/opensource/tree/master/packages/koa-better-body/compare/koa-better-body@3.1.4...koa-better-body@3.1.5) (2019-10-13)
 
 **Note:** Version bump only for package koa-better-body

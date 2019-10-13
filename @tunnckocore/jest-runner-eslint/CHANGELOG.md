@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint/compare/@tunnckocore/jest-runner-eslint@0.6.0...@tunnckocore/jest-runner-eslint@0.6.1) (2019-10-13)
+
+
+### Bug Fixes
+
+* run prettier on everything ([ee3c299](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint/commit/ee3c299))
+
+
+
+
+
 # [0.6.0](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint/compare/@tunnckocore/jest-runner-eslint@0.5.2...@tunnckocore/jest-runner-eslint@0.6.0) (2019-10-13)
 
 

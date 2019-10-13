@@ -1,6 +1,6 @@
 {
   "name": "jest-runner-docs",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "WIP",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/packages/jest-runner-docs",
   "homepage": "https://tunnckocore.com/opensource",
@@ -33,8 +33,8 @@
   ],
   "scripts": {},
   "dependencies": {
-    "@tunnckocore/create-jest-runner": "^0.8.0",
-    "@tunnckocore/utils": "^0.9.3",
+    "@tunnckocore/create-jest-runner": "^0.8.1",
+    "@tunnckocore/utils": "^0.9.4",
     "cosmiconfig": "^5.2.1",
     "parse-comments": "^1.0.0"
   },

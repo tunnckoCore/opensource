@@ -1,6 +1,6 @@
 {
   "name": "jest-runner-rollup",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "WIP",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils",
   "homepage": "https://tunnckocore.com/opensource",
@@ -35,8 +35,8 @@
     "rollup": "^1.22.0"
   },
   "dependencies": {
-    "@tunnckocore/create-jest-runner": "^0.8.0",
-    "@tunnckocore/utils": "^0.9.3",
+    "@tunnckocore/create-jest-runner": "^0.8.1",
+    "@tunnckocore/utils": "^0.9.4",
     "cosmiconfig": "^5.2.1"
   },
   "publishConfig": {

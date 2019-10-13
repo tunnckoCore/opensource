@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.4](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/@tunnckocore/utils@0.9.3...@tunnckocore/utils@0.9.4) (2019-10-13)
+
+
+### Bug Fixes
+
+* run prettier on everything ([ee3c299](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/commit/ee3c299))
+
+
+
+
+
 ## [0.9.3](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/@tunnckocore/utils@0.9.2...@tunnckocore/utils@0.9.3) (2019-10-13)
 
 **Note:** Version bump only for package @tunnckocore/utils

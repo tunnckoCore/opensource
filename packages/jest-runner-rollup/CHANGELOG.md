@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/jest-runner-rollup@0.4.0...jest-runner-rollup@0.4.1) (2019-10-13)
+
+
+### Bug Fixes
+
+* run prettier on everything ([ee3c299](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/commit/ee3c299))
+
+
+
+
+
 # [0.4.0](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/jest-runner-rollup@0.3.3...jest-runner-rollup@0.4.0) (2019-10-13)
 
 
