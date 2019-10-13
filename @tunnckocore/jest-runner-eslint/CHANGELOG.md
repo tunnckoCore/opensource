@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint/compare/@tunnckocore/jest-runner-eslint@0.5.2...@tunnckocore/jest-runner-eslint@0.6.0) (2019-10-13)
+
+
+### Bug Fixes
+
+* okey, do not bundle jest runners ([cf9ba9e](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint/commit/cf9ba9e))
+
+
+### Features
+
+* **jest-runner-rollup:** fylesystem cache ([c21fedb](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint/commit/c21fedb))
+
+
+
+
+
 ## [0.5.2](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint/compare/@tunnckocore/jest-runner-eslint@0.5.1...@tunnckocore/jest-runner-eslint@0.5.2) (2019-10-13)
 
 

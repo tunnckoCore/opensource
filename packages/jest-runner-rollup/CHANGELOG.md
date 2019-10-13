@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/jest-runner-rollup@0.3.3...jest-runner-rollup@0.4.0) (2019-10-13)
+
+
+### Bug Fixes
+
+* okey, do not bundle jest runners ([cf9ba9e](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/commit/cf9ba9e))
+
+
+### Features
+
+* **jest-runner-rollup:** better hooks ([040774f](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/commit/040774f))
+* **jest-runner-rollup:** fylesystem cache ([c21fedb](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/commit/c21fedb))
+
+
+
+
+
 ## [0.3.3](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils/compare/jest-runner-rollup@0.3.2...jest-runner-rollup@0.3.3) (2019-10-13)
 
 
