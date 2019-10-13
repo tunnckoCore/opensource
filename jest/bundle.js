@@ -7,7 +7,10 @@ const { exts, workspaces } = utils.createAliases(ROOT);
 module.exports = {
   rootDir: ROOT,
   displayName: 'bundle',
-  testMatch: workspaces.map((ws) => `<rootDir>/${ws}/*/src/**/*`),
+  // testMatch: ['<rootDir>/@tunnckocore/execa/src/index.js'],
+  testMatch: workspaces.map(
+    (ws) => `<rootDir>/${ws}/*/src/index.{${exts.join(',')}}`,
+  ),
   testPathIgnorePatterns: [
     /node_modules/.toString(),
     /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),

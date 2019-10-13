@@ -2,7 +2,11 @@
 // const nodeResolve = require('rollup-plugin-node-resolve');
 // const commonjs = require('rollup-plugin-commonjs');
 
-const { exec } = require('./@tunnckocore/execa');
+const esmLoader = require('esm');
+
+const esmRequire = esmLoader(module);
+
+const { exec } = esmRequire('./@tunnckocore/execa/src/index');
 
 const presetOptions = {
   react: true,

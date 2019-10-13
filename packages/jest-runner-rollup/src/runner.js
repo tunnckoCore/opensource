@@ -27,10 +27,11 @@ module.exports = async function jetRunnerRollup({ testPath, config }) {
   );
   if (inputFile.hasError) return inputFile.error;
 
-  const { pkgHook, formatHook, ...rollupConfig } = cfg;
-  const hooks = {
-    pkgHook: typeof pkgHook === 'function' ? pkgHook : () => {},
-    formatHook: typeof formatHook === 'function' ? formatHook : (x) => x,
+  const { hooks, ...rollupConfig } = cfg;
+  const allHooks = {
+    onPkg: typeof hooks.onPkg === 'function' ? hooks.onPkg : () => {},
+    onFormat: typeof hooks.onFormat === 'function' ? hooks.onFormat : (x) => x,
+    onWrite: typeof hooks.onWrite === 'function' ? hooks.onWrite : (x) => x,
   };
 
   /** Rull that bundle */
@@ -58,48 +59,63 @@ module.exports = async function jetRunnerRollup({ testPath, config }) {
 
     const outputFile = path.join(pkgRoot, dist, path.basename(opts.file));
 
-    return hooks.formatHook({
+    return hooker(allHooks.onFormat, {
       outputOptions: { ...opts, dist, file: outputFile },
-      testPath,
       pkgRoot,
+      testPath,
+      inputFile,
     });
   });
 
+  // console.log('all outputs:', await Promise.all(outputOptions));
   /** Write output file for each format */
   const res = await tryCatch(inputFile, start, () =>
     Promise.all(
-      outputOptions.map(({ outputOptions: outOpts }) =>
-        bundle
-          .write(outOpts)
-          /** If bundled without problems, print the output file filename */
-          .then(async () =>
-            pass({
-              start,
-              end: Date.now(),
-              test: {
-                path: outOpts.file,
-                title: 'Rollup',
-              },
-            }),
-          )
-          .catch((err) => {
-            /** If there is problem bundling, re-throw appending output filename */
-            err.outputFile = outOpts.file;
-            throw err;
-          }),
-      ),
+      outputOptions.map(async (ctx) => {
+        const { outputOptions: outOpts } = await ctx;
+
+        const opts = await hooker(allHooks.onWrite, {
+          outputOptions: outOpts,
+          pkgRoot,
+          testPath,
+          inputFile,
+        });
+
+        return (
+          bundle
+            .write(opts.outputOptions)
+            /** If bundled without problems, print the output file filename */
+            .then(async () =>
+              pass({
+                start,
+                end: Date.now(),
+                test: {
+                  path: opts.outputOptions.file,
+                  title: 'Rollup',
+                },
+              }),
+            )
+            .catch((err) => {
+              /** If there is problem bundling, re-throw appending output filename */
+              err.outputFile = opts.outputOptions.file;
+              throw err;
+            })
+        );
+      }),
     )
       /** Bundling process for each format completed successfuly */
       .then(async (testRes) => {
-        await hooks.pkgHook({
+        await hooker(allHooks.onPkg, {
+          jestConfig: config,
           rollupConfig: {
             ...rollupConfig,
             output: outputOptions,
           },
           pkgRoot,
           testPath,
-          jestConfig: config,
+          inputFile,
         });
+
         return testRes;
       })
       /** Bundling for some of the formats failed */
@@ -215,4 +231,15 @@ function tryExtensions(filepath, config) {
   }
 
   return filepath + extension;
+}
+
+async function hooker(hookFn, options = {}) {
+  const hookResult = await hookFn({ ...options });
+  const res = { ...hookResult };
+
+  if (res.outputOptions) {
+    return { ...options, ...res };
+  }
+
+  return { ...options, outputOptions: res };
 }
