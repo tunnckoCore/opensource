@@ -13,16 +13,14 @@
   "module": "src/index.js",
   "typings": "dist/types/index.d.ts",
   "files": [
-    "src",
-    "generator"
+    "dist"
   ],
   "scripts": {},
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "chalk": "^2.4.2",
     "jest-worker": "^24.0.0",
-    "throat": "^4.1.0"
-  },
-  "devDependencies": {
+    "throat": "^4.1.0",
     "ansi-colors": "^4.1.1",
     "execa": "^1.0.0",
     "jest": "^24.0.0"

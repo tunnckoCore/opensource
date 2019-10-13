@@ -2,12 +2,6 @@
 // const nodeResolve = require('rollup-plugin-node-resolve');
 // const commonjs = require('rollup-plugin-commonjs');
 
-const esmLoader = require('esm');
-
-const esmRequire = esmLoader(module);
-
-const { exec } = esmRequire('./@tunnckocore/execa/src/index');
-
 const presetOptions = {
   react: true,
   typescript: true,
@@ -25,6 +19,8 @@ module.exports = {
   docs: {
     outfile: '.verb.md',
     postHook: async ({ pkgRoot }) => {
+      /* eslint-disable-next-line global-require, import/no-unresolved */
+      const { exec } = require('./@tunnckocore/execa/dist/cjs');
       await exec('verb', { cwd: pkgRoot });
     },
   },

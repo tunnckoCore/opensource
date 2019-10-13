@@ -15,5 +15,5 @@ module.exports = {
   ],
   // moduleNameMapper: alias,
   moduleFileExtensions: exts,
-  runner: path.join(ROOT, 'packages/jest-runner-docs/src/index.js'),
+  runner: path.join(ROOT, 'packages/jest-runner-docs/dist/cjs/index.js'),
 };

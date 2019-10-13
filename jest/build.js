@@ -12,7 +12,7 @@ module.exports = {
     /node_modules/.toString(),
     /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),
     /.+\/@tunnckocore\/utils\/.+/.toString(),
-    /.+(?:-config|jest-runner|babel-preset).+/.toString(),
+    /.+(?:-config|babel-preset).+/.toString(),
   ],
   // moduleNameMapper: alias,
   moduleFileExtensions: exts,

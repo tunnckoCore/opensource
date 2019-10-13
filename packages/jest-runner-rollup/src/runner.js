@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { pass, fail } = require('@tunnckocore/create-jest-runner');
+const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
 const {
   getWorkspacesAndExtensions,
   isMonorepo,
@@ -13,7 +13,16 @@ const jestRunnerConfig = cosmiconfig('jest-runner');
 const jestRunnerRollupConfig = cosmiconfig('jest-runner-rollup');
 const rollupConfigFile = cosmiconfig('rollup');
 
-module.exports = async function jetRunnerRollup({ testPath, config }) {
+const ROLLUP_CACHE = {};
+const CACHE_DIR = path.join(
+  process.cwd(), // to do
+  'node_modules',
+  '.cache',
+  'jest-runner-rollup',
+);
+
+/* eslint-disable max-statements */
+module.exports = async function jestRunnerRollup({ testPath, config }) {
   const start = new Date();
 
   /** Load config from possible places */
@@ -27,18 +36,48 @@ module.exports = async function jetRunnerRollup({ testPath, config }) {
   );
   if (inputFile.hasError) return inputFile.error;
 
-  const { hooks, ...rollupConfig } = cfg;
+  const { hooks, skipCached = false } = cfg;
   const allHooks = {
     onPkg: typeof hooks.onPkg === 'function' ? hooks.onPkg : () => {},
     onFormat: typeof hooks.onFormat === 'function' ? hooks.onFormat : (x) => x,
     onWrite: typeof hooks.onWrite === 'function' ? hooks.onWrite : (x) => x,
   };
 
-  /** Rull that bundle */
-  const bundle = await tryCatch(inputFile, start, () =>
-    rollup({ ...rollupConfig, input: inputFile }),
-  );
+  const { fresh = process.env.ROLLUP_FORCE_RELOAD, ...rollupConfig } = cfg;
+
+  const fileContents = fs.readFileSync(inputFile, 'utf8');
+  const contentsHash = toHex(fileContents);
+  const fileHash = toHex(inputFile);
+  const hasCache = !fresh && fs.existsSync(path.join(CACHE_DIR, fileHash));
+
+  let cacheCollection = null;
+  if (hasCache) {
+    try {
+      cacheCollection = fs.readFileSync(
+        path.join(CACHE_DIR, fileHash, 'index.json'),
+        'utf8',
+      );
+      cacheCollection = JSON.parse(cacheCollection);
+    } catch (err) {
+      cacheCollection = { modules: [] };
+    }
+  }
+
+  /** Roll that bundle */
+  const bundle = !hasCache
+    ? await tryCatch(inputFile, start, () =>
+        rollup({
+          ...rollupConfig,
+          input: inputFile,
+          cache: ROLLUP_CACHE[inputFile],
+        }),
+      )
+    : {};
   if (bundle.hasError) return bundle.error;
+
+  if (!hasCache || cacheCollection.contentsHash !== contentsHash) {
+    createCache(bundle, hasCache, { path: inputFile, contents: fileContents });
+  }
 
   /** Find correct root path */
   const pkgRoot = isMonorepo(config.cwd)
@@ -67,7 +106,30 @@ module.exports = async function jetRunnerRollup({ testPath, config }) {
     });
   });
 
-  // console.log('all outputs:', await Promise.all(outputOptions));
+  // If has cache, make passing/skip test report
+  // it's just for the sake to not confuse user
+  if (hasCache) {
+    const ret = await tryCatch(inputFile, start, () =>
+      Promise.all(
+        outputOptions.map(async (ctx) => {
+          const { outputOptions: outOpts } = await ctx;
+
+          return (skipCached ? skip : pass)({
+            start,
+            end: Date.now(),
+            test: {
+              path: outOpts.file,
+              title: 'Rollup',
+            },
+          });
+        }),
+      ),
+    );
+    if (ret.hasError) return ret.error;
+
+    return ret;
+  }
+
   /** Write output file for each format */
   const res = await tryCatch(inputFile, start, () =>
     Promise.all(
@@ -126,7 +188,7 @@ module.exports = async function jetRunnerRollup({ testPath, config }) {
           test: {
             path: err.outputFile,
             title: 'Rollup',
-            errorMessage: `jest-runner-rollup: ${err.message}`,
+            errorMessage: `jest-runner-rollup: ${err.stack || err.message}`,
           },
         }),
       ),
@@ -135,6 +197,28 @@ module.exports = async function jetRunnerRollup({ testPath, config }) {
 
   return res;
 };
+
+function createCache(bundle, hasCache, file) {
+  ROLLUP_CACHE[file.path] = ROLLUP_CACHE[file.path] || bundle.cache;
+  const cacheData = ROLLUP_CACHE[file.path];
+
+  const contentsHash = toHex(file.contents);
+  const inputFilenameHash = toHex(file.path);
+
+  if (!hasCache) {
+    fs.mkdirSync(`${CACHE_DIR}/${inputFilenameHash}`, { recursive: true });
+  }
+  fs.writeFileSync(
+    path.join(CACHE_DIR, inputFilenameHash, 'index.json'),
+    `${JSON.stringify({ ...cacheData, contentsHash })}`,
+  );
+}
+
+function toHex(val, len) {
+  const value = Buffer.from(JSON.stringify(val)).toString('hex');
+
+  return len ? value.slice(0, len) : value;
+}
 
 async function tryCatch(testPath, start, fn) {
   try {
@@ -148,7 +232,7 @@ async function tryCatch(testPath, start, fn) {
         test: {
           path: testPath,
           title: 'Rollup',
-          errorMessage: `jest-runner-rollup: ${err.message}`,
+          errorMessage: `jest-runner-rollup: ${err.stack || err.message}`,
         },
       }),
     };

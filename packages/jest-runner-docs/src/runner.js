@@ -1,18 +1,17 @@
 /* eslint-disable max-statements */
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
-const { isMonorepo } = require('@tunnckocore/utils');
+import { pass, fail, skip } from '@tunnckocore/create-jest-runner';
+import { isMonorepo } from '@tunnckocore/utils';
 
-const cosmiconfig = require('cosmiconfig');
-const docks = require('./docks');
-const pkgJson = require('../package.json');
+import cosmiconfig from 'cosmiconfig';
+import docks from './docks';
 
 const jestRunnerConfig = cosmiconfig('jest-runner');
 const jestRunnerDocks = cosmiconfig('docks');
 
-module.exports = async function jetRunnerDocs({ testPath, config }) {
+export default async function jetRunnerDocs({ testPath, config }) {
   const start = new Date();
   const conf = await tryLoadConfig(testPath, start);
   if (conf.hasError) return conf.error;
@@ -52,7 +51,7 @@ module.exports = async function jetRunnerDocs({ testPath, config }) {
     );
 
     const promo = docksConfig.promo
-      ? `_Generated using [${pkgJson.name}](https://npmjs.com/package/jest-runner-docs)._`
+      ? `_Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._`
       : '';
 
     const header = docksConfig.includeHeader ? '## API\n\n' : '';
@@ -101,7 +100,7 @@ module.exports = async function jetRunnerDocs({ testPath, config }) {
       title: 'Docks',
     },
   });
-};
+}
 
 async function tryLoadConfig(testPath, start) {
   return tryCatch(testPath, start, () => {
@@ -132,7 +131,7 @@ async function tryCatch(testPath, start, fn) {
         test: {
           path: testPath,
           title: 'Docks',
-          errorMessage: `jest-runner-docs: ${err.message}`,
+          errorMessage: `jest-runner-docs: ${err.stack || err.message}`,
         },
       }),
     };
