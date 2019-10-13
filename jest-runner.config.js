@@ -20,7 +20,7 @@ module.exports = {
     outfile: '.verb.md',
     postHook: async ({ pkgRoot }) => {
       /* eslint-disable-next-line global-require, import/no-unresolved */
-      const { exec } = require('./@tunnckocore/execa/dist/cjs');
+      const { exec } = require('./@tunnckocore/execa/dist/main/index');
       await exec('verb', { cwd: pkgRoot });
     },
   },

@@ -2,20 +2,21 @@ const path = require('path');
 const utils = require('../@tunnckocore/utils/src');
 
 const ROOT = path.dirname(__dirname);
-const { exts, workspaces } = utils.createAliases(ROOT);
+const { exts, alias } = utils.createAliases(ROOT);
+
+const { meta } = require('../package.json');
 
 module.exports = {
   rootDir: ROOT,
   displayName: 'build',
-  testMatch: workspaces.map(
-    (ws) => `<rootDir>/${ws}/!(*jest-runner*)/src/**/*`,
-  ),
+  testMatch: meta.build.map((pkgName) => {
+    const source = alias[pkgName];
+
+    return `${source}/index.{${exts.join(',')}}`;
+  }),
   testPathIgnorePatterns: [
     /node_modules/.toString(),
     /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),
-    /.+\/@tunnckocore\/utils\/.+/.toString(),
-    /.+\/@tunnckocore\/execa\/.+/.toString(),
-    /.+(?:-config|babel-preset).+/.toString(),
   ],
   // moduleNameMapper: alias,
   moduleFileExtensions: exts,

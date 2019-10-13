@@ -2,21 +2,22 @@ const path = require('path');
 const utils = require('../@tunnckocore/utils/src');
 
 const ROOT = path.dirname(__dirname);
-const { exts, workspaces } = utils.createAliases(ROOT);
+const { exts, alias } = utils.createAliases(ROOT);
+
+const { meta } = require('../package.json');
 
 module.exports = {
   rootDir: ROOT,
   displayName: 'bundle',
   // testMatch: ['<rootDir>/@tunnckocore/execa/src/index.js'],
-  testMatch: workspaces.map(
-    (ws) => `<rootDir>/${ws}/!(*jest-runner*)/src/index.{${exts.join(',')}}`,
-  ),
+  testMatch: meta.bundle.map((pkgName) => {
+    const source = alias[pkgName];
+
+    return `${source}/index.{${exts.join(',')}}`;
+  }),
   testPathIgnorePatterns: [
     /node_modules/.toString(),
     /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),
-    /.+\/@tunnckocore\/utils\/.+/.toString(),
-    /.+(?:-config|babel-preset).+/.toString(),
-    /.+\/koa-better-body\/.+/.toString(),
   ],
   // moduleNameMapper: alias,
   moduleFileExtensions: exts,

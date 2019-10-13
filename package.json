@@ -24,6 +24,13 @@
     "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
     "test": "jest -c jest/test.js"
   },
+  "meta": {
+    "build": [
+      "koa-better-body",
+      "@tunnckocore/execa"
+    ],
+    "bundle": []
+  },
   "dependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",

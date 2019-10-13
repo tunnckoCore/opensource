@@ -2,18 +2,23 @@ const path = require('path');
 const utils = require('../@tunnckocore/utils/src');
 
 const ROOT = path.dirname(__dirname);
-const { exts, workspaces } = utils.createAliases(ROOT);
+const { exts, alias } = utils.createAliases(ROOT);
+
+const docsIgnore = ['renovate-config', 'typescript-config'];
+
+const testMatches = Object.values(alias)
+  .map((source) => `${source}/index.{${exts.join(',')}}`)
+  .filter((x) => !docsIgnore.includes(x));
+console.log(testMatches);
 
 module.exports = {
   rootDir: ROOT,
   displayName: 'docs',
-  testMatch: workspaces.map(
-    (ws) => `<rootDir>/${ws}/*/src/index.{${exts.join(',')}}`,
-  ),
+  testMatch: testMatches,
+
   testPathIgnorePatterns: [
     /node_modules/.toString(),
     /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),
-    // /.+(?:-config|babel-preset).+/.toString(),
   ],
   // moduleNameMapper: alias,
   moduleFileExtensions: exts,
