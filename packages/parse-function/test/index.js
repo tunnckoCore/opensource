@@ -1,7 +1,4 @@
-/* eslint-disable unicorn/consistent-function-scoping */
-/* eslint-disable no-plusplus */
-
-// import test from 'mukla';
+/* eslint-disable unicorn/consistent-function-scoping, no-plusplus */
 
 import espree from 'espree';
 import { parse as babylonParse } from '@babel/parser';
@@ -80,141 +77,6 @@ fixtures.asyncs = fixtures.regulars
   .concat(fixtures.arrows)
   .map((item) => `async ${item}`);
 
-// const regulars = [
-//   {
-//     name: null,
-//     params: 'a, cb, restArgs',
-//     args: ['a', 'cb', 'restArgs'],
-//     body: 'return a * 3',
-//     defaults: {
-//       a: '{foo: "ba)r", baz: 123}',
-//       cb: undefined,
-//       restArgs: undefined,
-//     },
-//   },
-//   {
-//     name: null,
-//     params: 'b, callback, restArgs',
-//     args: ['b', 'callback', 'restArgs'],
-//     body: 'callback(null, b + 3)',
-//     defaults: { b: undefined, callback: undefined, restArgs: undefined },
-//   },
-//   {
-//     name: null,
-//     params: 'c',
-//     args: ['c'],
-//     body: 'return c * 3',
-//     defaults: { c: undefined },
-//   },
-//   {
-//     name: null,
-//     params: 'restArgs',
-//     args: ['restArgs'],
-//     body: 'return 321',
-//     defaults: { restArgs: undefined },
-//   },
-//   {
-//     name: null,
-//     params: '',
-//     args: [],
-//     body: '',
-//     defaults: {},
-//   },
-//   {
-//     name: null,
-//     params: 'a',
-//     args: ['a'],
-//     body: '',
-//     defaults: { a: 'false' },
-//   },
-//   {
-//     name: null,
-//     params: 'a',
-//     args: ['a'],
-//     body: '',
-//     defaults: { a: 'null' },
-//   },
-//   {
-//     name: null,
-//     params: 'a',
-//     args: ['a'],
-//     body: '',
-//     defaults: { a: '"bar"' },
-//   },
-//   {
-//     name: null,
-//     params: 'a, b',
-//     args: ['a', 'b'],
-//     body: '',
-//     defaults: { a: undefined, b: 'true' },
-//   },
-//   {
-//     name: null,
-//     params: 'a',
-//     args: ['a'],
-//     body: '',
-//     defaults: { a: '1' },
-//   },
-// ];
-
-/**
- * All of the regular functions
- * variants plus few more
- */
-
-// const arrows = clone(regulars).concat([
-//   {
-//     name: null,
-//     params: 'a',
-//     args: ['a'],
-//     body: 'a * 3 * a',
-//     defaults: { a: undefined },
-//   },
-//   {
-//     name: null,
-//     params: 'd',
-//     args: ['d'],
-//     body: 'd * 355 * d',
-//     defaults: { d: undefined },
-//   },
-//   {
-//     name: null,
-//     params: 'e',
-//     args: ['e'],
-//     body: 'return e + 5235 / e',
-//     defaults: { e: undefined },
-//   },
-//   {
-//     name: null,
-//     params: 'a, b',
-//     args: ['a', 'b'],
-//     body: 'a + 3 + b',
-//     defaults: { a: undefined, b: undefined },
-//   },
-//   {
-//     name: null,
-//     params: 'x, y, restArgs',
-//     args: ['x', 'y', 'restArgs'],
-//     body: 'console.log({ value: x * y })',
-//     defaults: { x: undefined, y: undefined, restArgs: undefined },
-//   },
-// ]);
-
-/**
- * All of the regulars, but
- * with different name
- */
-
-// const named = clone(regulars).map((item) => ({ ...item, name: 'namedFn' }));
-
-// const expectedResults = {
-//   regulars,
-//   named,
-//   generators: named,
-//   arrows,
-//   asyncs: regulars.concat(named).concat(arrows),
-// };
-
 let testsCount = 1;
 
 /**
@@ -241,25 +103,12 @@ function factory(parserName, parseFn) {
     const actual = parseFn(123456);
 
     expect(actual).toMatchSnapshot();
-    // test.strictEqual(actual.isValid, false);
-    // test.strictEqual(actual.value, '');
-    // test.strictEqual(actual.name, null);
-    // test.strictEqual(actual.body, '');
-    // test.strictEqual(actual.params, '');
-    // test.deepEqual(actual.args, []);
   });
 
   test(`#${testsCount++} - ${parserName} - should have '.isValid' and few '.is*'' hidden properties`, () => {
     const actual = parseFn([1, 2, 3]);
 
     expect(actual).toMatchSnapshot();
-    // test.strictEqual(actual.isValid, false);
-    // test.strictEqual(actual.isArrow, false);
-    // test.strictEqual(actual.isAsync, false);
-    // test.strictEqual(actual.isNamed, false);
-    // test.strictEqual(actual.isAnonymous, false);
-    // test.strictEqual(actual.isGenerator, false);
-    // test.strictEqual(actual.isExpression, false);
   });
 
   // bug in v4 and v5
@@ -319,25 +168,16 @@ function factory(parserName, parseFn) {
 
     const foo = parseFn(obj.foo);
     expect(foo).toMatchSnapshot();
-    // expect(foo.name, 'foo');
-    // expect(foo.params, 'a, b, c');
-    // expect(foo.body, '\n        return 123;\n      ');
 
     const bar = parseFn(obj.bar);
     expect(bar).toMatchSnapshot();
-    // expect(bar.name, 'bar');
-    // expect(bar.body, '\n        return () => a;\n      ');
 
     const gen = parseFn(obj.gen);
     expect(gen).toMatchSnapshot();
-    // expect(gen.name).toStrictEqual('gen');
 
     const namedFn = `namedFn (a = {foo: 'ba)r', baz: 123}, cb, ...restArgs) { return a * 3 }`;
     const namedFnc = parseFn(namedFn);
     expect(namedFnc).toMatchSnapshot();
-    // expect(namedFnc.name).toStrictEqual('namedFn');
-    // expect(namedFnc.args.length).toStrictEqual(3);
-    // expect(namedFnc.body).toStrictEqual(' return a * 3 ');
   });
 
   test(`#${testsCount++} - ${parserName} - plugins api`, () => {
