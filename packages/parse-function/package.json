@@ -47,13 +47,9 @@
     "utilities"
   ],
   "scripts": {},
-  "peerDependencies": {
-    "@babel/parser": "^7.6.4",
-    "acorn": "^7.1.0",
-    "acorn-loose": "^7.0.0",
-    "espree": "^6.1.1"
+  "dependencies": {
+    "@babel/parser": "^7.6.4"
   },
-  "dependencies": {},
   "devDependencies": {
     "acorn": "^7.1.0",
     "arrify": "^2.0.1",

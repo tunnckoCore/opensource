@@ -10,6 +10,7 @@ const path = require('path');
 
 const externals = builtins.concat(
   '@babel/core',
+  '@babel/parser',
   'eslint',
   // 'jest-worker',
   // 'cosmiconfig',
