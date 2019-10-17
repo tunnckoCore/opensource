@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign, unicorn/consistent-function-scoping */
+
 /**
  * > Micro plugin to visit each of the params
  * in the given function and collect them into

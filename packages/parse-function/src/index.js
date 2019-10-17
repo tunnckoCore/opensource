@@ -1,10 +1,3 @@
-/*!
- * parse-function <https://github.com/tunnckoCore/parse-function>
- *
- * Copyright (c) 2017 Charlike Mike Reagent <open.source.charlike@gmail.com> (https://i.am.charlike.online)
- * Released under the MIT license.
- */
-
 /**
  * Utilities
  */
