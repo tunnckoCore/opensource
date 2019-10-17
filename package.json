@@ -63,10 +63,11 @@
   "meta": {
     "build": [
       "koa-better-body",
-      "parse-function",
       "@tunnckocore/execa"
     ],
-    "bundle": []
+    "bundle": [
+      "parse-function"
+    ]
   },
   "renovate": {
     "extends": "@tunnckocore"

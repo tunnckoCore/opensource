@@ -12,7 +12,7 @@ module.exports = {
   testMatch: meta.build.map((pkgName) => {
     const source = alias[pkgName];
 
-    return `${source}/index.{${exts.join(',')}}`;
+    return `${source}/**/*.{${exts.join(',')}}`;
   }),
   testPathIgnorePatterns: [
     /node_modules/.toString(),

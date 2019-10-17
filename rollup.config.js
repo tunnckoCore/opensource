@@ -131,7 +131,6 @@ module.exports = {
       ecma: 9,
       toplevel: true,
       warnings: true,
-      // exclude: ['**/*.min.js', 'node_modules/**'],
     }),
   ],
   output: [

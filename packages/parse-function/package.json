@@ -13,8 +13,8 @@
   "engines": {
     "node": ">=8.11"
   },
-  "main": "dist/main/index.js",
-  "module": "dist/module/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist"
@@ -47,14 +47,18 @@
     "utilities"
   ],
   "scripts": {},
-  "dependencies": {
-    "arrify": "^2.0.1",
+  "peerDependencies": {
     "@babel/parser": "^7.6.4",
-    "define-property": "^2.0.2"
-  },
-  "devDependencies": {
     "acorn": "^7.1.0",
     "acorn-loose": "^7.0.0",
+    "espree": "^6.1.1"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "acorn": "^7.1.0",
+    "arrify": "^2.0.1",
+    "acorn-loose": "^7.0.0",
+    "define-property": "^2.0.2",
     "espree": "^6.1.1",
     "for-in": "^1.0.2"
   },

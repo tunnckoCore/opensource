@@ -9,13 +9,13 @@
  * Utilities
  */
 
-import utils from './lib/utils';
+import utils from './utils';
 
 /**
  * Core plugins
  */
 
-import initial from './lib/plugins/initial';
+import initial from './plugins/initial';
 
 /**
  * > Initializes with optional `opts` object which is passed directly
