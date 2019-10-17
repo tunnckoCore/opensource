@@ -1,11 +1,4 @@
-/*!
- * parse-function <https://github.com/tunnckoCore/parse-function>
- *
- * Copyright (c) 2017 Charlike Mike Reagent <open.source.charlike@gmail.com> (https://i.am.charlike.online)
- * Released under the MIT license.
- */
-
-/* eslint-disable jsdoc/require-param-description, jsdoc/check-param-names */
+/* eslint-disable no-param-reassign, unicorn/consistent-function-scoping */
 
 /**
  * > Micro plugin to get the raw body, without the
@@ -17,15 +10,15 @@
  * @return {Object} result
  * @private
  */
-export default (app) => (node, result) => {
-  result.body = result.value.slice(node.body.start, node.body.end)
+export default () => (node, result) => {
+  result.body = result.value.slice(node.body.start, node.body.end);
 
-  const openCurly = result.body.charCodeAt(0) === 123
-  const closeCurly = result.body.charCodeAt(result.body.length - 1) === 125
+  const openCurly = result.body.charCodeAt(0) === 123;
+  const closeCurly = result.body.charCodeAt(result.body.length - 1) === 125;
 
   if (openCurly && closeCurly) {
-    result.body = result.body.slice(1, -1)
+    result.body = result.body.slice(1, -1);
   }
 
-  return result
-}
+  return result;
+};

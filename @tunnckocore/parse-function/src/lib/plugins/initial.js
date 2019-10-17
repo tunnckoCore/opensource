@@ -1,15 +1,8 @@
-/*!
- * parse-function <https://github.com/tunnckoCore/parse-function>
- *
- * Copyright (c) 2017 Charlike Mike Reagent <open.source.charlike@gmail.com> (https://i.am.charlike.online)
- * Released under the MIT license.
- */
+/* eslint-disable no-param-reassign */
 
-/* eslint-disable jsdoc/require-param-description, jsdoc/check-param-names */
-
-import body from './body.js'
-import props from './props.js'
-import params from './params.js'
+import body from './body';
+import props from './props';
+import params from './params';
 
 /**
  * > Default plugin that handles regular functions,
@@ -22,28 +15,29 @@ import params from './params.js'
  * @private
  */
 export default (app) => (node, result) => {
-  const isFn = node.type.endsWith('FunctionExpression')
-  const isMethod = node.type === 'ObjectExpression'
+  const isFn = node.type.endsWith('FunctionExpression');
+  const isMethod = node.type === 'ObjectExpression';
 
   /* istanbul ignore next */
   if (!isFn && !isMethod) {
-    return
+    return;
   }
 
-  node = isMethod ? node.properties[0] : node
-  node.id = isMethod ? node.key : node.id
+  node = isMethod ? node.properties[0] : node;
+  node.id = isMethod ? node.key : node.id;
 
   // babylon node.properties[0] is `ObjectMethod` that has `params` and `body`;
   // acorn node.properties[0] is `Property` that has `value`;
   if (node.type === 'Property') {
-    const id = node.key
-    node = node.value
-    node.id = id
+    const id = node.key;
+    node = node.value;
+    node.id = id;
   }
 
-  result = props(app)(node, result)
-  result = params(app)(node, result)
-  result = body(app)(node, result)
+  result = props(app)(node, result);
+  result = params(app)(node, result);
+  result = body(app)(node, result);
 
-  return result
-}
+  // eslint-disable-next-line consistent-return
+  return result;
+};

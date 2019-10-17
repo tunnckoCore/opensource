@@ -1,117 +1,87 @@
 {
   "name": "parse-function",
-  "version": "0.0.0-semantically-released",
+  "version": "5.2.11",
   "description": "Parse a function into an object using espree, acorn or babylon parsers. Extensible through Smart Plugins",
-  "repository": "tunnckoCore/parse-function",
-  "homepage": "https://github.com/tunnckoCore/parse-function",
-  "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
-  "nspId": "42a5e14a-70da-49ee-86e7-d1f39ed08603",
-  "src": "./src/**/*.js",
-  "main": "./dist/index.js",
-  "module": "./dist/index.es.js",
-  "scripts": {
-    "start": "hela",
-    "test": "NODE_ENV=test yarn hela test",
-    "build": "yarn hela build",
-    "release": "yarn new-release",
-    "precommit": "yarn hela precommit",
-    "commit": "yarn hela commit"
-  },
-  "license": "MIT",
-  "licenseStart": 2016,
+  "repository": "https://github.com/tunnckoCore/opensource/tree/master/packages/parse-fn",
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "license": "MPL-2.0",
   "engines": {
-    "node": ">=6",
-    "npm": ">=5",
-    "yarn": ">=1"
+    "node": ">=8.11"
   },
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
-    "dist/"
+    "dist"
   ],
-  "dependencies": {
-    "arrify": "2.0.1",
-    "babylon": "7.0.0-beta.47",
-    "define-property": "2.0.2"
-  },
-  "devDependencies": {
-    "acorn": "5.7.3",
-    "clone-deep": "4.0.1",
-    "eslint-config-standard-tunnckocore": "1.0.10",
-    "espree": "6.1.1",
-    "for-in": "1.0.2",
-    "hela": "1.1.3",
-    "hela-preset-tunnckocore": "0.5.19",
-    "husky": "3.0.9",
-    "mukla": "0.4.9",
-    "new-release": "5.0.4"
-  },
   "keywords": [
     "args",
     "arguments",
-    "arrow",
-    "arrowfn",
     "async",
+    "async-await",
     "asyncawait",
     "await",
-    "body",
+    "babel",
+    "developer-experience",
+    "development",
+    "dx",
     "fn",
-    "fns",
     "func",
     "function",
-    "gen",
     "generators",
-    "name",
-    "object",
-    "param",
-    "paramerters",
+    "hela",
+    "parameters",
     "params",
     "parse",
     "parse-function",
     "parser",
-    "prop",
-    "regular",
-    "string",
     "tostring",
-    "util"
+    "tunnckocore-oss",
+    "tunnckocorehq",
+    "typescript",
+    "utilities"
   ],
+  "scripts": {},
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "licenseStart": 2016,
+  "dependencies": {
+    "arrify": "^2.0.1",
+    "@babel/parser": "^7.6.4",
+    "define-property": "^2.0.2"
+  },
+  "devDependencies": {
+    "acorn": "^7.1.0",
+    "acorn-loose": "^7.0.0",
+    "espree": "^6.1.1",
+    "for-in": "^1.0.2"
+  },
   "verb": {
+    "readme": "../../readme-template.md",
     "run": true,
     "toc": {
       "render": true,
       "method": "preWrite",
-      "maxdepth": 3
+      "maxdepth": 4
     },
     "layout": "empty",
     "tasks": [
       "readme"
     ],
-    "related": {
-      "list": [
-        "babylon",
-        "acorn",
-        "espree",
-        "parse-semver",
-        "charlike-cli",
-        "hela"
-      ],
-      "highlight": "hela"
-    },
     "lint": {
       "reflinks": true
     },
     "reflinks": [
       "acorn",
       "babylon",
-      "charlike",
-      "charlike-cli",
       "define-property",
-      "espree",
-      "execa",
-      "function-arguments",
-      "hela",
-      "new-release"
-    ]
-  },
-  "release": {
-    "analyzeCommits": "simple-commit-message"
+      "espree"
+    ],
+    "related": {
+      "list": []
+    }
   }
 }

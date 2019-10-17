@@ -1,12 +1,4 @@
-/*!
- * parse-function <https://github.com/tunnckoCore/parse-function>
- *
- * Copyright (c) 2017 Charlike Mike Reagent <open.source.charlike@gmail.com> (https://i.am.charlike.online)
- * Released under the MIT license.
- */
-
-/* eslint-disable jsdoc/require-param-description, jsdoc/check-param-names */
-
+/* eslint-disable no-param-reassign, unicorn/consistent-function-scoping */
 /**
  * > Micro plugin to visit each of the params
  * in the given function and collect them into
@@ -17,36 +9,32 @@
  * @return {Object} result
  * @private
  */
-export default (app) => (node, result) => {
-  if (!node.params.length) {
-    return result
-  }
-
+export default () => (node, result) => {
   node.params.forEach((param) => {
     const defaultArgsName =
-      param.type === 'AssignmentPattern' && param.left && param.left.name
+      param.type === 'AssignmentPattern' && param.left && param.left.name;
 
     const restArgName =
-      param.type === 'RestElement' && param.argument && param.argument.name
+      param.type === 'RestElement' && param.argument && param.argument.name;
 
-    const name = param.name || defaultArgsName || restArgName
+    const name = param.name || defaultArgsName || restArgName;
 
-    result.args.push(name)
+    result.args.push(name);
 
     if (param.right && param.right.type === 'SequenceExpression') {
-      let lastExpression = param.right.expressions.pop()
+      const lastExpression = param.right.expressions.pop();
 
       result.defaults[name] = result.value.slice(
         lastExpression.start,
-        lastExpression.end
-      )
+        lastExpression.end,
+      );
     } else {
       result.defaults[name] = param.right
         ? result.value.slice(param.right.start, param.right.end)
-        : undefined
+        : undefined;
     }
-  })
-  result.params = result.args.join(', ')
+  });
+  result.params = result.args.join(', ');
 
-  return result
-}
+  return result;
+};

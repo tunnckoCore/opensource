@@ -5,15 +5,13 @@
  * Released under the MIT license.
  */
 
-/* eslint-disable jsdoc/require-param-description */
+import arrayify from 'arrify';
+import { parseExpression } from '@babel/parser';
+import define from 'define-property';
 
-import arrayify from 'arrify'
-import babylon from 'babylon'
-import define from 'define-property'
-
-const utils = {}
-utils.define = define
-utils.arrayify = arrayify
+const utils = {};
+utils.define = define;
+utils.arrayify = arrayify;
 
 /**
  * > Create default result object,
@@ -23,24 +21,27 @@ utils.arrayify = arrayify
  * @return {Object} result
  * @private
  */
-utils.setDefaults = function setDefaults (code) {
+utils.setDefaults = function setDefaults(code) {
   const result = {
     name: null,
     body: '',
     args: [],
     params: '',
-  }
+  };
 
   if (typeof code === 'function') {
-    code = code.toString('utf8')
+    // eslint-disable-next-line no-param-reassign
+    code = code.toString('utf8');
   }
 
+  // makes result.isValid === false
   if (typeof code !== 'string') {
-    code = '' // makes result.isValid === false
+    // eslint-disable-next-line no-param-reassign
+    code = '';
   }
 
-  return utils.setHiddenDefaults(result, code)
-}
+  return utils.setHiddenDefaults(result, code || '');
+};
 
 /**
  * > Create hidden properties into
@@ -51,19 +52,19 @@ utils.setDefaults = function setDefaults (code) {
  * @return {Object} result
  * @private
  */
-utils.setHiddenDefaults = function setHiddenDefaults (result, code) {
-  utils.define(result, 'defaults', {})
-  utils.define(result, 'value', code)
-  utils.define(result, 'isValid', code.length > 0)
-  utils.define(result, 'isArrow', false)
-  utils.define(result, 'isAsync', false)
-  utils.define(result, 'isNamed', false)
-  utils.define(result, 'isAnonymous', false)
-  utils.define(result, 'isGenerator', false)
-  utils.define(result, 'isExpression', false)
+utils.setHiddenDefaults = function setHiddenDefaults(result, code) {
+  utils.define(result, 'defaults', {});
+  utils.define(result, 'value', code);
+  utils.define(result, 'isValid', code.length > 0);
+  utils.define(result, 'isArrow', false);
+  utils.define(result, 'isAsync', false);
+  utils.define(result, 'isNamed', false);
+  utils.define(result, 'isAnonymous', false);
+  utils.define(result, 'isGenerator', false);
+  utils.define(result, 'isExpression', false);
 
-  return result
-}
+  return result;
+};
 
 /**
  * > Get needed AST tree, depending on what
@@ -74,17 +75,18 @@ utils.setHiddenDefaults = function setHiddenDefaults (result, code) {
  * @return {Object} node
  * @private
  */
-utils.getNode = function getNode (result, opts) {
+utils.getNode = function getNode(result, opts) {
   if (typeof opts.parse === 'function') {
-    result.value = `(${result.value})`
+    // eslint-disable-next-line no-param-reassign
+    result.value = `(${result.value})`;
 
-    const ast = opts.parse(result.value, opts)
-    const body = (ast.program && ast.program.body) || ast.body
+    const ast = opts.parse(result.value, opts);
+    const body = (ast.program && ast.program.body) || ast.body;
 
-    return body[0].expression
+    return body[0].expression;
   }
 
-  return babylon.parseExpression(result.value, opts)
-}
+  return parseExpression(result.value, opts);
+};
 
-export default utils
+export default utils;

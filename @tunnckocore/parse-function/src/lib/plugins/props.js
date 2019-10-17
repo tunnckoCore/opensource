@@ -1,12 +1,3 @@
-/*!
- * parse-function <https://github.com/tunnckoCore/parse-function>
- *
- * Copyright (c) 2017 Charlike Mike Reagent <open.source.charlike@gmail.com> (https://i.am.charlike.online)
- * Released under the MIT license.
- */
-
-/* eslint-disable jsdoc/require-param-description, jsdoc/check-param-names */
-
 /**
  * > Set couple of hidden properties and
  * the name of the given function to
@@ -23,17 +14,19 @@
  * @private
  */
 export default (app) => (node, result) => {
-  app.define(result, 'isArrow', node.type.startsWith('Arrow'))
-  app.define(result, 'isAsync', node.async || false)
-  app.define(result, 'isGenerator', node.generator || false)
-  app.define(result, 'isExpression', node.expression || false)
-  app.define(result, 'isAnonymous', node.id === null)
-  app.define(result, 'isNamed', !result.isAnonymous)
+  app.define(result, 'isArrow', node.type.startsWith('Arrow'));
+  app.define(result, 'isAsync', node.async || false);
+  app.define(result, 'isGenerator', node.generator || false);
+  app.define(result, 'isExpression', node.expression || false);
+  app.define(result, 'isAnonymous', node.id === null);
+  app.define(result, 'isNamed', !result.isAnonymous);
 
   // if real anonymous -> set to null,
   // notice that you can name you function `anonymous`, haha
   // and it won't be "real" anonymous, so `isAnonymous` will be `false`
-  result.name = result.isAnonymous ? null : node.id.name
 
-  return result
-}
+  // eslint-disable-next-line no-param-reassign
+  result.name = result.isAnonymous ? null : node.id.name;
+
+  return result;
+};

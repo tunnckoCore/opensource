@@ -9,13 +9,13 @@
  * Utilities
  */
 
-import utils from './lib/utils.js'
+import utils from './lib/utils';
 
 /**
  * Core plugins
  */
 
-import initial from './lib/plugins/initial.js'
+import initial from './lib/plugins/initial';
 
 /**
  * > Initializes with optional `opts` object which is passed directly
@@ -53,12 +53,11 @@ import initial from './lib/plugins/initial.js'
  *
  * @param  {Object} `opts` optional, merged with options passed to `.parse` method
  * @return {Object} `app` object with `.use` and `.parse` methods
- * @name   parseFunction
+ * @name  parseFunction
  * @api public
  */
-
-export default function parseFunction (opts) {
-  const plugins = []
+export default function parseFunction(opts) {
+  const plugins = [];
   const app = {
     /**
      * > Parse a given `code` and returns a `result` object
@@ -97,31 +96,29 @@ export default function parseFunction (opts) {
      * @name   .parse
      * @api public
      */
-
-    parse (code, options) {
-      let result = utils.setDefaults(code)
+    parse(code, options) {
+      const result = utils.setDefaults(code);
 
       if (!result.isValid) {
-        return result
+        return result;
       }
 
-      opts = Object.assign({}, opts, options)
+      const mergedOptions = { ...opts, ...options };
 
-      const isFunction = result.value.startsWith('function')
-      const isAsyncFn = result.value.startsWith('async function')
-      const isAsync = result.value.startsWith('async')
-      const isArrow = result.value.includes('=>')
-      const isAsyncArrow = isAsync && isArrow
+      const isFunction = result.value.startsWith('function');
+      const isAsyncFn = result.value.startsWith('async function');
+      const isAsync = result.value.startsWith('async');
+      const isArrow = result.value.includes('=>');
+      const isAsyncArrow = isAsync && isArrow;
 
-      // eslint-disable-next-line no-useless-escape
-      const isMethod = /^\*?.+\([\s\S\w\W]*\)\s*\{/i.test(result.value)
+      const isMethod = /^\*?.+\([\s\S\w\W]*\)\s*\{/i.test(result.value);
 
       if (!(isFunction || isAsyncFn || isAsyncArrow) && isMethod) {
-        result.value = `{ ${result.value} }`
+        result.value = `{ ${result.value} }`;
       }
 
-      let node = utils.getNode(result, opts)
-      return plugins.reduce((res, fn) => fn(node, res) || res, result)
+      const node = utils.getNode(result, mergedOptions);
+      return plugins.reduce((res, fn) => fn(node, res) || res, result);
     },
 
     /**
@@ -166,16 +163,15 @@ export default function parseFunction (opts) {
      *
      * @param  {Function} `fn` plugin to be called
      * @return {Object} `app` instance for chaining
-     * @name   .use
+     * @name  .use
      * @api public
      */
-
-    use (fn) {
-      const ret = fn(app)
+    use(fn) {
+      const ret = fn(app);
       if (typeof ret === 'function') {
-        plugins.push(ret)
+        plugins.push(ret);
       }
-      return app
+      return app;
     },
 
     /**
@@ -230,11 +226,10 @@ export default function parseFunction (opts) {
      * @name   .define
      * @api public
      */
-
     define: utils.define,
-  }
+  };
 
-  app.use(initial)
+  app.use(initial);
 
-  return app
+  return app;
 }

@@ -1,41 +1,56 @@
-<p align="center">
-  <img align="center" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f54e.svg" width="256" height="256" alt="Parse a function">
-</p>
-
-# parse-function [![npm version][npmv-img]][npmv-url] [![github release][github-release-img]][github-release-url] [![License][license-img]][license-url]
+# parse-function [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url]
 
 > Parse a function into an object using espree, acorn or babylon parsers. Extensible through Smart Plugins
 
-<div id="thetop"></div>
+Please consider following this project's author, [Charlike Mike Reagent](https://github.com/tunnckoCore), and :star: the project to show your :heart: and support.
 
-You might also be interested in [hela](https://github.com/tunnckoCore/hela#readme).
+<div id="readme"></div>
 
-## Quality Assurance :100:
+[![Code style][codestyle-img]][codestyle-url]
+[![CircleCI linux build][linuxbuild-img]][linuxbuild-url]
+[![CodeCov coverage status][codecoverage-img]][codecoverage-url]
+[![DavidDM dependency status][dependencies-img]][dependencies-url]
+[![Renovate App Status][renovateapp-img]][renovateapp-url]
+[![Time Since Last Commit][last-commit-img]][last-commit-url]
+[![Make A Pull Request][prs-welcome-img]][prs-welcome-url]
 
-[![Code Style Standard][standard-img]][standard-url] 
-[![Linux Build][circleci-img]][circleci-url] 
-[![Code Coverage][codecov-img]][codecov-url] 
-[![Dependencies Status][dependencies-img]][dependencies-url] 
-[![Renovate App Status][renovate-img]][renovate-url] 
+<!-- [![Semantically Released][standard-release-img]][standard-release-url] -->
 
-If you have any _how-to_ kind of questions, please read [Code of Conduct](./CODE_OF_CONDUCT.md) and **join the chat** room or [open an issue][open-issue-url].  
-You may also read the [Contributing Guide](./CONTRIBUTING.md). There, beside _"How to contribute?"_, we describe everything **_stated_** by  the badges.
+If you have any _how-to_ kind of questions, please read the [Contributing Guide][contributing-url] and [Code of Conduct][code_of_conduct-url] documents.
+For bugs reports and feature requests, [please create an issue][open-issue-url] or ping
+[@tunnckoCore](https://twitter.com/tunnckoCore) at Twitter.
 
-[![Make A Pull Request][prs-welcome-img]][prs-welcome-url] 
-[![Code Format Prettier][prettier-img]][prettier-url] 
-[![Conventional Commits][ccommits-img]][ccommits-url] 
-[![Semantically Released][new-release-img]][new-release-url] 
-[![Renovate App Status][renovate-img]][renovate-url] 
+[![Conventional Commits][ccommits-img]][ccommits-url]
+[![Minimum Required Nodejs][nodejs-img]][npmv-url]
+[![NPM Downloads Monthly][downloads-monthly-img]][npmv-url]
+[![NPM Downloads Total][downloads-total-img]][npmv-url]
+[![Share Love Tweet][twitter-share-img]][twitter-share-url]
+[![Twitter][twitter-img]][twitter-url]
 
-Project is [semantically](https://semver.org) & automatically released on [CircleCI][codecov-url] with [new-release][] and its [New Release](https://github.com/apps/new-release) Github Bot.
+Project is [semantically](https://semver.org) versioned & automatically released from [GitHub Actions](https://github.com/features/actions) with [Lerna](https://github.com/lerna/lerna).
 
-[![All Contributors Spec][all-contributors-img]](#contributors) 
-[![Newsletter Subscribe][tinyletter-img]][tinyletter-url] 
-[![Give thanks][give-donate-img]][give-donate-url] 
-[![Share Love Tweet][share-love-img]][share-love-url] 
-[![NPM Downloads Weekly][downloads-weekly-img]][npmv-url] 
-[![NPM Downloads Monthly][downloads-monthly-img]][npmv-url] 
-[![NPM Downloads Total][downloads-total-img]][npmv-url] 
+[![Become a Patron][patreon-img]][patreon-url]
+[![Buy me a Kofi][kofi-img]][kofi-url]
+[![PayPal Donation][paypal-img]][paypal-url]
+[![Bitcoin Coinbase][bitcoin-img]][bitcoin-url]
+[![Keybase PGP][keybase-img]][keybase-url]
+
+| Topic                                                            |                                           Contact |
+| :--------------------------------------------------------------- | ------------------------------------------------: |
+| Any legal or licensing questions, like private or commerical use |           ![tunnckocore_legal][tunnckocore_legal] |
+| For any critical problems and security reports                   |     ![tunnckocore_security][tunnckocore_security] |
+| Consulting, professional support, personal or team training      | ![tunnckocore_consulting][tunnckocore_consulting] |
+| For any questions about Open Source, partnerships and sponsoring | ![tunnckocore_opensource][tunnckocore_opensource] |
+
+<!-- Logo when needed:
+
+<p align="center">
+  <a href="https://github.com/tunnckoCore/opensource">
+    <img src="./media/logo.png" width="85%">
+  </a>
+</p>
+
+-->
 
 ## Features
 
@@ -43,13 +58,14 @@ Project is [semantically](https://semver.org) & automatically released on [Circl
 - **Standard:** using StandardJS, Prettier, SemVer, Semantic Release and conventional commits
 - **Smart Plugins:** for extending the core API or the end [Result](#result), see [.use](#use) method and [Plugins Architecture](#plugins-architecture)
 - **Extensible:** using plugins for working directly on AST nodes, see the [Plugins Architecture](#plugins-architecture)
-- **ES2017 Ready:** by using `.parseExpression` method of the [babylon][] `v7.x` parser
+- **ES2020+ Ready:** by using `.parseExpression` method of the Babel `v7.x` parser
 - **Customization:** allows switching the parser, through `options.parse`
 - **Support for:** arrow functions, default parameters, generators and async/await functions
-- **Stable:** battle-tested in production and against all parsers - [espree][], [acorn][], [babylon][]
-- **Tested:** with [450+ tests](./test.js) for _200%_ coverage
+- **Stable:** battle-tested in production and against all parsers - [espree][], [acorn][], [@babel/parser](https://npmjs.com/packages/@babel/parser)
+- **Tested:** with [450+ tests](./test/index.js) for _200%_ coverage
 
 ## Table of Contents
+
 - [Install](#install)
 - [Which version to use?](#which-version-to-use)
 - [Notes](#notes)
@@ -62,19 +78,23 @@ Project is [semantically](https://semver.org) & automatically released on [Circl
   * [.parse](#parse)
   * [.use](#use)
   * [.define](#define)
-  * [Result](#result)
-- [Related](#related)
+- [Result](#result)
 - [Contributing](#contributing)
-- [Author](#author)
+  * [Guides and Community](#guides-and-community)
+  * [Support the project](#support-the-project)
+  * [OPEN Open Source](#open-open-source)
+  * [Wonderful Contributors](#wonderful-contributors)
 - [License](#license)
 
 _(TOC generated by [verb](https://github.com/verbose/verb) using [markdown-toc](https://github.com/jonschlinkert/markdown-toc))_
 
 ## Install
 
-This project requires [**Node.js**][nodeversion-url] **v6** and above. Use [**yarn**](https://yarnpkg.com) **v1** / [**npm**](https://npmjs.com) **v5** or above to install it.
+This project requires [**Node.js**](https://nodejs.org) **>=8.11** _(see [Support & Release Policy](https://github.com/tunnckoCoreLabs/support-release-policy))_. Install it using
+[**yarn**](https://yarnpkg.com) or [**npm**](https://npmjs.com).<br>
+_We highly recommend to use Yarn when you think to contribute to this project._
 
-```
+```bash
 $ yarn add parse-function
 ```
 
@@ -85,18 +105,18 @@ working properly, so no use it.
 
 **Use v2.0.x**
 
-When you don't need support for `arrow functions` and `es6 default params`. This version 
+When you don't need support for `arrow functions` and `es6 default params`. This version
 uses a RegExp expression to work.
 
 **Use v2.2.x**
 
-Only when you need a _basic_ support for `es6 features` like arrow functions. This version 
+Only when you need a _basic_ support for `es6 features` like arrow functions. This version
 uses a RegExp expression to work.
 
 **Use v2.3.x**
 
-When you want _full*_ support for `arrow functions` and `es6 default params`. Where this "full",
-means "almost full", because it has bugs. This version also uses (`acorn.parse`) real parser 
+When you want _full\*_ support for `arrow functions` and `es6 default params`. Where this "full",
+means "almost full", because it has bugs. This version also uses (`acorn.parse`) real parser
 to do the parsing.
 
 **Use v3.x**
@@ -107,14 +127,14 @@ parse function to the `options.parse` option. **From this version we require `no
 **Use v4.x**
 
 When you want full customization and most stable support for old and modern features. This version
-uses `babylon.parseExpression` for parsing and provides a [Plugins API](#plugins-architecture). 
+uses `babylon.parseExpression` for parsing and provides a [Plugins API](#plugins-architecture).
 See the [Features](#features) section for more info.
 
 **Use v5.x**
 
 It is basically the same as `v4`, but requires Node 6 & npm 5. Another is boilerplate stuff.
 
-**[back to top](#thetop)**
+**[back to top](#readme)**
 
 ## Notes
 
@@ -122,89 +142,101 @@ It is basically the same as `v4`, but requires Node 6 & npm 5. Another is boiler
 
 > _see: [issue #3](https://github.com/tunnckoCore/parse-function/issues/3) and [test/index.js#L229-L235](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L229-L235)_
 
-It may throw in one specific case, otherwise it won't throw, so you should 
+It may throw in one specific case, otherwise it won't throw, so you should
 relay on the `result.isValid` for sure.
 
 ### Function named _"anonymous"_
 
 > _see: [test/index.js#L319-L324](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L319-L324) and [Result](#result) section_
 
-If you pass a function which is named _"anonymous"_ the `result.name` will be `'anonymous'`, 
-but the `result.isAnonymous` will be `false` and `result.isNamed` will be `true`, because 
+If you pass a function which is named _"anonymous"_ the `result.name` will be `'anonymous'`,
+but the `result.isAnonymous` will be `false` and `result.isNamed` will be `true`, because
 in fact it's a named function.
 
 ### Real anonymous function
 
 > _see: [test/index.js#L326-L331](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L326-L331) and [Result](#result) section_
 
-Only if you pass really an anonymous function you will get `result.name` equal to `null`, 
+Only if you pass really an anonymous function you will get `result.name` equal to `null`,
 `result.isAnonymous` equal to `true` and `result.isNamed` equal to `false`.
 
-**[back to top](#thetop)**
+**[back to top](#readme)**
 
 ### Plugins Architecture
 
 > _see: the [.use](#use) method, [test/index.js#L305-L317](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L305-L317) and [test/index.js#L396-L414](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L396-L414)_
 
 A more human description of the plugin mechanism. Plugins are **synchronous** - no support
-and no need for **async** plugins here, but notice that you can do that manually, because 
+and no need for **async** plugins here, but notice that you can do that manually, because
 that exact architecture.
 
-The first function that is passed to the [.use](#use) method is used for extending the core API, 
+The first function that is passed to the [.use](#use) method is used for extending the core API,
 for example adding a new method to the `app` instance. That function is immediately invoked.
 
 ```js
-const parseFunction = require('parse-function')
-const app = parseFunction()
+const parseFunction = require('parse-function');
+const app = parseFunction();
 
 app.use((self) => {
   // self is same as `app`
-  console.log(self.use)
-  console.log(self.parse)
-  console.log(self.define)
+  console.log(self.use);
+  console.log(self.parse);
+  console.log(self.define);
 
-  self.define(self, 'foo', (bar) => bar + 1)
-})
+  self.define(self, 'foo', (bar) => bar + 1);
+});
 
-console.log(app.foo(2)) // => 3
+console.log(app.foo(2)); // => 3
 ```
 
-On the other side, if you want to access the AST of the parser, you should return a function 
+On the other side, if you want to access the AST of the parser, you should return a function
 from that plugin, which function is passed with `(node, result)` signature.
 
 This function is lazy plugin, it is called only when the [.parse](#parse) method is called.
 
 ```js
-const parseFunction = require('parse-function')
-const app = parseFunction()
+const parseFunction = require('parse-function');
+const app = parseFunction();
 
 app.use((self) => {
-  console.log('immediately called')
+  console.log('immediately called');
 
   return (node, result) => {
-    console.log('called only when .parse is invoked')
-    console.log(node)
-    console.log(result)
-  } 
-})
+    console.log('called only when .parse is invoked');
+    console.log(node);
+    console.log(result);
+  };
+});
 ```
 
-Where **1)** the `node` argument is an object - actual and real AST Node coming from the parser 
-and **2)** the `result` is an object too - the end [Result](#result), on which 
+Where **1)** the `node` argument is an object - actual and real AST Node coming from the parser
+and **2)** the `result` is an object too - the end [Result](#result), on which
 you can add more properties if you want.
 
-**[back to top](#thetop)**
+**[back to top](#readme)**
 
+<!-- docks-start -->
 ## API
-Review carefully the provided examples and the working [tests](./test/index.js).
 
-### [parseFunction](src/index.js#L60)
-> Initializes with optional `opts` object which is passed directly to the desired parser and returns an object with `.use` and `.parse` methods. The default parse which is used is [babylon][]'s `.parseExpression` method from `v7`.
+_Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._
+
+### [parseFunction](./src/index.js#L59)
+
+> Initializes with optional `opts` object which is passed directly
+to the desired parser and returns an object
+with `.use` and `.parse` methods. The default parse which
+is used is [babylon][]'s `.parseExpression` method from `v7`.
+
+**Signature**
+
+```ts
+function(opts) 
+```
 
 **Params**
 
-* `opts` **{Object}**: optional, merged with options passed to `.parse` method    
-* `returns` **{Object}** `app`: object with `.use` and `.parse` methods  
+- `opts` - optional, merged with options passed to `.parse` method
+- `returns` - app object with `.use` and `.parse` methods
 
 **Example**
 
@@ -236,15 +268,28 @@ console.log(result.args) // => ['a', 'b', 'c']
 console.log(result.params) // => 'a, b, c'
 ```
 
-### [.parse](src/index.js#L101)
-> Parse a given `code` and returns a `result` object with useful properties - such as `name`, `body` and `args`. By default it uses Babylon parser, but you can switch it by passing `options.parse` - for example `options.parse: acorn.parse`. In the below example will show how to use `acorn` parser, instead of the default one.
+### [.parse](./src/index.js#L124)
+
+> Parse a given `code` and returns a `result` object
+with useful properties - such as `name`, `body` and `args`.
+By default it uses Babylon parser, but you can switch it by
+passing `options.parse` - for example `options.parse: acorn.parse`.
+In the below example will show how to use `acorn` parser, instead
+of the default one.
+
+**Signature**
+
+```ts
+function
+```
 
 **Params**
 
-* `code` **{Function|String}**: any kind of function or string to be parsed    
-* `options` **{Object}**: directly passed to the parser - babylon, acorn, espree    
-* `options.parse` **{Function}**: by default `babylon.parseExpression`, all `options` are passed as second argument to that provided function    
-* `returns` **{Object}** `result`: see [result section](#result) for more info  
+- `code` - any kind of function or string to be parsed
+- `options` - directly passed to the parser babylon, acorn, espree
+- `options.parse` - by default `babylon.parseExpression`,
+                               all `options` are passed as second argument
+- `returns` - result see [result section](#result) for more info
 
 **Example**
 
@@ -268,15 +313,29 @@ console.log(result.isAnonymous) // => false
 console.log(result.isGenerator) // => false
 ```
 
-### [.use](src/index.js#L173)
-> Add a plugin `fn` function for extending the API or working on the AST nodes. The `fn` is immediately invoked and passed with `app` argument which is instance of `parseFunction()` call. That `fn` may return another function that accepts `(node, result)` signature, where `node` is an AST node and `result` is an object which will be returned [result](#result) from the `.parse` method. This retuned function is called on each node only when `.parse` method is called.
+### [.use](./src/index.js#L177)
 
-_See [Plugins Architecture](#plugins-architecture) section._
+> Add a plugin `fn` function for extending the API or working on the
+AST nodes. The `fn` is immediately invoked and passed
+with `app` argument which is instance of `parseFunction()` call.
+That `fn` may return another function that
+accepts `(node, result)` signature, where `node` is an AST node
+and `result` is an object which will be returned [result](#result)
+from the `.parse` method. This retuned function is called on each
+node only when `.parse` method is called.
+
+**Signature**
+
+```ts
+function
+```
 
 **Params**
 
-* `fn` **{Function}**: plugin to be called    
-* `returns` **{Object}** `app`: instance for chaining  
+- `fn` - plugin to be called
+- `returns` - app instance for chaining
+
+_See [Plugins Architecture](#plugins-architecture) section._
 
 **Example**
 
@@ -308,15 +367,24 @@ console.log(result.isArrow) // => false
 console.log(result.thatIsArrow) // => undefined
 ```
 
-### [.define](src/index.js#L234)
-> Define a non-enumerable property on an object. Just a convenience mirror of the [define-property][] library, so check out its docs. Useful to be used in plugins.
+### [.define](./src/index.js#L235)
+
+> Define a non-enumerable property on an object. Just
+a convenience mirror of the [define-property][] library,
+so check out its docs. Useful to be used in plugins.
+
+**Signature**
+
+```ts
+function
+```
 
 **Params**
 
-* `obj` **{Object}**: the object on which to define the property    
-* `prop` **{String}**: the name of the property to be defined or modified    
-* `val` **{Any}**: the descriptor for the property being defined or modified    
-* `returns` **{Object}** `obj`: the passed object, but modified  
+- `obj` - the object on which to define the property
+- `prop` - the name of the property to be defined or modified
+- `val` - the descriptor for the property being defined or modified
+- `returns` - obj the passed object, but modified
 
 **Example**
 
@@ -360,143 +428,165 @@ console.log(result.isNamed) // => false
 console.log(result.isAnonymous) // => true
 ```
 
-**[back to top](#thetop)**
+<!-- docks-end -->
 
-### Result
+**[back to top](#readme)**
+
+## Result
+
 > In the result object you have `name`, `args`, `params`, `body` and few hidden properties
-that can be useful to determine what the function is - arrow, regular, async/await or generator.
+> that can be useful to determine what the function is - arrow, regular, async/await or generator.
 
-* `name` **{String|null}**: name of the passed function or `null` if anonymous
-* `args` **{Array}**: arguments of the function
-* `params` **{String}**: comma-separated list representing the `args`
-* `defaults` **{Object}**: key/value pairs, useful when use ES2015 default arguments
-* `body` **{String}**: actual body of the function, respects trailing newlines and whitespaces
-* `isValid` **{Boolean}**: is the given value valid or not, that's because it never throws!
-* `isAsync` **{Boolean}**: `true` if function is ES2015 async/await function
-* `isArrow` **{Boolean}**: `true` if the function is arrow function
-* `isNamed` **{Boolean}**: `true` if function has name, or `false` if is anonymous
-* `isGenerator` **{Boolean}**: `true` if the function is ES2015 generator function
-* `isAnonymous` **{Boolean}**: `true` if the function don't have name
+- `name` **{String|null}**: name of the passed function or `null` if anonymous
+- `args` **{Array}**: arguments of the function
+- `params` **{String}**: comma-separated list representing the `args`
+- `defaults` **{Object}**: key/value pairs, useful when use ES2015 default arguments
+- `body` **{String}**: actual body of the function, respects trailing newlines and whitespaces
+- `isValid` **{Boolean}**: is the given value valid or not, that's because it never throws!
+- `isAsync` **{Boolean}**: `true` if function is ES2015 async/await function
+- `isArrow` **{Boolean}**: `true` if the function is arrow function
+- `isNamed` **{Boolean}**: `true` if function has name, or `false` if is anonymous
+- `isGenerator` **{Boolean}**: `true` if the function is ES2015 generator function
+- `isAnonymous` **{Boolean}**: `true` if the function don't have name
 
-**[back to top](#thetop)**
+**[back to top](#readme)**
 
-## Related
-- [acorn](https://www.npmjs.com/package/acorn): ECMAScript parser | [homepage](https://github.com/acornjs/acorn "ECMAScript parser")
-- [babylon](https://www.npmjs.com/package/babylon): A JavaScript parser | [homepage](https://babeljs.io/ "A JavaScript parser")
-- [charlike-cli](https://www.npmjs.com/package/charlike-cli): Command line interface for the [charlike][] project scaffolder. | [homepage](https://github.com/tunnckoCore/charlike-cli#readme "Command line interface for the [charlike][] project scaffolder.")
-- [espree](https://www.npmjs.com/package/espree): An Esprima-compatible JavaScript parser built on Acorn | [homepage](https://github.com/eslint/espree "An Esprima-compatible JavaScript parser built on Acorn")
-- [hela](https://www.npmjs.com/package/hela): Powerful & flexible task runner framework in 80 lines, based on [execa… [more](https://github.com/tunnckoCore/hela#readme) | [homepage](https://github.com/tunnckoCore/hela#readme "Powerful & flexible task runner framework in 80 lines, based on [execa][]. Supports shareable configs, a la ESLint")
-- [parse-semver](https://www.npmjs.com/package/parse-semver): Parse, normalize and validate given semver shorthand (e.g. gulp@v3.8.10) to object. | [homepage](https://github.com/tunnckocore/parse-semver#readme "Parse, normalize and validate given semver shorthand (e.g. gulp@v3.8.10) to object.")
+**[back to top](#readme)**
 
 ## Contributing
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue][open-issue-url].  
-Please read the [Contributing Guide](./CONTRIBUTING.md) and [Code of Conduct](./CODE_OF_CONDUCT.md) documents for advices.  
 
-## Author
-- [github/tunnckoCore](https://github.com/tunnckoCore)
-- [twitter/tunnckoCore](https://twitter.com/tunnckoCore)
-- [codementor/tunnckoCore](https://codementor.io/tunnckoCore)
+### Guides and Community
+
+Please read the [Contributing Guide][contributing-url] and [Code of Conduct][code_of_conduct-url] documents for advices.
+
+For bug reports and feature requests, please join our [community][community-url] forum and open a thread there with prefixing the title of the thread with the name of the project if there's no separate channel for it.
+
+Consider reading the [Support and Release Policy](https://github.com/tunnckoCoreLabs/support-release-policy) guide if you are interested in what are the supported Node.js versions and how we proceed. In short, we support latest two even-numbered Node.js release lines.
+
+### Support the project
+
+[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/parse-function) sites too! :rocket:
+
+Not financial support? Okey! [Pull requests](https://github.com/tunnckoCoreLabs/contributing#opening-a-pull-request), stars and all kind of [contributions](https://opensource.guide/how-to-contribute/#what-it-means-to-contribute) are always
+welcome. :sparkles:
+
+<!--
+### OPEN Open Source
+
+This project is following [OPEN Open Source](http://openopensource.org) model
+
+> Individuals making significant and valuable contributions are given commit-access to the project to contribute as they see fit. This project is built on collective efforts and it's not strongly guarded by its founders.
+
+There are a few basic ground-rules for its contributors
+
+1. Any **significant modifications** must be subject to a pull request to get feedback from other contributors.
+2. [Pull requests](https://github.com/tunnckoCoreLabs/contributing#opening-a-pull-request) to get feedback are _encouraged_ for any other trivial contributions, but are not required.
+3. Contributors should attempt to adhere to the prevailing code-style and development workflow.
+-->
+
+### Wonderful Contributors
+
+Thanks to the hard work of these wonderful people this project is alive! It follows the
+[all-contributors](https://github.com/kentcdodds/all-contributors) specification.
+Don't hesitate to add yourself to that list if you have made any contribution! ;) [See how,
+here](https://github.com/jfmengels/all-contributors-cli#usage).
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars3.githubusercontent.com/u/5038030?v=4" width="120px;"/><br /><sub><b>Charlike Mike Reagent</b></sub>](https://tunnckocore.com)<br />[💻](https://github.com/tunnckoCore/opensource/commits?author=tunnckoCore "Code") [📖](https://github.com/tunnckoCore/opensource/commits?author=tunnckoCore "Documentation") [💬](#question-tunnckoCore "Answering Questions") [👀](#review-tunnckoCore "Reviewed Pull Requests") [🔍](#fundingFinding-tunnckoCore "Funding Finding") |
+| :---: |
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+Consider showing your [support](#support-the-project) to them. :sparkling_heart:
+
+**[back to top](#readme)**
 
 ## License
-Copyright © 2016, 2018, [Charlike Mike Reagent](https://i.am.charlike.online). Released under the [MIT License](LICENSE).
 
-***
+Copyright (c) 2016-present, [Charlike Mike Reagent](https://tunnckocore.com) `<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br>
+Released under the [MPL-2.0 License][license-url].
 
-_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on March 05, 2018._  
-_Project automation and management with [hela][] task framework._
+[contributing-url]: https://github.com/tunnckoCore/opensource/blob/master/CONTRIBUTING.md
+[code_of_conduct-url]: https://github.com/tunnckoCore/opensource/blob/master/CODE_OF_CONDUCT.md
+
+<!-- Heading badges -->
+
+[npmv-url]: https://www.npmjs.com/package/parse-function
+[npmv-img]: https://badgen.net/npm/v/parse-function?icon=npm
+
+[nodejs-img]: https://badgen.net/npm/node/parse-function
+
+<!--
+[ghrelease-url]: https://github.com/tunnckoCore/opensource/releases/latest
+[ghrelease-img]: https://badgen.net/github/release/tunnckoCore/opensource?icon=github
+-->
+
+[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/parse-function/LICENSE
+[license-img]: https://badgen.net/npm/license/parse-function
+
+<!-- Front line badges -->
+
+[codestyle-url]: https://github.com/airbnb/javascript
+[codestyle-img]: https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb
+[linuxbuild-url]: https://github.com/tunnckocore/opensource/actions
+[linuxbuild-img]: https://badgen.net/github/status/tunnckoCore/opensource/master?label=build&icon=github
+[codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
+[codecoverage-img]: https://badgen.net/codecov/c/github/tunnckoCore/opensource?icon=codecov
+[dependencies-url]: https://david-dm.org/tunnckoCore/opensource
+[dependencies-img]: https://badgen.net/david/dep/tunnckoCore/opensource?label=deps
+[ccommits-url]: https://conventionalcommits.org/
+[ccommits-img]: https://badgen.net/badge/conventional%20commits/v1.0.0/green
+[standard-release-url]: https://github.com/standard-release/standard-release
+[standard-release-img]: https://badgen.net/badge/semantically/released/05c5ff
+[community-img]: https://badgen.net/badge/join/community/7b16ff
+[community-url]: https://github.com/tunnckocorehq/community
+[last-commit-img]: https://badgen.net/github/last-commit/tunnckoCore/opensource/master
+[last-commit-url]: https://github.com/tunnckoCore/opensource/commits/master
+
+[downloads-weekly-img]: https://badgen.net/npm/dw/parse-function?icon=npm
+[downloads-monthly-img]: https://badgen.net/npm/dm/parse-function?icon=npm
+[downloads-total-img]: https://badgen.net/npm/dt/parse-function?icon=npm
+
+[renovateapp-url]: https://renovatebot.com
+[renovateapp-img]: https://badgen.net/badge/renovate/enabled/green
+[prs-welcome-img]: https://badgen.net/badge/PRs/welcome/green
+[prs-welcome-url]: http://makeapullrequest.com
+
+<!-- TODO: update icon -->
+
+[paypal-url]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HYJJEZNSGAPGC&source=url
+[paypal-img]: https://badgen.net/badge/PayPal/donate/003087?icon=https://simpleicons.now.sh/paypal/fff
+
+<!-- TODO: update icon -->
+
+[kofi-url]: https://ko-fi.com/tunnckoCore
+[kofi-img]: https://badgen.net/badge/Buy%20me/a%20coffee/29abe0c2?icon=https://rawcdn.githack.com/tunnckoCore/badgen-icons/f8264c6414e0bec449dd86f2241d50a9b89a1203/icons/kofi.svg
+
+<!-- TODO: update icon -->
+
+[bitcoin-url]: https://www.blockchain.com/btc/payment_request?address=3QNHKun1K1SUui1b4Z3KEGPPsWC1TgtnqA&message=Open+Source+Software&amount_local=10&currency=USD
+[bitcoin-img]: https://badgen.net/badge/Bitcoin%20tip/3QNHKun...b4Z3KEGPPsWC1TgtnqA/yellow?icon=https://simpleicons.now.sh/bitcoin/fff
+[keybase-url]: https://keybase.io/tunnckoCore
+[keybase-img]: https://badgen.net/keybase/pgp/tunnckoCore
+[twitter-url]: https://twitter.com/tunnckoCore
+[twitter-img]: https://badgen.net/twitter/follow/tunnckoCore?icon=twitter&color=1da1f2
+[patreon-url]: https://www.patreon.com/bePatron?u=5579781
+[patreon-img]: https://badgen.net/badge/Become/a%20patron/F96854?icon=patreon
+
+<!-- [patreon-img]: https://badgen.net/badge/Patreon/tunnckoCore/F96854?icon=patreon -->
+
+[patreon-sponsor-img]: https://badgen.net/badge/become/a%20sponsor/F96854?icon=patreon
+[twitter-share-url]: https://twitter.com/intent/tweet?text=https://github.com/tunnckoCore/opensource&via=tunnckoCore
+[twitter-share-img]: https://badgen.net/badge/twitter/share/1da1f2?icon=twitter
+[open-issue-url]: https://github.com/tunnckoCore/opensource/issues/new
+[tunnckocore_legal]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/legal/tunnckocore?label&color=A56016&icon=https://svgshare.com/i/Dt6.svg
+[tunnckocore_consulting]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/consulting/tunnckocore?label&color=07ba96&icon=https://svgshare.com/i/Dt6.svg
+[tunnckocore_security]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/security/tunnckocore?label&color=ed1848&icon=https://svgshare.com/i/Dt6.svg
+[tunnckocore_opensource]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/opensource/tunnckocore?label&color=ff7a2f&icon=https://svgshare.com/i/Dt6.svg
+[tunnckocore_newsletter]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/newsletter/tunnckocore?label&color=5199FF&icon=https://svgshare.com/i/Dt6.svg
 
 [acorn]: https://github.com/acornjs/acorn
 [babylon]: https://babeljs.io/
-[charlike-cli]: https://github.com/tunnckoCore/charlike-cli
-[charlike]: https://github.com/tunnckoCore/charlike
 [define-property]: https://github.com/jonschlinkert/define-property
 [espree]: https://github.com/eslint/espree
-[execa]: https://github.com/sindresorhus/execa
-[function-arguments]: https://github.com/tunnckocore/function-arguments
-[hela]: https://github.com/tunnckoCore/hela
-[new-release]: https://github.com/tunnckoCore/new-release
-
-<!-- Heading badges -->
-[npmv-url]: https://www.npmjs.com/package/parse-function
-[npmv-img]: https://img.shields.io/npm/v/parse-function.svg?label=npm%20version
-
-[github-release-url]: https://github.com/tunnckoCore/parse-function/releases/latest
-[github-release-img]: https://img.shields.io/github/release/tunnckoCore/parse-function.svg?label=github%20release
-
-[license-url]: https://github.com/tunnckoCore/parse-function/blob/master/LICENSE
-[license-img]: https://img.shields.io/badge/license-MIT-blue.svg
-<!-- [license-img]: https://img.shields.io/badge/license-tunnckoCore_1%2E0-blue.svg -->
-
-<!-- Front line badges -->
-[bithound-score-url]: https://www.bithound.io/github/tunnckoCore/parse-function
-[bithound-score-img]: https://www.bithound.io/github/tunnckoCore/parse-function/badges/score.svg
-
-[bithound-code-url]: https://www.bithound.io/github/tunnckoCore/parse-function
-[bithound-code-img]: https://www.bithound.io/github/tunnckoCore/parse-function/badges/code.svg
-
-[standard-url]: https://github.com/airbnb/javascript
-[standard-img]: https://img.shields.io/badge/code_style-airbnb-brightgreen.svg
-
-[circleci-url]: https://circleci.com/gh/tunnckoCoreLabs/parse-function/tree/master
-[circleci-img]: https://img.shields.io/circleci/project/github/tunnckoCoreLabs/parse-function/master.svg
-
-[codecov-url]: https://codecov.io/gh/tunnckoCoreLabs/parse-function
-[codecov-img]: https://img.shields.io/codecov/c/github/tunnckoCoreLabs/parse-function/master.svg
-
-[bithound-deps-url]: https://www.bithound.io/github/tunnckoCore/parse-function/dependencies/npm
-[bithound-deps-img]: https://www.bithound.io/github/tunnckoCore/parse-function/badges/dependencies.svg
-
-[dependencies-url]: https://david-dm.org/tunnckoCore/parse-function
-[dependencies-img]: https://img.shields.io/david/tunnckoCore/parse-function.svg
-
-<!-- Second front of badges -->
-[prs-welcome-img]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
-[prs-welcome-url]: http://makeapullrequest.com
-
-[prettier-url]: https://github.com/prettier/prettier
-[prettier-img]: https://img.shields.io/badge/styled_with-prettier-f952a5.svg
-
-[nodesecurity-url]: https://nodesecurity.io/orgs/tunnckocore/projects/42a5e14a-70da-49ee-86e7-d1f39ed08603/master
-[nodesecurity-img]: https://nodesecurity.io/orgs/tunnckocore/projects/42a5e14a-70da-49ee-86e7-d1f39ed08603/badge
-<!-- the original color of nsp: 
-[nodesec-img]: https://img.shields.io/badge/nsp-no_known_vulns-35a9e0.svg -->
-
-[ccommits-url]: https://conventionalcommits.org/
-[ccommits-img]: https://img.shields.io/badge/conventional_commits-1.0.0-yellow.svg
-
-[new-release-url]: https://github.com/tunnckoCore/new-release
-[new-release-img]: https://img.shields.io/badge/semantically-released-05C5FF.svg
-
-[nodeversion-url]: https://nodejs.org/en/download
-[nodeversion-img]: https://img.shields.io/node/v/parse-function.svg
-
-[renovate-url]: https://renovateapp.com
-[renovate-img]: https://img.shields.io/badge/renovate-enabled-brightgreen.svg
-
-<!-- Third badges line (After CodeSponsor.io ad) -->
-[all-contributors-img]: https://img.shields.io/github/contributors/tunnckoCore/parse-function.svg?label=all%20contributors&colorB=ffa500
-
-[tinyletter-url]: https://tinyletter.com/tunnckoCore
-[tinyletter-img]: https://img.shields.io/badge/join-newsletter-9caaf8.svg
-<!-- 
-[paypal-donate-url]: https://paypal.me/tunnckoCore/10
-[paypal-donate-img]: https://img.shields.io/badge/$-support-f47721.svg
- -->
-[give-donate-url]: https://paypal.me/tunnckoCore/10
-[give-donate-img]: https://img.shields.io/badge/give-donation-f47721.svg
-
-[downloads-weekly-img]: https://img.shields.io/npm/dw/parse-function.svg
-[downloads-monthly-img]: https://img.shields.io/npm/dm/parse-function.svg
-[downloads-total-img]: https://img.shields.io/npm/dt/parse-function.svg
-
-<!-- Miscellaneous -->
-[share-love-url]: https://twitter.com/intent/tweet?text=https://github.com/tunnckoCore/parse-function&via=tunnckoCore
-[share-love-img]: https://img.shields.io/badge/tweet-about-1da1f2.svg
-
-[open-issue-url]: https://github.com/tunnckoCore/parse-function/issues/new
-[highlighted-link]: https://ghub.now.sh/hela
-[author-link]: https://i.am.charlike.online
-
-[standard-url]: https://github.com/standard/standard
-[standard-img]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
-
