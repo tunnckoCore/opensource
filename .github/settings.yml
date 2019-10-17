@@ -2,10 +2,10 @@ repository:
   # See https://developer.github.com/v3/repos/#edit for all available settings.
 
   # The name of the repository. Changing this will rename the repository
-  name: opensource
+  name: 'opensource'
 
   # A short description of the repository that will show up on GitHub
-  description: "Delivering delightful digital solutions. JavaScript Open Source Monorepo, semantically versioned following @conventional-commits. Fully powered by Jest, @Babel TypeScript, @Airbnb @ESLint + @Prettier, @YarnPKG + @Lerna independent versioning, amazing GitHub @Actions and automated dependency updates with @RenovateBot."
+  description: 'Delivering delightful digital solutions. JavaScript Open Source Monorepo, semantically versioned following @conventional-commits. Fully powered by Jest, @Babel TypeScript, @Airbnb @ESLint + @Prettier, @YarnPKG + @Lerna independent versioning, amazing GitHub @Actions and automated dependency updates with @RenovateBot.'
 
   # A URL with more information about the repository
   homepage: https://tunnckocore.com/opensource
@@ -38,85 +38,85 @@ repository:
   allow_rebase_merge: true
 
 labels:
-  - name: duplicate
-    color: "a3a3a3"
-    description: This issue or pull request topic/problem already exists
+  - name: 'duplicate'
+    color: 'a3a3a3'
+    description: 'This issue or pull request topic/problem already exists'
 
-  - name: good first issue
-    color: "1d76db"
-    description: Good for newcomers and first-time contributors.
+  - name: 'good first issue'
+    color: '1d76db'
+    description: 'Good for newcomers and first-time contributors.'
 
-  - name: Priority: Critical
-    color: "ee0701"
-    description: This should be dealt with ASAP. Not fixing this issue would be a serious error.
+  - name: 'Priority: Critical'
+    color: 'ee0701'
+    description: 'This should be dealt with ASAP. Not fixing this issue would be a serious error.'
 
-  - name: Priority: High
-    color: "d93f0b"
-    description: After critical issues are fixed, these should be dealt with before any further issues.
+  - name: 'Priority: High'
+    color: 'd93f0b'
+    description: 'After critical issues are fixed, these should be dealt with before any further issues.'
 
-  - name: Priority: Medium
-    color: "fbca04"
-    description: This issue may be useful, and needs some attention.
+  - name: 'Priority: Medium'
+    color: 'fbca04'
+    description: 'This issue may be useful, and needs some attention.'
 
-  - name: Priority: Low
-    color: "0e8a16"
-    description: This issue can probably be picked up by anyone looking to contribute to the project, as an entry fix.
+  - name: 'Priority: Low'
+    color: '0e8a16'
+    description: 'This issue can probably be picked up by anyone looking to contribute to the project, as an entry fix.'
 
-  - name: Status: Available
-    color: "c2e0c6"
-    description: No one has claimed responsibility for resolving this issue. Generally this will be applied to bugs and enhancement issues, but may be applied to others.
+  - name: 'Status: Available'
+    color: 'c2e0c6'
+    description: 'No one has claimed responsibility for resolving this issue. Generally this will be applied to bugs and enhancement issues, but may be applied to others.'
 
-  - name: Status: Accepted
-    color: "78cc35"
-    description: It's clear what the subject of the issue is about, and what the resolution should be.
+  - name: 'Status: Accepted'
+    color: '78cc35'
+    description: "It's clear what the subject of the issue is about, and what the resolution should be."
 
-  - name: Status: Blocked
-    color: "d73a4a"
-    description: There is another issue that needs to be resolved first, or a specific person is required to comment or reply to progress. There may also be some external blocker.
+  - name: 'Status: Blocked'
+    color: 'd73a4a'
+    description: 'There is another issue that needs to be resolved first, or a specific person is required to comment or reply to progress. There may also be some external blocker.'
 
-  - name: Status: Abandoned
-    color: "000000"
-    description: It's believed that this issue is no longer important to the requestor and no one else has shown an interest in it.
+  - name: 'Status: Abandoned'
+    color: '000000'
+    description: "It's believed that this issue is no longer important to the requestor and no one else has shown an interest in it."
 
-  - name: Status: In Progress
-    color: "cccccc"
-    description: This issue is being worked on, and has someone assigned.
+  - name: 'Status: In Progress'
+    color: 'cccccc'
+    description: 'This issue is being worked on, and has someone assigned.'
 
-  - name: Status: On Hold
-    color: "e99695"
-    description: Similar to blocked, but is assigned to someone. May also be assigned to someone because of their experience, but it's recognised they are unable to process the issue at this time.
+  - name: 'Status: On Hold'
+    color: 'e99695'
+    description: "Similar to blocked, but is assigned to someone. May also be assigned to someone because of their experience, but it's recognised they are unable to process the issue at this time."
 
-  - name: Status: Completed
-    color: "adff60"
-    description: Issue with steps to reproduce the bug that’s been verified by at least one reviewer.
+  - name: 'Status: Completed'
+    color: 'adff60'
+    description: 'Issue with steps to reproduce the bug that’s been verified by at least one reviewer.'
 
-  - name: Status: Review Needed
-    color: "fbca04"
-    description: The issue has a PR attached to it which needs to be reviewed. Should receive review by others in the community, and at least one member / comitter. Specifics on when merging PRs is allowed is still up for debate.
+  - name: 'Status: Review Needed'
+    color: 'fbca04'
+    description: 'The issue has a PR attached to it which needs to be reviewed. Should receive review by others in the community, and at least one member / comitter. Specifics on when merging PRs is allowed is still up for debate.'
 
-  - name: Status: Revision Needed
-    color: "006b75"
-    description: At least two people have seen issues in the PR that makes them uneasy. Submitter of PR needs to revise the PR related to the issue.
+  - name: 'Status: Revision Needed'
+    color: '006b75'
+    description: 'At least two people have seen issues in the PR that makes them uneasy. Submitter of PR needs to revise the PR related to the issue.'
 
-  - name: Type: Bug
-    color: "ee0701"
-    description: Inconsistencies or issues which will cause an issue or problem for users or implementors.
+  - name: 'Type: Bug'
+    color: 'ee0701'
+    description: 'Inconsistencies or issues which will cause an issue or problem for users or implementors.'
 
-  - name: Type: Maintenance
-    color: "fbca04"
-    description: Updating phrasing or wording to make things clearer or removing ambiguity, without changing the functionality.
+  - name: 'Type: Maintenance'
+    color: 'fbca04'
+    description: 'Updating phrasing or wording to make things clearer or removing ambiguity, without changing the functionality.'
 
-  - name: Type: Enhancement
-    color: "d4c5f9"
-    description: Most issues will probably ask for additions or changes. It's expected that this type of issue will result in a Pull Request.
+  - name: 'Type: Enhancement'
+    color: 'd4c5f9'
+    description: "Most issues will probably ask for additions or changes. It's expected that this type of issue will result in a Pull Request."
 
-  - name: Type: Question
-    color: "cc317c"
-    description: A query or seeking clarification on parts of the spec. Probably doesn't need the attention of everyone, just a few to help bring clarification or explain intent.
+  - name: 'Type: Question'
+    color: 'cc317c'
+    description: "A query or seeking clarification on parts of the spec. Probably doesn't need the attention of everyone, just a few to help bring clarification or explain intent."
 
-  - name: Type: Documentation
-    color: "5319e7"
-    description: An Issue or Pull Request for improving or updating documentation.
+  - name: 'Type: Documentation'
+    color: '5319e7'
+    description: 'An Issue or Pull Request for improving or updating documentation.'
 
-  - name: Status: Proposal
-    color: "d4c5f9"
+  - name: 'Status: Proposal'
+    color: 'd4c5f9'
