@@ -13,3 +13,4 @@ __fixtures__
 .cache
 .*cache
 *.cache
+*.js.snap
