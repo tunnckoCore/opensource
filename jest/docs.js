@@ -4,11 +4,23 @@ const utils = require('../@tunnckocore/utils/src');
 const ROOT = path.dirname(__dirname);
 const { exts, alias } = utils.createAliases(ROOT);
 
-const docsIgnore = ['renovate-config', 'typescript-config'];
+const docsIgnore = [
+  'renovate-config',
+  'typescript-config',
+  'eslint-config',
+  'browserslist-config',
+  'typescript-config',
+  'prettier-config',
+  'babel-preset',
+];
 
 const testMatches = Object.values(alias)
   .map((source) => `${source}/index.{${exts.join(',')}}`)
-  .filter((x) => !docsIgnore.includes(x));
+  .filter((x) => {
+    const ignored = docsIgnore.find((name) => x.includes(name));
+
+    return !ignored;
+  });
 
 module.exports = {
   rootDir: ROOT,
