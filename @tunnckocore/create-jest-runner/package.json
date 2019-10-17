@@ -1,8 +1,12 @@
 {
   "name": "@tunnckocore/create-jest-runner",
   "version": "0.8.1",
-  "description": "WIP",
-  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/create-jest-runner",
+  "description": "Fork of the original create-jest-runner, with support for couple of things, see issues there",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@tunnckocore/create-jest-runner"
+  },
   "homepage": "https://tunnckocore.com/opensource",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",

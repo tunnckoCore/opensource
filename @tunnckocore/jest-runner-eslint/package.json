@@ -1,8 +1,12 @@
 {
   "name": "@tunnckocore/jest-runner-eslint",
   "version": "0.6.1",
-  "description": "WIP",
-  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-eslint",
+  "description": "Fork of the original Jest Runner for ESLint",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@tunnckocore/jest-runner-eslint"
+  },
   "homepage": "https://tunnckocore.com/opensource",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",

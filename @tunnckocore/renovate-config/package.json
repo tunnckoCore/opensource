@@ -2,7 +2,11 @@
   "name": "@tunnckocore/renovate-config",
   "version": "0.3.2",
   "description": "Shareable Renovate config for all @tunnckoCore projects",
-  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/renovate-config",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@tunnckocore/renovate-config"
+  },
   "homepage": "https://tunnckocore.com/opensource",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",

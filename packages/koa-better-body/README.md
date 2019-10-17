@@ -108,7 +108,6 @@ $ yarn add koa-better-body
 ## API
 
 _Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._
-/home/charlike/github/tunnckoCore/opensource/packages/koa-better-body/src/index.js
 
 ### [koaBetterBody](./src/index.js#L36)
 

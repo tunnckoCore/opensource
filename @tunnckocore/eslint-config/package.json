@@ -2,7 +2,11 @@
   "name": "@tunnckocore/eslint-config",
   "version": "4.2.4",
   "description": "Shareable ESLint config for all @tunnckoCore projects",
-  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/eslint-config",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@tunnckocore/eslint-config"
+  },
   "homepage": "https://tunnckocore.com/opensource",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",

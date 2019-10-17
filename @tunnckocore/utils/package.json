@@ -2,7 +2,11 @@
   "name": "@tunnckocore/utils",
   "version": "0.9.4",
   "description": "Utility functions and helpers for internal usage and monorepos",
-  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@tunnckocore/utils"
+  },
   "homepage": "https://tunnckocore.com/opensource",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",

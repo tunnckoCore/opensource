@@ -1,8 +1,12 @@
 {
   "name": "jest-runner-rollup",
   "version": "0.4.1",
-  "description": "WIP",
-  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/utils",
+  "description": "Jest runner for Rollup, plays very very nicely in monorepo scenarios",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "packages/jest-runner-rollup"
+  },
   "homepage": "https://tunnckocore.com/opensource",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",
