@@ -57,6 +57,8 @@ Project is [semantically](https://semver.org) versioned & automatically released
 
 - [Install](#install)
 - [Features](#features)
+- [API](#api)
+  - [koaBetterBody](#koabetterbody)
 - [Working with [koa-router][]](#working-with-koa-router)
 - [Options](#options)
 - [Note about `options.extendTypes`](#note-about-optionsextendtypes)
@@ -103,6 +105,46 @@ $ yarn add koa-better-body
 - Passing all options to `formidable.IncomingForm`, allowing awesome control
 
 <!-- docks-start -->
+
+## API
+
+_Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._
+
+### [koaBetterBody](./src/index.js#L36)
+
+> Robust body parser for [koa][]@1, also works for `koa@2` (with deprecations).
+> Will also work for future `koa@3` with [koa-convert][].
+
+**Signature**
+
+```ts
+function(options)
+```
+
+**Params**
+
+- `options` - see more on [options section](#options)
+- `returns` - plugin for Koa
+
+**Example**
+
+```js
+var koa = require('koa');
+var body = require('koa-better-body');
+var app = koa();
+
+app
+  .use(body())
+  .use(function*() {
+    console.log(this.request.body); // if buffer or text
+    console.log(this.request.files); // if multipart or urlencoded
+    console.log(this.request.fields); // if json
+  })
+  .listen(8080, function() {
+    console.log('koa server start listening on port 8080');
+  });
+```
+
 <!-- docks-end -->
 
 **[back to top](#thetop)**

@@ -55,6 +55,10 @@ Project is [semantically](https://semver.org) versioned & automatically released
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
+  - [.exec](#exec)
+  - [.shell](#shell)
+  - [execa](#execa)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -75,6 +79,140 @@ $ yarn add @tunnckocore/execa
 ```
 
 <!-- docks-start -->
+
+## API
+
+_Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._
+
+### [.exec](./src/index.js#L39)
+
+Uses [execa][] v2, `execa.command()` method.
+As stated there, think of it as mix of `child_process`'s `.execFile` and `.spawn`.
+It is pretty similar to the `.shell` method too, but only visually because
+it does not uses the system's shell, meaning it does not have access to
+the system's environment variables. You also can control concurrency by
+passing `options.concurrency` option. For example, pass `concurrency: 1` to run in series
+instead of in parallel which is the default behavior.
+
+**Signature**
+
+```ts
+function(cmds, options)
+```
+
+**Params**
+
+- `cmds` - a commands to execute in parallel or series
+- `options` - directly passed to [execa][] and so to `child_process`
+- `returns` - resolved or rejected promises
+
+> It also can accept array of multiple strings of commands that will be
+> executed in series or in parallel (default).
+
+**Example**
+
+```js
+import { exec } from '@tunnckocore/execa';
+// or
+// const { exec } = require('@tunnckocore/execa');
+
+async function main() {
+  await exec('echo "hello world"', { stdio: 'inherit' });
+
+  // executes in series (because `concurrency` option is set to `1`)
+  await exec(
+    [
+      'prettier-eslint --write foobar.js',
+      'eslint --format codeframe foobar.js --fix',
+    ],
+    { stdio: 'inherit', preferLocal: true, concurrency: 1 },
+  );
+}
+
+main();
+```
+
+### [.shell](./src/index.js#L94)
+
+Similar to `exec`, but also **can** access the system's environment variables from the command.
+
+**Signature**
+
+```ts
+function(cmds, options)
+```
+
+**Params**
+
+- `cmds` - a commands to execute in parallel or series
+- `options` - directly passed to `execa`
+- `returns` - resolved or rejected promises
+
+**Example**
+
+```js
+import { shell } from '@tunnckocore/execa';
+// or
+// const { shell } = require('@tunnckocore/execa');
+
+async function main() {
+  // executes in series
+  await shell(['echo unicorns', 'echo "foo-$HOME-bar"', 'echo dragons'], {
+    stdio: 'inherit',
+  });
+
+  // exits with code 3
+  try {
+    await shell(['exit 3', 'echo nah']);
+  } catch (er) {
+    console.error(er);
+    // => {
+    //  message: 'Command failed: /bin/sh -c exit 3'
+    //  killed: false,
+    //  code: 3,
+    //  signal: null,
+    //  cmd: '/bin/sh -c exit 3',
+    //  stdout: '',
+    //  stderr: '',
+    //  timedOut: false
+    // }
+  }
+}
+
+main();
+```
+
+### [execa](./src/index.js#L120)
+
+Same as [execa][]'s default export, see its documentation.
+Think of this as a mix of `child_process.execFile()` and `child_process.spawn()`.
+
+**Signature**
+
+```ts
+function(file, args, options)
+```
+
+**Params**
+
+- `file` - executable to run
+- `args` - arguments / flags to be passed to `file`
+- `options` - optional options, passed to `child_process`'s methods
+
+**Example**
+
+```js
+import execa from '@tunnckocore/execa';
+// or
+// const execa = require('@tunnckocore/execa');
+
+async function main() {
+  await execa('npm', ['install', '--save-dev', 'react'], { stdio: 'inherit' });
+}
+
+main();
+```
+
 <!-- docks-end -->
 
 **[back to top](#readme)**
@@ -208,3 +346,4 @@ Released under the [MPL-2.0 License][license-url].
 [tunnckocore_security]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/security/tunnckocore?label&color=ed1848&icon=https://svgshare.com/i/Dt6.svg
 [tunnckocore_opensource]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/opensource/tunnckocore?label&color=ff7a2f&icon=https://svgshare.com/i/Dt6.svg
 [tunnckocore_newsletter]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/newsletter/tunnckocore?label&color=5199FF&icon=https://svgshare.com/i/Dt6.svg
+[execa]: https://github.com/sindresorhus/execa

@@ -63,7 +63,9 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
     const docksStart = '<!-- docks-start -->';
     const docksEnd = '<!-- docks-end -->';
     const cont =
-      apidocsContent > 0 ? `\n\n${header}${promo}${apidocsContent}\n\n` : '\n';
+      apidocsContent.length > 0
+        ? `\n\n${header}${promo}${apidocsContent}\n\n`
+        : '\n';
 
     const contents = `${docksStart}${cont}${docksEnd}\n`;
 
@@ -74,6 +76,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
         const idxStart = fileContent.indexOf(docksStart);
         const idxEnd = fileContent.indexOf(docksEnd) + docksEnd.length;
         const apiPart = fileContent.slice(idxStart, idxEnd);
+
         const newContents = fileContent.replace(apiPart, contents);
 
         fs.writeFileSync(outputFile, newContents);
@@ -82,8 +85,6 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
 
       // probably never gets here
       throw new Error(`Outfile doesn't contain placeholders.`);
-    } else {
-      fs.writeFileSync(outputFile, contents);
     }
 
     const outDir = path.dirname(outputFile);
