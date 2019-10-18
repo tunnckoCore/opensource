@@ -1,0 +1,46 @@
+name: nodejs
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        platform: [ubuntu-18.04, macos-latest, windows-latest]
+        node-version: [8.x, 10.x, 12.x]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Installing dependencies
+        run: yarn setup:ci
+      - name: Linting codebase with ESLint & Prettier
+        run: yarn lint
+      - name: Type checking codebase
+        run: yarn typecheck || yarn check || echo "No typescript, no type checking"
+      - name: Running tests
+        run: yarn test
+
+  publish-npm:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: 'https://registry.npmjs.org/'
+      - name: Publish to NPM
+        run: npm publish
+        if: github.event_name == 'push'
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
