@@ -14,9 +14,7 @@
     "**/packages/*/**/*.d.ts",
     "**/packages/*/**/*.ts",
     "**/@tunnckocore/*/**/*.ts",
-    "**/@tunnckocore/*/**/*.d.ts",
-    "third-party-typings/undeclared.d.ts",
-    "packages/parse-function/test/index.ts"
+    "**/@tunnckocore/*/**/*.d.ts"
   ],
   "exclude": ["node_modules"]
 }
