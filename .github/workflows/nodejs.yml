@@ -40,7 +40,7 @@ jobs:
           node-version: 12
           registry-url: 'https://registry.npmjs.org/'
       - name: Publish to NPM
-        run: npm publish
+        run: lerna --version
         if: github.event_name == 'push'
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
