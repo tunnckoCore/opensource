@@ -1,11 +1,29 @@
 'use strict';
 
 const path = require('path');
+
 const {
   isMonorepo,
   getWorkspacesAndExtensions,
   createAliases,
 } = require('../src');
+
+expect.extend({
+  toContainMulti(received, items) {
+    const pass = items.every((name) => received.includes(name));
+
+    if (pass) {
+      return {
+        message: () => `expected ${received} not to be within range ${items}`,
+        pass: true,
+      };
+    }
+    return {
+      message: () => `expected ${received} to be within range ${items}`,
+      pass: false,
+    };
+  },
+});
 
 test('get extensions and workspaces - no workspaces', () => {
   const rootDir = path.dirname(__dirname);
@@ -13,14 +31,8 @@ test('get extensions and workspaces - no workspaces', () => {
 
   expect(result.workspaces).toStrictEqual([]);
   expect(result.lernaJson).toStrictEqual({});
-  expect(result.exts).toStrictEqual(['tsx', 'ts', 'jsx', 'js', 'mjs']);
-  expect(result.extensions).toStrictEqual([
-    '.tsx',
-    '.ts',
-    '.jsx',
-    '.js',
-    '.mjs',
-  ]);
+  expect(result.exts).toContainMulti(['tsx', 'ts', 'jsx', 'js']);
+  expect(result.extensions).toContainMulti(['.tsx', '.ts', '.jsx', '.js']);
 });
 
 test('getWorkspacesAndExtensions - correct workspaces', () => {
