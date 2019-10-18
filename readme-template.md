@@ -52,7 +52,7 @@ Project is [semantically](https://semver.org) versioned & automatically released
 
 -->
 
-{%= ifExists([process.cwd() + '/.verb.head.md'], include(process.cwd() + '/.verb.head.md')) %}
+{%= ifExists([process.cwd() + '/.verb.head.md'], () => include(process.cwd() + '/.verb.head.md')) %}
 
 ## Table of Contents
 
@@ -68,7 +68,7 @@ _We highly recommend to use Yarn when you think to contribute to this project._
 $ yarn add {%= name %}
 ```
 
-{%= ifExists([process.cwd() + '/.verb.md'], include(process.cwd() + '/.verb.md')) %}
+{%= ifExists([process.cwd() + '/.verb.md'], () => include(process.cwd() + '/.verb.md')) %}
 
 **[back to top](#readme)**
 

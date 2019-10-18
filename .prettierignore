@@ -15,3 +15,5 @@ __fixtures__
 *.cache
 *.js.snap
 *.log
+
+verb-repo-helpers-patch.js

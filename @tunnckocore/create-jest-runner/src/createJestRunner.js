@@ -170,7 +170,7 @@ module.exports = function createRunner(runPath, { getExtraOptions } = {}) {
               onResult(test, testResult);
             })
             .catch((err) => {
-              onError(err, test);
+              onError(test, err);
             }),
         ),
       );

@@ -2,6 +2,7 @@ CHANGELOG.md
 README.md
 *.d.ts
 recipes
+verb-repo-helpers-patch.js
 
 *.tsbuildinfo
 .cache

@@ -25,9 +25,14 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
   };
 
   /** Find correct root path */
-  const pkgRoot = isMonorepo(config.cwd)
-    ? path.dirname(path.dirname(testPath))
+  let pkgRoot = isMonorepo(config.cwd)
+    ? path.dirname(testPath)
     : config.rootDir;
+
+  /** Handle if index.js is inside root (no src dirs in root of package) */
+  pkgRoot = fs.existsSync(path.join(pkgRoot, 'package.json'))
+    ? pkgRoot
+    : path.dirname(pkgRoot);
 
   const outfile = await tryCatch(testPath, start, () => {
     const { contents: apidocsContent } = docks(testPath, pkgRoot);
@@ -36,7 +41,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
       return {
         skip: skip({
           start,
-          end: Date.now(),
+          end: new Date(),
           test: {
             path: testPath,
             title: 'Docks',
@@ -57,7 +62,10 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
     const header = docksConfig.includeHeader ? '## API\n\n' : '';
     const docksStart = '<!-- docks-start -->';
     const docksEnd = '<!-- docks-end -->';
-    const contents = `${docksStart}\n${header}${promo}${apidocsContent}\n\n${docksEnd}`;
+    const cont =
+      apidocsContent > 0 ? `\n\n${header}${promo}${apidocsContent}\n\n` : '\n';
+
+    const contents = `${docksStart}${cont}${docksEnd}\n`;
 
     if (fs.existsSync(outputFile)) {
       const fileContent = fs.readFileSync(outputFile, 'utf8');
@@ -74,6 +82,8 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
 
       // probably never gets here
       throw new Error(`Outfile doesn't contain placeholders.`);
+    } else {
+      fs.writeFileSync(outputFile, contents);
     }
 
     const outDir = path.dirname(outputFile);
@@ -94,7 +104,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
 
   return pass({
     start,
-    end: Date.now(),
+    end: new Date(),
     test: {
       path: outfile,
       title: 'Docks',

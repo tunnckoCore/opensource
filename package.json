@@ -18,6 +18,9 @@
     "fmt": "prettier '**/*' --write --check",
     "jest:all": "jest -c jest/full.js",
     "lint": "jest -c jest/lint.js",
+    "patch-verb": "cp verb-repo-helpers-patch.js node_modules/verb-repo-helpers/index.js",
+    "postsetup": "yarn patch-verb",
+    "postsetup:ci": "yarn patch-verb",
     "refresh": "yarn cleanup && yarn setup",
     "release": "lerna version && lerna publish from-package",
     "setup": "yarn && yarn bootstrap",
@@ -62,10 +65,10 @@
   },
   "meta": {
     "build": [
-      "koa-better-body",
-      "@tunnckocore/execa"
+      "koa-better-body"
     ],
     "bundle": [
+      "@tunnckocore/execa",
       "parse-function"
     ]
   },

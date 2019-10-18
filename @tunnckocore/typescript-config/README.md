@@ -1,6 +1,6 @@
-# parse-function [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url]
+# @tunnckocore/typescript-config [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url]
 
-> Parse a function into an object using espree, acorn or babylon parsers. Extensible through Smart Plugins
+> Shareable TypeScript configs for all @tunnckoCore projects
 
 Please consider following this project's author, [Charlike Mike Reagent](https://github.com/tunnckoCore), and :star: the project to show your :heart: and support.
 
@@ -52,28 +52,9 @@ Project is [semantically](https://semver.org) versioned & automatically released
 
 -->
 
-## Features
-
-- **Always up-to-date:** auto-publish new version when new version of dependency is out, [Renovate](https://renovateapp.com)
-- **Standard:** using StandardJS, Prettier, SemVer, Semantic Release and conventional commits
-- **Smart Plugins:** for extending the core API or the end [Result](#result), see [.use](#use) method and [Plugins Architecture](#plugins-architecture)
-- **Extensible:** using plugins for working directly on AST nodes, see the [Plugins Architecture](#plugins-architecture)
-- **ES2020+ Ready:** by using `.parseExpression` method of the Babel `v7.x` parser
-- **Customization:** allows switching the parser, through `options.parse`
-- **Support for:** arrow functions, default parameters, generators and async/await functions
-- **Stable:** battle-tested in production and against all parsers - [espree][], [acorn][], [@babel/parser](https://npmjs.com/packages/@babel/parser)
-- **Tested:** with [450+ tests](./test/index.js) for _200%_ coverage
-
 ## Table of Contents
 
 - [Install](#install)
-- [Which version to use?](#which-version-to-use)
-- [Notes](#notes)
-  * [Throws in one specific case](#throws-in-one-specific-case)
-  * [Function named _"anonymous"_](#function-named-_anonymous_)
-  * [Real anonymous function](#real-anonymous-function)
-  * [Plugins Architecture](#plugins-architecture)
-- [Result](#result)
 - [Contributing](#contributing)
   * [Guides and Community](#guides-and-community)
   * [Support the project](#support-the-project)
@@ -90,147 +71,11 @@ This project requires [**Node.js**](https://nodejs.org) **>=8.11** _(see [Suppor
 _We highly recommend to use Yarn when you think to contribute to this project._
 
 ```bash
-$ yarn add parse-function
+$ yarn add @tunnckocore/typescript-config
 ```
-
-## Which version to use?
-
-There's no breaking changes between the `v2.x` version. The only breaking is `v2.1` which also is not
-working properly, so no use it.
-
-**Use v2.0.x**
-
-When you don't need support for `arrow functions` and `es6 default params`. This version
-uses a RegExp expression to work.
-
-**Use v2.2.x**
-
-Only when you need a _basic_ support for `es6 features` like arrow functions. This version
-uses a RegExp expression to work.
-
-**Use v2.3.x**
-
-When you want _full\*_ support for `arrow functions` and `es6 default params`. Where this "full",
-means "almost full", because it has bugs. This version also uses (`acorn.parse`) real parser
-to do the parsing.
-
-**Use v3.x**
-
-When you want to use different parser instead of the default `babylon.parse`, by passing custom
-parse function to the `options.parse` option. **From this version we require `node >= 4`**.
-
-**Use v4.x**
-
-When you want full customization and most stable support for old and modern features. This version
-uses `babylon.parseExpression` for parsing and provides a [Plugins API](#plugins-architecture).
-See the [Features](#features) section for more info.
-
-**Use v5.x**
-
-It is basically the same as `v4`, but requires Node 6 & npm 5. Another is boilerplate stuff.
-
-**[back to top](#readme)**
-
-## Notes
-
-### Throws in one specific case
-
-> _see: [issue #3](https://github.com/tunnckoCore/parse-function/issues/3) and [test/index.js#L229-L235](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L229-L235)_
-
-It may throw in one specific case, otherwise it won't throw, so you should
-relay on the `result.isValid` for sure.
-
-### Function named _"anonymous"_
-
-> _see: [test/index.js#L319-L324](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L319-L324) and [Result](#result) section_
-
-If you pass a function which is named _"anonymous"_ the `result.name` will be `'anonymous'`,
-but the `result.isAnonymous` will be `false` and `result.isNamed` will be `true`, because
-in fact it's a named function.
-
-### Real anonymous function
-
-> _see: [test/index.js#L326-L331](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L326-L331) and [Result](#result) section_
-
-Only if you pass really an anonymous function you will get `result.name` equal to `null`,
-`result.isAnonymous` equal to `true` and `result.isNamed` equal to `false`.
-
-**[back to top](#readme)**
-
-### Plugins Architecture
-
-> _see: the [.use](#use) method, [test/index.js#L305-L317](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L305-L317) and [test/index.js#L396-L414](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L396-L414)_
-
-A more human description of the plugin mechanism. Plugins are **synchronous** - no support
-and no need for **async** plugins here, but notice that you can do that manually, because
-that exact architecture.
-
-The first function that is passed to the [.use](#use) method is used for extending the core API,
-for example adding a new method to the `app` instance. That function is immediately invoked.
-
-```js
-const parseFunction = require('parse-function');
-const app = parseFunction();
-
-app.use((self) => {
-  // self is same as `app`
-  console.log(self.use);
-  console.log(self.parse);
-  console.log(self.define);
-
-  self.define(self, 'foo', (bar) => bar + 1);
-});
-
-console.log(app.foo(2)); // => 3
-```
-
-On the other side, if you want to access the AST of the parser, you should return a function
-from that plugin, which function is passed with `(node, result)` signature.
-
-This function is lazy plugin, it is called only when the [.parse](#parse) method is called.
-
-```js
-const parseFunction = require('parse-function');
-const app = parseFunction();
-
-app.use((self) => {
-  console.log('immediately called');
-
-  return (node, result) => {
-    console.log('called only when .parse is invoked');
-    console.log(node);
-    console.log(result);
-  };
-});
-```
-
-Where **1)** the `node` argument is an object - actual and real AST Node coming from the parser
-and **2)** the `result` is an object too - the end [Result](#result), on which
-you can add more properties if you want.
-
-**[back to top](#readme)**
 
 <!-- docks-start -->
 <!-- docks-end -->
-
-## Result
-
-> In the result object you have `name`, `args`, `params`, `body` and few hidden properties
-> that can be useful to determine what the function is - arrow, regular, async/await or generator.
-
-- `name` **{String|null}**: name of the passed function or `null` if anonymous
-- `args` **{Array}**: arguments of the function
-- `params` **{String}**: comma-separated list representing the `args`
-- `defaults` **{Object}**: key/value pairs, useful when use ES2015 default arguments
-- `body` **{String}**: actual body of the function, respects trailing newlines and whitespaces
-- `isValid` **{Boolean}**: is the given value valid or not, that's because it never throws!
-- `isAsync` **{Boolean}**: `true` if function is ES2015 async/await function
-- `isArrow` **{Boolean}**: `true` if the function is arrow function
-- `isNamed` **{Boolean}**: `true` if function has name, or `false` if is anonymous
-- `isGenerator` **{Boolean}**: `true` if the function is ES2015 generator function
-- `isAnonymous` **{Boolean}**: `true` if the function don't have name
-
-**[back to top](#readme)**
 
 **[back to top](#readme)**
 
@@ -246,7 +91,7 @@ Consider reading the [Support and Release Policy](https://github.com/tunnckoCore
 
 ### Support the project
 
-[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/parse-function) sites too! :rocket:
+[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/@tunnckocore/typescript-config) sites too! :rocket:
 
 Not financial support? Okey! [Pull requests](https://github.com/tunnckoCoreLabs/contributing#opening-a-pull-request), stars and all kind of [contributions](https://opensource.guide/how-to-contribute/#what-it-means-to-contribute) are always
 welcome. :sparkles:
@@ -285,7 +130,7 @@ Consider showing your [support](#support-the-project) to them. :sparkling_heart:
 
 ## License
 
-Copyright (c) 2016-present, [Charlike Mike Reagent](https://tunnckocore.com) `<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br>
+Copyright (c) 2019-present, [Charlike Mike Reagent](https://tunnckocore.com) `<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br>
 Released under the [MPL-2.0 License][license-url].
 
 [contributing-url]: https://github.com/tunnckoCore/opensource/blob/master/CONTRIBUTING.md
@@ -293,18 +138,18 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- Heading badges -->
 
-[npmv-url]: https://www.npmjs.com/package/parse-function
-[npmv-img]: https://badgen.net/npm/v/parse-function?icon=npm
+[npmv-url]: https://www.npmjs.com/package/@tunnckocore/typescript-config
+[npmv-img]: https://badgen.net/npm/v/@tunnckocore/typescript-config?icon=npm
 
-[nodejs-img]: https://badgen.net/npm/node/parse-function
+[nodejs-img]: https://badgen.net/npm/node/@tunnckocore/typescript-config
 
 <!--
 [ghrelease-url]: https://github.com/tunnckoCore/opensource/releases/latest
 [ghrelease-img]: https://badgen.net/github/release/tunnckoCore/opensource?icon=github
 -->
 
-[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/parse-function/LICENSE
-[license-img]: https://badgen.net/npm/license/parse-function
+[license-url]: https://github.com/tunnckoCore/opensource/blob/master/@tunnckocore/typescript-config/LICENSE
+[license-img]: https://badgen.net/npm/license/@tunnckocore/typescript-config
 
 <!-- Front line badges -->
 
@@ -325,9 +170,9 @@ Released under the [MPL-2.0 License][license-url].
 [last-commit-img]: https://badgen.net/github/last-commit/tunnckoCore/opensource/master
 [last-commit-url]: https://github.com/tunnckoCore/opensource/commits/master
 
-[downloads-weekly-img]: https://badgen.net/npm/dw/parse-function?icon=npm
-[downloads-monthly-img]: https://badgen.net/npm/dm/parse-function?icon=npm
-[downloads-total-img]: https://badgen.net/npm/dt/parse-function?icon=npm
+[downloads-weekly-img]: https://badgen.net/npm/dw/@tunnckocore/typescript-config?icon=npm
+[downloads-monthly-img]: https://badgen.net/npm/dm/@tunnckocore/typescript-config?icon=npm
+[downloads-total-img]: https://badgen.net/npm/dt/@tunnckocore/typescript-config?icon=npm
 
 [renovateapp-url]: https://renovatebot.com
 [renovateapp-img]: https://badgen.net/badge/renovate/enabled/green
@@ -367,7 +212,3 @@ Released under the [MPL-2.0 License][license-url].
 [tunnckocore_opensource]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/opensource/tunnckocore?label&color=ff7a2f&icon=https://svgshare.com/i/Dt6.svg
 [tunnckocore_newsletter]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/newsletter/tunnckocore?label&color=5199FF&icon=https://svgshare.com/i/Dt6.svg
 
-[acorn]: https://github.com/acornjs/acorn
-[babylon]: https://babeljs.io/
-[define-property]: https://github.com/jonschlinkert/define-property
-[espree]: https://github.com/eslint/espree
