@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/create-jest-runner@0.8.1...@tunnckocore/create-jest-runner@0.8.2) (2019-10-18)
+
+
+### Bug Fixes
+
+* update repository field to support monorepos ([7a4f775](https://github.com/tunnckoCore/opensource/commit/7a4f775))
+
+
+
+
+
 ## [0.8.1](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/create-jest-runner/compare/@tunnckocore/create-jest-runner@0.8.0...@tunnckocore/create-jest-runner@0.8.1) (2019-10-13)
 
 

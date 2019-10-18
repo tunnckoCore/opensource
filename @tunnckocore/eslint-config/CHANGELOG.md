@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.5](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@4.2.4...@tunnckocore/eslint-config@4.2.5) (2019-10-18)
+
+
+### Bug Fixes
+
+* update repository field to support monorepos ([7a4f775](https://github.com/tunnckoCore/opensource/commit/7a4f775))
+
+
+
+
+
 ## [4.2.4](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/eslint-config/compare/@tunnckocore/eslint-config@4.2.3...@tunnckocore/eslint-config@4.2.4) (2019-10-13)
 
 **Note:** Version bump only for package @tunnckocore/eslint-config

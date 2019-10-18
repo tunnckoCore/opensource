@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/babel-preset",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Shareable Babel config/preset for all @tunnckoCore projects",
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/typescript-config",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Shareable TypeScript configs for all @tunnckoCore projects",
   "repository": {
     "type": "git",

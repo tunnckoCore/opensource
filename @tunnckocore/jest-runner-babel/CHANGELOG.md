@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.2](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@3.4.1...@tunnckocore/jest-runner-babel@3.4.2) (2019-10-18)
+
+
+### Bug Fixes
+
+* update repository field to support monorepos ([7a4f775](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/commit/7a4f775))
+
+
+
+
+
 ## [3.4.1](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@3.4.0...@tunnckocore/jest-runner-babel@3.4.1) (2019-10-13)
 
 

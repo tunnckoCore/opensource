@@ -1,6 +1,6 @@
 {
   "name": "jest-runner-docs",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Jest runner for API documentation generation from code comments, supports TypeScript. Very stable and reliable, based on `parse-comments` package",
   "repository": {
     "type": "git",
@@ -37,8 +37,8 @@
   ],
   "scripts": {},
   "dependencies": {
-    "@tunnckocore/create-jest-runner": "^0.8.1",
-    "@tunnckocore/utils": "^0.9.4",
+    "@tunnckocore/create-jest-runner": "^0.8.2",
+    "@tunnckocore/utils": "^0.9.5",
     "cosmiconfig": "^5.2.1",
     "parse-comments": "^1.0.0"
   },

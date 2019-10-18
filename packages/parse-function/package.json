@@ -1,6 +1,6 @@
 {
   "name": "parse-function",
-  "version": "5.2.11",
+  "version": "5.3.0",
   "description": "Parse a function into an object using espree, acorn or babylon parsers. Extensible through Smart Plugins",
   "repository": {
     "type": "git",
@@ -52,8 +52,8 @@
   },
   "devDependencies": {
     "acorn": "^7.1.0",
-    "arrify": "^2.0.1",
     "acorn-loose": "^7.0.0",
+    "arrify": "^2.0.1",
     "define-property": "^2.0.2",
     "espree": "^6.1.1",
     "for-in": "^1.0.2"

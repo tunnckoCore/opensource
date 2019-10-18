@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/renovate-config",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Shareable Renovate config for all @tunnckoCore projects",
   "repository": {
     "type": "git",

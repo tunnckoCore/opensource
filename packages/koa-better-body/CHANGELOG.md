@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.7](https://github.com/tunnckoCore/opensource/compare/koa-better-body@3.1.6...koa-better-body@3.1.7) (2019-10-18)
+
+
+### Bug Fixes
+
+* update repository field to support monorepos ([7a4f775](https://github.com/tunnckoCore/opensource/commit/7a4f775))
+
+
+
+
+
 ## [3.1.6](https://github.com/tunnckoCore/opensource/tree/master/packages/koa-better-body/compare/koa-better-body@3.1.5...koa-better-body@3.1.6) (2019-10-13)
 
 
