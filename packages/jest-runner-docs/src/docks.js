@@ -28,7 +28,10 @@ module.exports = function docks(filepath, pkgRoot) {
 
       const index = comment.code.value.indexOf('(');
       const signature = comment.code.value.slice(index, -1);
-      const signatureBlock = `\n\`\`\`ts\nfunction${signature}\n\`\`\`\n`;
+      const signatureBlock =
+        signature.trim().length > 0
+          ? `**Signature**\n\n\`\`\`ts\nfunction${signature}\n\`\`\`\n`
+          : '';
 
       const tagsString = tags
         .filter((tag) => !/api|public|private/.test(tag.title))
@@ -44,7 +47,7 @@ module.exports = function docks(filepath, pkgRoot) {
 
       const str = `### [${name}](./${locUrl})\n\n${
         comment.description
-      }\n\n**Signature**\n${signatureBlock}\n**Params**\n\n${tagsString}\n${comment.examples
+      }\n\n${signatureBlock}\n**Params**\n\n${tagsString}\n${comment.examples
         .map(
           (example) =>
             `\n${

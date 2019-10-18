@@ -278,12 +278,6 @@ console.log(result.params); // => 'a, b, c'
 > In the below example will show how to use `acorn` parser, instead
 > of the default one.
 
-**Signature**
-
-```ts
-function
-```
-
 **Params**
 
 - `code` - any kind of function or string to be parsed
@@ -326,12 +320,6 @@ console.log(result.isGenerator); // => false
 > and `result` is an object which will be returned [result](#result)
 > from the `.parse` method. This retuned function is called on each
 > node only when `.parse` method is called.
-
-**Signature**
-
-```ts
-function
-```
 
 **Params**
 
@@ -377,12 +365,6 @@ console.log(result.thatIsArrow); // => undefined
 > Define a non-enumerable property on an object. Just
 > a convenience mirror of the [define-property][] library,
 > so check out its docs. Useful to be used in plugins.
-
-**Signature**
-
-```ts
-function
-```
 
 **Params**
 

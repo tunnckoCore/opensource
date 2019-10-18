@@ -21,6 +21,7 @@
     "patch-verb": "cp verb-repo-helpers-patch.js node_modules/verb-repo-helpers/index.js",
     "postsetup": "yarn patch-verb",
     "postsetup:ci": "yarn patch-verb",
+    "pre-commit": "yarn docs && yarn fmt",
     "refresh": "yarn cleanup && yarn setup",
     "release": "lerna version && lerna publish from-package",
     "setup": "yarn && yarn bootstrap",
@@ -59,7 +60,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo 'yarn test:commit'",
+      "pre-commit": "yarn run pre-commit",
       "commit-msg": "echo 'commitlint -E HUSKY_GIT_PARAMS'"
     }
   },
