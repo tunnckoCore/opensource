@@ -24,13 +24,6 @@
     "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
     "test": "jest -c jest/test.js"
   },
-  "meta": {
-    "build": [
-      "koa-better-body",
-      "@tunnckocore/execa"
-    ],
-    "bundle": []
-  },
   "dependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
@@ -66,6 +59,14 @@
       "pre-commit": "echo 'yarn test:commit'",
       "commit-msg": "echo 'commitlint -E HUSKY_GIT_PARAMS'"
     }
+  },
+  "meta": {
+    "build": [
+      "koa-better-body",
+      "parse-function",
+      "@tunnckocore/execa"
+    ],
+    "bundle": []
   },
   "renovate": {
     "extends": "@tunnckocore"
