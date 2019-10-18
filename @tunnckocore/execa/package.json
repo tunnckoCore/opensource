@@ -41,7 +41,7 @@
   ],
   "scripts": {},
   "devDependencies": {
-    "execa": "^2.0.3",
+    "execa": "^3.0.0",
     "p-map": "^3.0.0"
   },
   "publishConfig": {
