@@ -1853,17 +1853,17 @@ Object {
 exports[`#87 - babel (default) - should work for object methods 1`] = `
 Object {
   "args": Array [
-    "__a",
-    "__b",
-    "__c",
+    "a",
+    "b",
+    "c",
   ],
   "body": "
-        return 123;
+        return a + b + c;
       ",
   "defaults": Object {
-    "__a": undefined,
-    "__b": undefined,
-    "__c": undefined,
+    "a": undefined,
+    "b": undefined,
+    "c": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -1873,9 +1873,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "foo",
-  "params": "__a, __b, __c",
-  "value": "({ foo(__a, __b, __c) {
-        return 123;
+  "params": "a, b, c",
+  "value": "({ foo(a, b, c) {
+        return a + b + c;
       } })",
 }
 `;
@@ -1883,13 +1883,13 @@ Object {
 exports[`#87 - babel (default) - should work for object methods 2`] = `
 Object {
   "args": Array [
-    "__a",
+    "a",
   ],
   "body": "
-        return () => __a;
+        return () => a;
       ",
   "defaults": Object {
-    "__a": undefined,
+    "a": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -1899,9 +1899,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "bar",
-  "params": "__a",
-  "value": "({ bar(__a) {
-        return () => __a;
+  "params": "a",
+  "value": "({ bar(a) {
+        return () => a;
       } })",
 }
 `;
@@ -1909,13 +1909,13 @@ Object {
 exports[`#87 - babel (default) - should work for object methods 3`] = `
 Object {
   "args": Array [
-    "__a",
+    "a",
   ],
   "body": "
-        return yield __a * 321;
+        return yield a * 321;
       ",
   "defaults": Object {
-    "__a": undefined,
+    "a": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -1925,9 +1925,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "gen",
-  "params": "__a",
-  "value": "({ *gen(__a) {
-        return yield __a * 321;
+  "params": "a",
+  "value": "({ *gen(a) {
+        return yield a * 321;
       } })",
 }
 `;
@@ -3811,17 +3811,17 @@ Object {
 exports[`#177 - options.parse - should work for object methods 1`] = `
 Object {
   "args": Array [
-    "__a",
-    "__b",
-    "__c",
+    "a",
+    "b",
+    "c",
   ],
   "body": "
-        return 123;
+        return a + b + c;
       ",
   "defaults": Object {
-    "__a": undefined,
-    "__b": undefined,
-    "__c": undefined,
+    "a": undefined,
+    "b": undefined,
+    "c": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -3831,9 +3831,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "foo",
-  "params": "__a, __b, __c",
-  "value": "({ foo(__a, __b, __c) {
-        return 123;
+  "params": "a, b, c",
+  "value": "({ foo(a, b, c) {
+        return a + b + c;
       } })",
 }
 `;
@@ -3841,13 +3841,13 @@ Object {
 exports[`#177 - options.parse - should work for object methods 2`] = `
 Object {
   "args": Array [
-    "__a",
+    "a",
   ],
   "body": "
-        return () => __a;
+        return () => a;
       ",
   "defaults": Object {
-    "__a": undefined,
+    "a": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -3857,9 +3857,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "bar",
-  "params": "__a",
-  "value": "({ bar(__a) {
-        return () => __a;
+  "params": "a",
+  "value": "({ bar(a) {
+        return () => a;
       } })",
 }
 `;
@@ -3867,13 +3867,13 @@ Object {
 exports[`#177 - options.parse - should work for object methods 3`] = `
 Object {
   "args": Array [
-    "__a",
+    "a",
   ],
   "body": "
-        return yield __a * 321;
+        return yield a * 321;
       ",
   "defaults": Object {
-    "__a": undefined,
+    "a": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -3883,9 +3883,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "gen",
-  "params": "__a",
-  "value": "({ *gen(__a) {
-        return yield __a * 321;
+  "params": "a",
+  "value": "({ *gen(a) {
+        return yield a * 321;
       } })",
 }
 `;
@@ -5769,17 +5769,17 @@ Object {
 exports[`#267 - acorn.parse - should work for object methods 1`] = `
 Object {
   "args": Array [
-    "__a",
-    "__b",
-    "__c",
+    "a",
+    "b",
+    "c",
   ],
   "body": "
-        return 123;
+        return a + b + c;
       ",
   "defaults": Object {
-    "__a": undefined,
-    "__b": undefined,
-    "__c": undefined,
+    "a": undefined,
+    "b": undefined,
+    "c": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -5789,9 +5789,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "foo",
-  "params": "__a, __b, __c",
-  "value": "({ foo(__a, __b, __c) {
-        return 123;
+  "params": "a, b, c",
+  "value": "({ foo(a, b, c) {
+        return a + b + c;
       } })",
 }
 `;
@@ -5799,13 +5799,13 @@ Object {
 exports[`#267 - acorn.parse - should work for object methods 2`] = `
 Object {
   "args": Array [
-    "__a",
+    "a",
   ],
   "body": "
-        return () => __a;
+        return () => a;
       ",
   "defaults": Object {
-    "__a": undefined,
+    "a": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -5815,9 +5815,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "bar",
-  "params": "__a",
-  "value": "({ bar(__a) {
-        return () => __a;
+  "params": "a",
+  "value": "({ bar(a) {
+        return () => a;
       } })",
 }
 `;
@@ -5825,13 +5825,13 @@ Object {
 exports[`#267 - acorn.parse - should work for object methods 3`] = `
 Object {
   "args": Array [
-    "__a",
+    "a",
   ],
   "body": "
-        return yield __a * 321;
+        return yield a * 321;
       ",
   "defaults": Object {
-    "__a": undefined,
+    "a": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -5841,9 +5841,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "gen",
-  "params": "__a",
-  "value": "({ *gen(__a) {
-        return yield __a * 321;
+  "params": "a",
+  "value": "({ *gen(a) {
+        return yield a * 321;
       } })",
 }
 `;
@@ -7727,17 +7727,17 @@ Object {
 exports[`#357 - acorn loose - should work for object methods 1`] = `
 Object {
   "args": Array [
-    "__a",
-    "__b",
-    "__c",
+    "a",
+    "b",
+    "c",
   ],
   "body": "
-        return 123;
+        return a + b + c;
       ",
   "defaults": Object {
-    "__a": undefined,
-    "__b": undefined,
-    "__c": undefined,
+    "a": undefined,
+    "b": undefined,
+    "c": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -7747,9 +7747,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "foo",
-  "params": "__a, __b, __c",
-  "value": "({ foo(__a, __b, __c) {
-        return 123;
+  "params": "a, b, c",
+  "value": "({ foo(a, b, c) {
+        return a + b + c;
       } })",
 }
 `;
@@ -7757,13 +7757,13 @@ Object {
 exports[`#357 - acorn loose - should work for object methods 2`] = `
 Object {
   "args": Array [
-    "__a",
+    "a",
   ],
   "body": "
-        return () => __a;
+        return () => a;
       ",
   "defaults": Object {
-    "__a": undefined,
+    "a": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -7773,9 +7773,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "bar",
-  "params": "__a",
-  "value": "({ bar(__a) {
-        return () => __a;
+  "params": "a",
+  "value": "({ bar(a) {
+        return () => a;
       } })",
 }
 `;
@@ -7783,13 +7783,13 @@ Object {
 exports[`#357 - acorn loose - should work for object methods 3`] = `
 Object {
   "args": Array [
-    "__a",
+    "a",
   ],
   "body": "
-        return yield __a * 321;
+        return yield a * 321;
       ",
   "defaults": Object {
-    "__a": undefined,
+    "a": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -7799,9 +7799,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "gen",
-  "params": "__a",
-  "value": "({ *gen(__a) {
-        return yield __a * 321;
+  "params": "a",
+  "value": "({ *gen(a) {
+        return yield a * 321;
       } })",
 }
 `;
@@ -9685,17 +9685,17 @@ Object {
 exports[`#447 - espree.parse - should work for object methods 1`] = `
 Object {
   "args": Array [
-    "__a",
-    "__b",
-    "__c",
+    "a",
+    "b",
+    "c",
   ],
   "body": "
-        return 123;
+        return a + b + c;
       ",
   "defaults": Object {
-    "__a": undefined,
-    "__b": undefined,
-    "__c": undefined,
+    "a": undefined,
+    "b": undefined,
+    "c": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -9705,9 +9705,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "foo",
-  "params": "__a, __b, __c",
-  "value": "({ foo(__a, __b, __c) {
-        return 123;
+  "params": "a, b, c",
+  "value": "({ foo(a, b, c) {
+        return a + b + c;
       } })",
 }
 `;
@@ -9715,13 +9715,13 @@ Object {
 exports[`#447 - espree.parse - should work for object methods 2`] = `
 Object {
   "args": Array [
-    "__a",
+    "a",
   ],
   "body": "
-        return () => __a;
+        return () => a;
       ",
   "defaults": Object {
-    "__a": undefined,
+    "a": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -9731,9 +9731,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "bar",
-  "params": "__a",
-  "value": "({ bar(__a) {
-        return () => __a;
+  "params": "a",
+  "value": "({ bar(a) {
+        return () => a;
       } })",
 }
 `;
@@ -9741,13 +9741,13 @@ Object {
 exports[`#447 - espree.parse - should work for object methods 3`] = `
 Object {
   "args": Array [
-    "__a",
+    "a",
   ],
   "body": "
-        return yield __a * 321;
+        return yield a * 321;
       ",
   "defaults": Object {
-    "__a": undefined,
+    "a": undefined,
   },
   "isAnonymous": false,
   "isArrow": false,
@@ -9757,9 +9757,9 @@ Object {
   "isNamed": true,
   "isValid": true,
   "name": "gen",
-  "params": "__a",
-  "value": "({ *gen(__a) {
-        return yield __a * 321;
+  "params": "a",
+  "value": "({ *gen(a) {
+        return yield a * 321;
       } })",
 }
 `;

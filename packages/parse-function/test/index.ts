@@ -155,14 +155,14 @@ function factory(parserName, parseFn) {
 
   test(`#${testsCount++} - ${parserName} - should work for object methods`, () => {
     const obj = {
-      foo(__a, __b, __c) {
-        return 123;
+      foo(a, b, c) {
+        return a + b + c;
       },
-      bar(__a) {
-        return () => __a;
+      bar(a) {
+        return () => a;
       },
-      *gen(__a) {
-        return yield __a * 321;
+      *gen(a) {
+        return yield a * 321;
       },
     };
 

@@ -39,7 +39,6 @@
     "@types/react": "^16.9.9",
     "@types/react-dom": "^16.9.2",
     "@wessberg/rollup-plugin-ts": "^1.1.73",
-    "acorn-loose": "^7.0.0",
     "builtin-modules": "^3.1.0",
     "enquirer": "^2.3.2",
     "eslint": "^6.5.1",
