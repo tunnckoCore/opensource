@@ -50,12 +50,13 @@
   },
   "dependencies": {
     "@babel/helper-plugin-utils": "^7.0.0",
-    "@babel/parser": "^7.6.2",
+    "@babel/parser": "^7.6.4",
+    "@babel/runtime": "^7.6.3",
     "@babel/plugin-syntax-import-meta": "^7.2.0",
-    "@babel/preset-env": "^7.6.2",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
     "@babel/preset-typescript": "^7.6.0",
-    "babel-plugin-add-module-exports": "^1.0.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24"
   },
   "publishConfig": {

@@ -2,6 +2,7 @@
 const builtins = require('builtin-modules');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
+const typescript = require('@wessberg/rollup-plugin-ts');
 const { terser } = require('rollup-plugin-terser');
 const json = require('rollup-plugin-json');
 
@@ -120,6 +121,24 @@ module.exports = {
       compact: true,
       preferConst: true,
       // include: 'node_modules/**',
+    }),
+    typescript({
+      transpiler: 'babel',
+      tsconfig: './tsconfig.json',
+      babelConfig: {
+        presets: [
+          [
+            '@tunnckocore/babel-preset',
+            {
+              react: true,
+              typescript: true,
+              node: '8.11',
+            },
+          ],
+        ],
+        comments: false,
+        sourceMaps: true,
+      },
     }),
     terser({
       sourcemap: true,

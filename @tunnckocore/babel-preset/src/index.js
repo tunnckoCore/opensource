@@ -14,6 +14,7 @@ module.exports = helpers.declare((api, options) => {
     modules: 'commonjs',
     include: [],
     exclude: [
+      '@babel/plugin-transform-runtime',
       '@babel/plugin-transform-regenerator',
       '@babel/plugin-transform-async-to-generator',
     ],
@@ -82,6 +83,8 @@ module.exports = helpers.declare((api, options) => {
   return {
     plugins,
     presets,
+    include: opts.include,
+    exclude: opts.exclude,
     overrides: opts.isTSX
       ? undefined
       : [
