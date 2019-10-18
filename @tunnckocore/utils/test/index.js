@@ -9,17 +9,31 @@ const {
 } = require('../src');
 
 expect.extend({
-  toContainMulti(received, items) {
-    const pass = items.every((name) => received.includes(name));
+  toEndsWith(received, ...value) {
+    const pass = received.endsWith(path.join(...value));
 
     if (pass) {
       return {
-        message: () => `expected ${received} not to be within range ${items}`,
+        message: () => `expected ${received} not to ends with ${value}`,
         pass: true,
       };
     }
     return {
-      message: () => `expected ${received} to be within range ${items}`,
+      message: () => `expected ${received} to ends with ${value}`,
+      pass: false,
+    };
+  },
+  toContainEvery(received, items) {
+    const pass = items.every((name) => received.includes(name));
+
+    if (pass) {
+      return {
+        message: () => `expected ${received} not to include every of ${items}`,
+        pass: true,
+      };
+    }
+    return {
+      message: () => `expected ${received} to be include every of ${items}`,
       pass: false,
     };
   },
@@ -31,8 +45,8 @@ test('get extensions and workspaces - no workspaces', () => {
 
   expect(result.workspaces).toStrictEqual([]);
   expect(result.lernaJson).toStrictEqual({});
-  expect(result.exts).toContainMulti(['tsx', 'ts', 'jsx', 'js']);
-  expect(result.extensions).toContainMulti(['.tsx', '.ts', '.jsx', '.js']);
+  expect(result.exts).toContainEvery(['tsx', 'ts', 'jsx', 'js']);
+  expect(result.extensions).toContainEvery(['.tsx', '.ts', '.jsx', '.js']);
 });
 
 test('getWorkspacesAndExtensions - correct workspaces', () => {
@@ -110,6 +124,15 @@ test('createAliases return correct aliases for Lerna workspaces', () => {
     '@helios/qux',
     'numb',
   ]);
+
+  expect(res.alias['@tunnckocore/barry']).toEndsWith(
+    '@tunnckocore',
+    'barry',
+    'source',
+  );
+
+  expect(res.alias['@helios/qux']).toEndsWith('packages', 'foo', 'source');
+  expect(res.alias.numb).toEndsWith('packages', 'numb', 'source');
 
   const bases = Object.values(res.alias).map((filepath) =>
     filepath
