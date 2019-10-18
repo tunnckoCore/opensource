@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.1](https://github.com/tunnckoCore/opensource/compare/parse-function@5.3.0...parse-function@5.3.1) (2019-10-18)
+
+
+### Bug Fixes
+
+* **jest-runner-docs:** handle errors in postHook ([c7c44de](https://github.com/tunnckoCore/opensource/commit/c7c44de))
+* readmes, oops ([d3f910d](https://github.com/tunnckoCore/opensource/commit/d3f910d))
+* **jest-runner-docs:** hide signature block if empty, regen docs ([201036e](https://github.com/tunnckoCore/opensource/commit/201036e))
+* **jest-runner-docs:** typos ([8edc954](https://github.com/tunnckoCore/opensource/commit/8edc954))
+* dist files, docs runner updates, docs ([c021464](https://github.com/tunnckoCore/opensource/commit/c021464)), closes [#63](https://github.com/tunnckoCore/opensource/issues/63)
+
+
+
+
+
 # 5.3.0 (2019-10-18)
 
 

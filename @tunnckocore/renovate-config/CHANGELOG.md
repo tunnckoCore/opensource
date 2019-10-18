@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/renovate-config@0.3.3...@tunnckocore/renovate-config@0.3.4) (2019-10-18)
+
+
+### Bug Fixes
+
+* **jest-runner-docs:** handle errors in postHook ([c7c44de](https://github.com/tunnckoCore/opensource/commit/c7c44de))
+* dist files, docs runner updates, docs ([c021464](https://github.com/tunnckoCore/opensource/commit/c021464)), closes [#63](https://github.com/tunnckoCore/opensource/issues/63)
+
+
+
+
+
 ## [0.3.3](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/renovate-config@0.3.2...@tunnckocore/renovate-config@0.3.3) (2019-10-18)
 
 

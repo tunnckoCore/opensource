@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.6](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/prettier-config@0.3.5...@tunnckocore/prettier-config@0.3.6) (2019-10-18)
+
+
+### Bug Fixes
+
+* **jest-runner-docs:** handle errors in postHook ([c7c44de](https://github.com/tunnckoCore/opensource/commit/c7c44de))
+* dist files, docs runner updates, docs ([c021464](https://github.com/tunnckoCore/opensource/commit/c021464)), closes [#63](https://github.com/tunnckoCore/opensource/issues/63)
+* readmes, oops ([d3f910d](https://github.com/tunnckoCore/opensource/commit/d3f910d))
+
+
+
+
+
 ## [0.3.5](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/prettier-config@0.3.4...@tunnckocore/prettier-config@0.3.5) (2019-10-18)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.3](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-eslint@0.6.2...@tunnckocore/jest-runner-eslint@0.6.3) (2019-10-18)
+
+
+### Bug Fixes
+
+* **jest-runner-docs:** handle errors in postHook ([c7c44de](https://github.com/tunnckoCore/opensource/commit/c7c44de))
+* dist files, docs runner updates, docs ([c021464](https://github.com/tunnckoCore/opensource/commit/c021464)), closes [#63](https://github.com/tunnckoCore/opensource/issues/63)
+
+
+
+
+
 ## [0.6.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-eslint@0.6.1...@tunnckocore/jest-runner-eslint@0.6.2) (2019-10-18)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.7](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@4.5.6...@tunnckocore/execa@4.5.7) (2019-10-18)
+
+
+### Bug Fixes
+
+* **jest-runner-docs:** handle errors in postHook ([c7c44de](https://github.com/tunnckoCore/opensource/commit/c7c44de))
+* readmes, oops ([d3f910d](https://github.com/tunnckoCore/opensource/commit/d3f910d))
+* **jest-runner-docs:** typos ([8edc954](https://github.com/tunnckoCore/opensource/commit/8edc954))
+* dist files, docs runner updates, docs ([c021464](https://github.com/tunnckoCore/opensource/commit/c021464)), closes [#63](https://github.com/tunnckoCore/opensource/issues/63)
+
+
+
+
+
 ## [4.5.6](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@4.5.5...@tunnckocore/execa@4.5.6) (2019-10-18)
 
 

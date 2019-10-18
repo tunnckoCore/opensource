@@ -1,6 +1,6 @@
 {
   "name": "jest-runner-rollup",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Jest runner for Rollup, plays very very nicely in monorepo scenarios",
   "repository": {
     "type": "git",
@@ -39,8 +39,8 @@
     "rollup": "^1.22.0"
   },
   "dependencies": {
-    "@tunnckocore/create-jest-runner": "^0.8.2",
-    "@tunnckocore/utils": "^0.9.5",
+    "@tunnckocore/create-jest-runner": "^0.8.3",
+    "@tunnckocore/utils": "^0.9.6",
     "cosmiconfig": "^5.2.1"
   },
   "publishConfig": {
