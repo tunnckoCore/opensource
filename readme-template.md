@@ -68,7 +68,11 @@ _We highly recommend to use Yarn when you think to contribute to this project._
 $ yarn add {%= name %}
 ```
 
-{%= ifExists([process.cwd() + '/.verb.md'], () => include(process.cwd() + '/.verb.md')) %}
+{% if (ifExists([process.cwd() + '/.verb.md'], true)) { %}
+
+{%= include(process.cwd() + '/.verb.md') %}
+
+{% } %}
 
 **[back to top](#readme)**
 

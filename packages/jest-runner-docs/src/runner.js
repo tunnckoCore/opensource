@@ -34,64 +34,70 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
     ? pkgRoot
     : path.dirname(pkgRoot);
 
-  const outfile = await tryCatch(testPath, start, () => {
-    const { contents: apidocsContent } = docks(testPath, pkgRoot);
+  const outfile = await tryCatch(
+    () => {
+      const { contents: apidocsContent } = docks(testPath, pkgRoot);
 
-    if (apidocsContent.length === 0 && !docksConfig.force) {
-      return {
-        skip: skip({
-          start,
-          end: new Date(),
-          test: {
-            path: testPath,
-            title: 'Docks',
-          },
-        }),
-      };
-    }
-
-    const outputFile = path.resolve(
-      pkgRoot,
-      docksConfig.outfile || docksConfig.outFile,
-    );
-
-    const promo = docksConfig.promo
-      ? `_Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._`
-      : '';
-
-    const header = docksConfig.includeHeader ? '## API\n\n' : '';
-    const docksStart = '<!-- docks-start -->';
-    const docksEnd = '<!-- docks-end -->';
-    const cont =
-      apidocsContent.length > 0
-        ? `\n\n${header}${promo}${apidocsContent}\n\n`
-        : '\n';
-
-    const contents = `${docksStart}${cont}${docksEnd}\n`;
-
-    if (fs.existsSync(outputFile)) {
-      const fileContent = fs.readFileSync(outputFile, 'utf8');
-
-      if (fileContent.includes(docksStart) && fileContent.includes(docksEnd)) {
-        const idxStart = fileContent.indexOf(docksStart);
-        const idxEnd = fileContent.indexOf(docksEnd) + docksEnd.length;
-        const apiPart = fileContent.slice(idxStart, idxEnd);
-
-        const newContents = fileContent.replace(apiPart, contents);
-
-        fs.writeFileSync(outputFile, newContents);
-        return outputFile;
+      if (apidocsContent.length === 0 && !docksConfig.force) {
+        return {
+          skip: skip({
+            start,
+            end: new Date(),
+            test: {
+              path: testPath,
+              title: 'Docks',
+            },
+          }),
+        };
       }
 
-      // probably never gets here
-      throw new Error(`Outfile doesn't contain placeholders.`);
-    }
+      const outputFile = path.resolve(
+        pkgRoot,
+        docksConfig.outfile || docksConfig.outFile,
+      );
 
-    const outDir = path.dirname(outputFile);
-    fs.mkdirSync(outDir, { recursive: true });
-    fs.writeFileSync(outputFile, contents);
-    return outputFile;
-  });
+      const promo = docksConfig.promo
+        ? `_Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._`
+        : '';
+
+      const header = docksConfig.includeHeader ? '## API\n\n' : '';
+      const docksStart = '<!-- docks-start -->';
+      const docksEnd = '<!-- docks-end -->';
+      const cont =
+        apidocsContent.length > 0
+          ? `\n\n${header}${promo}${apidocsContent}\n\n`
+          : '\n';
+
+      const contents = `${docksStart}${cont}${docksEnd}\n`;
+
+      if (fs.existsSync(outputFile)) {
+        const fileContent = fs.readFileSync(outputFile, 'utf8');
+
+        if (
+          fileContent.includes(docksStart) &&
+          fileContent.includes(docksEnd)
+        ) {
+          const idxStart = fileContent.indexOf(docksStart);
+          const idxEnd = fileContent.indexOf(docksEnd) + docksEnd.length;
+          const apiPart = fileContent.slice(idxStart, idxEnd);
+
+          const newContents = fileContent.replace(apiPart, contents);
+
+          fs.writeFileSync(outputFile, newContents);
+          return outputFile;
+        }
+
+        // probably never gets here
+        throw new Error(`Outfile doesn't contain placeholders.`);
+      }
+
+      const outDir = path.dirname(outputFile);
+      fs.mkdirSync(outDir, { recursive: true });
+      fs.writeFileSync(outputFile, contents);
+      return outputFile;
+    },
+    { testPath, start },
+  );
 
   if (outfile.hasError) return outfile.error;
   if (outfile.skip) return outfile.skip;
@@ -102,6 +108,12 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
       : () => {};
 
   await postHook({ pkgRoot, jestConfig: config, docksConfig, outfile });
+
+  const res = await tryCatch(
+    () => postHook({ pkgRoot, jestConfig: config, docksConfig, outfile }),
+    { start, testPath },
+  );
+  if (res.hasError) return res.error;
 
   return pass({
     start,
@@ -114,23 +126,26 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
 };
 
 async function tryLoadConfig(testPath, start) {
-  return tryCatch(testPath, start, () => {
-    const cfg = jestRunnerDocks.searchSync();
+  return tryCatch(
+    () => {
+      const cfg = jestRunnerDocks.searchSync();
 
-    if (!cfg || (cfg && !cfg.config)) {
-      const runnersConf = jestRunnerConfig.searchSync();
+      if (!cfg || (cfg && !cfg.config)) {
+        const runnersConf = jestRunnerConfig.searchSync();
 
-      if (!runnersConf || (runnersConf && !runnersConf.config)) {
-        return {};
+        if (!runnersConf || (runnersConf && !runnersConf.config)) {
+          return {};
+        }
+        return runnersConf.config.docks || runnersConf.config.docs;
       }
-      return runnersConf.config.docks || runnersConf.config.docs;
-    }
 
-    return cfg.config;
-  });
+      return cfg.config;
+    },
+    { testPath, start },
+  );
 }
 
-async function tryCatch(testPath, start, fn) {
+async function tryCatch(fn, { testPath, start }) {
   try {
     return await fn();
   } catch (err) {
