@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap --since",
+    "now-build": "yarn test",
     "build": "jest -c jest/build.js",
     "bundle": "jest -c jest/bundle.js",
     "clean:dist": "rm -rf packages/*/dist @tunnckocore/*/dist",
