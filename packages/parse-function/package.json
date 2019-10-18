@@ -1,0 +1,87 @@
+{
+  "name": "parse-function",
+  "version": "5.2.11",
+  "description": "Parse a function into an object using espree, acorn or babylon parsers. Extensible through Smart Plugins",
+  "repository": "https://github.com/tunnckoCore/opensource/tree/master/packages/parse-fn",
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "license": "MPL-2.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "args",
+    "arguments",
+    "async",
+    "async-await",
+    "asyncawait",
+    "await",
+    "babel",
+    "developer-experience",
+    "development",
+    "dx",
+    "fn",
+    "func",
+    "function",
+    "generators",
+    "hela",
+    "parameters",
+    "params",
+    "parse",
+    "parse-function",
+    "parser",
+    "tostring",
+    "tunnckocore-oss",
+    "tunnckocorehq",
+    "typescript",
+    "utilities"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "arrify": "^2.0.1",
+    "@babel/parser": "^7.6.4",
+    "define-property": "^2.0.2"
+  },
+  "devDependencies": {
+    "acorn": "^7.1.0",
+    "acorn-loose": "^7.0.0",
+    "espree": "^6.1.1",
+    "for-in": "^1.0.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "licenseStart": 2016,
+  "verb": {
+    "readme": "../../readme-template.md",
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 4
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [
+      "acorn",
+      "babylon",
+      "define-property",
+      "espree"
+    ],
+    "related": {
+      "list": []
+    }
+  }
+}

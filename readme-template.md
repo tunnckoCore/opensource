@@ -4,7 +4,7 @@
 
 Please consider following this project's author, [Charlike Mike Reagent](https://github.com/tunnckoCore), and :star: the project to show your :heart: and support.
 
-<div id="thetop"></div>
+<div id="readme"></div>
 
 [![Code style][codestyle-img]][codestyle-url]
 [![CircleCI linux build][linuxbuild-img]][linuxbuild-url]
@@ -52,6 +52,8 @@ Project is [semantically](https://semver.org) versioned & automatically released
 
 -->
 
+{%= ifExists([process.cwd() + '/.verb.head.md'], include(process.cwd() + '/.verb.head.md')) %}
+
 ## Table of Contents
 
 <!-- toc -->
@@ -68,7 +70,7 @@ $ yarn add {%= name %}
 
 {%= ifExists([process.cwd() + '/.verb.md'], include(process.cwd() + '/.verb.md')) %}
 
-**[back to top](#thetop)**
+**[back to top](#readme)**
 
 {% if (verb.related && verb.related.list && verb.related.list.length) { %}
 
@@ -78,7 +80,7 @@ Some of these projects are used here or were inspiration for this one, others ar
 
 {%= related(verb.related.list, { words: 10 }) %}
 
-**[back to top](#thetop)**
+**[back to top](#readme)**
 {% } %}
 
 ## Contributing
@@ -127,6 +129,8 @@ here](https://github.com/jfmengels/all-contributors-cli#usage).
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 Consider showing your [support](#support-the-project) to them. :sparkling_heart:
+
+**[back to top](#readme)**
 
 ## License
 

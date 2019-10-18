@@ -9,7 +9,6 @@ const docsIgnore = ['renovate-config', 'typescript-config'];
 const testMatches = Object.values(alias)
   .map((source) => `${source}/index.{${exts.join(',')}}`)
   .filter((x) => !docsIgnore.includes(x));
-console.log(testMatches);
 
 module.exports = {
   rootDir: ROOT,

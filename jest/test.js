@@ -4,14 +4,18 @@ const utils = require('../@tunnckocore/utils/src');
 const ROOT = path.dirname(__dirname);
 const { workspaces } = utils.createAliases(ROOT, 'src');
 
+const exts = ['js', 'jsx', 'ts', 'tsx'];
+
 module.exports = {
   rootDir: ROOT,
   displayName: 'test',
-  testMatch: workspaces.map((ws) => `<rootDir>/${ws}/*/test/**/*`),
+  testMatch: workspaces.map(
+    (ws) => `<rootDir>/${ws}/*/test/**/*.{${exts.join(',')}}`,
+  ),
   testPathIgnorePatterns: [
     /node_modules/.toString(),
-    /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),
+    /(?:__)?(?:fixtures?|supports?|shared|snapshots)(?:__)?/.toString(),
   ],
   // moduleNameMapper: alias,
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
+  moduleFileExtensions: exts,
 };
