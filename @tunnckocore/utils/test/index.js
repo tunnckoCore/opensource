@@ -11,7 +11,7 @@ const {
 
 expect.extend({
   toHaveMatchingParts(received, ...value) {
-    const join = os.plaform() === 'win32' ? path.win32.join : path.join;
+    const join = os.platform() === 'win32' ? path.win32.join : path.join;
     const pass = received.endsWith(join(...value));
 
     if (pass) {
