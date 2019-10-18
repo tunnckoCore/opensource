@@ -1,5 +1,6 @@
 'use strict';
 
+const os = require('os');
 const path = require('path');
 
 const {
@@ -9,8 +10,9 @@ const {
 } = require('../src');
 
 expect.extend({
-  toEndsWith(received, ...value) {
-    const pass = received.endsWith(path.join(...value));
+  toHaveMatchingParts(received, ...value) {
+    const join = os.plaform() === 'win32' ? path.win32.join : path.join;
+    const pass = received.endsWith(join(...value));
 
     if (pass) {
       return {
@@ -125,14 +127,18 @@ test('createAliases return correct aliases for Lerna workspaces', () => {
     'numb',
   ]);
 
-  expect(res.alias['@tunnckocore/barry']).toEndsWith(
+  expect(res.alias['@tunnckocore/barry']).toHaveMatchingParts(
     '@tunnckocore',
     'barry',
     'source',
   );
 
-  expect(res.alias['@helios/qux']).toEndsWith('packages', 'foo', 'source');
-  expect(res.alias.numb).toEndsWith('packages', 'numb', 'source');
+  expect(res.alias['@helios/qux']).toHaveMatchingParts(
+    'packages',
+    'foo',
+    'source',
+  );
+  expect(res.alias.numb).toHaveMatchingParts('packages', 'numb', 'source');
 
   const bases = Object.values(res.alias).map((filepath) =>
     filepath
