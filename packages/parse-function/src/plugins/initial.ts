@@ -1,26 +1,28 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable no-param-reassign, @typescript-eslint/no-explicit-any */
 
-import body from './body';
-import props from './props';
-import params from './params';
+import { Result } from '../types';
+
+import bodyPlugin from './body';
+import propsPlugin from './props';
+import paramsPlugin from './params';
 
 /**
  * > Default plugin that handles regular functions,
  * arrow functions, generator functions
  * and ES6 object method notation.
  *
- * @param  {Object} node
- * @param  {Object} result
- * @return {Object} resul
+ * @param  node
+ * @param  result
+ * @return resul
  * @private
  */
-export default (app) => (node, result) => {
+export default (node: any, result: Result): Result => {
   const isFn = node.type.endsWith('FunctionExpression');
   const isMethod = node.type === 'ObjectExpression';
 
   /* istanbul ignore next */
   if (!isFn && !isMethod) {
-    return;
+    return result;
   }
 
   node = isMethod ? node.properties[0] : node;
@@ -34,10 +36,9 @@ export default (app) => (node, result) => {
     node.id = id;
   }
 
-  result = props(app)(node, result);
-  result = params(app)(node, result);
-  result = body(app)(node, result);
+  result = bodyPlugin(node, result);
+  result = propsPlugin(node, result);
+  result = paramsPlugin(node, result);
 
-  // eslint-disable-next-line consistent-return
   return result;
 };

@@ -34,25 +34,29 @@
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
+    "@types/jest": "^24.0.19",
+    "@types/node": "^12.11.1",
+    "@types/react": "^16.9.9",
+    "@types/react-dom": "^16.9.2",
     "@wessberg/rollup-plugin-ts": "^1.1.73",
+    "acorn-loose": "^7.0.0",
     "builtin-modules": "^3.1.0",
     "enquirer": "^2.3.2",
-    "eslint": "^6.4.0",
+    "eslint": "^6.5.1",
     "esm": "^3.2.25",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
-    "lerna": "^3.16.4",
+    "lerna": "^3.18.1",
     "prettier": "^1.18.2",
     "prettier-plugin-pkg": "^0.4.4",
-    "prettier-plugin-sh": "^0.2.0",
-    "react": "^16.10.1",
-    "rollup": "^1.23.1",
+    "prettier-plugin-sh": "^0.2.1",
+    "react": "^16.10.2",
+    "rollup": "^1.25.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.1.2",
-    "semver": "^6.3.0",
-    "typescript": "^3.7.0-beta",
+    "typescript": "^3.6.4",
     "verb": "verbose/verb#dev",
     "verb-generate-readme": "^0.8.0"
   },
@@ -69,11 +73,11 @@
   },
   "meta": {
     "build": [
-      "koa-better-body"
+      "koa-better-body",
+      "parse-function"
     ],
     "bundle": [
-      "@tunnckocore/execa",
-      "parse-function"
+      "@tunnckocore/execa"
     ]
   },
   "renovate": {

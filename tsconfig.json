@@ -4,10 +4,19 @@
   "compilerOptions": {
     "baseUrl": ".",
     "declarationDir": "dist/types",
+    "typeRoots": ["./node_modules/@types", "./@types"],
     "paths": {
       "*": ["packages/*", "@tunnckocore/*"]
-    }
+    },
+    "noImplicitAny": false
   },
-  "include": ["packages/*", "@tunnckocore/*"],
+  "include": [
+    "**/packages/*/**/*.d.ts",
+    "**/packages/*/**/*.ts",
+    "**/@tunnckocore/*/**/*.ts",
+    "**/@tunnckocore/*/**/*.d.ts",
+    "third-party-typings/undeclared.d.ts",
+    "packages/parse-function/test/index.ts"
+  ],
   "exclude": ["node_modules"]
 }
