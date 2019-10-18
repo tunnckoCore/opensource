@@ -115,7 +115,7 @@ labels:
     description: A query or seeking clarification on parts of the spec. Probably doesn't need the attention of everyone, just a few to help bring clarification or explain intent.
 
   - name: Type: Documentation
-    color: #5319e7
+    color: "5319e7"
     description: An Issue or Pull Request for improving or updating documentation.
 
   - name: Status: Proposal
