@@ -23,5 +23,5 @@ test('the `exec` accepts arguments with quotes', async () => {
 test('the `shell` should be able to access ENVs', async () => {
   const results = await shell('echo "foo-$HOME-bar"', { env: process.env });
 
-  expect(results[0].stdout).toMatch(/^foo-.*-bar$/);
+  expect(results[0].stdout).toMatch(/foo-.*-bar/);
 });
