@@ -141,13 +141,6 @@ test('createAliases return correct aliases for Lerna workspaces', () => {
   );
   expect(res.alias.numb).toHaveMatchingParts('packages', 'numb', 'source');
 
-  const bases = Object.values(res.alias).map((filepath) =>
-    filepath
-      .split('/')
-      .slice(-3)
-      .join('/'),
-  );
-
   expect(res.lernaJson).toStrictEqual({
     packages: ['@tunnckocore/*', 'packages/*'],
   });
