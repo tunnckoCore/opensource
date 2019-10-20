@@ -278,7 +278,7 @@ async function tryLoadConfig({ testPath, config: jestConfig, start }) {
     return result;
   });
 
-  if (cfg.hasError) return cfg;
+  if (cfg && cfg.hasError) return cfg;
 
   if (!cfg || (cfg && !cfg.config)) {
     const filepath = cfg && path.relative(cfg.filepath, jestConfig.cwd);
