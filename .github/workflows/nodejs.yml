@@ -23,6 +23,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Installing dependencies
         run: yarn setup:ci
+      - name: Bundle @tunnckocore/execa
+        run: yarn hela bundle -m execa
       - name: Linting codebase with ESLint & Prettier
         run: yarn hela lint
       # - name: Type checking codebase
