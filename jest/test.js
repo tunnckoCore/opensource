@@ -16,6 +16,5 @@ module.exports = {
     /node_modules/.toString(),
     /(?:__)?(?:fixtures?|supports?|shared|snapshots)(?:__)?/.toString(),
   ],
-  // moduleNameMapper: alias,
   moduleFileExtensions: exts,
 };
