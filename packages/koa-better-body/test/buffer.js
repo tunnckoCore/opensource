@@ -7,8 +7,12 @@
 
 import isBuffer from 'is-buffer';
 import request from 'supertest';
-import koa from 'koa';
+import Koa from 'koa';
 import betterBody from '../src';
+
+function koa() {
+  return new Koa();
+}
 
 test('should get the raw buffer body (options.buffer: true)', async () => {
   const server = koa().use(betterBody({ buffer: true }));
@@ -19,22 +23,28 @@ test('should get the raw buffer body (options.buffer: true)', async () => {
     this.body = this.request.body.toString('utf8');
   });
 
-  await request(server.callback())
-    .post('/')
-    .type('text')
-    .send('qux')
-    .expect(200)
-    .expect('qux');
+  await new Promise((resolve, reject) => {
+    request(server.callback())
+      .post('/')
+      .type('text')
+      .send('qux')
+      .expect(200)
+      .expect('qux')
+      .end((err) => (err ? reject(err) : resolve()));
+  });
 });
 
 test('should throw if the buffer body is too large (options.buffer: true)', async () => {
   const server = koa().use(betterBody({ buffer: true, bufferLimit: '2b' }));
 
-  await request(server.callback())
-    .post('/')
-    .type('text')
-    .send('too large')
-    .expect(413);
+  await new Promise((resolve, reject) => {
+    request(server.callback())
+      .post('/')
+      .type('text')
+      .send('too large')
+      .expect(413)
+      .end((err) => (err ? reject(err) : resolve()));
+  });
 });
 
 test('should get json if `options.buffer` is false (that is the default)', async () => {
@@ -45,9 +55,12 @@ test('should get json if `options.buffer` is false (that is the default)', async
     this.body = this.request.fields;
   });
 
-  await request(server.callback())
-    .post('/')
-    .send('too large')
-    .expect(200)
-    .expect(/"too large":/);
+  await new Promise((resolve, reject) => {
+    request(server.callback())
+      .post('/')
+      .send('too large')
+      .expect(200)
+      .expect(/"too large":/)
+      .end((err) => (err ? reject(err) : resolve()));
+  });
 });

@@ -7,42 +7,64 @@
  */
 
 import request from 'supertest';
-import koa from 'koa';
+import Koa from 'koa';
 import betterBody from '../src';
 
-test('should parse a urlencoded body', async () => {
-  const app = koa().use(betterBody());
-  app.use(function* sasa() {
-    expect(this.request.fields).toMatchObject({ a: 'b', c: 'd' });
-    this.body = this.request.fields;
-  });
+function koa() {
+  return new Koa();
+}
 
-  await request(app.callback())
-    .post('/')
-    .type('application/x-www-form-urlencoded')
-    .send('a=b&c=d')
-    .expect(200)
-    .expect(/"a":"b"/)
-    .expect(/"c":"d"/);
+test('should parse a urlencoded body', async () => {
+  const server = koa()
+    .use(betterBody())
+    .use(function* sasa() {
+      expect(this.request.fields).toMatchObject({ a: 'b', c: 'd' });
+      this.body = this.request.fields;
+    });
+
+  await new Promise((resolve, reject) => {
+    request(server.callback())
+      .post('/')
+      .type('application/x-www-form-urlencoded')
+      .send('a=b&c=d')
+      .expect(200)
+      .expect(/"a":"b"/)
+      .expect(/"c":"d"/)
+      .end((err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+  });
 });
 
 test('should throw if the body is too large', async () => {
-  const app = koa().use(betterBody({ formLimit: '2b' }));
+  const server = koa().use(betterBody({ formLimit: '2b' }));
 
-  await request(app.callback())
-    .post('/')
-    .type('application/x-www-form-urlencoded')
-    .send({ foo: { bar: 'qux' } })
-    .expect(413);
+  await new Promise((resolve, reject) => {
+    request(server.callback())
+      .post('/')
+      .type('application/x-www-form-urlencoded')
+      .send({ foo: { bar: 'qux' } })
+      .expect(413)
+      .end((err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+  });
 });
 
 test('should parse a nested body when `app.querystring` passed', async () => {
-  const app = koa();
+  const server = koa();
   // eslint-disable-next-line global-require
-  app.querystring = require('qs');
+  server.querystring = require('qs');
 
-  app.use(betterBody({ formLimit: '2mb' }));
-  app.use(function* sasa() {
+  server.use(betterBody({ formLimit: '2mb' })).use(function* sasa() {
     expect(this.request.fields).toMatchObject({
       foo: {
         bar: {
@@ -55,12 +77,15 @@ test('should parse a nested body when `app.querystring` passed', async () => {
     this.body = JSON.stringify(this.request.fields);
   });
 
-  await request(app.callback())
-    .post('/')
-    .type('application/x-www-form-urlencoded')
-    .send('foo[bar][baz]=qux&foo[bar][cc]=ccc&foo[aa]=bb')
-    .expect(/"foo":{"bar":/)
-    .expect(/"baz":"qux","cc":"ccc"}/)
-    .expect(/"aa":"bb"}}/)
-    .expect(200);
+  await new Promise((resolve, reject) => {
+    request(server.callback())
+      .post('/')
+      .type('application/x-www-form-urlencoded')
+      .send('foo[bar][baz]=qux&foo[bar][cc]=ccc&foo[aa]=bb')
+      .expect(/"foo":{"bar":/)
+      .expect(/"baz":"qux","cc":"ccc"}/)
+      .expect(/"aa":"bb"}}/)
+      .expect(200)
+      .end((err) => (err ? reject(err) : resolve()));
+  });
 });

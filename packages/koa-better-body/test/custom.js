@@ -6,28 +6,31 @@
  */
 
 import request from 'supertest';
-import koa from 'koa';
+import Koa from 'koa';
 import betterBody from '../src';
 
+function koa() {
+  return new Koa();
+}
+
 test('should accept opts.extendTypes.custom `foo/bar-x` as text', async () => {
-  let app = koa().use(
-    betterBody({
-      extendTypes: {
-        custom: ['foo/bar-x'],
-      },
+  const server = koa()
+    .use(
+      betterBody({
+        extendTypes: {
+          custom: ['foo/bar-x'],
+        },
 
-      handler: function* handler(ctx, opts) {
-        expect(typeof ctx).toStrictEqual('object');
-        expect(typeof this).toStrictEqual('object');
-        expect(typeof ctx.request.text).toStrictEqual('function');
-        expect(typeof this.request.text).toStrictEqual('function');
+        handler: function* handler(ctx, opts) {
+          expect(typeof ctx).toStrictEqual('object');
+          expect(typeof this).toStrictEqual('object');
+          expect(typeof ctx.request.text).toStrictEqual('function');
+          expect(typeof this.request.text).toStrictEqual('function');
 
-        this.request.body = yield this.request.text(opts);
-      },
-    }),
-  );
-
-  app = app
+          this.request.body = yield this.request.text(opts);
+        },
+      }),
+    )
     .use(function* abc(next) {
       expect(this.request.body).toStrictEqual('message=lol');
       this.body = this.request.body;
@@ -38,10 +41,13 @@ test('should accept opts.extendTypes.custom `foo/bar-x` as text', async () => {
       expect(this.body).toStrictEqual('message=lol');
     });
 
-  await request(app.callback())
-    .post('/')
-    .type('foo/bar-x')
-    .send('message=lol')
-    .expect(200)
-    .expect('message=lol');
+  await new Promise((resolve, reject) => {
+    request(server.callback())
+      .post('/')
+      .type('foo/bar-x')
+      .send('message=lol')
+      .expect(200)
+      .expect('message=lol')
+      .end((err) => (err ? reject(err) : resolve()));
+  });
 });

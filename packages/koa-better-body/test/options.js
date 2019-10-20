@@ -7,8 +7,12 @@
  */
 
 import request from 'supertest';
-import koa from 'koa';
+import Koa from 'koa';
 import betterBody from '../src';
+
+function koa() {
+  return new Koa();
+}
 
 test('should catch errors through `options.onerror`', async () => {
   const server = koa().use(
@@ -21,12 +25,15 @@ test('should catch errors through `options.onerror`', async () => {
     }),
   );
 
-  await request(server.callback())
-    .post('/')
-    .type('json')
-    .send('"foobar"')
-    .expect(422)
-    .expect('custom error');
+  await new Promise((resolve, reject) => {
+    request(server.callback())
+      .post('/')
+      .type('json')
+      .send('"foobar"')
+      .expect(422)
+      .expect('custom error')
+      .end((err) => (err ? reject(err) : resolve()));
+  });
 });
 
 test('should treat `foo/y-javascript` type as json', async () => {
@@ -43,12 +50,15 @@ test('should treat `foo/y-javascript` type as json', async () => {
       this.body = this.request.fields;
     });
 
-  await request(server.callback())
-    .post('/')
-    .type('foo/y-javascript')
-    .send(JSON.stringify({ a: 'bbb' }))
-    .expect(200)
-    .expect({ a: 'bbb' });
+  await new Promise((resolve, reject) => {
+    request(server.callback())
+      .post('/')
+      .type('foo/y-javascript')
+      .send(JSON.stringify({ a: 'bbb' }))
+      .expect(200)
+      .expect({ a: 'bbb' })
+      .end((err) => (err ? reject(err) : resolve()));
+  });
 });
 
 test('should get body on `strict:false` and DELETE request with body', async () => {
@@ -58,12 +68,15 @@ test('should get body on `strict:false` and DELETE request with body', async () 
       this.body = this.request.fields;
     });
 
-  await request(server.callback())
-    .delete('/')
-    .type('json')
-    .send({ abc: 'foo' })
-    .expect(200)
-    .expect({ abc: 'foo' });
+  await new Promise((resolve, reject) => {
+    request(server.callback())
+      .delete('/')
+      .type('json')
+      .send({ abc: 'foo' })
+      .expect(200)
+      .expect({ abc: 'foo' })
+      .end((err) => (err ? reject(err) : resolve()));
+  });
 });
 
 test('should not get body on DELETE request (on strict mode)', async () => {
@@ -74,31 +87,34 @@ test('should not get body on DELETE request (on strict mode)', async () => {
     this.status = 204;
   });
 
-  await request(server.callback())
-    .delete('/')
-    .type('text')
-    .send('foo bar')
-    .expect(204);
+  await new Promise((resolve, reject) => {
+    request(server.callback())
+      .delete('/')
+      .type('text')
+      .send('foo bar')
+      .expect(204)
+      .end((err) => (err ? reject(err) : resolve()));
+  });
 });
 
 test('should accept opts.extendTypes.custom `foo/bar-x` as text', async () => {
-  let app = koa().use(
-    betterBody({
-      extendTypes: {
-        custom: ['foo/bar-x'],
-      },
-      handler: function* handler(ctx, opts) {
-        expect(typeof ctx).toStrictEqual('object');
-        expect(typeof this).toStrictEqual('object');
-        expect(typeof ctx.request.text).toStrictEqual('function');
-        expect(typeof this.request.text).toStrictEqual('function');
+  const server = koa()
+    .use(
+      betterBody({
+        extendTypes: {
+          custom: ['foo/bar-x'],
+        },
+        handler: function* handler(ctx, opts) {
+          expect(typeof ctx).toStrictEqual('object');
+          expect(typeof this).toStrictEqual('object');
+          expect(typeof ctx.request.text).toStrictEqual('function');
+          expect(typeof this.request.text).toStrictEqual('function');
 
-        this.request.body = yield this.request.text(opts);
-      },
-    }),
-  );
+          this.request.body = yield this.request.text(opts);
+        },
+      }),
+    )
 
-  app = app
     .use(function* sasa(next) {
       expect(typeof this.request.body).toStrictEqual('string');
       expect(this.request.body).toStrictEqual('message=lol');
@@ -109,38 +125,45 @@ test('should accept opts.extendTypes.custom `foo/bar-x` as text', async () => {
       expect(this.body).toStrictEqual('message=lol');
     });
 
-  await request(app.callback())
-    .post('/')
-    .type('foo/bar-x')
-    .send('message=lol')
-    .expect(200)
-    .expect('message=lol');
+  await new Promise((resolve, reject) => {
+    request(server.callback())
+      .post('/')
+      .type('foo/bar-x')
+      .send('message=lol')
+      .expect(200)
+      .expect('message=lol')
+      .end((err) => (err ? reject(err) : resolve()));
+  });
 });
 
 test('should parse bodies using custom `opts.querystring` module', async () => {
-  const app = koa().use(
-    betterBody({
-      // eslint-disable-next-line global-require
-      querystring: require('qs'),
-    }),
-  );
-  app.use(function* sasa() {
-    expect(this.request.fields).toMatchObject({
-      a: {
-        b: {
-          c: '1',
+  const server = koa()
+    .use(
+      betterBody({
+        // eslint-disable-next-line global-require
+        querystring: require('qs'),
+      }),
+    )
+    .use(function* sasa() {
+      expect(this.request.fields).toMatchObject({
+        a: {
+          b: {
+            c: '1',
+          },
         },
-      },
-      c: '2',
+        c: '2',
+      });
+      this.body = JSON.stringify(this.request.fields);
     });
-    this.body = JSON.stringify(this.request.fields);
-  });
 
-  await request(app.callback())
-    .post('/')
-    .type('application/x-www-form-urlencoded')
-    .send('a[b][c]=1&c=2')
-    .expect(/{"a":{"b":{"c":"1"/)
-    .expect(/"c":"2"}/)
-    .expect(200);
+  await new Promise((resolve, reject) => {
+    request(server.callback())
+      .post('/')
+      .type('application/x-www-form-urlencoded')
+      .send('a[b][c]=1&c=2')
+      .expect(/{"a":{"b":{"c":"1"/)
+      .expect(/"c":"2"}/)
+      .expect(200)
+      .end((err) => (err ? reject(err) : resolve()));
+  });
 });
