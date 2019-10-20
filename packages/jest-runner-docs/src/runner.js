@@ -25,6 +25,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
     outfile: 'docs/README.md',
     ...conf,
   };
+  docksConfig.outfile = docksConfig.outfile || docksConfig.outFile;
 
   /** Find correct root path */
   let pkgRoot = isMonorepo(config.cwd)
@@ -53,10 +54,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
         };
       }
 
-      const outputFile = path.resolve(
-        pkgRoot,
-        docksConfig.outfile || docksConfig.outFile,
-      );
+      const outputFile = path.resolve(pkgRoot, docksConfig.outfile);
 
       const promo = docksConfig.promo
         ? `_Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._`
@@ -101,18 +99,26 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
     { testPath, start },
   );
 
-  if (outfile.hasError) return outfile.error;
-  if (outfile.skip) return outfile.skip;
+  let outFile = outfile;
+
+  if (!outFile) outFile = docksConfig.outfile;
+  if (outFile.hasError) return outFile.error;
+  if (outFile.skip) return outFile.skip;
 
   const postHook =
     typeof docksConfig.postHook === 'function'
       ? docksConfig.postHook
       : () => {};
 
-  await postHook({ pkgRoot, jestConfig: config, docksConfig, outfile });
-
   const res = await tryCatch(
-    () => postHook({ pkgRoot, jestConfig: config, docksConfig, outfile }),
+    () =>
+      postHook({
+        pkgRoot,
+        jestConfig: config,
+        docksConfig,
+        outFile,
+        outfile: outFile,
+      }),
     { start, testPath },
   );
   if (res.hasError) return res.error;
@@ -121,7 +127,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
     start,
     end: new Date(),
     test: {
-      path: outfile,
+      path: outFile,
       title: 'Docks',
     },
   });
