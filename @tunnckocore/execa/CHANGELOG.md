@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.13](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@4.5.12...@tunnckocore/execa@4.5.13) (2019-10-20)
+
+
+### Bug Fixes
+
+* **execa:** bump to latest ([1733c9d](https://github.com/tunnckoCore/opensource/commit/1733c9d))
+
+
+
+
+
 ## [4.5.12](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@4.5.11...@tunnckocore/execa@4.5.12) (2019-10-20)
 
 **Note:** Version bump only for package @tunnckocore/execa
