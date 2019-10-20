@@ -171,7 +171,7 @@ function createPkgJson() {
     },
     main: mainField,
     module: modField,
-    types: 'dist/types/index.d.ts',
+    typings: 'dist/typings/index.d.ts',
     files: [/build|bundle/.test(answers.publishType) ? 'dist' : 'src'],
     keywords: answers.keywords,
     scripts: {},

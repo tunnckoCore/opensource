@@ -5,6 +5,7 @@
 
 # Build environment
 dist
+@hela/dev/src/configs/*/config.js
 
 # Package managers lockfiles
 package-lock.json

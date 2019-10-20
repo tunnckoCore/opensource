@@ -5,9 +5,9 @@
     "baseUrl": ".",
     "declarationDir": "dist/types",
     "paths": {
-      "*": ["packages/*", "@tunnckocore/*"]
+      "*": ["packages/*", "@tunnckocore/*", "@hela/dev"]
     }
   },
-  "include": ["packages/*", "@tunnckocore/*"],
+  "include": ["packages/*", "@tunnckocore/*", "@hela/dev"],
   "exclude": ["node_modules"]
 }

@@ -1,6 +1,5 @@
 CHANGELOG.md
 dist
-build
 fixture
 fixtures
 __fixture__
@@ -16,4 +15,5 @@ __fixtures__
 *.js.snap
 *.log
 
-verb-repo-helpers-patch.js
+@hela/dev/src/configs/*/config.js
+patches

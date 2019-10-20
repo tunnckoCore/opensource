@@ -1,0 +1,46 @@
+{
+  "name": "@hela/dev",
+  "version": "3.0.0-alpha.91",
+  "description": "WIP: Powerful software development experience",
+  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest",
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "license": "MPL-2.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "typings": "dist/typings/index.d.ts",
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "tunnckocorehq",
+    "tunnckocore-oss",
+    "hela",
+    "development",
+    "developer-experience",
+    "dx",
+    "dev",
+    "wrapper",
+    "cli",
+    "command-line",
+    "runner"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "@hela/core": "^3.0.0-alpha.71",
+    "@tunnckocore/jest-runner-babel": "^3.4.3",
+    "@tunnckocore/jest-runner-eslint": "^0.6.3",
+    "@tunnckocore/utils": "^0.9.6",
+    "jest": "^24.9.0",
+    "jest-runner-docs": "^0.2.3",
+    "jest-runner-rollup": "^0.4.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "next"
+  },
+  "licenseStart": 2019
+}
