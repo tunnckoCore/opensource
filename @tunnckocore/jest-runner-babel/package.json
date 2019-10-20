@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/jest-runner-babel",
-  "version": "3.4.4",
+  "version": "3.4.5",
   "description": "Fork of the original Jest Runner for Babel and a lot better, plays nicely with monorepos",
   "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel",
   "homepage": "https://tunnckocore.com/opensource",
@@ -44,7 +44,7 @@
     "@babel/core": "^7.6.0"
   },
   "dependencies": {
-    "@tunnckocore/create-jest-runner": "^0.8.5",
+    "@tunnckocore/create-jest-runner": "^0.8.6",
     "cosmiconfig": "^5.2.1"
   },
   "publishConfig": {
