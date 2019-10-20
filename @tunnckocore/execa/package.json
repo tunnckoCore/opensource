@@ -13,11 +13,11 @@
   "engines": {
     "node": ">=8.11"
   },
-  "main": "dist/main/index.js",
-  "module": "dist/module/index.js",
-  "typings": "dist/types/index.d.ts",
+  "main": "src/main.js",
+  "module": "src/index.js",
+  "typings": "src/index.d.ts",
   "files": [
-    "dist"
+    "src"
   ],
   "keywords": [
     "bin",
@@ -45,6 +45,7 @@
   ],
   "scripts": {},
   "dependencies": {
+    "esm": "^3.2.25",
     "execa": "^3.2.0",
     "p-map": "^3.0.0"
   },

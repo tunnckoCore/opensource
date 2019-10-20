@@ -8,17 +8,11 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap --since",
-    "now-build": "yarn test",
-    "build": "jest -c jest/build.js --onlyChanged",
-    "bundle": "jest -c jest/bundle.js --onlyChanged",
     "clean:dist": "rm -rf packages/*/dist @tunnckocore/*/dist",
     "clean:fresh": "lerna clean -y && rm -rf node_modules",
     "cleanup": "yarn clean:dist && yarn clean:fresh",
     "cr": "node create-package.js",
-    "docs": "jest -c jest/docs.js --onlyChanged",
     "fmt": "prettier '**/*' --write",
-    "jest:all": "jest -c jest/full.js --onlyChanged",
-    "lint": "jest -c jest/lint.js --onlyChanged",
     "hela": "node node_modules/@hela/cli/dist/build/cjs/cli.js",
     "patch:hela": "cp patches/hela-cli/index.js node_modules/@hela/cli/dist/build/cjs/index.js",
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
@@ -28,8 +22,7 @@
     "refresh": "yarn cleanup && yarn setup",
     "release": "lerna version && lerna publish from-package",
     "setup": "yarn && yarn bootstrap",
-    "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
-    "test": "jest -c jest/test.js"
+    "setup:ci": "yarn --frozen-lockfile && yarn bootstrap"
   },
   "dependencies": {
     "@babel/cli": "^7.6.0",
@@ -38,6 +31,7 @@
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "@hela/cli": "^3.0.0-alpha.91",
+    "@hela/dev": "^3.0.0-alpha.141",
     "@wessberg/rollup-plugin-ts": "^1.1.73",
     "builtin-modules": "^3.1.0",
     "enquirer": "^2.3.2",
@@ -65,6 +59,9 @@
       "@commitlint/config-conventional"
     ]
   },
+  "hela": {
+    "extends": "@hela/dev"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "echo 'yarn run pre-commit'",
@@ -73,7 +70,6 @@
   },
   "meta": {
     "build": [
-      "@tunnckocore/execa",
       "koa-better-body"
     ],
     "bundle": [

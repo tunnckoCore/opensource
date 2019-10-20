@@ -1,5 +1,5 @@
 const path = require('path');
-const utils = require('../@tunnckocore/utils/src');
+const utils = require('@tunnckocore/utils');
 
 const ROOT = path.dirname(__dirname);
 const { exts, alias } = utils.createAliases(ROOT);
