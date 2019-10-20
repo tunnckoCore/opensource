@@ -2,7 +2,8 @@ CHANGELOG.md
 README.md
 *.d.ts
 recipes
-verb-repo-helpers-patch.js
+patches
+@hela/dev/src/configs/*/config.js
 
 *.tsbuildinfo
 .cache
