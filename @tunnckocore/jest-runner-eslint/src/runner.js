@@ -5,6 +5,8 @@ const { CLIEngine } = require('eslint');
 
 const explorer = cosmiconfig('jest-runner');
 
+process.env.NODE_ENV = 'lint';
+
 module.exports = async function jestRunnerESLint({ testPath, config }) {
   const start = Date.now();
   const options = normalizeOptions(explorer.searchSync(), config.rootDir);

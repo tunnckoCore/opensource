@@ -2,18 +2,37 @@ const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const cosmiconfig = require('cosmiconfig');
-const { pass, fail } = require('@tunnckocore/create-jest-runner');
-const { transformFileSync } = require('@babel/core');
+const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
+const { transformFileSync, loadPartialConfig } = require('@babel/core');
 
 const explorer = cosmiconfig('jest-runner');
 
 const isWin32 = os.platform() === 'win32';
+
+process.env.NODE_ENV = 'build';
 
 /* eslint max-statements: ["error", 25] */
 module.exports = async function jestRunnerBabel({ testPath, config }) {
   const start = new Date();
   let options = normalizeRunnerConfig(explorer.searchSync());
   const cfgs = [].concat(options.babel).filter(Boolean);
+
+  if (cfgs.length === 0) {
+    const babelCfg = loadPartialConfig();
+
+    if (babelCfg.config) {
+      cfgs.push(babelCfg.options);
+    } else {
+      return skip({
+        start,
+        end: new Date(),
+        test: {
+          path: testPath,
+          title: 'Babel',
+        },
+      });
+    }
+  }
 
   const testResults = await Promise.all(
     cfgs.reduce((acc, { config: cfg, ...opts }) => {

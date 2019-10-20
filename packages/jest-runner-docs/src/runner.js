@@ -11,6 +11,8 @@ const docks = require('./docks');
 const jestRunnerConfig = cosmiconfig('jest-runner');
 const jestRunnerDocks = cosmiconfig('docks');
 
+process.env.NODE_ENV = 'docs';
+
 module.exports = async function jestRunnerDocs({ testPath, config }) {
   const start = new Date();
   const conf = await tryLoadConfig(testPath, start);

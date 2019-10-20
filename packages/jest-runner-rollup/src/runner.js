@@ -21,6 +21,8 @@ const CACHE_DIR = path.join(
   'jest-runner-rollup',
 );
 
+process.env.NODE_ENV = 'bundle';
+
 /* eslint-disable max-statements */
 module.exports = async function jestRunnerRollup({ testPath, config }) {
   const start = new Date();
