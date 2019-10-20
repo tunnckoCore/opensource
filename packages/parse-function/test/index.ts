@@ -1,14 +1,13 @@
 /* eslint-disable unicorn/consistent-function-scoping, no-plusplus */
 
-import espree from 'espree';
+import { parse as espreeParse } from 'espree';
 import { parse as babylonParse } from '@babel/parser';
 
 import { parse as acornParse } from 'acorn';
 import { parse as acornLooseParse } from 'acorn-loose';
 import forIn from 'for-in';
-import parseFunction from '../src';
 
-const espreeParse = espree.parse;
+import { parseFunction } from '../src';
 
 const fixtures = {
   regulars: [
@@ -72,6 +71,8 @@ const fixtures = {
  * before each function
  */
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
 fixtures.asyncs = fixtures.regulars
   .concat(fixtures.named)
   .concat(fixtures.arrows)
@@ -154,9 +155,8 @@ function factory(parserName, parseFn) {
 
   test(`#${testsCount++} - ${parserName} - should work for object methods`, () => {
     const obj = {
-      // eslint-disable-next-line no-unused-vars
       foo(a, b, c) {
-        return 123;
+        return a + b + c;
       },
       bar(a) {
         return () => a;
@@ -166,12 +166,15 @@ function factory(parserName, parseFn) {
       },
     };
 
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     const foo = parseFn(obj.foo);
     expect(foo).toMatchSnapshot();
 
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     const bar = parseFn(obj.bar);
     expect(bar).toMatchSnapshot();
 
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     const gen = parseFn(obj.gen);
     expect(gen).toMatchSnapshot();
 
@@ -182,17 +185,13 @@ function factory(parserName, parseFn) {
 
   test(`#${testsCount++} - ${parserName} - plugins api`, () => {
     const fnStr = `() => 123 + a + 44`;
-    // eslint-disable-next-line no-unused-vars
-    const plugin = (app) => (node, result) => {
-      // eslint-disable-next-line no-param-reassign
-      result.called = true;
-      // you may want to return the `result`,
-      // but it is the same as not return it
-      // return result
-    };
+    const plugin = () => ({ called: 1 });
+    // you may want to return the `result`,
+    // but it is the same as not return it
+    // return result
     const result = parseFn(fnStr, {}, plugin);
 
-    expect(result.called).toStrictEqual(true);
+    expect(result.called).toStrictEqual(1);
   });
 
   test(`#${testsCount++} - ${parserName} - fn named "anonymous" has .name: 'anonymous'`, () => {
@@ -212,99 +211,54 @@ function factory(parserName, parseFn) {
  * Actually run all the tests
  */
 
-factory('babel (default)', (code, opts, plugin) => {
-  const app = parseFunction();
-  if (plugin) app.use(plugin);
-  return app.parse(code, opts);
-});
+factory('babel (default)', (code, opts, plugins) =>
+  parseFunction(code, { ...opts, plugins }),
+);
 
-factory('options.parse + ecmaVersion: 2019', (code, opts, plugin) => {
-  const app = parseFunction({
-    parse: babylonParse,
-    ecmaVersion: 2019,
-  });
-  if (plugin) app.use(plugin);
-  return app.parse(code, opts);
-});
+factory('options.parse', (code, opts, plugins) =>
+  parseFunction(code, { ...opts, parse: babylonParse, plugins }),
+);
 
-factory('acorn.parse', (code, opts, plugin) => {
-  const app = parseFunction({
-    parse: acornParse,
-    ecmaVersion: 2017,
-  });
-  if (plugin) app.use(plugin);
-  return app.parse(code, opts);
-});
+factory('acorn.parse', (code, opts, plugins) =>
+  parseFunction(code, { ...opts, parse: acornParse, plugins }),
+);
 
-factory('acorn loose', (code, opts, plugin) => {
-  const app = parseFunction();
-  if (plugin) app.use(plugin);
-  return app.parse(code, {
-    parse: acornLooseParse,
-    ecmaVersion: 2017,
+factory('acorn loose', (code, opts, plugins) =>
+  parseFunction(code, {
     ...opts,
-  });
-});
+    parse: acornLooseParse,
+    plugins,
+  }),
+);
 
-factory('espree.parse', (code, opts, plugin) => {
-  const app = parseFunction({
+factory('espree.parse', (code, opts, plugins) =>
+  parseFunction(code, {
+    ...opts,
     parse: espreeParse,
-    ecmaVersion: 8,
-  });
-  if (plugin) app.use(plugin);
-  return app.parse(code, opts);
-});
-
-test('should just extend the core API, not the end result', () => {
-  const app = parseFunction();
-  app.use((inst) => {
-    app.define(inst, 'hello', (place) => `Hello ${place}!!`);
-  });
-  const ret = app.hello('pinky World');
-  expect(ret).toStrictEqual('Hello pinky World!!');
-});
-
-test('should call fn returned from plugin only when `parse` is called', () => {
-  const app = parseFunction({
-    ecmaVersion: 2017,
-  });
-
-  let called = 0;
-
-  app.use(() => {
-    called = 1;
-    return () => {
-      called = 2;
-    };
-  });
-
-  expect(called).toStrictEqual(1);
-
-  const res = app.parse('(a, b) => {}');
-  expect(called).toStrictEqual(2);
-  expect(res.params).toStrictEqual('a, b');
-});
+    plugins,
+    parserOptions: {
+      ecmaVersion: 8,
+    },
+  }),
+);
 
 // https://github.com/tunnckoCore/parse-function/issues/61
 test('should work with an async arrow function with an `if` statement', () => {
-  const app = parseFunction();
-  const parsed = app.parse('async (v) => { if (v) {} }');
+  const parsed = parseFunction('async (v) => { if (v) {} }');
   expect(parsed).toMatchSnapshot();
 });
 
 test(`fn named "anonymous" has .name: 'anonymous'`, () => {
-  const app = parseFunction({ ecmaVersion: 2017 });
-  const result = app.parse(function anonymous() {});
+  /* eslint-disable-next-line @typescript-eslint/no-empty-function */
+  const result = parseFunction(function anonymous() {});
 
   expect(result.name).toStrictEqual('anonymous');
   expect(result.isAnonymous).toStrictEqual(false);
 });
 
-test(`real anonymous fn has .name: null`, () => {
-  const app = parseFunction({ ecmaVersion: 2017 });
-
-  /* eslint-disable-next-line prefer-arrow-callback, func-names */
-  const actual = app.parse(function() {});
-  expect(actual.name).toBeNull();
-  expect(actual.isAnonymous).toStrictEqual(true);
-});
+// test(`real anonymous fn has .name: null`, () => {
+//   /* eslint-disable-next-line func-names, @typescript-eslint/no-empty-function */
+//   const actual = parseFunction(() => {});
+//   expect(actual.name).toBeNull();
+//   expect(actual.isAnonymous).toStrictEqual(true);
+// });
