@@ -70,10 +70,10 @@
   },
   "meta": {
     "build": [
+      "@tunnckocore/execa",
       "koa-better-body"
     ],
     "bundle": [
-      "@tunnckocore/execa",
       "parse-function"
     ]
   },

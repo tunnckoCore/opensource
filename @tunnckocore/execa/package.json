@@ -13,8 +13,8 @@
   "engines": {
     "node": ">=8.11"
   },
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
   "typings": "dist/types/index.d.ts",
   "files": [
     "dist"
