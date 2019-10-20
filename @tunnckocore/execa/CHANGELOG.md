@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.11](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@4.5.7...@tunnckocore/execa@4.5.11) (2019-10-20)
+
+
+### Bug Fixes
+
+* bugs on distributed ([949c9e1](https://github.com/tunnckoCore/opensource/commit/949c9e1))
+* **execa:** build instead of bundle ([e98882f](https://github.com/tunnckoCore/opensource/commit/e98882f))
+* **execa:** test tweak for windows ([33ada86](https://github.com/tunnckoCore/opensource/commit/33ada86))
+
+
+
+
+
 ## [4.5.7](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@4.5.6...@tunnckocore/execa@4.5.7) (2019-10-18)
 
 

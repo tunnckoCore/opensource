@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.5](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/create-jest-runner@0.8.3...@tunnckocore/create-jest-runner@0.8.5) (2019-10-20)
+
+
+### Bug Fixes
+
+* bugs on distributed ([949c9e1](https://github.com/tunnckoCore/opensource/commit/949c9e1))
+
+
+
+
+
 ## [0.8.3](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/create-jest-runner@0.8.2...@tunnckocore/create-jest-runner@0.8.3) (2019-10-18)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.7](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/babel-preset@0.3.6...@tunnckocore/babel-preset@0.3.7) (2019-10-20)
+
+
+### Bug Fixes
+
+* **@tunnckocore/babel-preset:** tweaks ([2b529c1](https://github.com/tunnckoCore/opensource/commit/2b529c1))
+
+
+
+
+
 ## [0.3.6](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/babel-preset@0.3.5...@tunnckocore/babel-preset@0.3.6) (2019-10-18)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.8](https://github.com/tunnckoCore/opensource/compare/koa-better-body@3.1.7...koa-better-body@3.1.8) (2019-10-20)
+
+
+### Bug Fixes
+
+* **jest-runner-docs:** handle errors in postHook ([c7c44de](https://github.com/tunnckoCore/opensource/commit/c7c44de))
+* **jest-runner-docs:** typos ([8edc954](https://github.com/tunnckoCore/opensource/commit/8edc954))
+* **koa-better-body:** switch to use supertest#end in tests ([b27c462](https://github.com/tunnckoCore/opensource/commit/b27c462))
+* dist files, docs runner updates, docs ([c021464](https://github.com/tunnckoCore/opensource/commit/c021464)), closes [#63](https://github.com/tunnckoCore/opensource/issues/63)
+
+
+
+
+
 ## [3.1.7](https://github.com/tunnckoCore/opensource/compare/koa-better-body@3.1.6...koa-better-body@3.1.7) (2019-10-18)
 
 

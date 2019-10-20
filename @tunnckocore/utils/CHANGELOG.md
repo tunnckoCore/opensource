@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.7](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@0.9.6...@tunnckocore/utils@0.9.7) (2019-10-20)
+
+
+### Bug Fixes
+
+* **utils:** next batch of tests updates for windows ([6f3edfd](https://github.com/tunnckoCore/opensource/commit/6f3edfd))
+* **utils:** update tests for node < 12 ([4fa1f00](https://github.com/tunnckoCore/opensource/commit/4fa1f00))
+
+
+
+
+
 ## [0.9.6](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@0.9.5...@tunnckocore/utils@0.9.6) (2019-10-18)
 
 
