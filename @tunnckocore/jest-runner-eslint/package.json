@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/jest-runner-eslint",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "Fork of the original Jest Runner for ESLint",
   "repository": {
     "type": "git",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.6](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@3.4.5...@tunnckocore/jest-runner-babel@3.4.6) (2019-10-20)
+
+
+### Bug Fixes
+
+* **jest-runners:** force set NODE_ENV to different than "test" ([c2d94e2](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/commit/c2d94e2))
+
+
+
+
+
 ## [3.4.5](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@3.4.4...@tunnckocore/jest-runner-babel@3.4.5) (2019-10-20)
 
 **Note:** Version bump only for package @tunnckocore/jest-runner-babel

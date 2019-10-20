@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.6](https://github.com/tunnckoCore/opensource/compare/jest-runner-rollup@0.4.5...jest-runner-rollup@0.4.6) (2019-10-20)
+
+
+### Bug Fixes
+
+* **jest-runners:** force set NODE_ENV to different than "test" ([c2d94e2](https://github.com/tunnckoCore/opensource/commit/c2d94e2))
+
+
+
+
+
 ## [0.4.5](https://github.com/tunnckoCore/opensource/compare/jest-runner-rollup@0.4.4...jest-runner-rollup@0.4.5) (2019-10-20)
 
 **Note:** Version bump only for package jest-runner-rollup

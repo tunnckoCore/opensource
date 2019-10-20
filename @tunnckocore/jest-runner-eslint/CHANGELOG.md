@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.6](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-eslint@0.6.5...@tunnckocore/jest-runner-eslint@0.6.6) (2019-10-20)
+
+
+### Bug Fixes
+
+* **jest-runners:** force set NODE_ENV to different than "test" ([c2d94e2](https://github.com/tunnckoCore/opensource/commit/c2d94e2))
+
+
+
+
+
 ## [0.6.5](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-eslint@0.6.4...@tunnckocore/jest-runner-eslint@0.6.5) (2019-10-20)
 
 **Note:** Version bump only for package @tunnckocore/jest-runner-eslint
