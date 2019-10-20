@@ -6,7 +6,7 @@ const pkg = require('../package.json');
 
 const esmRequire = esmLoader(module);
 
-const mod = esmRequire(path.join(__dirname, pkg.module));
+const mod = esmRequire(path.join(path.dirname(__dirname), pkg.module));
 
 // eslint-disable-next-line no-underscore-dangle
 const ___exportsWithoutDefault = Object.keys(mod)
