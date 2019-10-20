@@ -2,12 +2,12 @@ const path = require('path');
 const utils = require('../@tunnckocore/utils/src');
 
 const ROOT = path.dirname(__dirname);
-const { alias, exts, workspaces } = utils.createAliases(ROOT, 'src');
+const { alias, exts } = utils.createAliases(ROOT);
 
 module.exports = {
   rootDir: ROOT,
   displayName: 'lint',
-  testMatch: workspaces.map((ws) => `<rootDir>/${ws}/*/src/**/*`),
+  testMatch: Object.values(alias).map((source) => `${source}/**/*`),
   testPathIgnorePatterns: [
     /node_modules/.toString(),
     /(?:__)?(?:fixtures?|supports?|shared)(?:__)?/.toString(),

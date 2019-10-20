@@ -2,7 +2,7 @@ const path = require('path');
 const utils = require('../@tunnckocore/utils/src');
 
 const ROOT = path.dirname(__dirname);
-const { workspaces } = utils.createAliases(ROOT, 'src');
+const { workspaces } = utils.createAliases(ROOT);
 
 const exts = ['js', 'jsx', 'ts', 'tsx'];
 
