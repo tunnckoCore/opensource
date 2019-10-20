@@ -99,11 +99,8 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
     { testPath, start },
   );
 
-  let outFile = outfile;
-
-  if (!outFile) outFile = docksConfig.outfile;
-  if (outFile.hasError) return outFile.error;
-  if (outFile.skip) return outFile.skip;
+  if (outfile.hasError) return outfile.error;
+  if (outfile.skip) return outfile.skip;
 
   const postHook =
     typeof docksConfig.postHook === 'function'
@@ -116,18 +113,18 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
         pkgRoot,
         jestConfig: config,
         docksConfig,
-        outFile,
-        outfile: outFile,
+        outfile,
+        outFile: outfile,
       }),
     { start, testPath },
   );
-  if (res.hasError) return res.error;
+  if (res && res.hasError) return res.error;
 
   return pass({
     start,
     end: new Date(),
     test: {
-      path: outFile,
+      path: outfile,
       title: 'Docks',
     },
   });
