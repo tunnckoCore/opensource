@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.7](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@0.2.6...jest-runner-docs@0.2.7) (2019-10-20)
+
+
+### Bug Fixes
+
+* **jest-runner-docs:** tweaks for when no config ([fdc9cc1](https://github.com/tunnckoCore/opensource/commit/fdc9cc1))
+
+
+
+
+
 ## [0.2.6](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@0.2.5...jest-runner-docs@0.2.6) (2019-10-20)
 
 

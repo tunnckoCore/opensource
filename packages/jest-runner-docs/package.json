@@ -1,6 +1,6 @@
 {
   "name": "jest-runner-docs",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Jest runner for API documentation generation from code comments, supports TypeScript. Very stable and reliable, based on `parse-comments` package",
   "repository": {
     "type": "git",
