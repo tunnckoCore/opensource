@@ -1,6 +1,6 @@
 {
   "name": "jest-runner-rollup",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "Jest runner for Rollup, plays very very nicely in monorepo scenarios",
   "repository": {
     "type": "git",
