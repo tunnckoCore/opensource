@@ -45,16 +45,7 @@ jobs:
         run: yarn start docs
       - name: Formatting the whole repository with Prettier
         run: yarn start format
-  # release:
-  #   needs: test
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v1
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 12
-  #         registry-url: 'https://registry.npmjs.org/'
-  #     - name: Prepare for Lerna Publishing
+  #     - name: Prepare for Publishing and Releasing
   #       run: |
   #         git config --global user.name "Charlike Mike Reagent"
   #         git config --global user.email "opensource@tunnckocore.com"
@@ -69,7 +60,7 @@ jobs:
   #         NPM_TOKEN: ${{secrets.NPM_TOKEN}}
   #         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
   #         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-  #     - name: Lerna Publishing
+  #     - name: Publishing and Releasing
   #       run: npx lerna version --yes && npx lerna publish from-package --yes
   #       if: github.event_name == 'push'
   #       env:
