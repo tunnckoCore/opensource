@@ -54,9 +54,7 @@ jobs:
           git config --global push.followTags true
           npm set //registry.npmjs.org/:_authToken $NPM_TOKEN
           git checkout master
-
-          # git remote set-url origin https://tunnckocore:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          # git checkout $TRAVIS_BRANCH
+          # git remote set-url origin https://tunnckoCore:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
         if: github.event_name == 'push'
         env:
           CI: true
@@ -65,7 +63,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           GIT_SIGNING_KEY: ${{secrets.GIT_SIGNING_KEY}}
       - name: Lerna Publishing
-        run: npx lerna version && npx lerna publish from-package
+        run: npx lerna version --yes && npx lerna publish from-package --yes
         if: github.event_name == 'push'
         env:
           CI: true
