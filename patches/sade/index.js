@@ -202,7 +202,7 @@ class Sade {
   }
 
   help(str) {
-    console.log($.help(this.bin, this.tree, str || DEF, this.single));
+    console.log($.help(this, str || DEF));
   }
 
   _version() {

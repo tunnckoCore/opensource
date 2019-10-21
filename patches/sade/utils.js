@@ -46,11 +46,11 @@ function section(str, arr, fn) {
   return out + NL;
 }
 
-exports.help = function(bin, tree, key, single) {
+exports.help = function({ bin, tree, single, commandAliases }, key) {
   let out = '',
-    cmd = tree.get(key),
+    cmd = tree[key],
     pfx = `$ ${bin}`,
-    all = tree.get(ALL);
+    all = tree[ALL];
   let prefix = (s) => `${pfx} ${s}`.replace(/\s+/g, ' ');
 
   // update ALL & CMD options
@@ -66,11 +66,17 @@ exports.help = function(bin, tree, key, single) {
   out += section('Usage', [cmd.usage], prefix);
 
   if (!single && key === DEF) {
+    const cmdAliases = Object.values(commandAliases).reduce((acc, aliases) => {
+      return acc.concat(aliases);
+    }, []);
+
     // General help :: print all non-internal commands & their 1st line of text
-    let cmds = Array.from(tree.keys()).filter((k) => !/__/.test(k));
+    let cmds = Object.keys(tree).filter(
+      (k) => !/__/.test(k) && !cmdAliases.includes(k),
+    );
 
     let text = cmds.map((k) => {
-      const cmdTree = tree.get(k);
+      const cmdTree = tree[k];
       const desc = (cmdTree.describe || [''])[0];
 
       return [k, desc];
@@ -108,11 +114,9 @@ exports.sentences = function(str) {
 };
 
 exports.existsAsCommandAlias = function(val, commandAliases) {
-  let found = false;
-
-  Object.values(commandAliases).forEach((aliases) => {
-    found = aliases.includes(val);
-  });
+  let found = Object.values(commandAliases).find((aliases) =>
+    aliases.includes(val),
+  );
 
   return found;
 };

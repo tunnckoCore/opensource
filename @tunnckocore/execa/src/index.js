@@ -41,6 +41,7 @@ export async function exec(cmds, options) {
   const { concurrency = Infinity, ...opts } = {
     preferLocal: true,
     ...options,
+    all: true,
   };
 
   return pMap(commands, (cmd) => execaOrig.command(cmd, opts), { concurrency });

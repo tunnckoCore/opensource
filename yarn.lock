@@ -1125,10 +1125,10 @@
     dargs "^7.0.0"
     sade "^1.6.1"
 
-"@hela/dev@^3.0.0-alpha.161":
-  version "3.0.0-alpha.161"
-  resolved "https://registry.yarnpkg.com/@hela/dev/-/dev-3.0.0-alpha.161.tgz#fc3141c6cb5d9a4e9d3a726580a7fbf974ea3392"
-  integrity sha512-c7CcDqdASyRN1G4H6vFhmfN7nZe6+2QvQoJFGLgnIXJjxmfOofkj4lHo15ORLmtGD8qStitWA8YDnBu+IGeG5w==
+"@hela/dev@^3.0.0-alpha.201":
+  version "3.0.0-alpha.201"
+  resolved "https://registry.yarnpkg.com/@hela/dev/-/dev-3.0.0-alpha.201.tgz#6ad7127025cc55a57cf90430b48406189f7ab864"
+  integrity sha512-/z0yzhcj+Pt1GqfCV1u+YITKgr+Y4VlTnBHiwbSUxLBawDdAc5HuJM3MDrdJ2XVNWqVKYRgmsL4TTTvSw4yO1w==
   dependencies:
     "@hela/core" "^3.0.0-alpha.91"
     "@tunnckocore/jest-runner-babel" "^3.4.6"
@@ -1137,6 +1137,9 @@
     jest "^24.9.0"
     jest-runner-docs "^0.2.8"
     jest-runner-rollup "^0.4.7"
+    prettier "^1.18.2"
+    prettier-plugin-pkg "^0.4.4"
+    prettier-plugin-sh "^0.2.0"
 
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"

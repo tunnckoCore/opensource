@@ -132,7 +132,7 @@ async function main() {
 main();
 ```
 
-### [.shell](./src/index.js#L94)
+### [.shell](./src/index.js#L95)
 
 Similar to `exec`, but also **can** access the system's environment variables from the command.
 
@@ -182,7 +182,7 @@ async function main() {
 main();
 ```
 
-### [execa](./src/index.js#L120)
+### [execa](./src/index.js#L121)
 
 Same as [execa][]'s default export, see its documentation.
 Think of this as a mix of `child_process.execFile()` and `child_process.spawn()`.

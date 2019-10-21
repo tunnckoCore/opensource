@@ -20,7 +20,7 @@ module.exports = {
     outfile: '.verb.md',
     postHook: ({ pkgRoot }) => {
       /* eslint-disable-next-line global-require */
-      const { exec } = require('./@tunnckocore/execa/dist/cjs/index');
+      const { exec } = require('@tunnckocore/execa');
       return exec('verb', { cwd: pkgRoot });
     },
   },
