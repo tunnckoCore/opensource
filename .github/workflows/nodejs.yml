@@ -26,7 +26,7 @@ jobs:
       - name: Installing dependencies
         run: yarn setup:ci
       - name: Testing all packages
-        run: yarn start test
+        run: yarn start test --no-runInBand
   node12:
     env:
       CI: true
