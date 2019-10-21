@@ -25,6 +25,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Installing dependencies
         run: yarn setup:ci
+      - name: Testing all packages
+        run: yarn start test
   node12:
     env:
       CI: true
