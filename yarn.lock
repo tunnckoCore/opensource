@@ -1125,18 +1125,20 @@
     dargs "^7.0.0"
     sade "^1.6.1"
 
-"@hela/dev@^3.0.0-alpha.201":
-  version "3.0.0-alpha.201"
-  resolved "https://registry.yarnpkg.com/@hela/dev/-/dev-3.0.0-alpha.201.tgz#6ad7127025cc55a57cf90430b48406189f7ab864"
-  integrity sha512-/z0yzhcj+Pt1GqfCV1u+YITKgr+Y4VlTnBHiwbSUxLBawDdAc5HuJM3MDrdJ2XVNWqVKYRgmsL4TTTvSw4yO1w==
+"@hela/dev@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@hela/dev/-/dev-3.1.0.tgz#70286a3a70b902250dc0e988a9750b0d867a6e18"
+  integrity sha512-QH1MiK6qR/ndE3ZF4rCYdKQaYIuYEMaByw6gCc/kbdudijwiVnuWbxll/2mMgSATQY/zFVdYjSN+D1kyLGGmeg==
   dependencies:
     "@hela/core" "^3.0.0-alpha.91"
     "@tunnckocore/jest-runner-babel" "^3.4.6"
     "@tunnckocore/jest-runner-eslint" "^0.6.6"
     "@tunnckocore/utils" "^0.9.8"
+    is-ci "^2.0.0"
     jest "^24.9.0"
     jest-runner-docs "^0.2.8"
     jest-runner-rollup "^0.4.7"
+    picomatch "^2.0.7"
     prettier "^1.18.2"
     prettier-plugin-pkg "^0.4.4"
     prettier-plugin-sh "^0.2.0"
@@ -11123,7 +11125,7 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-picomatch@^2.0.4:
+picomatch@^2.0.4, picomatch@^2.0.7:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.0.7.tgz#514169d8c7cd0bdbeecc8a2609e34a7163de69f6"
   integrity sha512-oLHIdio3tZ0qH76NybpeneBhYVj0QFTfXEFTc/B3zKQspYfYYkWYgFsmzo+4kvId/bQRcNkVeguI3y+CD22BtA==

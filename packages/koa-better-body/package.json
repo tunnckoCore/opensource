@@ -110,5 +110,21 @@
     "lint": {
       "reflinks": true
     }
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/index.js": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      },
+      "src/utils.js": {
+        "statements": 100,
+        "branches": 88,
+        "functions": 91,
+        "lines": 100
+      }
+    }
   }
 }

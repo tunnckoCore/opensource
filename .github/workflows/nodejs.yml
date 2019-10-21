@@ -26,46 +26,45 @@ jobs:
         env:
           CI: true
       - name: Linting codebase with ESLint & Prettier
-        run: yarn hela lint
+        run: yarn start lint
         env:
           CI: true
       # - name: Type checking codebase
       #   run: yarn typecheck || yarn check || echo "No typescript, no type checking"
       - name: Running tests
-        run: yarn hela test
+        run: yarn start test
         env:
           CI: true
-
-  release:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: 'https://registry.npmjs.org/'
-      - name: Prepare for Lerna Publishing
-        run: |
-          git config --global user.name "Charlike Mike Reagent"
-          git config --global user.email "opensource@tunnckocore.com"
-          git config --global commit.gpgsign false
-          git config --global push.followTags true
-          npm set //registry.npmjs.org/:_authToken $NPM_TOKEN
-          git checkout master
-          git remote set-url origin https://tunnckoCore:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-        if: github.event_name == 'push'
-        env:
-          CI: true
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Lerna Publishing
-        run: npx lerna version --yes && npx lerna publish from-package --yes
-        if: github.event_name == 'push'
-        env:
-          CI: true
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          GIT_SIGNING_KEY: ${{secrets.GIT_SIGNING_KEY}}
+  # release:
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 12
+  #         registry-url: 'https://registry.npmjs.org/'
+  #     - name: Prepare for Lerna Publishing
+  #       run: |
+  #         git config --global user.name "Charlike Mike Reagent"
+  #         git config --global user.email "opensource@tunnckocore.com"
+  #         git config --global commit.gpgsign false
+  #         git config --global push.followTags true
+  #         npm set //registry.npmjs.org/:_authToken $NPM_TOKEN
+  #         git checkout master
+  #         git remote set-url origin https://tunnckoCore:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+  #       if: github.event_name == 'push'
+  #       env:
+  #         CI: true
+  #         NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+  #         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  #         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  #     - name: Lerna Publishing
+  #       run: npx lerna version --yes && npx lerna publish from-package --yes
+  #       if: github.event_name == 'push'
+  #       env:
+  #         CI: true
+  #         NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+  #         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  #         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  #         GIT_SIGNING_KEY: ${{secrets.GIT_SIGNING_KEY}}

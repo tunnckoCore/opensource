@@ -64,5 +64,15 @@
       "reflinks": true
     },
     "reflinks": []
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/runner.js": {
+        "statements": 11,
+        "branches": 0,
+        "functions": 0,
+        "lines": 12
+      }
+    }
   }
 }

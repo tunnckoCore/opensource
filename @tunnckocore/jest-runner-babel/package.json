@@ -68,5 +68,15 @@
       "reflinks": true
     },
     "reflinks": []
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 17,
+        "branches": 0,
+        "functions": 0,
+        "lines": 17
+      }
+    }
   }
 }

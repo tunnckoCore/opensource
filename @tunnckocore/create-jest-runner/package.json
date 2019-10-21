@@ -51,5 +51,39 @@
       "reflinks": true
     },
     "reflinks": []
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/fail.js": {
+        "statements": 66,
+        "branches": 0,
+        "functions": 0,
+        "lines": 66
+      },
+      "src/index.js": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      },
+      "src/pass.js": {
+        "statements": 66,
+        "branches": 100,
+        "functions": 0,
+        "lines": 66
+      },
+      "src/toTestResult.js": {
+        "statements": 33,
+        "branches": 0,
+        "functions": 0,
+        "lines": 33
+      },
+      "src/todo.js": {
+        "statements": 66,
+        "branches": 100,
+        "functions": 0,
+        "lines": 66
+      }
+    }
   }
 }
