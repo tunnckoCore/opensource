@@ -53,7 +53,7 @@ jobs:
           git config --global push.followTags true
           npm set //registry.npmjs.org/:_authToken $NPM_TOKEN
           git checkout master
-          # git remote set-url origin https://tunnckoCore:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          git remote set-url origin https://tunnckoCore:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
         if: github.event_name == 'push'
         env:
           CI: true
