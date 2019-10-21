@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  install:
+  test:
     env:
       CI: true
     strategy:
@@ -25,14 +25,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Installing dependencies
         run: yarn setup:ci
-  test:
-    needs: [install]
-    steps:
-      - name: Running tests
-        run: yarn start test
   node:
     env:
       CI: true
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js v12
