@@ -8,8 +8,8 @@ defaults: &defaults
 restore_modules_cache: &restore_modules_cache
   restore_cache:
     keys:
-      - repo-v1-{{ checksum "yarn.lock" }}
-      - repo-v1-
+      - repo-v321-{{ checksum "yarn.lock" }}
+      - repo-v321-
       # fallback to using the latest cache if no exact match is found
       - repo-
 
@@ -88,12 +88,12 @@ workflows:
       - test:
           requires:
             - lint
-      - format:
-          requires:
-            - lint
       - docs:
           requires:
-            - format
+            - test
+      - format:
+          requires:
+            - docs
       # - release:
       #     requires:
       #       - docs
