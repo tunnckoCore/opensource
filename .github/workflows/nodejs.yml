@@ -23,12 +23,18 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Installing dependencies
         run: yarn setup:ci
+        env:
+          CI: true
       - name: Linting codebase with ESLint & Prettier
         run: yarn hela lint
+        env:
+          CI: true
       # - name: Type checking codebase
       #   run: yarn typecheck || yarn check || echo "No typescript, no type checking"
       - name: Running tests
         run: yarn hela test
+        env:
+          CI: true
 
   publish-npm:
     needs: test
@@ -40,7 +46,8 @@ jobs:
           node-version: 12
           registry-url: 'https://registry.npmjs.org/'
       - name: Publish to NPM
-        run: yarn lerna --version
+        run: npx lerna --version
         if: github.event_name == 'push'
         env:
+          CI: true
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
