@@ -1,17 +1,9 @@
-const path = require('path');
-
 module.exports =
   process.env.NODE_ENV === 'test'
     ? {
         presets: [
           [
-            path.join(
-              __dirname,
-              '@tunnckocore',
-              'babel-preset',
-              'src',
-              'index.js',
-            ),
+            '@tunnckocore/babel-preset',
             {
               modules: 'commonjs',
               react: true,

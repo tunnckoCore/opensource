@@ -5,9 +5,9 @@
     "baseUrl": ".",
     "declarationDir": "dist/types",
     "paths": {
-      "*": ["packages/*", "@tunnckocore/*"]
+      "*": ["configs/*", "packages/*", "@tunnckocore/*"]
     }
   },
-  "include": ["packages/*", "@tunnckocore/*"],
+  "include": ["configs/*", "packages/*", "@tunnckocore/*"],
   "exclude": ["node_modules"]
 }

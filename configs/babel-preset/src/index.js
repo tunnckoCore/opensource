@@ -1,16 +1,16 @@
 /* eslint max-statements: ["error", 24] */
 /* eslint-disable global-require */
-const helpers = require('@babel/helper-plugin-utils');
 
 // 1. For nodejs projects, pass `node` option to desired nodejs version
 // 2. If you want old browsers, put browserslist config in your project,
 //    so Babel automatically will pick it up
 // 3. If you want modern browsers (esmodules compatible), pass `browsers: true`
 
-module.exports = helpers.declare((api, options) => {
+module.exports = (api, options) => {
   api.assertVersion(7);
 
   const opts = {
+    presetEnv: true,
     modules: 'commonjs',
     include: [],
     exclude: [
@@ -46,8 +46,12 @@ module.exports = helpers.declare((api, options) => {
     };
   }
 
+  opts.presetEnv = opts.presetEnv !== false ? environmentOptions : false;
+
   const plugins = ['@babel/plugin-syntax-import-meta'];
-  const presets = [[require('@babel/preset-env'), environmentOptions]];
+  const presets = [
+    opts.presetEnv && [require('@babel/preset-env'), opts.presetEnv],
+  ].filter(Boolean);
 
   if (opts.typescript) {
     presets.push(require('@babel/preset-typescript'));
@@ -55,16 +59,12 @@ module.exports = helpers.declare((api, options) => {
 
   const reactPreset = [
     require('@babel/preset-react'),
-    {
-      development: api.env('development'),
-    },
+    { development: api.env('development') },
   ];
   const reactPlugin = api.env('production')
     ? [
         require('babel-plugin-transform-react-remove-prop-types'),
-        {
-          removeImport: true,
-        },
+        { removeImport: true },
       ]
     : undefined;
 
@@ -89,4 +89,4 @@ module.exports = helpers.declare((api, options) => {
           },
         ],
   };
-});
+};

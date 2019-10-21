@@ -3,12 +3,13 @@
   "homepage": "https://github.com/tunnckocore/opensource",
   "private": true,
   "workspaces": [
+    "configs/*",
     "packages/*",
     "@tunnckocore/*"
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap --since",
-    "clean:dist": "rm -rf packages/*/dist @tunnckocore/*/dist",
+    "clean:dist": "rm -rf configs/*/dist packages/*/dist @tunnckocore/*/dist",
     "clean:fresh": "lerna clean -y && rm -rf node_modules",
     "cleanup": "yarn clean:dist && yarn clean:fresh",
     "cr": "node create-package.js",

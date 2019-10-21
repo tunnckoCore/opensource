@@ -1,1 +1,1 @@
-module.exports = require('./@tunnckocore/prettier-config/index');
+module.exports = require('@tunnckocore/prettier-config');

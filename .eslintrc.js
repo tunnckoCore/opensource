@@ -1,1 +1,1 @@
-module.exports = require('./@tunnckocore/eslint-config/recommended');
+module.exports = require('@tunnckocore/eslint-config/recommended');
