@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.8](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/prettier-config@0.3.7...@tunnckocore/prettier-config@0.3.8) (2019-10-21)
+
+
+### Bug Fixes
+
+* move configs/presets to configs/ workspace, add tests to babel-preset ([bd7997e](https://github.com/tunnckoCore/opensource/commit/bd7997e9670f438f426946e649059441709bac0b))
+* update repository.directory, lus tweaks ([e3bee08](https://github.com/tunnckoCore/opensource/commit/e3bee0829a3956601a52245cbc54ede4766772c7))
+
+
+
+
+
 ## [0.3.7](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/prettier-config@0.3.6...@tunnckocore/prettier-config@0.3.7) (2019-10-20)
 
 **Note:** Version bump only for package @tunnckocore/prettier-config

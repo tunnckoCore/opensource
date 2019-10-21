@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/prettier-config",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Shareable Prettier config for all @tunnckoCore projects",
   "repository": {
     "type": "git",

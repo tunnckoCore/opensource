@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.14](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@4.5.13...@tunnckocore/execa@4.5.14) (2019-10-21)
+
+
+### Bug Fixes
+
+* tweak the esm bridge ([af39586](https://github.com/tunnckoCore/opensource/commit/af39586574e51f144e764688e8d722e30ab58e39))
+* update patches, configs, deps, execa ([f336f84](https://github.com/tunnckoCore/opensource/commit/f336f8414bc7013d07bc073fefa68ce025acfc76))
+* **@tunnckocore/execa:** do not build/bundle, use `esm` bridging ([5b899cf](https://github.com/tunnckoCore/opensource/commit/5b899cfed5e7e78a40da875f066715db79204a67))
+
+
+
+
+
 ## [4.5.13](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@4.5.12...@tunnckocore/execa@4.5.13) (2019-10-20)
 
 

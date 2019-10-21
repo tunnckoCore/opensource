@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.9](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@4.2.8...@tunnckocore/eslint-config@4.2.9) (2019-10-21)
+
+
+### Bug Fixes
+
+* move configs/presets to configs/ workspace, add tests to babel-preset ([bd7997e](https://github.com/tunnckoCore/opensource/commit/bd7997e9670f438f426946e649059441709bac0b))
+* update repository.directory, lus tweaks ([e3bee08](https://github.com/tunnckoCore/opensource/commit/e3bee0829a3956601a52245cbc54ede4766772c7))
+
+
+
+
+
 ## [4.2.8](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@4.2.7...@tunnckocore/eslint-config@4.2.8) (2019-10-20)
 
 **Note:** Version bump only for package @tunnckocore/eslint-config
