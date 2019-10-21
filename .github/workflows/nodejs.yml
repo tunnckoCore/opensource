@@ -53,6 +53,7 @@ jobs:
           git config --global commit.gpgsign true
           git config --global push.followTags true
           npm set //registry.npmjs.org/:_authToken $NPM_TOKEN
+          git checkout master
 
           # git remote set-url origin https://tunnckocore:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           # git checkout $TRAVIS_BRANCH
