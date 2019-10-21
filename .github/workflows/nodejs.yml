@@ -9,7 +9,9 @@ on:
       - master
 
 jobs:
-  test:
+  install:
+    env:
+      CI: true
     strategy:
       matrix:
         platform: [ubuntu-18.04, macos-latest]
@@ -23,18 +25,37 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Installing dependencies
         run: yarn setup:ci
-        env:
-          CI: true
-      - name: Linting codebase with ESLint & Prettier
-        run: yarn start lint
-        env:
-          CI: true
-      # - name: Type checking codebase
-      #   run: yarn typecheck || yarn check || echo "No typescript, no type checking"
+  test:
+    needs: [install]
+    steps:
       - name: Running tests
         run: yarn start test
-        env:
-          CI: true
+  node:
+    env:
+      CI: true
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js v12
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Installing dependencies
+        run: yarn setup:ci
+  lint:
+    needs: [node]
+    steps:
+      - name: Linting codebase with ESLint & Prettier
+        run: yarn start lint
+  docs:
+    needs: [node]
+    steps:
+      - name: Documentation API generation
+        run: yarn start docs
+  format:
+    needs: [docs]
+    steps:
+      - name: Formatting whole with Prettier
+        run: yarn start format
   # release:
   #   needs: test
   #   runs-on: ubuntu-latest
