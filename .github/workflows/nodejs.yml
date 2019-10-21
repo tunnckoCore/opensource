@@ -43,7 +43,7 @@ jobs:
         run: yarn start lint
       - name: Documentation API generation
         run: yarn start docs
-      - name: Formatting whole with Prettier
+      - name: Formatting the whole repository with Prettier
         run: yarn start format
   # release:
   #   needs: test
