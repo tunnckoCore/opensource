@@ -23,7 +23,7 @@ jobs:
           name: Installing dependencies
           command: yarn setup:ci
       - save_cache:
-          key: repo-v321--{{ checksum "yarn.lock" }}
+          key: repo-v321-{{ checksum "yarn.lock" }}
           paths: node_modules
       # - run:
       #     name: Remove node_modules to cleanup workspace
