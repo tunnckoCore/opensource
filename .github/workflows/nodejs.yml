@@ -38,11 +38,13 @@ jobs:
       - name: Installing dependencies
         run: yarn setup:ci
   lint:
+    runs-on: ubuntu-18.04
     needs: [node]
     steps:
       - name: Linting codebase with ESLint & Prettier
         run: yarn start lint
   docs:
+    runs-on: ubuntu-18.04
     needs: [node]
     steps:
       - name: Documentation API generation
