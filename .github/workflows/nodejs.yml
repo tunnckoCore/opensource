@@ -25,7 +25,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Installing dependencies
         run: yarn setup:ci
-  node:
+  node12:
     env:
       CI: true
     runs-on: ubuntu-18.04
@@ -37,25 +37,10 @@ jobs:
           node-version: '12.x'
       - name: Installing dependencies
         run: yarn setup:ci
-  lint:
-    needs: [node]
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v1
       - name: Linting codebase with ESLint & Prettier
         run: yarn start lint
-  docs:
-    needs: [node]
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v1
       - name: Documentation API generation
         run: yarn start docs
-  format:
-    needs: [docs]
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v1
       - name: Formatting whole with Prettier
         run: yarn start format
   # release:
