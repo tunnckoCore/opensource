@@ -59,11 +59,16 @@ async function main() {
   const tasksKeys = Object.keys(config);
   tasksKeys
     .filter((x) => x !== 'cwd')
-    .forEach((name) => {
+    .forEach((name, idx) => {
       const taskValue = config[name];
 
       if (taskValue && taskValue.isHela) {
         program.tree[name] = taskValue.tree[name];
+      }
+      if (idx === tasksKeys.length - 1) {
+        const instance = config[name]
+
+        program.commandAliases = instance.commandAliases
       }
     });
   return program.listen();
