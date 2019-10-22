@@ -1,23 +1,19 @@
 /* eslint-Xdisable import/no-extraneous-dependencies */
-const builtins = require('builtin-modules');
 const nodeResolve = require('rollup-plugin-node-resolve');
+const babel = require('rollup-plugin-babel');
 const commonjs = require('rollup-plugin-commonjs');
-const typescript = require('@wessberg/rollup-plugin-ts');
-const { terser } = require('rollup-plugin-terser');
+// const typescript = require('@wessberg/rollup-plugin-ts');
+// const { terser } = require('rollup-plugin-terser');
 const json = require('rollup-plugin-json');
+
+const { getWorkspacesAndExtensions } = require('@tunnckocore/utils');
+
+const { extensions } = getWorkspacesAndExtensions(__dirname);
 
 const fs = require('fs');
 const path = require('path');
 
-const externals = builtins.concat(
-  '@babel/core',
-  '@babel/parser',
-  'eslint',
-  // 'jest-worker',
-  // 'cosmiconfig',
-  'parse-comments',
-  // '@tunnckocore/create-jest-runner',
-);
+const externals = [].concat('@babel/core', '@babel/parser');
 
 const tunnckocoreInterop = `const ___exportsWithoutDefault = Object.keys(exports)
   .filter((x) => x !== 'default')
@@ -26,7 +22,7 @@ const tunnckocoreInterop = `const ___exportsWithoutDefault = Object.keys(exports
     return acc;
   }, {});
 
-module.exports = Object.assign(exports.default, ___exportsWithoutDefault);
+module.exports = Object.assign(exports.default || {}, ___exportsWithoutDefault);
 `;
 
 module.exports = {
@@ -122,36 +118,52 @@ module.exports = {
       preferConst: true,
       // include: 'node_modules/**',
     }),
-    typescript({
-      transpiler: 'babel',
-      tsconfig: './tsconfig.json',
-      babelConfig: {
-        presets: [
-          [
-            '@tunnckocore/babel-preset',
-            {
-              react: true,
-              typescript: true,
-              node: '8.11',
-            },
-          ],
+    babel({
+      extensions,
+      presets: [
+        [
+          '@tunnckocore/babel-preset',
+          {
+            modules: false,
+            react: true,
+            typescript: true,
+            node: '10.13',
+          },
         ],
-        comments: false,
-        sourceMaps: true,
-      },
+      ],
+      comments: false,
+      sourceMaps: true,
     }),
-    terser({
-      sourcemap: true,
-      output: { comments: false },
-      compress: {
-        keep_infinity: true,
-        pure_getters: true,
-        passes: 10,
-      },
-      ecma: 9,
-      toplevel: true,
-      warnings: true,
-    }),
+    // typescript({
+    //   transpiler: 'babel',
+    //   tsconfig: './tsconfig.json',
+    //   babelConfig: {
+    //     presets: [
+    //       [
+    //         '@tunnckocore/babel-preset',
+    //         {
+    //           react: true,
+    //           typescript: true,
+    //           node: '8.11',
+    //         },
+    //       ],
+    //     ],
+    //     comments: false,
+    //     sourceMaps: true,
+    //   },
+    // }),
+    // terser({
+    //   sourcemap: true,
+    //   output: { comments: false },
+    //   compress: {
+    //     keep_infinity: true,
+    //     pure_getters: true,
+    //     passes: 10,
+    //   },
+    //   ecma: 9,
+    //   toplevel: true,
+    //   warnings: true,
+    // }),
   ],
   output: [
     {

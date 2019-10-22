@@ -11,7 +11,7 @@
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",
   "engines": {
-    "node": ">=8.11"
+    "node": ">=10.13"
   },
   "main": "src/index.js",
   "module": "src/index.js",
@@ -41,6 +41,7 @@
   "dependencies": {
     "@tunnckocore/create-jest-runner": "^0.8.6",
     "@tunnckocore/utils": "^0.9.8",
+    "builtin-modules": "^3.1.0",
     "cosmiconfig": "^5.2.1"
   },
   "publishConfig": {

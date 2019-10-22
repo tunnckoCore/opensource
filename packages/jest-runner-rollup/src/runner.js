@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const builtins = require('builtin-modules');
 const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
 const {
   getWorkspacesAndExtensions,
@@ -38,6 +39,11 @@ module.exports = async function jestRunnerRollup({ testPath, config }) {
   );
   if (inputFile.hasError) return inputFile.error;
 
+  /** Find correct root path */
+  const pkgRoot = isMonorepo(config.cwd)
+    ? path.dirname(path.dirname(inputFile))
+    : config.rootDir;
+
   const { hooks, skipCached = false } = cfg;
   const allHooks = {
     onPkg: typeof hooks.onPkg === 'function' ? hooks.onPkg : () => {},
@@ -65,6 +71,18 @@ module.exports = async function jestRunnerRollup({ testPath, config }) {
     }
   }
 
+  /** Some sane defaults */
+  const { dependencies = {} } = await tryCatch(
+    // eslint-disable-next-line import/no-dynamic-require, global-require
+    () => require(path.join(pkgRoot, 'package.json')),
+    { testPath, start },
+  );
+  const externals = Object.keys(dependencies).concat(builtins);
+
+  if (Array.isArray(rollupConfig.external)) {
+    externals.push(...rollupConfig.external);
+  }
+
   /** Roll that bundle */
   const bundle = !hasCache
     ? await tryCatch(inputFile, start, () =>
@@ -72,6 +90,10 @@ module.exports = async function jestRunnerRollup({ testPath, config }) {
           ...rollupConfig,
           input: inputFile,
           cache: ROLLUP_CACHE[inputFile],
+          external: (id) =>
+            typeof rollupConfig.external === 'function'
+              ? rollupConfig.external(id, externals)
+              : externals.includes(id) && id.includes('/'),
         }),
       )
     : {};
@@ -80,11 +102,6 @@ module.exports = async function jestRunnerRollup({ testPath, config }) {
   if (!hasCache || cacheCollection.contentsHash !== contentsHash) {
     createCache(bundle, hasCache, { path: inputFile, contents: fileContents });
   }
-
-  /** Find correct root path */
-  const pkgRoot = isMonorepo(config.cwd)
-    ? path.dirname(path.dirname(inputFile))
-    : config.rootDir;
 
   /** Normalize outputs */
   const outputOpts = [].concat(cfg.output).filter(Boolean);

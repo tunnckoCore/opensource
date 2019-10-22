@@ -11,7 +11,7 @@
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",
   "engines": {
-    "node": ">=8.11"
+    "node": ">=10.13"
   },
   "main": "src/index.js",
   "module": "src/index.js",
