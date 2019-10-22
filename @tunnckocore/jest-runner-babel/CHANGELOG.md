@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@3.4.6...@tunnckocore/jest-runner-babel@4.0.0) (2019-10-22)
+
+
+### Bug Fixes
+
+* coverage & coverage thresholds, circleci ([be9f64a](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/commit/be9f64a68a0ef029d006cddb90f78ba7369e6a08))
+
+
+### Features
+
+* tweaks, drop Node 8 ([65eed8f](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/commit/65eed8f5849b2e19656c562e10db276115ce3e24))
+
+
+### BREAKING CHANGES
+
+* Drop Node.js 8, remove it from CI
+
+Signed-off-by: Charlike Mike Reagent <opensource@tunnckocore.com>
+
+
+
+
+
 ## [3.4.6](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@3.4.5...@tunnckocore/jest-runner-babel@3.4.6) (2019-10-20)
 
 

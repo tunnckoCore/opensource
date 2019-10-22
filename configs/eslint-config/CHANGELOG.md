@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@4.2.9...@tunnckocore/eslint-config@5.0.0) (2019-10-22)
+
+
+### Features
+
+* tweaks, drop Node 8 ([65eed8f](https://github.com/tunnckoCore/opensource/commit/65eed8f5849b2e19656c562e10db276115ce3e24))
+
+
+### BREAKING CHANGES
+
+* Drop Node.js 8, remove it from CI
+
+Signed-off-by: Charlike Mike Reagent <opensource@tunnckocore.com>
+
+
+
+
+
 ## [4.2.9](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@4.2.8...@tunnckocore/eslint-config@4.2.9) (2019-10-21)
 
 

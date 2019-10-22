@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.3](https://github.com/tunnckoCore/opensource/compare/parse-function@5.3.2...parse-function@5.3.3) (2019-10-22)
+
+
+### Bug Fixes
+
+* coverage & coverage thresholds, circleci ([be9f64a](https://github.com/tunnckoCore/opensource/commit/be9f64a68a0ef029d006cddb90f78ba7369e6a08))
+
+
+
+
+
 ## [5.3.2](https://github.com/tunnckoCore/opensource/compare/parse-function@5.3.1...parse-function@5.3.2) (2019-10-20)
 
 **Note:** Version bump only for package parse-function

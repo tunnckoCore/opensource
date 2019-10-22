@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/create-jest-runner",
-  "version": "0.8.6",
+  "version": "1.0.0",
   "description": "Fork of the original create-jest-runner, with support for couple of things, see issues there",
   "repository": {
     "type": "git",

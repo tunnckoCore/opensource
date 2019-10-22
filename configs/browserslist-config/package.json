@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/browserslist-config",
-  "version": "0.3.6",
+  "version": "1.0.0",
   "description": "Shareable Browserslist config for all @tunnckoCore projects",
   "repository": {
     "type": "git",

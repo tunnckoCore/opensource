@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/typescript-config@0.4.6...@tunnckocore/typescript-config@1.0.0) (2019-10-22)
+
+
+### Features
+
+* tweaks, drop Node 8 ([65eed8f](https://github.com/tunnckoCore/opensource/commit/65eed8f5849b2e19656c562e10db276115ce3e24))
+
+
+### BREAKING CHANGES
+
+* Drop Node.js 8, remove it from CI
+
+Signed-off-by: Charlike Mike Reagent <opensource@tunnckocore.com>
+
+
+
+
+
 ## [0.4.6](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/typescript-config@0.4.5...@tunnckocore/typescript-config@0.4.6) (2019-10-21)
 
 
