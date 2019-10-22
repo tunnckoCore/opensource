@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/tunnckoCore/opensource/compare/jest-runner-rollup@1.0.2...jest-runner-rollup@1.1.0) (2019-10-22)
+
+
+### Features
+
+* **jest-runner-rollup:** better smart caching, fixes [#64](https://github.com/tunnckoCore/opensource/issues/64) ([ac05b41](https://github.com/tunnckoCore/opensource/commit/ac05b41b3bf71cf8eeb84c94be31711be399ab12))
+
+
+
+
+
 ## [1.0.2](https://github.com/tunnckoCore/opensource/compare/jest-runner-rollup@1.0.1...jest-runner-rollup@1.0.2) (2019-10-22)
 
 
