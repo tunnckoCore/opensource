@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Utility functions and helpers for internal usage and monorepos",
   "repository": {
     "type": "git",
