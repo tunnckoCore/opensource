@@ -27,6 +27,8 @@ jobs:
         run: yarn setup:ci
       - name: Testing all packages
         run: yarn start test --no-runInBand
+      - name: Sending test coverage to CodeCov
+        run: bash <(curl -s https://codecov.io/bash)
   node12:
     env:
       CI: true
