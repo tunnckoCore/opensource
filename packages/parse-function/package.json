@@ -54,7 +54,6 @@
     "acorn": "^7.1.0",
     "acorn-loose": "^7.0.0",
     "arrify": "^2.0.1",
-    "define-property": "^2.0.2",
     "espree": "^6.1.1",
     "for-in": "^1.0.2"
   },

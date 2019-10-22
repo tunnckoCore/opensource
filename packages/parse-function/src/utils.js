@@ -1,9 +1,12 @@
 import arrayify from 'arrify';
 import { parseExpression } from '@babel/parser';
-import define from 'define-property';
 
 const utils = {};
-utils.define = define;
+utils.define =
+  typeof Reflect !== 'undefined'
+    ? Reflect.defineProperty
+    : Object.defineProperty;
+
 utils.arrayify = arrayify;
 
 /**

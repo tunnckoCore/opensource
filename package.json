@@ -68,7 +68,9 @@
   },
   "meta": {
     "build": [
-      "koa-better-body",
+      "koa-better-body"
+    ],
+    "bundle": [
       "parse-function"
     ]
   },
