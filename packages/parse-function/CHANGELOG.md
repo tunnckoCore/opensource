@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.2](https://github.com/tunnckoCore/opensource/compare/parse-function@5.4.1...parse-function@5.4.2) (2019-10-22)
+
+
+### Bug Fixes
+
+* update errors in parse-function,  run docs+fmt ([667c253](https://github.com/tunnckoCore/opensource/commit/667c2539f668bfe07659ea397d9dda1305b7da4e))
+
+
+
+
+
 ## [5.4.1](https://github.com/tunnckoCore/opensource/compare/parse-function@5.4.0...parse-function@5.4.1) (2019-10-22)
 
 

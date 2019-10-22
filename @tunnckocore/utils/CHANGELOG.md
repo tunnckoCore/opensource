@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@1.0.0...@tunnckocore/utils@1.0.1) (2019-10-22)
+
+
+### Bug Fixes
+
+* update errors in parse-function,  run docs+fmt ([667c253](https://github.com/tunnckoCore/opensource/commit/667c2539f668bfe07659ea397d9dda1305b7da4e))
+
+
+
+
+
 # [1.0.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@0.9.8...@tunnckocore/utils@1.0.0) (2019-10-22)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@4.0.0...@tunnckocore/jest-runner-babel@4.0.1) (2019-10-22)
+
+
+### Bug Fixes
+
+* update errors in parse-function,  run docs+fmt ([667c253](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/commit/667c2539f668bfe07659ea397d9dda1305b7da4e))
+
+
+
+
+
 # [4.0.0](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@3.4.6...@tunnckocore/jest-runner-babel@4.0.0) (2019-10-22)
 
 
