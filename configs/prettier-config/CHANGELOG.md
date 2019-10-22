@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/prettier-config@1.0.0...@tunnckocore/prettier-config@1.0.1) (2019-10-22)
+
+
+### Bug Fixes
+
+* **parse-function:** remove `define-property` dependency ([5480e91](https://github.com/tunnckoCore/opensource/commit/5480e91eff38b22fd3301f2004ae80e1aff25e34))
+
+
+
+
+
 # [1.0.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/prettier-config@0.3.8...@tunnckocore/prettier-config@1.0.0) (2019-10-22)
 
 

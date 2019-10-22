@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.1](https://github.com/tunnckoCore/opensource/compare/parse-function@5.4.0...parse-function@5.4.1) (2019-10-22)
+
+
+### Bug Fixes
+
+* **parse-function:** remove `define-property` dependency ([5480e91](https://github.com/tunnckoCore/opensource/commit/5480e91eff38b22fd3301f2004ae80e1aff25e34))
+
+
+
+
+
 # [5.4.0](https://github.com/tunnckoCore/opensource/compare/parse-function@5.3.3...parse-function@5.4.0) (2019-10-22)
 
 
