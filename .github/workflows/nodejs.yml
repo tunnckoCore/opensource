@@ -26,28 +26,28 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Installing dependencies
         run: yarn setup:ci
+      - name: Linting codebase with ESLint & Prettier
+        run: yarn start lint
       - name: Testing all packages
         run: yarn start test --no-runInBand
       - name: Sending test coverage to CodeCov
         run: bash <(curl -s https://codecov.io/bash)
-  node12:
-    env:
-      CI: true
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js v12
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: Installing dependencies
-        run: yarn setup:ci
-      - name: Linting codebase with ESLint & Prettier
-        run: yarn start lint
-      - name: Documentation API generation
-        run: yarn start docs
-      - name: Formatting the whole repository with Prettier
-        run: yarn start format
+  # node12:
+  #   env:
+  #     CI: true
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - name: Use Node.js v12
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: '12.x'
+  #     - name: Installing dependencies
+  #       run: yarn setup:ci
+  #     - name: Documentation API generation
+  #       run: yarn start docs
+  #     - name: Formatting the whole repository with Prettier
+  #       run: yarn start format
   #     - name: Prepare for Publishing and Releasing
   #       run: |
   #         git config --global user.name "Charlike Mike Reagent"
