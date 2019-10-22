@@ -74,7 +74,8 @@ _We highly recommend to use Yarn when you think to contribute to this project._
 $ yarn add @tunnckocore/utils
 ```
 
-() => include(process.cwd() + '/.verb.md')
+<!-- docks-start -->
+<!-- docks-end -->
 
 **[back to top](#readme)**
 
@@ -154,7 +155,7 @@ Released under the [MPL-2.0 License][license-url].
 [codestyle-url]: https://github.com/airbnb/javascript
 [codestyle-img]: https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb
 [linuxbuild-url]: https://github.com/tunnckocore/opensource/actions
-[linuxbuild-img]: https://badgen.net/github/status/tunnckoCore/opensource/master?label=build&icon=github
+[linuxbuild-img]: https://badgennet.charlike-oss.now.sh/github/checks/tunnckoCore/opensource/master?label=build&icon=github
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 [codecoverage-img]: https://badgen.net/codecov/c/github/tunnckoCore/opensource?icon=codecov
 [dependencies-url]: https://david-dm.org/tunnckoCore/opensource

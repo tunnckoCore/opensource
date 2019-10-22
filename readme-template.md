@@ -160,7 +160,7 @@ Released under the [{%= license %} License][license-url].
 [codestyle-url]: https://github.com/airbnb/javascript
 [codestyle-img]: https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb
 [linuxbuild-url]: https://github.com/tunnckocore/opensource/actions
-[linuxbuild-img]: https://badgen.net/github/status/tunnckoCore/opensource/master?label=build&icon=github
+[linuxbuild-img]: https://badgennet.charlike-oss.now.sh/github/checks/tunnckoCore/opensource/master?label=build&icon=github
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 [codecoverage-img]: https://badgen.net/codecov/c/github/tunnckoCore/opensource?icon=codecov
 [dependencies-url]: https://david-dm.org/tunnckoCore/opensource

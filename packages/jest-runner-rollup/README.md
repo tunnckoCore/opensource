@@ -55,6 +55,7 @@ Project is [semantically](https://semver.org) versioned & automatically released
 ## Table of Contents
 
 - [Install](#install)
+- [Usage](#usage)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -74,7 +75,49 @@ _We highly recommend to use Yarn when you think to contribute to this project._
 $ yarn add jest-runner-rollup
 ```
 
-() => include(process.cwd() + '/.verb.md')
+## Usage
+
+First, put it in your Jest config
+
+```js
+module.exports = {
+  rootDir: __dirname,
+  displayName: 'bundle',
+  testMatch: [
+    // if there is no extension, it try to autodetect it.
+    '<rootDir>/packages/*/src/index',
+  ],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'mjs'],
+  runner: 'jest-runner-rollup',
+};
+```
+
+Then, write Rollup config file. It automatically detects your `rollup.config.js`.
+If you want you also can name it `.rolluprc.js`, `jest-runner-rollup.config.js`, or
+put your config in `jest-runner.config.js` (this config file can be used for other jest runners too), like so
+
+```js
+module.exports = {
+  rollup: {
+    plugins: [
+      /*
+      commonjs(),
+      nodeResolve()
+      */
+    ],
+    output: [
+      { preferConst: true, format: 'cjs', exports: 'named' },
+      { preferConst: true, format: 'esm' },
+    ],
+  },
+};
+```
+
+By default, the bundle file will be `dist/<format>/index.js`, even if only one output format is given.
+If you want to change that behavior, you can pass `output.file`.
+
+<!-- docks-start -->
+<!-- docks-end -->
 
 **[back to top](#readme)**
 
@@ -154,7 +197,7 @@ Released under the [MPL-2.0 License][license-url].
 [codestyle-url]: https://github.com/airbnb/javascript
 [codestyle-img]: https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb
 [linuxbuild-url]: https://github.com/tunnckocore/opensource/actions
-[linuxbuild-img]: https://badgen.net/github/status/tunnckoCore/opensource/master?label=build&icon=github
+[linuxbuild-img]: https://badgennet.charlike-oss.now.sh/github/checks/tunnckoCore/opensource/master?label=build&icon=github
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 [codecoverage-img]: https://badgen.net/codecov/c/github/tunnckoCore/opensource?icon=codecov
 [dependencies-url]: https://david-dm.org/tunnckoCore/opensource

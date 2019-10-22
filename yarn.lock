@@ -2132,6 +2132,46 @@
     "@styled-system/core" "^5.1.2"
     "@styled-system/css" "^5.0.23"
 
+"@tunnckocore/create-jest-runner@^0.8.6":
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/create-jest-runner/-/create-jest-runner-0.8.6.tgz#70d9b5ee2de30f311513397828ef816e1e96170b"
+  integrity sha512-DtkR7MiFgHyQNFTAirHYOsvGbqcySGfrh3xP0OYc8O+xUT9EdLol/W26mW4jJeT70uqFQFRXlsiOWcr7m5++Yg==
+  dependencies:
+    chalk "^2.4.2"
+    jest-worker "^24.0.0"
+    throat "^4.1.0"
+
+"@tunnckocore/execa@^4.3.2":
+  version "4.5.14"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/execa/-/execa-4.5.14.tgz#4e26d2ac80f778cf0abb7a19cbce8d4d2391fe1a"
+  integrity sha512-yaG8poYsEIMM+VrtQ2ICk57dQlv7dWYvnPlezsrpebbikLJEMP9zbRpQwRpTyg08lHq/2C9nJEzDUSkd+h1mfw==
+  dependencies:
+    esm "^3.2.25"
+    execa "^3.2.0"
+    p-map "^3.0.0"
+
+"@tunnckocore/jest-runner-babel@^3.4.6":
+  version "3.4.6"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/jest-runner-babel/-/jest-runner-babel-3.4.6.tgz#629ad5ec846b83d212645b8ddefa5283fe227273"
+  integrity sha512-tntlJCBcNnXMh8BV9uGM9hg/Lvg8kqD1xU9kzoNHscCfUDeW3SfqLY0W/qL5ZZKX8kX+mVoZQtDCtueeANhlRQ==
+  dependencies:
+    "@tunnckocore/create-jest-runner" "^0.8.6"
+    cosmiconfig "^5.2.1"
+
+"@tunnckocore/jest-runner-eslint@^0.6.6":
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/jest-runner-eslint/-/jest-runner-eslint-0.6.6.tgz#54bfda7c1e86df3bfc62847832137d861f9fe782"
+  integrity sha512-2b97Po1fnASWZRN/j1FG4B4Ab3liyNcWE4P7rB7ca4DzKaPN9AugjKGjnKFZttbaD5tLbtVa4mArszq8uVSYnA==
+  dependencies:
+    "@tunnckocore/create-jest-runner" "^0.8.6"
+    "@tunnckocore/utils" "^0.9.8"
+    cosmiconfig "^5.2.1"
+
+"@tunnckocore/utils@^0.9.8":
+  version "0.9.8"
+  resolved "https://registry.yarnpkg.com/@tunnckocore/utils/-/utils-0.9.8.tgz#da355b8b1e5f14cbce36e37bc5566052c813a570"
+  integrity sha512-u4F3lFUXv2FrGYjVl9UcGXUMOk/9XByqxiDUqJ7exAuuXO2TfQbHRw7zN73EW8uD0E3Iqp4kXAefzcvGe9WmfQ==
+
 "@types/babel__core@^7.1.0":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.3.tgz#e441ea7df63cd080dfcd02ab199e6d16a735fc30"
@@ -8461,6 +8501,25 @@ jest-resolve@^24.9.0:
     chalk "^2.0.1"
     jest-pnp-resolver "^1.2.1"
     realpath-native "^1.1.0"
+
+jest-runner-docs@^0.2.8:
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/jest-runner-docs/-/jest-runner-docs-0.2.8.tgz#d19abd11580ea1092d863a137d9cc8b2b73cc9e4"
+  integrity sha512-6ccI7yB02hY9ED6Z/srPFDWV95plT3rt59BdXDF6GMTyLz0FJMx1TOypPkapifdK1jRbwP7bInryaOQCcM7BRQ==
+  dependencies:
+    "@tunnckocore/create-jest-runner" "^0.8.6"
+    "@tunnckocore/utils" "^0.9.8"
+    cosmiconfig "^5.2.1"
+    parse-comments "^1.0.0"
+
+jest-runner-rollup@^0.4.7:
+  version "0.4.7"
+  resolved "https://registry.yarnpkg.com/jest-runner-rollup/-/jest-runner-rollup-0.4.7.tgz#aa05668259996d50f8dfb6b921d5186626516fe0"
+  integrity sha512-I5wGXhC4yoVFw2GsZlSXxGjkzGL2a1TYjukpQXJfJXgOzD9PsUKbjXt5LSG7lJmB3tNzKEz6JAJTkejlTN2LOg==
+  dependencies:
+    "@tunnckocore/create-jest-runner" "^0.8.6"
+    "@tunnckocore/utils" "^0.9.8"
+    cosmiconfig "^5.2.1"
 
 jest-runner@^24.9.0:
   version "24.9.0"
