@@ -49,8 +49,8 @@ import initial from './plugins/initial';
  * @name  parseFunction
  * @api public
  */
-export default function parseFunction(opts) {
-  const plugins = [];
+export default function parseFunction(opts = {}) {
+  const plugins = [...fakeChange];
   const app = {
     /**
      * > Parse a given `code` and returns a `result` object
