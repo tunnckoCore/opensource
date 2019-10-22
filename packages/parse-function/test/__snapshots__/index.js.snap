@@ -8,8 +8,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
 }
 `;
 
@@ -21,8 +34,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "function (b, callback, ...restArgs) {callback(null, b + 3)}",
 }
 `;
 
@@ -32,8 +58,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "function (c) {return c * 3}",
 }
 `;
 
@@ -43,8 +80,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "function (...restArgs) {return 321}",
 }
 `;
 
@@ -52,8 +100,17 @@ exports[`#5 - babel (default) - function () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "function () {}",
 }
 `;
 
@@ -63,8 +120,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "function (a = (true, false)) {}",
 }
 `;
 
@@ -74,8 +142,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "function (a = (true, null)) {}",
 }
 `;
 
@@ -85,8 +164,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "function (a = (true, \\"bar\\")) {}",
 }
 `;
 
@@ -97,8 +187,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "function (a, b = (i++, true)) {}",
 }
 `;
 
@@ -108,8 +210,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "function (a = 1) {}",
 }
 `;
 
@@ -121,8 +234,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
 }
 `;
 
@@ -134,8 +260,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "function namedFn (b, callback, ...restArgs) {callback(null, b + 3)}",
 }
 `;
 
@@ -145,8 +284,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "function namedFn (c) {return c * 3}",
 }
 `;
 
@@ -156,8 +306,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "function namedFn (...restArgs) {return 321}",
 }
 `;
 
@@ -165,8 +326,17 @@ exports[`#15 - babel (default) - function namedFn () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "function namedFn () {}",
 }
 `;
 
@@ -176,8 +346,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "function namedFn(a = (true, false)) {}",
 }
 `;
 
@@ -187,8 +368,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "function namedFn(a = (true, null)) {}",
 }
 `;
 
@@ -198,8 +390,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "function namedFn(a = (true, \\"bar\\")) {}",
 }
 `;
 
@@ -210,8 +413,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "function namedFn(a, b = (i++, true)) {}",
 }
 `;
 
@@ -221,8 +436,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "function namedFn(a = 1) {}",
 }
 `;
 
@@ -234,8 +460,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
 }
 `;
 
@@ -247,8 +486,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)}",
 }
 `;
 
@@ -258,8 +510,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "function * namedFn (c) {return c * 3}",
 }
 `;
 
@@ -269,8 +532,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "function * namedFn (...restArgs) {return 321}",
 }
 `;
 
@@ -278,8 +552,17 @@ exports[`#25 - babel (default) - function * namedFn () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "function * namedFn () {}",
 }
 `;
 
@@ -289,8 +572,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "function * namedFn(a = (true, false)) {}",
 }
 `;
 
@@ -300,8 +594,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "function * namedFn(a = (true, null)) {}",
 }
 `;
 
@@ -311,8 +616,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "function * namedFn(a = (true, \\"bar\\")) {}",
 }
 `;
 
@@ -323,8 +639,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "function * namedFn(a, b = (i++, true)) {}",
 }
 `;
 
@@ -334,8 +662,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "function * namedFn(a = 1) {}",
 }
 `;
 
@@ -347,8 +686,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "(a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3}",
 }
 `;
 
@@ -360,8 +712,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "(b, callback, ...restArgs) => {callback(null, b + 3)}",
 }
 `;
 
@@ -371,8 +736,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "(c) => {return c * 3}",
 }
 `;
 
@@ -382,8 +758,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "(...restArgs) => {return 321}",
 }
 `;
 
@@ -391,8 +778,17 @@ exports[`#35 - babel (default) - ) => {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "() => {}",
 }
 `;
 
@@ -402,8 +798,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(a = (true, false)) => {}",
 }
 `;
 
@@ -413,8 +820,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(a = (true, null)) => {}",
 }
 `;
 
@@ -424,8 +842,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(a = (true, \\"bar\\")) => {}",
 }
 `;
 
@@ -436,8 +865,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(a, b = (i++, true)) => {}",
 }
 `;
 
@@ -447,8 +888,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(a = 1) => {}",
 }
 `;
 
@@ -458,8 +910,19 @@ Object {
     "a",
   ],
   "body": "a * 3 * a",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(a) => a * 3 * a",
 }
 `;
 
@@ -469,8 +932,19 @@ Object {
     "d",
   ],
   "body": "d * 355 * d",
+  "defaults": Object {
+    "d": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "d",
+  "value": "d => d * 355 * d",
 }
 `;
 
@@ -480,8 +954,19 @@ Object {
     "e",
   ],
   "body": "return e + 5235 / e",
+  "defaults": Object {
+    "e": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "e",
+  "value": "e => {return e + 5235 / e}",
 }
 `;
 
@@ -492,8 +977,20 @@ Object {
     "b",
   ],
   "body": "a + 3 + b",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(a, b) => a + 3 + b",
 }
 `;
 
@@ -505,8 +1002,21 @@ Object {
     "restArgs",
   ],
   "body": "console.log({ value: x * y })",
+  "defaults": Object {
+    "restArgs": undefined,
+    "x": undefined,
+    "y": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "value": "(x, y, ...restArgs) => console.log({ value: x * y })",
 }
 `;
 
@@ -518,8 +1028,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
 }
 `;
 
@@ -531,8 +1054,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "async function (b, callback, ...restArgs) {callback(null, b + 3)}",
 }
 `;
 
@@ -542,8 +1078,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "async function (c) {return c * 3}",
 }
 `;
 
@@ -553,8 +1100,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "async function (...restArgs) {return 321}",
 }
 `;
 
@@ -562,8 +1120,17 @@ exports[`#50 - babel (default) - async function () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "async function () {}",
 }
 `;
 
@@ -573,8 +1140,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "async function (a = (true, false)) {}",
 }
 `;
 
@@ -584,8 +1162,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "async function (a = (true, null)) {}",
 }
 `;
 
@@ -595,8 +1184,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "async function (a = (true, \\"bar\\")) {}",
 }
 `;
 
@@ -607,8 +1207,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "async function (a, b = (i++, true)) {}",
 }
 `;
 
@@ -618,8 +1230,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "async function (a = 1) {}",
 }
 `;
 
@@ -631,8 +1254,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
 }
 `;
 
@@ -644,8 +1280,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)}",
 }
 `;
 
@@ -655,8 +1304,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "async function namedFn (c) {return c * 3}",
 }
 `;
 
@@ -666,8 +1326,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "async function namedFn (...restArgs) {return 321}",
 }
 `;
 
@@ -675,8 +1346,17 @@ exports[`#60 - babel (default) - async function namedFn () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "async function namedFn () {}",
 }
 `;
 
@@ -686,8 +1366,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "async function namedFn(a = (true, false)) {}",
 }
 `;
 
@@ -697,8 +1388,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "async function namedFn(a = (true, null)) {}",
 }
 `;
 
@@ -708,8 +1410,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "async function namedFn(a = (true, \\"bar\\")) {}",
 }
 `;
 
@@ -720,8 +1433,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "async function namedFn(a, b = (i++, true)) {}",
 }
 `;
 
@@ -731,8 +1456,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "async function namedFn(a = 1) {}",
 }
 `;
 
@@ -744,8 +1480,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3}",
 }
 `;
 
@@ -757,8 +1506,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "async (b, callback, ...restArgs) => {callback(null, b + 3)}",
 }
 `;
 
@@ -768,8 +1530,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "async (c) => {return c * 3}",
 }
 `;
 
@@ -779,8 +1552,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "async (...restArgs) => {return 321}",
 }
 `;
 
@@ -788,8 +1572,17 @@ exports[`#70 - babel (default) - async () => {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "async () => {}",
 }
 `;
 
@@ -799,8 +1592,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "async (a = (true, false)) => {}",
 }
 `;
 
@@ -810,8 +1614,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "async (a = (true, null)) => {}",
 }
 `;
 
@@ -821,8 +1636,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "async (a = (true, \\"bar\\")) => {}",
 }
 `;
 
@@ -833,8 +1659,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "async (a, b = (i++, true)) => {}",
 }
 `;
 
@@ -844,8 +1682,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "async (a = 1) => {}",
 }
 `;
 
@@ -855,8 +1704,19 @@ Object {
     "a",
   ],
   "body": "a * 3 * a",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "async (a) => a * 3 * a",
 }
 `;
 
@@ -866,8 +1726,19 @@ Object {
     "d",
   ],
   "body": "d * 355 * d",
+  "defaults": Object {
+    "d": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "d",
+  "value": "async d => d * 355 * d",
 }
 `;
 
@@ -877,8 +1748,19 @@ Object {
     "e",
   ],
   "body": "return e + 5235 / e",
+  "defaults": Object {
+    "e": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "e",
+  "value": "async e => {return e + 5235 / e}",
 }
 `;
 
@@ -889,8 +1771,20 @@ Object {
     "b",
   ],
   "body": "a + 3 + b",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "async (a, b) => a + 3 + b",
 }
 `;
 
@@ -902,8 +1796,21 @@ Object {
     "restArgs",
   ],
   "body": "console.log({ value: x * y })",
+  "defaults": Object {
+    "restArgs": undefined,
+    "x": undefined,
+    "y": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "value": "async (x, y, ...restArgs) => console.log({ value: x * y })",
 }
 `;
 
@@ -911,8 +1818,17 @@ exports[`#81 - babel (default) - should return object with default values when i
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": false,
   "name": null,
   "params": "",
+  "value": "",
 }
 `;
 
@@ -920,8 +1836,17 @@ exports[`#82 - babel (default) - should have '.isValid' and few '.is*'' hidden p
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": false,
   "name": null,
   "params": "",
+  "value": "",
 }
 `;
 
@@ -935,8 +1860,23 @@ Object {
   "body": "
         return 123;
       ",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "foo",
   "params": "a, b, c",
+  "value": "{ foo(a, b, c) {
+        return 123;
+      } }",
 }
 `;
 
@@ -948,8 +1888,21 @@ Object {
   "body": "
         return () => a;
       ",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "bar",
   "params": "a",
+  "value": "{ bar(a) {
+        return () => a;
+      } }",
 }
 `;
 
@@ -961,8 +1914,21 @@ Object {
   "body": "
         return yield a * 321;
       ",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "gen",
   "params": "a",
+  "value": "{ *gen(a) {
+        return yield a * 321;
+      } }",
 }
 `;
 
@@ -974,8 +1940,21 @@ Object {
     "restArgs",
   ],
   "body": " return a * 3 ",
+  "defaults": Object {
+    "a": "{foo: 'ba)r', baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "{ namedFn (a = {foo: 'ba)r', baz: 123}, cb, ...restArgs) { return a * 3 } }",
 }
 `;
 
@@ -987,8 +1966,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "(function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -1000,8 +1992,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "(function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -1011,8 +2016,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "(function (c) {return c * 3})",
 }
 `;
 
@@ -1022,8 +2038,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "(function (...restArgs) {return 321})",
 }
 `;
 
@@ -1031,8 +2058,17 @@ exports[`#95 - options.parse + ecmaVersion: 2019 - function () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(function () {})",
 }
 `;
 
@@ -1042,8 +2078,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = (true, false)) {})",
 }
 `;
 
@@ -1053,8 +2100,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = (true, null)) {})",
 }
 `;
 
@@ -1064,8 +2122,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -1076,8 +2145,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(function (a, b = (i++, true)) {})",
 }
 `;
 
@@ -1087,8 +2168,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = 1) {})",
 }
 `;
 
@@ -1100,8 +2192,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "(function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -1113,8 +2218,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "(function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -1124,8 +2242,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "(function namedFn (c) {return c * 3})",
 }
 `;
 
@@ -1135,8 +2264,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "(function namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -1144,8 +2284,17 @@ exports[`#105 - options.parse + ecmaVersion: 2019 - function namedFn () {} 1`] =
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "(function namedFn () {})",
 }
 `;
 
@@ -1155,8 +2304,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -1166,8 +2326,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -1177,8 +2348,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -1189,8 +2371,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "(function namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -1200,8 +2394,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = 1) {})",
 }
 `;
 
@@ -1213,8 +2418,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "(function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -1226,8 +2444,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "(function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -1237,8 +2468,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "(function * namedFn (c) {return c * 3})",
 }
 `;
 
@@ -1248,8 +2490,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "(function * namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -1257,8 +2510,17 @@ exports[`#115 - options.parse + ecmaVersion: 2019 - function * namedFn () {} 1`]
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "(function * namedFn () {})",
 }
 `;
 
@@ -1268,8 +2530,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -1279,8 +2552,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -1290,8 +2574,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -1302,8 +2597,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "(function * namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -1313,8 +2620,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = 1) {})",
 }
 `;
 
@@ -1326,8 +2644,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "((a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
 
@@ -1339,8 +2670,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "((b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
 
@@ -1350,8 +2694,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "((c) => {return c * 3})",
 }
 `;
 
@@ -1361,8 +2716,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "((...restArgs) => {return 321})",
 }
 `;
 
@@ -1370,8 +2736,17 @@ exports[`#125 - options.parse + ecmaVersion: 2019 - () => {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(() => {})",
 }
 `;
 
@@ -1381,8 +2756,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = (true, false)) => {})",
 }
 `;
 
@@ -1392,8 +2778,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = (true, null)) => {})",
 }
 `;
 
@@ -1403,8 +2800,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = (true, \\"bar\\")) => {})",
 }
 `;
 
@@ -1415,8 +2823,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "((a, b = (i++, true)) => {})",
 }
 `;
 
@@ -1426,8 +2846,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = 1) => {})",
 }
 `;
 
@@ -1437,8 +2868,19 @@ Object {
     "a",
   ],
   "body": "a * 3 * a",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a) => a * 3 * a)",
 }
 `;
 
@@ -1448,8 +2890,19 @@ Object {
     "d",
   ],
   "body": "d * 355 * d",
+  "defaults": Object {
+    "d": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "d",
+  "value": "(d => d * 355 * d)",
 }
 `;
 
@@ -1459,8 +2912,19 @@ Object {
     "e",
   ],
   "body": "return e + 5235 / e",
+  "defaults": Object {
+    "e": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "e",
+  "value": "(e => {return e + 5235 / e})",
 }
 `;
 
@@ -1471,8 +2935,20 @@ Object {
     "b",
   ],
   "body": "a + 3 + b",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "((a, b) => a + 3 + b)",
 }
 `;
 
@@ -1484,8 +2960,21 @@ Object {
     "restArgs",
   ],
   "body": "console.log({ value: x * y })",
+  "defaults": Object {
+    "restArgs": undefined,
+    "x": undefined,
+    "y": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "value": "((x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
 
@@ -1497,8 +2986,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "(async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -1510,8 +3012,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "(async function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -1521,8 +3036,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "(async function (c) {return c * 3})",
 }
 `;
 
@@ -1532,8 +3058,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "(async function (...restArgs) {return 321})",
 }
 `;
 
@@ -1541,8 +3078,17 @@ exports[`#140 - options.parse + ecmaVersion: 2019 - async function () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(async function () {})",
 }
 `;
 
@@ -1552,8 +3098,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = (true, false)) {})",
 }
 `;
 
@@ -1563,8 +3120,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = (true, null)) {})",
 }
 `;
 
@@ -1574,8 +3142,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -1586,8 +3165,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(async function (a, b = (i++, true)) {})",
 }
 `;
 
@@ -1597,8 +3188,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = 1) {})",
 }
 `;
 
@@ -1610,8 +3212,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "(async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -1623,8 +3238,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "(async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -1634,8 +3262,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "(async function namedFn (c) {return c * 3})",
 }
 `;
 
@@ -1645,8 +3284,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "(async function namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -1654,8 +3304,17 @@ exports[`#150 - options.parse + ecmaVersion: 2019 - async function namedFn () {}
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "(async function namedFn () {})",
 }
 `;
 
@@ -1665,8 +3324,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -1676,8 +3346,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -1687,8 +3368,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -1699,8 +3391,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "(async function namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -1710,8 +3414,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = 1) {})",
 }
 `;
 
@@ -1723,8 +3438,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "(async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
 
@@ -1736,8 +3464,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "(async (b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
 
@@ -1747,8 +3488,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "(async (c) => {return c * 3})",
 }
 `;
 
@@ -1758,8 +3510,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "(async (...restArgs) => {return 321})",
 }
 `;
 
@@ -1767,8 +3530,17 @@ exports[`#160 - options.parse + ecmaVersion: 2019 - async () => {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(async () => {})",
 }
 `;
 
@@ -1778,8 +3550,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = (true, false)) => {})",
 }
 `;
 
@@ -1789,8 +3572,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = (true, null)) => {})",
 }
 `;
 
@@ -1800,8 +3594,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = (true, \\"bar\\")) => {})",
 }
 `;
 
@@ -1812,8 +3617,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(async (a, b = (i++, true)) => {})",
 }
 `;
 
@@ -1823,8 +3640,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = 1) => {})",
 }
 `;
 
@@ -1834,8 +3662,19 @@ Object {
     "a",
   ],
   "body": "a * 3 * a",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a) => a * 3 * a)",
 }
 `;
 
@@ -1845,8 +3684,19 @@ Object {
     "d",
   ],
   "body": "d * 355 * d",
+  "defaults": Object {
+    "d": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "d",
+  "value": "(async d => d * 355 * d)",
 }
 `;
 
@@ -1856,8 +3706,19 @@ Object {
     "e",
   ],
   "body": "return e + 5235 / e",
+  "defaults": Object {
+    "e": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "e",
+  "value": "(async e => {return e + 5235 / e})",
 }
 `;
 
@@ -1868,8 +3729,20 @@ Object {
     "b",
   ],
   "body": "a + 3 + b",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(async (a, b) => a + 3 + b)",
 }
 `;
 
@@ -1881,8 +3754,21 @@ Object {
     "restArgs",
   ],
   "body": "console.log({ value: x * y })",
+  "defaults": Object {
+    "restArgs": undefined,
+    "x": undefined,
+    "y": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "value": "(async (x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
 
@@ -1890,8 +3776,17 @@ exports[`#171 - options.parse + ecmaVersion: 2019 - should return object with de
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": false,
   "name": null,
   "params": "",
+  "value": "",
 }
 `;
 
@@ -1899,8 +3794,17 @@ exports[`#172 - options.parse + ecmaVersion: 2019 - should have '.isValid' and f
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": false,
   "name": null,
   "params": "",
+  "value": "",
 }
 `;
 
@@ -1914,8 +3818,23 @@ Object {
   "body": "
         return 123;
       ",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "foo",
   "params": "a, b, c",
+  "value": "({ foo(a, b, c) {
+        return 123;
+      } })",
 }
 `;
 
@@ -1927,8 +3846,21 @@ Object {
   "body": "
         return () => a;
       ",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "bar",
   "params": "a",
+  "value": "({ bar(a) {
+        return () => a;
+      } })",
 }
 `;
 
@@ -1940,8 +3872,21 @@ Object {
   "body": "
         return yield a * 321;
       ",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "gen",
   "params": "a",
+  "value": "({ *gen(a) {
+        return yield a * 321;
+      } })",
 }
 `;
 
@@ -1953,8 +3898,21 @@ Object {
     "restArgs",
   ],
   "body": " return a * 3 ",
+  "defaults": Object {
+    "a": "{foo: 'ba)r', baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "({ namedFn (a = {foo: 'ba)r', baz: 123}, cb, ...restArgs) { return a * 3 } })",
 }
 `;
 
@@ -1966,8 +3924,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "(function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -1979,8 +3950,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "(function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -1990,8 +3974,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "(function (c) {return c * 3})",
 }
 `;
 
@@ -2001,8 +3996,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "(function (...restArgs) {return 321})",
 }
 `;
 
@@ -2010,8 +4016,17 @@ exports[`#185 - acorn.parse - function () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(function () {})",
 }
 `;
 
@@ -2021,8 +4036,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = (true, false)) {})",
 }
 `;
 
@@ -2032,8 +4058,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = (true, null)) {})",
 }
 `;
 
@@ -2043,8 +4080,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -2055,8 +4103,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(function (a, b = (i++, true)) {})",
 }
 `;
 
@@ -2066,8 +4126,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = 1) {})",
 }
 `;
 
@@ -2079,8 +4150,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "(function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -2092,8 +4176,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "(function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -2103,8 +4200,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "(function namedFn (c) {return c * 3})",
 }
 `;
 
@@ -2114,8 +4222,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "(function namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -2123,8 +4242,17 @@ exports[`#195 - acorn.parse - function namedFn () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "(function namedFn () {})",
 }
 `;
 
@@ -2134,8 +4262,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -2145,8 +4284,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -2156,8 +4306,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -2168,8 +4329,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "(function namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -2179,8 +4352,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = 1) {})",
 }
 `;
 
@@ -2192,8 +4376,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "(function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -2205,8 +4402,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "(function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -2216,8 +4426,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "(function * namedFn (c) {return c * 3})",
 }
 `;
 
@@ -2227,8 +4448,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "(function * namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -2236,8 +4468,17 @@ exports[`#205 - acorn.parse - function * namedFn () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "(function * namedFn () {})",
 }
 `;
 
@@ -2247,8 +4488,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -2258,8 +4510,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -2269,8 +4532,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -2281,8 +4555,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "(function * namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -2292,8 +4578,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = 1) {})",
 }
 `;
 
@@ -2305,8 +4602,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "((a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
 
@@ -2318,8 +4628,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "((b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
 
@@ -2329,8 +4652,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "((c) => {return c * 3})",
 }
 `;
 
@@ -2340,8 +4674,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "((...restArgs) => {return 321})",
 }
 `;
 
@@ -2349,8 +4694,17 @@ exports[`#215 - acorn.parse - () => {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(() => {})",
 }
 `;
 
@@ -2360,8 +4714,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = (true, false)) => {})",
 }
 `;
 
@@ -2371,8 +4736,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = (true, null)) => {})",
 }
 `;
 
@@ -2382,8 +4758,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = (true, \\"bar\\")) => {})",
 }
 `;
 
@@ -2394,8 +4781,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "((a, b = (i++, true)) => {})",
 }
 `;
 
@@ -2405,8 +4804,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = 1) => {})",
 }
 `;
 
@@ -2416,8 +4826,19 @@ Object {
     "a",
   ],
   "body": "a * 3 * a",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a) => a * 3 * a)",
 }
 `;
 
@@ -2427,8 +4848,19 @@ Object {
     "d",
   ],
   "body": "d * 355 * d",
+  "defaults": Object {
+    "d": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "d",
+  "value": "(d => d * 355 * d)",
 }
 `;
 
@@ -2438,8 +4870,19 @@ Object {
     "e",
   ],
   "body": "return e + 5235 / e",
+  "defaults": Object {
+    "e": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "e",
+  "value": "(e => {return e + 5235 / e})",
 }
 `;
 
@@ -2450,8 +4893,20 @@ Object {
     "b",
   ],
   "body": "a + 3 + b",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "((a, b) => a + 3 + b)",
 }
 `;
 
@@ -2463,8 +4918,21 @@ Object {
     "restArgs",
   ],
   "body": "console.log({ value: x * y })",
+  "defaults": Object {
+    "restArgs": undefined,
+    "x": undefined,
+    "y": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "value": "((x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
 
@@ -2476,8 +4944,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "(async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -2489,8 +4970,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "(async function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -2500,8 +4994,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "(async function (c) {return c * 3})",
 }
 `;
 
@@ -2511,8 +5016,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "(async function (...restArgs) {return 321})",
 }
 `;
 
@@ -2520,8 +5036,17 @@ exports[`#230 - acorn.parse - async function () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(async function () {})",
 }
 `;
 
@@ -2531,8 +5056,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = (true, false)) {})",
 }
 `;
 
@@ -2542,8 +5078,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = (true, null)) {})",
 }
 `;
 
@@ -2553,8 +5100,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -2565,8 +5123,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(async function (a, b = (i++, true)) {})",
 }
 `;
 
@@ -2576,8 +5146,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = 1) {})",
 }
 `;
 
@@ -2589,8 +5170,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "(async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -2602,8 +5196,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "(async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -2613,8 +5220,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "(async function namedFn (c) {return c * 3})",
 }
 `;
 
@@ -2624,8 +5242,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "(async function namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -2633,8 +5262,17 @@ exports[`#240 - acorn.parse - async function namedFn () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "(async function namedFn () {})",
 }
 `;
 
@@ -2644,8 +5282,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -2655,8 +5304,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -2666,8 +5326,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -2678,8 +5349,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "(async function namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -2689,8 +5372,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = 1) {})",
 }
 `;
 
@@ -2702,8 +5396,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "(async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
 
@@ -2715,8 +5422,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "(async (b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
 
@@ -2726,8 +5446,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "(async (c) => {return c * 3})",
 }
 `;
 
@@ -2737,8 +5468,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "(async (...restArgs) => {return 321})",
 }
 `;
 
@@ -2746,8 +5488,17 @@ exports[`#250 - acorn.parse - async () => {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(async () => {})",
 }
 `;
 
@@ -2757,8 +5508,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = (true, false)) => {})",
 }
 `;
 
@@ -2768,8 +5530,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = (true, null)) => {})",
 }
 `;
 
@@ -2779,8 +5552,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = (true, \\"bar\\")) => {})",
 }
 `;
 
@@ -2791,8 +5575,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(async (a, b = (i++, true)) => {})",
 }
 `;
 
@@ -2802,8 +5598,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = 1) => {})",
 }
 `;
 
@@ -2813,8 +5620,19 @@ Object {
     "a",
   ],
   "body": "a * 3 * a",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a) => a * 3 * a)",
 }
 `;
 
@@ -2824,8 +5642,19 @@ Object {
     "d",
   ],
   "body": "d * 355 * d",
+  "defaults": Object {
+    "d": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "d",
+  "value": "(async d => d * 355 * d)",
 }
 `;
 
@@ -2835,8 +5664,19 @@ Object {
     "e",
   ],
   "body": "return e + 5235 / e",
+  "defaults": Object {
+    "e": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "e",
+  "value": "(async e => {return e + 5235 / e})",
 }
 `;
 
@@ -2847,8 +5687,20 @@ Object {
     "b",
   ],
   "body": "a + 3 + b",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(async (a, b) => a + 3 + b)",
 }
 `;
 
@@ -2860,8 +5712,21 @@ Object {
     "restArgs",
   ],
   "body": "console.log({ value: x * y })",
+  "defaults": Object {
+    "restArgs": undefined,
+    "x": undefined,
+    "y": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "value": "(async (x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
 
@@ -2869,8 +5734,17 @@ exports[`#261 - acorn.parse - should return object with default values when inva
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": false,
   "name": null,
   "params": "",
+  "value": "",
 }
 `;
 
@@ -2878,8 +5752,17 @@ exports[`#262 - acorn.parse - should have '.isValid' and few '.is*'' hidden prop
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": false,
   "name": null,
   "params": "",
+  "value": "",
 }
 `;
 
@@ -2893,8 +5776,23 @@ Object {
   "body": "
         return 123;
       ",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "foo",
   "params": "a, b, c",
+  "value": "({ foo(a, b, c) {
+        return 123;
+      } })",
 }
 `;
 
@@ -2906,8 +5804,21 @@ Object {
   "body": "
         return () => a;
       ",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "bar",
   "params": "a",
+  "value": "({ bar(a) {
+        return () => a;
+      } })",
 }
 `;
 
@@ -2919,8 +5830,21 @@ Object {
   "body": "
         return yield a * 321;
       ",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "gen",
   "params": "a",
+  "value": "({ *gen(a) {
+        return yield a * 321;
+      } })",
 }
 `;
 
@@ -2932,8 +5856,21 @@ Object {
     "restArgs",
   ],
   "body": " return a * 3 ",
+  "defaults": Object {
+    "a": "{foo: 'ba)r', baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "({ namedFn (a = {foo: 'ba)r', baz: 123}, cb, ...restArgs) { return a * 3 } })",
 }
 `;
 
@@ -2945,8 +5882,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "(function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -2958,8 +5908,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "(function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -2969,8 +5932,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "(function (c) {return c * 3})",
 }
 `;
 
@@ -2980,8 +5954,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "(function (...restArgs) {return 321})",
 }
 `;
 
@@ -2989,8 +5974,17 @@ exports[`#275 - acorn loose - function () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(function () {})",
 }
 `;
 
@@ -3000,8 +5994,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = (true, false)) {})",
 }
 `;
 
@@ -3011,8 +6016,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = (true, null)) {})",
 }
 `;
 
@@ -3022,8 +6038,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -3034,8 +6061,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(function (a, b = (i++, true)) {})",
 }
 `;
 
@@ -3045,8 +6084,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = 1) {})",
 }
 `;
 
@@ -3058,8 +6108,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "(function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -3071,8 +6134,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "(function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -3082,8 +6158,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "(function namedFn (c) {return c * 3})",
 }
 `;
 
@@ -3093,8 +6180,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "(function namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -3102,8 +6200,17 @@ exports[`#285 - acorn loose - function namedFn () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "(function namedFn () {})",
 }
 `;
 
@@ -3113,8 +6220,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -3124,8 +6242,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -3135,8 +6264,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -3147,8 +6287,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "(function namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -3158,8 +6310,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = 1) {})",
 }
 `;
 
@@ -3171,8 +6334,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "(function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -3184,8 +6360,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "(function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -3195,8 +6384,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "(function * namedFn (c) {return c * 3})",
 }
 `;
 
@@ -3206,8 +6406,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "(function * namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -3215,8 +6426,17 @@ exports[`#295 - acorn loose - function * namedFn () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "(function * namedFn () {})",
 }
 `;
 
@@ -3226,8 +6446,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -3237,8 +6468,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -3248,8 +6490,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -3260,8 +6513,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "(function * namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -3271,8 +6536,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = 1) {})",
 }
 `;
 
@@ -3284,8 +6560,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "((a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
 
@@ -3297,8 +6586,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "((b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
 
@@ -3308,8 +6610,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "((c) => {return c * 3})",
 }
 `;
 
@@ -3319,8 +6632,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "((...restArgs) => {return 321})",
 }
 `;
 
@@ -3328,8 +6652,17 @@ exports[`#305 - acorn loose - () => {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(() => {})",
 }
 `;
 
@@ -3339,8 +6672,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = (true, false)) => {})",
 }
 `;
 
@@ -3350,8 +6694,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = (true, null)) => {})",
 }
 `;
 
@@ -3361,8 +6716,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = (true, \\"bar\\")) => {})",
 }
 `;
 
@@ -3373,8 +6739,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "((a, b = (i++, true)) => {})",
 }
 `;
 
@@ -3384,8 +6762,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = 1) => {})",
 }
 `;
 
@@ -3395,8 +6784,19 @@ Object {
     "a",
   ],
   "body": "a * 3 * a",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a) => a * 3 * a)",
 }
 `;
 
@@ -3406,8 +6806,19 @@ Object {
     "d",
   ],
   "body": "d * 355 * d",
+  "defaults": Object {
+    "d": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "d",
+  "value": "(d => d * 355 * d)",
 }
 `;
 
@@ -3417,8 +6828,19 @@ Object {
     "e",
   ],
   "body": "return e + 5235 / e",
+  "defaults": Object {
+    "e": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "e",
+  "value": "(e => {return e + 5235 / e})",
 }
 `;
 
@@ -3429,8 +6851,20 @@ Object {
     "b",
   ],
   "body": "a + 3 + b",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "((a, b) => a + 3 + b)",
 }
 `;
 
@@ -3442,8 +6876,21 @@ Object {
     "restArgs",
   ],
   "body": "console.log({ value: x * y })",
+  "defaults": Object {
+    "restArgs": undefined,
+    "x": undefined,
+    "y": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "value": "((x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
 
@@ -3455,8 +6902,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "(async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -3468,8 +6928,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "(async function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -3479,8 +6952,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "(async function (c) {return c * 3})",
 }
 `;
 
@@ -3490,8 +6974,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "(async function (...restArgs) {return 321})",
 }
 `;
 
@@ -3499,8 +6994,17 @@ exports[`#320 - acorn loose - async function () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(async function () {})",
 }
 `;
 
@@ -3510,8 +7014,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = (true, false)) {})",
 }
 `;
 
@@ -3521,8 +7036,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = (true, null)) {})",
 }
 `;
 
@@ -3532,8 +7058,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -3544,8 +7081,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(async function (a, b = (i++, true)) {})",
 }
 `;
 
@@ -3555,8 +7104,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = 1) {})",
 }
 `;
 
@@ -3568,8 +7128,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "(async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -3581,8 +7154,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "(async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -3592,8 +7178,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "(async function namedFn (c) {return c * 3})",
 }
 `;
 
@@ -3603,8 +7200,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "(async function namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -3612,8 +7220,17 @@ exports[`#330 - acorn loose - async function namedFn () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "(async function namedFn () {})",
 }
 `;
 
@@ -3623,8 +7240,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -3634,8 +7262,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -3645,8 +7284,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -3657,8 +7307,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "(async function namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -3668,8 +7330,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = 1) {})",
 }
 `;
 
@@ -3681,8 +7354,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "(async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
 
@@ -3694,8 +7380,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "(async (b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
 
@@ -3705,8 +7404,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "(async (c) => {return c * 3})",
 }
 `;
 
@@ -3716,8 +7426,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "(async (...restArgs) => {return 321})",
 }
 `;
 
@@ -3725,8 +7446,17 @@ exports[`#340 - acorn loose - async () => {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(async () => {})",
 }
 `;
 
@@ -3736,8 +7466,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = (true, false)) => {})",
 }
 `;
 
@@ -3747,8 +7488,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = (true, null)) => {})",
 }
 `;
 
@@ -3758,8 +7510,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = (true, \\"bar\\")) => {})",
 }
 `;
 
@@ -3770,8 +7533,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(async (a, b = (i++, true)) => {})",
 }
 `;
 
@@ -3781,8 +7556,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = 1) => {})",
 }
 `;
 
@@ -3792,8 +7578,19 @@ Object {
     "a",
   ],
   "body": "a * 3 * a",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a) => a * 3 * a)",
 }
 `;
 
@@ -3803,8 +7600,19 @@ Object {
     "d",
   ],
   "body": "d * 355 * d",
+  "defaults": Object {
+    "d": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "d",
+  "value": "(async d => d * 355 * d)",
 }
 `;
 
@@ -3814,8 +7622,19 @@ Object {
     "e",
   ],
   "body": "return e + 5235 / e",
+  "defaults": Object {
+    "e": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "e",
+  "value": "(async e => {return e + 5235 / e})",
 }
 `;
 
@@ -3826,8 +7645,20 @@ Object {
     "b",
   ],
   "body": "a + 3 + b",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(async (a, b) => a + 3 + b)",
 }
 `;
 
@@ -3839,8 +7670,21 @@ Object {
     "restArgs",
   ],
   "body": "console.log({ value: x * y })",
+  "defaults": Object {
+    "restArgs": undefined,
+    "x": undefined,
+    "y": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "value": "(async (x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
 
@@ -3848,8 +7692,17 @@ exports[`#351 - acorn loose - should return object with default values when inva
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": false,
   "name": null,
   "params": "",
+  "value": "",
 }
 `;
 
@@ -3857,8 +7710,17 @@ exports[`#352 - acorn loose - should have '.isValid' and few '.is*'' hidden prop
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": false,
   "name": null,
   "params": "",
+  "value": "",
 }
 `;
 
@@ -3872,8 +7734,23 @@ Object {
   "body": "
         return 123;
       ",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "foo",
   "params": "a, b, c",
+  "value": "({ foo(a, b, c) {
+        return 123;
+      } })",
 }
 `;
 
@@ -3885,8 +7762,21 @@ Object {
   "body": "
         return () => a;
       ",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "bar",
   "params": "a",
+  "value": "({ bar(a) {
+        return () => a;
+      } })",
 }
 `;
 
@@ -3898,8 +7788,21 @@ Object {
   "body": "
         return yield a * 321;
       ",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "gen",
   "params": "a",
+  "value": "({ *gen(a) {
+        return yield a * 321;
+      } })",
 }
 `;
 
@@ -3911,8 +7814,21 @@ Object {
     "restArgs",
   ],
   "body": " return a * 3 ",
+  "defaults": Object {
+    "a": "{foo: 'ba)r', baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "({ namedFn (a = {foo: 'ba)r', baz: 123}, cb, ...restArgs) { return a * 3 } })",
 }
 `;
 
@@ -3924,8 +7840,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "(function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -3937,8 +7866,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "(function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -3948,8 +7890,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "(function (c) {return c * 3})",
 }
 `;
 
@@ -3959,8 +7912,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "(function (...restArgs) {return 321})",
 }
 `;
 
@@ -3968,8 +7932,17 @@ exports[`#365 - espree.parse - function () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(function () {})",
 }
 `;
 
@@ -3979,8 +7952,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = (true, false)) {})",
 }
 `;
 
@@ -3990,8 +7974,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = (true, null)) {})",
 }
 `;
 
@@ -4001,8 +7996,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -4013,8 +8019,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(function (a, b = (i++, true)) {})",
 }
 `;
 
@@ -4024,8 +8042,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(function (a = 1) {})",
 }
 `;
 
@@ -4037,8 +8066,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "(function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -4050,8 +8092,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "(function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -4061,8 +8116,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "(function namedFn (c) {return c * 3})",
 }
 `;
 
@@ -4072,8 +8138,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "(function namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -4081,8 +8158,17 @@ exports[`#375 - espree.parse - function namedFn () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "(function namedFn () {})",
 }
 `;
 
@@ -4092,8 +8178,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -4103,8 +8200,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -4114,8 +8222,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -4126,8 +8245,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "(function namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -4137,8 +8268,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function namedFn(a = 1) {})",
 }
 `;
 
@@ -4150,8 +8292,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "(function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -4163,8 +8318,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "(function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -4174,8 +8342,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "(function * namedFn (c) {return c * 3})",
 }
 `;
 
@@ -4185,8 +8364,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "(function * namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -4194,8 +8384,17 @@ exports[`#385 - espree.parse - function * namedFn () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "(function * namedFn () {})",
 }
 `;
 
@@ -4205,8 +8404,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -4216,8 +8426,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -4227,8 +8448,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -4239,8 +8471,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "(function * namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -4250,8 +8494,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(function * namedFn(a = 1) {})",
 }
 `;
 
@@ -4263,8 +8518,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "((a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
 
@@ -4276,8 +8544,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "((b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
 
@@ -4287,8 +8568,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "((c) => {return c * 3})",
 }
 `;
 
@@ -4298,8 +8590,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "((...restArgs) => {return 321})",
 }
 `;
 
@@ -4307,8 +8610,17 @@ exports[`#395 - espree.parse - () => {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(() => {})",
 }
 `;
 
@@ -4318,8 +8630,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = (true, false)) => {})",
 }
 `;
 
@@ -4329,8 +8652,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = (true, null)) => {})",
 }
 `;
 
@@ -4340,8 +8674,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = (true, \\"bar\\")) => {})",
 }
 `;
 
@@ -4352,8 +8697,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "((a, b = (i++, true)) => {})",
 }
 `;
 
@@ -4363,8 +8720,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a = 1) => {})",
 }
 `;
 
@@ -4374,8 +8742,19 @@ Object {
     "a",
   ],
   "body": "a * 3 * a",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "((a) => a * 3 * a)",
 }
 `;
 
@@ -4385,8 +8764,19 @@ Object {
     "d",
   ],
   "body": "d * 355 * d",
+  "defaults": Object {
+    "d": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "d",
+  "value": "(d => d * 355 * d)",
 }
 `;
 
@@ -4396,8 +8786,19 @@ Object {
     "e",
   ],
   "body": "return e + 5235 / e",
+  "defaults": Object {
+    "e": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "e",
+  "value": "(e => {return e + 5235 / e})",
 }
 `;
 
@@ -4408,8 +8809,20 @@ Object {
     "b",
   ],
   "body": "a + 3 + b",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "((a, b) => a + 3 + b)",
 }
 `;
 
@@ -4421,8 +8834,21 @@ Object {
     "restArgs",
   ],
   "body": "console.log({ value: x * y })",
+  "defaults": Object {
+    "restArgs": undefined,
+    "x": undefined,
+    "y": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "value": "((x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
 
@@ -4434,8 +8860,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "(async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -4447,8 +8886,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "(async function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -4458,8 +8910,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "(async function (c) {return c * 3})",
 }
 `;
 
@@ -4469,8 +8932,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "(async function (...restArgs) {return 321})",
 }
 `;
 
@@ -4478,8 +8952,17 @@ exports[`#410 - espree.parse - async function () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(async function () {})",
 }
 `;
 
@@ -4489,8 +8972,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = (true, false)) {})",
 }
 `;
 
@@ -4500,8 +8994,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = (true, null)) {})",
 }
 `;
 
@@ -4511,8 +9016,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -4523,8 +9039,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(async function (a, b = (i++, true)) {})",
 }
 `;
 
@@ -4534,8 +9062,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async function (a = 1) {})",
 }
 `;
 
@@ -4547,8 +9086,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "(async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -4560,8 +9112,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "value": "(async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -4571,8 +9136,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "value": "(async function namedFn (c) {return c * 3})",
 }
 `;
 
@@ -4582,8 +9158,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "value": "(async function namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -4591,8 +9178,17 @@ exports[`#420 - espree.parse - async function namedFn () {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "",
+  "value": "(async function namedFn () {})",
 }
 `;
 
@@ -4602,8 +9198,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -4613,8 +9220,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -4624,8 +9242,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -4636,8 +9265,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "value": "(async function namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -4647,8 +9288,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "value": "(async function namedFn(a = 1) {})",
 }
 `;
 
@@ -4660,8 +9312,21 @@ Object {
     "restArgs",
   ],
   "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "value": "(async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
 
@@ -4673,8 +9338,21 @@ Object {
     "restArgs",
   ],
   "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "value": "(async (b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
 
@@ -4684,8 +9362,19 @@ Object {
     "c",
   ],
   "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "c",
+  "value": "(async (c) => {return c * 3})",
 }
 `;
 
@@ -4695,8 +9384,19 @@ Object {
     "restArgs",
   ],
   "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "restArgs",
+  "value": "(async (...restArgs) => {return 321})",
 }
 `;
 
@@ -4704,8 +9404,17 @@ exports[`#430 - espree.parse - async () => {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "",
+  "value": "(async () => {})",
 }
 `;
 
@@ -4715,8 +9424,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = (true, false)) => {})",
 }
 `;
 
@@ -4726,8 +9446,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = (true, null)) => {})",
 }
 `;
 
@@ -4737,8 +9468,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = (true, \\"bar\\")) => {})",
 }
 `;
 
@@ -4749,8 +9491,20 @@ Object {
     "b",
   ],
   "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(async (a, b = (i++, true)) => {})",
 }
 `;
 
@@ -4760,8 +9514,19 @@ Object {
     "a",
   ],
   "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a = 1) => {})",
 }
 `;
 
@@ -4771,8 +9536,19 @@ Object {
     "a",
   ],
   "body": "a * 3 * a",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a",
+  "value": "(async (a) => a * 3 * a)",
 }
 `;
 
@@ -4782,8 +9558,19 @@ Object {
     "d",
   ],
   "body": "d * 355 * d",
+  "defaults": Object {
+    "d": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "d",
+  "value": "(async d => d * 355 * d)",
 }
 `;
 
@@ -4793,8 +9580,19 @@ Object {
     "e",
   ],
   "body": "return e + 5235 / e",
+  "defaults": Object {
+    "e": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "e",
+  "value": "(async e => {return e + 5235 / e})",
 }
 `;
 
@@ -4805,8 +9603,20 @@ Object {
     "b",
   ],
   "body": "a + 3 + b",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "a, b",
+  "value": "(async (a, b) => a + 3 + b)",
 }
 `;
 
@@ -4818,8 +9628,21 @@ Object {
     "restArgs",
   ],
   "body": "console.log({ value: x * y })",
+  "defaults": Object {
+    "restArgs": undefined,
+    "x": undefined,
+    "y": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": true,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "value": "(async (x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
 
@@ -4827,8 +9650,17 @@ exports[`#441 - espree.parse - should return object with default values when inv
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": false,
   "name": null,
   "params": "",
+  "value": "",
 }
 `;
 
@@ -4836,8 +9668,17 @@ exports[`#442 - espree.parse - should have '.isValid' and few '.is*'' hidden pro
 Object {
   "args": Array [],
   "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": false,
   "name": null,
   "params": "",
+  "value": "",
 }
 `;
 
@@ -4851,8 +9692,23 @@ Object {
   "body": "
         return 123;
       ",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "foo",
   "params": "a, b, c",
+  "value": "({ foo(a, b, c) {
+        return 123;
+      } })",
 }
 `;
 
@@ -4864,8 +9720,21 @@ Object {
   "body": "
         return () => a;
       ",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "bar",
   "params": "a",
+  "value": "({ bar(a) {
+        return () => a;
+      } })",
 }
 `;
 
@@ -4877,8 +9746,21 @@ Object {
   "body": "
         return yield a * 321;
       ",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
   "name": "gen",
   "params": "a",
+  "value": "({ *gen(a) {
+        return yield a * 321;
+      } })",
 }
 `;
 
@@ -4890,8 +9772,21 @@ Object {
     "restArgs",
   ],
   "body": " return a * 3 ",
+  "defaults": Object {
+    "a": "{foo: 'ba)r', baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "value": "({ namedFn (a = {foo: 'ba)r', baz: 123}, cb, ...restArgs) { return a * 3 } })",
 }
 `;
 
@@ -4901,7 +9796,18 @@ Object {
     "v",
   ],
   "body": " if (v) {} ",
+  "defaults": Object {
+    "v": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
   "name": null,
   "params": "v",
+  "value": "async (v) => { if (v) {} }",
 }
 `;

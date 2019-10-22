@@ -50,7 +50,7 @@ import initial from './plugins/initial';
  * @api public
  */
 export default function parseFunction(opts = {}) {
-  const plugins = [...fakeChange];
+  const plugins = [];
   const app = {
     /**
      * > Parse a given `code` and returns a `result` object

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /**
  * > Set couple of hidden properties and
  * the name of the given function to
@@ -13,19 +14,19 @@
  * @return {Object} result
  * @private
  */
-export default (app) => (node, result) => {
-  app.define(result, 'isArrow', node.type.startsWith('Arrow'));
-  app.define(result, 'isAsync', node.async || false);
-  app.define(result, 'isGenerator', node.generator || false);
-  app.define(result, 'isExpression', node.expression || false);
-  app.define(result, 'isAnonymous', node.id === null);
-  app.define(result, 'isNamed', !result.isAnonymous);
+// eslint-disable-next-line unicorn/consistent-function-scoping
+export default () => (node, result) => {
+  result.isArrow = node.type.startsWith('Arrow');
+  result.isAsync = node.async || false;
+  result.isGenerator = node.generator || false;
+  result.isExpression = node.expression || false;
+  result.isAnonymous = node.id === null;
+  result.isNamed = !result.isAnonymous;
 
   // if real anonymous -> set to null,
   // notice that you can name you function `anonymous`, haha
   // and it won't be "real" anonymous, so `isAnonymous` will be `false`
 
-  // eslint-disable-next-line no-param-reassign
   result.name = result.isAnonymous ? null : node.id.name;
 
   return result;

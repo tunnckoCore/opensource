@@ -1,11 +1,8 @@
+/* eslint-disable no-param-reassign */
 import arrayify from 'arrify';
 import { parseExpression } from '@babel/parser';
 
 const utils = {};
-utils.define =
-  typeof Reflect !== 'undefined'
-    ? Reflect.defineProperty
-    : Object.defineProperty;
 
 utils.arrayify = arrayify;
 
@@ -26,13 +23,11 @@ utils.setDefaults = function setDefaults(code) {
   };
 
   if (typeof code === 'function') {
-    // eslint-disable-next-line no-param-reassign
     code = code.toString('utf8');
   }
 
   // makes result.isValid === false
   if (typeof code !== 'string') {
-    // eslint-disable-next-line no-param-reassign
     code = '';
   }
 
@@ -49,15 +44,15 @@ utils.setDefaults = function setDefaults(code) {
  * @private
  */
 utils.setHiddenDefaults = function setHiddenDefaults(result, code) {
-  utils.define(result, 'defaults', {});
-  utils.define(result, 'value', code);
-  utils.define(result, 'isValid', code.length > 0);
-  utils.define(result, 'isArrow', false);
-  utils.define(result, 'isAsync', false);
-  utils.define(result, 'isNamed', false);
-  utils.define(result, 'isAnonymous', false);
-  utils.define(result, 'isGenerator', false);
-  utils.define(result, 'isExpression', false);
+  result.defaults = {};
+  result.value = code;
+  result.isValid = code.length > 0;
+  result.isArrow = false;
+  result.isAsync = false;
+  result.isNamed = false;
+  result.isAnonymous = false;
+  result.isGenerator = false;
+  result.isExpression = false;
 
   return result;
 };
@@ -73,7 +68,6 @@ utils.setHiddenDefaults = function setHiddenDefaults(result, code) {
  */
 utils.getNode = function getNode(result, opts) {
   if (typeof opts.parse === 'function') {
-    // eslint-disable-next-line no-param-reassign
     result.value = `(${result.value})`;
 
     const ast = opts.parse(result.value, opts);

@@ -53,6 +53,16 @@
     "access": "public",
     "tag": "latest"
   },
+  "jest": {
+    "coverageThreshold": {
+      "src/index.js": {
+        "statements": 85,
+        "branches": 100,
+        "functions": 75,
+        "lines": 83
+      }
+    }
+  },
   "licenseStart": 2017,
   "verb": {
     "readme": "../../readme-template.md",
@@ -70,15 +80,5 @@
       "reflinks": true
     },
     "reflinks": []
-  },
-  "jest": {
-    "coverageThreshold": {
-      "src/index.js": {
-        "statements": 85,
-        "branches": 100,
-        "functions": 75,
-        "lines": 83
-      }
-    }
   }
 }

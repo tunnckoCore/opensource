@@ -12,6 +12,7 @@ jobs:
   test:
     env:
       CI: true
+      CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
     strategy:
       matrix:
         platform: [ubuntu-18.04, macos-latest]

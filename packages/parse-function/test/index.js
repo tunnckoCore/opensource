@@ -258,7 +258,8 @@ factory('espree.parse', (code, opts, plugin) => {
 test('should just extend the core API, not the end result', () => {
   const app = parseFunction();
   app.use((inst) => {
-    app.define(inst, 'hello', (place) => `Hello ${place}!!`);
+    // eslint-disable-next-line no-param-reassign
+    inst.hello = (place) => `Hello ${place}!!`;
   });
   const ret = app.hello('pinky World');
   expect(ret).toStrictEqual('Hello pinky World!!');

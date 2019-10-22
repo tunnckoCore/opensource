@@ -13,7 +13,6 @@
     "clean:fresh": "lerna clean -y && rm -rf node_modules",
     "cleanup": "yarn clean:dist && yarn clean:fresh",
     "cr": "node create-package.js",
-    "start": "node node_modules/@hela/cli/dist/build/cjs/cli.js",
     "patch:hela": "cp patches/hela-cli/* node_modules/@hela/cli/dist/build/cjs/",
     "patch:sade": "cp patches/sade/* node_modules/sade/lib/",
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
@@ -23,7 +22,8 @@
     "refresh": "yarn cleanup && yarn setup",
     "release": "lerna version && lerna publish from-package",
     "setup": "yarn && yarn bootstrap",
-    "setup:ci": "yarn --frozen-lockfile && yarn bootstrap"
+    "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
+    "start": "node node_modules/@hela/cli/dist/build/cjs/cli.js"
   },
   "dependencies": {
     "@babel/cli": "^7.6.0",
@@ -66,6 +66,13 @@
       "commit-msg": "echo 'commitlint -E HUSKY_GIT_PARAMS'"
     }
   },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "babel.config.js",
+      "**/test/support/**/*",
+      "**/test/__snapshots__/**/*"
+    ]
+  },
   "meta": {
     "build": [
       "koa-better-body"
@@ -76,12 +83,5 @@
   },
   "renovate": {
     "extends": "@tunnckocore"
-  },
-  "jest": {
-    "coveragePathIgnorePatterns": [
-      "babel.config.js",
-      "**/test/support/**/*",
-      "**/test/__snapshots__/**/*"
-    ]
   }
 }
