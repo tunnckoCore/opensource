@@ -48,7 +48,10 @@ module.exports = (api, options) => {
 
   opts.presetEnv = opts.presetEnv !== false ? environmentOptions : false;
 
-  const plugins = ['@babel/plugin-syntax-import-meta'];
+  const plugins = [
+    '@babel/plugin-syntax-import-meta',
+    'babel-plugin-add-module-exports',
+  ];
   const presets = [
     opts.presetEnv && [require('@babel/preset-env'), opts.presetEnv],
   ].filter(Boolean);

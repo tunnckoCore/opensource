@@ -32,7 +32,7 @@
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "@hela/cli": "^3.0.0-alpha.91",
-    "@hela/dev": "^3.1.0",
+    "@hela/dev": "^3.1.1",
     "@wessberg/rollup-plugin-ts": "^1.1.73",
     "builtin-modules": "^3.1.0",
     "enquirer": "^2.3.2",
