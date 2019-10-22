@@ -1125,10 +1125,10 @@
     dargs "^7.0.0"
     sade "^1.6.1"
 
-"@hela/dev@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@hela/dev/-/dev-3.1.1.tgz#820b86465c341830eb95992544ac96865b7327d6"
-  integrity sha512-WqFKuk1cDJmh9M6f7PO/RQ92HS3sKF1dJerFxq6eU2ZvshmRyElcZLS3jiEA5yO9d3crtCORbV4PIEaT/D7ZrA==
+"@hela/dev@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@hela/dev/-/dev-3.1.2.tgz#db3300f8c0037fa43089b28c8d37ba0c05ec1f7b"
+  integrity sha512-6IuujIjiWwyIZbT1rBamHmF8WCVDHWnH+AK+SlIzR2gJovfc2TR25IdjjxGqWdciYX061tynyRA1cu+9CMg6mA==
   dependencies:
     "@hela/core" "^3.0.0-alpha.91"
     "@tunnckocore/jest-runner-babel" "^3.4.6"

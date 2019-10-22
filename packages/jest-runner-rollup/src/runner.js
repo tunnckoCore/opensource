@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const builtins = require('builtin-modules');
 const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
@@ -54,22 +55,24 @@ module.exports = async function jestRunnerRollup({ testPath, config }) {
   const { fresh = process.env.ROLLUP_FORCE_RELOAD, ...rollupConfig } = cfg;
 
   const fileContents = fs.readFileSync(inputFile, 'utf8');
-  const contentsHash = toHex(fileContents);
-  const fileHash = toHex(inputFile);
-  const hasCache = !fresh && fs.existsSync(path.join(CACHE_DIR, fileHash));
+  const contentsHash = revHash(fileContents);
+  const configHash = revHash(JSON.stringify(rollupConfig));
+  const fileHash = revHash(inputFile);
+  const cacheFile = path.join(CACHE_DIR, `${fileHash}.json`);
+  let hasCache = !fresh && fs.existsSync(cacheFile);
+  hasCache = hasCache ? fs.existsSync(path.join(pkgRoot, 'dist')) : 0;
 
   let cacheCollection = null;
   if (hasCache) {
     try {
-      cacheCollection = fs.readFileSync(
-        path.join(CACHE_DIR, fileHash, 'index.json'),
-        'utf8',
-      );
-      cacheCollection = JSON.parse(cacheCollection);
+      // eslint-disable-next-line import/no-dynamic-require, global-require
+      cacheCollection = require(cacheFile);
     } catch (err) {
-      cacheCollection = { modules: [] };
+      cacheCollection = {};
     }
   }
+  hasCache = hasCache && cacheCollection.configHash === configHash ? 1 : 0;
+  hasCache = hasCache && cacheCollection.contentsHash === contentsHash ? 1 : 0;
 
   /** Some sane defaults */
   const { dependencies = {} } = await tryCatch(
@@ -99,8 +102,10 @@ module.exports = async function jestRunnerRollup({ testPath, config }) {
     : {};
   if (bundle.hasError) return bundle.error;
 
-  if (!hasCache || cacheCollection.contentsHash !== contentsHash) {
-    createCache(bundle, hasCache, { path: inputFile, contents: fileContents });
+  if (!hasCache) {
+    ROLLUP_CACHE[cacheFile] = ROLLUP_CACHE[cacheFile] || bundle.cache;
+    fs.mkdirSync(path.dirname(cacheFile), { recursive: true });
+    fs.writeFileSync(cacheFile, JSON.stringify({ configHash, contentsHash }));
   }
 
   /** Normalize outputs */
@@ -217,28 +222,6 @@ module.exports = async function jestRunnerRollup({ testPath, config }) {
   return res;
 };
 
-function createCache(bundle, hasCache, file) {
-  ROLLUP_CACHE[file.path] = ROLLUP_CACHE[file.path] || bundle.cache;
-  const cacheData = ROLLUP_CACHE[file.path];
-
-  const contentsHash = toHex(file.contents);
-  const inputFilenameHash = toHex(file.path);
-
-  if (!hasCache) {
-    fs.mkdirSync(`${CACHE_DIR}/${inputFilenameHash}`, { recursive: true });
-  }
-  fs.writeFileSync(
-    path.join(CACHE_DIR, inputFilenameHash, 'index.json'),
-    `${JSON.stringify({ ...cacheData, contentsHash })}`,
-  );
-}
-
-function toHex(val, len) {
-  const value = Buffer.from(JSON.stringify(val)).toString('hex');
-
-  return len ? value.slice(0, len) : value;
-}
-
 async function tryCatch(testPath, start, fn) {
   try {
     return await fn();
@@ -345,4 +328,12 @@ async function hooker(hookFn, options = {}) {
   }
 
   return { ...options, outputOptions: res };
+}
+
+function revHash(input) {
+  return crypto
+    .createHash('md5')
+    .update(input)
+    .digest('hex')
+    .slice(0, 15);
 }

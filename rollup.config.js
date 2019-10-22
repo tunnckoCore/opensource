@@ -3,7 +3,7 @@ const nodeResolve = require('rollup-plugin-node-resolve');
 const babel = require('rollup-plugin-babel');
 const commonjs = require('rollup-plugin-commonjs');
 // const typescript = require('@wessberg/rollup-plugin-ts');
-// const { terser } = require('rollup-plugin-terser');
+const { terser } = require('rollup-plugin-terser');
 const json = require('rollup-plugin-json');
 
 const { getWorkspacesAndExtensions } = require('@tunnckocore/utils');
@@ -152,18 +152,18 @@ module.exports = {
     //     sourceMaps: true,
     //   },
     // }),
-    // terser({
-    //   sourcemap: true,
-    //   output: { comments: false },
-    //   compress: {
-    //     keep_infinity: true,
-    //     pure_getters: true,
-    //     passes: 10,
-    //   },
-    //   ecma: 9,
-    //   toplevel: true,
-    //   warnings: true,
-    // }),
+    terser({
+      sourcemap: true,
+      output: { comments: false },
+      compress: {
+        keep_infinity: true,
+        pure_getters: true,
+        passes: 10,
+      },
+      ecma: 9,
+      toplevel: true,
+      warnings: true,
+    }),
   ],
   output: [
     {
