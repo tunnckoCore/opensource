@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/tunnckoCore/opensource/compare/parse-function@5.3.3...parse-function@5.4.0) (2019-10-22)
+
+
+### Features
+
+* **parse-function:** fake change for force publish, fixes [#70](https://github.com/tunnckoCore/opensource/issues/70) ([c9afcee](https://github.com/tunnckoCore/opensource/commit/c9afcee419ce94dddce4df0e18f8c3bc73a1f76a))
+
+
+
+
+
 ## [5.3.3](https://github.com/tunnckoCore/opensource/compare/parse-function@5.3.2...parse-function@5.3.3) (2019-10-22)
 
 
