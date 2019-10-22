@@ -1,6 +1,6 @@
 {
   "name": "koa-better-body",
-  "version": "3.1.11",
+  "version": "3.1.12",
   "description": "Full-featured [koa][] body parser! Support parsing text, buffer, json, json patch, json api, csp-report, multipart, form and urlencoded bodies. Works for koa@1, koa@2 and will work for koa@3.",
   "repository": {
     "type": "git",
