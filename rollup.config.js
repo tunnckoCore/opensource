@@ -27,33 +27,29 @@ module.exports = Object.assign(exports.default || {}, ___exportsWithoutDefault);
 
 module.exports = {
   hooks: {
-    onFormat({ pkgRoot, inputFile, ...ctx }) {
-      // if jest-runner-*, then we switch output.file to `runner.js` instead of `index.js`
-      if (inputFile.includes('jest-runner-')) {
-        const { file } = ctx.outputOptions;
-
-        ctx.outputOptions.file = path.join(path.dirname(file), 'runner.js');
-
-        const contentsCJS = `const { join } = require('path');const { createJestRunner } = require('@tunnckocore/create-jest-runner');module.exports = createJestRunner(join(__dirname, 'runner.js'));`;
-        const contentsESM = `import { join } from 'path';import { createJestRunner } from '@tunnckocore/create-jest-runner';export default createJestRunner(join(__dirname, 'runner.js'));`;
-
-        const fp = path.join(pkgRoot, ctx.outputOptions.dist, 'index.js');
-        fs.mkdirSync(path.dirname(fp), { recursive: true });
-        fs.writeFileSync(
-          fp,
-          ctx.outputOptions.format === 'esm' ? contentsESM : contentsCJS,
-        );
-
-        return ctx;
-      }
-      return ctx;
-    },
-    onWrite({ outputOptions, inputFile }) {
-      if (/cli\..+$/.test(inputFile)) {
-        return { ...outputOptions, banner: '#!/usr/bin/env node\n' };
-      }
-      return { outputOptions };
-    },
+    // onFormat({ pkgRoot, inputFile, ...ctx }) {
+    //   // if jest-runner-*, then we switch output.file to `runner.js` instead of `index.js`
+    //   if (inputFile.includes('jest-runner-')) {
+    //     const { file } = ctx.outputOptions;
+    //     ctx.outputOptions.file = path.join(path.dirname(file), 'runner.js');
+    //     const contentsCJS = `const { join } = require('path');const { createJestRunner } = require('@tunnckocore/create-jest-runner');module.exports = createJestRunner(join(__dirname, 'runner.js'));`;
+    //     const contentsESM = `import { join } from 'path';import { createJestRunner } from '@tunnckocore/create-jest-runner';export default createJestRunner(join(__dirname, 'runner.js'));`;
+    //     const fp = path.join(pkgRoot, ctx.outputOptions.dist, 'index.js');
+    //     fs.mkdirSync(path.dirname(fp), { recursive: true });
+    //     fs.writeFileSync(
+    //       fp,
+    //       ctx.outputOptions.format === 'esm' ? contentsESM : contentsCJS,
+    //     );
+    //     return ctx;
+    //   }
+    //   return ctx;
+    // },
+    // onWrite({ outputOptions, inputFile }) {
+    //   if (/cli\..+$/.test(inputFile)) {
+    //     return { ...outputOptions, banner: '#!/usr/bin/env node\n' };
+    //   }
+    //   return { outputOptions };
+    // },
     // onPkg: ({ pkgRoot, output }) => {
     //   const {
     //     name,
@@ -67,7 +63,6 @@ module.exports = {
     //     dependencies,
     //     peerDependencies,
     //   } = JSON.parse(fs.readFileSync(path.join(pkgRoot, 'package.json'), 'utf8'));
-
     //   const pkg = {
     //     name,
     //     version,
@@ -84,14 +79,12 @@ module.exports = {
     //     module: output.find(({ format }) => format === 'esm').file,
     //     typings: 'dist/types/index.d.ts',
     //   };
-
     //   const pkgJson = Object.keys(pkg).reduce((acc, key) => {
     //     if (pkg[key]) {
     //       acc[key] = pkg[key];
     //     }
     //     return acc;
     //   }, {});
-
     //   fs.writeFileSync(
     //     path.join(pkgRoot, 'dist', 'package.json'),
     //     JSON.stringify(pkgJson, null, 2),

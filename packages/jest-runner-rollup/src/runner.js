@@ -56,7 +56,7 @@ module.exports = async function jestRunnerRollup({ testPath, config }) {
 
   const fileContents = fs.readFileSync(inputFile, 'utf8');
   const contentsHash = revHash(fileContents);
-  const configHash = revHash(JSON.stringify(rollupConfig));
+  const configHash = revHash(serializeJson(rollupConfig));
   const fileHash = revHash(inputFile);
   const cacheFile = path.join(CACHE_DIR, `${fileHash}.json`);
   let hasCache = !fresh && fs.existsSync(cacheFile);
@@ -105,7 +105,7 @@ module.exports = async function jestRunnerRollup({ testPath, config }) {
   if (!hasCache) {
     ROLLUP_CACHE[cacheFile] = ROLLUP_CACHE[cacheFile] || bundle.cache;
     fs.mkdirSync(path.dirname(cacheFile), { recursive: true });
-    fs.writeFileSync(cacheFile, JSON.stringify({ configHash, contentsHash }));
+    fs.writeFileSync(cacheFile, serializeJson({ configHash, contentsHash }));
   }
 
   /** Normalize outputs */
@@ -330,10 +330,19 @@ async function hooker(hookFn, options = {}) {
   return { ...options, outputOptions: res };
 }
 
-function revHash(input) {
+function revHash(input, len = 20) {
   return crypto
     .createHash('md5')
     .update(input)
     .digest('hex')
-    .slice(0, 15);
+    .slice(0, len);
+}
+
+function serializeJson(input) {
+  return JSON.stringify(input, (key, val) => {
+    if (typeof val === 'function') {
+      return `[Function ${val.name || 'anonymous'}: ${val.toString()}]`;
+    }
+    return val;
+  });
 }
