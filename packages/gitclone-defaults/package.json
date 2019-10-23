@@ -1,6 +1,6 @@
 {
   "name": "gitclone-defaults",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Powerful and flexible signature for `gitclone` - defaults, checks, validating, etc",
   "repository": {
     "type": "git",

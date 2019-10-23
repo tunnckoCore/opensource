@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/tunnckoCore/opensource/compare/gitclone-defaults@2.1.0...gitclone-defaults@2.1.1) (2019-10-23)
+
+
+### Bug Fixes
+
+* update changelog for gitclone-defaults ([f858861](https://github.com/tunnckoCore/opensource/commit/f858861b5a375761b4624c16f0a8962f86a2a6c9))
+
+
+
+
+
 # 2.1.0 (2019-10-23)
 
 
