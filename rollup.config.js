@@ -1,17 +1,15 @@
 /* eslint-Xdisable import/no-extraneous-dependencies */
-const nodeResolve = require('rollup-plugin-node-resolve');
+const json = require('rollup-plugin-json');
 const babel = require('rollup-plugin-babel');
 const commonjs = require('rollup-plugin-commonjs');
+const nodeResolve = require('rollup-plugin-node-resolve');
 // const typescript = require('@wessberg/rollup-plugin-ts');
 const { terser } = require('rollup-plugin-terser');
-const json = require('rollup-plugin-json');
-
 const { getWorkspacesAndExtensions } = require('@tunnckocore/utils');
 
 const { extensions } = getWorkspacesAndExtensions(__dirname);
 
-// const fs = require('fs');
-// const path = require('path');
+process.env.ROLLUP_MIN = process.env.ROLLUP_MIN || '1';
 
 const externals = [].concat('@babel/core', '@babel/parser');
 
@@ -145,18 +143,19 @@ module.exports = {
     //     sourceMaps: true,
     //   },
     // }),
-    terser({
-      sourcemap: true,
-      output: { comments: false },
-      compress: {
-        keep_infinity: true,
-        pure_getters: true,
-        passes: 10,
-      },
-      ecma: 9,
-      toplevel: true,
-      warnings: true,
-    }),
+    process.env.ROLLUP_MIN === '1' &&
+      terser({
+        sourcemap: true,
+        output: { comments: false },
+        compress: {
+          keep_infinity: true,
+          pure_getters: true,
+          passes: 10,
+        },
+        ecma: 9,
+        toplevel: true,
+        warnings: true,
+      }),
   ],
   output: [
     {

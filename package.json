@@ -23,7 +23,8 @@
     "release": "lerna version && lerna publish from-package",
     "setup": "yarn && yarn bootstrap",
     "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
-    "start": "node node_modules/@hela/cli/dist/build/cjs/cli.js"
+    "start": "node node_modules/@hela/cli/dist/build/cjs/cli.js",
+    "test": "CI=1 yarn start test"
   },
   "dependencies": {
     "@babel/cli": "^7.6.0",
@@ -69,6 +70,7 @@
   "jest": {
     "coveragePathIgnorePatterns": [
       "babel.config.js",
+      "**/dist/**/*",
       "**/test/support/**/*",
       "**/test/__snapshots__/**/*"
     ]
@@ -78,6 +80,7 @@
       "koa-better-body"
     ],
     "bundle": [
+      "gitclone-defaults",
       "stringify-github-short-url",
       "parse-function"
     ]

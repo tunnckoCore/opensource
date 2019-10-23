@@ -198,6 +198,16 @@ function createPkgJson() {
       access: 'public',
       tag: 'latest',
     },
+    jest: {
+      coverageThreshold: {
+        'src/**/*.js': {
+          statements: 100,
+          branches: 100,
+          functions: 100,
+          lines: 100,
+        },
+      },
+    },
     licenseStart: parseInt(answers.licenseStart, 10),
     verb: {
       readme: '../../readme-template.md',

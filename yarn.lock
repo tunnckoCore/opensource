@@ -6919,14 +6919,6 @@ git-username@^1.0.0:
     parse-github-url "^1.0.2"
     remote-origin-url "^1.0.0"
 
-gitclone-defaults@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/gitclone-defaults/-/gitclone-defaults-2.0.0.tgz#99208dd79684184cec20f466111fa52b714ffa13"
-  integrity sha1-mSCN15aEGEzsIPRmER+lK3FP+hM=
-  dependencies:
-    parse-github-url "^0.3.2"
-    stringify-github-short-url "^3.0.0"
-
 gitclone@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/gitclone/-/gitclone-2.0.0.tgz#a6a76b3e5c0c7f3b2e7e29fdb8a3c2a5e8772623"
@@ -13167,11 +13159,6 @@ stringify-entities@^2.0.0:
     is-alphanumerical "^1.0.0"
     is-decimal "^1.0.2"
     is-hexadecimal "^1.0.0"
-
-stringify-github-short-url@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/stringify-github-short-url/-/stringify-github-short-url-3.0.0.tgz#fe3c568d84ac28133f961ce28080f8f343acb843"
-  integrity sha1-/jxWjYSsKBM/lhzigID480OsuEM=
 
 stringify-github-url@^0.1.0:
   version "0.1.0"
