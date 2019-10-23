@@ -1,5 +1,9 @@
 'use strict';
 
+/* eslint-disable unicorn/no-abusive-eslint-disable */
+
+/* eslint-disable */
+
 const app = require('koa')();
 const router = require('koa-router')();
 

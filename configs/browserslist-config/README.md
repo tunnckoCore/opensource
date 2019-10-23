@@ -140,7 +140,7 @@ Released under the [MPL-2.0 License][license-url].
 
 [npmv-url]: https://www.npmjs.com/package/@tunnckocore/browserslist-config
 [npmv-img]: https://badgen.net/npm/v/@tunnckocore/browserslist-config?icon=npm
-[nodejs-img]: https://badgen.net/npm/node/@tunnckocore/browserslist-config
+[nodejs-img]: https://badgen.net/badge/node/>=10.13/green
 
 <!--
 [ghrelease-url]: https://github.com/tunnckoCore/opensource/releases/latest

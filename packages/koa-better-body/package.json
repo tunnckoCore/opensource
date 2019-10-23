@@ -10,9 +10,12 @@
   "homepage": "https://tunnckocore.com/opensource",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",
+  "engines": {
+    "node": ">=8.11"
+  },
   "main": "dist/main/index.js",
   "module": "dist/module/index.js",
-  "typings": "dist/types/index.d.ts",
+  "typings": "dist/typings/index.d.ts",
   "files": [
     "dist"
   ],
@@ -84,6 +87,7 @@
   },
   "licenseStart": 2014,
   "verb": {
+    "readme": "../../readme-template.md",
     "run": true,
     "toc": {
       "render": true,
@@ -94,6 +98,9 @@
     "tasks": [
       "readme"
     ],
+    "lint": {
+      "reflinks": true
+    },
     "related": {
       "list": [
         "koa",
@@ -116,9 +123,6 @@
       "koa-router",
       "micromatch",
       "qs"
-    ],
-    "lint": {
-      "reflinks": true
-    }
+    ]
   }
 }

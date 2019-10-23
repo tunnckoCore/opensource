@@ -208,6 +208,10 @@ function createPkgJson() {
         },
       },
     },
+    jestCov: {
+      color: 'grey',
+      value: 'unknown',
+    },
     licenseStart: parseInt(answers.licenseStart, 10),
     verb: {
       readme: '../../readme-template.md',

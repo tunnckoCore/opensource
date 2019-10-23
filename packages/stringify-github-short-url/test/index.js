@@ -34,9 +34,7 @@ test('should generate shorthand from object', async () => {
 
 test('should throw TypeError if first argument not a string', async () => {
   expect(() => stringify(123)).toThrow(TypeError);
-  expect(() => stringify(123)).toThrow(
-    /stringify-github-short-url: expects `owner` to be a string/,
-  );
+  expect(() => stringify(123)).toThrow(/expects `owner` to be a string/);
 });
 
 test('should throw TypeError if `owner` prop not a string', async () => {

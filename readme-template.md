@@ -145,7 +145,7 @@ Released under the [{%= license %} License][license-url].
 [npmv-url]: https://www.npmjs.com/package/{%= name %}
 [npmv-img]: https://badgen.net/npm/v/{%= name %}?icon=npm
 
-[nodejs-img]: https://badgen.net/npm/node/{%= name %}
+[nodejs-img]: https://badgen.net/badge/node/{%= engines.node %}/green
 
 <!--
 [ghrelease-url]: https://github.com/tunnckoCore/opensource/releases/latest
@@ -163,7 +163,7 @@ Released under the [{%= license %} License][license-url].
 [linuxbuild-img]: https://badgennet.charlike-oss.now.sh/github/checks/tunnckoCore/opensource/master?label=build&icon=github
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 
-[codecoverage-img]: https://badgen.net/badge/coverage/{%= jestCov.value === 'unknown' ? 'unknown' : jestCov.value + '%' %}/{%= jestCov.color %}?icon=codecov
+[codecoverage-img]: https://badgen.net/badge/coverage/{%= jestCov.value %}/{%= jestCov.color %}?icon=codecov
 [dependencies-url]: https://david-dm.org/tunnckoCore/opensource
 [dependencies-img]: https://badgen.net/david/dep/tunnckoCore/opensource?label=deps
 [ccommits-url]: https://conventionalcommits.org/

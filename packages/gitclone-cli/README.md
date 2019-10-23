@@ -170,7 +170,7 @@ Released under the [MPL-2.0 License][license-url].
 
 [npmv-url]: https://www.npmjs.com/package/gitclone-cli
 [npmv-img]: https://badgen.net/npm/v/gitclone-cli?icon=npm
-[nodejs-img]: https://badgen.net/npm/node/gitclone-cli
+[nodejs-img]: https://badgen.net/badge/node/>=8.11/green
 
 <!--
 [ghrelease-url]: https://github.com/tunnckoCore/opensource/releases/latest

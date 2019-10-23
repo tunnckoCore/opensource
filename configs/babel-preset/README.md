@@ -140,7 +140,7 @@ Released under the [MPL-2.0 License][license-url].
 
 [npmv-url]: https://www.npmjs.com/package/@tunnckocore/babel-preset
 [npmv-img]: https://badgen.net/npm/v/@tunnckocore/babel-preset?icon=npm
-[nodejs-img]: https://badgen.net/npm/node/@tunnckocore/babel-preset
+[nodejs-img]: https://badgen.net/badge/node/>=10.13/green
 
 <!--
 [ghrelease-url]: https://github.com/tunnckoCore/opensource/releases/latest
@@ -157,7 +157,7 @@ Released under the [MPL-2.0 License][license-url].
 [linuxbuild-url]: https://github.com/tunnckocore/opensource/actions
 [linuxbuild-img]: https://badgennet.charlike-oss.now.sh/github/checks/tunnckoCore/opensource/master?label=build&icon=github
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
-[codecoverage-img]: https://badgen.net/badge/coverage/74.92%/EEAA22?icon=codecov
+[codecoverage-img]: https://badgen.net/badge/coverage/74.92/EEAA22?icon=codecov
 [dependencies-url]: https://david-dm.org/tunnckoCore/opensource
 [dependencies-img]: https://badgen.net/david/dep/tunnckoCore/opensource?label=deps
 [ccommits-url]: https://conventionalcommits.org/
