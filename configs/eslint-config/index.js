@@ -260,7 +260,7 @@ const additionalChanges = {
   ],
 };
 
-const importResolverAlias = Object.keys(alias).reduce((acc, key) => {
+const importResolverAliasMap = Object.keys(alias).reduce((acc, key) => {
   const value = alias[key];
 
   acc.push([key, value]);
@@ -268,20 +268,23 @@ const importResolverAlias = Object.keys(alias).reduce((acc, key) => {
   return acc;
 }, []);
 
-// console.log(importResolverAlias);
+const EXTENSIONS = ['.ts', '.tsx', '.d.ts', '.js', '.jsx', '.mdx', '.json'];
 
 module.exports = {
   parser: 'babel-eslint',
   settings: {
     node: {
       allowModules: Object.keys(alias),
-      tryExtensions: ['.ts', '.tsx', '.d.ts', '.js', '.jsx', '.mdx', '.json'],
+      tryExtensions: EXTENSIONS,
     },
     'import/resolver': {
       node: {
-        extensions: ['.ts', '.tsx', '.d.ts', '.js', '.jsx', '.mdx', '.json'],
+        extensions: EXTENSIONS,
       },
-      alias: importResolverAlias,
+      alias: {
+        map: importResolverAliasMap,
+        extensions: EXTENSIONS,
+      },
       // [
       //   ['babel-polyfill', 'babel-polyfill/dist/polyfill.min.js'],
       //   ['helper', './utils/helper'],
