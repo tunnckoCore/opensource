@@ -1,0 +1,72 @@
+{
+  "name": "gitclone-cli",
+  "version": "1.0.2",
+  "description": "Simple command line interface for the `git clone` command, using [gitclone][] package",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "packages/gitclone-cli"
+  },
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "license": "MPL-2.0",
+  "engines": {
+    "node": ">=8.11"
+  },
+  "bin": {
+    "gitclone": "src/cli.js",
+    "gitclone-cli": "src/cli.js"
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "tunnckocorehq",
+    "tunnckocore-oss",
+    "hela",
+    "development",
+    "developer-experience",
+    "dx",
+    "cli",
+    "clone",
+    "cmd",
+    "command",
+    "flexible",
+    "gh",
+    "ghclone",
+    "git",
+    "gitc",
+    "gitclone",
+    "github",
+    "github-clone",
+    "interface"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "git-username": "^1.0.0",
+    "gitclone": "^2.0.0",
+    "sade": "^1.6.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "licenseStart": 2015,
+  "verb": {
+    "readme": "../../readme-template.md",
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 4
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": []
+  }
+}

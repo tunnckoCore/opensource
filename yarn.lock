@@ -4222,6 +4222,14 @@ capture-exit@^2.0.0:
   dependencies:
     rsvp "^4.8.4"
 
+capture-spawn@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/capture-spawn/-/capture-spawn-1.0.1.tgz#0f3b01fcefb59cc808b7bad04dab8eec0ec85ccd"
+  integrity sha1-DzsB/O+1nMgIt7rQTauO7A7IXM0=
+  dependencies:
+    error-base "^0.2.0"
+    is-child-process "^1.0.0"
+
 caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
@@ -4883,6 +4891,15 @@ cross-spawn@^4.0.0:
     lru-cache "^4.0.1"
     which "^1.2.9"
 
+cross-spawn@^5.0.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
+  integrity sha1-6L0O/uWPz/b4+UUQoKVUu/ojVEk=
+  dependencies:
+    lru-cache "^4.0.1"
+    shebang-command "^1.2.0"
+    which "^1.2.9"
+
 cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
@@ -5470,6 +5487,11 @@ err-code@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/err-code/-/err-code-1.1.2.tgz#06e0116d3028f6aef4806849eb0ea6a748ae6960"
   integrity sha1-BuARbTAo9q70gGhJ6w6mp0iuaWA=
+
+error-base@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/error-base/-/error-base-0.2.0.tgz#4533d660a483607bc12d061a6b57fccefc9a2cdb"
+  integrity sha1-RTPWYKSDYHvBLQYaa1f8zvyaLNs=
 
 error-ex@^1.2.0, error-ex@^1.3.1:
   version "1.3.2"
@@ -6889,6 +6911,32 @@ git-url-parse@^11.1.2:
   dependencies:
     git-up "^4.0.0"
 
+git-username@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/git-username/-/git-username-1.0.0.tgz#5e31ef29efe15c184cfaa5ed23212c89b0fcf123"
+  integrity sha512-xm45KwBR6Eu1jO4umx/o2M84v9TC7tdOBuzLx8ayhdR9H1FBiiG9azz31uC0esDvaWVBTDINpJ5USomk+ja8OQ==
+  dependencies:
+    parse-github-url "^1.0.2"
+    remote-origin-url "^1.0.0"
+
+gitclone-defaults@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gitclone-defaults/-/gitclone-defaults-2.0.0.tgz#99208dd79684184cec20f466111fa52b714ffa13"
+  integrity sha1-mSCN15aEGEzsIPRmER+lK3FP+hM=
+  dependencies:
+    parse-github-url "^0.3.2"
+    stringify-github-short-url "^3.0.0"
+
+gitclone@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gitclone/-/gitclone-2.0.0.tgz#a6a76b3e5c0c7f3b2e7e29fdb8a3c2a5e8772623"
+  integrity sha1-pqdrPlwMfzsufin9uKPCpeh3JiM=
+  dependencies:
+    capture-spawn "^1.0.1"
+    cross-spawn "^5.0.0"
+    gitclone-defaults "^2.0.0"
+    lazy-cache "^2.0.1"
+
 gitconfiglocal@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gitconfiglocal/-/gitconfiglocal-1.0.0.tgz#41d045f3851a5ea88f03f24ca1c6178114464b9b"
@@ -7751,6 +7799,14 @@ is-callable@^1.1.4:
   resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.1.4.tgz#1e1adf219e1eeb684d691f9d6a05ff0d30a24d75"
   integrity sha512-r5p9sxJjYnArLjObpjA4xu5EKI3CuKHkJXMhT7kwbpUyIFD1n5PMAsoPvWnvtZiNz7LjkYDRZhd7FlI0eMijEA==
 
+is-child-process@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/is-child-process/-/is-child-process-1.0.2.tgz#c22961acd629e128cb008ed6355b3bcbf85d9bd8"
+  integrity sha1-wilhrNYp4SjLAI7WNVs7y/hdm9g=
+  dependencies:
+    is-node-emitter "^1.0.2"
+    isarray "^1.0.0"
+
 is-ci@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/is-ci/-/is-ci-2.0.0.tgz#6bc6334181810e04b5c22b3d589fdca55026404c"
@@ -7914,6 +7970,14 @@ is-module@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-module/-/is-module-1.0.0.tgz#3258fb69f78c14d5b815d664336b4cffb6441591"
   integrity sha1-Mlj7afeMFNW4FdZkM2tM/7ZEFZE=
 
+is-node-emitter@^1.0.2:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/is-node-emitter/-/is-node-emitter-1.0.6.tgz#807a8b0194ceccf99b6f7d5e95a39f1c957eaa36"
+  integrity sha1-gHqLAZTOzPmbb31elaOfHJV+qjY=
+  dependencies:
+    is-real-object "^1.0.1"
+    isarray "^1.0.0"
+
 is-number@^2.0.2, is-number@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-2.1.0.tgz#01fcbbb393463a548f2f466cce16dece49db908f"
@@ -7997,6 +8061,14 @@ is-proto-prop@^2.0.0:
   dependencies:
     lowercase-keys "^1.0.0"
     proto-props "^2.0.0"
+
+is-real-object@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/is-real-object/-/is-real-object-1.0.2.tgz#dd170ead88829c38c5d4b430596d91e2b9773883"
+  integrity sha1-3RcOrYiCnDjF1LQwWW2R4rl3OIM=
+  dependencies:
+    is-extendable "^0.1.1"
+    isarray "^1.0.0"
 
 is-reference@^1.1.2:
   version "1.1.4"
@@ -11001,6 +11073,11 @@ parse-github-url@^0.3.1, parse-github-url@^0.3.2:
   resolved "https://registry.yarnpkg.com/parse-github-url/-/parse-github-url-0.3.2.tgz#76ef01ebfe0b1e9c0f493672952cc6a4cd9cb260"
   integrity sha1-du8B6/4LHpwPSTZylSzGpM2csmA=
 
+parse-github-url@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/parse-github-url/-/parse-github-url-1.0.2.tgz#242d3b65cbcdda14bb50439e3242acf6971db395"
+  integrity sha512-kgBf6avCbO3Cn6+RnzRGLkUsv4ZVqv/VfAYkRsyBcgkshNvVBkRn1FEZcW0Jb+npXQWm2vHPnnOqFteZxRRGNw==
+
 parse-glob@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/parse-glob/-/parse-glob-3.0.4.tgz#b2c376cfb11f35513badd173ef0bb6e3a388391c"
@@ -12086,6 +12163,13 @@ remote-origin-url@^0.5.1:
   dependencies:
     parse-git-config "^1.1.1"
 
+remote-origin-url@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/remote-origin-url/-/remote-origin-url-1.0.0.tgz#add020aa5f1a0b37372858e02b323dc28d4cd030"
+  integrity sha512-xHDM6IBqivpiQ1e4WOuFpM/T6rbzA/WBsu+3WLtgPOhHyjA0nYlijV3NprlTb4FcXlQ5+Q+z174sQ1NnUF5FwA==
+  dependencies:
+    parse-git-config "^1.1.1"
+
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz#c24bce2a283adad5bc3f58e0d48249b92379d8ef"
@@ -13083,6 +13167,11 @@ stringify-entities@^2.0.0:
     is-alphanumerical "^1.0.0"
     is-decimal "^1.0.2"
     is-hexadecimal "^1.0.0"
+
+stringify-github-short-url@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/stringify-github-short-url/-/stringify-github-short-url-3.0.0.tgz#fe3c568d84ac28133f961ce28080f8f343acb843"
+  integrity sha1-/jxWjYSsKBM/lhzigID480OsuEM=
 
 stringify-github-url@^0.1.0:
   version "0.1.0"

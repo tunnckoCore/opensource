@@ -38,6 +38,13 @@ async function run() {
       onSubmit,
     },
     {
+      message: 'Desciption the package?',
+      type: 'input',
+      name: 'description',
+      initial: 'WIP',
+      onSubmit,
+    },
+    {
       message: 'Package version',
       type: 'input',
       initial: '0.1.0',
@@ -158,20 +165,32 @@ function createPkgJson() {
   modField = modField || (type === 'bundle' ? 'dist/esm/index.js' : null);
   modField = modField || (type === 'source' ? 'src/index.js' : modField);
 
+  let typingsField = null;
+  if (type === 'build' || type === 'bundle') {
+    typingsField = 'dist/typings/index.d.ts';
+  }
+  if (!typingsField) {
+    typingsField = type === 'source' ? 'src/index.d.ts' : typingsField;
+  }
+
   return {
     name: answers.name,
     version: answers.version,
-    description: 'WIP',
-    repository: `https://github.com/tunnckoCore/opensource/tree/master/${answers.location}`,
+    description: answers.description,
+    repository: {
+      type: 'git',
+      url: 'https://github.com/tunnckoCore/opensource.git',
+      directory: answers.location,
+    },
     homepage: `https://tunnckocore.com/opensource`,
     author: `Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)`,
     license: answers.license,
     engines: {
-      node: '>=8.11',
+      node: '>=10.13',
     },
     main: mainField,
     module: modField,
-    typings: 'dist/typings/index.d.ts',
+    typings: typingsField,
     files: [/build|bundle/.test(answers.publishType) ? 'dist' : 'src'],
     keywords: answers.keywords,
     scripts: {},
