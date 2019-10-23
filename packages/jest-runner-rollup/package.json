@@ -58,6 +58,10 @@
       }
     }
   },
+  "jestCov": {
+    "value": 6.18,
+    "color": "red"
+  },
   "licenseStart": 2019,
   "verb": {
     "readme": "../../readme-template.md",

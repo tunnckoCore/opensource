@@ -78,6 +78,10 @@
       }
     }
   },
+  "jestCov": {
+    "value": 95.56,
+    "color": "99CC09"
+  },
   "licenseStart": 2014,
   "verb": {
     "run": true,

@@ -42,6 +42,9 @@
     "access": "public",
     "tag": "latest"
   },
+  "jestCov": {
+    "color": "green"
+  },
   "licenseStart": 2019,
   "tsconfig": "tsconfig.json",
   "verb": {

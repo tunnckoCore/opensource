@@ -18,6 +18,7 @@
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
     "postsetup": "yarn patch:verb && yarn patch:hela && yarn patch:sade",
     "postsetup:ci": "yarn patch:verb && yarn patch:hela && yarn patch:sade",
+    "posttest": "node generate-coverage-info.js && yarn start docs && yarn start format",
     "pre-commit": "yarn docs && yarn fmt",
     "refresh": "yarn cleanup && yarn setup",
     "release": "lerna version && lerna publish from-package",
@@ -36,6 +37,7 @@
     "@hela/dev": "^3.1.2",
     "@wessberg/rollup-plugin-ts": "^1.1.73",
     "builtin-modules": "^3.1.0",
+    "cheerio": "^1.0.0-rc.3",
     "enquirer": "^2.3.2",
     "eslint": "^6.4.0",
     "esm": "^3.2.25",
@@ -74,6 +76,20 @@
       "**/test/support/**/*",
       "**/test/__snapshots__/**/*"
     ]
+  },
+  "jestCov": {
+    "@tunnckocore/create-jest-runner": 18.08,
+    "@tunnckocore/execa": 86.01,
+    "@tunnckocore/jest-runner-babel": 8.93,
+    "@tunnckocore/jest-runner-eslint": 11.29,
+    "@tunnckocore/utils": 97.73,
+    "configs/babel-preset": 74.92,
+    "packages/gitclone-defaults": 100,
+    "packages/jest-runner-docs": 8.29,
+    "packages/jest-runner-rollup": 6.18,
+    "packages/koa-better-body": 95.56,
+    "packages/parse-function": 100,
+    "packages/stringify-github-short-url": 100
   },
   "meta": {
     "build": [

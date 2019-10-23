@@ -51,6 +51,9 @@
     "access": "public",
     "tag": "latest"
   },
+  "jestCov": {
+    "color": "green"
+  },
   "licenseStart": 2015,
   "verb": {
     "readme": "../../readme-template.md",

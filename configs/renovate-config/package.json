@@ -38,6 +38,9 @@
     "access": "public",
     "tag": "latest"
   },
+  "jestCov": {
+    "color": "green"
+  },
   "licenseStart": 2017,
   "renovate-config": {
     "default": {

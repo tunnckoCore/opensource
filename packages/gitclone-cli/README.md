@@ -187,7 +187,7 @@ Released under the [MPL-2.0 License][license-url].
 [linuxbuild-url]: https://github.com/tunnckocore/opensource/actions
 [linuxbuild-img]: https://badgennet.charlike-oss.now.sh/github/checks/tunnckoCore/opensource/master?label=build&icon=github
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
-[codecoverage-img]: https://badgen.net/codecov/c/github/tunnckoCore/opensource?icon=codecov
+[codecoverage-img]: https://badgen.net/badge/coverage/%/green?icon=codecov
 [dependencies-url]: https://david-dm.org/tunnckoCore/opensource
 [dependencies-img]: https://badgen.net/david/dep/tunnckoCore/opensource?label=deps
 [ccommits-url]: https://conventionalcommits.org/
