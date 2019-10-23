@@ -89,7 +89,8 @@
     "tag": "latest"
   },
   "jestCov": {
-    "color": "green"
+    "value": "unknown",
+    "color": "grey"
   },
   "licenseStart": 2019,
   "verb": {

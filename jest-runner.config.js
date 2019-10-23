@@ -14,6 +14,9 @@ const presetOptions = {
 
 // eslint-disable-next-line max-params
 function coverageColor(value, green = 100, yellow = 85, orange = 70, red = 35) {
+  if (!value) {
+    return 'grey';
+  }
   if (value < red) {
     return 'red';
   }
@@ -52,7 +55,7 @@ module.exports = {
           {
             ...pkgJson,
             jestCov: {
-              value: cov,
+              value: cov || 'unknown',
               color: coverageColor(cov),
             },
           },

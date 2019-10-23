@@ -163,7 +163,7 @@ Released under the [{%= license %} License][license-url].
 [linuxbuild-img]: https://badgennet.charlike-oss.now.sh/github/checks/tunnckoCore/opensource/master?label=build&icon=github
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 
-[codecoverage-img]: https://badgen.net/badge/coverage/{%= jestCov.value %}%/{%= jestCov.color %}?icon=codecov
+[codecoverage-img]: https://badgen.net/badge/coverage/{%= jestCov.value === 'unknown' ? 'unknown' : jestCov.value + '%' %}/{%= jestCov.color %}?icon=codecov
 [dependencies-url]: https://david-dm.org/tunnckoCore/opensource
 [dependencies-img]: https://badgen.net/david/dep/tunnckoCore/opensource?label=deps
 [ccommits-url]: https://conventionalcommits.org/
