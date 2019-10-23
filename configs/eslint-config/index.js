@@ -2,7 +2,7 @@
 const { createAliases } = require('@tunnckocore/utils');
 
 const CWD = process.cwd();
-const { alias } = createAliases(CWD, '');
+const { alias, workspaces } = createAliases(CWD, '');
 
 // console.log(alias, extensions);
 
@@ -279,7 +279,11 @@ module.exports = {
     },
     'import/resolver': {
       node: {
+        paths: workspaces,
         extensions: EXTENSIONS,
+        moduleDirectory: ['node_modules']
+          .concat(workspaces)
+          .concat(Object.values(alias)),
       },
       alias: {
         map: importResolverAliasMap,
