@@ -260,6 +260,16 @@ const additionalChanges = {
   ],
 };
 
+const importResolverAlias = Object.keys(alias).reduce((acc, key) => {
+  const value = alias[key];
+
+  acc.push([key, value]);
+
+  return acc;
+}, []);
+
+// console.log(importResolverAlias);
+
 module.exports = {
   parser: 'babel-eslint',
   settings: {
@@ -271,6 +281,13 @@ module.exports = {
       node: {
         extensions: ['.ts', '.tsx', '.d.ts', '.js', '.jsx', '.mdx', '.json'],
       },
+      alias: importResolverAlias,
+      // [
+      //   ['babel-polyfill', 'babel-polyfill/dist/polyfill.min.js'],
+      //   ['helper', './utils/helper'],
+      //   ['material-ui/DatePicker', '../custom/DatePicker'],
+      //   ['material-ui', 'material-ui-ie10'],
+      // ],
     },
     'import/extensions': [
       '.ts',
