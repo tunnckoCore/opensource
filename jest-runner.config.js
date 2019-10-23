@@ -55,7 +55,7 @@ module.exports = {
           {
             ...pkgJson,
             jestCov: {
-              value: cov || 'unknown',
+              value: cov,
               color: coverageColor(cov),
             },
           },

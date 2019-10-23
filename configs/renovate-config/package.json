@@ -39,7 +39,6 @@
     "tag": "latest"
   },
   "jestCov": {
-    "value": "unknown",
     "color": "grey"
   },
   "licenseStart": 2017,

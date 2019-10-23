@@ -81,8 +81,12 @@ async function run() {
       },
       result(value) {
         if (answers.scoped) {
-          answers.location = `${value}/${answers.name}`;
-          answers.name = answers.location;
+          if (/config|preset/.test(answers.name)) {
+            answers.location = `configs/${answers.name}`;
+          } else {
+            answers.location = `${value}/${answers.name}`;
+          }
+          answers.name = `${value}/${answers.name}`;
           answers.scope = value;
         }
       },
@@ -210,7 +214,6 @@ function createPkgJson() {
     },
     jestCov: {
       color: 'grey',
-      value: 'unknown',
     },
     licenseStart: parseInt(answers.licenseStart, 10),
     verb: {

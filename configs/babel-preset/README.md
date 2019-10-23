@@ -11,8 +11,8 @@ Please consider following this project's author, [Charlike Mike Reagent](https:/
 [![CodeCov coverage status][codecoverage-img]][codecoverage-url]
 [![DavidDM dependency status][dependencies-img]][dependencies-url]
 [![Renovate App Status][renovateapp-img]][renovateapp-url]
-[![Time Since Last Commit][last-commit-img]][last-commit-url]
 [![Make A Pull Request][prs-welcome-img]][prs-welcome-url]
+[![Time Since Last Commit][last-commit-img]][last-commit-url]
 
 <!-- [![Semantically Released][standard-release-img]][standard-release-url] -->
 
@@ -157,7 +157,7 @@ Released under the [MPL-2.0 License][license-url].
 [linuxbuild-url]: https://github.com/tunnckocore/opensource/actions
 [linuxbuild-img]: https://badgennet.charlike-oss.now.sh/github/checks/tunnckoCore/opensource/master?label=build&icon=github
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
-[codecoverage-img]: https://badgen.net/badge/coverage/74.92/EEAA22?icon=codecov
+[codecoverage-img]: https://badgen.net/badge/coverage/74.92%25/EEAA22?icon=codecov
 [dependencies-url]: https://david-dm.org/tunnckoCore/opensource
 [dependencies-img]: https://badgen.net/david/dep/tunnckoCore/opensource?label=deps
 [ccommits-url]: https://conventionalcommits.org/
@@ -200,7 +200,7 @@ Released under the [MPL-2.0 License][license-url].
 <!-- [patreon-img]: https://badgen.net/badge/Patreon/tunnckoCore/F96854?icon=patreon -->
 
 [patreon-sponsor-img]: https://badgen.net/badge/become/a%20sponsor/F96854?icon=patreon
-[twitter-share-url]: https://twitter.com/intent/tweet?text=https://github.com/tunnckoCore/opensource&via=tunnckoCore
+[twitter-share-url]: https://twitter.com/intent/tweet?text=https://github.com/tunnckoCore/opensource/tree/master&via=tunnckoCore
 [twitter-share-img]: https://badgen.net/badge/twitter/share/1da1f2?icon=twitter
 [open-issue-url]: https://github.com/tunnckoCore/opensource/issues/new
 [tunnckocore_legal]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/legal/tunnckocore?label&color=A56016&icon=https://svgshare.com/i/Dt6.svg
