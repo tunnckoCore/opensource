@@ -5,19 +5,19 @@
  * of arguments or object.
  *
  * @example
- * const stringify = require('stringify-github-short-url')
+ * import stringify from 'stringify-github-short-url';
  *
- * stringify('jonschlinkert', 'micromatch')          // => 'jonschlinkert/micromatch'
- * stringify('jonschlinkert', 'micromatch', 'dev')   // => 'jonschlinkert/micromatch#dev'
- * stringify('gulpjs', 'gulp', 'v3.8.1', true)       // => 'gulpjs/gulp@v3.8.1'
+ * stringify('jonschlinkert', 'micromatch');          // => 'jonschlinkert/micromatch'
+ * stringify('jonschlinkert', 'micromatch', 'dev');   // => 'jonschlinkert/micromatch#dev'
+ * stringify('gulpjs', 'gulp', 'v3.8.1', true);       // => 'gulpjs/gulp@v3.8.1'
  * stringify({
  *   owner: 'tunnckoCore',
  *   name: 'parse-function'
- * }) // => 'tunnckoCore/parse-function'
+ * }); // => 'tunnckoCore/parse-function'
  * stringify({
  *   user: 'assemble',
  *   repo: 'assemble-core'
- * }) // => 'assemble/assemble-core'
+ * }); // => 'assemble/assemble-core'
  *
  * @name  stringifyGithubShortUrl
  * @param  {String|Object} `<owner>` user or org string, or object

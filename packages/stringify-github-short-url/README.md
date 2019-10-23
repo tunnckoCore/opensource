@@ -104,7 +104,7 @@ function(owner, name, branch, npm)
 **Example**
 
 ```js
-const stringify = require('stringify-github-short-url');
+import stringify from 'stringify-github-short-url';
 
 stringify('jonschlinkert', 'micromatch'); // => 'jonschlinkert/micromatch'
 stringify('jonschlinkert', 'micromatch', 'dev'); // => 'jonschlinkert/micromatch#dev'
