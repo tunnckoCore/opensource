@@ -10,8 +10,8 @@ const { getWorkspacesAndExtensions } = require('@tunnckocore/utils');
 
 const { extensions } = getWorkspacesAndExtensions(__dirname);
 
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 
 const externals = [].concat('@babel/core', '@babel/parser');
 
