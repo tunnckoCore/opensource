@@ -1115,6 +1115,16 @@
     cosmiconfig "^5.2.1"
     esm "^3.2.25"
 
+"@hela/core@^3.0.0-alpha.71":
+  version "3.0.0-alpha.71"
+  resolved "https://registry.yarnpkg.com/@hela/core/-/core-3.0.0-alpha.71.tgz#4bb2ae519dc365d77f662fef818364fb23ab199d"
+  integrity sha512-pP2MDoAt/vUSz9pg3n4uQGGgR7pX3E3bZBIrFkuoolkBZ+MSlChwhY4zz2I1uVVBBmtT41IMWNSlVEe+Ap/zog==
+  dependencies:
+    all-module-paths "^0.7.1"
+    dargs "^7.0.0"
+    execa "^2.0.3"
+    sade "^1.6.1"
+
 "@hela/core@^3.0.0-alpha.91":
   version "3.0.0-alpha.91"
   resolved "https://registry.yarnpkg.com/@hela/core/-/core-3.0.0-alpha.91.tgz#33a1070fb60c14312c11bb4184469efddf0fe8ad"
@@ -1124,24 +1134,6 @@
     all-module-paths "^0.7.1"
     dargs "^7.0.0"
     sade "^1.6.1"
-
-"@hela/dev@^3.1.3":
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/@hela/dev/-/dev-3.1.3.tgz#c4ce29dc3c0a876bf7bfb0c4caf1f86332261293"
-  integrity sha512-xV6aLl2gcH79c1CEu+tdKbw7U5q9ViuhrHgzJTEgSRgS3fcOKqlvFsETHcQzTiYuUg6H3XQozmEClvzXXwccig==
-  dependencies:
-    "@hela/core" "^3.0.0-alpha.91"
-    "@tunnckocore/jest-runner-babel" "^3.4.6"
-    "@tunnckocore/jest-runner-eslint" "^0.6.6"
-    "@tunnckocore/utils" "^0.9.8"
-    is-ci "^2.0.0"
-    jest "^24.9.0"
-    jest-runner-docs "^0.2.8"
-    jest-runner-rollup "^0.4.7"
-    picomatch "^2.0.7"
-    prettier "^1.18.2"
-    prettier-plugin-pkg "^0.4.4"
-    prettier-plugin-sh "^0.2.0"
 
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
@@ -2132,15 +2124,6 @@
     "@styled-system/core" "^5.1.2"
     "@styled-system/css" "^5.0.23"
 
-"@tunnckocore/create-jest-runner@^0.8.6":
-  version "0.8.6"
-  resolved "https://registry.yarnpkg.com/@tunnckocore/create-jest-runner/-/create-jest-runner-0.8.6.tgz#70d9b5ee2de30f311513397828ef816e1e96170b"
-  integrity sha512-DtkR7MiFgHyQNFTAirHYOsvGbqcySGfrh3xP0OYc8O+xUT9EdLol/W26mW4jJeT70uqFQFRXlsiOWcr7m5++Yg==
-  dependencies:
-    chalk "^2.4.2"
-    jest-worker "^24.0.0"
-    throat "^4.1.0"
-
 "@tunnckocore/execa@^4.3.2":
   version "4.5.14"
   resolved "https://registry.yarnpkg.com/@tunnckocore/execa/-/execa-4.5.14.tgz#4e26d2ac80f778cf0abb7a19cbce8d4d2391fe1a"
@@ -2149,28 +2132,6 @@
     esm "^3.2.25"
     execa "^3.2.0"
     p-map "^3.0.0"
-
-"@tunnckocore/jest-runner-babel@^3.4.6":
-  version "3.4.6"
-  resolved "https://registry.yarnpkg.com/@tunnckocore/jest-runner-babel/-/jest-runner-babel-3.4.6.tgz#629ad5ec846b83d212645b8ddefa5283fe227273"
-  integrity sha512-tntlJCBcNnXMh8BV9uGM9hg/Lvg8kqD1xU9kzoNHscCfUDeW3SfqLY0W/qL5ZZKX8kX+mVoZQtDCtueeANhlRQ==
-  dependencies:
-    "@tunnckocore/create-jest-runner" "^0.8.6"
-    cosmiconfig "^5.2.1"
-
-"@tunnckocore/jest-runner-eslint@^0.6.6":
-  version "0.6.6"
-  resolved "https://registry.yarnpkg.com/@tunnckocore/jest-runner-eslint/-/jest-runner-eslint-0.6.6.tgz#54bfda7c1e86df3bfc62847832137d861f9fe782"
-  integrity sha512-2b97Po1fnASWZRN/j1FG4B4Ab3liyNcWE4P7rB7ca4DzKaPN9AugjKGjnKFZttbaD5tLbtVa4mArszq8uVSYnA==
-  dependencies:
-    "@tunnckocore/create-jest-runner" "^0.8.6"
-    "@tunnckocore/utils" "^0.9.8"
-    cosmiconfig "^5.2.1"
-
-"@tunnckocore/utils@^0.9.8":
-  version "0.9.8"
-  resolved "https://registry.yarnpkg.com/@tunnckocore/utils/-/utils-0.9.8.tgz#da355b8b1e5f14cbce36e37bc5566052c813a570"
-  integrity sha512-u4F3lFUXv2FrGYjVl9UcGXUMOk/9XByqxiDUqJ7exAuuXO2TfQbHRw7zN73EW8uD0E3Iqp4kXAefzcvGe9WmfQ==
 
 "@types/babel__core@^7.1.0":
   version "7.1.3"
@@ -6060,6 +6021,21 @@ execa@^1.0.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
+execa@^2.0.3:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-2.1.0.tgz#e5d3ecd837d2a60ec50f3da78fd39767747bbe99"
+  integrity sha512-Y/URAVapfbYy2Xp/gb6A0E7iR8xeqOCXsuuaoMn7A5PzrXUK84E1gyiEfq0wQd/GHA6GsoHWwhNq8anb0mleIw==
+  dependencies:
+    cross-spawn "^7.0.0"
+    get-stream "^5.0.0"
+    is-stream "^2.0.0"
+    merge-stream "^2.0.0"
+    npm-run-path "^3.0.0"
+    onetime "^5.1.0"
+    p-finally "^2.0.0"
+    signal-exit "^3.0.2"
+    strip-final-newline "^2.0.0"
+
 execa@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/execa/-/execa-3.2.0.tgz#18326b79c7ab7fbd6610fd900c1b9e95fa48f90a"
@@ -8681,25 +8657,6 @@ jest-resolve@^24.9.0:
     jest-pnp-resolver "^1.2.1"
     realpath-native "^1.1.0"
 
-jest-runner-docs@^0.2.8:
-  version "0.2.8"
-  resolved "https://registry.yarnpkg.com/jest-runner-docs/-/jest-runner-docs-0.2.8.tgz#d19abd11580ea1092d863a137d9cc8b2b73cc9e4"
-  integrity sha512-6ccI7yB02hY9ED6Z/srPFDWV95plT3rt59BdXDF6GMTyLz0FJMx1TOypPkapifdK1jRbwP7bInryaOQCcM7BRQ==
-  dependencies:
-    "@tunnckocore/create-jest-runner" "^0.8.6"
-    "@tunnckocore/utils" "^0.9.8"
-    cosmiconfig "^5.2.1"
-    parse-comments "^1.0.0"
-
-jest-runner-rollup@^0.4.7:
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/jest-runner-rollup/-/jest-runner-rollup-0.4.7.tgz#aa05668259996d50f8dfb6b921d5186626516fe0"
-  integrity sha512-I5wGXhC4yoVFw2GsZlSXxGjkzGL2a1TYjukpQXJfJXgOzD9PsUKbjXt5LSG7lJmB3tNzKEz6JAJTkejlTN2LOg==
-  dependencies:
-    "@tunnckocore/create-jest-runner" "^0.8.6"
-    "@tunnckocore/utils" "^0.9.8"
-    cosmiconfig "^5.2.1"
-
 jest-runner@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest-runner/-/jest-runner-24.9.0.tgz#574fafdbd54455c2b34b4bdf4365a23857fcdf42"
@@ -10621,6 +10578,13 @@ npm-run-path@^2.0.0:
   dependencies:
     path-key "^2.0.0"
 
+npm-run-path@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-3.1.0.tgz#7f91be317f6a466efed3c9f2980ad8a4ee8b0fa5"
+  integrity sha512-Dbl4A/VfiVGLgQv29URL9xshU8XDY1GeLy+fsaZ1AA8JDSfjvr5P5+pzRbWqRSBxk6/DW7MIh8lTM/PaGnP2kg==
+  dependencies:
+    path-key "^3.0.0"
+
 npm-run-path@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-4.0.0.tgz#d644ec1bd0569187d2a52909971023a0a58e8438"
@@ -11502,10 +11466,10 @@ prettier-plugin-pkg@^0.4.4:
   resolved "https://registry.yarnpkg.com/prettier-plugin-pkg/-/prettier-plugin-pkg-0.4.4.tgz#e7b20cba16995d04fe22b0aa2fe3974d9dc8a757"
   integrity sha512-3rIuIjGLoe8tNdG6I1ybAybNxy3O5SgpZsqypxTzPN4hkBtYbGAhBey1ROclKsFpH6SBYny9Y2djXq9y1b+adQ==
 
-prettier-plugin-sh@^0.2.0:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-sh/-/prettier-plugin-sh-0.2.1.tgz#9729452c216cb43a045d16b40b9881924350c1ac"
-  integrity sha512-wQVIOneOuM1IJmxRHC85t4r5Fvf4XPMrbekJFLWmuWwCFjpvbgzqyoyS2xlP2PzB/obrMc8Vo8TlxBQ+ElgVuA==
+prettier-plugin-sh@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-sh/-/prettier-plugin-sh-0.2.2.tgz#26714b34324f17884a7d74fee043ff25b462cc1c"
+  integrity sha512-yL7Mdm+GZ7I7OwISZM2Y4NiaZsg1vKMd2JF5ixfa8BwdQCWUltr8gHW5buiaG9KXEvrBhIvoyFm4MsbtzpWtHQ==
   dependencies:
     mvdan-sh "^0.4.0"
 

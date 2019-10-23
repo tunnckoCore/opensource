@@ -5,10 +5,12 @@
   "workspaces": [
     "configs/*",
     "packages/*",
-    "@tunnckocore/*"
+    "@tunnckocore/*",
+    "@hela/*"
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap --since",
+    "bundle": "ROLLUP_FORCE_RELOAD=1 yarn start bundle",
     "clean:dist": "rm -rf configs/*/dist packages/*/dist @tunnckocore/*/dist",
     "clean:fresh": "lerna clean -y && rm -rf node_modules",
     "cleanup": "yarn clean:dist && yarn clean:fresh",
@@ -18,14 +20,14 @@
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
     "postsetup": "yarn patch:verb && yarn patch:hela && yarn patch:sade",
     "postsetup:ci": "yarn patch:verb && yarn patch:hela && yarn patch:sade",
-    "posttest": "node generate-coverage-info.js && yarn start docs && yarn start format",
     "pre-commit": "yarn docs && yarn fmt",
     "refresh": "yarn cleanup && yarn setup",
     "release": "lerna version && lerna publish from-package",
     "setup": "yarn && yarn bootstrap",
     "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
     "start": "node node_modules/@hela/cli/dist/build/cjs/cli.js",
-    "test": "CI=1 yarn start test"
+    "test": "CI=1 yarn start test",
+    "testy": "node generate-coverage-info.js && yarn start docs && yarn start format"
   },
   "dependencies": {
     "@babel/cli": "^7.6.0",
@@ -34,7 +36,7 @@
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "@hela/cli": "^3.0.0-alpha.91",
-    "@hela/dev": "^3.1.3",
+    "@hela/dev": "*",
     "@wessberg/rollup-plugin-ts": "^1.1.73",
     "builtin-modules": "^3.1.0",
     "cheerio": "^1.0.0-rc.3",
@@ -42,7 +44,9 @@
     "eslint": "^6.4.0",
     "esm": "^3.2.25",
     "husky": "^3.0.9",
+    "jest": "^24.9.0",
     "lerna": "^3.16.4",
+    "prettier": "^1.18.2",
     "react": "^16.10.1",
     "rollup": "^1.23.1",
     "rollup-plugin-babel": "^4.3.3",
@@ -78,6 +82,7 @@
     ]
   },
   "jestCov": {
+    "@hela/dev": 18.33,
     "@tunnckocore/create-jest-runner": 18.08,
     "@tunnckocore/execa": 86.01,
     "@tunnckocore/jest-runner-babel": 8.93,

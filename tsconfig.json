@@ -4,7 +4,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "*": ["packages/*", "@tunnckocore/*"]
+      "*": ["packages/*", "@tunnckocore/*", "@hela/*"]
     },
     "typeRoots": ["./node_modules/@types", "./@types"],
     "declarationDir": "dist/typings",
@@ -14,6 +14,8 @@
     "**/packages/*/**/*.d.ts",
     "**/packages/*/**/*.ts",
     "**/@tunnckocore/*/**/*.ts",
-    "**/@tunnckocore/*/**/*.d.ts"
+    "**/@tunnckocore/*/**/*.d.ts",
+    "**/@hela/*/**/*.ts",
+    "**/@hela/*/**/*.d.ts"
   ]
 }

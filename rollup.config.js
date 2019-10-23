@@ -163,6 +163,7 @@ module.exports = {
       outro: tunnckocoreInterop,
       esModule: false,
       sourcemap: true,
+      sourcemapExcludeSources: true,
       preferConst: true,
       format: 'cjs',
       // file: 'dist/cjs/index.min.js',
@@ -170,6 +171,7 @@ module.exports = {
     },
     {
       sourcemap: true,
+      sourcemapExcludeSources: true,
       preferConst: true,
       format: 'esm',
       // file: 'dist/esm/index.min.js',
