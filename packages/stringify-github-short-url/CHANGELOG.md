@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://github.com/tunnckoCore/opensource/compare/stringify-github-short-url@3.1.1...stringify-github-short-url@3.1.2) (2019-10-23)
+
+
+### Bug Fixes
+
+* **stringify-github-short-url:** update docs ([a931c50](https://github.com/tunnckoCore/opensource/commit/a931c50e5012aeaf1cf3c2f4ee9949a2826499dd))
+
+
+
+
+
 ## [3.1.1](https://github.com/tunnckoCore/opensource/compare/stringify-github-short-url@3.1.0...stringify-github-short-url@3.1.1) (2019-10-23)
 
 
