@@ -1,0 +1,86 @@
+{
+  "name": "stringify-github-short-url",
+  "version": "3.0.0",
+  "description": "Generate Github / npm shorthand from list of arguments or object",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "packages/stringify-github-short-url"
+  },
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "license": "MPL-2.0",
+  "engines": {
+    "node": ">=10.13"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "dist/typings/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "tunnckocorehq",
+    "tunnckocore-oss",
+    "hela",
+    "development",
+    "developer-experience",
+    "dx",
+    "branch",
+    "gh",
+    "git",
+    "github",
+    "name",
+    "object",
+    "org",
+    "owner",
+    "regex",
+    "release",
+    "repo",
+    "short",
+    "shorthand",
+    "string",
+    "stringify",
+    "stringify-github-short-url",
+    "tag",
+    "url",
+    "user",
+    "util"
+  ],
+  "scripts": {},
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "licenseStart": 2015,
+  "verb": {
+    "readme": "../../readme-template.md",
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 4
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [],
+    "related": {
+      "list": []
+    }
+  }
+}

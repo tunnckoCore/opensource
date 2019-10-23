@@ -78,6 +78,7 @@
       "koa-better-body"
     ],
     "bundle": [
+      "stringify-github-short-url",
       "parse-function"
     ]
   },

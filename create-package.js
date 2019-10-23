@@ -199,6 +199,24 @@ function createPkgJson() {
       tag: 'latest',
     },
     licenseStart: parseInt(answers.licenseStart, 10),
+    verb: {
+      readme: '../../readme-template.md',
+      run: true,
+      toc: {
+        render: true,
+        method: 'preWrite',
+        maxdepth: 4,
+      },
+      layout: 'empty',
+      tasks: ['readme'],
+      lint: {
+        reflinks: true,
+      },
+      reflinks: [],
+      related: {
+        list: [],
+      },
+    },
   };
 }
 
