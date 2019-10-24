@@ -165,43 +165,34 @@ Only if you pass really an anonymous function you will get `result.name` equal t
 > _see: the [.use](#use) method, [test/index.js#L305-L317](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L305-L317) and [test/index.js#L396-L414](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L396-L414)_
 
 A more human description of the plugin mechanism. Plugins are **synchronous** - no support
-and no need for **async** plugins here.
+and no need for **async** plugins here. Plugins MAY or MAY NOT return Result object, so
+don't worry if you miss to return something.
 
 ```js
-const parseFunction = require('parse-function');
-const app = parseFunction();
+import { parseFunction } from 'parse-function';
 
-app.use((self) => {
-  // self is same as `app`
-  console.log(self.use);
-  console.log(self.parse);
-  console.log(self.define);
+function someFn(foo, bar) {
+  return foo + bar;
+}
 
-  self.define(self, 'foo', (bar) => bar + 1);
-});
+const plugins = [
+  (node, result) => {
+    return { ...result, zaz: 111 };
+  },
+  (node, result) => {
+    return { qux: result.zaz + 202 };
+  },
+];
 
-console.log(app.foo(2)); // => 3
+const res = parseFunction(someFn, { plugins });
+console.log(res);
+
+console.log(res.name); // => 'someFn'
+console.log(res.zaz); // => 111
+console.log(res.qux); // => 313
 ```
 
-On the other side, if you want to access the AST of the parser, you should return a function
-from that plugin, which function is passed with `(node, result)` signature.
-
-This function is lazy plugin, it is called only when the [.parse](#parse) method is called.
-
-```js
-const parseFunction = require('parse-function');
-const app = parseFunction();
-
-app.use((self) => {
-  console.log('immediately called');
-
-  return (node, result) => {
-    console.log('called only when .parse is invoked');
-    console.log(node);
-    console.log(result);
-  };
-});
-```
+If you want to access the AST of the parser, use the `node` parameter of the plugin.
 
 Where **1)** the `node` argument is an object - actual and real AST Node coming from the parser
 and **2)** the `result` is an object too - the end [Result](#result), on which
