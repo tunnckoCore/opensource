@@ -74,8 +74,9 @@ Project is [semantically](https://semver.org) versioned & automatically released
   - [Real anonymous function](#real-anonymous-function)
   - [Plugins Architecture](#plugins-architecture)
 - [API](#api)
-  - [.parse](#parse)
+  - [.parseFunction](#parsefunction)
 - [Result](#result)
+- [Types](#types)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -214,7 +215,7 @@ you can add more properties if you want.
 
 _Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._
 
-### [.parse](./src/index.js#L78)
+### [.parseFunction](./src/index.js#L78)
 
 Parse a given `input` and returns a `Result` object
 with useful properties - such as `name`, `body` and `args`.
@@ -236,7 +237,7 @@ function(input, options)
 - `options.parse` - by default `@babel/parser`'s `.parse` or `.parseExpression`,
 - `options.parserOptions` - passed to the parser
 - `options.plugins` - a plugin function like `function plugin(node: Node, result: Result): Result {}`
-- `returns` - result see [result section](#result) for more info
+- `returns` - result object of the `Result`, see [result section](#result) for more info
 
 **Example**
 
@@ -246,7 +247,7 @@ import { parse as espreeParse } from 'espree';
 import { parseFunction } from 'parse-function';
 
 function fooFn(bar, baz = 123) {
-  return bar * baz;
+  return bar + baz;
 }
 
 const result1 = parseFunction(fooFn, { parse: acornParse });
@@ -264,11 +265,11 @@ const result2 = parseFunction(fooFn, {
 console.log('parsed with espree', result2);
 // => {
 //  name: 'fooFn',
-//  body: '\n  return bar * baz;\n',
+//  body: '\n  return bar + baz;\n',
 //  args: [ 'bar', 'baz' ],
 //  params: 'bar, baz',
 //  defaults: { bar: undefined, baz: '123' },
-//  value: '(function fooFn(bar, baz = 123) {\n  return bar * baz;\n})',
+//  value: '(function fooFn(bar, baz = 123) {\n  return bar + baz;\n})',
 //  isValid: true,
 //  isArrow: false,
 //  isAsync: false,
@@ -303,17 +304,59 @@ console.log(resultWithPlugins.hasDefaultParams); // => true
 > In the result object you have `name`, `args`, `params`, `body` and few hidden properties
 > that can be useful to determine what the function is - arrow, regular, async/await or generator.
 
-- `name` **{String|null}**: name of the passed function or `null` if anonymous
-- `args` **{Array}**: arguments of the function
-- `params` **{String}**: comma-separated list representing the `args`
-- `defaults` **{Object}**: key/value pairs, useful when use ES2015 default arguments
-- `body` **{String}**: actual body of the function, respects trailing newlines and whitespaces
-- `isValid` **{Boolean}**: is the given value valid or not, that's because it never throws!
-- `isAsync` **{Boolean}**: `true` if function is ES2015 async/await function
-- `isArrow` **{Boolean}**: `true` if the function is arrow function
-- `isNamed` **{Boolean}**: `true` if function has name, or `false` if is anonymous
-- `isGenerator` **{Boolean}**: `true` if the function is ES2015 generator function
-- `isAnonymous` **{Boolean}**: `true` if the function don't have name
+- `name` **{string|null}** - name of the passed function or `null` if anonymous
+- `body` **{string}** - actual body of the function, respects trailing newlines and whitespaces
+- `args` **{ResultArgs}** - an array of arguments of the function, `result.params` split by `,`
+- `params` **{string}** - comma-separated list representing the `args`
+- `defaults` **{ResultDefaultParams}** - key/value pairs, useful when use ES2015 default arguments
+- `value` **{string}** - string value of what actually has been parsed
+- `isValid` **{boolean}** - is the given value valid or not, that's because it never throws!
+- `isArrow` **{boolean}** - `true` if the function is arrow function
+- `isAsync` **{boolean}** - `true` if function is ES2015 async/await function
+- `isNamed` **{boolean}** - `true` if function has name, or `false` if is anonymous
+- `isAnonymous` **{boolean}** - `true` if the function don't have name
+- `isGenerator` **{boolean}** - `true` if the function is ES2015 generator function
+- `isExpression` **{boolean}** - `true` if the value parsed is an expression
+
+## Types
+
+```ts
+import { ParserOptions } from '@babel/parser';
+import { File } from '@babel/types';
+
+type FnType = (...args: any) => any;
+
+export type Input = FnType | string;
+export type Plugin = (node: any, result: Result) => Result | undefined;
+export type Plugins = Plugin | Array<Plugin>;
+export type ResultDefaultParams = { [key: string]: string | undefined };
+export type ResultArgs = string[];
+
+export type Options = {
+  parse?(input: string, options?: ParserOptions): File;
+  parseExpression?(input: string, options?: ParserOptions): File;
+  parserOptions?: ParserOptions;
+  plugins?: Plugins;
+};
+
+export type Result = {
+  name: string | null;
+  body: string;
+  args: ResultArgs;
+  params: string;
+  defaults: ResultDefaultParams;
+  value: string;
+  isValid: boolean;
+  isArrow: boolean;
+  isAsync: boolean;
+  isNamed: boolean;
+  isAnonymous: boolean;
+  isGenerator: boolean;
+  isExpression: boolean;
+};
+
+export function parseFunction(code: Input, options?: Options): Result;
+```
 
 **[back to top](#readme)**
 

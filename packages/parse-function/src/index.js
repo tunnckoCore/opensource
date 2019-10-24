@@ -67,11 +67,11 @@ import basePlugin from './plugins/initial.js';
  * console.log(resultWithPlugins.hasDefaultParams); // => true
  *
  * @param  {Function|String} `input` any kind of function or string to be parsed
- * @param  {Object} `options` directly passed to the parser - babylon, acorn, espree
+ * @param  {Options} `options` directly passed to the parser - babylon, acorn, espree
  * @param  {Function} `options.parse` by default `@babel/parser`'s `.parse` or `.parseExpression`,
  * @param  {ParserOptions} `options.parserOptions` passed to the parser
  * @param  {Plugins} `options.plugins` a plugin function like `function plugin(node: Node, result: Result): Result {}`
- * @return {Object} `result` see [result section](#result) for more info
+ * @return {Result} `result` object of the `Result`, see [result section](#result) for more info
  * @name   .parseFunction
  * @api public
  */
