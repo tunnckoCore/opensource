@@ -22,7 +22,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
-  "value": "function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
+  "value": "(function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -48,7 +48,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
-  "value": "function (b, callback, ...restArgs) {callback(null, b + 3)}",
+  "value": "(function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -70,7 +70,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
-  "value": "function (c) {return c * 3}",
+  "value": "(function (c) {return c * 3})",
 }
 `;
 
@@ -92,7 +92,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
-  "value": "function (...restArgs) {return 321}",
+  "value": "(function (...restArgs) {return 321})",
 }
 `;
 
@@ -110,7 +110,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
-  "value": "function () {}",
+  "value": "(function () {})",
 }
 `;
 
@@ -132,7 +132,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "function (a = (true, false)) {}",
+  "value": "(function (a = (true, false)) {})",
 }
 `;
 
@@ -154,7 +154,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "function (a = (true, null)) {}",
+  "value": "(function (a = (true, null)) {})",
 }
 `;
 
@@ -176,7 +176,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "function (a = (true, \\"bar\\")) {}",
+  "value": "(function (a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -200,7 +200,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
-  "value": "function (a, b = (i++, true)) {}",
+  "value": "(function (a, b = (i++, true)) {})",
 }
 `;
 
@@ -222,7 +222,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "function (a = 1) {}",
+  "value": "(function (a = 1) {})",
 }
 `;
 
@@ -248,7 +248,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
-  "value": "function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
+  "value": "(function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -274,7 +274,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
-  "value": "function namedFn (b, callback, ...restArgs) {callback(null, b + 3)}",
+  "value": "(function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -296,7 +296,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
-  "value": "function namedFn (c) {return c * 3}",
+  "value": "(function namedFn (c) {return c * 3})",
 }
 `;
 
@@ -318,7 +318,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
-  "value": "function namedFn (...restArgs) {return 321}",
+  "value": "(function namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -336,7 +336,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
-  "value": "function namedFn () {}",
+  "value": "(function namedFn () {})",
 }
 `;
 
@@ -358,7 +358,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "function namedFn(a = (true, false)) {}",
+  "value": "(function namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -380,7 +380,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "function namedFn(a = (true, null)) {}",
+  "value": "(function namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -402,7 +402,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "function namedFn(a = (true, \\"bar\\")) {}",
+  "value": "(function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -426,7 +426,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
-  "value": "function namedFn(a, b = (i++, true)) {}",
+  "value": "(function namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -448,7 +448,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "function namedFn(a = 1) {}",
+  "value": "(function namedFn(a = 1) {})",
 }
 `;
 
@@ -474,7 +474,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
-  "value": "function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
+  "value": "(function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -500,7 +500,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
-  "value": "function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)}",
+  "value": "(function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -522,7 +522,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
-  "value": "function * namedFn (c) {return c * 3}",
+  "value": "(function * namedFn (c) {return c * 3})",
 }
 `;
 
@@ -544,7 +544,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
-  "value": "function * namedFn (...restArgs) {return 321}",
+  "value": "(function * namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -562,7 +562,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
-  "value": "function * namedFn () {}",
+  "value": "(function * namedFn () {})",
 }
 `;
 
@@ -584,7 +584,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "function * namedFn(a = (true, false)) {}",
+  "value": "(function * namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -606,7 +606,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "function * namedFn(a = (true, null)) {}",
+  "value": "(function * namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -628,7 +628,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "function * namedFn(a = (true, \\"bar\\")) {}",
+  "value": "(function * namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -652,7 +652,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
-  "value": "function * namedFn(a, b = (i++, true)) {}",
+  "value": "(function * namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -674,11 +674,11 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "function * namedFn(a = 1) {}",
+  "value": "(function * namedFn(a = 1) {})",
 }
 `;
 
-exports[`#31 - babel (default) - a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
+exports[`#31 - babel (default) - (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
@@ -700,11 +700,11 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
-  "value": "(a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3}",
+  "value": "((a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
 
-exports[`#32 - babel (default) - b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
+exports[`#32 - babel (default) - (b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
@@ -726,11 +726,11 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
-  "value": "(b, callback, ...restArgs) => {callback(null, b + 3)}",
+  "value": "((b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
 
-exports[`#33 - babel (default) - c) => {return c * 3} 1`] = `
+exports[`#33 - babel (default) - (c) => {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
@@ -748,11 +748,11 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
-  "value": "(c) => {return c * 3}",
+  "value": "((c) => {return c * 3})",
 }
 `;
 
-exports[`#34 - babel (default) - ...restArgs) => {return 321} 1`] = `
+exports[`#34 - babel (default) - (...restArgs) => {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
@@ -770,11 +770,11 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
-  "value": "(...restArgs) => {return 321}",
+  "value": "((...restArgs) => {return 321})",
 }
 `;
 
-exports[`#35 - babel (default) - ) => {} 1`] = `
+exports[`#35 - babel (default) - () => {} 1`] = `
 Object {
   "args": Array [],
   "body": "",
@@ -788,11 +788,11 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
-  "value": "() => {}",
+  "value": "(() => {})",
 }
 `;
 
-exports[`#36 - babel (default) - a = (true, false)) => {} 1`] = `
+exports[`#36 - babel (default) - (a = (true, false)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
@@ -810,11 +810,11 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(a = (true, false)) => {}",
+  "value": "((a = (true, false)) => {})",
 }
 `;
 
-exports[`#37 - babel (default) - a = (true, null)) => {} 1`] = `
+exports[`#37 - babel (default) - (a = (true, null)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
@@ -832,11 +832,11 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(a = (true, null)) => {}",
+  "value": "((a = (true, null)) => {})",
 }
 `;
 
-exports[`#38 - babel (default) - a = (true, "bar")) => {} 1`] = `
+exports[`#38 - babel (default) - (a = (true, "bar")) => {} 1`] = `
 Object {
   "args": Array [
     "a",
@@ -854,11 +854,11 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(a = (true, \\"bar\\")) => {}",
+  "value": "((a = (true, \\"bar\\")) => {})",
 }
 `;
 
-exports[`#39 - babel (default) - a, b = (i++, true)) => {} 1`] = `
+exports[`#39 - babel (default) - (a, b = (i++, true)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
@@ -878,11 +878,11 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
-  "value": "(a, b = (i++, true)) => {}",
+  "value": "((a, b = (i++, true)) => {})",
 }
 `;
 
-exports[`#40 - babel (default) - a = 1) => {} 1`] = `
+exports[`#40 - babel (default) - (a = 1) => {} 1`] = `
 Object {
   "args": Array [
     "a",
@@ -900,11 +900,11 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(a = 1) => {}",
+  "value": "((a = 1) => {})",
 }
 `;
 
-exports[`#41 - babel (default) - a) => a * 3 * a 1`] = `
+exports[`#41 - babel (default) - (a) => a * 3 * a 1`] = `
 Object {
   "args": Array [
     "a",
@@ -922,7 +922,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(a) => a * 3 * a",
+  "value": "((a) => a * 3 * a)",
 }
 `;
 
@@ -944,7 +944,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "d",
-  "value": "d => d * 355 * d",
+  "value": "(d => d * 355 * d)",
 }
 `;
 
@@ -966,11 +966,11 @@ Object {
   "isValid": true,
   "name": null,
   "params": "e",
-  "value": "e => {return e + 5235 / e}",
+  "value": "(e => {return e + 5235 / e})",
 }
 `;
 
-exports[`#44 - babel (default) - a, b) => a + 3 + b 1`] = `
+exports[`#44 - babel (default) - (a, b) => a + 3 + b 1`] = `
 Object {
   "args": Array [
     "a",
@@ -990,11 +990,11 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
-  "value": "(a, b) => a + 3 + b",
+  "value": "((a, b) => a + 3 + b)",
 }
 `;
 
-exports[`#45 - babel (default) - x, y, ...restArgs) => console.log({ value: x * y } 1`] = `
+exports[`#45 - babel (default) - (x, y, ...restArgs) => console.log({ value: x * y }) 1`] = `
 Object {
   "args": Array [
     "x",
@@ -1016,7 +1016,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
-  "value": "(x, y, ...restArgs) => console.log({ value: x * y })",
+  "value": "((x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
 
@@ -1042,7 +1042,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
-  "value": "async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
+  "value": "(async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -1068,7 +1068,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
-  "value": "async function (b, callback, ...restArgs) {callback(null, b + 3)}",
+  "value": "(async function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -1090,7 +1090,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
-  "value": "async function (c) {return c * 3}",
+  "value": "(async function (c) {return c * 3})",
 }
 `;
 
@@ -1112,7 +1112,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
-  "value": "async function (...restArgs) {return 321}",
+  "value": "(async function (...restArgs) {return 321})",
 }
 `;
 
@@ -1130,7 +1130,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
-  "value": "async function () {}",
+  "value": "(async function () {})",
 }
 `;
 
@@ -1152,7 +1152,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "async function (a = (true, false)) {}",
+  "value": "(async function (a = (true, false)) {})",
 }
 `;
 
@@ -1174,7 +1174,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "async function (a = (true, null)) {}",
+  "value": "(async function (a = (true, null)) {})",
 }
 `;
 
@@ -1196,7 +1196,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "async function (a = (true, \\"bar\\")) {}",
+  "value": "(async function (a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -1220,7 +1220,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
-  "value": "async function (a, b = (i++, true)) {}",
+  "value": "(async function (a, b = (i++, true)) {})",
 }
 `;
 
@@ -1242,7 +1242,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "async function (a = 1) {}",
+  "value": "(async function (a = 1) {})",
 }
 `;
 
@@ -1268,7 +1268,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
-  "value": "async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
+  "value": "(async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
@@ -1294,7 +1294,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
-  "value": "async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)}",
+  "value": "(async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
@@ -1316,7 +1316,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
-  "value": "async function namedFn (c) {return c * 3}",
+  "value": "(async function namedFn (c) {return c * 3})",
 }
 `;
 
@@ -1338,7 +1338,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
-  "value": "async function namedFn (...restArgs) {return 321}",
+  "value": "(async function namedFn (...restArgs) {return 321})",
 }
 `;
 
@@ -1356,7 +1356,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
-  "value": "async function namedFn () {}",
+  "value": "(async function namedFn () {})",
 }
 `;
 
@@ -1378,7 +1378,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "async function namedFn(a = (true, false)) {}",
+  "value": "(async function namedFn(a = (true, false)) {})",
 }
 `;
 
@@ -1400,7 +1400,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "async function namedFn(a = (true, null)) {}",
+  "value": "(async function namedFn(a = (true, null)) {})",
 }
 `;
 
@@ -1422,7 +1422,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "async function namedFn(a = (true, \\"bar\\")) {}",
+  "value": "(async function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
@@ -1446,7 +1446,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
-  "value": "async function namedFn(a, b = (i++, true)) {}",
+  "value": "(async function namedFn(a, b = (i++, true)) {})",
 }
 `;
 
@@ -1468,7 +1468,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "async function namedFn(a = 1) {}",
+  "value": "(async function namedFn(a = 1) {})",
 }
 `;
 
@@ -1494,7 +1494,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
-  "value": "async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3}",
+  "value": "(async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
 
@@ -1520,7 +1520,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
-  "value": "async (b, callback, ...restArgs) => {callback(null, b + 3)}",
+  "value": "(async (b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
 
@@ -1542,7 +1542,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
-  "value": "async (c) => {return c * 3}",
+  "value": "(async (c) => {return c * 3})",
 }
 `;
 
@@ -1564,7 +1564,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
-  "value": "async (...restArgs) => {return 321}",
+  "value": "(async (...restArgs) => {return 321})",
 }
 `;
 
@@ -1582,7 +1582,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
-  "value": "async () => {}",
+  "value": "(async () => {})",
 }
 `;
 
@@ -1604,7 +1604,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "async (a = (true, false)) => {}",
+  "value": "(async (a = (true, false)) => {})",
 }
 `;
 
@@ -1626,7 +1626,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "async (a = (true, null)) => {}",
+  "value": "(async (a = (true, null)) => {})",
 }
 `;
 
@@ -1648,7 +1648,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "async (a = (true, \\"bar\\")) => {}",
+  "value": "(async (a = (true, \\"bar\\")) => {})",
 }
 `;
 
@@ -1672,7 +1672,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
-  "value": "async (a, b = (i++, true)) => {}",
+  "value": "(async (a, b = (i++, true)) => {})",
 }
 `;
 
@@ -1694,7 +1694,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "async (a = 1) => {}",
+  "value": "(async (a = 1) => {})",
 }
 `;
 
@@ -1716,7 +1716,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "async (a) => a * 3 * a",
+  "value": "(async (a) => a * 3 * a)",
 }
 `;
 
@@ -1738,7 +1738,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "d",
-  "value": "async d => d * 355 * d",
+  "value": "(async d => d * 355 * d)",
 }
 `;
 
@@ -1760,7 +1760,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "e",
-  "value": "async e => {return e + 5235 / e}",
+  "value": "(async e => {return e + 5235 / e})",
 }
 `;
 
@@ -1784,11 +1784,11 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
-  "value": "async (a, b) => a + 3 + b",
+  "value": "(async (a, b) => a + 3 + b)",
 }
 `;
 
-exports[`#80 - babel (default) - async (x, y, ...restArgs) => console.log({ value: x * y } 1`] = `
+exports[`#80 - babel (default) - async (x, y, ...restArgs) => console.log({ value: x * y }) 1`] = `
 Object {
   "args": Array [
     "x",
@@ -1810,7 +1810,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
-  "value": "async (x, y, ...restArgs) => console.log({ value: x * y })",
+  "value": "(async (x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
 
@@ -1858,1965 +1858,7 @@ Object {
     "c",
   ],
   "body": "
-        return 123;
-      ",
-  "defaults": Object {
-    "a": undefined,
-    "b": undefined,
-    "c": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "foo",
-  "params": "a, b, c",
-  "value": "{ foo(a, b, c) {
-        return 123;
-      } }",
-}
-`;
-
-exports[`#87 - babel (default) - should work for object methods 2`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "
-        return () => a;
-      ",
-  "defaults": Object {
-    "a": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "bar",
-  "params": "a",
-  "value": "{ bar(a) {
-        return () => a;
-      } }",
-}
-`;
-
-exports[`#87 - babel (default) - should work for object methods 3`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "
-        return yield a * 321;
-      ",
-  "defaults": Object {
-    "a": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": true,
-  "isNamed": true,
-  "isValid": true,
-  "name": "gen",
-  "params": "a",
-  "value": "{ *gen(a) {
-        return yield a * 321;
-      } }",
-}
-`;
-
-exports[`#87 - babel (default) - should work for object methods 4`] = `
-Object {
-  "args": Array [
-    "a",
-    "cb",
-    "restArgs",
-  ],
-  "body": " return a * 3 ",
-  "defaults": Object {
-    "a": "{foo: 'ba)r', baz: 123}",
-    "cb": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a, cb, restArgs",
-  "value": "{ namedFn (a = {foo: 'ba)r', baz: 123}, cb, ...restArgs) { return a * 3 } }",
-}
-`;
-
-exports[`#91 - options.parse + ecmaVersion: 2019 - function (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "cb",
-    "restArgs",
-  ],
-  "body": "return a * 3",
-  "defaults": Object {
-    "a": "{foo: \\"ba)r\\", baz: 123}",
-    "cb": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a, cb, restArgs",
-  "value": "(function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
-}
-`;
-
-exports[`#92 - options.parse + ecmaVersion: 2019 - function (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
-Object {
-  "args": Array [
-    "b",
-    "callback",
-    "restArgs",
-  ],
-  "body": "callback(null, b + 3)",
-  "defaults": Object {
-    "b": undefined,
-    "callback": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "b, callback, restArgs",
-  "value": "(function (b, callback, ...restArgs) {callback(null, b + 3)})",
-}
-`;
-
-exports[`#93 - options.parse + ecmaVersion: 2019 - function (c) {return c * 3} 1`] = `
-Object {
-  "args": Array [
-    "c",
-  ],
-  "body": "return c * 3",
-  "defaults": Object {
-    "c": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "c",
-  "value": "(function (c) {return c * 3})",
-}
-`;
-
-exports[`#94 - options.parse + ecmaVersion: 2019 - function (...restArgs) {return 321} 1`] = `
-Object {
-  "args": Array [
-    "restArgs",
-  ],
-  "body": "return 321",
-  "defaults": Object {
-    "restArgs": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "restArgs",
-  "value": "(function (...restArgs) {return 321})",
-}
-`;
-
-exports[`#95 - options.parse + ecmaVersion: 2019 - function () {} 1`] = `
-Object {
-  "args": Array [],
-  "body": "",
-  "defaults": Object {},
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "",
-  "value": "(function () {})",
-}
-`;
-
-exports[`#96 - options.parse + ecmaVersion: 2019 - function (a = (true, false)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "false",
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "(function (a = (true, false)) {})",
-}
-`;
-
-exports[`#97 - options.parse + ecmaVersion: 2019 - function (a = (true, null)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "null",
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "(function (a = (true, null)) {})",
-}
-`;
-
-exports[`#98 - options.parse + ecmaVersion: 2019 - function (a = (true, "bar")) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "\\"bar\\"",
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "(function (a = (true, \\"bar\\")) {})",
-}
-`;
-
-exports[`#99 - options.parse + ecmaVersion: 2019 - function (a, b = (i++, true)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "b",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": undefined,
-    "b": "true",
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a, b",
-  "value": "(function (a, b = (i++, true)) {})",
-}
-`;
-
-exports[`#100 - options.parse + ecmaVersion: 2019 - function (a = 1) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "1",
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "(function (a = 1) {})",
-}
-`;
-
-exports[`#101 - options.parse + ecmaVersion: 2019 - function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "cb",
-    "restArgs",
-  ],
-  "body": "return a * 3",
-  "defaults": Object {
-    "a": "{foo: \\"ba)r\\", baz: 123}",
-    "cb": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a, cb, restArgs",
-  "value": "(function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
-}
-`;
-
-exports[`#102 - options.parse + ecmaVersion: 2019 - function namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
-Object {
-  "args": Array [
-    "b",
-    "callback",
-    "restArgs",
-  ],
-  "body": "callback(null, b + 3)",
-  "defaults": Object {
-    "b": undefined,
-    "callback": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "b, callback, restArgs",
-  "value": "(function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
-}
-`;
-
-exports[`#103 - options.parse + ecmaVersion: 2019 - function namedFn (c) {return c * 3} 1`] = `
-Object {
-  "args": Array [
-    "c",
-  ],
-  "body": "return c * 3",
-  "defaults": Object {
-    "c": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "c",
-  "value": "(function namedFn (c) {return c * 3})",
-}
-`;
-
-exports[`#104 - options.parse + ecmaVersion: 2019 - function namedFn (...restArgs) {return 321} 1`] = `
-Object {
-  "args": Array [
-    "restArgs",
-  ],
-  "body": "return 321",
-  "defaults": Object {
-    "restArgs": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "restArgs",
-  "value": "(function namedFn (...restArgs) {return 321})",
-}
-`;
-
-exports[`#105 - options.parse + ecmaVersion: 2019 - function namedFn () {} 1`] = `
-Object {
-  "args": Array [],
-  "body": "",
-  "defaults": Object {},
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "",
-  "value": "(function namedFn () {})",
-}
-`;
-
-exports[`#106 - options.parse + ecmaVersion: 2019 - function namedFn(a = (true, false)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "false",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a",
-  "value": "(function namedFn(a = (true, false)) {})",
-}
-`;
-
-exports[`#107 - options.parse + ecmaVersion: 2019 - function namedFn(a = (true, null)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "null",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a",
-  "value": "(function namedFn(a = (true, null)) {})",
-}
-`;
-
-exports[`#108 - options.parse + ecmaVersion: 2019 - function namedFn(a = (true, "bar")) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "\\"bar\\"",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a",
-  "value": "(function namedFn(a = (true, \\"bar\\")) {})",
-}
-`;
-
-exports[`#109 - options.parse + ecmaVersion: 2019 - function namedFn(a, b = (i++, true)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "b",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": undefined,
-    "b": "true",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a, b",
-  "value": "(function namedFn(a, b = (i++, true)) {})",
-}
-`;
-
-exports[`#110 - options.parse + ecmaVersion: 2019 - function namedFn(a = 1) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "1",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a",
-  "value": "(function namedFn(a = 1) {})",
-}
-`;
-
-exports[`#111 - options.parse + ecmaVersion: 2019 - function * namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "cb",
-    "restArgs",
-  ],
-  "body": "return a * 3",
-  "defaults": Object {
-    "a": "{foo: \\"ba)r\\", baz: 123}",
-    "cb": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": true,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a, cb, restArgs",
-  "value": "(function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
-}
-`;
-
-exports[`#112 - options.parse + ecmaVersion: 2019 - function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
-Object {
-  "args": Array [
-    "b",
-    "callback",
-    "restArgs",
-  ],
-  "body": "callback(null, b + 3)",
-  "defaults": Object {
-    "b": undefined,
-    "callback": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": true,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "b, callback, restArgs",
-  "value": "(function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
-}
-`;
-
-exports[`#113 - options.parse + ecmaVersion: 2019 - function * namedFn (c) {return c * 3} 1`] = `
-Object {
-  "args": Array [
-    "c",
-  ],
-  "body": "return c * 3",
-  "defaults": Object {
-    "c": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": true,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "c",
-  "value": "(function * namedFn (c) {return c * 3})",
-}
-`;
-
-exports[`#114 - options.parse + ecmaVersion: 2019 - function * namedFn (...restArgs) {return 321} 1`] = `
-Object {
-  "args": Array [
-    "restArgs",
-  ],
-  "body": "return 321",
-  "defaults": Object {
-    "restArgs": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": true,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "restArgs",
-  "value": "(function * namedFn (...restArgs) {return 321})",
-}
-`;
-
-exports[`#115 - options.parse + ecmaVersion: 2019 - function * namedFn () {} 1`] = `
-Object {
-  "args": Array [],
-  "body": "",
-  "defaults": Object {},
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": true,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "",
-  "value": "(function * namedFn () {})",
-}
-`;
-
-exports[`#116 - options.parse + ecmaVersion: 2019 - function * namedFn(a = (true, false)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "false",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": true,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a",
-  "value": "(function * namedFn(a = (true, false)) {})",
-}
-`;
-
-exports[`#117 - options.parse + ecmaVersion: 2019 - function * namedFn(a = (true, null)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "null",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": true,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a",
-  "value": "(function * namedFn(a = (true, null)) {})",
-}
-`;
-
-exports[`#118 - options.parse + ecmaVersion: 2019 - function * namedFn(a = (true, "bar")) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "\\"bar\\"",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": true,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a",
-  "value": "(function * namedFn(a = (true, \\"bar\\")) {})",
-}
-`;
-
-exports[`#119 - options.parse + ecmaVersion: 2019 - function * namedFn(a, b = (i++, true)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "b",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": undefined,
-    "b": "true",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": true,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a, b",
-  "value": "(function * namedFn(a, b = (i++, true)) {})",
-}
-`;
-
-exports[`#120 - options.parse + ecmaVersion: 2019 - function * namedFn(a = 1) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "1",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": true,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a",
-  "value": "(function * namedFn(a = 1) {})",
-}
-`;
-
-exports[`#121 - options.parse + ecmaVersion: 2019 - (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "cb",
-    "restArgs",
-  ],
-  "body": "return a * 3",
-  "defaults": Object {
-    "a": "{foo: \\"ba)r\\", baz: 123}",
-    "cb": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a, cb, restArgs",
-  "value": "((a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
-}
-`;
-
-exports[`#122 - options.parse + ecmaVersion: 2019 - (b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
-Object {
-  "args": Array [
-    "b",
-    "callback",
-    "restArgs",
-  ],
-  "body": "callback(null, b + 3)",
-  "defaults": Object {
-    "b": undefined,
-    "callback": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "b, callback, restArgs",
-  "value": "((b, callback, ...restArgs) => {callback(null, b + 3)})",
-}
-`;
-
-exports[`#123 - options.parse + ecmaVersion: 2019 - (c) => {return c * 3} 1`] = `
-Object {
-  "args": Array [
-    "c",
-  ],
-  "body": "return c * 3",
-  "defaults": Object {
-    "c": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "c",
-  "value": "((c) => {return c * 3})",
-}
-`;
-
-exports[`#124 - options.parse + ecmaVersion: 2019 - (...restArgs) => {return 321} 1`] = `
-Object {
-  "args": Array [
-    "restArgs",
-  ],
-  "body": "return 321",
-  "defaults": Object {
-    "restArgs": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "restArgs",
-  "value": "((...restArgs) => {return 321})",
-}
-`;
-
-exports[`#125 - options.parse + ecmaVersion: 2019 - () => {} 1`] = `
-Object {
-  "args": Array [],
-  "body": "",
-  "defaults": Object {},
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "",
-  "value": "(() => {})",
-}
-`;
-
-exports[`#126 - options.parse + ecmaVersion: 2019 - (a = (true, false)) => {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "false",
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "((a = (true, false)) => {})",
-}
-`;
-
-exports[`#127 - options.parse + ecmaVersion: 2019 - (a = (true, null)) => {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "null",
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "((a = (true, null)) => {})",
-}
-`;
-
-exports[`#128 - options.parse + ecmaVersion: 2019 - (a = (true, "bar")) => {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "\\"bar\\"",
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "((a = (true, \\"bar\\")) => {})",
-}
-`;
-
-exports[`#129 - options.parse + ecmaVersion: 2019 - (a, b = (i++, true)) => {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "b",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": undefined,
-    "b": "true",
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a, b",
-  "value": "((a, b = (i++, true)) => {})",
-}
-`;
-
-exports[`#130 - options.parse + ecmaVersion: 2019 - (a = 1) => {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "1",
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "((a = 1) => {})",
-}
-`;
-
-exports[`#131 - options.parse + ecmaVersion: 2019 - (a) => a * 3 * a 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "a * 3 * a",
-  "defaults": Object {
-    "a": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "((a) => a * 3 * a)",
-}
-`;
-
-exports[`#132 - options.parse + ecmaVersion: 2019 - d => d * 355 * d 1`] = `
-Object {
-  "args": Array [
-    "d",
-  ],
-  "body": "d * 355 * d",
-  "defaults": Object {
-    "d": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "d",
-  "value": "(d => d * 355 * d)",
-}
-`;
-
-exports[`#133 - options.parse + ecmaVersion: 2019 - e => {return e + 5235 / e} 1`] = `
-Object {
-  "args": Array [
-    "e",
-  ],
-  "body": "return e + 5235 / e",
-  "defaults": Object {
-    "e": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "e",
-  "value": "(e => {return e + 5235 / e})",
-}
-`;
-
-exports[`#134 - options.parse + ecmaVersion: 2019 - (a, b) => a + 3 + b 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "b",
-  ],
-  "body": "a + 3 + b",
-  "defaults": Object {
-    "a": undefined,
-    "b": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a, b",
-  "value": "((a, b) => a + 3 + b)",
-}
-`;
-
-exports[`#135 - options.parse + ecmaVersion: 2019 - (x, y, ...restArgs) => console.log({ value: x * y }) 1`] = `
-Object {
-  "args": Array [
-    "x",
-    "y",
-    "restArgs",
-  ],
-  "body": "console.log({ value: x * y })",
-  "defaults": Object {
-    "restArgs": undefined,
-    "x": undefined,
-    "y": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "x, y, restArgs",
-  "value": "((x, y, ...restArgs) => console.log({ value: x * y }))",
-}
-`;
-
-exports[`#136 - options.parse + ecmaVersion: 2019 - async function (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "cb",
-    "restArgs",
-  ],
-  "body": "return a * 3",
-  "defaults": Object {
-    "a": "{foo: \\"ba)r\\", baz: 123}",
-    "cb": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a, cb, restArgs",
-  "value": "(async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
-}
-`;
-
-exports[`#137 - options.parse + ecmaVersion: 2019 - async function (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
-Object {
-  "args": Array [
-    "b",
-    "callback",
-    "restArgs",
-  ],
-  "body": "callback(null, b + 3)",
-  "defaults": Object {
-    "b": undefined,
-    "callback": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "b, callback, restArgs",
-  "value": "(async function (b, callback, ...restArgs) {callback(null, b + 3)})",
-}
-`;
-
-exports[`#138 - options.parse + ecmaVersion: 2019 - async function (c) {return c * 3} 1`] = `
-Object {
-  "args": Array [
-    "c",
-  ],
-  "body": "return c * 3",
-  "defaults": Object {
-    "c": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "c",
-  "value": "(async function (c) {return c * 3})",
-}
-`;
-
-exports[`#139 - options.parse + ecmaVersion: 2019 - async function (...restArgs) {return 321} 1`] = `
-Object {
-  "args": Array [
-    "restArgs",
-  ],
-  "body": "return 321",
-  "defaults": Object {
-    "restArgs": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "restArgs",
-  "value": "(async function (...restArgs) {return 321})",
-}
-`;
-
-exports[`#140 - options.parse + ecmaVersion: 2019 - async function () {} 1`] = `
-Object {
-  "args": Array [],
-  "body": "",
-  "defaults": Object {},
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "",
-  "value": "(async function () {})",
-}
-`;
-
-exports[`#141 - options.parse + ecmaVersion: 2019 - async function (a = (true, false)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "false",
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "(async function (a = (true, false)) {})",
-}
-`;
-
-exports[`#142 - options.parse + ecmaVersion: 2019 - async function (a = (true, null)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "null",
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "(async function (a = (true, null)) {})",
-}
-`;
-
-exports[`#143 - options.parse + ecmaVersion: 2019 - async function (a = (true, "bar")) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "\\"bar\\"",
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "(async function (a = (true, \\"bar\\")) {})",
-}
-`;
-
-exports[`#144 - options.parse + ecmaVersion: 2019 - async function (a, b = (i++, true)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "b",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": undefined,
-    "b": "true",
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a, b",
-  "value": "(async function (a, b = (i++, true)) {})",
-}
-`;
-
-exports[`#145 - options.parse + ecmaVersion: 2019 - async function (a = 1) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "1",
-  },
-  "isAnonymous": true,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "(async function (a = 1) {})",
-}
-`;
-
-exports[`#146 - options.parse + ecmaVersion: 2019 - async function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "cb",
-    "restArgs",
-  ],
-  "body": "return a * 3",
-  "defaults": Object {
-    "a": "{foo: \\"ba)r\\", baz: 123}",
-    "cb": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a, cb, restArgs",
-  "value": "(async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
-}
-`;
-
-exports[`#147 - options.parse + ecmaVersion: 2019 - async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
-Object {
-  "args": Array [
-    "b",
-    "callback",
-    "restArgs",
-  ],
-  "body": "callback(null, b + 3)",
-  "defaults": Object {
-    "b": undefined,
-    "callback": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "b, callback, restArgs",
-  "value": "(async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
-}
-`;
-
-exports[`#148 - options.parse + ecmaVersion: 2019 - async function namedFn (c) {return c * 3} 1`] = `
-Object {
-  "args": Array [
-    "c",
-  ],
-  "body": "return c * 3",
-  "defaults": Object {
-    "c": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "c",
-  "value": "(async function namedFn (c) {return c * 3})",
-}
-`;
-
-exports[`#149 - options.parse + ecmaVersion: 2019 - async function namedFn (...restArgs) {return 321} 1`] = `
-Object {
-  "args": Array [
-    "restArgs",
-  ],
-  "body": "return 321",
-  "defaults": Object {
-    "restArgs": undefined,
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "restArgs",
-  "value": "(async function namedFn (...restArgs) {return 321})",
-}
-`;
-
-exports[`#150 - options.parse + ecmaVersion: 2019 - async function namedFn () {} 1`] = `
-Object {
-  "args": Array [],
-  "body": "",
-  "defaults": Object {},
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "",
-  "value": "(async function namedFn () {})",
-}
-`;
-
-exports[`#151 - options.parse + ecmaVersion: 2019 - async function namedFn(a = (true, false)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "false",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a",
-  "value": "(async function namedFn(a = (true, false)) {})",
-}
-`;
-
-exports[`#152 - options.parse + ecmaVersion: 2019 - async function namedFn(a = (true, null)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "null",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a",
-  "value": "(async function namedFn(a = (true, null)) {})",
-}
-`;
-
-exports[`#153 - options.parse + ecmaVersion: 2019 - async function namedFn(a = (true, "bar")) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "\\"bar\\"",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a",
-  "value": "(async function namedFn(a = (true, \\"bar\\")) {})",
-}
-`;
-
-exports[`#154 - options.parse + ecmaVersion: 2019 - async function namedFn(a, b = (i++, true)) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "b",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": undefined,
-    "b": "true",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a, b",
-  "value": "(async function namedFn(a, b = (i++, true)) {})",
-}
-`;
-
-exports[`#155 - options.parse + ecmaVersion: 2019 - async function namedFn(a = 1) {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "1",
-  },
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": true,
-  "isValid": true,
-  "name": "namedFn",
-  "params": "a",
-  "value": "(async function namedFn(a = 1) {})",
-}
-`;
-
-exports[`#156 - options.parse + ecmaVersion: 2019 - async (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "cb",
-    "restArgs",
-  ],
-  "body": "return a * 3",
-  "defaults": Object {
-    "a": "{foo: \\"ba)r\\", baz: 123}",
-    "cb": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a, cb, restArgs",
-  "value": "(async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
-}
-`;
-
-exports[`#157 - options.parse + ecmaVersion: 2019 - async (b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
-Object {
-  "args": Array [
-    "b",
-    "callback",
-    "restArgs",
-  ],
-  "body": "callback(null, b + 3)",
-  "defaults": Object {
-    "b": undefined,
-    "callback": undefined,
-    "restArgs": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "b, callback, restArgs",
-  "value": "(async (b, callback, ...restArgs) => {callback(null, b + 3)})",
-}
-`;
-
-exports[`#158 - options.parse + ecmaVersion: 2019 - async (c) => {return c * 3} 1`] = `
-Object {
-  "args": Array [
-    "c",
-  ],
-  "body": "return c * 3",
-  "defaults": Object {
-    "c": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "c",
-  "value": "(async (c) => {return c * 3})",
-}
-`;
-
-exports[`#159 - options.parse + ecmaVersion: 2019 - async (...restArgs) => {return 321} 1`] = `
-Object {
-  "args": Array [
-    "restArgs",
-  ],
-  "body": "return 321",
-  "defaults": Object {
-    "restArgs": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "restArgs",
-  "value": "(async (...restArgs) => {return 321})",
-}
-`;
-
-exports[`#160 - options.parse + ecmaVersion: 2019 - async () => {} 1`] = `
-Object {
-  "args": Array [],
-  "body": "",
-  "defaults": Object {},
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "",
-  "value": "(async () => {})",
-}
-`;
-
-exports[`#161 - options.parse + ecmaVersion: 2019 - async (a = (true, false)) => {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "false",
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "(async (a = (true, false)) => {})",
-}
-`;
-
-exports[`#162 - options.parse + ecmaVersion: 2019 - async (a = (true, null)) => {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "null",
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "(async (a = (true, null)) => {})",
-}
-`;
-
-exports[`#163 - options.parse + ecmaVersion: 2019 - async (a = (true, "bar")) => {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "\\"bar\\"",
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "(async (a = (true, \\"bar\\")) => {})",
-}
-`;
-
-exports[`#164 - options.parse + ecmaVersion: 2019 - async (a, b = (i++, true)) => {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "b",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": undefined,
-    "b": "true",
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a, b",
-  "value": "(async (a, b = (i++, true)) => {})",
-}
-`;
-
-exports[`#165 - options.parse + ecmaVersion: 2019 - async (a = 1) => {} 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "",
-  "defaults": Object {
-    "a": "1",
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "(async (a = 1) => {})",
-}
-`;
-
-exports[`#166 - options.parse + ecmaVersion: 2019 - async (a) => a * 3 * a 1`] = `
-Object {
-  "args": Array [
-    "a",
-  ],
-  "body": "a * 3 * a",
-  "defaults": Object {
-    "a": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a",
-  "value": "(async (a) => a * 3 * a)",
-}
-`;
-
-exports[`#167 - options.parse + ecmaVersion: 2019 - async d => d * 355 * d 1`] = `
-Object {
-  "args": Array [
-    "d",
-  ],
-  "body": "d * 355 * d",
-  "defaults": Object {
-    "d": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "d",
-  "value": "(async d => d * 355 * d)",
-}
-`;
-
-exports[`#168 - options.parse + ecmaVersion: 2019 - async e => {return e + 5235 / e} 1`] = `
-Object {
-  "args": Array [
-    "e",
-  ],
-  "body": "return e + 5235 / e",
-  "defaults": Object {
-    "e": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "e",
-  "value": "(async e => {return e + 5235 / e})",
-}
-`;
-
-exports[`#169 - options.parse + ecmaVersion: 2019 - async (a, b) => a + 3 + b 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "b",
-  ],
-  "body": "a + 3 + b",
-  "defaults": Object {
-    "a": undefined,
-    "b": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "a, b",
-  "value": "(async (a, b) => a + 3 + b)",
-}
-`;
-
-exports[`#170 - options.parse + ecmaVersion: 2019 - async (x, y, ...restArgs) => console.log({ value: x * y }) 1`] = `
-Object {
-  "args": Array [
-    "x",
-    "y",
-    "restArgs",
-  ],
-  "body": "console.log({ value: x * y })",
-  "defaults": Object {
-    "restArgs": undefined,
-    "x": undefined,
-    "y": undefined,
-  },
-  "isAnonymous": true,
-  "isArrow": true,
-  "isAsync": true,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": true,
-  "name": null,
-  "params": "x, y, restArgs",
-  "value": "(async (x, y, ...restArgs) => console.log({ value: x * y }))",
-}
-`;
-
-exports[`#171 - options.parse + ecmaVersion: 2019 - should return object with default values when invalid 1`] = `
-Object {
-  "args": Array [],
-  "body": "",
-  "defaults": Object {},
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": false,
-  "name": null,
-  "params": "",
-  "value": "",
-}
-`;
-
-exports[`#172 - options.parse + ecmaVersion: 2019 - should have '.isValid' and few '.is*'' hidden properties 1`] = `
-Object {
-  "args": Array [],
-  "body": "",
-  "defaults": Object {},
-  "isAnonymous": false,
-  "isArrow": false,
-  "isAsync": false,
-  "isExpression": false,
-  "isGenerator": false,
-  "isNamed": false,
-  "isValid": false,
-  "name": null,
-  "params": "",
-  "value": "",
-}
-`;
-
-exports[`#177 - options.parse + ecmaVersion: 2019 - should work for object methods 1`] = `
-Object {
-  "args": Array [
-    "a",
-    "b",
-    "c",
-  ],
-  "body": "
-        return 123;
+        return a + b + c;
       ",
   "defaults": Object {
     "a": undefined,
@@ -3833,12 +1875,12 @@ Object {
   "name": "foo",
   "params": "a, b, c",
   "value": "({ foo(a, b, c) {
-        return 123;
+        return a + b + c;
       } })",
 }
 `;
 
-exports[`#177 - options.parse + ecmaVersion: 2019 - should work for object methods 2`] = `
+exports[`#87 - babel (default) - should work for object methods 2`] = `
 Object {
   "args": Array [
     "a",
@@ -3864,7 +1906,7 @@ Object {
 }
 `;
 
-exports[`#177 - options.parse + ecmaVersion: 2019 - should work for object methods 3`] = `
+exports[`#87 - babel (default) - should work for object methods 3`] = `
 Object {
   "args": Array [
     "a",
@@ -3890,7 +1932,1965 @@ Object {
 }
 `;
 
-exports[`#177 - options.parse + ecmaVersion: 2019 - should work for object methods 4`] = `
+exports[`#87 - babel (default) - should work for object methods 4`] = `
+Object {
+  "args": Array [
+    "a",
+    "cb",
+    "restArgs",
+  ],
+  "body": " return a * 3 ",
+  "defaults": Object {
+    "a": "{foo: 'ba)r', baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a, cb, restArgs",
+  "value": "({ namedFn (a = {foo: 'ba)r', baz: 123}, cb, ...restArgs) { return a * 3 } })",
+}
+`;
+
+exports[`#91 - options.parse - function (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "cb",
+    "restArgs",
+  ],
+  "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a, cb, restArgs",
+  "value": "(function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
+}
+`;
+
+exports[`#92 - options.parse - function (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+Object {
+  "args": Array [
+    "b",
+    "callback",
+    "restArgs",
+  ],
+  "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "b, callback, restArgs",
+  "value": "(function (b, callback, ...restArgs) {callback(null, b + 3)})",
+}
+`;
+
+exports[`#93 - options.parse - function (c) {return c * 3} 1`] = `
+Object {
+  "args": Array [
+    "c",
+  ],
+  "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "c",
+  "value": "(function (c) {return c * 3})",
+}
+`;
+
+exports[`#94 - options.parse - function (...restArgs) {return 321} 1`] = `
+Object {
+  "args": Array [
+    "restArgs",
+  ],
+  "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "restArgs",
+  "value": "(function (...restArgs) {return 321})",
+}
+`;
+
+exports[`#95 - options.parse - function () {} 1`] = `
+Object {
+  "args": Array [],
+  "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "",
+  "value": "(function () {})",
+}
+`;
+
+exports[`#96 - options.parse - function (a = (true, false)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "(function (a = (true, false)) {})",
+}
+`;
+
+exports[`#97 - options.parse - function (a = (true, null)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "(function (a = (true, null)) {})",
+}
+`;
+
+exports[`#98 - options.parse - function (a = (true, "bar")) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "(function (a = (true, \\"bar\\")) {})",
+}
+`;
+
+exports[`#99 - options.parse - function (a, b = (i++, true)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "b",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a, b",
+  "value": "(function (a, b = (i++, true)) {})",
+}
+`;
+
+exports[`#100 - options.parse - function (a = 1) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "(function (a = 1) {})",
+}
+`;
+
+exports[`#101 - options.parse - function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "cb",
+    "restArgs",
+  ],
+  "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a, cb, restArgs",
+  "value": "(function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
+}
+`;
+
+exports[`#102 - options.parse - function namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+Object {
+  "args": Array [
+    "b",
+    "callback",
+    "restArgs",
+  ],
+  "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "b, callback, restArgs",
+  "value": "(function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
+}
+`;
+
+exports[`#103 - options.parse - function namedFn (c) {return c * 3} 1`] = `
+Object {
+  "args": Array [
+    "c",
+  ],
+  "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "c",
+  "value": "(function namedFn (c) {return c * 3})",
+}
+`;
+
+exports[`#104 - options.parse - function namedFn (...restArgs) {return 321} 1`] = `
+Object {
+  "args": Array [
+    "restArgs",
+  ],
+  "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "restArgs",
+  "value": "(function namedFn (...restArgs) {return 321})",
+}
+`;
+
+exports[`#105 - options.parse - function namedFn () {} 1`] = `
+Object {
+  "args": Array [],
+  "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "",
+  "value": "(function namedFn () {})",
+}
+`;
+
+exports[`#106 - options.parse - function namedFn(a = (true, false)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a",
+  "value": "(function namedFn(a = (true, false)) {})",
+}
+`;
+
+exports[`#107 - options.parse - function namedFn(a = (true, null)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a",
+  "value": "(function namedFn(a = (true, null)) {})",
+}
+`;
+
+exports[`#108 - options.parse - function namedFn(a = (true, "bar")) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a",
+  "value": "(function namedFn(a = (true, \\"bar\\")) {})",
+}
+`;
+
+exports[`#109 - options.parse - function namedFn(a, b = (i++, true)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "b",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a, b",
+  "value": "(function namedFn(a, b = (i++, true)) {})",
+}
+`;
+
+exports[`#110 - options.parse - function namedFn(a = 1) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a",
+  "value": "(function namedFn(a = 1) {})",
+}
+`;
+
+exports[`#111 - options.parse - function * namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "cb",
+    "restArgs",
+  ],
+  "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a, cb, restArgs",
+  "value": "(function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
+}
+`;
+
+exports[`#112 - options.parse - function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+Object {
+  "args": Array [
+    "b",
+    "callback",
+    "restArgs",
+  ],
+  "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "b, callback, restArgs",
+  "value": "(function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
+}
+`;
+
+exports[`#113 - options.parse - function * namedFn (c) {return c * 3} 1`] = `
+Object {
+  "args": Array [
+    "c",
+  ],
+  "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "c",
+  "value": "(function * namedFn (c) {return c * 3})",
+}
+`;
+
+exports[`#114 - options.parse - function * namedFn (...restArgs) {return 321} 1`] = `
+Object {
+  "args": Array [
+    "restArgs",
+  ],
+  "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "restArgs",
+  "value": "(function * namedFn (...restArgs) {return 321})",
+}
+`;
+
+exports[`#115 - options.parse - function * namedFn () {} 1`] = `
+Object {
+  "args": Array [],
+  "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "",
+  "value": "(function * namedFn () {})",
+}
+`;
+
+exports[`#116 - options.parse - function * namedFn(a = (true, false)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a",
+  "value": "(function * namedFn(a = (true, false)) {})",
+}
+`;
+
+exports[`#117 - options.parse - function * namedFn(a = (true, null)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a",
+  "value": "(function * namedFn(a = (true, null)) {})",
+}
+`;
+
+exports[`#118 - options.parse - function * namedFn(a = (true, "bar")) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a",
+  "value": "(function * namedFn(a = (true, \\"bar\\")) {})",
+}
+`;
+
+exports[`#119 - options.parse - function * namedFn(a, b = (i++, true)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "b",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a, b",
+  "value": "(function * namedFn(a, b = (i++, true)) {})",
+}
+`;
+
+exports[`#120 - options.parse - function * namedFn(a = 1) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a",
+  "value": "(function * namedFn(a = 1) {})",
+}
+`;
+
+exports[`#121 - options.parse - (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "cb",
+    "restArgs",
+  ],
+  "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a, cb, restArgs",
+  "value": "((a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
+}
+`;
+
+exports[`#122 - options.parse - (b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
+Object {
+  "args": Array [
+    "b",
+    "callback",
+    "restArgs",
+  ],
+  "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "b, callback, restArgs",
+  "value": "((b, callback, ...restArgs) => {callback(null, b + 3)})",
+}
+`;
+
+exports[`#123 - options.parse - (c) => {return c * 3} 1`] = `
+Object {
+  "args": Array [
+    "c",
+  ],
+  "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "c",
+  "value": "((c) => {return c * 3})",
+}
+`;
+
+exports[`#124 - options.parse - (...restArgs) => {return 321} 1`] = `
+Object {
+  "args": Array [
+    "restArgs",
+  ],
+  "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "restArgs",
+  "value": "((...restArgs) => {return 321})",
+}
+`;
+
+exports[`#125 - options.parse - () => {} 1`] = `
+Object {
+  "args": Array [],
+  "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "",
+  "value": "(() => {})",
+}
+`;
+
+exports[`#126 - options.parse - (a = (true, false)) => {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "((a = (true, false)) => {})",
+}
+`;
+
+exports[`#127 - options.parse - (a = (true, null)) => {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "((a = (true, null)) => {})",
+}
+`;
+
+exports[`#128 - options.parse - (a = (true, "bar")) => {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "((a = (true, \\"bar\\")) => {})",
+}
+`;
+
+exports[`#129 - options.parse - (a, b = (i++, true)) => {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "b",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a, b",
+  "value": "((a, b = (i++, true)) => {})",
+}
+`;
+
+exports[`#130 - options.parse - (a = 1) => {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "((a = 1) => {})",
+}
+`;
+
+exports[`#131 - options.parse - (a) => a * 3 * a 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "a * 3 * a",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "((a) => a * 3 * a)",
+}
+`;
+
+exports[`#132 - options.parse - d => d * 355 * d 1`] = `
+Object {
+  "args": Array [
+    "d",
+  ],
+  "body": "d * 355 * d",
+  "defaults": Object {
+    "d": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "d",
+  "value": "(d => d * 355 * d)",
+}
+`;
+
+exports[`#133 - options.parse - e => {return e + 5235 / e} 1`] = `
+Object {
+  "args": Array [
+    "e",
+  ],
+  "body": "return e + 5235 / e",
+  "defaults": Object {
+    "e": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "e",
+  "value": "(e => {return e + 5235 / e})",
+}
+`;
+
+exports[`#134 - options.parse - (a, b) => a + 3 + b 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "b",
+  ],
+  "body": "a + 3 + b",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a, b",
+  "value": "((a, b) => a + 3 + b)",
+}
+`;
+
+exports[`#135 - options.parse - (x, y, ...restArgs) => console.log({ value: x * y }) 1`] = `
+Object {
+  "args": Array [
+    "x",
+    "y",
+    "restArgs",
+  ],
+  "body": "console.log({ value: x * y })",
+  "defaults": Object {
+    "restArgs": undefined,
+    "x": undefined,
+    "y": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "x, y, restArgs",
+  "value": "((x, y, ...restArgs) => console.log({ value: x * y }))",
+}
+`;
+
+exports[`#136 - options.parse - async function (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "cb",
+    "restArgs",
+  ],
+  "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a, cb, restArgs",
+  "value": "(async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
+}
+`;
+
+exports[`#137 - options.parse - async function (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+Object {
+  "args": Array [
+    "b",
+    "callback",
+    "restArgs",
+  ],
+  "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "b, callback, restArgs",
+  "value": "(async function (b, callback, ...restArgs) {callback(null, b + 3)})",
+}
+`;
+
+exports[`#138 - options.parse - async function (c) {return c * 3} 1`] = `
+Object {
+  "args": Array [
+    "c",
+  ],
+  "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "c",
+  "value": "(async function (c) {return c * 3})",
+}
+`;
+
+exports[`#139 - options.parse - async function (...restArgs) {return 321} 1`] = `
+Object {
+  "args": Array [
+    "restArgs",
+  ],
+  "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "restArgs",
+  "value": "(async function (...restArgs) {return 321})",
+}
+`;
+
+exports[`#140 - options.parse - async function () {} 1`] = `
+Object {
+  "args": Array [],
+  "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "",
+  "value": "(async function () {})",
+}
+`;
+
+exports[`#141 - options.parse - async function (a = (true, false)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "(async function (a = (true, false)) {})",
+}
+`;
+
+exports[`#142 - options.parse - async function (a = (true, null)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "(async function (a = (true, null)) {})",
+}
+`;
+
+exports[`#143 - options.parse - async function (a = (true, "bar")) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "(async function (a = (true, \\"bar\\")) {})",
+}
+`;
+
+exports[`#144 - options.parse - async function (a, b = (i++, true)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "b",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a, b",
+  "value": "(async function (a, b = (i++, true)) {})",
+}
+`;
+
+exports[`#145 - options.parse - async function (a = 1) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "(async function (a = 1) {})",
+}
+`;
+
+exports[`#146 - options.parse - async function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "cb",
+    "restArgs",
+  ],
+  "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a, cb, restArgs",
+  "value": "(async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
+}
+`;
+
+exports[`#147 - options.parse - async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+Object {
+  "args": Array [
+    "b",
+    "callback",
+    "restArgs",
+  ],
+  "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "b, callback, restArgs",
+  "value": "(async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
+}
+`;
+
+exports[`#148 - options.parse - async function namedFn (c) {return c * 3} 1`] = `
+Object {
+  "args": Array [
+    "c",
+  ],
+  "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "c",
+  "value": "(async function namedFn (c) {return c * 3})",
+}
+`;
+
+exports[`#149 - options.parse - async function namedFn (...restArgs) {return 321} 1`] = `
+Object {
+  "args": Array [
+    "restArgs",
+  ],
+  "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "restArgs",
+  "value": "(async function namedFn (...restArgs) {return 321})",
+}
+`;
+
+exports[`#150 - options.parse - async function namedFn () {} 1`] = `
+Object {
+  "args": Array [],
+  "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "",
+  "value": "(async function namedFn () {})",
+}
+`;
+
+exports[`#151 - options.parse - async function namedFn(a = (true, false)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a",
+  "value": "(async function namedFn(a = (true, false)) {})",
+}
+`;
+
+exports[`#152 - options.parse - async function namedFn(a = (true, null)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a",
+  "value": "(async function namedFn(a = (true, null)) {})",
+}
+`;
+
+exports[`#153 - options.parse - async function namedFn(a = (true, "bar")) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a",
+  "value": "(async function namedFn(a = (true, \\"bar\\")) {})",
+}
+`;
+
+exports[`#154 - options.parse - async function namedFn(a, b = (i++, true)) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "b",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a, b",
+  "value": "(async function namedFn(a, b = (i++, true)) {})",
+}
+`;
+
+exports[`#155 - options.parse - async function namedFn(a = 1) {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "namedFn",
+  "params": "a",
+  "value": "(async function namedFn(a = 1) {})",
+}
+`;
+
+exports[`#156 - options.parse - async (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "cb",
+    "restArgs",
+  ],
+  "body": "return a * 3",
+  "defaults": Object {
+    "a": "{foo: \\"ba)r\\", baz: 123}",
+    "cb": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a, cb, restArgs",
+  "value": "(async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
+}
+`;
+
+exports[`#157 - options.parse - async (b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
+Object {
+  "args": Array [
+    "b",
+    "callback",
+    "restArgs",
+  ],
+  "body": "callback(null, b + 3)",
+  "defaults": Object {
+    "b": undefined,
+    "callback": undefined,
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "b, callback, restArgs",
+  "value": "(async (b, callback, ...restArgs) => {callback(null, b + 3)})",
+}
+`;
+
+exports[`#158 - options.parse - async (c) => {return c * 3} 1`] = `
+Object {
+  "args": Array [
+    "c",
+  ],
+  "body": "return c * 3",
+  "defaults": Object {
+    "c": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "c",
+  "value": "(async (c) => {return c * 3})",
+}
+`;
+
+exports[`#159 - options.parse - async (...restArgs) => {return 321} 1`] = `
+Object {
+  "args": Array [
+    "restArgs",
+  ],
+  "body": "return 321",
+  "defaults": Object {
+    "restArgs": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "restArgs",
+  "value": "(async (...restArgs) => {return 321})",
+}
+`;
+
+exports[`#160 - options.parse - async () => {} 1`] = `
+Object {
+  "args": Array [],
+  "body": "",
+  "defaults": Object {},
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "",
+  "value": "(async () => {})",
+}
+`;
+
+exports[`#161 - options.parse - async (a = (true, false)) => {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "false",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "(async (a = (true, false)) => {})",
+}
+`;
+
+exports[`#162 - options.parse - async (a = (true, null)) => {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "null",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "(async (a = (true, null)) => {})",
+}
+`;
+
+exports[`#163 - options.parse - async (a = (true, "bar")) => {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "\\"bar\\"",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "(async (a = (true, \\"bar\\")) => {})",
+}
+`;
+
+exports[`#164 - options.parse - async (a, b = (i++, true)) => {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "b",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": undefined,
+    "b": "true",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a, b",
+  "value": "(async (a, b = (i++, true)) => {})",
+}
+`;
+
+exports[`#165 - options.parse - async (a = 1) => {} 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "",
+  "defaults": Object {
+    "a": "1",
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "(async (a = 1) => {})",
+}
+`;
+
+exports[`#166 - options.parse - async (a) => a * 3 * a 1`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "a * 3 * a",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a",
+  "value": "(async (a) => a * 3 * a)",
+}
+`;
+
+exports[`#167 - options.parse - async d => d * 355 * d 1`] = `
+Object {
+  "args": Array [
+    "d",
+  ],
+  "body": "d * 355 * d",
+  "defaults": Object {
+    "d": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "d",
+  "value": "(async d => d * 355 * d)",
+}
+`;
+
+exports[`#168 - options.parse - async e => {return e + 5235 / e} 1`] = `
+Object {
+  "args": Array [
+    "e",
+  ],
+  "body": "return e + 5235 / e",
+  "defaults": Object {
+    "e": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "e",
+  "value": "(async e => {return e + 5235 / e})",
+}
+`;
+
+exports[`#169 - options.parse - async (a, b) => a + 3 + b 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "b",
+  ],
+  "body": "a + 3 + b",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "a, b",
+  "value": "(async (a, b) => a + 3 + b)",
+}
+`;
+
+exports[`#170 - options.parse - async (x, y, ...restArgs) => console.log({ value: x * y }) 1`] = `
+Object {
+  "args": Array [
+    "x",
+    "y",
+    "restArgs",
+  ],
+  "body": "console.log({ value: x * y })",
+  "defaults": Object {
+    "restArgs": undefined,
+    "x": undefined,
+    "y": undefined,
+  },
+  "isAnonymous": true,
+  "isArrow": true,
+  "isAsync": true,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": true,
+  "name": null,
+  "params": "x, y, restArgs",
+  "value": "(async (x, y, ...restArgs) => console.log({ value: x * y }))",
+}
+`;
+
+exports[`#171 - options.parse - should return object with default values when invalid 1`] = `
+Object {
+  "args": Array [],
+  "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": false,
+  "name": null,
+  "params": "",
+  "value": "",
+}
+`;
+
+exports[`#172 - options.parse - should have '.isValid' and few '.is*'' hidden properties 1`] = `
+Object {
+  "args": Array [],
+  "body": "",
+  "defaults": Object {},
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": false,
+  "isValid": false,
+  "name": null,
+  "params": "",
+  "value": "",
+}
+`;
+
+exports[`#177 - options.parse - should work for object methods 1`] = `
+Object {
+  "args": Array [
+    "a",
+    "b",
+    "c",
+  ],
+  "body": "
+        return a + b + c;
+      ",
+  "defaults": Object {
+    "a": undefined,
+    "b": undefined,
+    "c": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "foo",
+  "params": "a, b, c",
+  "value": "({ foo(a, b, c) {
+        return a + b + c;
+      } })",
+}
+`;
+
+exports[`#177 - options.parse - should work for object methods 2`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "
+        return () => a;
+      ",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": false,
+  "isNamed": true,
+  "isValid": true,
+  "name": "bar",
+  "params": "a",
+  "value": "({ bar(a) {
+        return () => a;
+      } })",
+}
+`;
+
+exports[`#177 - options.parse - should work for object methods 3`] = `
+Object {
+  "args": Array [
+    "a",
+  ],
+  "body": "
+        return yield a * 321;
+      ",
+  "defaults": Object {
+    "a": undefined,
+  },
+  "isAnonymous": false,
+  "isArrow": false,
+  "isAsync": false,
+  "isExpression": false,
+  "isGenerator": true,
+  "isNamed": true,
+  "isValid": true,
+  "name": "gen",
+  "params": "a",
+  "value": "({ *gen(a) {
+        return yield a * 321;
+      } })",
+}
+`;
+
+exports[`#177 - options.parse - should work for object methods 4`] = `
 Object {
   "args": Array [
     "a",
@@ -5774,7 +5774,7 @@ Object {
     "c",
   ],
   "body": "
-        return 123;
+        return a + b + c;
       ",
   "defaults": Object {
     "a": undefined,
@@ -5791,7 +5791,7 @@ Object {
   "name": "foo",
   "params": "a, b, c",
   "value": "({ foo(a, b, c) {
-        return 123;
+        return a + b + c;
       } })",
 }
 `;
@@ -7732,7 +7732,7 @@ Object {
     "c",
   ],
   "body": "
-        return 123;
+        return a + b + c;
       ",
   "defaults": Object {
     "a": undefined,
@@ -7749,7 +7749,7 @@ Object {
   "name": "foo",
   "params": "a, b, c",
   "value": "({ foo(a, b, c) {
-        return 123;
+        return a + b + c;
       } })",
 }
 `;
@@ -9690,7 +9690,7 @@ Object {
     "c",
   ],
   "body": "
-        return 123;
+        return a + b + c;
       ",
   "defaults": Object {
     "a": undefined,
@@ -9707,7 +9707,7 @@ Object {
   "name": "foo",
   "params": "a, b, c",
   "value": "({ foo(a, b, c) {
-        return 123;
+        return a + b + c;
       } })",
 }
 `;
@@ -9808,6 +9808,6 @@ Object {
   "isValid": true,
   "name": null,
   "params": "v",
-  "value": "async (v) => { if (v) {} }",
+  "value": "(async (v) => { if (v) {} })",
 }
 `;

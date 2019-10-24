@@ -1,20 +1,15 @@
 /* eslint-disable no-param-reassign */
-import arrayify from 'arrify';
 import { parseExpression } from '@babel/parser';
-
-const utils = {};
-
-utils.arrayify = arrayify;
 
 /**
  * > Create default result object,
  * and normalize incoming arguments.
  *
- * @param  {Function|String} code
- * @return {Object} result
+ * @param  code
+ * @return result
  * @private
  */
-utils.setDefaults = function setDefaults(code) {
+export function setDefaults(code) {
   const result = {
     name: null,
     body: '',
@@ -23,7 +18,7 @@ utils.setDefaults = function setDefaults(code) {
   };
 
   if (typeof code === 'function') {
-    code = code.toString('utf8');
+    code = code.toString();
   }
 
   // makes result.isValid === false
@@ -31,19 +26,20 @@ utils.setDefaults = function setDefaults(code) {
     code = '';
   }
 
-  return utils.setHiddenDefaults(result, code || '');
-};
+  return setHiddenDefaults(result, code || '');
+}
 
 /**
  * > Create hidden properties into
  * the result object.
  *
- * @param  {Object} result
- * @param  {Function|String} code
- * @return {Object} result
+ * @param   result
+ * @param  code
+ * @return  result
  * @private
  */
-utils.setHiddenDefaults = function setHiddenDefaults(result, code) {
+
+export function setHiddenDefaults(result, code) {
   result.defaults = {};
   result.value = code;
   result.isValid = code.length > 0;
@@ -55,28 +51,29 @@ utils.setHiddenDefaults = function setHiddenDefaults(result, code) {
   result.isExpression = false;
 
   return result;
-};
+}
 
 /**
  * > Get needed AST tree, depending on what
  * parse method is used.
  *
- * @param  {Object} result
- * @param  {Object} opts
- * @return {Object} node
+ * @param  result
+ * @param  opts
+ * @return node
  * @private
  */
-utils.getNode = function getNode(result, opts) {
+export function getNode(result, options) {
+  const opts = { ...options };
   if (typeof opts.parse === 'function') {
     result.value = `(${result.value})`;
 
-    const ast = opts.parse(result.value, opts);
-    const body = (ast.program && ast.program.body) || ast.body;
+    const ast = opts.parse(result.value, opts.parserOptions);
+    const astBody = ast.body;
+
+    const body = (ast.program && ast.program.body) || astBody;
 
     return body[0].expression;
   }
 
-  return parseExpression(result.value, opts);
-};
-
-export default utils;
+  return parseExpression(result.value, opts.parserOptions);
+}
