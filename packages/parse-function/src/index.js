@@ -18,7 +18,7 @@ import basePlugin from './plugins/initial.js';
  * import { parse as espreeParse } from 'espree';
  * import { parseFunction } from 'parse-function';
  *
- * function fooFn(bar, baz = 123) { return bar * baz; };
+ * function fooFn(bar, baz = 123) { return bar + baz; };
  *
  * const result1 = parseFunction(fooFn, { parse: acornParse });
  * console.log(result1);
@@ -35,11 +35,11 @@ import basePlugin from './plugins/initial.js';
  * console.log('parsed with espree', result2);
  * // => {
  * //  name: 'fooFn',
- * //  body: '\n  return bar * baz;\n',
+ * //  body: '\n  return bar + baz;\n',
  * //  args: [ 'bar', 'baz' ],
  * //  params: 'bar, baz',
  * //  defaults: { bar: undefined, baz: '123' },
- * //  value: '(function fooFn(bar, baz = 123) {\n  return bar * baz;\n})',
+ * //  value: '(function fooFn(bar, baz = 123) {\n  return bar + baz;\n})',
  * //  isValid: true,
  * //  isArrow: false,
  * //  isAsync: false,
@@ -72,7 +72,7 @@ import basePlugin from './plugins/initial.js';
  * @param  {ParserOptions} `options.parserOptions` passed to the parser
  * @param  {Plugins} `options.plugins` a plugin function like `function plugin(node: Node, result: Result): Result {}`
  * @return {Object} `result` see [result section](#result) for more info
- * @name   .parse
+ * @name   .parseFunction
  * @api public
  */
 export function parseFunction(input, options) {

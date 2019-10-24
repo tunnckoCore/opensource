@@ -2,7 +2,7 @@ import { parse as acornParse } from 'acorn';
 import { parseFunction } from '.';
 
 function fooFn(bar, baz = 123) {
-  return bar * baz;
+  return bar + baz;
 }
 
 // `node` is an AST Node
@@ -29,11 +29,11 @@ console.log(result);
 
 /* {
   name: 'fooFn',
-  body: '\n  return bar * baz;\n',
+  body: '\n  return bar + baz;\n',
   args: [ 'bar', 'baz' ],
   params: 'bar, baz',
   defaults: { bar: undefined, baz: '123' },
-  value: '(function fooFn(bar, baz = 123) {\n  return bar * baz;\n})',
+  value: '(function fooFn(bar, baz = 123) {\n  return bar + baz;\n})',
   isValid: true,
   isArrow: false,
   isAsync: false,
@@ -43,5 +43,5 @@ console.log(result);
   isExpression: false,
   bobby: 'bobby',
   barry: 'barry barry',
-  bhasDefaultParams: true
+  hasDefaultParams: true
 } */

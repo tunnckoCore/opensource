@@ -369,7 +369,7 @@ Consider showing your [support](#support-the-project) to them. :sparkling_heart:
 ## License
 
 Copyright (c) 2016-present, [Charlike Mike Reagent](https://tunnckocore.com) `<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br>
-Released under the [MIT License][license-url].
+Released under the [MPL-2.0 License][license-url].
 
 [contributing-url]: https://github.com/tunnckoCore/opensource/blob/master/CONTRIBUTING.md
 [code_of_conduct-url]: https://github.com/tunnckoCore/opensource/blob/master/CODE_OF_CONDUCT.md
