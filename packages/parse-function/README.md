@@ -215,7 +215,7 @@ you can add more properties if you want.
 
 _Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._
 
-### [.parseFunction](./src/index.js#L78)
+### [.parseFunction](./src/index.js#L84)
 
 Parse a given `input` and returns a `Result` object
 with useful properties - such as `name`, `body` and `args`.
@@ -245,6 +245,12 @@ function(input, options)
 import { parse as acornParse } from 'acorn';
 import { parse as espreeParse } from 'espree';
 import { parseFunction } from 'parse-function';
+
+// or in CommonJS
+// const { parseFunction } = require('parse-function');
+// const parseFunction = require('parse-function').parseFunction;
+// const fn = require('parse-function');
+// fn.parseFunction()
 
 function fooFn(bar, baz = 123) {
   return bar + baz;
