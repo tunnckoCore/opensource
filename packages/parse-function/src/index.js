@@ -18,6 +18,12 @@ import basePlugin from './plugins/initial.js';
  * import { parse as espreeParse } from 'espree';
  * import { parseFunction } from 'parse-function';
  *
+ * // or in CommonJS
+ * // const { parseFunction } = require('parse-function');
+ * // const parseFunction = require('parse-function').parseFunction;
+ * // const fn = require('parse-function');
+ * // fn.parseFunction()
+ *
  * function fooFn(bar, baz = 123) { return bar + baz; };
  *
  * const result1 = parseFunction(fooFn, { parse: acornParse });
