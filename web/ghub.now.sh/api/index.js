@@ -12,7 +12,7 @@ async function packageJson(packageName, endpoint) {
   const uri =
     typeof endpoint === 'function'
       ? endpoint(name, tag)
-      : `https://unpkg.com/${name}@${tag}/package.json`;
+      : `https://cdn.jsdelivr.net/npm/${name}@${tag}/package.json`;
 
   return ky
     .get(uri)
