@@ -1,6 +1,10 @@
 import { parse as acornParse } from 'acorn';
 import { parseFunction } from '.';
 
+function fooFn(bar, baz = 123) {
+  return bar * baz;
+}
+
 // `node` is an AST Node
 function bobbyPlugin(node, result) {
   const bobby = 'bobby';
@@ -9,26 +13,27 @@ function bobbyPlugin(node, result) {
 }
 
 function barryPlugin(node, result) {
-  return { ...result, barry: 'barry barry' };
+  const hasDefaultParams =
+    Object.values(result.defaults).filter(Boolean).length > 0;
+
+  return { ...result, barry: 'barry barry', hasDefaultParams };
 }
 
-const result = parseFunction(bobbyPlugin.toString(), {
+const result = parseFunction(fooFn, {
   parse: acornParse,
-  plugins: [bobbyPlugin, barryPlugin], // supports array of plugins
+  plugins: [bobbyPlugin, barryPlugin],
   parserOptions: {},
 });
 
 console.log(result);
 
 /* {
-  name: 'bobbyPlugin',
-  body: "\n  const bobby = 'bobby';\n\n  return { ...result, bobby };\n",
-  args: [ 'node', 'result' ],
-  params: 'node, result',
-  defaults: { node: undefined, result: undefined },
-  value: '(function bobbyPlugin(node, result) {\n  const ' +
-    "bobby = 'bobby';\n\n  return { ...result, bobby };\n" +
-    '})',
+  name: 'fooFn',
+  body: '\n  return bar * baz;\n',
+  args: [ 'bar', 'baz' ],
+  params: 'bar, baz',
+  defaults: { bar: undefined, baz: '123' },
+  value: '(function fooFn(bar, baz = 123) {\n  return bar * baz;\n})',
   isValid: true,
   isArrow: false,
   isAsync: false,
@@ -37,5 +42,6 @@ console.log(result);
   isGenerator: false,
   isExpression: false,
   bobby: 'bobby',
-  barry: 'barry barry'
+  barry: 'barry barry',
+  bhasDefaultParams: true
 } */

@@ -11,7 +11,7 @@ const { extensions } = getWorkspacesAndExtensions(__dirname);
 
 process.env.ROLLUP_MIN = process.env.ROLLUP_MIN || '1';
 
-const externals = [].concat('@babel/core', '@babel/parser');
+const externals = [].concat('@babel/core', '@babel/parser', '@babel/types');
 
 const tunnckocoreInterop = `const ___exportsWithoutDefault = Object.keys(exports)
   .filter((x) => x !== 'default')

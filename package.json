@@ -20,13 +20,13 @@
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
     "postsetup": "yarn patch:verb && yarn patch:hela && yarn patch:sade",
     "postsetup:ci": "yarn patch:verb && yarn patch:hela && yarn patch:sade",
-    "pre-commit": "yarn docs && yarn fmt",
+    "pre-commit": "LOCAL_TESTING=0 CI=1 yarn start test -u && yarn testy && git status --porcelain",
     "refresh": "yarn cleanup && yarn setup",
     "release": "lerna version && lerna publish from-package",
     "setup": "yarn && yarn bootstrap",
     "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
     "start": "node node_modules/@hela/cli/dist/build/cjs/cli.js",
-    "test": "CI=1 yarn start test",
+    "test": "FORCE_COLOR=1 CI=1 LOCAL_TESTING=1 yarn start test",
     "testy": "node generate-coverage-info.js && yarn start docs && yarn start format"
   },
   "dependencies": {
@@ -69,8 +69,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo 'yarn run pre-commit'",
-      "commit-msg": "echo 'commitlint -E HUSKY_GIT_PARAMS'"
+      "pre-commit": "yarn run pre-commit",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "jest": {

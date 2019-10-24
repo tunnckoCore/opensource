@@ -1,4 +1,5 @@
 import { ParserOptions } from '@babel/parser';
+import { File } from '@babel/types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type FnType = (...args: any) => any;
@@ -9,7 +10,8 @@ export type Plugin = (node: any, result: Result) => Result | undefined;
 export type Plugins = Plugin | Array<Plugin>;
 
 export interface Options {
-  parse?(input: string, options?: ParserOptions): import('@babel/types').File;
+  parse?(input: string, options?: ParserOptions): File;
+  parseExpression?(input: string, options?: ParserOptions): File;
   parserOptions?: ParserOptions;
   plugins?: Plugins;
 }
@@ -30,5 +32,4 @@ export interface Result {
   isExpression: boolean;
 }
 
-
-export function parseFunction(code: Input, options?: Options): Result
+export function parseFunction(code: Input, options?: Options): Result;

@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#1 - babel (default) - function (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+exports[`#1 - babel (.parseExpression) - function (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -22,17 +23,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
-  "value": "(function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
+  "qux": 123,
+  "value": "function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
 }
 `;
 
-exports[`#2 - babel (default) - function (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+exports[`#2 - babel (.parseExpression) - function (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -48,15 +51,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
-  "value": "(function (b, callback, ...restArgs) {callback(null, b + 3)})",
+  "qux": 123,
+  "value": "function (b, callback, ...restArgs) {callback(null, b + 3)}",
 }
 `;
 
-exports[`#3 - babel (default) - function (c) {return c * 3} 1`] = `
+exports[`#3 - babel (.parseExpression) - function (c) {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -70,15 +75,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
-  "value": "(function (c) {return c * 3})",
+  "qux": 123,
+  "value": "function (c) {return c * 3}",
 }
 `;
 
-exports[`#4 - babel (default) - function (...restArgs) {return 321} 1`] = `
+exports[`#4 - babel (.parseExpression) - function (...restArgs) {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -92,13 +99,15 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
-  "value": "(function (...restArgs) {return 321})",
+  "qux": 123,
+  "value": "function (...restArgs) {return 321}",
 }
 `;
 
-exports[`#5 - babel (default) - function () {} 1`] = `
+exports[`#5 - babel (.parseExpression) - function () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -110,15 +119,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
-  "value": "(function () {})",
+  "qux": 123,
+  "value": "function () {}",
 }
 `;
 
-exports[`#6 - babel (default) - function (a = (true, false)) {} 1`] = `
+exports[`#6 - babel (.parseExpression) - function (a = (true, false)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -132,15 +143,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(function (a = (true, false)) {})",
+  "qux": 123,
+  "value": "function (a = (true, false)) {}",
 }
 `;
 
-exports[`#7 - babel (default) - function (a = (true, null)) {} 1`] = `
+exports[`#7 - babel (.parseExpression) - function (a = (true, null)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -154,15 +167,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(function (a = (true, null)) {})",
+  "qux": 123,
+  "value": "function (a = (true, null)) {}",
 }
 `;
 
-exports[`#8 - babel (default) - function (a = (true, "bar")) {} 1`] = `
+exports[`#8 - babel (.parseExpression) - function (a = (true, "bar")) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -176,16 +191,18 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(function (a = (true, \\"bar\\")) {})",
+  "qux": 123,
+  "value": "function (a = (true, \\"bar\\")) {}",
 }
 `;
 
-exports[`#9 - babel (default) - function (a, b = (i++, true)) {} 1`] = `
+exports[`#9 - babel (.parseExpression) - function (a, b = (i++, true)) {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -200,15 +217,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
-  "value": "(function (a, b = (i++, true)) {})",
+  "qux": 123,
+  "value": "function (a, b = (i++, true)) {}",
 }
 `;
 
-exports[`#10 - babel (default) - function (a = 1) {} 1`] = `
+exports[`#10 - babel (.parseExpression) - function (a = 1) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -222,17 +241,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(function (a = 1) {})",
+  "qux": 123,
+  "value": "function (a = 1) {}",
 }
 `;
 
-exports[`#11 - babel (default) - function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+exports[`#11 - babel (.parseExpression) - function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -248,17 +269,19 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
-  "value": "(function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
+  "qux": 123,
+  "value": "function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
 }
 `;
 
-exports[`#12 - babel (default) - function namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+exports[`#12 - babel (.parseExpression) - function namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -274,15 +297,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
-  "value": "(function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
+  "qux": 123,
+  "value": "function namedFn (b, callback, ...restArgs) {callback(null, b + 3)}",
 }
 `;
 
-exports[`#13 - babel (default) - function namedFn (c) {return c * 3} 1`] = `
+exports[`#13 - babel (.parseExpression) - function namedFn (c) {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -296,15 +321,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
-  "value": "(function namedFn (c) {return c * 3})",
+  "qux": 123,
+  "value": "function namedFn (c) {return c * 3}",
 }
 `;
 
-exports[`#14 - babel (default) - function namedFn (...restArgs) {return 321} 1`] = `
+exports[`#14 - babel (.parseExpression) - function namedFn (...restArgs) {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -318,13 +345,15 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
-  "value": "(function namedFn (...restArgs) {return 321})",
+  "qux": 123,
+  "value": "function namedFn (...restArgs) {return 321}",
 }
 `;
 
-exports[`#15 - babel (default) - function namedFn () {} 1`] = `
+exports[`#15 - babel (.parseExpression) - function namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -336,15 +365,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
-  "value": "(function namedFn () {})",
+  "qux": 123,
+  "value": "function namedFn () {}",
 }
 `;
 
-exports[`#16 - babel (default) - function namedFn(a = (true, false)) {} 1`] = `
+exports[`#16 - babel (.parseExpression) - function namedFn(a = (true, false)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -358,15 +389,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "(function namedFn(a = (true, false)) {})",
+  "qux": 123,
+  "value": "function namedFn(a = (true, false)) {}",
 }
 `;
 
-exports[`#17 - babel (default) - function namedFn(a = (true, null)) {} 1`] = `
+exports[`#17 - babel (.parseExpression) - function namedFn(a = (true, null)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -380,15 +413,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "(function namedFn(a = (true, null)) {})",
+  "qux": 123,
+  "value": "function namedFn(a = (true, null)) {}",
 }
 `;
 
-exports[`#18 - babel (default) - function namedFn(a = (true, "bar")) {} 1`] = `
+exports[`#18 - babel (.parseExpression) - function namedFn(a = (true, "bar")) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -402,16 +437,18 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "(function namedFn(a = (true, \\"bar\\")) {})",
+  "qux": 123,
+  "value": "function namedFn(a = (true, \\"bar\\")) {}",
 }
 `;
 
-exports[`#19 - babel (default) - function namedFn(a, b = (i++, true)) {} 1`] = `
+exports[`#19 - babel (.parseExpression) - function namedFn(a, b = (i++, true)) {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -426,15 +463,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
-  "value": "(function namedFn(a, b = (i++, true)) {})",
+  "qux": 123,
+  "value": "function namedFn(a, b = (i++, true)) {}",
 }
 `;
 
-exports[`#20 - babel (default) - function namedFn(a = 1) {} 1`] = `
+exports[`#20 - babel (.parseExpression) - function namedFn(a = 1) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -448,17 +487,19 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "(function namedFn(a = 1) {})",
+  "qux": 123,
+  "value": "function namedFn(a = 1) {}",
 }
 `;
 
-exports[`#21 - babel (default) - function * namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+exports[`#21 - babel (.parseExpression) - function * namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -474,17 +515,19 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
-  "value": "(function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
+  "qux": 123,
+  "value": "function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
 }
 `;
 
-exports[`#22 - babel (default) - function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+exports[`#22 - babel (.parseExpression) - function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -500,15 +543,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
-  "value": "(function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
+  "qux": 123,
+  "value": "function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)}",
 }
 `;
 
-exports[`#23 - babel (default) - function * namedFn (c) {return c * 3} 1`] = `
+exports[`#23 - babel (.parseExpression) - function * namedFn (c) {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -522,15 +567,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
-  "value": "(function * namedFn (c) {return c * 3})",
+  "qux": 123,
+  "value": "function * namedFn (c) {return c * 3}",
 }
 `;
 
-exports[`#24 - babel (default) - function * namedFn (...restArgs) {return 321} 1`] = `
+exports[`#24 - babel (.parseExpression) - function * namedFn (...restArgs) {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -544,13 +591,15 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
-  "value": "(function * namedFn (...restArgs) {return 321})",
+  "qux": 123,
+  "value": "function * namedFn (...restArgs) {return 321}",
 }
 `;
 
-exports[`#25 - babel (default) - function * namedFn () {} 1`] = `
+exports[`#25 - babel (.parseExpression) - function * namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -562,15 +611,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
-  "value": "(function * namedFn () {})",
+  "qux": 123,
+  "value": "function * namedFn () {}",
 }
 `;
 
-exports[`#26 - babel (default) - function * namedFn(a = (true, false)) {} 1`] = `
+exports[`#26 - babel (.parseExpression) - function * namedFn(a = (true, false)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -584,15 +635,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "(function * namedFn(a = (true, false)) {})",
+  "qux": 123,
+  "value": "function * namedFn(a = (true, false)) {}",
 }
 `;
 
-exports[`#27 - babel (default) - function * namedFn(a = (true, null)) {} 1`] = `
+exports[`#27 - babel (.parseExpression) - function * namedFn(a = (true, null)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -606,15 +659,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "(function * namedFn(a = (true, null)) {})",
+  "qux": 123,
+  "value": "function * namedFn(a = (true, null)) {}",
 }
 `;
 
-exports[`#28 - babel (default) - function * namedFn(a = (true, "bar")) {} 1`] = `
+exports[`#28 - babel (.parseExpression) - function * namedFn(a = (true, "bar")) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -628,16 +683,18 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "(function * namedFn(a = (true, \\"bar\\")) {})",
+  "qux": 123,
+  "value": "function * namedFn(a = (true, \\"bar\\")) {}",
 }
 `;
 
-exports[`#29 - babel (default) - function * namedFn(a, b = (i++, true)) {} 1`] = `
+exports[`#29 - babel (.parseExpression) - function * namedFn(a, b = (i++, true)) {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -652,15 +709,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
-  "value": "(function * namedFn(a, b = (i++, true)) {})",
+  "qux": 123,
+  "value": "function * namedFn(a, b = (i++, true)) {}",
 }
 `;
 
-exports[`#30 - babel (default) - function * namedFn(a = 1) {} 1`] = `
+exports[`#30 - babel (.parseExpression) - function * namedFn(a = 1) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -674,17 +733,19 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "(function * namedFn(a = 1) {})",
+  "qux": 123,
+  "value": "function * namedFn(a = 1) {}",
 }
 `;
 
-exports[`#31 - babel (default) - (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
+exports[`#31 - babel (.parseExpression) - a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -700,17 +761,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
-  "value": "((a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
+  "qux": 123,
+  "value": "(a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3}",
 }
 `;
 
-exports[`#32 - babel (default) - (b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
+exports[`#32 - babel (.parseExpression) - b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -726,15 +789,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
-  "value": "((b, callback, ...restArgs) => {callback(null, b + 3)})",
+  "qux": 123,
+  "value": "(b, callback, ...restArgs) => {callback(null, b + 3)}",
 }
 `;
 
-exports[`#33 - babel (default) - (c) => {return c * 3} 1`] = `
+exports[`#33 - babel (.parseExpression) - c) => {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -748,15 +813,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
-  "value": "((c) => {return c * 3})",
+  "qux": 123,
+  "value": "(c) => {return c * 3}",
 }
 `;
 
-exports[`#34 - babel (default) - (...restArgs) => {return 321} 1`] = `
+exports[`#34 - babel (.parseExpression) - ...restArgs) => {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -770,13 +837,15 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
-  "value": "((...restArgs) => {return 321})",
+  "qux": 123,
+  "value": "(...restArgs) => {return 321}",
 }
 `;
 
-exports[`#35 - babel (default) - () => {} 1`] = `
+exports[`#35 - babel (.parseExpression) - ) => {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -788,15 +857,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
-  "value": "(() => {})",
+  "qux": 123,
+  "value": "() => {}",
 }
 `;
 
-exports[`#36 - babel (default) - (a = (true, false)) => {} 1`] = `
+exports[`#36 - babel (.parseExpression) - a = (true, false)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -810,15 +881,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "((a = (true, false)) => {})",
+  "qux": 123,
+  "value": "(a = (true, false)) => {}",
 }
 `;
 
-exports[`#37 - babel (default) - (a = (true, null)) => {} 1`] = `
+exports[`#37 - babel (.parseExpression) - a = (true, null)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -832,15 +905,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "((a = (true, null)) => {})",
+  "qux": 123,
+  "value": "(a = (true, null)) => {}",
 }
 `;
 
-exports[`#38 - babel (default) - (a = (true, "bar")) => {} 1`] = `
+exports[`#38 - babel (.parseExpression) - a = (true, "bar")) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -854,16 +929,18 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "((a = (true, \\"bar\\")) => {})",
+  "qux": 123,
+  "value": "(a = (true, \\"bar\\")) => {}",
 }
 `;
 
-exports[`#39 - babel (default) - (a, b = (i++, true)) => {} 1`] = `
+exports[`#39 - babel (.parseExpression) - a, b = (i++, true)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -878,15 +955,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
-  "value": "((a, b = (i++, true)) => {})",
+  "qux": 123,
+  "value": "(a, b = (i++, true)) => {}",
 }
 `;
 
-exports[`#40 - babel (default) - (a = 1) => {} 1`] = `
+exports[`#40 - babel (.parseExpression) - a = 1) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -900,15 +979,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "((a = 1) => {})",
+  "qux": 123,
+  "value": "(a = 1) => {}",
 }
 `;
 
-exports[`#41 - babel (default) - (a) => a * 3 * a 1`] = `
+exports[`#41 - babel (.parseExpression) - a) => a * 3 * a 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "a * 3 * a",
   "defaults": Object {
     "a": undefined,
@@ -922,15 +1003,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "((a) => a * 3 * a)",
+  "qux": 123,
+  "value": "(a) => a * 3 * a",
 }
 `;
 
-exports[`#42 - babel (default) - d => d * 355 * d 1`] = `
+exports[`#42 - babel (.parseExpression) - d => d * 355 * d 1`] = `
 Object {
   "args": Array [
     "d",
   ],
+  "barry": 223,
   "body": "d * 355 * d",
   "defaults": Object {
     "d": undefined,
@@ -944,15 +1027,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "d",
-  "value": "(d => d * 355 * d)",
+  "qux": 123,
+  "value": "d => d * 355 * d",
 }
 `;
 
-exports[`#43 - babel (default) - e => {return e + 5235 / e} 1`] = `
+exports[`#43 - babel (.parseExpression) - e => {return e + 5235 / e} 1`] = `
 Object {
   "args": Array [
     "e",
   ],
+  "barry": 223,
   "body": "return e + 5235 / e",
   "defaults": Object {
     "e": undefined,
@@ -966,16 +1051,18 @@ Object {
   "isValid": true,
   "name": null,
   "params": "e",
-  "value": "(e => {return e + 5235 / e})",
+  "qux": 123,
+  "value": "e => {return e + 5235 / e}",
 }
 `;
 
-exports[`#44 - babel (default) - (a, b) => a + 3 + b 1`] = `
+exports[`#44 - babel (.parseExpression) - a, b) => a + 3 + b 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "a + 3 + b",
   "defaults": Object {
     "a": undefined,
@@ -990,17 +1077,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
-  "value": "((a, b) => a + 3 + b)",
+  "qux": 123,
+  "value": "(a, b) => a + 3 + b",
 }
 `;
 
-exports[`#45 - babel (default) - (x, y, ...restArgs) => console.log({ value: x * y }) 1`] = `
+exports[`#45 - babel (.parseExpression) - x, y, ...restArgs) => console.log({ value: x * y } 1`] = `
 Object {
   "args": Array [
     "x",
     "y",
     "restArgs",
   ],
+  "barry": 223,
   "body": "console.log({ value: x * y })",
   "defaults": Object {
     "restArgs": undefined,
@@ -1016,17 +1105,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
-  "value": "((x, y, ...restArgs) => console.log({ value: x * y }))",
+  "qux": 123,
+  "value": "(x, y, ...restArgs) => console.log({ value: x * y })",
 }
 `;
 
-exports[`#46 - babel (default) - async function (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+exports[`#46 - babel (.parseExpression) - async function (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -1042,17 +1133,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
-  "value": "(async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
+  "qux": 123,
+  "value": "async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
 }
 `;
 
-exports[`#47 - babel (default) - async function (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+exports[`#47 - babel (.parseExpression) - async function (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -1068,15 +1161,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
-  "value": "(async function (b, callback, ...restArgs) {callback(null, b + 3)})",
+  "qux": 123,
+  "value": "async function (b, callback, ...restArgs) {callback(null, b + 3)}",
 }
 `;
 
-exports[`#48 - babel (default) - async function (c) {return c * 3} 1`] = `
+exports[`#48 - babel (.parseExpression) - async function (c) {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -1090,15 +1185,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
-  "value": "(async function (c) {return c * 3})",
+  "qux": 123,
+  "value": "async function (c) {return c * 3}",
 }
 `;
 
-exports[`#49 - babel (default) - async function (...restArgs) {return 321} 1`] = `
+exports[`#49 - babel (.parseExpression) - async function (...restArgs) {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -1112,13 +1209,15 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
-  "value": "(async function (...restArgs) {return 321})",
+  "qux": 123,
+  "value": "async function (...restArgs) {return 321}",
 }
 `;
 
-exports[`#50 - babel (default) - async function () {} 1`] = `
+exports[`#50 - babel (.parseExpression) - async function () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -1130,15 +1229,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
-  "value": "(async function () {})",
+  "qux": 123,
+  "value": "async function () {}",
 }
 `;
 
-exports[`#51 - babel (default) - async function (a = (true, false)) {} 1`] = `
+exports[`#51 - babel (.parseExpression) - async function (a = (true, false)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -1152,15 +1253,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(async function (a = (true, false)) {})",
+  "qux": 123,
+  "value": "async function (a = (true, false)) {}",
 }
 `;
 
-exports[`#52 - babel (default) - async function (a = (true, null)) {} 1`] = `
+exports[`#52 - babel (.parseExpression) - async function (a = (true, null)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -1174,15 +1277,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(async function (a = (true, null)) {})",
+  "qux": 123,
+  "value": "async function (a = (true, null)) {}",
 }
 `;
 
-exports[`#53 - babel (default) - async function (a = (true, "bar")) {} 1`] = `
+exports[`#53 - babel (.parseExpression) - async function (a = (true, "bar")) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -1196,16 +1301,18 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(async function (a = (true, \\"bar\\")) {})",
+  "qux": 123,
+  "value": "async function (a = (true, \\"bar\\")) {}",
 }
 `;
 
-exports[`#54 - babel (default) - async function (a, b = (i++, true)) {} 1`] = `
+exports[`#54 - babel (.parseExpression) - async function (a, b = (i++, true)) {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -1220,15 +1327,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
-  "value": "(async function (a, b = (i++, true)) {})",
+  "qux": 123,
+  "value": "async function (a, b = (i++, true)) {}",
 }
 `;
 
-exports[`#55 - babel (default) - async function (a = 1) {} 1`] = `
+exports[`#55 - babel (.parseExpression) - async function (a = 1) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -1242,17 +1351,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(async function (a = 1) {})",
+  "qux": 123,
+  "value": "async function (a = 1) {}",
 }
 `;
 
-exports[`#56 - babel (default) - async function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+exports[`#56 - babel (.parseExpression) - async function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -1268,17 +1379,19 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
-  "value": "(async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
+  "qux": 123,
+  "value": "async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3}",
 }
 `;
 
-exports[`#57 - babel (default) - async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+exports[`#57 - babel (.parseExpression) - async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -1294,15 +1407,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
-  "value": "(async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
+  "qux": 123,
+  "value": "async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)}",
 }
 `;
 
-exports[`#58 - babel (default) - async function namedFn (c) {return c * 3} 1`] = `
+exports[`#58 - babel (.parseExpression) - async function namedFn (c) {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -1316,15 +1431,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
-  "value": "(async function namedFn (c) {return c * 3})",
+  "qux": 123,
+  "value": "async function namedFn (c) {return c * 3}",
 }
 `;
 
-exports[`#59 - babel (default) - async function namedFn (...restArgs) {return 321} 1`] = `
+exports[`#59 - babel (.parseExpression) - async function namedFn (...restArgs) {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -1338,13 +1455,15 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
-  "value": "(async function namedFn (...restArgs) {return 321})",
+  "qux": 123,
+  "value": "async function namedFn (...restArgs) {return 321}",
 }
 `;
 
-exports[`#60 - babel (default) - async function namedFn () {} 1`] = `
+exports[`#60 - babel (.parseExpression) - async function namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -1356,15 +1475,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
-  "value": "(async function namedFn () {})",
+  "qux": 123,
+  "value": "async function namedFn () {}",
 }
 `;
 
-exports[`#61 - babel (default) - async function namedFn(a = (true, false)) {} 1`] = `
+exports[`#61 - babel (.parseExpression) - async function namedFn(a = (true, false)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -1378,15 +1499,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "(async function namedFn(a = (true, false)) {})",
+  "qux": 123,
+  "value": "async function namedFn(a = (true, false)) {}",
 }
 `;
 
-exports[`#62 - babel (default) - async function namedFn(a = (true, null)) {} 1`] = `
+exports[`#62 - babel (.parseExpression) - async function namedFn(a = (true, null)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -1400,15 +1523,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "(async function namedFn(a = (true, null)) {})",
+  "qux": 123,
+  "value": "async function namedFn(a = (true, null)) {}",
 }
 `;
 
-exports[`#63 - babel (default) - async function namedFn(a = (true, "bar")) {} 1`] = `
+exports[`#63 - babel (.parseExpression) - async function namedFn(a = (true, "bar")) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -1422,16 +1547,18 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "(async function namedFn(a = (true, \\"bar\\")) {})",
+  "qux": 123,
+  "value": "async function namedFn(a = (true, \\"bar\\")) {}",
 }
 `;
 
-exports[`#64 - babel (default) - async function namedFn(a, b = (i++, true)) {} 1`] = `
+exports[`#64 - babel (.parseExpression) - async function namedFn(a, b = (i++, true)) {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -1446,15 +1573,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
-  "value": "(async function namedFn(a, b = (i++, true)) {})",
+  "qux": 123,
+  "value": "async function namedFn(a, b = (i++, true)) {}",
 }
 `;
 
-exports[`#65 - babel (default) - async function namedFn(a = 1) {} 1`] = `
+exports[`#65 - babel (.parseExpression) - async function namedFn(a = 1) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -1468,17 +1597,19 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
-  "value": "(async function namedFn(a = 1) {})",
+  "qux": 123,
+  "value": "async function namedFn(a = 1) {}",
 }
 `;
 
-exports[`#66 - babel (default) - async (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
+exports[`#66 - babel (.parseExpression) - async (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -1494,17 +1625,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
-  "value": "(async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
+  "qux": 123,
+  "value": "async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3}",
 }
 `;
 
-exports[`#67 - babel (default) - async (b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
+exports[`#67 - babel (.parseExpression) - async (b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -1520,15 +1653,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
-  "value": "(async (b, callback, ...restArgs) => {callback(null, b + 3)})",
+  "qux": 123,
+  "value": "async (b, callback, ...restArgs) => {callback(null, b + 3)}",
 }
 `;
 
-exports[`#68 - babel (default) - async (c) => {return c * 3} 1`] = `
+exports[`#68 - babel (.parseExpression) - async (c) => {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -1542,15 +1677,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
-  "value": "(async (c) => {return c * 3})",
+  "qux": 123,
+  "value": "async (c) => {return c * 3}",
 }
 `;
 
-exports[`#69 - babel (default) - async (...restArgs) => {return 321} 1`] = `
+exports[`#69 - babel (.parseExpression) - async (...restArgs) => {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -1564,13 +1701,15 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
-  "value": "(async (...restArgs) => {return 321})",
+  "qux": 123,
+  "value": "async (...restArgs) => {return 321}",
 }
 `;
 
-exports[`#70 - babel (default) - async () => {} 1`] = `
+exports[`#70 - babel (.parseExpression) - async () => {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -1582,15 +1721,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
-  "value": "(async () => {})",
+  "qux": 123,
+  "value": "async () => {}",
 }
 `;
 
-exports[`#71 - babel (default) - async (a = (true, false)) => {} 1`] = `
+exports[`#71 - babel (.parseExpression) - async (a = (true, false)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -1604,15 +1745,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(async (a = (true, false)) => {})",
+  "qux": 123,
+  "value": "async (a = (true, false)) => {}",
 }
 `;
 
-exports[`#72 - babel (default) - async (a = (true, null)) => {} 1`] = `
+exports[`#72 - babel (.parseExpression) - async (a = (true, null)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -1626,15 +1769,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(async (a = (true, null)) => {})",
+  "qux": 123,
+  "value": "async (a = (true, null)) => {}",
 }
 `;
 
-exports[`#73 - babel (default) - async (a = (true, "bar")) => {} 1`] = `
+exports[`#73 - babel (.parseExpression) - async (a = (true, "bar")) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -1648,16 +1793,18 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(async (a = (true, \\"bar\\")) => {})",
+  "qux": 123,
+  "value": "async (a = (true, \\"bar\\")) => {}",
 }
 `;
 
-exports[`#74 - babel (default) - async (a, b = (i++, true)) => {} 1`] = `
+exports[`#74 - babel (.parseExpression) - async (a, b = (i++, true)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -1672,15 +1819,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
-  "value": "(async (a, b = (i++, true)) => {})",
+  "qux": 123,
+  "value": "async (a, b = (i++, true)) => {}",
 }
 `;
 
-exports[`#75 - babel (default) - async (a = 1) => {} 1`] = `
+exports[`#75 - babel (.parseExpression) - async (a = 1) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -1694,15 +1843,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(async (a = 1) => {})",
+  "qux": 123,
+  "value": "async (a = 1) => {}",
 }
 `;
 
-exports[`#76 - babel (default) - async (a) => a * 3 * a 1`] = `
+exports[`#76 - babel (.parseExpression) - async (a) => a * 3 * a 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "a * 3 * a",
   "defaults": Object {
     "a": undefined,
@@ -1716,15 +1867,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
-  "value": "(async (a) => a * 3 * a)",
+  "qux": 123,
+  "value": "async (a) => a * 3 * a",
 }
 `;
 
-exports[`#77 - babel (default) - async d => d * 355 * d 1`] = `
+exports[`#77 - babel (.parseExpression) - async d => d * 355 * d 1`] = `
 Object {
   "args": Array [
     "d",
   ],
+  "barry": 223,
   "body": "d * 355 * d",
   "defaults": Object {
     "d": undefined,
@@ -1738,15 +1891,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "d",
-  "value": "(async d => d * 355 * d)",
+  "qux": 123,
+  "value": "async d => d * 355 * d",
 }
 `;
 
-exports[`#78 - babel (default) - async e => {return e + 5235 / e} 1`] = `
+exports[`#78 - babel (.parseExpression) - async e => {return e + 5235 / e} 1`] = `
 Object {
   "args": Array [
     "e",
   ],
+  "barry": 223,
   "body": "return e + 5235 / e",
   "defaults": Object {
     "e": undefined,
@@ -1760,16 +1915,18 @@ Object {
   "isValid": true,
   "name": null,
   "params": "e",
-  "value": "(async e => {return e + 5235 / e})",
+  "qux": 123,
+  "value": "async e => {return e + 5235 / e}",
 }
 `;
 
-exports[`#79 - babel (default) - async (a, b) => a + 3 + b 1`] = `
+exports[`#79 - babel (.parseExpression) - async (a, b) => a + 3 + b 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "a + 3 + b",
   "defaults": Object {
     "a": undefined,
@@ -1784,17 +1941,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
-  "value": "(async (a, b) => a + 3 + b)",
+  "qux": 123,
+  "value": "async (a, b) => a + 3 + b",
 }
 `;
 
-exports[`#80 - babel (default) - async (x, y, ...restArgs) => console.log({ value: x * y }) 1`] = `
+exports[`#80 - babel (.parseExpression) - async (x, y, ...restArgs) => console.log({ value: x * y } 1`] = `
 Object {
   "args": Array [
     "x",
     "y",
     "restArgs",
   ],
+  "barry": 223,
   "body": "console.log({ value: x * y })",
   "defaults": Object {
     "restArgs": undefined,
@@ -1810,11 +1969,12 @@ Object {
   "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
-  "value": "(async (x, y, ...restArgs) => console.log({ value: x * y }))",
+  "qux": 123,
+  "value": "async (x, y, ...restArgs) => console.log({ value: x * y })",
 }
 `;
 
-exports[`#81 - babel (default) - should return object with default values when invalid 1`] = `
+exports[`#81 - babel (.parseExpression) - should return object with default values when invalid 1`] = `
 Object {
   "args": Array [],
   "body": "",
@@ -1832,7 +1992,7 @@ Object {
 }
 `;
 
-exports[`#82 - babel (default) - should have '.isValid' and few '.is*'' hidden properties 1`] = `
+exports[`#82 - babel (.parseExpression) - should have '.isValid' and few '.is*'' hidden properties 1`] = `
 Object {
   "args": Array [],
   "body": "",
@@ -1850,7 +2010,7 @@ Object {
 }
 `;
 
-exports[`#87 - babel (default) - should work for object methods 1`] = `
+exports[`#87 - babel (.parseExpression) - should work for object methods 1`] = `
 Object {
   "args": Array [
     "a",
@@ -1858,8 +2018,8 @@ Object {
     "c",
   ],
   "body": "
-        return a + b + c;
-      ",
+          return a + b + c;
+        ",
   "defaults": Object {
     "a": undefined,
     "b": undefined,
@@ -1874,20 +2034,20 @@ Object {
   "isValid": true,
   "name": "foo",
   "params": "a, b, c",
-  "value": "({ foo(a, b, c) {
-        return a + b + c;
-      } })",
+  "value": "{ foo(a, b, c) {
+          return a + b + c;
+        } }",
 }
 `;
 
-exports[`#87 - babel (default) - should work for object methods 2`] = `
+exports[`#87 - babel (.parseExpression) - should work for object methods 2`] = `
 Object {
   "args": Array [
     "a",
   ],
   "body": "
-        return () => a;
-      ",
+          return () => a;
+        ",
   "defaults": Object {
     "a": undefined,
   },
@@ -1900,20 +2060,20 @@ Object {
   "isValid": true,
   "name": "bar",
   "params": "a",
-  "value": "({ bar(a) {
-        return () => a;
-      } })",
+  "value": "{ bar(a) {
+          return () => a;
+        } }",
 }
 `;
 
-exports[`#87 - babel (default) - should work for object methods 3`] = `
+exports[`#87 - babel (.parseExpression) - should work for object methods 3`] = `
 Object {
   "args": Array [
     "a",
   ],
   "body": "
-        return yield a * 321;
-      ",
+          return yield a * 321;
+        ",
   "defaults": Object {
     "a": undefined,
   },
@@ -1926,13 +2086,13 @@ Object {
   "isValid": true,
   "name": "gen",
   "params": "a",
-  "value": "({ *gen(a) {
-        return yield a * 321;
-      } })",
+  "value": "{ *gen(a) {
+          return yield a * 321;
+        } }",
 }
 `;
 
-exports[`#87 - babel (default) - should work for object methods 4`] = `
+exports[`#87 - babel (.parseExpression) - should work for object methods 4`] = `
 Object {
   "args": Array [
     "a",
@@ -1954,17 +2114,18 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
-  "value": "({ namedFn (a = {foo: 'ba)r', baz: 123}, cb, ...restArgs) { return a * 3 } })",
+  "value": "{ namedFn (a = {foo: 'ba)r', baz: 123}, cb, ...restArgs) { return a * 3 } }",
 }
 `;
 
-exports[`#91 - options.parse - function (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+exports[`#91 - options.parse: babel.parse - function (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -1980,17 +2141,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
-exports[`#92 - options.parse - function (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+exports[`#92 - options.parse: babel.parse - function (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -2006,15 +2169,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
-exports[`#93 - options.parse - function (c) {return c * 3} 1`] = `
+exports[`#93 - options.parse: babel.parse - function (c) {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -2028,15 +2193,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "(function (c) {return c * 3})",
 }
 `;
 
-exports[`#94 - options.parse - function (...restArgs) {return 321} 1`] = `
+exports[`#94 - options.parse: babel.parse - function (...restArgs) {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -2050,13 +2217,15 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "(function (...restArgs) {return 321})",
 }
 `;
 
-exports[`#95 - options.parse - function () {} 1`] = `
+exports[`#95 - options.parse: babel.parse - function () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -2068,15 +2237,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(function () {})",
 }
 `;
 
-exports[`#96 - options.parse - function (a = (true, false)) {} 1`] = `
+exports[`#96 - options.parse: babel.parse - function (a = (true, false)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -2090,15 +2261,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = (true, false)) {})",
 }
 `;
 
-exports[`#97 - options.parse - function (a = (true, null)) {} 1`] = `
+exports[`#97 - options.parse: babel.parse - function (a = (true, null)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -2112,15 +2285,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = (true, null)) {})",
 }
 `;
 
-exports[`#98 - options.parse - function (a = (true, "bar")) {} 1`] = `
+exports[`#98 - options.parse: babel.parse - function (a = (true, "bar")) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -2134,16 +2309,18 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = (true, \\"bar\\")) {})",
 }
 `;
 
-exports[`#99 - options.parse - function (a, b = (i++, true)) {} 1`] = `
+exports[`#99 - options.parse: babel.parse - function (a, b = (i++, true)) {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -2158,15 +2335,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(function (a, b = (i++, true)) {})",
 }
 `;
 
-exports[`#100 - options.parse - function (a = 1) {} 1`] = `
+exports[`#100 - options.parse: babel.parse - function (a = 1) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -2180,17 +2359,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = 1) {})",
 }
 `;
 
-exports[`#101 - options.parse - function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+exports[`#101 - options.parse: babel.parse - function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -2206,17 +2387,19 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
-exports[`#102 - options.parse - function namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+exports[`#102 - options.parse: babel.parse - function namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -2232,15 +2415,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
-exports[`#103 - options.parse - function namedFn (c) {return c * 3} 1`] = `
+exports[`#103 - options.parse: babel.parse - function namedFn (c) {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -2254,15 +2439,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "qux": 123,
   "value": "(function namedFn (c) {return c * 3})",
 }
 `;
 
-exports[`#104 - options.parse - function namedFn (...restArgs) {return 321} 1`] = `
+exports[`#104 - options.parse: babel.parse - function namedFn (...restArgs) {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -2276,13 +2463,15 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "qux": 123,
   "value": "(function namedFn (...restArgs) {return 321})",
 }
 `;
 
-exports[`#105 - options.parse - function namedFn () {} 1`] = `
+exports[`#105 - options.parse: babel.parse - function namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -2294,15 +2483,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
+  "qux": 123,
   "value": "(function namedFn () {})",
 }
 `;
 
-exports[`#106 - options.parse - function namedFn(a = (true, false)) {} 1`] = `
+exports[`#106 - options.parse: babel.parse - function namedFn(a = (true, false)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -2316,15 +2507,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = (true, false)) {})",
 }
 `;
 
-exports[`#107 - options.parse - function namedFn(a = (true, null)) {} 1`] = `
+exports[`#107 - options.parse: babel.parse - function namedFn(a = (true, null)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -2338,15 +2531,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = (true, null)) {})",
 }
 `;
 
-exports[`#108 - options.parse - function namedFn(a = (true, "bar")) {} 1`] = `
+exports[`#108 - options.parse: babel.parse - function namedFn(a = (true, "bar")) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -2360,16 +2555,18 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
-exports[`#109 - options.parse - function namedFn(a, b = (i++, true)) {} 1`] = `
+exports[`#109 - options.parse: babel.parse - function namedFn(a, b = (i++, true)) {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -2384,15 +2581,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "qux": 123,
   "value": "(function namedFn(a, b = (i++, true)) {})",
 }
 `;
 
-exports[`#110 - options.parse - function namedFn(a = 1) {} 1`] = `
+exports[`#110 - options.parse: babel.parse - function namedFn(a = 1) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -2406,17 +2605,19 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = 1) {})",
 }
 `;
 
-exports[`#111 - options.parse - function * namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+exports[`#111 - options.parse: babel.parse - function * namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -2432,17 +2633,19 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
-exports[`#112 - options.parse - function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+exports[`#112 - options.parse: babel.parse - function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -2458,15 +2661,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
-exports[`#113 - options.parse - function * namedFn (c) {return c * 3} 1`] = `
+exports[`#113 - options.parse: babel.parse - function * namedFn (c) {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -2480,15 +2685,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "qux": 123,
   "value": "(function * namedFn (c) {return c * 3})",
 }
 `;
 
-exports[`#114 - options.parse - function * namedFn (...restArgs) {return 321} 1`] = `
+exports[`#114 - options.parse: babel.parse - function * namedFn (...restArgs) {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -2502,13 +2709,15 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "qux": 123,
   "value": "(function * namedFn (...restArgs) {return 321})",
 }
 `;
 
-exports[`#115 - options.parse - function * namedFn () {} 1`] = `
+exports[`#115 - options.parse: babel.parse - function * namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -2520,15 +2729,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
+  "qux": 123,
   "value": "(function * namedFn () {})",
 }
 `;
 
-exports[`#116 - options.parse - function * namedFn(a = (true, false)) {} 1`] = `
+exports[`#116 - options.parse: babel.parse - function * namedFn(a = (true, false)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -2542,15 +2753,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = (true, false)) {})",
 }
 `;
 
-exports[`#117 - options.parse - function * namedFn(a = (true, null)) {} 1`] = `
+exports[`#117 - options.parse: babel.parse - function * namedFn(a = (true, null)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -2564,15 +2777,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = (true, null)) {})",
 }
 `;
 
-exports[`#118 - options.parse - function * namedFn(a = (true, "bar")) {} 1`] = `
+exports[`#118 - options.parse: babel.parse - function * namedFn(a = (true, "bar")) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -2586,16 +2801,18 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
-exports[`#119 - options.parse - function * namedFn(a, b = (i++, true)) {} 1`] = `
+exports[`#119 - options.parse: babel.parse - function * namedFn(a, b = (i++, true)) {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -2610,15 +2827,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "qux": 123,
   "value": "(function * namedFn(a, b = (i++, true)) {})",
 }
 `;
 
-exports[`#120 - options.parse - function * namedFn(a = 1) {} 1`] = `
+exports[`#120 - options.parse: babel.parse - function * namedFn(a = 1) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -2632,17 +2851,19 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = 1) {})",
 }
 `;
 
-exports[`#121 - options.parse - (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
+exports[`#121 - options.parse: babel.parse - (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -2658,17 +2879,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "((a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
 
-exports[`#122 - options.parse - (b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
+exports[`#122 - options.parse: babel.parse - (b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -2684,15 +2907,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "((b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
 
-exports[`#123 - options.parse - (c) => {return c * 3} 1`] = `
+exports[`#123 - options.parse: babel.parse - (c) => {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -2706,15 +2931,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "((c) => {return c * 3})",
 }
 `;
 
-exports[`#124 - options.parse - (...restArgs) => {return 321} 1`] = `
+exports[`#124 - options.parse: babel.parse - (...restArgs) => {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -2728,13 +2955,15 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "((...restArgs) => {return 321})",
 }
 `;
 
-exports[`#125 - options.parse - () => {} 1`] = `
+exports[`#125 - options.parse: babel.parse - () => {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -2746,15 +2975,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(() => {})",
 }
 `;
 
-exports[`#126 - options.parse - (a = (true, false)) => {} 1`] = `
+exports[`#126 - options.parse: babel.parse - (a = (true, false)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -2768,15 +2999,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = (true, false)) => {})",
 }
 `;
 
-exports[`#127 - options.parse - (a = (true, null)) => {} 1`] = `
+exports[`#127 - options.parse: babel.parse - (a = (true, null)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -2790,15 +3023,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = (true, null)) => {})",
 }
 `;
 
-exports[`#128 - options.parse - (a = (true, "bar")) => {} 1`] = `
+exports[`#128 - options.parse: babel.parse - (a = (true, "bar")) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -2812,16 +3047,18 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = (true, \\"bar\\")) => {})",
 }
 `;
 
-exports[`#129 - options.parse - (a, b = (i++, true)) => {} 1`] = `
+exports[`#129 - options.parse: babel.parse - (a, b = (i++, true)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -2836,15 +3073,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "((a, b = (i++, true)) => {})",
 }
 `;
 
-exports[`#130 - options.parse - (a = 1) => {} 1`] = `
+exports[`#130 - options.parse: babel.parse - (a = 1) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -2858,15 +3097,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = 1) => {})",
 }
 `;
 
-exports[`#131 - options.parse - (a) => a * 3 * a 1`] = `
+exports[`#131 - options.parse: babel.parse - (a) => a * 3 * a 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "a * 3 * a",
   "defaults": Object {
     "a": undefined,
@@ -2880,15 +3121,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a) => a * 3 * a)",
 }
 `;
 
-exports[`#132 - options.parse - d => d * 355 * d 1`] = `
+exports[`#132 - options.parse: babel.parse - d => d * 355 * d 1`] = `
 Object {
   "args": Array [
     "d",
   ],
+  "barry": 223,
   "body": "d * 355 * d",
   "defaults": Object {
     "d": undefined,
@@ -2902,15 +3145,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "d",
+  "qux": 123,
   "value": "(d => d * 355 * d)",
 }
 `;
 
-exports[`#133 - options.parse - e => {return e + 5235 / e} 1`] = `
+exports[`#133 - options.parse: babel.parse - e => {return e + 5235 / e} 1`] = `
 Object {
   "args": Array [
     "e",
   ],
+  "barry": 223,
   "body": "return e + 5235 / e",
   "defaults": Object {
     "e": undefined,
@@ -2924,16 +3169,18 @@ Object {
   "isValid": true,
   "name": null,
   "params": "e",
+  "qux": 123,
   "value": "(e => {return e + 5235 / e})",
 }
 `;
 
-exports[`#134 - options.parse - (a, b) => a + 3 + b 1`] = `
+exports[`#134 - options.parse: babel.parse - (a, b) => a + 3 + b 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "a + 3 + b",
   "defaults": Object {
     "a": undefined,
@@ -2948,17 +3195,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "((a, b) => a + 3 + b)",
 }
 `;
 
-exports[`#135 - options.parse - (x, y, ...restArgs) => console.log({ value: x * y }) 1`] = `
+exports[`#135 - options.parse: babel.parse - (x, y, ...restArgs) => console.log({ value: x * y }) 1`] = `
 Object {
   "args": Array [
     "x",
     "y",
     "restArgs",
   ],
+  "barry": 223,
   "body": "console.log({ value: x * y })",
   "defaults": Object {
     "restArgs": undefined,
@@ -2974,17 +3223,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "qux": 123,
   "value": "((x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
 
-exports[`#136 - options.parse - async function (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+exports[`#136 - options.parse: babel.parse - async function (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -3000,17 +3251,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
-exports[`#137 - options.parse - async function (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+exports[`#137 - options.parse: babel.parse - async function (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -3026,15 +3279,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(async function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
-exports[`#138 - options.parse - async function (c) {return c * 3} 1`] = `
+exports[`#138 - options.parse: babel.parse - async function (c) {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -3048,15 +3303,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "(async function (c) {return c * 3})",
 }
 `;
 
-exports[`#139 - options.parse - async function (...restArgs) {return 321} 1`] = `
+exports[`#139 - options.parse: babel.parse - async function (...restArgs) {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -3070,13 +3327,15 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "(async function (...restArgs) {return 321})",
 }
 `;
 
-exports[`#140 - options.parse - async function () {} 1`] = `
+exports[`#140 - options.parse: babel.parse - async function () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -3088,15 +3347,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(async function () {})",
 }
 `;
 
-exports[`#141 - options.parse - async function (a = (true, false)) {} 1`] = `
+exports[`#141 - options.parse: babel.parse - async function (a = (true, false)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -3110,15 +3371,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = (true, false)) {})",
 }
 `;
 
-exports[`#142 - options.parse - async function (a = (true, null)) {} 1`] = `
+exports[`#142 - options.parse: babel.parse - async function (a = (true, null)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -3132,15 +3395,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = (true, null)) {})",
 }
 `;
 
-exports[`#143 - options.parse - async function (a = (true, "bar")) {} 1`] = `
+exports[`#143 - options.parse: babel.parse - async function (a = (true, "bar")) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -3154,16 +3419,18 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = (true, \\"bar\\")) {})",
 }
 `;
 
-exports[`#144 - options.parse - async function (a, b = (i++, true)) {} 1`] = `
+exports[`#144 - options.parse: babel.parse - async function (a, b = (i++, true)) {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -3178,15 +3445,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(async function (a, b = (i++, true)) {})",
 }
 `;
 
-exports[`#145 - options.parse - async function (a = 1) {} 1`] = `
+exports[`#145 - options.parse: babel.parse - async function (a = 1) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -3200,17 +3469,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = 1) {})",
 }
 `;
 
-exports[`#146 - options.parse - async function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
+exports[`#146 - options.parse: babel.parse - async function namedFn (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -3226,17 +3497,19 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
 
-exports[`#147 - options.parse - async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
+exports[`#147 - options.parse: babel.parse - async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -3252,15 +3525,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
 
-exports[`#148 - options.parse - async function namedFn (c) {return c * 3} 1`] = `
+exports[`#148 - options.parse: babel.parse - async function namedFn (c) {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -3274,15 +3549,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "qux": 123,
   "value": "(async function namedFn (c) {return c * 3})",
 }
 `;
 
-exports[`#149 - options.parse - async function namedFn (...restArgs) {return 321} 1`] = `
+exports[`#149 - options.parse: babel.parse - async function namedFn (...restArgs) {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -3296,13 +3573,15 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "qux": 123,
   "value": "(async function namedFn (...restArgs) {return 321})",
 }
 `;
 
-exports[`#150 - options.parse - async function namedFn () {} 1`] = `
+exports[`#150 - options.parse: babel.parse - async function namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -3314,15 +3593,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
+  "qux": 123,
   "value": "(async function namedFn () {})",
 }
 `;
 
-exports[`#151 - options.parse - async function namedFn(a = (true, false)) {} 1`] = `
+exports[`#151 - options.parse: babel.parse - async function namedFn(a = (true, false)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -3336,15 +3617,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = (true, false)) {})",
 }
 `;
 
-exports[`#152 - options.parse - async function namedFn(a = (true, null)) {} 1`] = `
+exports[`#152 - options.parse: babel.parse - async function namedFn(a = (true, null)) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -3358,15 +3641,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = (true, null)) {})",
 }
 `;
 
-exports[`#153 - options.parse - async function namedFn(a = (true, "bar")) {} 1`] = `
+exports[`#153 - options.parse: babel.parse - async function namedFn(a = (true, "bar")) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -3380,16 +3665,18 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
 
-exports[`#154 - options.parse - async function namedFn(a, b = (i++, true)) {} 1`] = `
+exports[`#154 - options.parse: babel.parse - async function namedFn(a, b = (i++, true)) {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -3404,15 +3691,17 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "qux": 123,
   "value": "(async function namedFn(a, b = (i++, true)) {})",
 }
 `;
 
-exports[`#155 - options.parse - async function namedFn(a = 1) {} 1`] = `
+exports[`#155 - options.parse: babel.parse - async function namedFn(a = 1) {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -3426,17 +3715,19 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = 1) {})",
 }
 `;
 
-exports[`#156 - options.parse - async (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
+exports[`#156 - options.parse: babel.parse - async (a = {foo: "ba)r", baz: 123}, cb, ...restArgs) => {return a * 3} 1`] = `
 Object {
   "args": Array [
     "a",
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -3452,17 +3743,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
 
-exports[`#157 - options.parse - async (b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
+exports[`#157 - options.parse: babel.parse - async (b, callback, ...restArgs) => {callback(null, b + 3)} 1`] = `
 Object {
   "args": Array [
     "b",
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -3478,15 +3771,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(async (b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
 
-exports[`#158 - options.parse - async (c) => {return c * 3} 1`] = `
+exports[`#158 - options.parse: babel.parse - async (c) => {return c * 3} 1`] = `
 Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -3500,15 +3795,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "(async (c) => {return c * 3})",
 }
 `;
 
-exports[`#159 - options.parse - async (...restArgs) => {return 321} 1`] = `
+exports[`#159 - options.parse: babel.parse - async (...restArgs) => {return 321} 1`] = `
 Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -3522,13 +3819,15 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "(async (...restArgs) => {return 321})",
 }
 `;
 
-exports[`#160 - options.parse - async () => {} 1`] = `
+exports[`#160 - options.parse: babel.parse - async () => {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -3540,15 +3839,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(async () => {})",
 }
 `;
 
-exports[`#161 - options.parse - async (a = (true, false)) => {} 1`] = `
+exports[`#161 - options.parse: babel.parse - async (a = (true, false)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -3562,15 +3863,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = (true, false)) => {})",
 }
 `;
 
-exports[`#162 - options.parse - async (a = (true, null)) => {} 1`] = `
+exports[`#162 - options.parse: babel.parse - async (a = (true, null)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -3584,15 +3887,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = (true, null)) => {})",
 }
 `;
 
-exports[`#163 - options.parse - async (a = (true, "bar")) => {} 1`] = `
+exports[`#163 - options.parse: babel.parse - async (a = (true, "bar")) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -3606,16 +3911,18 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = (true, \\"bar\\")) => {})",
 }
 `;
 
-exports[`#164 - options.parse - async (a, b = (i++, true)) => {} 1`] = `
+exports[`#164 - options.parse: babel.parse - async (a, b = (i++, true)) => {} 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -3630,15 +3937,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(async (a, b = (i++, true)) => {})",
 }
 `;
 
-exports[`#165 - options.parse - async (a = 1) => {} 1`] = `
+exports[`#165 - options.parse: babel.parse - async (a = 1) => {} 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -3652,15 +3961,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = 1) => {})",
 }
 `;
 
-exports[`#166 - options.parse - async (a) => a * 3 * a 1`] = `
+exports[`#166 - options.parse: babel.parse - async (a) => a * 3 * a 1`] = `
 Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "a * 3 * a",
   "defaults": Object {
     "a": undefined,
@@ -3674,15 +3985,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a) => a * 3 * a)",
 }
 `;
 
-exports[`#167 - options.parse - async d => d * 355 * d 1`] = `
+exports[`#167 - options.parse: babel.parse - async d => d * 355 * d 1`] = `
 Object {
   "args": Array [
     "d",
   ],
+  "barry": 223,
   "body": "d * 355 * d",
   "defaults": Object {
     "d": undefined,
@@ -3696,15 +4009,17 @@ Object {
   "isValid": true,
   "name": null,
   "params": "d",
+  "qux": 123,
   "value": "(async d => d * 355 * d)",
 }
 `;
 
-exports[`#168 - options.parse - async e => {return e + 5235 / e} 1`] = `
+exports[`#168 - options.parse: babel.parse - async e => {return e + 5235 / e} 1`] = `
 Object {
   "args": Array [
     "e",
   ],
+  "barry": 223,
   "body": "return e + 5235 / e",
   "defaults": Object {
     "e": undefined,
@@ -3718,16 +4033,18 @@ Object {
   "isValid": true,
   "name": null,
   "params": "e",
+  "qux": 123,
   "value": "(async e => {return e + 5235 / e})",
 }
 `;
 
-exports[`#169 - options.parse - async (a, b) => a + 3 + b 1`] = `
+exports[`#169 - options.parse: babel.parse - async (a, b) => a + 3 + b 1`] = `
 Object {
   "args": Array [
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "a + 3 + b",
   "defaults": Object {
     "a": undefined,
@@ -3742,17 +4059,19 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(async (a, b) => a + 3 + b)",
 }
 `;
 
-exports[`#170 - options.parse - async (x, y, ...restArgs) => console.log({ value: x * y }) 1`] = `
+exports[`#170 - options.parse: babel.parse - async (x, y, ...restArgs) => console.log({ value: x * y }) 1`] = `
 Object {
   "args": Array [
     "x",
     "y",
     "restArgs",
   ],
+  "barry": 223,
   "body": "console.log({ value: x * y })",
   "defaults": Object {
     "restArgs": undefined,
@@ -3768,11 +4087,12 @@ Object {
   "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "qux": 123,
   "value": "(async (x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
 
-exports[`#171 - options.parse - should return object with default values when invalid 1`] = `
+exports[`#171 - options.parse: babel.parse - should return object with default values when invalid 1`] = `
 Object {
   "args": Array [],
   "body": "",
@@ -3790,7 +4110,7 @@ Object {
 }
 `;
 
-exports[`#172 - options.parse - should have '.isValid' and few '.is*'' hidden properties 1`] = `
+exports[`#172 - options.parse: babel.parse - should have '.isValid' and few '.is*'' hidden properties 1`] = `
 Object {
   "args": Array [],
   "body": "",
@@ -3808,7 +4128,7 @@ Object {
 }
 `;
 
-exports[`#177 - options.parse - should work for object methods 1`] = `
+exports[`#177 - options.parse: babel.parse - should work for object methods 1`] = `
 Object {
   "args": Array [
     "a",
@@ -3816,8 +4136,8 @@ Object {
     "c",
   ],
   "body": "
-        return a + b + c;
-      ",
+          return a + b + c;
+        ",
   "defaults": Object {
     "a": undefined,
     "b": undefined,
@@ -3833,19 +4153,19 @@ Object {
   "name": "foo",
   "params": "a, b, c",
   "value": "({ foo(a, b, c) {
-        return a + b + c;
-      } })",
+          return a + b + c;
+        } })",
 }
 `;
 
-exports[`#177 - options.parse - should work for object methods 2`] = `
+exports[`#177 - options.parse: babel.parse - should work for object methods 2`] = `
 Object {
   "args": Array [
     "a",
   ],
   "body": "
-        return () => a;
-      ",
+          return () => a;
+        ",
   "defaults": Object {
     "a": undefined,
   },
@@ -3859,19 +4179,19 @@ Object {
   "name": "bar",
   "params": "a",
   "value": "({ bar(a) {
-        return () => a;
-      } })",
+          return () => a;
+        } })",
 }
 `;
 
-exports[`#177 - options.parse - should work for object methods 3`] = `
+exports[`#177 - options.parse: babel.parse - should work for object methods 3`] = `
 Object {
   "args": Array [
     "a",
   ],
   "body": "
-        return yield a * 321;
-      ",
+          return yield a * 321;
+        ",
   "defaults": Object {
     "a": undefined,
   },
@@ -3885,12 +4205,12 @@ Object {
   "name": "gen",
   "params": "a",
   "value": "({ *gen(a) {
-        return yield a * 321;
-      } })",
+          return yield a * 321;
+        } })",
 }
 `;
 
-exports[`#177 - options.parse - should work for object methods 4`] = `
+exports[`#177 - options.parse: babel.parse - should work for object methods 4`] = `
 Object {
   "args": Array [
     "a",
@@ -3923,6 +4243,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -3938,6 +4259,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -3949,6 +4271,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -3964,6 +4287,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -3973,6 +4297,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -3986,6 +4311,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "(function (c) {return c * 3})",
 }
 `;
@@ -3995,6 +4321,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -4008,6 +4335,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "(function (...restArgs) {return 321})",
 }
 `;
@@ -4015,6 +4343,7 @@ Object {
 exports[`#185 - acorn.parse - function () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -4026,6 +4355,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(function () {})",
 }
 `;
@@ -4035,6 +4365,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -4048,6 +4379,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = (true, false)) {})",
 }
 `;
@@ -4057,6 +4389,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -4070,6 +4403,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = (true, null)) {})",
 }
 `;
@@ -4079,6 +4413,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -4092,6 +4427,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = (true, \\"bar\\")) {})",
 }
 `;
@@ -4102,6 +4438,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -4116,6 +4453,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(function (a, b = (i++, true)) {})",
 }
 `;
@@ -4125,6 +4463,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -4138,6 +4477,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = 1) {})",
 }
 `;
@@ -4149,6 +4489,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -4164,6 +4505,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -4175,6 +4517,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -4190,6 +4533,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -4199,6 +4543,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -4212,6 +4557,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "qux": 123,
   "value": "(function namedFn (c) {return c * 3})",
 }
 `;
@@ -4221,6 +4567,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -4234,6 +4581,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "qux": 123,
   "value": "(function namedFn (...restArgs) {return 321})",
 }
 `;
@@ -4241,6 +4589,7 @@ Object {
 exports[`#195 - acorn.parse - function namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -4252,6 +4601,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
+  "qux": 123,
   "value": "(function namedFn () {})",
 }
 `;
@@ -4261,6 +4611,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -4274,6 +4625,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = (true, false)) {})",
 }
 `;
@@ -4283,6 +4635,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -4296,6 +4649,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = (true, null)) {})",
 }
 `;
@@ -4305,6 +4659,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -4318,6 +4673,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
@@ -4328,6 +4684,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -4342,6 +4699,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "qux": 123,
   "value": "(function namedFn(a, b = (i++, true)) {})",
 }
 `;
@@ -4351,6 +4709,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -4364,6 +4723,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = 1) {})",
 }
 `;
@@ -4375,6 +4735,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -4390,6 +4751,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -4401,6 +4763,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -4416,6 +4779,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -4425,6 +4789,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -4438,6 +4803,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "qux": 123,
   "value": "(function * namedFn (c) {return c * 3})",
 }
 `;
@@ -4447,6 +4813,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -4460,6 +4827,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "qux": 123,
   "value": "(function * namedFn (...restArgs) {return 321})",
 }
 `;
@@ -4467,6 +4835,7 @@ Object {
 exports[`#205 - acorn.parse - function * namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -4478,6 +4847,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
+  "qux": 123,
   "value": "(function * namedFn () {})",
 }
 `;
@@ -4487,6 +4857,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -4500,6 +4871,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = (true, false)) {})",
 }
 `;
@@ -4509,6 +4881,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -4522,6 +4895,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = (true, null)) {})",
 }
 `;
@@ -4531,6 +4905,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -4544,6 +4919,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
@@ -4554,6 +4930,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -4568,6 +4945,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "qux": 123,
   "value": "(function * namedFn(a, b = (i++, true)) {})",
 }
 `;
@@ -4577,6 +4955,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -4590,6 +4969,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = 1) {})",
 }
 `;
@@ -4601,6 +4981,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -4616,6 +4997,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "((a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
@@ -4627,6 +5009,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -4642,6 +5025,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "((b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
@@ -4651,6 +5035,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -4664,6 +5049,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "((c) => {return c * 3})",
 }
 `;
@@ -4673,6 +5059,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -4686,6 +5073,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "((...restArgs) => {return 321})",
 }
 `;
@@ -4693,6 +5081,7 @@ Object {
 exports[`#215 - acorn.parse - () => {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -4704,6 +5093,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(() => {})",
 }
 `;
@@ -4713,6 +5103,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -4726,6 +5117,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = (true, false)) => {})",
 }
 `;
@@ -4735,6 +5127,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -4748,6 +5141,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = (true, null)) => {})",
 }
 `;
@@ -4757,6 +5151,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -4770,6 +5165,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = (true, \\"bar\\")) => {})",
 }
 `;
@@ -4780,6 +5176,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -4794,6 +5191,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "((a, b = (i++, true)) => {})",
 }
 `;
@@ -4803,6 +5201,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -4816,6 +5215,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = 1) => {})",
 }
 `;
@@ -4825,6 +5225,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "a * 3 * a",
   "defaults": Object {
     "a": undefined,
@@ -4838,6 +5239,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a) => a * 3 * a)",
 }
 `;
@@ -4847,6 +5249,7 @@ Object {
   "args": Array [
     "d",
   ],
+  "barry": 223,
   "body": "d * 355 * d",
   "defaults": Object {
     "d": undefined,
@@ -4860,6 +5263,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "d",
+  "qux": 123,
   "value": "(d => d * 355 * d)",
 }
 `;
@@ -4869,6 +5273,7 @@ Object {
   "args": Array [
     "e",
   ],
+  "barry": 223,
   "body": "return e + 5235 / e",
   "defaults": Object {
     "e": undefined,
@@ -4882,6 +5287,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "e",
+  "qux": 123,
   "value": "(e => {return e + 5235 / e})",
 }
 `;
@@ -4892,6 +5298,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "a + 3 + b",
   "defaults": Object {
     "a": undefined,
@@ -4906,6 +5313,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "((a, b) => a + 3 + b)",
 }
 `;
@@ -4917,6 +5325,7 @@ Object {
     "y",
     "restArgs",
   ],
+  "barry": 223,
   "body": "console.log({ value: x * y })",
   "defaults": Object {
     "restArgs": undefined,
@@ -4932,6 +5341,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "qux": 123,
   "value": "((x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
@@ -4943,6 +5353,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -4958,6 +5369,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -4969,6 +5381,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -4984,6 +5397,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(async function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -4993,6 +5407,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -5006,6 +5421,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "(async function (c) {return c * 3})",
 }
 `;
@@ -5015,6 +5431,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -5028,6 +5445,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "(async function (...restArgs) {return 321})",
 }
 `;
@@ -5035,6 +5453,7 @@ Object {
 exports[`#230 - acorn.parse - async function () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -5046,6 +5465,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(async function () {})",
 }
 `;
@@ -5055,6 +5475,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -5068,6 +5489,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = (true, false)) {})",
 }
 `;
@@ -5077,6 +5499,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -5090,6 +5513,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = (true, null)) {})",
 }
 `;
@@ -5099,6 +5523,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -5112,6 +5537,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = (true, \\"bar\\")) {})",
 }
 `;
@@ -5122,6 +5548,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -5136,6 +5563,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(async function (a, b = (i++, true)) {})",
 }
 `;
@@ -5145,6 +5573,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -5158,6 +5587,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = 1) {})",
 }
 `;
@@ -5169,6 +5599,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -5184,6 +5615,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -5195,6 +5627,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -5210,6 +5643,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -5219,6 +5653,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -5232,6 +5667,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "qux": 123,
   "value": "(async function namedFn (c) {return c * 3})",
 }
 `;
@@ -5241,6 +5677,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -5254,6 +5691,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "qux": 123,
   "value": "(async function namedFn (...restArgs) {return 321})",
 }
 `;
@@ -5261,6 +5699,7 @@ Object {
 exports[`#240 - acorn.parse - async function namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -5272,6 +5711,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
+  "qux": 123,
   "value": "(async function namedFn () {})",
 }
 `;
@@ -5281,6 +5721,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -5294,6 +5735,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = (true, false)) {})",
 }
 `;
@@ -5303,6 +5745,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -5316,6 +5759,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = (true, null)) {})",
 }
 `;
@@ -5325,6 +5769,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -5338,6 +5783,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
@@ -5348,6 +5794,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -5362,6 +5809,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "qux": 123,
   "value": "(async function namedFn(a, b = (i++, true)) {})",
 }
 `;
@@ -5371,6 +5819,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -5384,6 +5833,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = 1) {})",
 }
 `;
@@ -5395,6 +5845,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -5410,6 +5861,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
@@ -5421,6 +5873,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -5436,6 +5889,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(async (b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
@@ -5445,6 +5899,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -5458,6 +5913,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "(async (c) => {return c * 3})",
 }
 `;
@@ -5467,6 +5923,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -5480,6 +5937,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "(async (...restArgs) => {return 321})",
 }
 `;
@@ -5487,6 +5945,7 @@ Object {
 exports[`#250 - acorn.parse - async () => {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -5498,6 +5957,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(async () => {})",
 }
 `;
@@ -5507,6 +5967,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -5520,6 +5981,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = (true, false)) => {})",
 }
 `;
@@ -5529,6 +5991,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -5542,6 +6005,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = (true, null)) => {})",
 }
 `;
@@ -5551,6 +6015,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -5564,6 +6029,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = (true, \\"bar\\")) => {})",
 }
 `;
@@ -5574,6 +6040,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -5588,6 +6055,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(async (a, b = (i++, true)) => {})",
 }
 `;
@@ -5597,6 +6065,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -5610,6 +6079,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = 1) => {})",
 }
 `;
@@ -5619,6 +6089,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "a * 3 * a",
   "defaults": Object {
     "a": undefined,
@@ -5632,6 +6103,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a) => a * 3 * a)",
 }
 `;
@@ -5641,6 +6113,7 @@ Object {
   "args": Array [
     "d",
   ],
+  "barry": 223,
   "body": "d * 355 * d",
   "defaults": Object {
     "d": undefined,
@@ -5654,6 +6127,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "d",
+  "qux": 123,
   "value": "(async d => d * 355 * d)",
 }
 `;
@@ -5663,6 +6137,7 @@ Object {
   "args": Array [
     "e",
   ],
+  "barry": 223,
   "body": "return e + 5235 / e",
   "defaults": Object {
     "e": undefined,
@@ -5676,6 +6151,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "e",
+  "qux": 123,
   "value": "(async e => {return e + 5235 / e})",
 }
 `;
@@ -5686,6 +6162,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "a + 3 + b",
   "defaults": Object {
     "a": undefined,
@@ -5700,6 +6177,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(async (a, b) => a + 3 + b)",
 }
 `;
@@ -5711,6 +6189,7 @@ Object {
     "y",
     "restArgs",
   ],
+  "barry": 223,
   "body": "console.log({ value: x * y })",
   "defaults": Object {
     "restArgs": undefined,
@@ -5726,6 +6205,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "qux": 123,
   "value": "(async (x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
@@ -5774,8 +6254,8 @@ Object {
     "c",
   ],
   "body": "
-        return a + b + c;
-      ",
+          return a + b + c;
+        ",
   "defaults": Object {
     "a": undefined,
     "b": undefined,
@@ -5791,8 +6271,8 @@ Object {
   "name": "foo",
   "params": "a, b, c",
   "value": "({ foo(a, b, c) {
-        return a + b + c;
-      } })",
+          return a + b + c;
+        } })",
 }
 `;
 
@@ -5802,8 +6282,8 @@ Object {
     "a",
   ],
   "body": "
-        return () => a;
-      ",
+          return () => a;
+        ",
   "defaults": Object {
     "a": undefined,
   },
@@ -5817,8 +6297,8 @@ Object {
   "name": "bar",
   "params": "a",
   "value": "({ bar(a) {
-        return () => a;
-      } })",
+          return () => a;
+        } })",
 }
 `;
 
@@ -5828,8 +6308,8 @@ Object {
     "a",
   ],
   "body": "
-        return yield a * 321;
-      ",
+          return yield a * 321;
+        ",
   "defaults": Object {
     "a": undefined,
   },
@@ -5843,8 +6323,8 @@ Object {
   "name": "gen",
   "params": "a",
   "value": "({ *gen(a) {
-        return yield a * 321;
-      } })",
+          return yield a * 321;
+        } })",
 }
 `;
 
@@ -5881,6 +6361,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -5896,6 +6377,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -5907,6 +6389,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -5922,6 +6405,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -5931,6 +6415,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -5944,6 +6429,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "(function (c) {return c * 3})",
 }
 `;
@@ -5953,6 +6439,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -5966,6 +6453,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "(function (...restArgs) {return 321})",
 }
 `;
@@ -5973,6 +6461,7 @@ Object {
 exports[`#275 - acorn loose - function () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -5984,6 +6473,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(function () {})",
 }
 `;
@@ -5993,6 +6483,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -6006,6 +6497,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = (true, false)) {})",
 }
 `;
@@ -6015,6 +6507,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -6028,6 +6521,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = (true, null)) {})",
 }
 `;
@@ -6037,6 +6531,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -6050,6 +6545,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = (true, \\"bar\\")) {})",
 }
 `;
@@ -6060,6 +6556,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -6074,6 +6571,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(function (a, b = (i++, true)) {})",
 }
 `;
@@ -6083,6 +6581,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -6096,6 +6595,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = 1) {})",
 }
 `;
@@ -6107,6 +6607,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -6122,6 +6623,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -6133,6 +6635,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -6148,6 +6651,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -6157,6 +6661,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -6170,6 +6675,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "qux": 123,
   "value": "(function namedFn (c) {return c * 3})",
 }
 `;
@@ -6179,6 +6685,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -6192,6 +6699,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "qux": 123,
   "value": "(function namedFn (...restArgs) {return 321})",
 }
 `;
@@ -6199,6 +6707,7 @@ Object {
 exports[`#285 - acorn loose - function namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -6210,6 +6719,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
+  "qux": 123,
   "value": "(function namedFn () {})",
 }
 `;
@@ -6219,6 +6729,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -6232,6 +6743,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = (true, false)) {})",
 }
 `;
@@ -6241,6 +6753,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -6254,6 +6767,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = (true, null)) {})",
 }
 `;
@@ -6263,6 +6777,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -6276,6 +6791,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
@@ -6286,6 +6802,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -6300,6 +6817,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "qux": 123,
   "value": "(function namedFn(a, b = (i++, true)) {})",
 }
 `;
@@ -6309,6 +6827,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -6322,6 +6841,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = 1) {})",
 }
 `;
@@ -6333,6 +6853,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -6348,6 +6869,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -6359,6 +6881,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -6374,6 +6897,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -6383,6 +6907,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -6396,6 +6921,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "qux": 123,
   "value": "(function * namedFn (c) {return c * 3})",
 }
 `;
@@ -6405,6 +6931,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -6418,6 +6945,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "qux": 123,
   "value": "(function * namedFn (...restArgs) {return 321})",
 }
 `;
@@ -6425,6 +6953,7 @@ Object {
 exports[`#295 - acorn loose - function * namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -6436,6 +6965,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
+  "qux": 123,
   "value": "(function * namedFn () {})",
 }
 `;
@@ -6445,6 +6975,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -6458,6 +6989,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = (true, false)) {})",
 }
 `;
@@ -6467,6 +6999,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -6480,6 +7013,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = (true, null)) {})",
 }
 `;
@@ -6489,6 +7023,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -6502,6 +7037,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
@@ -6512,6 +7048,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -6526,6 +7063,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "qux": 123,
   "value": "(function * namedFn(a, b = (i++, true)) {})",
 }
 `;
@@ -6535,6 +7073,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -6548,6 +7087,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = 1) {})",
 }
 `;
@@ -6559,6 +7099,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -6574,6 +7115,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "((a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
@@ -6585,6 +7127,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -6600,6 +7143,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "((b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
@@ -6609,6 +7153,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -6622,6 +7167,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "((c) => {return c * 3})",
 }
 `;
@@ -6631,6 +7177,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -6644,6 +7191,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "((...restArgs) => {return 321})",
 }
 `;
@@ -6651,6 +7199,7 @@ Object {
 exports[`#305 - acorn loose - () => {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -6662,6 +7211,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(() => {})",
 }
 `;
@@ -6671,6 +7221,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -6684,6 +7235,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = (true, false)) => {})",
 }
 `;
@@ -6693,6 +7245,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -6706,6 +7259,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = (true, null)) => {})",
 }
 `;
@@ -6715,6 +7269,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -6728,6 +7283,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = (true, \\"bar\\")) => {})",
 }
 `;
@@ -6738,6 +7294,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -6752,6 +7309,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "((a, b = (i++, true)) => {})",
 }
 `;
@@ -6761,6 +7319,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -6774,6 +7333,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = 1) => {})",
 }
 `;
@@ -6783,6 +7343,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "a * 3 * a",
   "defaults": Object {
     "a": undefined,
@@ -6796,6 +7357,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a) => a * 3 * a)",
 }
 `;
@@ -6805,6 +7367,7 @@ Object {
   "args": Array [
     "d",
   ],
+  "barry": 223,
   "body": "d * 355 * d",
   "defaults": Object {
     "d": undefined,
@@ -6818,6 +7381,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "d",
+  "qux": 123,
   "value": "(d => d * 355 * d)",
 }
 `;
@@ -6827,6 +7391,7 @@ Object {
   "args": Array [
     "e",
   ],
+  "barry": 223,
   "body": "return e + 5235 / e",
   "defaults": Object {
     "e": undefined,
@@ -6840,6 +7405,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "e",
+  "qux": 123,
   "value": "(e => {return e + 5235 / e})",
 }
 `;
@@ -6850,6 +7416,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "a + 3 + b",
   "defaults": Object {
     "a": undefined,
@@ -6864,6 +7431,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "((a, b) => a + 3 + b)",
 }
 `;
@@ -6875,6 +7443,7 @@ Object {
     "y",
     "restArgs",
   ],
+  "barry": 223,
   "body": "console.log({ value: x * y })",
   "defaults": Object {
     "restArgs": undefined,
@@ -6890,6 +7459,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "qux": 123,
   "value": "((x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
@@ -6901,6 +7471,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -6916,6 +7487,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -6927,6 +7499,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -6942,6 +7515,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(async function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -6951,6 +7525,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -6964,6 +7539,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "(async function (c) {return c * 3})",
 }
 `;
@@ -6973,6 +7549,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -6986,6 +7563,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "(async function (...restArgs) {return 321})",
 }
 `;
@@ -6993,6 +7571,7 @@ Object {
 exports[`#320 - acorn loose - async function () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -7004,6 +7583,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(async function () {})",
 }
 `;
@@ -7013,6 +7593,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -7026,6 +7607,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = (true, false)) {})",
 }
 `;
@@ -7035,6 +7617,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -7048,6 +7631,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = (true, null)) {})",
 }
 `;
@@ -7057,6 +7641,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -7070,6 +7655,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = (true, \\"bar\\")) {})",
 }
 `;
@@ -7080,6 +7666,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -7094,6 +7681,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(async function (a, b = (i++, true)) {})",
 }
 `;
@@ -7103,6 +7691,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -7116,6 +7705,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = 1) {})",
 }
 `;
@@ -7127,6 +7717,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -7142,6 +7733,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -7153,6 +7745,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -7168,6 +7761,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -7177,6 +7771,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -7190,6 +7785,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "qux": 123,
   "value": "(async function namedFn (c) {return c * 3})",
 }
 `;
@@ -7199,6 +7795,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -7212,6 +7809,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "qux": 123,
   "value": "(async function namedFn (...restArgs) {return 321})",
 }
 `;
@@ -7219,6 +7817,7 @@ Object {
 exports[`#330 - acorn loose - async function namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -7230,6 +7829,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
+  "qux": 123,
   "value": "(async function namedFn () {})",
 }
 `;
@@ -7239,6 +7839,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -7252,6 +7853,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = (true, false)) {})",
 }
 `;
@@ -7261,6 +7863,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -7274,6 +7877,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = (true, null)) {})",
 }
 `;
@@ -7283,6 +7887,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -7296,6 +7901,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
@@ -7306,6 +7912,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -7320,6 +7927,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "qux": 123,
   "value": "(async function namedFn(a, b = (i++, true)) {})",
 }
 `;
@@ -7329,6 +7937,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -7342,6 +7951,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = 1) {})",
 }
 `;
@@ -7353,6 +7963,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -7368,6 +7979,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
@@ -7379,6 +7991,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -7394,6 +8007,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(async (b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
@@ -7403,6 +8017,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -7416,6 +8031,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "(async (c) => {return c * 3})",
 }
 `;
@@ -7425,6 +8041,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -7438,6 +8055,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "(async (...restArgs) => {return 321})",
 }
 `;
@@ -7445,6 +8063,7 @@ Object {
 exports[`#340 - acorn loose - async () => {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -7456,6 +8075,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(async () => {})",
 }
 `;
@@ -7465,6 +8085,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -7478,6 +8099,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = (true, false)) => {})",
 }
 `;
@@ -7487,6 +8109,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -7500,6 +8123,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = (true, null)) => {})",
 }
 `;
@@ -7509,6 +8133,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -7522,6 +8147,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = (true, \\"bar\\")) => {})",
 }
 `;
@@ -7532,6 +8158,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -7546,6 +8173,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(async (a, b = (i++, true)) => {})",
 }
 `;
@@ -7555,6 +8183,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -7568,6 +8197,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = 1) => {})",
 }
 `;
@@ -7577,6 +8207,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "a * 3 * a",
   "defaults": Object {
     "a": undefined,
@@ -7590,6 +8221,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a) => a * 3 * a)",
 }
 `;
@@ -7599,6 +8231,7 @@ Object {
   "args": Array [
     "d",
   ],
+  "barry": 223,
   "body": "d * 355 * d",
   "defaults": Object {
     "d": undefined,
@@ -7612,6 +8245,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "d",
+  "qux": 123,
   "value": "(async d => d * 355 * d)",
 }
 `;
@@ -7621,6 +8255,7 @@ Object {
   "args": Array [
     "e",
   ],
+  "barry": 223,
   "body": "return e + 5235 / e",
   "defaults": Object {
     "e": undefined,
@@ -7634,6 +8269,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "e",
+  "qux": 123,
   "value": "(async e => {return e + 5235 / e})",
 }
 `;
@@ -7644,6 +8280,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "a + 3 + b",
   "defaults": Object {
     "a": undefined,
@@ -7658,6 +8295,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(async (a, b) => a + 3 + b)",
 }
 `;
@@ -7669,6 +8307,7 @@ Object {
     "y",
     "restArgs",
   ],
+  "barry": 223,
   "body": "console.log({ value: x * y })",
   "defaults": Object {
     "restArgs": undefined,
@@ -7684,6 +8323,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "qux": 123,
   "value": "(async (x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
@@ -7732,8 +8372,8 @@ Object {
     "c",
   ],
   "body": "
-        return a + b + c;
-      ",
+          return a + b + c;
+        ",
   "defaults": Object {
     "a": undefined,
     "b": undefined,
@@ -7749,8 +8389,8 @@ Object {
   "name": "foo",
   "params": "a, b, c",
   "value": "({ foo(a, b, c) {
-        return a + b + c;
-      } })",
+          return a + b + c;
+        } })",
 }
 `;
 
@@ -7760,8 +8400,8 @@ Object {
     "a",
   ],
   "body": "
-        return () => a;
-      ",
+          return () => a;
+        ",
   "defaults": Object {
     "a": undefined,
   },
@@ -7775,8 +8415,8 @@ Object {
   "name": "bar",
   "params": "a",
   "value": "({ bar(a) {
-        return () => a;
-      } })",
+          return () => a;
+        } })",
 }
 `;
 
@@ -7786,8 +8426,8 @@ Object {
     "a",
   ],
   "body": "
-        return yield a * 321;
-      ",
+          return yield a * 321;
+        ",
   "defaults": Object {
     "a": undefined,
   },
@@ -7801,8 +8441,8 @@ Object {
   "name": "gen",
   "params": "a",
   "value": "({ *gen(a) {
-        return yield a * 321;
-      } })",
+          return yield a * 321;
+        } })",
 }
 `;
 
@@ -7839,6 +8479,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -7854,6 +8495,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -7865,6 +8507,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -7880,6 +8523,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -7889,6 +8533,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -7902,6 +8547,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "(function (c) {return c * 3})",
 }
 `;
@@ -7911,6 +8557,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -7924,6 +8571,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "(function (...restArgs) {return 321})",
 }
 `;
@@ -7931,6 +8579,7 @@ Object {
 exports[`#365 - espree.parse - function () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -7942,6 +8591,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(function () {})",
 }
 `;
@@ -7951,6 +8601,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -7964,6 +8615,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = (true, false)) {})",
 }
 `;
@@ -7973,6 +8625,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -7986,6 +8639,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = (true, null)) {})",
 }
 `;
@@ -7995,6 +8649,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -8008,6 +8663,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = (true, \\"bar\\")) {})",
 }
 `;
@@ -8018,6 +8674,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -8032,6 +8689,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(function (a, b = (i++, true)) {})",
 }
 `;
@@ -8041,6 +8699,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -8054,6 +8713,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(function (a = 1) {})",
 }
 `;
@@ -8065,6 +8725,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -8080,6 +8741,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -8091,6 +8753,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -8106,6 +8769,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -8115,6 +8779,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -8128,6 +8793,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "qux": 123,
   "value": "(function namedFn (c) {return c * 3})",
 }
 `;
@@ -8137,6 +8803,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -8150,6 +8817,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "qux": 123,
   "value": "(function namedFn (...restArgs) {return 321})",
 }
 `;
@@ -8157,6 +8825,7 @@ Object {
 exports[`#375 - espree.parse - function namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -8168,6 +8837,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
+  "qux": 123,
   "value": "(function namedFn () {})",
 }
 `;
@@ -8177,6 +8847,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -8190,6 +8861,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = (true, false)) {})",
 }
 `;
@@ -8199,6 +8871,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -8212,6 +8885,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = (true, null)) {})",
 }
 `;
@@ -8221,6 +8895,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -8234,6 +8909,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
@@ -8244,6 +8920,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -8258,6 +8935,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "qux": 123,
   "value": "(function namedFn(a, b = (i++, true)) {})",
 }
 `;
@@ -8267,6 +8945,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -8280,6 +8959,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function namedFn(a = 1) {})",
 }
 `;
@@ -8291,6 +8971,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -8306,6 +8987,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(function * namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -8317,6 +8999,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -8332,6 +9015,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(function * namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -8341,6 +9025,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -8354,6 +9039,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "qux": 123,
   "value": "(function * namedFn (c) {return c * 3})",
 }
 `;
@@ -8363,6 +9049,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -8376,6 +9063,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "qux": 123,
   "value": "(function * namedFn (...restArgs) {return 321})",
 }
 `;
@@ -8383,6 +9071,7 @@ Object {
 exports[`#385 - espree.parse - function * namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -8394,6 +9083,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
+  "qux": 123,
   "value": "(function * namedFn () {})",
 }
 `;
@@ -8403,6 +9093,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -8416,6 +9107,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = (true, false)) {})",
 }
 `;
@@ -8425,6 +9117,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -8438,6 +9131,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = (true, null)) {})",
 }
 `;
@@ -8447,6 +9141,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -8460,6 +9155,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
@@ -8470,6 +9166,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -8484,6 +9181,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "qux": 123,
   "value": "(function * namedFn(a, b = (i++, true)) {})",
 }
 `;
@@ -8493,6 +9191,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -8506,6 +9205,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(function * namedFn(a = 1) {})",
 }
 `;
@@ -8517,6 +9217,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -8532,6 +9233,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "((a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
@@ -8543,6 +9245,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -8558,6 +9261,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "((b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
@@ -8567,6 +9271,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -8580,6 +9285,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "((c) => {return c * 3})",
 }
 `;
@@ -8589,6 +9295,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -8602,6 +9309,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "((...restArgs) => {return 321})",
 }
 `;
@@ -8609,6 +9317,7 @@ Object {
 exports[`#395 - espree.parse - () => {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -8620,6 +9329,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(() => {})",
 }
 `;
@@ -8629,6 +9339,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -8642,6 +9353,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = (true, false)) => {})",
 }
 `;
@@ -8651,6 +9363,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -8664,6 +9377,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = (true, null)) => {})",
 }
 `;
@@ -8673,6 +9387,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -8686,6 +9401,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = (true, \\"bar\\")) => {})",
 }
 `;
@@ -8696,6 +9412,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -8710,6 +9427,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "((a, b = (i++, true)) => {})",
 }
 `;
@@ -8719,6 +9437,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -8732,6 +9451,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a = 1) => {})",
 }
 `;
@@ -8741,6 +9461,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "a * 3 * a",
   "defaults": Object {
     "a": undefined,
@@ -8754,6 +9475,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "((a) => a * 3 * a)",
 }
 `;
@@ -8763,6 +9485,7 @@ Object {
   "args": Array [
     "d",
   ],
+  "barry": 223,
   "body": "d * 355 * d",
   "defaults": Object {
     "d": undefined,
@@ -8776,6 +9499,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "d",
+  "qux": 123,
   "value": "(d => d * 355 * d)",
 }
 `;
@@ -8785,6 +9509,7 @@ Object {
   "args": Array [
     "e",
   ],
+  "barry": 223,
   "body": "return e + 5235 / e",
   "defaults": Object {
     "e": undefined,
@@ -8798,6 +9523,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "e",
+  "qux": 123,
   "value": "(e => {return e + 5235 / e})",
 }
 `;
@@ -8808,6 +9534,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "a + 3 + b",
   "defaults": Object {
     "a": undefined,
@@ -8822,6 +9549,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "((a, b) => a + 3 + b)",
 }
 `;
@@ -8833,6 +9561,7 @@ Object {
     "y",
     "restArgs",
   ],
+  "barry": 223,
   "body": "console.log({ value: x * y })",
   "defaults": Object {
     "restArgs": undefined,
@@ -8848,6 +9577,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "qux": 123,
   "value": "((x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
@@ -8859,6 +9589,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -8874,6 +9605,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(async function (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -8885,6 +9617,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -8900,6 +9633,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(async function (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -8909,6 +9643,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -8922,6 +9657,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "(async function (c) {return c * 3})",
 }
 `;
@@ -8931,6 +9667,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -8944,6 +9681,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "(async function (...restArgs) {return 321})",
 }
 `;
@@ -8951,6 +9689,7 @@ Object {
 exports[`#410 - espree.parse - async function () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -8962,6 +9701,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(async function () {})",
 }
 `;
@@ -8971,6 +9711,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -8984,6 +9725,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = (true, false)) {})",
 }
 `;
@@ -8993,6 +9735,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -9006,6 +9749,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = (true, null)) {})",
 }
 `;
@@ -9015,6 +9759,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -9028,6 +9773,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = (true, \\"bar\\")) {})",
 }
 `;
@@ -9038,6 +9784,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -9052,6 +9799,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(async function (a, b = (i++, true)) {})",
 }
 `;
@@ -9061,6 +9809,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -9074,6 +9823,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async function (a = 1) {})",
 }
 `;
@@ -9085,6 +9835,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -9100,6 +9851,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(async function namedFn (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) {return a * 3})",
 }
 `;
@@ -9111,6 +9863,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -9126,6 +9879,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(async function namedFn (b, callback, ...restArgs) {callback(null, b + 3)})",
 }
 `;
@@ -9135,6 +9889,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -9148,6 +9903,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "c",
+  "qux": 123,
   "value": "(async function namedFn (c) {return c * 3})",
 }
 `;
@@ -9157,6 +9913,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -9170,6 +9927,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "restArgs",
+  "qux": 123,
   "value": "(async function namedFn (...restArgs) {return 321})",
 }
 `;
@@ -9177,6 +9935,7 @@ Object {
 exports[`#420 - espree.parse - async function namedFn () {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": false,
@@ -9188,6 +9947,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "",
+  "qux": 123,
   "value": "(async function namedFn () {})",
 }
 `;
@@ -9197,6 +9957,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -9210,6 +9971,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = (true, false)) {})",
 }
 `;
@@ -9219,6 +9981,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -9232,6 +9995,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = (true, null)) {})",
 }
 `;
@@ -9241,6 +10005,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -9254,6 +10019,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = (true, \\"bar\\")) {})",
 }
 `;
@@ -9264,6 +10030,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -9278,6 +10045,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a, b",
+  "qux": 123,
   "value": "(async function namedFn(a, b = (i++, true)) {})",
 }
 `;
@@ -9287,6 +10055,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -9300,6 +10069,7 @@ Object {
   "isValid": true,
   "name": "namedFn",
   "params": "a",
+  "qux": 123,
   "value": "(async function namedFn(a = 1) {})",
 }
 `;
@@ -9311,6 +10081,7 @@ Object {
     "cb",
     "restArgs",
   ],
+  "barry": 223,
   "body": "return a * 3",
   "defaults": Object {
     "a": "{foo: \\"ba)r\\", baz: 123}",
@@ -9326,6 +10097,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, cb, restArgs",
+  "qux": 123,
   "value": "(async (a = {foo: \\"ba)r\\", baz: 123}, cb, ...restArgs) => {return a * 3})",
 }
 `;
@@ -9337,6 +10109,7 @@ Object {
     "callback",
     "restArgs",
   ],
+  "barry": 223,
   "body": "callback(null, b + 3)",
   "defaults": Object {
     "b": undefined,
@@ -9352,6 +10125,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "b, callback, restArgs",
+  "qux": 123,
   "value": "(async (b, callback, ...restArgs) => {callback(null, b + 3)})",
 }
 `;
@@ -9361,6 +10135,7 @@ Object {
   "args": Array [
     "c",
   ],
+  "barry": 223,
   "body": "return c * 3",
   "defaults": Object {
     "c": undefined,
@@ -9374,6 +10149,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "c",
+  "qux": 123,
   "value": "(async (c) => {return c * 3})",
 }
 `;
@@ -9383,6 +10159,7 @@ Object {
   "args": Array [
     "restArgs",
   ],
+  "barry": 223,
   "body": "return 321",
   "defaults": Object {
     "restArgs": undefined,
@@ -9396,6 +10173,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "restArgs",
+  "qux": 123,
   "value": "(async (...restArgs) => {return 321})",
 }
 `;
@@ -9403,6 +10181,7 @@ Object {
 exports[`#430 - espree.parse - async () => {} 1`] = `
 Object {
   "args": Array [],
+  "barry": 223,
   "body": "",
   "defaults": Object {},
   "isAnonymous": true,
@@ -9414,6 +10193,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "",
+  "qux": 123,
   "value": "(async () => {})",
 }
 `;
@@ -9423,6 +10203,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "false",
@@ -9436,6 +10217,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = (true, false)) => {})",
 }
 `;
@@ -9445,6 +10227,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "null",
@@ -9458,6 +10241,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = (true, null)) => {})",
 }
 `;
@@ -9467,6 +10251,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "\\"bar\\"",
@@ -9480,6 +10265,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = (true, \\"bar\\")) => {})",
 }
 `;
@@ -9490,6 +10276,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": undefined,
@@ -9504,6 +10291,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(async (a, b = (i++, true)) => {})",
 }
 `;
@@ -9513,6 +10301,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "",
   "defaults": Object {
     "a": "1",
@@ -9526,6 +10315,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a = 1) => {})",
 }
 `;
@@ -9535,6 +10325,7 @@ Object {
   "args": Array [
     "a",
   ],
+  "barry": 223,
   "body": "a * 3 * a",
   "defaults": Object {
     "a": undefined,
@@ -9548,6 +10339,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a",
+  "qux": 123,
   "value": "(async (a) => a * 3 * a)",
 }
 `;
@@ -9557,6 +10349,7 @@ Object {
   "args": Array [
     "d",
   ],
+  "barry": 223,
   "body": "d * 355 * d",
   "defaults": Object {
     "d": undefined,
@@ -9570,6 +10363,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "d",
+  "qux": 123,
   "value": "(async d => d * 355 * d)",
 }
 `;
@@ -9579,6 +10373,7 @@ Object {
   "args": Array [
     "e",
   ],
+  "barry": 223,
   "body": "return e + 5235 / e",
   "defaults": Object {
     "e": undefined,
@@ -9592,6 +10387,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "e",
+  "qux": 123,
   "value": "(async e => {return e + 5235 / e})",
 }
 `;
@@ -9602,6 +10398,7 @@ Object {
     "a",
     "b",
   ],
+  "barry": 223,
   "body": "a + 3 + b",
   "defaults": Object {
     "a": undefined,
@@ -9616,6 +10413,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "a, b",
+  "qux": 123,
   "value": "(async (a, b) => a + 3 + b)",
 }
 `;
@@ -9627,6 +10425,7 @@ Object {
     "y",
     "restArgs",
   ],
+  "barry": 223,
   "body": "console.log({ value: x * y })",
   "defaults": Object {
     "restArgs": undefined,
@@ -9642,6 +10441,7 @@ Object {
   "isValid": true,
   "name": null,
   "params": "x, y, restArgs",
+  "qux": 123,
   "value": "(async (x, y, ...restArgs) => console.log({ value: x * y }))",
 }
 `;
@@ -9690,8 +10490,8 @@ Object {
     "c",
   ],
   "body": "
-        return a + b + c;
-      ",
+          return a + b + c;
+        ",
   "defaults": Object {
     "a": undefined,
     "b": undefined,
@@ -9707,8 +10507,8 @@ Object {
   "name": "foo",
   "params": "a, b, c",
   "value": "({ foo(a, b, c) {
-        return a + b + c;
-      } })",
+          return a + b + c;
+        } })",
 }
 `;
 
@@ -9718,8 +10518,8 @@ Object {
     "a",
   ],
   "body": "
-        return () => a;
-      ",
+          return () => a;
+        ",
   "defaults": Object {
     "a": undefined,
   },
@@ -9733,8 +10533,8 @@ Object {
   "name": "bar",
   "params": "a",
   "value": "({ bar(a) {
-        return () => a;
-      } })",
+          return () => a;
+        } })",
 }
 `;
 
@@ -9744,8 +10544,8 @@ Object {
     "a",
   ],
   "body": "
-        return yield a * 321;
-      ",
+          return yield a * 321;
+        ",
   "defaults": Object {
     "a": undefined,
   },
@@ -9759,8 +10559,8 @@ Object {
   "name": "gen",
   "params": "a",
   "value": "({ *gen(a) {
-        return yield a * 321;
-      } })",
+          return yield a * 321;
+        } })",
 }
 `;
 
@@ -9808,6 +10608,6 @@ Object {
   "isValid": true,
   "name": null,
   "params": "v",
-  "value": "(async (v) => { if (v) {} })",
+  "value": "async (v) => { if (v) {} }",
 }
 `;

@@ -74,10 +74,7 @@ Project is [semantically](https://semver.org) versioned & automatically released
   - [Real anonymous function](#real-anonymous-function)
   - [Plugins Architecture](#plugins-architecture)
 - [API](#api)
-  - [parseFunction](#parsefunction)
   - [.parse](#parse)
-  - [.use](#use)
-  - [.define](#define)
 - [Result](#result)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
@@ -167,11 +164,7 @@ Only if you pass really an anonymous function you will get `result.name` equal t
 > _see: the [.use](#use) method, [test/index.js#L305-L317](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L305-L317) and [test/index.js#L396-L414](https://github.com/tunnckoCore/parse-function/blob/master/test/index.js#L396-L414)_
 
 A more human description of the plugin mechanism. Plugins are **synchronous** - no support
-and no need for **async** plugins here, but notice that you can do that manually, because
-that exact architecture.
-
-The first function that is passed to the [.use](#use) method is used for extending the core API,
-for example adding a new method to the `app` instance. That function is immediately invoked.
+and no need for **async** plugins here.
 
 ```js
 const parseFunction = require('parse-function');
@@ -221,198 +214,86 @@ you can add more properties if you want.
 
 _Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._
 
-### [parseFunction](./src/index.js#L52)
+### [.parse](./src/index.js#L78)
 
-> Initializes with optional `opts` object which is passed directly
-> to the desired parser and returns an object
-> with `.use` and `.parse` methods. The default parse which
-> is used is [babylon][]'s `.parseExpression` method from `v7`.
+Parse a given `input` and returns a `Result` object
+with useful properties - such as `name`, `body` and `args`.
+By default it uses `@babel/parser` parser, but you can switch it by
+passing `options.parse` or `options.parseExpression`, for example `options.parse: acorn.parse`.
+In the below example will show how to use `acorn` parser, instead
+of the default one.
 
 **Signature**
 
 ```ts
-function(opts = {})
+function(input, options)
 ```
 
 **Params**
 
-- `opts` - optional, merged with options passed to `.parse` method
-- `returns` - app object with `.use` and `.parse` methods
-
-**Example**
-
-```js
-const parseFunction = require('parse-function');
-
-const app = parseFunction({
-  ecmaVersion: 2017,
-});
-
-const fixtureFn = (a, b, c) => {
-  a = b + c;
-  return a + 2;
-};
-
-const result = app.parse(fixtureFn);
-console.log(result);
-
-// see more
-console.log(result.name); // => null
-console.log(result.isNamed); // => false
-console.log(result.isArrow); // => true
-console.log(result.isAnonymous); // => true
-
-// array of names of the arguments
-console.log(result.args); // => ['a', 'b', 'c']
-
-// comma-separated names of the arguments
-console.log(result.params); // => 'a, b, c'
-```
-
-### [.parse](./src/index.js#L117)
-
-> Parse a given `code` and returns a `result` object
-> with useful properties - such as `name`, `body` and `args`.
-> By default it uses Babylon parser, but you can switch it by
-> passing `options.parse` - for example `options.parse: acorn.parse`.
-> In the below example will show how to use `acorn` parser, instead
-> of the default one.
-
-**Params**
-
-- `code` - any kind of function or string to be parsed
+- `input` - any kind of function or string to be parsed
 - `options` - directly passed to the parser babylon, acorn, espree
-- `options.parse` - by default `babylon.parseExpression`,
-  all `options` are passed as second argument
+- `options.parse` - by default `@babel/parser`'s `.parse` or `.parseExpression`,
+- `options.parserOptions` - passed to the parser
+- `options.plugins` - a plugin function like `function plugin(node: Node, result: Result): Result {}`
 - `returns` - result see [result section](#result) for more info
 
 **Example**
 
 ```js
-const acorn = require('acorn');
-const parseFn = require('parse-function');
-const app = parseFn();
+import { parse as acornParse } from 'acorn';
+import { parse as espreeParse } from 'espree';
+import { parseFunction } from 'parse-function';
 
-const fn = function foo(bar, baz) {
+function fooFn(bar, baz = 123) {
   return bar * baz;
-};
-const result = app.parse(fn, {
-  parse: acorn.parse,
-  ecmaVersion: 2017,
+}
+
+const result1 = parseFunction(fooFn, { parse: acornParse });
+console.log(result1);
+
+const result2 = parseFunction(fooFn, {
+  parse: espreeParse,
+  parserOptions: {
+    ecmaVersion: 9,
+    sourceType: 'module',
+    ecmaFeatures: { jsx: true, globalReturn: true },
+  },
 });
 
-console.log(result.name); // => 'foo'
-console.log(result.args); // => ['bar', 'baz']
-console.log(result.body); // => ' return bar * baz '
-console.log(result.isNamed); // => true
-console.log(result.isArrow); // => false
-console.log(result.isAnonymous); // => false
-console.log(result.isGenerator); // => false
-```
+console.log('parsed with espree', result2);
+// => {
+//  name: 'fooFn',
+//  body: '\n  return bar * baz;\n',
+//  args: [ 'bar', 'baz' ],
+//  params: 'bar, baz',
+//  defaults: { bar: undefined, baz: '123' },
+//  value: '(function fooFn(bar, baz = 123) {\n  return bar * baz;\n})',
+//  isValid: true,
+//  isArrow: false,
+//  isAsync: false,
+//  isNamed: true,
+//  isAnonymous: false,
+//  isGenerator: false,
+//  isExpression: false,
+//  bobby: 'bobby',
+//  barry: 'barry barry',
+//  hasDefaultParams: true
+// }
 
-### [.use](./src/index.js#L170)
+function basicPlugin(node, result) {
+  const bar = 'barry';
+  const hasDefaultParams =
+    Object.values(result.defaults).filter(Boolean).length > 0;
 
-> Add a plugin `fn` function for extending the API or working on the
-> AST nodes. The `fn` is immediately invoked and passed
-> with `app` argument which is instance of `parseFunction()` call.
-> That `fn` may return another function that
-> accepts `(node, result)` signature, where `node` is an AST node
-> and `result` is an object which will be returned [result](#result)
-> from the `.parse` method. This retuned function is called on each
-> node only when `.parse` method is called.
+  return { ...result, foo: 123, bar, hasDefaultParams };
+}
 
-**Params**
-
-- `fn` - plugin to be called
-- `returns` - app instance for chaining
-
-_See [Plugins Architecture](#plugins-architecture) section._
-
-**Example**
-
-```js
-// plugin extending the `app`
-app.use((app) => {
-  app.define(app, 'hello', (place) => `Hello ${place}!`);
-});
-
-const hi = app.hello('World');
-console.log(hi); // => 'Hello World!'
-
-// or plugin that works on AST nodes
-app.use((app) => (node, result) => {
-  if (node.type === 'ArrowFunctionExpression') {
-    result.thatIsArrow = true;
-  }
-  return result;
-});
-
-const result = app.parse((a, b) => a + b + 123);
-console.log(result.name); // => null
-console.log(result.isArrow); // => true
-console.log(result.thatIsArrow); // => true
-
-const result = app.parse(function foo() {
-  return 123;
-});
-console.log(result.name); // => 'foo'
-console.log(result.isArrow); // => false
-console.log(result.thatIsArrow); // => undefined
-```
-
-### [.define](./src/index.js#L228)
-
-> Define a non-enumerable property on an object. Just
-> a convenience mirror of the [define-property][] library,
-> so check out its docs. Useful to be used in plugins.
-
-**Params**
-
-- `obj` - the object on which to define the property
-- `prop` - the name of the property to be defined or modified
-- `val` - the descriptor for the property being defined or modified
-- `returns` - obj the passed object, but modified
-
-**Example**
-
-```js
-const parseFunction = require('parse-function');
-const app = parseFunction();
-
-// use it like `define-property` lib
-const obj = {};
-app.define(obj, 'hi', 'world');
-console.log(obj); // => { hi: 'world' }
-
-// or define a custom plugin that adds `.foo` property
-// to the end result, returned from `app.parse`
-app.use((app) => {
-  return (node, result) => {
-    // this function is called
-    // only when `.parse` is called
-
-    app.define(result, 'foo', 123);
-
-    return result;
-  };
-});
-
-// fixture function to be parsed
-const asyncFn = async (qux) => {
-  const bar = await Promise.resolve(qux);
-  return bar;
-};
-
-const result = app.parse(asyncFn);
-
-console.log(result.name); // => null
-console.log(result.foo); // => 123
-console.log(result.args); // => ['qux']
-
-console.log(result.isAsync); // => true
-console.log(result.isArrow); // => true
-console.log(result.isNamed); // => false
-console.log(result.isAnonymous); // => true
+const resultWithPlugins = parseFunction(fooFn, { plugins: basicPlugin });
+console.log(resultWithPlugins.name); // => 'fooFn'
+console.log(resultWithPlugins.foo); // => 123
+console.log(resultWithPlugins.bar); // => 'barry'
+console.log(resultWithPlugins.hasDefaultParams); // => true
 ```
 
 <!-- docks-end -->

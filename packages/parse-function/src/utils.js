@@ -62,12 +62,12 @@ export function setHiddenDefaults(result, code) {
  * @return node
  * @private
  */
-export function getNode(result, options) {
+export function getNode(result, options, parse) {
   const opts = { ...options };
-  if (typeof opts.parse === 'function') {
+  if (typeof parse === 'function') {
     result.value = `(${result.value})`;
 
-    const ast = opts.parse(result.value, opts.parserOptions);
+    const ast = parse(result.value, opts.parserOptions);
     const astBody = ast.body;
 
     const body = (ast.program && ast.program.body) || astBody;
@@ -75,5 +75,7 @@ export function getNode(result, options) {
     return body[0].expression;
   }
 
-  return parseExpression(result.value, opts.parserOptions);
+  return typeof options.parseExpression === 'function'
+    ? options.parseExpression(result.value, opts.parserOptions)
+    : parseExpression(result.value, opts.parserOptions);
 }
