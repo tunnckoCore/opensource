@@ -1,7 +1,7 @@
 {
   "name": "ghub-now",
-  "version": "0.4.1",
-  "description": "Micro-service for now.sh, that redirects to GitHub (or other) repository page of NPM package, supports monorepos",
+  "version": "0.5.0",
+  "description": "Micro-service for ZEIT Now Platform, that redirects to location of a package, supports monorepos",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
