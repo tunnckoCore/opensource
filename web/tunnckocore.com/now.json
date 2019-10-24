@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "alias": [
+    "tunnckocore.com"
+  ],
+  "routes": [
+    {
+      "src": "/opensource/?(.+)?",
+      "status": 302,
+      "headers": {
+        "Location": "https://github.com/tunnckoCore/opensource/tree/master/$1"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "status": 302,
+      "headers": {
+        "Location": "https://linkedin.com/in/tunnckoCore"
+      }
+    }
+  ]
+}

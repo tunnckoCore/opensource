@@ -3,6 +3,7 @@
   "homepage": "https://github.com/tunnckocore/opensource",
   "private": true,
   "workspaces": [
+    "web/*",
     "configs/*",
     "packages/*",
     "@tunnckocore/*",

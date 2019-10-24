@@ -1,0 +1,9 @@
+{
+  "name": "pkg.tunnckocore.com",
+  "version": "0.1.0",
+  "dependencies": {
+    "ky": "^0.15.0",
+    "ky-universal": "^0.3.0",
+    "p-locate": "^4.1.0"
+  }
+}

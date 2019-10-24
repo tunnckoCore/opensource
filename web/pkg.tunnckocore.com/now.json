@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "alias": [
+    "pkg.tunnckocore.com"
+  ],
+  "routes": [
+    {
+      "src": "/(.+)",
+      "dest": "/api/index.js"
+    }
+  ]
+}
