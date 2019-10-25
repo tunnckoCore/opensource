@@ -12,9 +12,6 @@ const ignoredProps = bestPractices.rules[
   'no-param-reassign'
 ][1].ignorePropertyModificationsFor.concat('err', 'x', 'opts', 'options');
 
-console.log(ignoredProps);
-// console.log(alias, extensions);
-
 const unicornRules = {
   // It is too much annoyance for me. It's a good thing, but generally
   // after so many years we already name things properly,
@@ -328,4 +325,3 @@ module.exports = {
     ...eslintCommentsRules,
   },
 };
-

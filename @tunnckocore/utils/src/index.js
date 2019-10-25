@@ -255,7 +255,6 @@ function testCoverage(rootDir, testCovPath) {
   // console.log('You can use it to further generate per package badges.');
 }
 
-// eslint-disable-next-line max-params
 function coverageColor(value, colors = {}) {
   const defaultColors = { green: 100, yellow: 85, orange: 70, red: 35 };
   const { red, orange, yellow, green } = { ...defaultColors, ...colors };
