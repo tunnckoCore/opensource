@@ -48,7 +48,6 @@
     "@hela/dev": "*",
     "@wessberg/rollup-plugin-ts": "^1.1.73",
     "builtin-modules": "^3.1.0",
-    "cheerio": "^1.0.0-rc.3",
     "enquirer": "^2.3.2",
     "eslint": "^6.4.0",
     "esm": "^3.2.25",
