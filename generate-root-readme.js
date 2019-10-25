@@ -2,7 +2,6 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
-
 const { getWorkspacesAndExtensions } = require('@tunnckocore/utils');
 
 const { workspaces } = getWorkspacesAndExtensions(__dirname);
@@ -14,13 +13,6 @@ function toHash(input) {
     .digest('hex')
     .slice(0, 10);
 }
-
-// | Topic                                                            |                                           Contact |
-// | :--------------------------------------------------------------- | ------------------------------------------------: |
-// | Any legal or licensing questions, like private or commerical use |           ![tunnckocore_legal][tunnckocore_legal] |
-// | For any critical problems and security reports                   |     ![tunnckocore_security][tunnckocore_security] |
-// | Consulting, professional support, personal or team training      | ![tunnckocore_consulting][tunnckocore_consulting] |
-// | For any questions about Open Source, partnerships and sponsoring | ![tunnckocore_opensource][tunnckocore_opensource] |
 
 console.log('# Open Source Monorepo');
 console.log('');
@@ -44,12 +36,13 @@ const list = workspaces
 
     console.log(
       '### %s',
-      link ? `[${wsName}](/tree/master/${wsName})` : wsName,
+      link ? `[${wsName}](./tree/master/${wsName})` : wsName,
     );
+    console.log('');
     console.log('>  %s', desc);
     console.log('');
-    console.log('| pkg | badges |');
-    console.log('| :--- | :---: |');
+    console.log(`| pkg                                          |                                              badges                                               |
+| :------------------------------------------- | :-----------------------------------------------------------------------------------------------: |`);
 
     const pkgs = fs
       .readdirSync(wsDir)
@@ -80,10 +73,8 @@ const list = workspaces
   }, []);
 
 list.forEach(({ name, hash, covBadgeLink }) => {
-  console.log(`
-[npm-${hash}-url]: https://www.npmjs.com/package/${name}
+  console.log(`[npm-${hash}-url]: https://www.npmjs.com/package/${name}
 [npm-${hash}-img]: https://badgen.net/npm/v/${name}?icon=npm
 [cov-${hash}-url]: https://www.npmjs.com/package/${name}
-[cov-${hash}-img]: ${covBadgeLink}
-`);
+[cov-${hash}-img]: ${covBadgeLink}`);
 });

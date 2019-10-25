@@ -16,7 +16,6 @@
     ]
   },
   "scripts": {
-    "root-readme": "node generate-root-readme.js > README.md",
     "bootstrap": "lerna bootstrap --since",
     "bundle": "ROLLUP_FORCE_RELOAD=1 yarn start bundle",
     "clean:dist": "rm -rf {web,configs,packages,@tunnckocore,@hela}/*/dist",
@@ -31,6 +30,7 @@
     "pre-commit": "yarn docs && yarn fmt",
     "refresh": "yarn cleanup && yarn setup",
     "release": "lerna version && lerna publish from-package",
+    "root-readme": "node generate-root-readme.js > README.md",
     "setup": "yarn && yarn bootstrap",
     "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
     "start": "node node_modules/@hela/cli/dist/build/cjs/cli.js",
