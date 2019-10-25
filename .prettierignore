@@ -14,6 +14,7 @@ coverage
 
 patches
 @hela/dev/src/configs/*/config.js
+**/static/**/*.css
 
 *.tsbuildinfo
 .cache

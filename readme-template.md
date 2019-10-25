@@ -1,3 +1,5 @@
+{%= ifExists([process.cwd() + '/.verb.logo.md'], () => include(process.cwd() + '/.verb.logo.md')) %}
+
 # {%= name %} [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url]
 
 > {%= description %}

@@ -1,3 +1,13 @@
+<p align="center">
+  <img
+    align="center"
+    src="https://cdn.jsdelivr.net/emojione/assets/svg/1f54e.svg"
+    width="256"
+    height="256"
+    alt="Parse a function"
+  />
+</p>
+
 # parse-function [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url]
 
 > Parse a function into an object using espree, acorn or babylon parsers. Extensible through Smart Plugins
