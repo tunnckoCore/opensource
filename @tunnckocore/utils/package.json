@@ -31,6 +31,9 @@
     "utils"
   ],
   "scripts": {},
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3"
+  },
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -48,9 +51,6 @@
   "jestCov": {
     "value": 100,
     "color": "green"
-  },
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.3"
   },
   "licenseStart": 2019,
   "verb": {
