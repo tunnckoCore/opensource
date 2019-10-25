@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 /**
  * > Set couple of hidden properties and
  * the name of the given function to
@@ -9,25 +8,27 @@
  * only when function is really anonymous and don't have
  * any name.
  *
- * @param  {Object} node
- * @param  {Object} result
- * @return {Object} result
+ * @param  node
+ * @param  result
+ * @return result
  * @private
  */
-// eslint-disable-next-line unicorn/consistent-function-scoping
-export default () => (node, result) => {
-  result.isArrow = node.type.startsWith('Arrow');
-  result.isAsync = node.async || false;
-  result.isGenerator = node.generator || false;
-  result.isExpression = node.expression || false;
-  result.isAnonymous = node.id === null;
-  result.isNamed = !result.isAnonymous;
+export default (node, result) => {
+  const res = {
+    ...result,
+    isArrow: node.type.startsWith('Arrow'),
+    isAsync: node.async || false,
+    isGenerator: node.generator || false,
+    isExpression: node.expression || false,
+    isAnonymous: node.id === null,
+    isNamed: node.id !== null,
 
-  // if real anonymous -> set to null,
-  // notice that you can name you function `anonymous`, haha
-  // and it won't be "real" anonymous, so `isAnonymous` will be `false`
+    // if real anonymous -> set to null,
+    // notice that you can name you function `anonymous`, haha
+    // and it won't be "real" anonymous, so `isAnonymous` will be `false`
 
-  result.name = result.isAnonymous ? null : node.id.name;
+    name: node.id === null ? null : node.id.name,
+  };
 
-  return result;
+  return res;
 };

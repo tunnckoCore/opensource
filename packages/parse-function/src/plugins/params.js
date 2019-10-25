@@ -1,16 +1,16 @@
-/* eslint-disable no-param-reassign, unicorn/consistent-function-scoping */
+/* eslint-disable no-param-reassign */
 
 /**
  * > Micro plugin to visit each of the params
  * in the given function and collect them into
  * an `result.args` array and `result.params` string.
  *
- * @param  {Object} node
- * @param  {Object} result
- * @return {Object} result
+ * @param  node
+ * @param  result
+ * @return result
  * @private
  */
-export default () => (node, result) => {
+export default (node, result) => {
   node.params.forEach((param) => {
     const defaultArgsName =
       param.type === 'AssignmentPattern' && param.left && param.left.name;
