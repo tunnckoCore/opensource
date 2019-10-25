@@ -16,6 +16,9 @@ function toHash(input) {
 
 console.log('# Open Source Monorepo');
 console.log('');
+
+console.log(require('./package.json').description);
+
 console.log('## Workspaces');
 console.log('');
 
@@ -41,8 +44,8 @@ const list = workspaces
     console.log('');
     console.log('>  %s', desc);
     console.log('');
-    console.log(`| pkg                                          |                                              badges                                               |
-| :------------------------------------------- | :-----------------------------------------------------------------------------------------------: |`);
+    console.log('| pkg | badges |');
+    console.log('| :--- | :---: |');
 
     const pkgs = fs
       .readdirSync(wsDir)
@@ -57,7 +60,6 @@ const list = workspaces
           ? `https://badgen.net/badge/coverage/${jestCov.value}%25/${jestCov.color}?icon=codecov`
           : 'https://badgen.net/badge/coverage/unknown/grey?icon=codecov';
 
-        // [![npm version][npmv-img]][npmv-url]
         const npmBadge = `[![npm][npm-${hash}-img]][npm-${hash}-url]`;
         const covBadge = `[![cov][cov-${hash}-img]][cov-${hash}-url]`;
 
@@ -69,12 +71,11 @@ const list = workspaces
     console.log('');
 
     return acc.concat(pkgs);
-    // console.log(pkgs);
   }, []);
 
 list.forEach(({ name, hash, covBadgeLink }) => {
   console.log(`[npm-${hash}-url]: https://www.npmjs.com/package/${name}
-[npm-${hash}-img]: https://badgen.net/npm/v/${name}?icon=npm
-[cov-${hash}-url]: https://www.npmjs.com/package/${name}
-[cov-${hash}-img]: ${covBadgeLink}`);
+  [npm-${hash}-img]: https://badgen.net/npm/v/${name}?icon=npm
+  [cov-${hash}-url]: https://www.npmjs.com/package/${name}
+  [cov-${hash}-img]: ${covBadgeLink}`);
 });
