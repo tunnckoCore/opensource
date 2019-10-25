@@ -12,26 +12,6 @@ const presetOptions = {
   node: '8.11',
 };
 
-// eslint-disable-next-line max-params
-function coverageColor(value, green = 100, yellow = 85, orange = 70, red = 35) {
-  if (!value) {
-    return 'grey';
-  }
-  if (value < red) {
-    return 'red';
-  }
-  if (value < orange) {
-    return 'orange';
-  }
-  if (value < yellow) {
-    return 'EEAA22';
-  }
-  if (value < green) {
-    return '99CC09';
-  }
-  return 'green';
-}
-
 module.exports = {
   monorepo: true,
   eslint: {
@@ -54,10 +34,7 @@ module.exports = {
         JSON.stringify(
           {
             ...pkgJson,
-            jestCov: {
-              value: cov,
-              color: coverageColor(cov),
-            },
+            jestCov: cov,
           },
           null,
           2,

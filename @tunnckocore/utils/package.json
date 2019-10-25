@@ -39,15 +39,15 @@
     "coverageThreshold": {
       "src/**/*.js": {
         "statements": 100,
-        "branches": 90,
+        "branches": 100,
         "functions": 100,
         "lines": 100
       }
     }
   },
   "jestCov": {
-    "value": 97.73,
-    "color": "99CC09"
+    "value": 100,
+    "color": "green"
   },
   "licenseStart": 2019,
   "verb": {

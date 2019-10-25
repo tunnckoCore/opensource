@@ -1,20 +1,25 @@
 const fs = require('fs');
 const path = require('path');
 const Module = require('module');
+const cheerio = require('cheerio');
 
 // eslint-disable-next-line no-underscore-dangle
 const EXTENSIONS = Object.keys(Module._extensions).filter(
   (x) => x !== '.json' && x !== '.node',
 );
 
-module.exports = { createAliases, getWorkspacesAndExtensions, isMonorepo };
+module.exports = {
+  createAliases,
+  getWorkspacesAndExtensions,
+  isMonorepo,
+  testCoverage,
+  coverageColor,
+};
 
 // we cannot test it because we are in monorepo where the cwd is.
 /* istanbul ignore next */
 function isMonorepo(cwd = process.cwd()) {
-  const { workspaces } = getWorkspacesAndExtensions(cwd);
-
-  return workspaces.length > 0;
+  return getWorkspacesAndExtensions(cwd).isMonorepo;
 }
 
 /**
@@ -27,6 +32,7 @@ function isMonorepo(cwd = process.cwd()) {
  * We just don't use regex, we precompute them.
  */
 function createAliases(cwd, sourceDirectory) {
+  /* istanbul ignore next */
   const CWD = cwd || process.cwd();
   const result = getWorkspacesAndExtensions(CWD);
 
@@ -106,7 +112,9 @@ function parseJson(fp) {
   return {};
 }
 
-function getWorkspacesAndExtensions(cwd = process.cwd()) {
+function getWorkspacesAndExtensions(rootDir) {
+  /* istanbul ignore next */
+  const cwd = rootDir || process.cwd();
   const fromRoot = (...x) => path.resolve(cwd, ...x);
   const packageJsonPath = fromRoot('package.json');
   const lernaJsonPath = fromRoot('lerna.json');
@@ -143,5 +151,129 @@ function getWorkspacesAndExtensions(cwd = process.cwd()) {
     packageJson,
     packageJsonPath,
     workspaceRootPath,
+    fromRoot,
+    cwd,
+    isMonorepo: workspaces.length > 0,
   };
+}
+
+function testCoverage(rootDir, testCovPath) {
+  const {
+    packageJsonPath,
+    packageJson: pkg,
+    isMonorepo: isMono,
+    fromRoot,
+    cwd,
+  } = getWorkspacesAndExtensions(rootDir);
+
+  if (!isMono) {
+    throw new Error('This should only be used in monorepo environments.');
+  }
+
+  const lcovReportPath =
+    typeof testCovPath === 'string'
+      ? fromRoot(testCovPath)
+      : fromRoot('coverage', 'lcov-report', 'index.html');
+
+  const LOCV_REPORT = fromRoot(lcovReportPath);
+
+  if (!fs.existsSync(LOCV_REPORT)) {
+    const file = path.relative(cwd, LOCV_REPORT);
+    throw new Error(
+      `Run tests with coverage. Missing coverage report ./${file}!`,
+    );
+  }
+
+  const lcovInfo = fs.readFileSync(LOCV_REPORT, 'utf8');
+  const $ = cheerio.load(lcovInfo);
+
+  const files = {};
+
+  $('tr').each(function sasa(i, item) {
+    const filepath = $('.file', item).text();
+    const [statements, branches, functions, lines] = $('.pct', item)
+      .text()
+      .split('%');
+
+    if (filepath === 'File') {
+      return;
+    }
+
+    files[filepath] = {
+      statements: Number(statements),
+      branches: Number(branches),
+      functions: Number(functions),
+      lines: Number(lines),
+    };
+  });
+
+  const jestCov = Object.keys(files).reduce((acc, file) => {
+    let value = files[file];
+    const [ws, folderName] = file.split('/');
+    const pkgRoot = `${ws}/${folderName}`;
+
+    const res = Object.keys(files)
+      .filter((key) => key.startsWith(pkgRoot))
+      .map((filename) => files[filename]);
+
+    if (res.length > 1) {
+      value = res.reduce(
+        (accumulator, item) => {
+          accumulator.statements += item.statements / res.length;
+          accumulator.branches += item.branches / res.length;
+          accumulator.functions += item.functions / res.length;
+          accumulator.lines += item.lines / res.length;
+
+          return accumulator;
+        },
+        { statements: 0, branches: 0, functions: 0, lines: 0 },
+      );
+    }
+
+    const cov = Object.keys(value).reduce(
+      (accum, typeName) => accum + value[typeName],
+      0,
+    );
+
+    const coverage = Number((cov / 4).toFixed(2));
+
+    acc[pkgRoot] = {
+      value: coverage,
+      color: coverageColor(coverage),
+    };
+    return acc;
+  }, {});
+
+  return {
+    packageJsonPath,
+    pkg: { ...pkg, jestCov },
+    message: `Done. Now you have \`jestCov\` field in the root package.json!\nYou can use it to further generate per package badges.`,
+  };
+
+  // fs.writeFileSync(packageJsonPath, JSON.stringify({ ...pkg, jestCov }, 0, 2));
+  // console.log('Done. Now you have `jestCov` field in the root package.json!');
+  // console.log('You can use it to further generate per package badges.');
+}
+
+// eslint-disable-next-line max-params
+function coverageColor(value, colors = {}) {
+  const defaultColors = { green: 100, yellow: 85, orange: 70, red: 35 };
+  const { red, orange, yellow, green } = { ...defaultColors, ...colors };
+
+  if (!value) {
+    return 'grey';
+  }
+  if (value < red) {
+    return 'red';
+  }
+  if (value < orange) {
+    return 'orange';
+  }
+  if (value < yellow) {
+    return 'EEAA22';
+  }
+  if (value < green) {
+    return '99CC09';
+  }
+  return 'green';
 }

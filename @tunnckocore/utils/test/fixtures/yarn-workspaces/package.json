@@ -1,4 +1,6 @@
 {
+  "private": true,
+  "name": "some-fixture-yarn-workspaces",
   "extensions": [
     "js",
     "ts"

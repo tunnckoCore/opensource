@@ -90,19 +90,58 @@
     ]
   },
   "jestCov": {
-    "@hela/dev": 18.33,
-    "@tunnckocore/create-jest-runner": 18.08,
-    "@tunnckocore/execa": 86.01,
-    "@tunnckocore/jest-runner-babel": 8.93,
-    "@tunnckocore/jest-runner-eslint": 11.29,
-    "@tunnckocore/utils": 97.73,
-    "configs/babel-preset": 74.92,
-    "packages/gitclone-defaults": 100,
-    "packages/jest-runner-docs": 8.29,
-    "packages/jest-runner-rollup": 6.18,
-    "packages/koa-better-body": 95.56,
-    "packages/parse-function": 100,
-    "packages/stringify-github-short-url": 100
+    "@hela/dev": {
+      "value": 18.33,
+      "color": "red"
+    },
+    "@tunnckocore/create-jest-runner": {
+      "value": 18.08,
+      "color": "red"
+    },
+    "@tunnckocore/execa": {
+      "value": 86.01,
+      "color": "99CC09"
+    },
+    "@tunnckocore/jest-runner-babel": {
+      "value": 8.93,
+      "color": "red"
+    },
+    "@tunnckocore/jest-runner-eslint": {
+      "value": 11.29,
+      "color": "red"
+    },
+    "@tunnckocore/utils": {
+      "value": 100,
+      "color": "green"
+    },
+    "configs/babel-preset": {
+      "value": 74.92,
+      "color": "EEAA22"
+    },
+    "packages/gitclone-defaults": {
+      "value": 100,
+      "color": "green"
+    },
+    "packages/jest-runner-docs": {
+      "value": 8.29,
+      "color": "red"
+    },
+    "packages/jest-runner-rollup": {
+      "value": 6.18,
+      "color": "red"
+    },
+    "packages/koa-better-body": {
+      "value": 95.56,
+      "color": "99CC09"
+    },
+    "packages/parse-function": {
+      "value": 100,
+      "color": "green"
+    },
+    "packages/stringify-github-short-url": {
+      "value": 100,
+      "color": "green"
+    }
   },
   "meta": {
     "build": [

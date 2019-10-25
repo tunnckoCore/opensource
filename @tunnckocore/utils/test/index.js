@@ -7,6 +7,8 @@ const {
   isMonorepo,
   getWorkspacesAndExtensions,
   createAliases,
+  testCoverage,
+  coverageColor,
 } = require('../src');
 
 expect.extend({
@@ -46,6 +48,11 @@ test('get extensions and workspaces - no workspaces', () => {
   const rootDir = path.dirname(__dirname);
   const result = getWorkspacesAndExtensions(rootDir);
 
+  expect(typeof result.fromRoot).toStrictEqual('function');
+  expect(result.fromRoot('foo', 'bar', '..', 'qux')).toStrictEqual(
+    path.resolve(rootDir, 'foo', 'bar', '..', 'qux'),
+  );
+  expect(result.isMonorepo).toStrictEqual(false);
   expect(result.workspaces).toStrictEqual([]);
   expect(result.lernaJson).toStrictEqual({});
   expect(result.exts).toContainEvery(['tsx', 'ts', 'jsx', 'js']);
@@ -57,6 +64,7 @@ test('getWorkspacesAndExtensions - correct workspaces', () => {
 
   const result = getWorkspacesAndExtensions(rootDir);
 
+  expect(result.isMonorepo).toStrictEqual(true);
   expect(result.workspaces).toStrictEqual(['@tunnckocore', 'packages']);
   expect(result.extensions).toStrictEqual(['.js', '.jsx', '.ts']);
   expect(result.exts).toStrictEqual(['js', 'jsx', 'ts']);
@@ -98,6 +106,8 @@ test('createAliases return correct aliases for yarn workspaces', () => {
   expect(result.lernaJson).toStrictEqual({});
   expect(result.exts).toStrictEqual(['js', 'ts']);
   expect(result.packageJson).toStrictEqual({
+    name: 'some-fixture-yarn-workspaces',
+    private: true,
     extensions: result.exts,
     workspaces: ['@tunnckocore/*', '@hela/*'],
   });
@@ -197,4 +207,64 @@ test('correct *Path properties when Yarn Workspaces monorepo', () => {
 
   expect(result.packageJson).toBeTruthy();
   expect(typeof result.packageJson).toStrictEqual('object');
+});
+
+test('coverageColor correct', () => {
+  expect(coverageColor()).toStrictEqual('grey');
+  expect(coverageColor(11)).toStrictEqual('red');
+  expect(coverageColor(35)).toStrictEqual('orange');
+  expect(coverageColor(65)).toStrictEqual('orange');
+  expect(coverageColor(70)).toStrictEqual('EEAA22');
+  expect(coverageColor(77)).toStrictEqual('EEAA22'); // orange
+  expect(coverageColor(85)).toStrictEqual('99CC09'); // green
+  expect(coverageColor(88)).toStrictEqual('99CC09'); // green
+  expect(coverageColor(95)).toStrictEqual('99CC09'); // green
+  expect(coverageColor(100)).toStrictEqual('green');
+});
+
+test('testCoverage throw if no test coverage', () => {
+  const lernaRoot = path.join(__dirname, 'fixtures', 'lerna');
+  expect(() => testCoverage(lernaRoot)).toThrow(Error);
+  expect(() => testCoverage(lernaRoot)).toThrow(
+    /Run tests with coverage. Missing coverage report/,
+  );
+});
+
+test('testCoverage work if custom lcov report path is passed', () => {
+  const lernaRoot = path.join(__dirname, 'fixtures', 'lerna');
+
+  const res = testCoverage(lernaRoot, 'cov/index.html');
+
+  expect(res.packageJsonPath).toStrictEqual(
+    path.join(lernaRoot, 'package.json'),
+  );
+  expect(res.pkg).toBeTruthy();
+  expect(res.message).toBeTruthy();
+  expect(typeof res.message).toStrictEqual('string');
+  expect(res.pkg.name).toBeTruthy();
+  expect(res.pkg.jestCov).toBeTruthy();
+  expect(typeof res.pkg.jestCov).toStrictEqual('object');
+});
+
+test('testCoverage work default lcov report path', () => {
+  const yarnWorkspaces = path.join(__dirname, 'fixtures', 'yarn-workspaces');
+
+  const res = testCoverage(yarnWorkspaces);
+
+  expect(res.packageJsonPath).toStrictEqual(
+    path.join(yarnWorkspaces, 'package.json'),
+  );
+  expect(res.pkg).toBeTruthy();
+  expect(res.message).toBeTruthy();
+  expect(typeof res.message).toStrictEqual('string');
+  expect(res.pkg.name).toBeTruthy();
+  expect(res.pkg.jestCov).toBeTruthy();
+  expect(typeof res.pkg.jestCov).toStrictEqual('object');
+});
+
+test('testCoverage throw if not in monorepo', () => {
+  expect(() => testCoverage(__dirname)).toThrow(Error);
+  expect(() => testCoverage(__dirname)).toThrow(
+    /This should only be used in monorepo environments/,
+  );
 });
