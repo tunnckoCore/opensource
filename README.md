@@ -7,31 +7,31 @@
 
 | pkg | badges |
 | :--- | :---: |
-| [`gitclone-cli`](/tree/master/packages/gitclone-cli) | [![npm][npm-dec4d0cc05-img]][npm-dec4d0cc05-url] [![cov][cov-dec4d0cc05-img]][cov-dec4d0cc05-url] |
-| [`gitclone-defaults`](/tree/master/packages/gitclone-defaults) | [![npm][npm-cac2bd5e92-img]][npm-cac2bd5e92-url] [![cov][cov-cac2bd5e92-img]][cov-cac2bd5e92-url] |
-| [`jest-runner-docs`](/tree/master/packages/jest-runner-docs) | [![npm][npm-bfbf73f3e5-img]][npm-bfbf73f3e5-url] [![cov][cov-bfbf73f3e5-img]][cov-bfbf73f3e5-url] |
-| [`jest-runner-rollup`](/tree/master/packages/jest-runner-rollup) | [![npm][npm-cf87a4edb8-img]][npm-cf87a4edb8-url] [![cov][cov-cf87a4edb8-img]][cov-cf87a4edb8-url] |
-| [`koa-better-body`](/tree/master/packages/koa-better-body) | [![npm][npm-e4f83c0c22-img]][npm-e4f83c0c22-url] [![cov][cov-e4f83c0c22-img]][cov-e4f83c0c22-url] |
-| [`parse-function`](/tree/master/packages/parse-function) | [![npm][npm-a236619861-img]][npm-a236619861-url] [![cov][cov-a236619861-img]][cov-a236619861-url] |
-| [`stringify-github-short-url`](/tree/master/packages/stringify-github-short-url) | [![npm][npm-3c6aafac3a-img]][npm-3c6aafac3a-url] [![cov][cov-3c6aafac3a-img]][cov-3c6aafac3a-url] |
+| [`gitclone-cli`](https://ghub.now.sh/gitclone-cli) | [![npm][npm-dec4d0cc05-img]][npm-dec4d0cc05-url] [![cov][cov-dec4d0cc05-img]][cov-dec4d0cc05-url] |
+| [`gitclone-defaults`](https://ghub.now.sh/gitclone-defaults) | [![npm][npm-cac2bd5e92-img]][npm-cac2bd5e92-url] [![cov][cov-cac2bd5e92-img]][cov-cac2bd5e92-url] |
+| [`jest-runner-docs`](https://ghub.now.sh/jest-runner-docs) | [![npm][npm-bfbf73f3e5-img]][npm-bfbf73f3e5-url] [![cov][cov-bfbf73f3e5-img]][cov-bfbf73f3e5-url] |
+| [`jest-runner-rollup`](https://ghub.now.sh/jest-runner-rollup) | [![npm][npm-cf87a4edb8-img]][npm-cf87a4edb8-url] [![cov][cov-cf87a4edb8-img]][cov-cf87a4edb8-url] |
+| [`koa-better-body`](https://ghub.now.sh/koa-better-body) | [![npm][npm-e4f83c0c22-img]][npm-e4f83c0c22-url] [![cov][cov-e4f83c0c22-img]][cov-e4f83c0c22-url] |
+| [`parse-function`](https://ghub.now.sh/parse-function) | [![npm][npm-a236619861-img]][npm-a236619861-url] [![cov][cov-a236619861-img]][cov-a236619861-url] |
+| [`stringify-github-short-url`](https://ghub.now.sh/stringify-github-short-url) | [![npm][npm-3c6aafac3a-img]][npm-3c6aafac3a-url] [![cov][cov-3c6aafac3a-img]][cov-3c6aafac3a-url] |
 
 ### @tunnckocore
 >  Scoped general purpose packages
 
 | pkg | badges |
 | :--- | :---: |
-| [`@tunnckocore/create-jest-runner`](/tree/master/@tunnckocore/@tunnckocore/create-jest-runner) | [![npm][npm-76c512834b-img]][npm-76c512834b-url] [![cov][cov-76c512834b-img]][cov-76c512834b-url] |
-| [`@tunnckocore/execa`](/tree/master/@tunnckocore/@tunnckocore/execa) | [![npm][npm-0ee88d61eb-img]][npm-0ee88d61eb-url] [![cov][cov-0ee88d61eb-img]][cov-0ee88d61eb-url] |
-| [`@tunnckocore/jest-runner-babel`](/tree/master/@tunnckocore/@tunnckocore/jest-runner-babel) | [![npm][npm-66996266fb-img]][npm-66996266fb-url] [![cov][cov-66996266fb-img]][cov-66996266fb-url] |
-| [`@tunnckocore/jest-runner-eslint`](/tree/master/@tunnckocore/@tunnckocore/jest-runner-eslint) | [![npm][npm-c7106a6fc9-img]][npm-c7106a6fc9-url] [![cov][cov-c7106a6fc9-img]][cov-c7106a6fc9-url] |
-| [`@tunnckocore/utils`](/tree/master/@tunnckocore/@tunnckocore/utils) | [![npm][npm-2ee61b0213-img]][npm-2ee61b0213-url] [![cov][cov-2ee61b0213-img]][cov-2ee61b0213-url] |
+| [`@tunnckocore/create-jest-runner`](https://ghub.now.sh/@tunnckocore/create-jest-runner) | [![npm][npm-76c512834b-img]][npm-76c512834b-url] [![cov][cov-76c512834b-img]][cov-76c512834b-url] |
+| [`@tunnckocore/execa`](https://ghub.now.sh/@tunnckocore/execa) | [![npm][npm-0ee88d61eb-img]][npm-0ee88d61eb-url] [![cov][cov-0ee88d61eb-img]][cov-0ee88d61eb-url] |
+| [`@tunnckocore/jest-runner-babel`](https://ghub.now.sh/@tunnckocore/jest-runner-babel) | [![npm][npm-66996266fb-img]][npm-66996266fb-url] [![cov][cov-66996266fb-img]][cov-66996266fb-url] |
+| [`@tunnckocore/jest-runner-eslint`](https://ghub.now.sh/@tunnckocore/jest-runner-eslint) | [![npm][npm-c7106a6fc9-img]][npm-c7106a6fc9-url] [![cov][cov-c7106a6fc9-img]][cov-c7106a6fc9-url] |
+| [`@tunnckocore/utils`](https://ghub.now.sh/@tunnckocore/utils) | [![npm][npm-2ee61b0213-img]][npm-2ee61b0213-url] [![cov][cov-2ee61b0213-img]][cov-2ee61b0213-url] |
 
 ### [@hela](/tree/master/@hela)
 >  Powerful software development
 
 | pkg | badges |
 | :--- | :---: |
-| [`@hela/dev`](/tree/master/@hela/@hela/dev) | [![npm][npm-db6ee41175-img]][npm-db6ee41175-url] [![cov][cov-db6ee41175-img]][cov-db6ee41175-url] |
+| [`@hela/dev`](https://ghub.now.sh/@hela/dev) | [![npm][npm-db6ee41175-img]][npm-db6ee41175-url] [![cov][cov-db6ee41175-img]][cov-db6ee41175-url] |
 
 
 [npm-dec4d0cc05-url]: https://www.npmjs.com/package/gitclone-cli
