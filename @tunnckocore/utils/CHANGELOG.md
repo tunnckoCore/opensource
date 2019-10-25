@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@1.1.1...@tunnckocore/utils@1.1.2) (2019-10-25)
+
+
+### Bug Fixes
+
+* duh, tweaks ([6e14ea8](https://github.com/tunnckoCore/opensource/commit/6e14ea886cc4071e63efc437d61a9041be2a21fa))
+* include cheerio dep on @tunnckocore/utils ([5f36596](https://github.com/tunnckoCore/opensource/commit/5f3659665bc2a6b3d820d500d26c3228181e38e9))
+
+
+
+
+
 ## [1.1.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@1.1.0...@tunnckocore/utils@1.1.1) (2019-10-25)
 
 
