@@ -4,6 +4,15 @@ const { createAliases } = require('@tunnckocore/utils');
 const CWD = process.cwd();
 const { alias, workspaces } = createAliases(CWD, '');
 
+const airbnbBase = require('eslint-config-airbnb-base');
+// eslint-disable-next-line import/no-dynamic-require
+const bestPractices = require(airbnbBase.extends[0]);
+
+const ignoredProps = bestPractices.rules[
+  'no-param-reassign'
+][1].ignorePropertyModificationsFor.concat('err', 'x', 'opts', 'options');
+
+console.log(ignoredProps);
 // console.log(alias, extensions);
 
 const unicornRules = {
@@ -242,20 +251,7 @@ const additionalChanges = {
     'error',
     {
       props: true,
-      ignorePropertyModificationsFor: [
-        'opts', // useful to ensure the params is always obect
-        'options', // and when using Object.assign for shallow copy
-        'x', // allow violating the rule in specific cases, instead of disabling it
-        'acc', // for reduce accumulators
-        'e', // for e.returnvalue
-        'err', // for adding to the Error instance
-        'ctx', // for Koa routing
-        'req', // for Express requests
-        'request', // for Express requests
-        'res', // for Express responses
-        'response', // for Express responses
-        '$scope',
-      ],
+      ignorePropertyModificationsFor: ignoredProps,
     },
   ],
 };
@@ -332,3 +328,4 @@ module.exports = {
     ...eslintCommentsRules,
   },
 };
+
