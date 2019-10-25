@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@1.1.0...@tunnckocore/utils@1.1.1) (2019-10-25)
+
+
+### Bug Fixes
+
+* linting and cleanup ([4b5b6a5](https://github.com/tunnckoCore/opensource/commit/4b5b6a5d2e031ae2c01028e0478f10be5bffe062))
+
+
+
+
+
 # [1.1.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@1.0.2...@tunnckocore/utils@1.1.0) (2019-10-25)
 
 
