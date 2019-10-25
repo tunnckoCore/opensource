@@ -4,6 +4,8 @@
   "dependencies": {
     "ky": "^0.15.0",
     "ky-universal": "^0.3.0",
+    "parse-github-url": "^1.0.2",
+    "parse-package-name": "^0.1.0",
     "p-locate": "^4.1.0"
   }
 }

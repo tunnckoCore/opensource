@@ -15,9 +15,5 @@
     "ky-universal": "^0.3.0",
     "parse-github-url": "^1.0.2",
     "parse-package-name": "^0.1.0"
-  },
-  "devDependencies": {
-    "micro": "^9.3.4",
-    "micro-dev": "^3.0.0"
   }
 }

@@ -2,17 +2,23 @@
   "name": "@tunnckocore/opensource",
   "homepage": "https://github.com/tunnckocore/opensource",
   "private": true,
-  "workspaces": [
-    "web/*",
-    "configs/*",
-    "packages/*",
-    "@tunnckocore/*",
-    "@hela/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "web/*",
+      "configs/*",
+      "packages/*",
+      "@tunnckocore/*",
+      "@hela/*"
+    ],
+    "nohoist": [
+      "ghub-now/**/*",
+      "pkg.tunnckocore.com/**"
+    ]
+  },
   "scripts": {
     "bootstrap": "lerna bootstrap --since",
     "bundle": "ROLLUP_FORCE_RELOAD=1 yarn start bundle",
-    "clean:dist": "rm -rf configs/*/dist packages/*/dist @tunnckocore/*/dist",
+    "clean:dist": "rm -rf {web,configs,packages,@tunnckocore,@hela}/*/dist",
     "clean:fresh": "lerna clean -y && rm -rf node_modules",
     "cleanup": "yarn clean:dist && yarn clean:fresh",
     "cr": "node create-package.js",

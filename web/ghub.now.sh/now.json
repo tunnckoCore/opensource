@@ -5,8 +5,22 @@
   ],
   "routes": [
     {
-      "src": "/(.+)",
+      "src": "/(?!static)(.+)",
       "dest": "/api/index.js"
+    },
+    {
+      "src": "/static/(.+)",
+      "dest": "/public/static/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=0, s-maxage=604800, stale-while-revalidate=86400"
+      }
+    },
+    {
+      "src": "/(?:index.html)?",
+      "dest": "/public/index.html",
+      "headers": {
+        "Cache-Control": "public, max-age=0, s-maxage=604800, stale-while-revalidate=86400"
+      }
     }
   ]
 }

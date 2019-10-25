@@ -1,29 +1,20 @@
 const url = require('url');
-const ky = require('ky-universal');
 const pLocate = require('p-locate');
+const ky = require('ky-universal');
 
-const api = 'https://cdn.jsdelivr.net/gh/tunnckoCore/opensource';
+const { zeitLambdaWrapper, ORIGIN } = require('../utils');
 
-function redirect(res, location, statusCode = 301) {
-  res.status(statusCode);
-  res.setHeader('Location', location);
-  res.end();
-}
+const JSDELIVR = 'https://cdn.jsdelivr.net/gh/tunnckoCore/opensource';
+
+module.exports = zeitLambdaWrapper(handler);
 
 // eslint-disable-next-line max-statements
-module.exports = async (req, res) => {
-  const ALLOWED_HTTP_METHOD = 'GET';
-  res.setHeader('Access-Control-Request-Method', ALLOWED_HTTP_METHOD);
-  if (req.method !== ALLOWED_HTTP_METHOD) {
-    res.status(405);
-    res.send('Method Not Allowed');
-    return;
-  }
+async function handler(req, res) {
   // eslint-disable-next-line node/prefer-global/url
-  const parsed = new url.URL(`https://loc.com${req.url}`);
+  const parsed = new url.URL(`${ORIGIN}${req.url}`);
 
   if (/^\/(?:api)?\/?$/.test(parsed.pathname)) {
-    redirect(res, '/', 302);
+    res.send('/', 302);
     return;
   }
 
@@ -54,7 +45,7 @@ module.exports = async (req, res) => {
   if (!/\.(jsx?|tsx?)$/.test(pathname)) {
     if (field) {
       const resp = await ky
-        .get(`${api}${pathname}/package.json`)
+        .get(`${JSDELIVR}${pathname}/package.json`)
         .then((x) => x.text())
         .catch(() => {});
 
@@ -66,21 +57,20 @@ module.exports = async (req, res) => {
         try {
           srcPath = JSON.parse(resp)[field];
         } catch (err) {
-          res.send(500).send('Found `package.json` but failed to parse.');
+          res.send('Found `package.json` but failed to parse.', 500);
           return;
         }
 
         await ky
-          .get(`${api}${pathname}/${srcPath}`)
+          .get(`${JSDELIVR}${pathname}/${srcPath}`)
           .then(() => {
-            redirect(res, `${api}${pathname}/${srcPath}`, 302);
+            res.send(`${JSDELIVR}${pathname}/${srcPath}`, 301);
           })
           .catch(() => {
-            res
-              .status(404)
-              .send(
-                `Not found source path given in the "${field}" of package.json`,
-              );
+            res.send(
+              `Not found source path given in the "${field}" of package.json`,
+              404,
+            );
           });
         return;
       }
@@ -89,7 +79,7 @@ module.exports = async (req, res) => {
     const result = await pLocate(
       ['src/index.ts', 'src/index.js', 'index.ts', 'index.js'].map((fp) =>
         ky
-          .get(`${api}${pathname}/${fp}`)
+          .get(`${JSDELIVR}${pathname}/${fp}`)
           .then(async (x) => ({ file: fp, value: await x.text() }))
           .catch(() => {}),
       ),
@@ -102,17 +92,14 @@ module.exports = async (req, res) => {
     );
 
     if (result) {
-      console.log('found', `${api}${pathname}/${result.file}`);
-      // res.status(200).send(`${pathname}/${result.file}`);
-      redirect(res, `${api}${pathname}/${result.file}`, 302);
+      console.log('found', `${JSDELIVR}${pathname}/${result.file}`);
+      res.send(`${JSDELIVR}${pathname}/${result.file}`, 301);
       return;
     }
-    console.log('not found', `${api}${pathname}`);
-    res.setHeader('Content-Type', 'text/html');
-    res.status(404).send(`<h1>File path not found: ${pathname}</h1>`);
+    console.log('not found', `${JSDELIVR}${pathname}`);
+    res.send(`File path not found: ${pathname}`, 404);
     return;
   }
 
-  // res.status(200).send(`${pathname}`);
-  redirect(res, `${api}${pathname}`, 302);
-};
+  res.send(`${JSDELIVR}${pathname}`, 301);
+}
