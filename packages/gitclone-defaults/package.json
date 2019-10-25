@@ -1,6 +1,6 @@
 {
   "name": "gitclone-defaults",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Powerful and flexible signature for `gitclone` - defaults, checks, validating, etc",
   "repository": {
     "type": "git",
@@ -48,7 +48,7 @@
   "scripts": {},
   "devDependencies": {
     "parse-github-url": "^1.0.2",
-    "stringify-github-short-url": "^3.1.2"
+    "stringify-github-short-url": "^3.1.3"
   },
   "publishConfig": {
     "access": "public",

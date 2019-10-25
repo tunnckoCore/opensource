@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.3](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.2...@tunnckocore/eslint-config@5.0.3) (2019-10-25)
+
+
+### Bug Fixes
+
+* **eslint-config:** no-param-reassign tweaks ([c756ca0](https://github.com/tunnckoCore/opensource/commit/c756ca0927d2cc0b3761674e4e43c8c124d28578))
+* cleanup, update deps, update badges ([345b7f2](https://github.com/tunnckoCore/opensource/commit/345b7f23e39481409ddc84d37308986462ada969))
+* doh, format ([af9fac8](https://github.com/tunnckoCore/opensource/commit/af9fac844fb3d43fb43d39003eec18f482b6c6aa))
+* eslint import-resolver node options tweaks ([2c7b927](https://github.com/tunnckoCore/opensource/commit/2c7b9271d4b3123eda5a67957e9eb94bfeaf07f0))
+* per package codecov badge autogen, based on coverage data ([4334759](https://github.com/tunnckoCore/opensource/commit/4334759d331dfcef98f43735a356753a685b139a))
+* readme badges; some tweaks ([95d6666](https://github.com/tunnckoCore/opensource/commit/95d666659a2ac29bece307d22c66b6c0e7e47683))
+* **(eslint-config:** aliasing to fix lintig in CI ([43c10f1](https://github.com/tunnckoCore/opensource/commit/43c10f1d12ccf4ae915e3d6d1b0ab6a5bc7029a6))
+* **eslint-config:** better settings ([740cef0](https://github.com/tunnckoCore/opensource/commit/740cef091be137ed8d22d8d662353eec8af01882))
+* handle cases when no tests, so no coverage ([e0ce831](https://github.com/tunnckoCore/opensource/commit/e0ce8313eedbcb5e8780865ed05533b5a2190c36))
+
+
+
+
+
 ## [5.0.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.1...@tunnckocore/eslint-config@5.0.2) (2019-10-22)
 
 

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.0.2...jest-runner-docs@1.0.3) (2019-10-25)
+
+
+### Bug Fixes
+
+* cleanup, update deps, update badges ([345b7f2](https://github.com/tunnckoCore/opensource/commit/345b7f23e39481409ddc84d37308986462ada969))
+* doh, format ([af9fac8](https://github.com/tunnckoCore/opensource/commit/af9fac844fb3d43fb43d39003eec18f482b6c6aa))
+* handle cases when no tests, so no coverage ([e0ce831](https://github.com/tunnckoCore/opensource/commit/e0ce8313eedbcb5e8780865ed05533b5a2190c36))
+* per package codecov badge autogen, based on coverage data ([4334759](https://github.com/tunnckoCore/opensource/commit/4334759d331dfcef98f43735a356753a685b139a))
+* readme badges; some tweaks ([95d6666](https://github.com/tunnckoCore/opensource/commit/95d666659a2ac29bece307d22c66b6c0e7e47683))
+
+
+
+
+
 ## [1.0.2](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.0.1...jest-runner-docs@1.0.2) (2019-10-22)
 
 
