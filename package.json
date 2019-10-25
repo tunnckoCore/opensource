@@ -16,6 +16,7 @@
     ]
   },
   "scripts": {
+    "root-readme": "node generate-root-readme.js > README.md",
     "bootstrap": "lerna bootstrap --since",
     "bundle": "ROLLUP_FORCE_RELOAD=1 yarn start bundle",
     "clean:dist": "rm -rf {web,configs,packages,@tunnckocore,@hela}/*/dist",
