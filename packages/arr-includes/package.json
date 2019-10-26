@@ -1,0 +1,84 @@
+{
+  "name": "arr-includes",
+  "version": "2.0.3",
+  "description": "Return positive value if (any of the) passed value(s) exists in array, or optionally an index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "packages/arr-includes"
+  },
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "license": "MPL-2.0",
+  "engines": {
+    "node": ">=10.13"
+  },
+  "main": "dist/cjs/index.js",
+  "unpkg": "dist/umd/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "index.d.ts",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "keywords": [
+    "tunnckocorehq",
+    "tunnckocore-oss",
+    "hela",
+    "development",
+    "developer-experience",
+    "dx",
+    "checks",
+    "validate",
+    "exists",
+    "includes",
+    "arr",
+    "array",
+    "arr-utils",
+    "array-utils",
+    "arr-includes",
+    "in-array",
+    "values",
+    "array-values"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "arrify": "^2.0.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "licenseStart": 2016,
+  "umd:name": "arrIncludes",
+  "verb": {
+    "readme": "../../readme-template.md",
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 4
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [],
+    "related": {
+      "list": []
+    }
+  }
+}

@@ -148,6 +148,7 @@
       "koa-better-body"
     ],
     "bundle": [
+      "arr-includes",
       "gitclone-defaults",
       "stringify-github-short-url",
       "parse-function"

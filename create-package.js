@@ -141,7 +141,7 @@ async function run() {
 
   const baseLine =
     answers.publishType === 'source'
-      ? "const mod = require('../src');"
+      ? "const mod = require('../src')"
       : "import mod from '../src'";
 
   const testFile = `${baseLine};

@@ -1,0 +1,88 @@
+{
+  "name": "all-module-paths",
+  "version": "0.7.1",
+  "description": "Get all possible javascript (npm/yarn/pnpm) global or local, binaries or packages paths, e.g. node_modules and node_modules/.bin. Also works for those using NVM or such",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "packages/all-module-paths"
+  },
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "license": "MPL-2.0",
+  "engines": {
+    "node": ">=10.13"
+  },
+  "main": "src/main.js",
+  "module": "src/index.js",
+  "typings": "index.d.ts",
+  "files": [
+    "src",
+    "index.d.ts"
+  ],
+  "keywords": [
+    "tunnckocorehq",
+    "tunnckocore-oss",
+    "hela",
+    "development",
+    "developer-experience",
+    "dx",
+    "utils",
+    "module",
+    "module-paths",
+    "paths",
+    "global-modules",
+    "local-modules",
+    "bin",
+    "bin-paths",
+    "binaries",
+    "packages",
+    "package-paths",
+    "npm",
+    "pnpm",
+    "yarn",
+    "javascript",
+    "local",
+    "global"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "global-dirs": "^2.0.0",
+    "esm": "^3.2.25"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "licenseStart": 2018,
+  "verb": {
+    "readme": "../../readme-template.md",
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 4
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [],
+    "related": {
+      "list": []
+    }
+  }
+}
