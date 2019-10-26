@@ -1,6 +1,6 @@
 {
   "name": "all-module-paths",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Get all possible javascript (npm/yarn/pnpm) global or local, binaries or packages paths, e.g. node_modules and node_modules/.bin. Also works for those using NVM or such",
   "repository": {
     "type": "git",
@@ -47,8 +47,8 @@
   ],
   "scripts": {},
   "dependencies": {
-    "global-dirs": "^2.0.0",
-    "esm": "^3.2.25"
+    "esm": "^3.2.25",
+    "global-dirs": "^2.0.0"
   },
   "publishConfig": {
     "access": "public",
