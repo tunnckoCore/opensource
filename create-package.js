@@ -67,7 +67,7 @@ async function run() {
     },
     {
       message: 'What is the scope?',
-      type: 'select',
+      type: 'autocomplete',
       name: 'scope',
       choices: ['@tunnckocore', '@hela'],
       onSubmit,
