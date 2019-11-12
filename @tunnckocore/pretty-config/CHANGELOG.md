@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/pretty-config@0.6.3...@tunnckocore/pretty-config@0.7.0) (2019-11-12)
+
+
+### Features
+
+* fake, run build before publish ([294e879](https://github.com/tunnckoCore/opensource/commit/294e8792daaf48939ff0e84a2e1998e3cbc6b267))
+
+
+
+
+
 ## [0.6.3](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/pretty-config@0.6.2...@tunnckocore/pretty-config@0.6.3) (2019-11-12)
 
 
