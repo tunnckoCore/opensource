@@ -5,7 +5,7 @@
   ],
   "routes": [
     {
-      "src": "/(.+)",
+      "src": "/(?!favicon)(.+)",
       "dest": "/api/index.js"
     }
   ]
