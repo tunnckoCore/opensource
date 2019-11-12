@@ -1,16 +1,28 @@
-// const path = require('path');
+'use strict';
+
+const path = require('path');
 const { createAliases } = require('@tunnckocore/utils');
 
 const CWD = process.cwd();
-const { alias, workspaces } = createAliases(CWD, '');
+const { alias, workspaces } = createAliases(CWD);
 
 const airbnbBase = require('eslint-config-airbnb-base');
+
 // eslint-disable-next-line import/no-dynamic-require
 const bestPractices = require(airbnbBase.extends[0]);
 
 const ignoredProps = bestPractices.rules[
   'no-param-reassign'
-][1].ignorePropertyModificationsFor.concat('err', 'x', 'opts', 'options');
+][1].ignorePropertyModificationsFor.concat(
+  'err',
+  'x',
+  '_',
+  'opts',
+  'options',
+  'settings',
+  'config',
+  'cfg',
+);
 
 const unicornRules = {
   // It is too much annoyance for me. It's a good thing, but generally
@@ -251,6 +263,20 @@ const additionalChanges = {
       ignorePropertyModificationsFor: ignoredProps,
     },
   ],
+
+  // disallow declaration of variables that are not used in the code
+  'no-unused-vars': [
+    'error',
+    {
+      ignoreRestSiblings: true, // airbnb's default
+      vars: 'all', // airbnb's default
+      varsIgnorePattern: '^(?:$$|xx|_|__|[iI]gnor(?:e|ing|ed))',
+      args: 'after-used', // airbnb's default
+      argsIgnorePattern: '^(?:$$|xx|_|__|[iI]gnor(?:e|ing|ed))',
+      caughtErrors: 'all',
+      caughtErrorsIgnorePattern: '^(?:$$|xx|_|__|[iI]gnor(?:e|ing|ed))',
+    },
+  ],
 };
 
 const importResolverAliasMap = Object.keys(alias).reduce((acc, key) => {
@@ -261,10 +287,28 @@ const importResolverAliasMap = Object.keys(alias).reduce((acc, key) => {
   return acc;
 }, []);
 
-const EXTENSIONS = ['.ts', '.tsx', '.d.ts', '.js', '.jsx', '.mdx', '.json'];
+const EXTENSIONS = [
+  '.ts',
+  '.tsx',
+  '.d.ts',
+  '.js',
+  '.jsx',
+  '.js.flow',
+  '.mdx',
+  '.json',
+];
 
 module.exports = {
-  parser: 'babel-eslint',
+  parser: path.join(__dirname, 'buntis-parser.js'),
+  parserOptions: {
+    loc: true,
+    raw: true,
+    source: true,
+    ts: true,
+    jsx: true,
+    next: true,
+    scriptType: 'module',
+  },
   settings: {
     node: {
       allowModules: Object.keys(alias),
@@ -289,6 +333,7 @@ module.exports = {
       '.d.ts',
       '.js',
       '.jsx',
+      '.js.flow',
       '.mdx',
       '.json',
     ],

@@ -54,13 +54,13 @@ const ts = {
     '@typescript-eslint/no-unused-vars': [
       'error',
       {
-        ignoreRestSiblings: false,
+        ignoreRestSiblings: true,
         vars: 'all',
-        varsIgnorePattern: '^(?:$$|xx|__|[iI]gnor(?:e|ing|ed))',
-        args: 'all',
-        argsIgnorePattern: '^(?:$$|xx|__|[iI]gnor(?:e|ing|ed))',
+        varsIgnorePattern: '^(?:$$|xx|_|__|[iI]gnor(?:e|ing|ed))',
+        args: 'after-used',
+        argsIgnorePattern: '^(?:$$|xx|_|__|[iI]gnor(?:e|ing|ed))',
         caughtErrors: 'all',
-        caughtErrorsIgnorePattern: '^(?:$$|xx|__|[iI]gnor(?:e|ing|ed))',
+        caughtErrorsIgnorePattern: '^(?:$$|xx|_|__|[iI]gnor(?:e|ing|ed))',
       },
     ],
 
@@ -114,10 +114,21 @@ try {
   hasTypeScript = true;
 } catch (err) {}
 
+const react = {
+  files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+  rules: {
+    'react/jsx-filename-extension': [
+      'error',
+      { extensions: ['.ts', '.tsx', '.js', '.jsx', '.mdx'] },
+    ],
+  },
+};
+
 module.exports = {
   jest,
   mdx,
   ts,
+  react,
   overrides: [
     jest,
     mdx,
