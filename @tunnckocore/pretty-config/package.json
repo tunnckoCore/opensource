@@ -1,0 +1,84 @@
+{
+  "name": "@tunnckocore/pretty-config",
+  "version": "0.5.1",
+  "description": "Find and load configuration. Config resolver/loader, similar to cosmiconfig",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@tunnckocore/pretty-config"
+  },
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "license": "MPL-2.0",
+  "engines": {
+    "node": ">=10.13"
+  },
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "typings": "dist/typings/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "tunnckocorehq",
+    "tunnckocore-oss",
+    "hela",
+    "development",
+    "developer-experience",
+    "dx",
+    "config",
+    " configs",
+    "configuration",
+    "loader",
+    "config-loader",
+    "package-json",
+    "presets",
+    "preset-loader",
+    "rcconfig",
+    "rc"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "yaml": "^1.7.2",
+    "json-6": "^1.0.4",
+    "esm": "^3.2.25"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 0,
+        "branches": 0,
+        "functions": 0,
+        "lines": 0
+      }
+    }
+  },
+  "jestCov": {
+    "color": "grey"
+  },
+  "licenseStart": 2017,
+  "verb": {
+    "readme": "../../readme-template.md",
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 4
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [],
+    "related": {
+      "list": []
+    }
+  }
+}
