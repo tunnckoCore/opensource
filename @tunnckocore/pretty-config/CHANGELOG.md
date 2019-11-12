@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/pretty-config@0.6.0...@tunnckocore/pretty-config@0.6.2) (2019-11-12)
+
+
+### Bug Fixes
+
+* sync ([74640f2](https://github.com/tunnckoCore/opensource/commit/74640f250e2b4f4ab38aced9b968fda557b09944))
+
+
+
+
+
 # 0.6.0 (2019-11-12)
 
 
