@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.7](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.6...@tunnckocore/eslint-config@5.0.7) (2019-11-12)
+
+
+### Bug Fixes
+
+* disable node/shebang rule ([cee6cf2](https://github.com/tunnckoCore/opensource/commit/cee6cf22b5b65a44df4d24e3734e307f32d243b5))
+
+
+
+
+
 ## [5.0.6](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.5...@tunnckocore/eslint-config@5.0.6) (2019-11-12)
 
 
