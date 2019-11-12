@@ -15,7 +15,6 @@
   },
   "main": "dist/main/index.js",
   "module": "dist/module/index.js",
-  "typings": "dist/typings/index.d.ts",
   "files": [
     "dist"
   ],

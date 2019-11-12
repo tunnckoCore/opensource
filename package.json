@@ -145,7 +145,8 @@
   },
   "meta": {
     "build": [
-      "koa-better-body"
+      "koa-better-body",
+      "@tunnckocore/pretty-config"
     ],
     "bundle": [
       "arr-includes",
