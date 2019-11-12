@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/tunnckoCore/opensource/compare/all-module-paths@0.8.0...all-module-paths@0.8.1) (2019-11-12)
+
+
+### Bug Fixes
+
+* all-module-paths coverage ([85c2229](https://github.com/tunnckoCore/opensource/commit/85c222973e018eb0edd58717c97a2de7e0b92986))
+
+
+
+
+
 # 0.8.0 (2019-10-26)
 
 

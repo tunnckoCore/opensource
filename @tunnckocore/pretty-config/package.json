@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/pretty-config",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Find and load configuration. Config resolver/loader, similar to cosmiconfig",
   "repository": {
     "type": "git",
@@ -38,9 +38,9 @@
   ],
   "scripts": {},
   "dependencies": {
-    "yaml": "^1.7.2",
+    "esm": "^3.2.25",
     "json-6": "^1.0.4",
-    "esm": "^3.2.25"
+    "yaml": "^1.7.2"
   },
   "publishConfig": {
     "access": "public",
