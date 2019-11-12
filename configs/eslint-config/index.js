@@ -277,6 +277,8 @@ const additionalChanges = {
       caughtErrorsIgnorePattern: '^(?:$$|xx|_|__|[iI]gnor(?:e|ing|ed))',
     },
   ],
+
+  'node/shebang': 'off',
 };
 
 const importResolverAliasMap = Object.keys(alias).reduce((acc, key) => {
