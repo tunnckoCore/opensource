@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.6](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.5...@tunnckocore/eslint-config@5.0.6) (2019-11-12)
+
+
+### Bug Fixes
+
+* **eslint-config:** use buntis parser, update no-unused-vars and no-param-reassign ([fba15a5](https://github.com/tunnckoCore/opensource/commit/fba15a51c272413903e7f1450320d6d81d007fd3))
+
+
+
+
+
 ## [5.0.5](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.4...@tunnckocore/eslint-config@5.0.5) (2019-10-25)
 
 **Note:** Version bump only for package @tunnckocore/eslint-config
