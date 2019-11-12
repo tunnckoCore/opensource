@@ -5,14 +5,6 @@ import util from 'util';
 import yaml from 'yaml';
 import JSON6 from 'json-6';
 
-function isObject(val) {
-  return val && typeof val === 'object' && !Array.isArray(val);
-}
-
-function interop(ex) {
-  return isObject(ex) && 'default' in ex ? ex.default : ex;
-}
-
 export function resolveConfigPath(opts) {
   const configFilepath = opts.searchPlaces.reduce((configPath, fp) => {
     // really, hit fs only once, we don't care
@@ -68,7 +60,7 @@ export async function resolveConfig(configPath, opts) {
   if (/\.m?js$/.test(configPath)) {
     const esmLoader = await import('esm').then((x) => x.default);
     const config = esmLoader(module)(configPath);
-    return interop(config);
+    return config;
   }
 
   // 4) if `.eslintrc`:
