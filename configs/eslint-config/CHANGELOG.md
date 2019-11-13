@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.9](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.8...@tunnckocore/eslint-config@5.0.9) (2019-11-13)
+
+
+### Bug Fixes
+
+* **eslint-config:** switch back to babel-eslint parser temporary ([79ecdbc](https://github.com/tunnckoCore/opensource/commit/79ecdbcafdb1f33ce7d308cca99d8078c293071c))
+
+
+
+
+
 ## [5.0.8](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.7...@tunnckocore/eslint-config@5.0.8) (2019-11-13)
 
 
