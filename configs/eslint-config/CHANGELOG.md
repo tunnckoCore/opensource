@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.8](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.7...@tunnckocore/eslint-config@5.0.8) (2019-11-13)
+
+
+### Bug Fixes
+
+* duh, update files field ([9376fed](https://github.com/tunnckoCore/opensource/commit/9376fed3ebf2e04798bcafee44a6d938027b3690))
+
+
+
+
+
 ## [5.0.7](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.6...@tunnckocore/eslint-config@5.0.7) (2019-11-12)
 
 
