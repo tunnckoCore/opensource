@@ -17,9 +17,7 @@
   "module": "index.js",
   "typings": "dist/types/index.d.ts",
   "files": [
-    "index.js",
-    "overrides.js",
-    "recommended.js"
+    "*.js"
   ],
   "keywords": [
     "airbnb codestyle",
