@@ -301,16 +301,17 @@ const EXTENSIONS = [
 ];
 
 module.exports = {
-  parser: path.join(__dirname, 'buntis-parser.js'),
-  parserOptions: {
-    loc: true,
-    raw: true,
-    source: true,
-    ts: true,
-    jsx: true,
-    next: true,
-    scriptType: 'module',
-  },
+  parser: 'babel-eslint',
+  // parser: path.join(__dirname, 'buntis-parser.js'),
+  // parserOptions: {
+  //   loc: true,
+  //   raw: true,
+  //   source: true,
+  //   ts: true,
+  //   jsx: true,
+  //   next: true,
+  //   scriptType: 'module',
+  // },
   settings: {
     node: {
       allowModules: Object.keys(alias),
