@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.10](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.9...@tunnckocore/eslint-config@5.0.10) (2019-11-14)
+
+
+### Bug Fixes
+
+* disable prefer-default-export ([e5a5050](https://github.com/tunnckoCore/opensource/commit/e5a50506f3309d24efeffe25cfee378340d9453b))
+
+
+
+
+
 ## [5.0.9](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.8...@tunnckocore/eslint-config@5.0.9) (2019-11-13)
 
 
