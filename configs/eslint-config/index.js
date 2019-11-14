@@ -279,6 +279,7 @@ const additionalChanges = {
   ],
 
   'node/shebang': 'off',
+  'import/prefer-default-export': 'off',
 };
 
 const importResolverAliasMap = Object.keys(alias).reduce((acc, key) => {
@@ -301,7 +302,7 @@ const EXTENSIONS = [
 ];
 
 module.exports = {
-  parser: 'babel-eslint',
+  // parser: 'babel-eslint',
   // parser: path.join(__dirname, 'buntis-parser.js'),
   // parserOptions: {
   //   loc: true,
