@@ -1,6 +1,5 @@
 'use strict';
 
-const path = require('path');
 const { createAliases } = require('@tunnckocore/utils');
 
 const CWD = process.cwd();
@@ -273,8 +272,10 @@ const additionalChanges = {
       varsIgnorePattern: '^(?:$$|xx|_|__|[iI]gnor(?:e|ing|ed))',
       args: 'after-used', // airbnb's default
       argsIgnorePattern: '^(?:$$|xx|_|__|[iI]gnor(?:e|ing|ed))',
-      caughtErrors: 'all',
-      caughtErrorsIgnorePattern: '^(?:$$|xx|_|__|[iI]gnor(?:e|ing|ed))',
+
+      // catch blocks are handled by Unicorns
+      caughtErrors: 'none',
+      // caughtErrorsIgnorePattern: '^(?:$$|xx|_|__|[iI]gnor(?:e|ing|ed))',
     },
   ],
 
