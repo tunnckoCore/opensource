@@ -21,7 +21,7 @@
   ],
   "scripts": {},
   "dependencies": {
-    "chalk": "^2.4.2",
+    "chalk": "^3.0.0",
     "jest-worker": "^24.0.0",
     "throat": "^4.1.0"
   },
