@@ -67,7 +67,7 @@
     "eslint-config-prettier": "^6.3.0",
     "eslint-config-xo": "^0.27.1",
     "eslint-config-xo-react": "^0.20.0",
-    "eslint-config-xo-typescript": "^0.21.0",
+    "eslint-config-xo-typescript": "^0.22.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-mdx": "^1.5.5",
     "eslint-plugin-eslint-comments": "^3.1.2",
