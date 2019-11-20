@@ -25,18 +25,21 @@ jobs:
         name: Cache node modules
         with:
           path: node_modules
-          key: ${{ runner.OS }}-nodejs-${{ hashFiles('yarn.lock') }}
+          key: ${{ matrix.platform }}-nodejs-${{ matrix.node-version }}-${{ hashFiles('yarn.lock') }}
           restore-keys: |
-            ${{ runner.OS }}-nodejs-${{ env.cache-name }}-
-            ${{ runner.OS }}-nodejs-
-            ${{ runner.OS }}-
+            ${{ matrix.platform }}-nodejs-${{ matrix.node-version }}-
+            ${{ matrix.platform }}-nodejs-
+            ${{ matrix.platform }}-
       # - name: Use Node.js ${{ matrix.node-version }}
       #   uses: actions/setup-node@v1
       #   with:
       #     node-version: ${{ matrix.node-version }}
       - name: Installing dependencies
         if: steps.nodejs-cache.outputs.cache-hit != 'true'
-        run: yarn setup:ci
+        run: yarn --frozen-lockfile
+      - name: Lerna Bootstrap
+        if: steps.nodejs-cache.outputs.cache-hit != 'true'
+        run: yarn run bootstrap
       - name: Linting codebase with ESLint & Prettier
         run: yarn start lint --no-runInBand
       - name: Testing all packages
