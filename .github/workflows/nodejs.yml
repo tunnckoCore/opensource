@@ -15,23 +15,35 @@ jobs:
       CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
     strategy:
       matrix:
-        platform: [ubuntu-18.04, macos-latest]
+        platform: [ubuntu-latest, macos-latest, windows-latest]
         node-version: [10.x, 12.x]
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/cache@v1
+        id: nodejs-cache
+        name: Cache node modules
         with:
-          node-version: ${{ matrix.node-version }}
+          path: node_modules
+          key: ${{ runner.OS }}-nodejs-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-nodejs-${{ env.cache-name }}-
+            ${{ runner.OS }}-nodejs-
+            ${{ runner.OS }}-
+      # - name: Use Node.js ${{ matrix.node-version }}
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
       - name: Installing dependencies
+        if: steps.nodejs-cache.outputs.cache-hit != 'true'
         run: yarn setup:ci
       - name: Linting codebase with ESLint & Prettier
         run: yarn start lint
       - name: Testing all packages
         run: yarn start test --no-runInBand
       - name: Sending test coverage to CodeCov
-        run: bash <(curl -s https://codecov.io/bash)
+        if: matrix.platform == 'ubuntu-latest'
+        run: echo matrix.node-version && bash <(curl -s https://codecov.io/bash)
   # node12:
   #   env:
   #     CI: true
