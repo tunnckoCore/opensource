@@ -1717,22 +1717,22 @@
     cosmiconfig "^5.2.1"
     esm "^3.2.25"
 
-"@hela/core@^3.0.0-alpha.71":
-  version "3.0.0-alpha.71"
-  resolved "https://registry.yarnpkg.com/@hela/core/-/core-3.0.0-alpha.71.tgz#4bb2ae519dc365d77f662fef818364fb23ab199d"
-  integrity sha512-pP2MDoAt/vUSz9pg3n4uQGGgR7pX3E3bZBIrFkuoolkBZ+MSlChwhY4zz2I1uVVBBmtT41IMWNSlVEe+Ap/zog==
-  dependencies:
-    all-module-paths "^0.7.1"
-    dargs "^7.0.0"
-    execa "^2.0.3"
-    sade "^1.6.1"
-
 "@hela/core@^3.0.0-alpha.91":
   version "3.0.0-alpha.91"
   resolved "https://registry.yarnpkg.com/@hela/core/-/core-3.0.0-alpha.91.tgz#33a1070fb60c14312c11bb4184469efddf0fe8ad"
   integrity sha512-EsW78Usb7KiR+1dmkxlCnAqqsVs1a0uPvihlnCmTgPR+oS93ybCejT+0BZHi8iI3ZFQVGl0RWzCKVi8LwCnc9g==
   dependencies:
     "@tunnckocore/execa" "^4.3.2"
+    all-module-paths "^0.7.1"
+    dargs "^7.0.0"
+    sade "^1.6.1"
+
+"@hela/core@^3.0.0-beta":
+  version "3.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@hela/core/-/core-3.0.0-beta.4.tgz#9cba6dd151793b4da68cc007106fc69575c50f0d"
+  integrity sha512-yLXohMPZlNpswMxTVXQ3WpUS8152altNW00KelxAlYr28G7kwz1n9vKURni7KFNw88QXhxV4bqDO7mzQ4UpkNQ==
+  dependencies:
+    "@tunnckocore/execa" "^5.0.3"
     all-module-paths "^0.7.1"
     dargs "^7.0.0"
     sade "^1.6.1"
@@ -6728,21 +6728,6 @@ execa@^1.0.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
-execa@^2.0.3:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-2.1.0.tgz#e5d3ecd837d2a60ec50f3da78fd39767747bbe99"
-  integrity sha512-Y/URAVapfbYy2Xp/gb6A0E7iR8xeqOCXsuuaoMn7A5PzrXUK84E1gyiEfq0wQd/GHA6GsoHWwhNq8anb0mleIw==
-  dependencies:
-    cross-spawn "^7.0.0"
-    get-stream "^5.0.0"
-    is-stream "^2.0.0"
-    merge-stream "^2.0.0"
-    npm-run-path "^3.0.0"
-    onetime "^5.1.0"
-    p-finally "^2.0.0"
-    signal-exit "^3.0.2"
-    strip-final-newline "^2.0.0"
-
 execa@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/execa/-/execa-3.2.0.tgz#18326b79c7ab7fbd6610fd900c1b9e95fa48f90a"
@@ -11357,13 +11342,6 @@ npm-run-path@^2.0.0:
   integrity sha1-NakjLfo11wZ7TLLd8jV7GHFTbF8=
   dependencies:
     path-key "^2.0.0"
-
-npm-run-path@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-3.1.0.tgz#7f91be317f6a466efed3c9f2980ad8a4ee8b0fa5"
-  integrity sha512-Dbl4A/VfiVGLgQv29URL9xshU8XDY1GeLy+fsaZ1AA8JDSfjvr5P5+pzRbWqRSBxk6/DW7MIh8lTM/PaGnP2kg==
-  dependencies:
-    path-key "^3.0.0"
 
 npm-run-path@^4.0.0:
   version "4.0.0"
