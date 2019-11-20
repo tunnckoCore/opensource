@@ -212,7 +212,7 @@ function createPkgJson() {
         },
       },
     },
-    jestCov: {
+    cov: {
       color: 'grey',
     },
     licenseStart: parseInt(answers.licenseStart, 10),
