@@ -1,5 +1,6 @@
 'use strict';
 
+const path = require('path');
 const { createAliases } = require('@tunnckocore/utils');
 
 const CWD = process.cwd();
@@ -303,7 +304,19 @@ const EXTENSIONS = [
 ];
 
 module.exports = {
-  // parser: 'babel-eslint',
+  parser: 'babel-eslint',
+  parserOptions: {
+    ecmaVersion: 11, // ECMAScript 2020
+    requireConfigFile: true,
+    sourceType: 'module',
+    ecmaFeatures: {
+      impliedStrict: true,
+      jsx: true,
+    },
+    babelOptions: {
+      configFile: path.join(CWD, 'babe-eslint.config.js'),
+    },
+  },
   // parser: path.join(__dirname, 'buntis-parser.js'),
   // parserOptions: {
   //   loc: true,
