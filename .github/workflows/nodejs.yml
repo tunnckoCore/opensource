@@ -38,12 +38,12 @@ jobs:
         if: steps.nodejs-cache.outputs.cache-hit != 'true'
         run: yarn setup:ci
       - name: Linting codebase with ESLint & Prettier
-        run: yarn start lint
+        run: yarn start lint --no-runInBand
       - name: Testing all packages
         run: yarn start test --no-runInBand
       - name: Sending test coverage to CodeCov
         if: matrix.platform == 'ubuntu-latest'
-        run: echo matrix.node-version && bash <(curl -s https://codecov.io/bash)
+        run: echo ${{ matrix.node-version }} && bash <(curl -s https://codecov.io/bash)
   # node12:
   #   env:
   #     CI: true
