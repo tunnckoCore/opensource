@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@1.1.2...@tunnckocore/utils@1.1.3) (2019-11-20)
+
+
+### Bug Fixes
+
+* **eslint-config:** babel-eslint config file ([425e31c](https://github.com/tunnckoCore/opensource/commit/425e31c7dac2d25f56fa357cbacf30321be914bc))
+
+
+
+
+
 ## [1.1.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@1.1.1...@tunnckocore/utils@1.1.2) (2019-10-25)
 
 

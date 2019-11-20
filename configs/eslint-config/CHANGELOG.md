@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.10...@tunnckocore/eslint-config@5.1.0) (2019-11-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency eslint-config-xo-typescript to ^0.21.0 ([ecbef7a](https://github.com/tunnckoCore/opensource/commit/ecbef7a20d6f78bd0cacd28fc2b60fabe820fb41))
+* **deps:** update dependency eslint-config-xo-typescript to ^0.22.0 ([854212e](https://github.com/tunnckoCore/opensource/commit/854212edecdc191ada0179d773b4ca5e8b7fafd0))
+* **deps:** update dependency eslint-plugin-jest to v23 ([6e327eb](https://github.com/tunnckoCore/opensource/commit/6e327eb50eb08c4a0f17960b1b3a73f395787f35))
+* **deps:** update dependency eslint-plugin-unicorn to v13 ([788d4fe](https://github.com/tunnckoCore/opensource/commit/788d4fef8d7ecd3da9a55bc350da12190acd3d9e))
+
+
+### Features
+
+* **eslint-config:** bugfixes, babel-eslint@11, parserOptions ([52dc97d](https://github.com/tunnckoCore/opensource/commit/52dc97db3f062c356575befff51345bbd35db74c))
+
+
+
+
+
 ## [5.0.10](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.0.9...@tunnckocore/eslint-config@5.0.10) (2019-11-14)
 
 

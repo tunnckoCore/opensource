@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.7](https://github.com/tunnckoCore/opensource/compare/@hela/dev@3.1.6...@hela/dev@3.1.7) (2019-11-20)
+
+**Note:** Version bump only for package @hela/dev
+
+
+
+
+
 ## [3.1.6](https://github.com/tunnckoCore/opensource/compare/@hela/dev@3.1.5...@hela/dev@3.1.6) (2019-10-25)
 
 **Note:** Version bump only for package @hela/dev
