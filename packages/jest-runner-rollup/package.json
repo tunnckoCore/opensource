@@ -42,7 +42,7 @@
     "@tunnckocore/create-jest-runner": "^1.0.3",
     "@tunnckocore/utils": "^1.1.2",
     "builtin-modules": "^3.1.0",
-    "cosmiconfig": "^5.2.1"
+    "cosmiconfig": "^6.0.0"
   },
   "publishConfig": {
     "access": "public",

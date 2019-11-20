@@ -39,7 +39,7 @@
   "dependencies": {
     "@tunnckocore/create-jest-runner": "^1.0.3",
     "@tunnckocore/utils": "^1.1.2",
-    "cosmiconfig": "^5.2.1",
+    "cosmiconfig": "^6.0.0",
     "parse-comments": "^1.0.0"
   },
   "publishConfig": {
