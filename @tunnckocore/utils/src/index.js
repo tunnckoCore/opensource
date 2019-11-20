@@ -122,7 +122,7 @@ function getWorkspacesAndExtensions(rootDir) {
   const lernaJson = parseJson(lernaJsonPath);
 
   const workspaces = []
-    .concat(lernaJson.packages || (packageJson.workspaces || []))
+    .concat(lernaJson.packages || packageJson.workspaces || [])
     .filter((x) => typeof x === 'string')
     .filter(Boolean)
     .reduce((acc, ws) => acc.concat(ws.split(',')), [])

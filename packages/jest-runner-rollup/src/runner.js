@@ -256,7 +256,8 @@ async function tryLoadConfig({ testPath, config: jestConfig, start }) {
           (result.config.rolldown &&
             typeof result.config.rolldown !== 'object') ||
           // or, there is not such fields
-          (!result.config.rollup || !result.config.rolldown)))
+          !result.config.rollup ||
+          !result.config.rolldown))
     ) {
       // then we trying `jest-runner-rollup.config.js`
       result = jestRunnerRollupConfig.searchSync();
