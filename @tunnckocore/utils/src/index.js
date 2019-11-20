@@ -246,8 +246,8 @@ function testCoverage(rootDir, testCovPath) {
 
   return {
     packageJsonPath,
-    pkg: { ...pkg, jestCov },
-    message: `Done. Now you have \`jestCov\` field in the root package.json!\nYou can use it to further generate per package badges.`,
+    pkg: { ...pkg, cov: jestCov },
+    message: `Done. Now you have \`cov\` field in the root package.json!\nYou can use it to further generate per package badges.`,
   };
 
   // fs.writeFileSync(packageJsonPath, JSON.stringify({ ...pkg, jestCov }, 0, 2));

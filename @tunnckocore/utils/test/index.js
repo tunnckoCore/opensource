@@ -242,8 +242,8 @@ test('testCoverage work if custom lcov report path is passed', () => {
   expect(res.message).toBeTruthy();
   expect(typeof res.message).toStrictEqual('string');
   expect(res.pkg.name).toBeTruthy();
-  expect(res.pkg.jestCov).toBeTruthy();
-  expect(typeof res.pkg.jestCov).toStrictEqual('object');
+  expect(res.pkg.cov).toBeTruthy();
+  expect(typeof res.pkg.cov).toStrictEqual('object');
 });
 
 test('testCoverage work default lcov report path', () => {
@@ -258,8 +258,8 @@ test('testCoverage work default lcov report path', () => {
   expect(res.message).toBeTruthy();
   expect(typeof res.message).toStrictEqual('string');
   expect(res.pkg.name).toBeTruthy();
-  expect(res.pkg.jestCov).toBeTruthy();
-  expect(typeof res.pkg.jestCov).toStrictEqual('object');
+  expect(res.pkg.cov).toBeTruthy();
+  expect(typeof res.pkg.cov).toStrictEqual('object');
 });
 
 test('testCoverage throw if not in monorepo', () => {

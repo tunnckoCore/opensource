@@ -46,6 +46,10 @@
     "access": "public",
     "tag": "latest"
   },
+  "cov": {
+    "value": 2.08,
+    "color": "red"
+  },
   "jest": {
     "coverageThreshold": {
       "src/**/*.js": {
@@ -57,7 +61,8 @@
     }
   },
   "jestCov": {
-    "color": "grey"
+    "value": 2.08,
+    "color": "red"
   },
   "licenseStart": 2017,
   "verb": {

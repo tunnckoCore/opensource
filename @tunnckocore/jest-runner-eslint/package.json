@@ -56,6 +56,10 @@
     "access": "public",
     "tag": "latest"
   },
+  "cov": {
+    "value": 11.29,
+    "color": "red"
+  },
   "jest": {
     "coverageThreshold": {
       "src/**/*.js": {

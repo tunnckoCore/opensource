@@ -11,6 +11,11 @@ __fixtures__
 .yarnrc
 *.js.snap
 coverage
+*.ico
+*.png
+*.svg
+*.jpeg
+*.jpg
 
 patches
 @hela/dev/src/configs/*/config.js

@@ -1,6 +1,6 @@
-# jest-runner-docs [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url]
+# @tunnckocore/pretty-config [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url]
 
-> Jest runner for API documentation generation from code comments, supports TypeScript. Very stable and reliable, based on `parse-comments` package
+> Find and load configuration. Config resolver/loader, similar to cosmiconfig
 
 Please consider following this project's author, [Charlike Mike Reagent](https://github.com/tunnckoCore), and :star: the project to show your :heart: and support.
 
@@ -71,7 +71,7 @@ This project requires [**Node.js**](https://nodejs.org) **>=10.13** _(see [Suppo
 _We highly recommend to use Yarn when you think to contribute to this project._
 
 ```bash
-$ yarn add jest-runner-docs
+$ yarn add @tunnckocore/pretty-config
 ```
 
 <!-- docks-start -->
@@ -91,7 +91,7 @@ Consider reading the [Support and Release Policy](https://github.com/tunnckoCore
 
 ### Support the project
 
-[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/jest-runner-docs) sites too! :rocket:
+[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/@tunnckocore/pretty-config) sites too! :rocket:
 
 Not financial support? Okey! [Pull requests](https://github.com/tunnckoCoreLabs/contributing#opening-a-pull-request), stars and all kind of [contributions](https://opensource.guide/how-to-contribute/#what-it-means-to-contribute) are always
 welcome. :sparkles:
@@ -130,7 +130,7 @@ Consider showing your [support](#support-the-project) to them. :sparkling_heart:
 
 ## License
 
-Copyright (c) 2019-present, [Charlike Mike Reagent](https://tunnckocore.com) `<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br>
+Copyright (c) 2017-present, [Charlike Mike Reagent](https://tunnckocore.com) `<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br>
 Released under the [MPL-2.0 License][license-url].
 
 [contributing-url]: https://github.com/tunnckoCore/opensource/blob/master/CONTRIBUTING.md
@@ -138,8 +138,8 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- Heading badges -->
 
-[npmv-url]: https://www.npmjs.com/package/jest-runner-docs
-[npmv-img]: https://badgen.net/npm/v/jest-runner-docs?icon=npm
+[npmv-url]: https://www.npmjs.com/package/@tunnckocore/pretty-config
+[npmv-img]: https://badgen.net/npm/v/@tunnckocore/pretty-config?icon=npm
 [nodejs-img]: https://badgen.net/badge/node/>=10.13/green
 
 <!--
@@ -147,8 +147,8 @@ Released under the [MPL-2.0 License][license-url].
 [ghrelease-img]: https://badgen.net/github/release/tunnckoCore/opensource?icon=github
 -->
 
-[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/jest-runner-docs/LICENSE
-[license-img]: https://badgen.net/npm/license/jest-runner-docs
+[license-url]: https://github.com/tunnckoCore/opensource/blob/master/@tunnckocore/pretty-config/LICENSE
+[license-img]: https://badgen.net/npm/license/@tunnckocore/pretty-config
 
 <!-- Front line badges -->
 
@@ -157,7 +157,7 @@ Released under the [MPL-2.0 License][license-url].
 [linuxbuild-url]: https://github.com/tunnckocore/opensource/actions
 [linuxbuild-img]: https://badgennet.charlike-oss.now.sh/github/checks/tunnckoCore/opensource/master?label=build&icon=github
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
-[codecoverage-img]: https://badgen.net/badge/coverage/7.7%25/red?icon=codecov
+[codecoverage-img]: https://badgen.net/badge/coverage/2.08%25/red?icon=codecov
 [dependencies-url]: https://david-dm.org/tunnckoCore/opensource
 [dependencies-img]: https://badgen.net/david/dep/tunnckoCore/opensource?label=deps
 [ccommits-url]: https://conventionalcommits.org/
@@ -168,9 +168,9 @@ Released under the [MPL-2.0 License][license-url].
 [community-url]: https://github.com/tunnckocorehq/community
 [last-commit-img]: https://badgen.net/github/last-commit/tunnckoCore/opensource/master
 [last-commit-url]: https://github.com/tunnckoCore/opensource/commits/master
-[downloads-weekly-img]: https://badgen.net/npm/dw/jest-runner-docs?icon=npm
-[downloads-monthly-img]: https://badgen.net/npm/dm/jest-runner-docs?icon=npm
-[downloads-total-img]: https://badgen.net/npm/dt/jest-runner-docs?icon=npm
+[downloads-weekly-img]: https://badgen.net/npm/dw/@tunnckocore/pretty-config?icon=npm
+[downloads-monthly-img]: https://badgen.net/npm/dm/@tunnckocore/pretty-config?icon=npm
+[downloads-total-img]: https://badgen.net/npm/dt/@tunnckocore/pretty-config?icon=npm
 [renovateapp-url]: https://renovatebot.com
 [renovateapp-img]: https://badgen.net/badge/renovate/enabled/green
 [prs-welcome-img]: https://badgen.net/badge/PRs/welcome/green

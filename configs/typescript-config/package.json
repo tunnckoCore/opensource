@@ -42,7 +42,7 @@
     "access": "public",
     "tag": "latest"
   },
-  "jestCov": {
+  "cov": {
     "color": "grey"
   },
   "licenseStart": 2019,

@@ -20,6 +20,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
 
   const docksConfig = {
     promo: true,
+    verbose: false,
     force: true,
     includeHeader: true,
     outfile: 'docs/README.md',
@@ -96,7 +97,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
       fs.writeFileSync(outputFile, contents);
       return outputFile;
     },
-    { testPath, start },
+    { testPath, start, cfg: docksConfig },
   );
 
   if (outfile.hasError) return outfile.error;
@@ -116,7 +117,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
         outfile,
         outFile: outfile,
       }),
-    { start, testPath },
+    { start, testPath, cfg: docksConfig },
   );
   if (res && res.hasError) return res.error;
 
@@ -150,23 +151,45 @@ async function tryLoadConfig(testPath, start) {
   );
 }
 
-async function tryCatch(fn, { testPath, start }) {
+async function tryCatch(fn, { testPath, start, cfg }) {
   try {
     return await fn();
   } catch (err) {
-    return {
-      hasError: true,
-      error: fail({
-        start,
-        end: new Date(),
-        test: {
-          path: testPath,
-          title: 'Docks',
-          errorMessage: `jest-runner-docs: ${err.stack || err.message}`,
-        },
-      }),
-    };
+    if (err.command === 'verb') {
+      const errMsg = err.all
+        .split('\n')
+        .filter((line) => !/\[.+\].+/.test(line))
+        .join('\n');
+      const msg = errMsg.replace(
+        /(.*)Error:\s+(.+)/,
+        '$1Error: Failure in `verb`, $2',
+      );
+
+      return createFailed({ err, testPath, start, cfg }, msg);
+    }
+
+    return createFailed({ err, testPath, start, cfg });
   }
+}
+
+function createFailed({ err, testPath, start, cfg }, message) {
+  const msg =
+    cfg && cfg.verbose
+      ? message || err.stack || err.message
+      : message || 'Some unknown error!';
+
+  return {
+    hasError: true,
+    error: fail({
+      start,
+      end: new Date(),
+      test: {
+        path: testPath,
+        title: 'Docks',
+        errorMessage: `jest-runner-docs: ${msg}`,
+      },
+    }),
+  };
 }
 
 // function tryExtensions(filepath, config) {

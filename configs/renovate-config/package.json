@@ -38,6 +38,9 @@
     "access": "public",
     "tag": "latest"
   },
+  "cov": {
+    "color": "grey"
+  },
   "jestCov": {
     "color": "grey"
   },

@@ -1,6 +1,6 @@
-# jest-runner-docs [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url]
+# arr-includes [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url]
 
-> Jest runner for API documentation generation from code comments, supports TypeScript. Very stable and reliable, based on `parse-comments` package
+> Return positive value if (any of the) passed value(s) exists in array, or optionally an index
 
 Please consider following this project's author, [Charlike Mike Reagent](https://github.com/tunnckoCore), and :star: the project to show your :heart: and support.
 
@@ -55,6 +55,8 @@ Project is [semantically](https://semver.org) versioned & automatically released
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
+  - [arrIncludes](#arrincludes)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -71,10 +73,59 @@ This project requires [**Node.js**](https://nodejs.org) **>=10.13** _(see [Suppo
 _We highly recommend to use Yarn when you think to contribute to this project._
 
 ```bash
-$ yarn add jest-runner-docs
+$ yarn add arr-includes
 ```
 
 <!-- docks-start -->
+
+## API
+
+_Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._
+
+### [arrIncludes](./src/index.js#L34)
+
+Check if any of `values` exists on `arr`.
+
+**Signature**
+
+```ts
+function(arr, values)
+```
+
+**Params**
+
+- `arr` - array to check
+- `values` - array or string
+- `returns` - returns `false` if not found, `true` if **index is 0**
+  from the array, otherwise `number` index
+
+**Example**
+
+```js
+import arrIncludes from 'arr-includes';
+
+console.log(arrIncludes([1, 'bar', 55], 2)); // => false
+console.log(arrIncludes([1, 'bar', 3], 3)); // => 2
+
+console.log(arrIncludes([1, 'bar', 3, true], false)); // => false
+console.log(arrIncludes([1, 'bar', 44, true], true)); // => 3
+
+console.log(arrIncludes(['foo', 'bar'], 'baz')); // => false
+console.log(arrIncludes(['foo', 'bar'], 'foo')); // => true
+console.log(arrIncludes(['qux', 'foo', 'bar'], 'foo')); // => 1
+console.log(arrIncludes([true, 'qqq', 'bar'], true)); // => true
+console.log(arrIncludes(['true', 'qqq', 'bar'], true)); // => false
+console.log(arrIncludes(['qqq', 'bar', true], true)); // => 2
+console.log(arrIncludes(['qqq', 'true', 'bar'], true)); // => false
+console.log(arrIncludes([false, 'foo', null, 'bar'], null)); // => 2
+
+console.log(arrIncludes(['foo', 'bar', 'qux'], ['a', 'b', 'c'])); // => false
+console.log(arrIncludes(['b', 'a', 'c'], ['a', 'b', 'c'])); // => 1
+console.log(arrIncludes(['foo', 'bb', 'b'], ['a', 'b'])); // => 2
+console.log(arrIncludes(['foo', 'bar', 'qux'], ['a', 'b', 'foo'])); // => true
+console.log(arrIncludes(['bar', 123, 'foo', 'qux'], ['a', 'b', 'foo'])); // => 2
+```
+
 <!-- docks-end -->
 
 **[back to top](#readme)**
@@ -91,7 +142,7 @@ Consider reading the [Support and Release Policy](https://github.com/tunnckoCore
 
 ### Support the project
 
-[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/jest-runner-docs) sites too! :rocket:
+[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/arr-includes) sites too! :rocket:
 
 Not financial support? Okey! [Pull requests](https://github.com/tunnckoCoreLabs/contributing#opening-a-pull-request), stars and all kind of [contributions](https://opensource.guide/how-to-contribute/#what-it-means-to-contribute) are always
 welcome. :sparkles:
@@ -130,7 +181,7 @@ Consider showing your [support](#support-the-project) to them. :sparkling_heart:
 
 ## License
 
-Copyright (c) 2019-present, [Charlike Mike Reagent](https://tunnckocore.com) `<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br>
+Copyright (c) 2016-present, [Charlike Mike Reagent](https://tunnckocore.com) `<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br>
 Released under the [MPL-2.0 License][license-url].
 
 [contributing-url]: https://github.com/tunnckoCore/opensource/blob/master/CONTRIBUTING.md
@@ -138,8 +189,8 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- Heading badges -->
 
-[npmv-url]: https://www.npmjs.com/package/jest-runner-docs
-[npmv-img]: https://badgen.net/npm/v/jest-runner-docs?icon=npm
+[npmv-url]: https://www.npmjs.com/package/arr-includes
+[npmv-img]: https://badgen.net/npm/v/arr-includes?icon=npm
 [nodejs-img]: https://badgen.net/badge/node/>=10.13/green
 
 <!--
@@ -147,8 +198,8 @@ Released under the [MPL-2.0 License][license-url].
 [ghrelease-img]: https://badgen.net/github/release/tunnckoCore/opensource?icon=github
 -->
 
-[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/jest-runner-docs/LICENSE
-[license-img]: https://badgen.net/npm/license/jest-runner-docs
+[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/arr-includes/LICENSE
+[license-img]: https://badgen.net/npm/license/arr-includes
 
 <!-- Front line badges -->
 
@@ -157,7 +208,7 @@ Released under the [MPL-2.0 License][license-url].
 [linuxbuild-url]: https://github.com/tunnckocore/opensource/actions
 [linuxbuild-img]: https://badgennet.charlike-oss.now.sh/github/checks/tunnckoCore/opensource/master?label=build&icon=github
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
-[codecoverage-img]: https://badgen.net/badge/coverage/7.7%25/red?icon=codecov
+[codecoverage-img]: https://badgen.net/badge/coverage/100%25/green?icon=codecov
 [dependencies-url]: https://david-dm.org/tunnckoCore/opensource
 [dependencies-img]: https://badgen.net/david/dep/tunnckoCore/opensource?label=deps
 [ccommits-url]: https://conventionalcommits.org/
@@ -168,9 +219,9 @@ Released under the [MPL-2.0 License][license-url].
 [community-url]: https://github.com/tunnckocorehq/community
 [last-commit-img]: https://badgen.net/github/last-commit/tunnckoCore/opensource/master
 [last-commit-url]: https://github.com/tunnckoCore/opensource/commits/master
-[downloads-weekly-img]: https://badgen.net/npm/dw/jest-runner-docs?icon=npm
-[downloads-monthly-img]: https://badgen.net/npm/dm/jest-runner-docs?icon=npm
-[downloads-total-img]: https://badgen.net/npm/dt/jest-runner-docs?icon=npm
+[downloads-weekly-img]: https://badgen.net/npm/dw/arr-includes?icon=npm
+[downloads-monthly-img]: https://badgen.net/npm/dm/arr-includes?icon=npm
+[downloads-total-img]: https://badgen.net/npm/dt/arr-includes?icon=npm
 [renovateapp-url]: https://renovatebot.com
 [renovateapp-img]: https://badgen.net/badge/renovate/enabled/green
 [prs-welcome-img]: https://badgen.net/badge/PRs/welcome/green

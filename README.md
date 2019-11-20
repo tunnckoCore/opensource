@@ -10,6 +10,8 @@ Delivering delightful digital solutions. JavaScript Open Source Monorepo, semant
 
 | pkg                                                                            |                                              badges                                               |
 | :----------------------------------------------------------------------------- | :-----------------------------------------------------------------------------------------------: |
+| [`all-module-paths`](https://ghub.now.sh/all-module-paths)                     | [![npm][npm-6e0bb0fe0a-img]][npm-6e0bb0fe0a-url] [![cov][cov-6e0bb0fe0a-img]][cov-6e0bb0fe0a-url] |
+| [`arr-includes`](https://ghub.now.sh/arr-includes)                             | [![npm][npm-2f3f114f7a-img]][npm-2f3f114f7a-url] [![cov][cov-2f3f114f7a-img]][cov-2f3f114f7a-url] |
 | [`gitclone-cli`](https://ghub.now.sh/gitclone-cli)                             | [![npm][npm-dec4d0cc05-img]][npm-dec4d0cc05-url] [![cov][cov-dec4d0cc05-img]][cov-dec4d0cc05-url] |
 | [`gitclone-defaults`](https://ghub.now.sh/gitclone-defaults)                   | [![npm][npm-cac2bd5e92-img]][npm-cac2bd5e92-url] [![cov][cov-cac2bd5e92-img]][cov-cac2bd5e92-url] |
 | [`jest-runner-docs`](https://ghub.now.sh/jest-runner-docs)                     | [![npm][npm-bfbf73f3e5-img]][npm-bfbf73f3e5-url] [![cov][cov-bfbf73f3e5-img]][cov-bfbf73f3e5-url] |
@@ -28,6 +30,7 @@ Delivering delightful digital solutions. JavaScript Open Source Monorepo, semant
 | [`@tunnckocore/execa`](https://ghub.now.sh/@tunnckocore/execa)                           | [![npm][npm-0ee88d61eb-img]][npm-0ee88d61eb-url] [![cov][cov-0ee88d61eb-img]][cov-0ee88d61eb-url] |
 | [`@tunnckocore/jest-runner-babel`](https://ghub.now.sh/@tunnckocore/jest-runner-babel)   | [![npm][npm-66996266fb-img]][npm-66996266fb-url] [![cov][cov-66996266fb-img]][cov-66996266fb-url] |
 | [`@tunnckocore/jest-runner-eslint`](https://ghub.now.sh/@tunnckocore/jest-runner-eslint) | [![npm][npm-c7106a6fc9-img]][npm-c7106a6fc9-url] [![cov][cov-c7106a6fc9-img]][cov-c7106a6fc9-url] |
+| [`@tunnckocore/pretty-config`](https://ghub.now.sh/@tunnckocore/pretty-config)           | [![npm][npm-9c57de05d6-img]][npm-9c57de05d6-url] [![cov][cov-9c57de05d6-img]][cov-9c57de05d6-url] |
 | [`@tunnckocore/utils`](https://ghub.now.sh/@tunnckocore/utils)                           | [![npm][npm-2ee61b0213-img]][npm-2ee61b0213-url] [![cov][cov-2ee61b0213-img]][cov-2ee61b0213-url] |
 
 ### [@hela](./tree/master/@hela)
@@ -38,6 +41,14 @@ Delivering delightful digital solutions. JavaScript Open Source Monorepo, semant
 | :------------------------------------------- | :-----------------------------------------------------------------------------------------------: |
 | [`@hela/dev`](https://ghub.now.sh/@hela/dev) | [![npm][npm-db6ee41175-img]][npm-db6ee41175-url] [![cov][cov-db6ee41175-img]][cov-db6ee41175-url] |
 
+[npm-6e0bb0fe0a-url]: https://www.npmjs.com/package/all-module-paths
+[npm-6e0bb0fe0a-img]: https://badgen.net/npm/v/all-module-paths?icon=npm
+[cov-6e0bb0fe0a-url]: https://www.npmjs.com/package/all-module-paths
+[cov-6e0bb0fe0a-img]: https://badgen.net/badge/coverage/95.35%25/99CC09?icon=codecov
+[npm-2f3f114f7a-url]: https://www.npmjs.com/package/arr-includes
+[npm-2f3f114f7a-img]: https://badgen.net/npm/v/arr-includes?icon=npm
+[cov-2f3f114f7a-url]: https://www.npmjs.com/package/arr-includes
+[cov-2f3f114f7a-img]: https://badgen.net/badge/coverage/100%25/green?icon=codecov
 [npm-dec4d0cc05-url]: https://www.npmjs.com/package/gitclone-cli
 [npm-dec4d0cc05-img]: https://badgen.net/npm/v/gitclone-cli?icon=npm
 [cov-dec4d0cc05-url]: https://www.npmjs.com/package/gitclone-cli
@@ -49,7 +60,7 @@ Delivering delightful digital solutions. JavaScript Open Source Monorepo, semant
 [npm-bfbf73f3e5-url]: https://www.npmjs.com/package/jest-runner-docs
 [npm-bfbf73f3e5-img]: https://badgen.net/npm/v/jest-runner-docs?icon=npm
 [cov-bfbf73f3e5-url]: https://www.npmjs.com/package/jest-runner-docs
-[cov-bfbf73f3e5-img]: https://badgen.net/badge/coverage/8.29%25/red?icon=codecov
+[cov-bfbf73f3e5-img]: https://badgen.net/badge/coverage/7.7%25/red?icon=codecov
 [npm-cf87a4edb8-url]: https://www.npmjs.com/package/jest-runner-rollup
 [npm-cf87a4edb8-img]: https://badgen.net/npm/v/jest-runner-rollup?icon=npm
 [cov-cf87a4edb8-url]: https://www.npmjs.com/package/jest-runner-rollup
@@ -82,6 +93,10 @@ Delivering delightful digital solutions. JavaScript Open Source Monorepo, semant
 [npm-c7106a6fc9-img]: https://badgen.net/npm/v/@tunnckocore/jest-runner-eslint?icon=npm
 [cov-c7106a6fc9-url]: https://www.npmjs.com/package/@tunnckocore/jest-runner-eslint
 [cov-c7106a6fc9-img]: https://badgen.net/badge/coverage/11.29%25/red?icon=codecov
+[npm-9c57de05d6-url]: https://www.npmjs.com/package/@tunnckocore/pretty-config
+[npm-9c57de05d6-img]: https://badgen.net/npm/v/@tunnckocore/pretty-config?icon=npm
+[cov-9c57de05d6-url]: https://www.npmjs.com/package/@tunnckocore/pretty-config
+[cov-9c57de05d6-img]: https://badgen.net/badge/coverage/2.08%25/red?icon=codecov
 [npm-2ee61b0213-url]: https://www.npmjs.com/package/@tunnckocore/utils
 [npm-2ee61b0213-img]: https://badgen.net/npm/v/@tunnckocore/utils?icon=npm
 [cov-2ee61b0213-url]: https://www.npmjs.com/package/@tunnckocore/utils

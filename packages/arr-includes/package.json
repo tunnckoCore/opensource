@@ -14,8 +14,8 @@
     "node": ">=10.13"
   },
   "main": "dist/cjs/index.js",
-  "unpkg": "dist/umd/index.js",
   "module": "dist/esm/index.js",
+  "unpkg": "dist/umd/index.js",
   "typings": "index.d.ts",
   "files": [
     "dist",
@@ -49,6 +49,10 @@
     "access": "public",
     "tag": "latest"
   },
+  "cov": {
+    "value": 100,
+    "color": "green"
+  },
   "jest": {
     "coverageThreshold": {
       "src/**/*.js": {
@@ -58,6 +62,10 @@
         "lines": 100
       }
     }
+  },
+  "jestCov": {
+    "value": 100,
+    "color": "green"
   },
   "licenseStart": 2016,
   "umd:name": "arrIncludes",

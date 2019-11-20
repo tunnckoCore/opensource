@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { jestCov } = require('./package.json');
+const { cov } = require('./package.json');
 
 const presetOptions = {
   react: true,
@@ -21,11 +21,12 @@ module.exports = {
     // },
   },
   docs: {
+    verbose: true,
     outfile: '.verb.md',
     postHook: ({ pkgRoot, jestConfig: { rootDir } }) => {
       const pkgDir = path.relative(rootDir, pkgRoot);
       const pkgJsonPath = path.join(pkgRoot, 'package.json');
-      const cov = jestCov[pkgDir];
+      const covField = cov[pkgDir];
 
       // eslint-disable-next-line import/no-dynamic-require, global-require
       const pkgJson = require(pkgJsonPath);
@@ -34,7 +35,7 @@ module.exports = {
         JSON.stringify(
           {
             ...pkgJson,
-            jestCov: cov,
+            cov: covField || { color: 'grey' },
           },
           null,
           2,

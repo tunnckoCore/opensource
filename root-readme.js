@@ -52,12 +52,12 @@ const list = workspaces
       .map((pkgDirName) => path.join(wsDir, pkgDirName))
       .filter((fp) => fs.statSync(fp).isDirectory())
       .map((fp) => {
-        const { name, jestCov } = require(path.join(fp, 'package.json'));
+        const { name, cov } = require(path.join(fp, 'package.json'));
         const hash = toHash(name, 'utf8');
 
         const pkgLoc = `[\`${name}\`](https://ghub.now.sh/${name})`;
-        const covBadgeLink = jestCov.value
-          ? `https://badgen.net/badge/coverage/${jestCov.value}%25/${jestCov.color}?icon=codecov`
+        const covBadgeLink = cov.value
+          ? `https://badgen.net/badge/coverage/${cov.value}%25/${cov.color}?icon=codecov`
           : 'https://badgen.net/badge/coverage/unknown/grey?icon=codecov';
 
         const npmBadge = `[![npm][npm-${hash}-img]][npm-${hash}-url]`;

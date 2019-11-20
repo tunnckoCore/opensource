@@ -165,13 +165,13 @@ Released under the [{%= license %} License][license-url].
 [linuxbuild-img]: https://badgennet.charlike-oss.now.sh/github/checks/tunnckoCore/opensource/master?label=build&icon=github
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 
-{% if (!jestCov.value) { %}
+{% if (!cov.value) { %}
 
 [codecoverage-img]: https://badgen.net/badge/coverage/unknown/grey?icon=codecov
 
 {% } else { %}
 
-[codecoverage-img]: https://badgen.net/badge/coverage/{%= jestCov.value %}%25/{%= jestCov.color %}?icon=codecov
+[codecoverage-img]: https://badgen.net/badge/coverage/{%= cov.value %}%25/{%= cov.color %}?icon=codecov
 
 {% } %}
 

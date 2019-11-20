@@ -46,6 +46,10 @@
     "access": "public",
     "tag": "latest"
   },
+  "cov": {
+    "value": 7.7,
+    "color": "red"
+  },
   "jest": {
     "coverageThreshold": {
       "src/docks.js": {
@@ -55,10 +59,10 @@
         "lines": 17
       },
       "src/runner.js": {
-        "statements": 15,
+        "statements": 14,
         "branches": 0,
         "functions": 0,
-        "lines": 16
+        "lines": 14.9
       }
     }
   },

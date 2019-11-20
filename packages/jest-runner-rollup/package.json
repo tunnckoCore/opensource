@@ -48,6 +48,10 @@
     "access": "public",
     "tag": "latest"
   },
+  "cov": {
+    "value": 6.18,
+    "color": "red"
+  },
   "jest": {
     "coverageThreshold": {
       "src/runner.js": {
