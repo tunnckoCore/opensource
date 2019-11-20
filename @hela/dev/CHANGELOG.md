@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.8](https://github.com/tunnckoCore/opensource/compare/@hela/dev@3.1.7...@hela/dev@3.1.8) (2019-11-20)
+
+
+### Bug Fixes
+
+* better error handling, regenerate cov data and readmes ([f3c98cf](https://github.com/tunnckoCore/opensource/commit/f3c98cf5812cf92127f491df67f083d06235a399))
+
+
+
+
+
 ## [3.1.7](https://github.com/tunnckoCore/opensource/compare/@hela/dev@3.1.6...@hela/dev@3.1.7) (2019-11-20)
 
 **Note:** Version bump only for package @hela/dev

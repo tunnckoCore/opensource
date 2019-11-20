@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/pretty-config@0.7.0...@tunnckocore/pretty-config@0.7.1) (2019-11-20)
+
+
+### Bug Fixes
+
+* better error handling, regenerate cov data and readmes ([f3c98cf](https://github.com/tunnckoCore/opensource/commit/f3c98cf5812cf92127f491df67f083d06235a399))
+
+
+
+
+
 # [0.7.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/pretty-config@0.6.3...@tunnckocore/pretty-config@0.7.0) (2019-11-12)
 
 

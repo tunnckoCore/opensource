@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.5](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@4.0.4...@tunnckocore/jest-runner-babel@4.0.5) (2019-11-20)
+
+
+### Bug Fixes
+
+* better error handling, regenerate cov data and readmes ([f3c98cf](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/commit/f3c98cf5812cf92127f491df67f083d06235a399))
+
+
+
+
+
 ## [4.0.4](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@4.0.3...@tunnckocore/jest-runner-babel@4.0.4) (2019-11-20)
 
 **Note:** Version bump only for package @tunnckocore/jest-runner-babel

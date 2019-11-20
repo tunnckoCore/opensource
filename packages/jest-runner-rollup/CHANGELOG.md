@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.6](https://github.com/tunnckoCore/opensource/compare/jest-runner-rollup@1.1.5...jest-runner-rollup@1.1.6) (2019-11-20)
+
+
+### Bug Fixes
+
+* better error handling, regenerate cov data and readmes ([f3c98cf](https://github.com/tunnckoCore/opensource/commit/f3c98cf5812cf92127f491df67f083d06235a399))
+
+
+
+
+
 ## [1.1.5](https://github.com/tunnckoCore/opensource/compare/jest-runner-rollup@1.1.4...jest-runner-rollup@1.1.5) (2019-11-20)
 
 
