@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/opensource",
-  "description": "Delivering delightful digital solutions. JavaScript Open Source Monorepo, semantically versioned following Conventional Commits. Fully powered by Lerna, Jest and Babel.",
+  "description": "Delivering delightful digital solutions. Open Source Monorepo (of monorepos), semantically versioned following Conventional Commits. Fully powered by Lerna, Jest and Babel.",
   "homepage": "https://github.com/tunnckocore/opensource",
   "private": true,
   "workspaces": {
