@@ -44,7 +44,7 @@ jobs:
       - name: Testing all packages
         run: yarn start test --no-runInBand
       - name: Sending test coverage to CodeCov
-        if: matrix.platform == 'ubuntu-latest'
+        if: matrix.platform == 'ubuntu-latest' && matrix.node-version == '12.x'
         run: echo ${{ matrix.node-version }} && bash <(curl -s https://codecov.io/bash)
   # node12:
   #   env:
