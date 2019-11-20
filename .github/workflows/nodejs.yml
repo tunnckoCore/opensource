@@ -38,11 +38,12 @@ jobs:
         if: steps.nodejs-cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
       - name: Lerna Bootstrap
+        if: steps.nodejs-cache.outputs.cache-hit != 'true'
         run: yarn run bootstrap
       - name: Linting codebase with ESLint & Prettier
-        run: yarn start lint --no-runInBand
+        run: yarn start lint --no-runInBand --no-all
       - name: Testing all packages
-        run: yarn start test --no-runInBand
+        run: yarn start test --no-runInBand --no-all
       - name: Sending test coverage to CodeCov
         if: matrix.platform == 'ubuntu-latest' && matrix.node-version == '12.x'
         run: echo ${{ matrix.node-version }} && bash <(curl -s https://codecov.io/bash)
