@@ -1,6 +1,6 @@
 {
   "name": "pkg.tunnckocore.com",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "dependencies": {
     "ky": "^0.16.0",
     "ky-universal": "^0.3.0",

@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/jest-runner-eslint",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Fork of the original Jest Runner for ESLint",
   "repository": {
     "type": "git",
@@ -48,8 +48,8 @@
     "eslint": "^6.4.0"
   },
   "dependencies": {
-    "@tunnckocore/create-jest-runner": "^1.0.5",
-    "@tunnckocore/utils": "^1.1.4",
+    "@tunnckocore/create-jest-runner": "^1.0.6",
+    "@tunnckocore/utils": "^1.1.5",
     "cosmiconfig": "^5.2.1"
   },
   "publishConfig": {

@@ -1,6 +1,6 @@
 {
   "name": "ghub.now.sh",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Micro-service for ZEIT Now Platform, that redirects to location of a package, supports monorepos",
   "repository": {
     "type": "git",
