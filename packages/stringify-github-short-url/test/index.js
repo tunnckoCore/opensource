@@ -1,4 +1,4 @@
-import stringify from '../src';
+import stringify from '../src/index.js';
 
 test('export default function', async () => {
   expect(typeof stringify).toStrictEqual('function');

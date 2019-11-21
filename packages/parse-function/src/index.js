@@ -2,13 +2,13 @@
  * Utilities
  */
 
-import utils from './utils';
+import utils from './utils.js';
 
 /**
  * Core plugins
  */
 
-import initial from './plugins/initial';
+import initial from './plugins/initial.js';
 
 /**
  * > Initializes with optional `opts` object which is passed directly

@@ -1,13 +1,13 @@
 /* eslint-disable import/no-dynamic-require, global-require */
 
-const fs = require('fs');
-const path = require('path');
-const utils = require('@tunnckocore/utils');
-const isCI = require('is-ci');
-const picomatch = require('picomatch');
+import fs from 'fs';
+import path from 'path';
+import utils from '@tunnckocore/utils';
+import isCI from 'is-ci';
+import picomatch from 'picomatch';
 
 // eslint-disable-next-line max-statements
-module.exports = (options) => {
+export default (options) => {
   const opts = { cwd: process.cwd(), ...options };
   const { exts, workspaces, info, alias } = utils.createAliases(opts.cwd);
   const ignores = []

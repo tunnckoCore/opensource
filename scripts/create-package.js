@@ -1,3 +1,7 @@
+#!/usr/bin/env node
+
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
@@ -29,7 +33,7 @@ function onSubmit(name, value) {
   return value;
 }
 
-async function run() {
+async function main() {
   await prompt([
     {
       message: 'Name of the package?',
@@ -113,8 +117,8 @@ async function run() {
       type: 'autocomplete',
       name: 'license',
       message: 'What is the license of the package?',
-      initial: 2,
-      choices: ['Parity-6.0.0', 'Prosperity-2.0.0', 'MPL-2.0', 'Apache-2.0'],
+      initial: 0,
+      choices: ['Parity-7.0.0', 'Prosperity-3.0.0', 'MPL-2.0', 'Apache-2.0'],
     },
     {
       type: 'list',
@@ -237,8 +241,10 @@ function createPkgJson() {
   };
 }
 
-// eslint-Xdisable-next-line promise/prefer-await-to-callbacks
-run().catch(() => {
-  // eslint-disable-next-line unicorn/no-process-exit
-  process.exit(1);
-});
+(async () => {
+  try {
+    await main();
+  } catch (err) {
+    process.exit(1);
+  }
+})();

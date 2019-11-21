@@ -10,7 +10,7 @@
 import path from 'path';
 import request from 'supertest';
 import Koa from 'koa';
-import betterBody from '../src';
+import betterBody from '../src/index.js';
 
 function koa() {
   return new Koa();
@@ -47,12 +47,12 @@ test('should get multipart body by default', async () => {
     .use(function* sasa() {
       expect(this.request.files).toBeTruthy();
       // possible fails, because it not respect order, it's async
-      // test.strictEqual(this.request.files[0].name, 'package.json')
-      // test.strictEqual(this.request.files[1].name, 'README.md')
-      // test.strictEqual(this.request.files[2].name, 'example.js')
-      // test.strictEqual(this.request.fields.foo[0].name, 'package.json')
-      // test.strictEqual(this.request.fields.foo[1].name, 'README.md')
-      // test.strictEqual(this.request.fields.bar[0].name, 'example.js')
+      // strictEqual(this.request.files[0].name, 'package.json')
+      // strictEqual(this.request.files[1].name, 'README.md')
+      // strictEqual(this.request.files[2].name, 'example.js')
+      // strictEqual(this.request.fields.foo[0].name, 'package.json')
+      // strictEqual(this.request.fields.foo[1].name, 'README.md')
+      // strictEqual(this.request.fields.bar[0].name, 'example.js')
       expect(this.request.files).toHaveLength(3);
       expect(this.request.fields.foo).toHaveLength(2);
       expect(this.request.fields.bar).toHaveLength(1);

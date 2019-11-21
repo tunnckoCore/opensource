@@ -1,4 +1,6 @@
-/* eslint-Xdisable import/no-extraneous-dependencies */
+'use strict';
+
+/* eslint-XXXdisable import/no-extraneous-dependencies */
 const json = require('rollup-plugin-json');
 const babel = require('rollup-plugin-babel');
 const commonjs = require('rollup-plugin-commonjs');

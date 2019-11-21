@@ -1,6 +1,6 @@
-const utils = require('@tunnckocore/utils');
+import utils from '@tunnckocore/utils';
 
-module.exports = (options) => {
+export default (options) => {
   const opts = { cwd: process.cwd(), ...options };
   const { exts, alias, workspaces } = utils.createAliases(opts.cwd);
   const ignores = []

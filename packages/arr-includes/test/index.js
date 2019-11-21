@@ -1,4 +1,4 @@
-import arrIncludes from '../src';
+import arrIncludes from '../src/index.js';
 
 test('should return true if the value exists in the array.', async () => {
   const fixture = ['a', 'b', 'bar', 'qux', 'f', 'g'];

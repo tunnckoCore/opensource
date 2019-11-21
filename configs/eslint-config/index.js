@@ -1,12 +1,9 @@
 'use strict';
 
-const path = require('path');
-const { createAliases } = require('@tunnckocore/utils');
-
-const CWD = process.cwd();
-const { alias, workspaces } = createAliases(CWD);
-
+const { createAliases, tsconfigResolver } = require('@tunnckocore/utils');
 const airbnbBase = require('eslint-config-airbnb-base');
+
+const { alias, workspaces } = createAliases();
 
 // eslint-disable-next-line import/no-dynamic-require
 const bestPractices = require(airbnbBase.extends[0]);
@@ -61,6 +58,10 @@ const unicornRules = {
   // It is pretty common to name it `err`, and there is almost no reason to be any other.
   // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/catch-error-name.md
   'unicorn/catch-error-name': ['error', { name: 'err' }],
+
+  // Doesn't work well in node-land. We have `.on/.off` emitters in Nodejs.
+  'unicorn/prefer-add-event-listener': 'off',
+  'unicorn/no-process-exit': 'error',
 };
 
 // Sindre's XO and mine preferences too.
@@ -93,7 +94,7 @@ const importRules = {
   'import/no-self-import': 'error',
 
   // Enable this sometime in the future when Node.js has ES2015 module support
-  // 'import/no-cycle': 'error'
+  // 'import/no-cycle': 'error',
 
   'import/no-useless-path-segments': ['error', { noUselessIndex: true }],
 
@@ -201,6 +202,7 @@ const eslintCommentsRules = {
   ],
 };
 
+// Additional rules that are specific and overiding previous
 const additionalChanges = {
   'no-extend-native': 'error',
   'no-use-extend-native/no-use-extend-native': 'error',
@@ -282,6 +284,27 @@ const additionalChanges = {
 
   'node/shebang': 'off',
   'import/prefer-default-export': 'off',
+
+  // Ensure more web-compat
+  // ! note that it doesn't work in CommonJS
+  // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md
+  'import/extensions': ['error', 'always', { ignorePackages: true }],
+  // ! note that it doesn't work in CommonJS
+  'node/file-extension-in-import': ['error', 'always'],
+
+  // ? Always use named exports. Enable?
+  // 'import/no-default-export': 'error',
+
+  // ? enable?
+  'import/exports-last': 'off',
+
+  // todo: Enable in future.
+  // Ensures everything is tested (all exports should be used).
+  // For cases when you don't want or can't test, add eslint-ignore comment!
+  // see: https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unused-modules.md
+  'import/no-unused-modules': 'off',
+
+  'import/no-useless-path-segments': ['error', { noUselessIndex: false }],
 };
 
 const importResolverAliasMap = Object.keys(alias).reduce((acc, key) => {
@@ -299,24 +322,34 @@ const EXTENSIONS = [
   '.js',
   '.jsx',
   '.js.flow',
+  '.md',
   '.mdx',
   '.json',
 ];
 
 module.exports = {
-  parser: 'babel-eslint',
+  // use typescript parser, always
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 11, // ECMAScript 2020
-    requireConfigFile: true,
     sourceType: 'module',
-    ecmaFeatures: {
-      impliedStrict: true,
-      jsx: true,
-    },
-    babelOptions: {
-      configFile: path.join(CWD, 'babe-eslint.config.js'),
-    },
+    jsx: true,
+    project: tsconfigResolver(),
   },
+
+  // parser: 'babel-eslint',
+  // parserOptions: {
+  //   ecmaVersion: 11, // ECMAScript 2020
+  //   requireConfigFile: true,
+  //   sourceType: 'module',
+  //   ecmaFeatures: {
+  //     impliedStrict: true,
+  //     jsx: true,
+  //   },
+  //   babelOptions: {
+  //     configFile: path.join(CWD, 'babe-eslint.config.js'),
+  //   },
+  // },
+
   // parser: path.join(__dirname, 'buntis-parser.js'),
   // parserOptions: {
   //   loc: true,
@@ -332,10 +365,14 @@ module.exports = {
       allowModules: Object.keys(alias),
       tryExtensions: EXTENSIONS,
     },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx', '.d.ts'],
+    },
     'import/resolver': {
       node: {
         paths: workspaces,
         extensions: EXTENSIONS,
+        tryExtensions: EXTENSIONS,
         moduleDirectory: ['node_modules']
           .concat(workspaces)
           .concat(Object.values(alias)),
@@ -380,11 +417,11 @@ module.exports = {
     'eslint-comments',
   ],
   rules: {
-    ...additionalChanges,
     ...unicornRules,
     ...promiseRules,
     ...importRules,
     ...nodeRules,
     ...eslintCommentsRules,
+    ...additionalChanges,
   },
 };

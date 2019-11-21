@@ -1,3 +1,5 @@
+'use strict';
+
 /* eslint-disable max-statements */
 const fs = require('fs');
 const path = require('path');
@@ -6,7 +8,7 @@ const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
 const { isMonorepo } = require('@tunnckocore/utils');
 
 const cosmiconfig = require('cosmiconfig');
-const docks = require('./docks');
+const docks = require('./docks.js');
 
 const jestRunnerConfig = cosmiconfig('jest-runner');
 const jestRunnerDocks = cosmiconfig('docks');

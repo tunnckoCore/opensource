@@ -1,5 +1,5 @@
 import mod from 'module';
-import allModulePaths from '../src';
+import allModulePaths from '../src/index.js';
 
 test('allModulePaths exports a function', async () => {
   expect(typeof allModulePaths).toStrictEqual('function');

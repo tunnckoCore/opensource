@@ -1,12 +1,12 @@
-const url = require('url');
-const pLocate = require('p-locate');
-const ky = require('ky-universal');
+import url from 'url';
+import pLocate from 'p-locate';
+import ky from 'ky-universal';
 
-const { zeitLambdaWrapper, ORIGIN } = require('../utils');
+import { zeitLambdaWrapper, ORIGIN } from './_utils.js';
 
 const JSDELIVR = 'https://cdn.jsdelivr.net/gh/tunnckoCore/opensource';
 
-module.exports = zeitLambdaWrapper(handler);
+export default zeitLambdaWrapper(handler);
 
 // eslint-disable-next-line max-statements
 async function handler(req, res) {

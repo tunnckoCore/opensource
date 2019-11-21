@@ -5,7 +5,7 @@
  * Released under the MIT license.
  */
 
-import { defaultOptions, setParsers, isValid, parseBody } from './utils';
+import { defaultOptions, setParsers, isValid, parseBody } from './utils.js';
 
 /**
  * > Robust body parser for [koa][]@1, also works for `koa@2` (with deprecations).

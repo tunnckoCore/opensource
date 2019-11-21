@@ -1,4 +1,4 @@
-import { resolveConfig, resolveConfigPath } from './utils';
+import { resolveConfig, resolveConfigPath } from './utils.js';
 
 export { resolveConfig, resolveConfigPath };
 

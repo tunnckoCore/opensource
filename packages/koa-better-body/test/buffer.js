@@ -1,3 +1,4 @@
+/* eslint-disable jest/expect-expect */
 /*!
  * koa-better-body <https://github.com/tunnckoCore/koa-better-body>
  *
@@ -8,7 +9,7 @@
 import isBuffer from 'is-buffer';
 import request from 'supertest';
 import Koa from 'koa';
-import betterBody from '../src';
+import betterBody from '../src/index.js';
 
 function koa() {
   return new Koa();

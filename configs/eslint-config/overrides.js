@@ -1,5 +1,6 @@
-const fs = require('fs');
-const path = require('path');
+'use strict';
+
+const utils = require('@tunnckocore/utils');
 
 const jest = {
   files: [
@@ -26,8 +27,7 @@ const mdx = {
   },
 };
 
-const TSCONFIG = path.resolve('tsconfig.json');
-const project = fs.existsSync(TSCONFIG) ? TSCONFIG : undefined;
+const project = utils.tsconfigResolver();
 
 const ts = {
   files: ['**/*.{ts,tsx}', '**/*.d.ts'],

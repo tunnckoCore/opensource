@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.base.json",
+  "include": [
+    ".eslintrc.js",
+    ".prettierrc.js",
+    "*.js",
+    "./**/*.js",
+    "./**/*.jsx",
+    "./**/*.ts",
+    "./**/*.tsx",
+    "./**/*.mdx"
+    // "./**/fixtures",
+    // "./**/test",
+    // "./**/api",
+    // "./**/src",
+  ]
+}

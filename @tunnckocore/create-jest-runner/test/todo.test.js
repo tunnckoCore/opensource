@@ -1,4 +1,4 @@
-import runJest from './support/runJest';
+import runJest from './support/runJest.js';
 
 it('Works when it has todo tests', async () => {
   const resultString = await runJest('todo');

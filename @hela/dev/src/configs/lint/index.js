@@ -1,6 +1,7 @@
-const utils = require('@tunnckocore/utils');
+import path from 'path';
+import utils from '@tunnckocore/utils';
 
-module.exports = (options) => {
+export default (options) => {
   const opts = { cwd: process.cwd(), ...options };
   const { exts, alias, workspaces } = utils.createAliases(opts.cwd);
   const ignores = []
@@ -14,7 +15,11 @@ module.exports = (options) => {
 
   // if monorepo setup
   if (isMonorepo) {
-    testMatch = Object.values(alias).map((source) => `${source}/**/*`);
+    testMatch = Object.values(alias).map((source) => {
+      const src = source.endsWith('src') ? path.dirname(source) : source;
+
+      return `${src}/**/*`;
+    });
   } else {
     testMatch =
       inputs.length > 0

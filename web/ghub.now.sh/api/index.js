@@ -1,14 +1,14 @@
-const url = require('url');
-const path = require('path');
-const parseGithub = require('parse-github-url');
+import url from 'url';
+import path from 'path';
+import parseGithub from 'parse-github-url';
 
-const {
+import {
   zeitLambdaWrapper,
   packageJson,
   isString,
   cleanSlashes,
   ORIGIN,
-} = require('../utils');
+} from './_utils.js';
 
 /**
  * Scoped:
@@ -24,7 +24,7 @@ const {
  * /stringify-github-short-url/v6-parse-function
  *
  */
-module.exports = zeitLambdaWrapper(handler);
+export default zeitLambdaWrapper(handler);
 
 // eslint-disable-next-line max-statements
 async function handler(req, res) {

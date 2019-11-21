@@ -1,4 +1,6 @@
-const baseConfig = require('.');
+'use strict';
+
+const baseConfig = require('./index.js');
 
 module.exports = {
   ...baseConfig,

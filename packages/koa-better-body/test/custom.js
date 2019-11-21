@@ -7,7 +7,7 @@
 
 import request from 'supertest';
 import Koa from 'koa';
-import betterBody from '../src';
+import betterBody from '../src/index.js';
 
 function koa() {
   return new Koa();

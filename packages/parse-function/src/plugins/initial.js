@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
 
-import body from './body';
-import props from './props';
-import params from './params';
+import body from './body.js';
+import props from './props.js';
+import params from './params.js';
 
 /**
  * > Default plugin that handles regular functions,

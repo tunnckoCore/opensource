@@ -1,4 +1,4 @@
-import gitcloneDefaults from '../src';
+import gitcloneDefaults from '../src/index.js';
 
 test('should export default function', async () => {
   expect(typeof gitcloneDefaults).toStrictEqual('function');

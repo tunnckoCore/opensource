@@ -1,6 +1,6 @@
 const path = require('path');
 const { transformSync } = require('@babel/core');
-const config = require('../src');
+const config = require('../src/index.js');
 
 process.env.SELF_TEST_TUNNCKOCORE = 'yes';
 
@@ -12,17 +12,15 @@ test('to throw error when typescript: false', async () => {
   const opts = { typescript: false, presetEnv: false };
   const inputCode = `export const bar = (foo: number, bar: number) => {};`;
 
-  try {
+  const fn = () =>
     transformSync(inputCode, {
       babelrc: false,
       filename: 'fixture-foo.ts',
       presets: [[path.join(path.dirname(__dirname), 'src', 'index.js'), opts]],
     });
-  } catch (err) {
-    expect(err).toBeTruthy();
-    expect(err.name).toStrictEqual('SyntaxError');
-    expect(err.message).toMatch(/Unexpected token, expected/);
-  }
+
+  expect(fn).toThrow(SyntaxError);
+  expect(fn).toThrow(/Unexpected token, expected/);
 });
 
 test('to transform typescript properly', () => {

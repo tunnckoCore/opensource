@@ -6,7 +6,7 @@ import { parse as babylonParse } from '@babel/parser';
 import { parse as acornParse } from 'acorn';
 import { parse as acornLooseParse } from 'acorn-loose';
 import forIn from 'for-in';
-import parseFunction from '../src';
+import parseFunction from '../src/index.js';
 
 const espreeParse = espree.parse;
 

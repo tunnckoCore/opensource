@@ -1,18 +1,12 @@
-const parsePkgName = require('parse-package-name');
-const ky = require('ky-universal');
+import parsePkgName from 'parse-package-name';
+import ky from 'ky-universal';
 
 const ORIGIN =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
-    : 'https://ghub.now.sh';
+    : 'https://pkg.tunnckocore.com';
 
-module.exports = {
-  zeitLambdaWrapper,
-  packageJson,
-  isString,
-  cleanSlashes,
-  ORIGIN,
-};
+export { zeitLambdaWrapper, packageJson, isString, cleanSlashes, ORIGIN };
 
 function zeitLambdaWrapper(fn, allowedMethods = ['GET']) {
   return async function lambdaHandler(req, res) {
@@ -22,18 +16,11 @@ function zeitLambdaWrapper(fn, allowedMethods = ['GET']) {
       'Access-Control-Allow-Methods',
       allowedMethods.map((x) => x.toUpperCase()).join(', '),
     );
-    res.setHeader('Access-Control-Allow-Headers', 'Cache-Control');
 
     if (!allowedMethods.includes(req.method)) {
       res.send('Method Not Allowed', 405);
       return;
     }
-
-    // 604800 (7 days)
-    res.setHeader(
-      'Cache-Control',
-      'public, max-age=0, s-maxage=604800, stale-while-revalidate=86400',
-    );
 
     res.status =
       res.status ||

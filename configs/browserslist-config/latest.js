@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = [
   'last 1 Android version',
   'last 1 Chrome version',

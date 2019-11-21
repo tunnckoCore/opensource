@@ -1,4 +1,11 @@
-import { build, bundle, docs, lint, test as testCmd, runAll } from '../src';
+import {
+  build,
+  bundle,
+  docs,
+  lint,
+  test as testCmd,
+  runAll,
+} from '../src/index.js';
 
 test('command: build', async () => {
   expect(typeof build).toStrictEqual('function');

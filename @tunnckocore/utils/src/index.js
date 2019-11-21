@@ -14,6 +14,8 @@ module.exports = {
   isMonorepo,
   testCoverage,
   coverageColor,
+  tsconfigResolver,
+  EXTENSIONS,
 };
 
 // we cannot test it because we are in monorepo where the cwd is.
@@ -275,4 +277,22 @@ function coverageColor(value, colors = {}) {
     return '99CC09';
   }
   return 'green';
+}
+
+function tsconfigResolver(rootDir) {
+  /* istanbul ignore next */
+  const cwd = rootDir || process.cwd();
+  const { isMonorepo: isMono, workspaces } = getWorkspacesAndExtensions(cwd);
+  const TSCONFIG_ESLINT = path.join(cwd, 'tsconfig.eslint.json');
+  const TSCONFIG = path.join(cwd, 'tsconfig.json');
+  const project = [TSCONFIG_ESLINT, TSCONFIG].find((x) => fs.existsSync(x));
+
+  return isMono
+    ? [project].concat(
+        workspaces.reduce(
+          (acc, ws) => acc.concat(path.join(cwd, ws, '*', 'tsconfig.json')),
+          [],
+        ),
+      )
+    : project;
 }

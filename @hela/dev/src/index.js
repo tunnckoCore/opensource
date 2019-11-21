@@ -97,8 +97,8 @@ function createCommand(name, description) {
       const configDir = path.join(__dirname, 'configs', name);
       const configPath = path.join(configDir, 'config.js');
 
-      // eslint-disable-next-line import/no-dynamic-require, global-require
-      const createConfig = require(configDir);
+      // const createConfig = require(configDir);
+      const { default: createConfig } = await import(configDir);
 
       const config = createConfig({ ...opts, ignores, input: inputs });
       const contents = `module.exports=${JSON.stringify(config)}`;
