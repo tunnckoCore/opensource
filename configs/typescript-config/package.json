@@ -15,7 +15,6 @@
   },
   "main": "tsconfig.json",
   "module": "tsconfig.json",
-  "typings": "dist/types/index.d.ts",
   "files": [
     "monorepo.json",
     "no-type-gen.json",

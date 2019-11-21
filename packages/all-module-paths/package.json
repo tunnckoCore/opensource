@@ -15,7 +15,6 @@
   },
   "main": "src/main.js",
   "module": "src/index.js",
-  "typings": "index.d.ts",
   "files": [
     "src",
     "index.d.ts"
