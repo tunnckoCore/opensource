@@ -37,7 +37,7 @@
     "prettier": "^1.18.2"
   },
   "dependencies": {
-    "@hela/core": "^3.0.0-alpha.71",
+    "@hela/core": "^3.0.0-canary",
     "@tunnckocore/jest-runner-babel": "^4.1.0",
     "@tunnckocore/jest-runner-eslint": "^1.1.0",
     "@tunnckocore/utils": "^1.2.0",
