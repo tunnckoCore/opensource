@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://github.com/tunnckoCore/opensource/compare/parse-function@5.4.6...parse-function@5.5.0) (2019-11-21)
+
+
+### Bug Fixes
+
+* remove `typings` field (causing issues like [#87](https://github.com/tunnckoCore/opensource/issues/87)) ([b154240](https://github.com/tunnckoCore/opensource/commit/b154240e8bab1daa63d873909735d2c59bdf25cc))
+
+
+### Features
+
+* eslint lint updates; use typescript parser for js files ([36e29cf](https://github.com/tunnckoCore/opensource/commit/36e29cf7510ef15da4c532f9dc2b81cd275218c3))
+
+
+
+
+
 ## [5.4.6](https://github.com/tunnckoCore/opensource/compare/parse-function@5.4.5...parse-function@5.4.6) (2019-11-20)
 
 **Note:** Version bump only for package parse-function

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/tunnckoCore/opensource/compare/pkg.tunnckocore.com@0.1.4...pkg.tunnckocore.com@0.2.0) (2019-11-21)
+
+
+### Features
+
+* eslint lint updates; use typescript parser for js files ([36e29cf](https://github.com/tunnckoCore/opensource/commit/36e29cf7510ef15da4c532f9dc2b81cd275218c3))
+
+
+
+
+
 ## [0.1.4](https://github.com/tunnckoCore/opensource/compare/pkg.tunnckocore.com@0.1.3...pkg.tunnckocore.com@0.1.4) (2019-11-20)
 
 **Note:** Version bump only for package pkg.tunnckocore.com

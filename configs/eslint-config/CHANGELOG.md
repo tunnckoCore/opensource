@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.1.2...@tunnckocore/eslint-config@5.2.0) (2019-11-21)
+
+
+### Bug Fixes
+
+* remove `typings` field (causing issues like [#87](https://github.com/tunnckoCore/opensource/issues/87)) ([b154240](https://github.com/tunnckoCore/opensource/commit/b154240e8bab1daa63d873909735d2c59bdf25cc))
+
+
+### Features
+
+* eslint lint updates; use typescript parser for js files ([36e29cf](https://github.com/tunnckoCore/opensource/commit/36e29cf7510ef15da4c532f9dc2b81cd275218c3))
+
+
+
+
+
 ## [5.1.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.1.1...@tunnckocore/eslint-config@5.1.2) (2019-11-20)
 
 **Note:** Version bump only for package @tunnckocore/eslint-config
