@@ -50,6 +50,7 @@
     "@commitlint/config-conventional": "^8.2.0",
     "@hela/cli": "^3.0.0-alpha.91",
     "@hela/dev": "*",
+    "@typescript-eslint/parser": "^2.8.0",
     "@wessberg/rollup-plugin-ts": "^1.1.80",
     "babel-preset-proposal-typescript": "^1.5.0",
     "builtin-modules": "^3.1.0",
