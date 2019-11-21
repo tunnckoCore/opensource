@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.2.0...@tunnckocore/eslint-config@5.2.1) (2019-11-21)
+
+
+### Bug Fixes
+
+* force typescript-eslint parser as peerDep - that way you always should install them both and so will not have problems with package managers ([e75589a](https://github.com/tunnckoCore/opensource/commit/e75589a08142a4d45cb8e2523378002c155d1690))
+
+
+
+
+
 # [5.2.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.1.2...@tunnckocore/eslint-config@5.2.0) (2019-11-21)
 
 
