@@ -279,8 +279,9 @@ function coverageColor(value, colors = {}) {
   return 'green';
 }
 
+// todo: testing
+/* istanbul ignore next */
 function tsconfigResolver(rootDir) {
-  /* istanbul ignore next */
   const cwd = rootDir || process.cwd();
   const { isMonorepo: isMono, workspaces } = getWorkspacesAndExtensions(cwd);
   const TSCONFIG_ESLINT = path.join(cwd, 'tsconfig.eslint.json');
