@@ -1,0 +1,68 @@
+{
+  "name": "parse-commit-message",
+  "version": "4.0.0-canary.1",
+  "description": "Extensible parser for git commit messages following Conventional Commits Specification",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "packages/parse-commit-message"
+  },
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": {
+    "name": "Charlike Mike Reagent",
+    "email": "opensource@tunnckocore.com",
+    "url": "https://tunnckocore.com"
+  },
+  "license": "MPL-2.0",
+  "engines": {
+    "node": "^8.10.0 || >=10.13.0"
+  },
+  "main": "dist/",
+  "module": "dist/",
+  "files": [
+    "dist"
+  ],
+  "keywords": [],
+  "scripts": {
+    "build": "BABEL_ENV=build rolldown --pkg-dir $PWD",
+    "docs": "docks --outfile .verb.md && verb",
+    "prebuild": "rm -rf dist",
+    "test": "devest test",
+    "type:check": "tsc -p ./tsconfig.check.json",
+    "type:gen": "tsc -p ./tsconfig.gentypes.json"
+  },
+  "devDependencies": {
+    "@types/dedent": "^0.7.0",
+    "collect-mentions": "^1.0.2",
+    "dedent": "^0.7.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "canary"
+  },
+  "licenseStart": "2018",
+  "verb": {
+    "data": {
+      "depsType": "dev",
+      "directory": "packages/parse-commit-message",
+      "avatar": "https://avatars3.githubusercontent.com/u/5038030?v=4",
+      "twitter": "tunnckoCore",
+      "github": "tunnckoCore"
+    },
+    "readme": "../../config/readme-template.md",
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 4
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": []
+  }
+}

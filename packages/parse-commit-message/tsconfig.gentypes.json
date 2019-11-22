@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "removeComments": true,
+    "skipLibCheck": false,
+    "sourceMap": false,
+    "strict": true,
+    "jsx": "react",
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["dom", "esnext", "es2015", "es2016", "es2017", "es2018"],
+    "paths": {
+      "*": ["packages/*/src", "node_modules/*"],
+      "@tunnckocore/*": ["@tunnckocore/*/src"]
+    },
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "noEmit": false,
+    "declaration": true,
+    "declarationDir": "./dist/typings",
+    "emitDeclarationOnly": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "**/__tests__/**"]
+}
