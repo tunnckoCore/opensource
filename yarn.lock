@@ -4678,10 +4678,10 @@ builtins@^1.0.3:
   resolved "https://registry.yarnpkg.com/builtins/-/builtins-1.0.3.tgz#cb94faeb61c8696451db36534e1422f94f0aee88"
   integrity sha1-y5T662HIaWRR2zZTThQi+U8K7og=
 
-buntis@^0.1.60:
-  version "0.1.60"
-  resolved "https://registry.yarnpkg.com/buntis/-/buntis-0.1.60.tgz#bf67dddcf10d8e35b36dde7cfa53f516ae15b20f"
-  integrity sha512-usvQ+QKnpjJsaxK66dGrVi3xKbqB5GCTDYwGsQ8QxXt9ueqk0oNTL8LQE69bp365IdZ2iIvvBWwz8LicwlB1jA==
+buntis@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/buntis/-/buntis-0.2.1.tgz#a043aabc7d64f2243bfaa53e34e999c2dd790e82"
+  integrity sha512-5wszfQlsqJmZrfxpPkO5yQcEoBAmfUYlXxXU/IM6PhPZ8DMnMMJQ9rvAHfe5WZmnB6E1IoJYylFfTaf1e2FJbQ==
 
 byline@^5.0.0:
   version "5.0.0"
