@@ -62,7 +62,7 @@
     "@tunnckocore/utils": "^1.2.0",
     "@typescript-eslint/eslint-plugin": "^2.8.0",
     "babel-eslint": "^11.0.0-beta.0",
-    "buntis": "^0.1.60",
+    "buntis": "^0.2.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-xo": "^0.27.2",
