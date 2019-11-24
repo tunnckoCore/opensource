@@ -49,7 +49,9 @@ async function handler(req, res) {
   try {
     pkg = await packageJson(name);
   } catch (err) {
-    res.send(err.message, 404);
+    res.setHeader('content-type', 'text/html');
+    const msg = err.response || err.message;
+    res.send(`<h1>${msg}</h1>`, 404);
     return;
   }
 
@@ -75,9 +77,8 @@ async function handler(req, res) {
       return;
     }
 
-    const fp = gh.pathname.replace(/\.git$/, '');
     // res.send(`B: https://${gh.host}/${fp}`);
-    res.send(`https://${gh.host}/${fp}`, 301);
+    res.send(`https://${gh.host}/${gh.repo}`, 301);
     return;
   }
   if (isString(pkg.homepage)) {

@@ -5,7 +5,7 @@
   ],
   "routes": [
     {
-      "src": "/(?!static)(.+)",
+      "src": "/(?!static|service-worker*)(.+)",
       "dest": "/api/index.js"
     },
     {
