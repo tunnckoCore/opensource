@@ -1,7 +1,7 @@
 import parsePkgName from 'parse-package-name';
 import ky from 'ky-universal';
 
-const ORIGIN =
+export const ORIGIN =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
     : 'https://ghub.now.sh';

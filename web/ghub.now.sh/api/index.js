@@ -62,7 +62,9 @@ async function handler(req, res) {
 
   const dir = directory ? `/tree/${branch}/${cleanSlashes(directory)}` : '';
 
-  const pkgUrl = cleanSlashes(repository.replace('.git', ''));
+  const pkgUrl = repository
+    ? cleanSlashes(repository.replace(/\.git$/, ''))
+    : null;
 
   if (pkgUrl) {
     const gh = parseGithub(`${pkgUrl}${dir}`);
@@ -73,7 +75,7 @@ async function handler(req, res) {
       return;
     }
 
-    const fp = gh.pathname.replace('.git', '');
+    const fp = gh.pathname.replace(/\.git$/, '');
     // res.send(`B: https://${gh.host}/${fp}`);
     res.send(`https://${gh.host}/${fp}`, 301);
     return;
