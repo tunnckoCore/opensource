@@ -6,8 +6,7 @@
   "packages": [
     "configs/*",
     "packages/*",
-    "@tunnckocore/*",
-    "@hela/*"
+    "@tunnckocore/*"
   ],
   "changelog": {
     "cacheDir": ".cache",

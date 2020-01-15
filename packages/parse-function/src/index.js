@@ -104,7 +104,7 @@ export default function parseFunction(opts = {}) {
       const isArrow = result.value.includes('=>');
       const isAsyncArrow = isAsync && isArrow;
 
-      const isMethod = /^\*?.+\([\s\S\w\W]*\)\s*\{/i.test(result.value);
+      const isMethod = /^\*?.+\([\S\W]*\)\s*{/i.test(result.value);
 
       if (!(isFunction || isAsyncFn || isAsyncArrow) && isMethod) {
         result.value = `{ ${result.value} }`;

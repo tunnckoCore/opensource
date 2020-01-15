@@ -8,8 +8,7 @@
       "web/*",
       "configs/*",
       "packages/*",
-      "@tunnckocore/*",
-      "@hela/*"
+      "@tunnckocore/*"
     ],
     "nohoist": [
       "ghub.now.sh/**/*",
@@ -19,22 +18,21 @@
   "scripts": {
     "bootstrap": "lerna bootstrap --since",
     "bundle": "ROLLUP_FORCE_RELOAD=1 yarn start bundle",
-    "clean:dist": "rm -rf {web,configs,packages,@tunnckocore,@hela}/*/dist",
+    "clean:dist": "rm -rf {web,configs,packages,@tunnckocore}/*/dist",
     "clean:fresh": "lerna clean -y && rm -rf node_modules",
     "cleanup": "yarn clean:dist && yarn clean:fresh",
     "cr": "node scripts/create-package.js",
-    "patch:hela": "cp patches/hela-cli/* node_modules/@hela/cli/dist/build/cjs/",
     "patch:sade": "cp patches/sade/* node_modules/sade/lib/",
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
-    "postsetup": "yarn patch:verb && yarn patch:hela && yarn patch:sade",
-    "postsetup:ci": "yarn patch:verb && yarn patch:hela && yarn patch:sade",
+    "postsetup": "yarn patch:verb && yarn patch:sade",
+    "postsetup:ci": "yarn patch:verb && yarn patch:sade",
     "pre-commit": "yarn docs && yarn fmt",
     "readme": "node scripts/root-readme.js > README.md",
     "refresh": "yarn cleanup && yarn setup",
     "release": "lerna version && lerna publish from-package",
     "setup": "yarn && yarn bootstrap",
     "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
-    "start": "node node_modules/@hela/cli/dist/build/cjs/cli.js",
+    "start": "hela",
     "test": "CI=1 yarn start test",
     "testy": "node scripts/generate-coverage-info.js && yarn start docs && yarn start format"
   },
@@ -48,8 +46,9 @@
     "@babel/preset-typescript": "^7.7.2",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
-    "@hela/cli": "^3.0.0-alpha.91",
-    "@hela/dev": "*",
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-json": "^4.0.1",
+    "@rollup/plugin-node-resolve": "^7.0.0",
     "@typescript-eslint/parser": "^2.8.0",
     "@wessberg/rollup-plugin-ts": "^1.1.80",
     "babel-preset-proposal-typescript": "^1.5.0",
@@ -57,6 +56,7 @@
     "enquirer": "^2.3.2",
     "eslint": "^6.6.0",
     "esm": "^3.2.25",
+    "hela": "^3.0.0-next.20200115.55",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
     "lerna": "^3.18.5",
@@ -64,9 +64,6 @@
     "react": "^16.12.0",
     "rollup": "^1.27.3",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.1.2",
     "semver": "^6.3.0",
     "typescript": "^3.7.2",
@@ -145,7 +142,7 @@
     }
   },
   "hela": {
-    "extends": "@hela/dev"
+    "extends": "hela/dist/dev"
   },
   "husky": {
     "hooks": {

@@ -1,10 +1,10 @@
 'use strict';
 
 /* eslint-XXXdisable import/no-extraneous-dependencies */
-const json = require('rollup-plugin-json');
+const json = require('@rollup/plugin-commonjs');
 const babel = require('rollup-plugin-babel');
-const commonjs = require('rollup-plugin-commonjs');
-const nodeResolve = require('rollup-plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
+const nodeResolve = require('@rollup/plugin-node-resolve');
 // const typescript = require('@wessberg/rollup-plugin-ts');
 const { minify } = require('terser');
 const { terser: terserPlugin } = require('rollup-plugin-terser');
@@ -14,7 +14,8 @@ const { extensions } = getWorkspacesAndExtensions(__dirname);
 
 const externals = [].concat('@babel/core', '@babel/parser');
 
-const tunnckocoreInterop = minify(`const ___exportsWithoutDefault = Object.keys(exports)
+const { code: tckInterop } = minify(`
+const ___exportsWithoutDefault = Object.keys(exports || {})
   .filter((x) => x !== 'default')
   .reduce((acc, key) => {
     acc[key] = exports[key];
@@ -98,8 +99,8 @@ module.exports = {
   output: [
     {
       exports: 'named',
-      outro: tunnckocoreInterop,
-      esModule: false,
+      outro: tckInterop,
+      esModule: true,
       sourcemap: true,
       sourcemapExcludeSources: true,
       preferConst: true,

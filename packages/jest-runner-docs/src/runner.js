@@ -160,7 +160,7 @@ async function tryCatch(fn, { testPath, start, cfg }) {
     if (err.command === 'verb') {
       const errMsg = err.all
         .split('\n')
-        .filter((line) => !/\[.+\].+/.test(line))
+        .filter((line) => !/\[.+].+/.test(line))
         .join('\n');
       const msg = errMsg.replace(
         /(.*)Error:\s+(.+)/,

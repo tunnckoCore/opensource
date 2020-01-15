@@ -91,7 +91,7 @@ function factory(parserName, parseFn) {
     values.forEach((code) => {
       const actual = parseFn(code);
       // const expected = expectedResults[key][i];
-      const value = actual.value.replace(/^\(\{? ?/, '').replace(/\)$/, '');
+      const value = actual.value.replace(/^\({? ?/, '').replace(/\)$/, '');
 
       test(`#${testsCount++} - ${parserName} - ${value}`, () => {
         expect(actual).toMatchSnapshot();

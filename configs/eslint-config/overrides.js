@@ -13,7 +13,7 @@ const jest = {
 };
 
 const mdx = {
-  // TODO @tunnckoCore [2019-12-12]: eslint errors with "uknown jsx node"
+  // TODO @tunnckoCore [2020-12-12]: eslint errors with "uknown jsx node"
   files: ['**/*.mdx'],
   parser: 'eslint-mdx',
   plugins: ['mdx'],
@@ -42,10 +42,10 @@ const ts = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
 
-    // TODO @tunnckoCore [2019-12-12]: Consider xo-typescript
+    // TODO @tunnckoCore [2020-12-12]: Consider xo-typescript
     // 'xo-typescript',
 
-    // TODO @tunnckoCore [2019-12-12]: Do we need Prettier here too? Check how overrides works!
+    // TODO @tunnckoCore [2020-12-12]: Do we need Prettier here too? Check how overrides works!
     'plugin:prettier/recommended',
     'prettier/@typescript-eslint',
   ],
