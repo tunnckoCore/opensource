@@ -27,7 +27,7 @@ module.exports = async function jestRunnerNode({ testPath }) {
       .catch((err) => {
         const lines = err.message.split('\n');
         const message = lines
-          .filter((x) => !x.includes('Command failed: node'))
+          .filter((x) => !x.includes('Command failed'))
           .join('\n')
           .trim();
 
