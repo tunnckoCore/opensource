@@ -130,9 +130,10 @@ async function main() {
   ]);
 
   const pkg = createPkgJson();
+  const monoRoot = path.dirname(__dirname);
 
-  const srcDir = path.join(__dirname, answers.location, 'src');
-  const testDir = path.join(__dirname, answers.location, 'test');
+  const srcDir = path.join(monoRoot, answers.location, 'src');
+  const testDir = path.join(monoRoot, answers.location, 'test');
 
   fs.mkdirSync(srcDir, { recursive: true });
   fs.mkdirSync(testDir, { recursive: true });
@@ -158,7 +159,7 @@ test('todo tests for ${answers.name} package', async () => {
   fs.writeFileSync(path.join(srcDir, 'index.js'), srcFile);
   fs.writeFileSync(path.join(testDir, 'index.js'), testFile);
 
-  const pkgPath = path.join(__dirname, answers.location, 'package.json');
+  const pkgPath = path.join(monoRoot, answers.location, 'package.json');
   fs.writeFileSync(pkgPath, pkgFile);
 }
 
