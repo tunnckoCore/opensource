@@ -6346,10 +6346,10 @@ eslint-config-xo-react@^0.22.0:
   resolved "https://registry.yarnpkg.com/eslint-config-xo-react/-/eslint-config-xo-react-0.22.0.tgz#ea89519dbb223cf520ffba7f47a40099271ec331"
   integrity sha512-00QU9o4TpvfLEdowiiM9Xc53l3zJu+t0Ip/e+vJerH2k4RmOAXNLT6EG6iTnLNFa8BG7Icy6vn1zcSwfdN6CWQ==
 
-eslint-config-xo-typescript@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-xo-typescript/-/eslint-config-xo-typescript-0.23.0.tgz#bde8e0d27214819913812220f1e3a3daac4f260a"
-  integrity sha512-xkPVvdCVrWyoUgOrXw+jqEVSLN3+Q6bBxUd5lD2zeOdEhALXPKpEc0sozvt85ZKo84cAyw8dNakIAuZE3Jm6dw==
+eslint-config-xo-typescript@^0.24.0:
+  version "0.24.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-xo-typescript/-/eslint-config-xo-typescript-0.24.1.tgz#5de303feb5d27fa19d813163b6e904eb9f861368"
+  integrity sha512-/o1e6tE/vy1semBCSa46SHmznt7mUD5Mdd6RlWSvt18clWXl0tWcl/FybwJ6ROhOHV3bFq5Y8Y5ySIWsE0fRjg==
 
 eslint-config-xo@^0.27.2:
   version "0.27.2"
