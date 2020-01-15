@@ -47,12 +47,12 @@
   ],
   "scripts": {},
   "dependencies": {
+    "arrify": "^2.0.1",
     "@babel/parser": "^7.6.4"
   },
   "devDependencies": {
     "acorn": "^7.1.0",
     "acorn-loose": "^7.0.0",
-    "arrify": "^2.0.1",
     "espree": "^6.1.1",
     "for-in": "^1.0.2"
   },
