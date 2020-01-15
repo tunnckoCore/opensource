@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
   rootDir: process.cwd(),
-  displayName: 'nodejs',
+  displayName: 'node',
   testMatch: ['<rootDir>/**/*/foo.js'],
   testPathIgnorePatterns: [
     '/node_modules/',

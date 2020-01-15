@@ -1,7 +1,7 @@
 {
   "name": "jest-runner-node",
-  "version": "0.1.0",
-  "description": "Running node modules, through Jest",
+  "version": "0.2.1",
+  "description": "Running Node.js files, through Jest",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
@@ -15,7 +15,6 @@
   },
   "main": "src/index.js",
   "module": "src/index.js",
-  "typings": "src/index.d.ts",
   "files": [
     "src"
   ],
@@ -46,9 +45,11 @@
       }
     }
   },
-  "devDependencies": {
-    "mukla": "^0.4.9"
+  "dependencies": {
+    "@tunnckocore/create-jest-runner": "^1.1.0",
+    "execa": "^4.0.0"
   },
+  "devDependencies": {},
   "cov": {
     "color": "grey"
   },
