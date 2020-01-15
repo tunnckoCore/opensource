@@ -14,8 +14,6 @@
     "**/packages/*/**/*.d.ts",
     "**/packages/*/**/*.ts",
     "**/@tunnckocore/*/**/*.ts",
-    "**/@tunnckocore/*/**/*.d.ts",
-    "**/@hela/*/**/*.ts",
-    "**/@hela/*/**/*.d.ts"
+    "**/@tunnckocore/*/**/*.d.ts"
   ]
 }
