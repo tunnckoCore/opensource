@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@1.2.0...@tunnckocore/utils@1.2.1) (2020-01-15)
+
+
+### Bug Fixes
+
+* deps, cov, utils update, close [#106](https://github.com/tunnckoCore/opensource/issues/106) ([4b9a968](https://github.com/tunnckoCore/opensource/commit/4b9a968932440768f04adec377313f465af8f447))
+
+
+
+
+
 # [1.2.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/utils@1.1.5...@tunnckocore/utils@1.2.0) (2019-11-21)
 
 

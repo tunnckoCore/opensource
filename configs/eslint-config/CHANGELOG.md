@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.2.1...@tunnckocore/eslint-config@5.2.2) (2020-01-15)
+
+
+### Bug Fixes
+
+* deps, cov, utils update, close [#106](https://github.com/tunnckoCore/opensource/issues/106) ([4b9a968](https://github.com/tunnckoCore/opensource/commit/4b9a968932440768f04adec377313f465af8f447))
+* **deps:** update dependency buntis to ^0.2.0 ([1bb9ed7](https://github.com/tunnckoCore/opensource/commit/1bb9ed7716fead9ba2caba2640833bab613c739a))
+* **deps:** update dependency eslint-config-xo-typescript to ^0.23.0 ([34ae238](https://github.com/tunnckoCore/opensource/commit/34ae23854cd0d5f58f12b365394c83383995627f))
+* **deps:** update dependency eslint-plugin-unicorn to v14 ([17ec601](https://github.com/tunnckoCore/opensource/commit/17ec601f211c5ecd6d4b2ed8663c14fe18055f28))
+
+
+
+
+
 ## [5.2.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.2.0...@tunnckocore/eslint-config@5.2.1) (2019-11-21)
 
 

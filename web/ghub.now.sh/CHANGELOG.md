@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/tunnckoCore/opensource/compare/ghub.now.sh@0.2.0...ghub.now.sh@0.2.1) (2020-01-15)
+
+
+### Bug Fixes
+
+* **ghub-now:** fixes for runtime errors ([7a1c400](https://github.com/tunnckoCore/opensource/commit/7a1c4003be8be96d663ca9939f157e6a2df48eb6))
+* **ghub-now:** resolve [#79](https://github.com/tunnckoCore/opensource/issues/79) & resolve [#82](https://github.com/tunnckoCore/opensource/issues/82) ([0666419](https://github.com/tunnckoCore/opensource/commit/0666419c9a7304b786092a9e26abbe71cef4fa2d))
+
+
+
+
+
 # [0.2.0](https://github.com/tunnckoCore/opensource/compare/ghub.now.sh@0.1.3...ghub.now.sh@0.2.0) (2019-11-21)
 
 
