@@ -123,8 +123,13 @@ function getWorkspacesAndExtensions(rootDir) {
   const packageJson = parseJson(packageJsonPath);
   const lernaJson = parseJson(lernaJsonPath);
 
+  /* istanbul ignore next */
+  const yarnWorkspaces = Array.isArray(packageJson.workspaces)
+    ? packageJson.workspaces
+    : packageJson.workspaces && packageJson.workspaces.packages;
+
   const workspaces = []
-    .concat(lernaJson.packages || packageJson.workspaces || [])
+    .concat(lernaJson.packages || yarnWorkspaces || [])
     .filter((x) => typeof x === 'string')
     .filter(Boolean)
     .reduce((acc, ws) => acc.concat(ws.split(',')), [])
@@ -168,6 +173,8 @@ function testCoverage(rootDir, testCovPath) {
     cwd,
   } = getWorkspacesAndExtensions(rootDir);
 
+  // const monoRoot = path.basename(path.dirname(packageJsonPath));
+
   if (!isMono) {
     throw new Error('This should only be used in monorepo environments.');
   }
@@ -177,19 +184,20 @@ function testCoverage(rootDir, testCovPath) {
       ? fromRoot(testCovPath)
       : fromRoot('coverage', 'lcov-report', 'index.html');
 
-  const LOCV_REPORT = fromRoot(lcovReportPath);
+  const LCOV_REPORT = fromRoot(lcovReportPath);
 
-  if (!fs.existsSync(LOCV_REPORT)) {
-    const file = path.relative(cwd, LOCV_REPORT);
+  if (!fs.existsSync(LCOV_REPORT)) {
+    const file = path.relative(cwd, LCOV_REPORT);
     throw new Error(
       `Run tests with coverage. Missing coverage report ./${file}!`,
     );
   }
 
-  const lcovInfo = fs.readFileSync(LOCV_REPORT, 'utf8');
+  const lcovInfo = fs.readFileSync(LCOV_REPORT, 'utf8');
   const $ = cheerio.load(lcovInfo);
 
   const files = {};
+  const monoRoot = path.basename(path.dirname(packageJsonPath));
 
   $('tr').each(function sasa(i, item) {
     const filepath = $('.file', item).text();
@@ -209,46 +217,61 @@ function testCoverage(rootDir, testCovPath) {
     };
   });
 
-  const jestCov = Object.keys(files).reduce((acc, file) => {
-    let value = files[file];
-    const [ws, folderName] = file.split('/');
-    const pkgRoot = `${ws}/${folderName}`;
+  const jestCov = Object.keys(files)
+    .filter((x) => x !== monoRoot)
+    .reduce((acc, file) => {
+      let value = files[file];
 
-    const res = Object.keys(files)
-      .filter((key) => key.startsWith(pkgRoot))
-      .map((filename) => files[filename]);
+      const [monoDir, ws, folderName] = file.split('/');
 
-    if (res.length > 1) {
-      value = res.reduce(
-        (accumulator, item) => {
-          accumulator.statements += item.statements / res.length;
-          accumulator.branches += item.branches / res.length;
-          accumulator.functions += item.functions / res.length;
-          accumulator.lines += item.lines / res.length;
+      const pkgRoot = path.join(monoDir, ws, folderName);
 
-          return accumulator;
-        },
-        { statements: 0, branches: 0, functions: 0, lines: 0 },
+      const res = Object.keys(files)
+        .filter((key) => key.startsWith(pkgRoot))
+        .map((filename) => files[filename]);
+
+      if (res.length > 1) {
+        value = res.reduce(
+          (accumulator, item) => {
+            accumulator.statements += item.statements / res.length;
+            accumulator.branches += item.branches / res.length;
+            accumulator.functions += item.functions / res.length;
+            accumulator.lines += item.lines / res.length;
+
+            return accumulator;
+          },
+          { statements: 0, branches: 0, functions: 0, lines: 0 },
+        );
+      }
+
+      const cov = Object.keys(value).reduce(
+        (accum, typeName) => accum + value[typeName],
+        0,
       );
-    }
 
-    const cov = Object.keys(value).reduce(
-      (accum, typeName) => accum + value[typeName],
-      0,
-    );
+      const coverage = Number((cov / 4).toFixed(2));
 
-    const coverage = Number((cov / 4).toFixed(2));
-
-    acc[pkgRoot] = {
-      value: coverage,
-      color: coverageColor(coverage),
-    };
-    return acc;
-  }, {});
+      acc[pkgRoot] = {
+        value: coverage,
+        color: coverageColor(coverage),
+      };
+      return acc;
+    }, {});
 
   return {
     packageJsonPath,
-    pkg: { ...pkg, cov: jestCov },
+    pkg: {
+      ...pkg,
+      cov: Object.keys(jestCov).reduce((acc, k) => {
+        const newKey = k
+          .split('/')
+          .slice(1)
+          .join('/');
+
+        acc[newKey] = jestCov[k];
+        return acc;
+      }, {}),
+    },
     message: `Done. Now you have \`cov\` field in the root package.json!\nYou can use it to further generate per package badges.`,
   };
 

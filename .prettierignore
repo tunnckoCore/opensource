@@ -17,8 +17,9 @@ coverage
 *.jpeg
 *.jpg
 
+.*
+!.verb.md
 patches
-@hela/dev/src/configs/*/config.js
 **/static/**/*.css
 
 *.tsbuildinfo

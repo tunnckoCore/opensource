@@ -34,7 +34,8 @@
     "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
     "start": "hela",
     "test": "CI=1 yarn start test",
-    "testy": "node scripts/generate-coverage-info.js && yarn start docs && yarn start format"
+    "testy": "node scripts/generate-coverage-info.js && yarn start docs && yarn format",
+    "format": "prettier '**/*' --write"
   },
   "dependencies": {
     "@babel/cli": "^7.7.0",
@@ -76,10 +77,6 @@
     ]
   },
   "cov": {
-    "@hela/dev": {
-      "value": 18.33,
-      "color": "red"
-    },
     "@tunnckocore/create-jest-runner": {
       "value": 18.08,
       "color": "red"

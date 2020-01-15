@@ -31,17 +31,17 @@ function main() {
   const wsMap = {
     packages: { desc: 'Non-scoped general purpose packages' },
     '@tunnckocore': { desc: 'Scoped general purpose packages' },
-    '@hela': {
-      link: '@hela',
-      desc: 'Powerful software development',
-    },
+    // '@hela': {
+    //   link: '@hela',
+    //   desc: 'Powerful software development',
+    // },
   };
 
   const list = workspaces
     .filter((x) => !/configs/.test(x))
     .reduce((acc, wsName) => {
       const { link, desc } = wsMap[wsName];
-      const wsDir = path.join(__dirname, wsName);
+      const wsDir = path.join(path.dirname(__dirname), wsName);
 
       console.log(
         '### %s',
