@@ -17,6 +17,8 @@ coverage
 *.jpeg
 *.jpg
 
+packages/function-arguments
+
 .*
 !.verb.md
 patches

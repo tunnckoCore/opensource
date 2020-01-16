@@ -1,14 +1,20 @@
 'use strict';
 
+const path = require('path');
 const execa = require('execa');
 const { pass, fail } = require('@tunnckocore/create-jest-runner');
 
 process.env.NODE_ENV = 'node';
 
-module.exports = async function jestRunnerNode({ testPath }) {
+module.exports = async function jestRunnerNode({ testPath, config }) {
   const start = new Date();
+  const nodeCmd = process.env.JEST_RUNNER_NODE_CMD;
 
-  const proc = execa('node', [testPath], { env: process.env });
+  const proc = execa.command(`${nodeCmd || `node ${testPath}`}`, {
+    env: process.env,
+    cwd: nodeCmd ? path.dirname(testPath) : config.cwd,
+    stdio: 'inherit',
+  });
 
   const testResults = await new Promise((resolve) => {
     proc

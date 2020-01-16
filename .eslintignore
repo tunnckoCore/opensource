@@ -3,6 +3,8 @@ README.md
 *.d.ts
 recipes
 patches
+
+packages/function-arguments
 @hela/dev/src/configs/*/config.js
 
 *.tsbuildinfo

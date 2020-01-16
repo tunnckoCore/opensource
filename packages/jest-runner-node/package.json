@@ -50,7 +50,8 @@
     "execa": "^4.0.0"
   },
   "cov": {
-    "color": "grey"
+    "value": 100,
+    "color": "green"
   },
   "licenseStart": 2020,
   "verb": {

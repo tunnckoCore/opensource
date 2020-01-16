@@ -28,14 +28,17 @@
     "postsetup:ci": "yarn patch:verb && yarn patch:sade",
     "pre-commit": "yarn docs && yarn fmt",
     "readme": "node scripts/root-readme.js > README.md",
-    "refresh": "yarn cleanup && yarn setup",
+    "refresh": "yarn run cleanup && yarn run setup",
     "release": "lerna version && lerna publish from-package",
     "setup": "yarn && yarn bootstrap",
     "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
     "start": "hela",
     "test": "CI=1 yarn start test",
-    "testy": "node scripts/generate-coverage-info.js && yarn start docs && yarn format '**/{README.md,.verb.md}'",
-    "format": "prettier --write"
+    "test:legacy": "CI=1 yarn run:node",
+    "testy": "node scripts/generate-coverage-info.js && yarn start docs && yarn run fmt",
+    "fmt": "yarn format '**/*'",
+    "format": "prettier --write",
+    "run:node": "jest -c packages/jest-runner-node/src/config.js"
   },
   "dependencies": {
     "@babel/cli": "^7.7.0",
@@ -62,6 +65,7 @@
     "husky": "^3.1.0",
     "jest": "^24.9.0",
     "lerna": "^3.18.5",
+    "mukla": "^0.4.9",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "rollup": "^1.27.3",
@@ -79,7 +83,7 @@
   },
   "cov": {
     "@tunnckocore/create-jest-runner": {
-      "value": 18.08,
+      "value": 20.11,
       "color": "red"
     },
     "@tunnckocore/execa": {
@@ -121,6 +125,10 @@
     "packages/jest-runner-docs": {
       "value": 7.7,
       "color": "red"
+    },
+    "packages/jest-runner-node": {
+      "value": 100,
+      "color": "green"
     },
     "packages/jest-runner-rollup": {
       "value": 6.18,

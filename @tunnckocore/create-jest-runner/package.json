@@ -34,7 +34,7 @@
     "tag": "latest"
   },
   "cov": {
-    "value": 18.08,
+    "value": 20.11,
     "color": "red"
   },
   "jest": {
