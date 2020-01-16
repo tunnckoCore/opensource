@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.1.1...jest-runner-docs@1.1.2) (2020-01-16)
+
+**Note:** Version bump only for package jest-runner-docs
+
+
+
+
+
 ## [1.1.1](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.1.0...jest-runner-docs@1.1.1) (2020-01-15)
 
 **Note:** Version bump only for package jest-runner-docs

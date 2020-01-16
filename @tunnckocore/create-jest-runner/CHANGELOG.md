@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/create-jest-runner@1.1.0...@tunnckocore/create-jest-runner@1.1.1) (2020-01-16)
+
+
+### Bug Fixes
+
+* update readmes, covs ([7af9fe4](https://github.com/tunnckoCore/opensource/commit/7af9fe4ca26e1a3141368b1df90bbd082ef93b87))
+
+
+
+
+
 # [1.1.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/create-jest-runner@1.0.6...@tunnckocore/create-jest-runner@1.1.0) (2019-11-21)
 
 
