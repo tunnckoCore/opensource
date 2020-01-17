@@ -19,7 +19,7 @@ function toHash(input) {
     .slice(0, 10);
 }
 
-function main() {
+module.exports = function main() {
   console.log('# Open Source Monorepo');
   console.log('');
 
@@ -85,6 +85,4 @@ function main() {
   [cov-${hash}-url]: https://www.npmjs.com/package/${name}
   [cov-${hash}-img]: ${covBadgeLink}`);
   });
-}
-
-main();
+};

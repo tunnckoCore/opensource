@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 'use strict';
 
 const fs = require('fs');
@@ -33,7 +31,9 @@ function onSubmit(name, value) {
   return value;
 }
 
-async function main() {
+// eslint-disable-next-line max-params
+module.exports = async function main() {
+  // console.log(args);
   await prompt([
     {
       message: 'Name of the package?',
@@ -127,6 +127,7 @@ async function main() {
       message: 'Type comma-separated keywords',
       onSubmit,
     },
+    // ...[].concat(require(settings.questions)(answers)),
   ]);
 
   const pkg = createPkgJson();
@@ -161,7 +162,7 @@ test('todo tests for ${answers.name} package', async () => {
 
   const pkgPath = path.join(monoRoot, answers.location, 'package.json');
   fs.writeFileSync(pkgPath, pkgFile);
-}
+};
 
 function createPkgJson() {
   const { publishType: type } = answers;
@@ -241,11 +242,3 @@ function createPkgJson() {
     },
   };
 }
-
-(async () => {
-  try {
-    await main();
-  } catch (err) {
-    process.exit(1);
-  }
-})();

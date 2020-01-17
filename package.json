@@ -16,26 +16,25 @@
     ]
   },
   "scripts": {
+    "start": "hela",
     "bootstrap": "lerna bootstrap --since",
     "bundle": "ROLLUP_FORCE_RELOAD=1 yarn start bundle",
     "clean:dist": "rm -rf {web,configs,packages,@tunnckocore}/*/dist",
     "clean:fresh": "lerna clean -y && rm -rf node_modules",
     "cleanup": "yarn clean:dist && yarn clean:fresh",
-    "cr": "node scripts/create-package.js",
     "patch:sade": "cp patches/sade/* node_modules/sade/lib/",
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
     "postsetup": "yarn patch:verb && yarn patch:sade",
     "postsetup:ci": "yarn patch:verb && yarn patch:sade",
     "pre-commit": "yarn docs && yarn fmt",
-    "readme": "node scripts/root-readme.js > README.md",
+    "readme": "hela gen:readme > README.md",
     "refresh": "yarn run cleanup && yarn run setup",
     "release": "lerna version && lerna publish from-package",
     "setup": "yarn && yarn bootstrap",
     "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
-    "start": "hela",
     "test": "CI=1 yarn start test",
     "test:legacy": "CI=1 yarn run:node",
-    "testy": "node scripts/generate-coverage-info.js && yarn start docs && yarn run fmt",
+    "testy": "hela gen:cov && yarn start docs && yarn run fmt",
     "fmt": "yarn format '**/*'",
     "format": "prettier --write",
     "run:node": "jest -c packages/jest-runner-node/src/config.js"
@@ -53,6 +52,7 @@
     "@rollup/plugin-commonjs": "^11.0.1",
     "@rollup/plugin-json": "^4.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",
+    "@tunnckocore/scripts": "^1.3.0",
     "@typescript-eslint/parser": "^2.8.0",
     "@wessberg/rollup-plugin-ts": "^1.1.80",
     "asia": "^1.0.0-rc.31",
@@ -81,75 +81,7 @@
       "@commitlint/config-conventional"
     ]
   },
-  "cov": {
-    "@tunnckocore/create-jest-runner": {
-      "value": 20.11,
-      "color": "red"
-    },
-    "@tunnckocore/execa": {
-      "value": 86.01,
-      "color": "99CC09"
-    },
-    "@tunnckocore/jest-runner-babel": {
-      "value": 8.93,
-      "color": "red"
-    },
-    "@tunnckocore/jest-runner-eslint": {
-      "value": 11.29,
-      "color": "red"
-    },
-    "@tunnckocore/pretty-config": {
-      "value": 2.08,
-      "color": "red"
-    },
-    "@tunnckocore/utils": {
-      "value": 100,
-      "color": "green"
-    },
-    "configs/babel-preset": {
-      "value": 74.92,
-      "color": "EEAA22"
-    },
-    "packages/all-module-paths": {
-      "value": 95.35,
-      "color": "99CC09"
-    },
-    "packages/arr-includes": {
-      "value": 100,
-      "color": "green"
-    },
-    "packages/gitclone-defaults": {
-      "value": 100,
-      "color": "green"
-    },
-    "packages/jest-runner-docs": {
-      "value": 7.7,
-      "color": "red"
-    },
-    "packages/jest-runner-node": {
-      "value": 100,
-      "color": "green"
-    },
-    "packages/jest-runner-rollup": {
-      "value": 6.18,
-      "color": "red"
-    },
-    "packages/koa-better-body": {
-      "value": 95.56,
-      "color": "99CC09"
-    },
-    "packages/parse-function": {
-      "value": 100,
-      "color": "green"
-    },
-    "packages/stringify-github-short-url": {
-      "value": 100,
-      "color": "green"
-    }
-  },
-  "hela": {
-    "extends": "hela/dist/dev"
-  },
+  "cov": {},
   "husky": {
     "hooks": {
       "pre-commit": "echo 'yarn run pre-commit'",

@@ -63,6 +63,7 @@ module.exports = {
         ],
         comments: false,
         sourceMaps: true,
+        inputSourceMaps: true,
       }),
     // typescript({
     //   transpiler: 'babel',
