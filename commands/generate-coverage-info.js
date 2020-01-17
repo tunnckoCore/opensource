@@ -4,16 +4,24 @@ const fs = require('fs');
 const path = require('path');
 const { testCoverage } = require('@tunnckocore/utils');
 
-module.exports = function main() {
-  let res = null;
+module.exports = require('hela')()
+  .command(
+    'gen:cov',
+    'Gen coverage info (see pkg.cov), run nyc/istanbul/jest before that',
+  )
+  .alias(['cov-info', 'gencov', 'cov'])
+  .example('gen:cov')
+  .example('cov')
+  .action(function main() {
+    let res = null;
 
-  try {
-    res = testCoverage(path.dirname(__dirname));
-  } catch (err) {
-    console.error(err.message);
-    throw err;
-  }
+    try {
+      res = testCoverage(path.dirname(__dirname));
+    } catch (err) {
+      console.error(err.message);
+      throw err;
+    }
 
-  fs.writeFileSync(res.packageJsonPath, JSON.stringify(res.pkg, null, 2));
-  console.log(res.message);
-};
+    fs.writeFileSync(res.packageJsonPath, JSON.stringify(res.pkg, null, 2));
+    console.log(res.message);
+  });

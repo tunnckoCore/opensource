@@ -5,6 +5,8 @@ const path = require('path');
 const semver = require('semver');
 const { prompt } = require('enquirer');
 
+const { hela } = require('hela');
+
 const answers = {
   license: 'MPL-2.0',
   licenseStart: new Date().getFullYear(),
@@ -31,138 +33,145 @@ function onSubmit(name, value) {
   return value;
 }
 
-// eslint-disable-next-line max-params
-module.exports = async function main() {
-  // console.log(args);
-  await prompt([
-    {
-      message: 'Name of the package?',
-      type: 'input',
-      name: 'name',
-      onSubmit,
-    },
-    {
-      message: 'Desciption the package?',
-      type: 'input',
-      name: 'description',
-      initial: 'WIP',
-      onSubmit,
-    },
-    {
-      message: 'Package version',
-      type: 'input',
-      initial: '0.1.0',
-      name: 'version',
-      validate(value, state, item) {
-        if (item && item.name === 'version' && !semver.valid(value)) {
-          return prompt.styles.danger('version should be a valid semver value');
-        }
-        return true;
+module.exports = hela()
+  .command('new', 'Create new package')
+  .alias(['cr', 'create', 'cretae', 'craete', 'gen:pkg'])
+  .example('new')
+  .example('gen:pkg')
+  .example('create')
+  .action(async function main() {
+    // console.log(args);
+    await prompt([
+      {
+        message: 'Name of the package?',
+        type: 'input',
+        name: 'name',
+        onSubmit,
       },
-      onSubmit,
-    },
-    {
-      message: 'Is it scoped?',
-      type: 'toggle',
-      name: 'scoped',
-      enabled: 'Yes',
-      disabled: 'No',
-      onSubmit,
-    },
-    {
-      message: 'What is the scope?',
-      type: 'autocomplete',
-      name: 'scope',
-      choices: ['@tunnckocore', '@hela'],
-      onSubmit,
-      skip() {
-        if (!answers.scoped) {
-          answers.location = `packages/${answers.name}`;
-          return true;
-        }
-
-        return false;
+      {
+        message: 'Desciption the package?',
+        type: 'input',
+        name: 'description',
+        initial: 'WIP',
+        onSubmit,
       },
-      result(value) {
-        if (answers.scoped) {
-          if (/config|preset/.test(answers.name)) {
-            answers.location = `configs/${answers.name}`;
-          } else {
-            answers.location = `${value}/${answers.name}`;
+      {
+        message: 'Package version',
+        type: 'input',
+        initial: '0.1.0',
+        name: 'version',
+        validate(value, state, item) {
+          if (item && item.name === 'version' && !semver.valid(value)) {
+            return prompt.styles.danger(
+              'version should be a valid semver value',
+            );
           }
-          answers.name = `${value}/${answers.name}`;
-          answers.scope = value;
-        }
+          return true;
+        },
+        onSubmit,
       },
-    },
-    {
-      type: 'select',
-      name: 'publishType',
-      message: 'What type of publishing?',
-      choices: ['build', 'bundle', 'source'],
-      initial: 0,
-      onSubmit,
-      result(value) {
-        answers.publishType = value;
+      {
+        message: 'Is it scoped?',
+        type: 'toggle',
+        name: 'scoped',
+        enabled: 'Yes',
+        disabled: 'No',
+        onSubmit,
       },
-    },
-    {
-      type: 'input',
-      name: 'licenseStart',
-      message: 'When the package is first published?',
-      initial: answers.licenseStart,
-      onSubmit,
-    },
-    {
-      type: 'autocomplete',
-      name: 'license',
-      message: 'What is the license of the package?',
-      initial: 0,
-      choices: ['Parity-7.0.0', 'Prosperity-3.0.0', 'MPL-2.0', 'Apache-2.0'],
-    },
-    {
-      type: 'list',
-      name: 'keywords',
-      initial: answers.keywords,
-      message: 'Type comma-separated keywords',
-      onSubmit,
-    },
-    // ...[].concat(require(settings.questions)(answers)),
-  ]);
+      {
+        message: 'What is the scope?',
+        type: 'autocomplete',
+        name: 'scope',
+        choices: ['@tunnckocore', '@hela'],
+        onSubmit,
+        skip() {
+          if (!answers.scoped) {
+            answers.location = `packages/${answers.name}`;
+            return true;
+          }
 
-  const pkg = createPkgJson();
-  const monoRoot = path.dirname(__dirname);
+          return false;
+        },
+        result(value) {
+          if (answers.scoped) {
+            if (/config|preset/.test(answers.name)) {
+              answers.location = `configs/${answers.name}`;
+            } else {
+              answers.location = `${value}/${answers.name}`;
+            }
+            answers.name = `${value}/${answers.name}`;
+            answers.scope = value;
+          }
+        },
+      },
+      {
+        type: 'select',
+        name: 'publishType',
+        message: 'What type of publishing?',
+        choices: ['build', 'bundle', 'source'],
+        initial: 0,
+        onSubmit,
+        result(value) {
+          answers.publishType = value;
+        },
+      },
+      {
+        type: 'input',
+        name: 'licenseStart',
+        message: 'When the package is first published?',
+        initial: answers.licenseStart,
+        onSubmit,
+      },
+      {
+        type: 'autocomplete',
+        name: 'license',
+        message: 'What is the license of the package?',
+        initial: 0,
+        choices: ['Parity-7.0.0', 'Prosperity-3.0.0', 'MPL-2.0', 'Apache-2.0'],
+      },
+      {
+        type: 'list',
+        name: 'keywords',
+        initial: answers.keywords,
+        message: 'Type comma-separated keywords',
+        onSubmit,
+      },
+      // ...[].concat(require(settings.questions)(answers)),
+    ]);
 
-  const srcDir = path.join(monoRoot, answers.location, 'src');
-  const testDir = path.join(monoRoot, answers.location, 'test');
+    const pkg = createPkgJson();
+    const monoRoot = path.dirname(__dirname);
 
-  fs.mkdirSync(srcDir, { recursive: true });
-  fs.mkdirSync(testDir, { recursive: true });
+    const srcDir = path.join(monoRoot, answers.location, 'src');
+    const testDir = path.join(monoRoot, answers.location, 'test');
 
-  const pkgFile = JSON.stringify(pkg, null, 2);
-  const srcFile =
-    answers.publishType === 'source'
-      ? `module.exports = () => {};\n`
-      : `export default () => {};\n`;
+    fs.mkdirSync(srcDir, { recursive: true });
+    fs.mkdirSync(testDir, { recursive: true });
 
-  const baseLine =
-    answers.publishType === 'source'
-      ? "const mod = require('../src')"
-      : "import mod from '../src'";
+    const pkgFile = JSON.stringify(pkg, null, 2);
+    const srcFile =
+      answers.publishType === 'source'
+        ? `module.exports = () => {};\n`
+        : `export default () => {};\n`;
 
-  const testFile = `${baseLine};
+    const baseLine =
+      answers.publishType === 'source'
+        ? "const mod = require('../src')"
+        : "import mod from '../src'";
+
+    const testFile = `${baseLine};
 
 test('todo tests for ${answers.name} package', async () => {
   expect(typeof mod).toStrictEqual('function');
 });
 `;
 
-  fs.writeFileSync(path.join(srcDir, 'index.js'), srcFile);
-  fs.writeFileSync(path.join(testDir, 'index.js'), testFile);
+    fs.writeFileSync(path.join(srcDir, 'index.js'), srcFile);
+    fs.writeFileSync(path.join(testDir, 'index.js'), testFile);
 
-  const pkgPath = path.join(monoRoot, answers.location, 'package.json');
-  fs.writeFileSync(pkgPath, pkgFile);
-};
+    const pkgPath = path.join(monoRoot, answers.location, 'package.json');
+    fs.writeFileSync(pkgPath, pkgFile);
+  });
 
 function createPkgJson() {
   const { publishType: type } = answers;

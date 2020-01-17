@@ -1,17 +1,17 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
+
 'use strict';
+
+const fs = require('fs');
+const path = require('path');
 
 const { hela, exec } = require('hela');
 const dev = require('hela/dist/dev');
 
-const createPackage = require('./commands/create-package');
-const genCovInfo = require('./commands/generate-coverage-info');
-const genReadme = require('./commands/root-readme');
-
-const prog = hela();
-
 const config = { ...dev };
 
-config.check = prog
+config.check = hela()
   .command('check', 'Run lint, test and prettier')
   .action(async (...args) => {
     await dev.lint(...args);
@@ -19,32 +19,9 @@ config.check = prog
     await exec('prettier --write "**/*{.verb,README}.md"');
   });
 
-config.new = prog
-  .command('new', 'Create new package')
-  .alias(['cr', 'create', 'cretae', 'craete', 'gen:pkg'])
-  .example('new')
-  .example('gen:pkg')
-  .example('create')
-  .action(createPackage);
+fs.readdirSync('./commands').forEach((cmdPath) => {
+  const inst = require(path.join(__dirname, 'commands', cmdPath));
+  exports[inst.currentCommand.rawName] = inst;
+});
 
-config.cov = prog
-  .command(
-    'gen:cov',
-    'Gen coverage info (see pkg.cov), run nyc/istanbul/jest before that',
-  )
-  .alias(['cov-info', 'gencov', 'cov'])
-  .example('gen:cov')
-  .example('cov')
-  .action(genCovInfo);
-
-config.readme = prog
-  .command(
-    'gen:readme',
-    'Generate monorepo root readme with useful info about each package',
-  )
-  .example('readme > README.md')
-  .example('gen:readme > README.md')
-  .alias(['r', 'root-readme', 'genreadme', 'readme'])
-  .action(genReadme);
-
-module.exports = config;
+Object.assign(exports, config);
