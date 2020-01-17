@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 'use strict';
 
 /* eslint-disable global-require, import/no-dynamic-require */
