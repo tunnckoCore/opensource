@@ -58,6 +58,7 @@
     "asia": "^1.0.0-rc.31",
     "babel-preset-proposal-typescript": "^1.5.0",
     "builtin-modules": "^3.1.0",
+    "chalk": "^3.0.0",
     "enquirer": "^2.3.2",
     "eslint": "^6.6.0",
     "esm": "^3.2.25",
@@ -74,7 +75,8 @@
     "semver": "^6.3.0",
     "typescript": "^3.7.2",
     "verb": "verbose/verb#dev",
-    "verb-generate-readme": "^0.8.0"
+    "verb-generate-readme": "^0.8.0",
+    "yaml": "^1.7.2"
   },
   "commitlint": {
     "extends": [
