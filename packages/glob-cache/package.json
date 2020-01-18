@@ -23,20 +23,20 @@
     "src"
   ],
   "keywords": [
-    "tunnckocorehq",
-    "tunnckocore-oss",
-    "hela",
-    "development",
-    "developer-experience",
-    "dx",
-    "cache",
     "cacache",
-    "caching",
+    "cache",
     "cache-layer",
+    "caching",
+    "developer-experience",
+    "development",
+    "dx",
     "fast-glob",
-    "tiny-glob",
     "glob",
-    "globbing"
+    "globbing",
+    "hela",
+    "tiny-glob",
+    "tunnckocore-oss",
+    "tunnckocorehq"
   ],
   "scripts": {},
   "publishConfig": {
@@ -54,7 +54,8 @@
     }
   },
   "cov": {
-    "color": "grey"
+    "value": 6.93,
+    "color": "red"
   },
   "licenseStart": 2020,
   "verb": {
@@ -72,7 +73,12 @@
     "lint": {
       "reflinks": true
     },
-    "reflinks": [],
+    "reflinks": [
+      "cacache",
+      "fast-glob",
+      "glob",
+      "tiny-glob"
+    ],
     "related": {
       "list": []
     }

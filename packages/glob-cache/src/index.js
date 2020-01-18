@@ -14,11 +14,39 @@ const defaultOptions = {
   hook: () => {},
   always: false,
   glob: fastGlob,
+  globOptions: {},
   cacheLocation: './.cache/glob-cache',
-  fastGlobOptions: {},
 };
 
-module.exports = async function globCache(options = {}) {
+/**
+ * Match files and folders using glob patterns. Returns a resolved Promise containing
+ * a `{ results, cacache }` object - where `results` is an array of [Context](#context) objects
+ * and `cacache` is the [cacache][] package.
+ *
+ * @example
+ * const tinyGlob = require('tiny-glob');
+ * const glob = require('glob-cache');
+ *
+ * glob({
+ *   include: 'src/*.js',
+ *   glob: tinyGlob,
+ * }).then(({ results, cacache }) => {
+ *   console.log(results);
+ * });
+ *
+ *
+ * @name  globCache
+ * @param {string|Array<string>} options.include - string or array of string glob patterns
+ * @param {string} options.exclude - ignore patterns
+ * @param {Function} options.hook - a hook function passed with [Context](#context)
+ * @param {boolean} options.always - a boolean that makes `options.hook` to always be called
+ * @param {Function} options.glob - a globbing library like [glob][], [fast-glob][], [tiny-glob][], defaults to `fast-glob`
+ * @param {object} options.globOptions - options passed to the `options.glob` library
+ * @param {string} options.cacheLocation - a filepath location of the cache, defaults to `./.cache/glob-cache`
+ * @returns {Promise}
+ * @public
+ */
+module.exports = async function globCache(options) {
   const opts = { ...defaultOptions, ...options };
   if (typeof opts.glob !== 'function') {
     opts.glob = fastGlob;
