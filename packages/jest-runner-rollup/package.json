@@ -81,6 +81,12 @@
     "lint": {
       "reflinks": true
     },
-    "reflinks": []
+    "reflinks": [
+      "dependencies-img",
+      "dependencies-url"
+    ],
+    "related": {
+      "list": []
+    }
   }
 }

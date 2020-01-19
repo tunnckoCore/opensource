@@ -19,16 +19,16 @@
     "src"
   ],
   "keywords": [
-    "tunnckocorehq",
-    "tunnckocore-oss",
-    "hela",
-    "development",
     "developer-experience",
+    "development",
     "dx",
+    "hela",
     "jest-runner",
     "jest-runner-node",
+    "node-runner",
     "nodejs",
-    "node-runner"
+    "tunnckocore-oss",
+    "tunnckocorehq"
   ],
   "scripts": {},
   "publishConfig": {
@@ -69,7 +69,10 @@
     "lint": {
       "reflinks": true
     },
-    "reflinks": [],
+    "reflinks": [
+      "dependencies-img",
+      "dependencies-url"
+    ],
     "related": {
       "list": []
     }

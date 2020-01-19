@@ -20,29 +20,29 @@
     "index.d.ts"
   ],
   "keywords": [
-    "tunnckocorehq",
-    "tunnckocore-oss",
-    "hela",
-    "development",
-    "developer-experience",
-    "dx",
-    "utils",
-    "module",
-    "module-paths",
-    "paths",
-    "global-modules",
-    "local-modules",
     "bin",
     "bin-paths",
     "binaries",
-    "packages",
-    "package-paths",
-    "npm",
-    "pnpm",
-    "yarn",
+    "developer-experience",
+    "development",
+    "dx",
+    "global",
+    "global-modules",
+    "hela",
     "javascript",
     "local",
-    "global"
+    "local-modules",
+    "module",
+    "module-paths",
+    "npm",
+    "package-paths",
+    "packages",
+    "paths",
+    "pnpm",
+    "tunnckocore-oss",
+    "tunnckocorehq",
+    "utils",
+    "yarn"
   ],
   "scripts": {},
   "dependencies": {
@@ -87,7 +87,10 @@
     "lint": {
       "reflinks": true
     },
-    "reflinks": [],
+    "reflinks": [
+      "dependencies-img",
+      "dependencies-url"
+    ],
     "related": {
       "list": []
     }

@@ -21,24 +21,24 @@
     "index.d.ts"
   ],
   "keywords": [
-    "tunnckocorehq",
-    "tunnckocore-oss",
-    "hela",
-    "development",
-    "developer-experience",
-    "dx",
-    "checks",
-    "validate",
-    "exists",
-    "includes",
     "arr",
-    "array",
-    "arr-utils",
-    "array-utils",
     "arr-includes",
+    "arr-utils",
+    "array",
+    "array-utils",
+    "array-values",
+    "checks",
+    "developer-experience",
+    "development",
+    "dx",
+    "exists",
+    "hela",
     "in-array",
-    "values",
-    "array-values"
+    "includes",
+    "tunnckocore-oss",
+    "tunnckocorehq",
+    "validate",
+    "values"
   ],
   "scripts": {},
   "dependencies": {
@@ -83,7 +83,10 @@
     "lint": {
       "reflinks": true
     },
-    "reflinks": [],
+    "reflinks": [
+      "dependencies-img",
+      "dependencies-url"
+    ],
     "related": {
       "list": []
     }

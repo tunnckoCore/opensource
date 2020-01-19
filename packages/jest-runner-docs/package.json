@@ -19,20 +19,20 @@
     "src"
   ],
   "keywords": [
-    "tunnckocorehq",
-    "tunnckocore-oss",
-    "hela",
-    "development",
+    "comments",
     "developer-experience",
-    "dx",
+    "development",
     "docs",
     "documentation",
-    "typescript",
-    "tsc",
-    "parse-comments",
-    "comments",
+    "dx",
+    "hela",
     "jsdoc",
-    "tsdoc"
+    "parse-comments",
+    "tsc",
+    "tsdoc",
+    "tunnckocore-oss",
+    "tunnckocorehq",
+    "typescript"
   ],
   "scripts": {},
   "dependencies": {
@@ -85,6 +85,12 @@
     "lint": {
       "reflinks": true
     },
-    "reflinks": []
+    "reflinks": [
+      "dependencies-img",
+      "dependencies-url"
+    ],
+    "related": {
+      "list": []
+    }
   }
 }

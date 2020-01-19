@@ -47,25 +47,25 @@
   "renovate-config": {
     "default": {
       "extends": [
-        "config:base",
-        ":onlyNpm",
-        ":enableVulnerabilityAlerts",
-        ":maintainLockFilesWeekly",
-        ":preserveSemverRanges",
-        ":separateMultipleMajorReleases",
-        ":prHourlyLimitNone",
-        ":prNotPending",
-        ":prConcurrentLimit20",
-        ":automergePr",
-        ":automergeMajor",
+        ":assignee(@tunnckoCore)",
         ":automergeAll",
         ":automergeLinters",
+        ":automergeMajor",
+        ":automergePr",
         ":automergeTypes",
-        ":rebaseStalePrs",
-        ":semanticCommits",
+        ":enableVulnerabilityAlerts",
         ":gitSignOff",
         ":label(dependencies)",
-        ":assignee(@tunnckoCore)"
+        ":maintainLockFilesWeekly",
+        ":onlyNpm",
+        ":prConcurrentLimit20",
+        ":preserveSemverRanges",
+        ":prHourlyLimitNone",
+        ":prNotPending",
+        ":rebaseStalePrs",
+        ":semanticCommits",
+        ":separateMultipleMajorReleases",
+        "config:base"
       ],
       "rollbackPrs": true,
       "vulnerabilityAlerts": {
@@ -94,6 +94,12 @@
     "lint": {
       "reflinks": true
     },
-    "reflinks": []
+    "reflinks": [
+      "dependencies-img",
+      "dependencies-url"
+    ],
+    "related": {
+      "list": []
+    }
   }
 }

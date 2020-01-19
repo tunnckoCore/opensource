@@ -98,7 +98,9 @@
       "acorn",
       "babylon",
       "define-property",
-      "espree"
+      "espree",
+      "dependencies-img",
+      "dependencies-url"
     ],
     "related": {
       "list": []

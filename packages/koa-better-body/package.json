@@ -121,11 +121,13 @@
       "koa",
       "koa-body-parsers",
       "koa-convert",
-      "lazy-cache",
-      "raw-body",
       "koa-router",
+      "lazy-cache",
       "micromatch",
-      "qs"
+      "qs",
+      "raw-body",
+      "dependencies-img",
+      "dependencies-url"
     ]
   }
 }

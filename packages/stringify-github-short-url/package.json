@@ -19,16 +19,14 @@
     "dist"
   ],
   "keywords": [
-    "tunnckocorehq",
-    "tunnckocore-oss",
-    "hela",
-    "development",
-    "developer-experience",
-    "dx",
     "branch",
+    "developer-experience",
+    "development",
+    "dx",
     "gh",
     "git",
     "github",
+    "hela",
     "name",
     "object",
     "org",
@@ -42,6 +40,8 @@
     "stringify",
     "stringify-github-short-url",
     "tag",
+    "tunnckocore-oss",
+    "tunnckocorehq",
     "url",
     "user",
     "util"
@@ -85,7 +85,10 @@
     "lint": {
       "reflinks": true
     },
-    "reflinks": [],
+    "reflinks": [
+      "dependencies-img",
+      "dependencies-url"
+    ],
     "related": {
       "list": []
     }

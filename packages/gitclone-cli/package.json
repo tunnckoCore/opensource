@@ -21,16 +21,13 @@
     "src"
   ],
   "keywords": [
-    "tunnckocorehq",
-    "tunnckocore-oss",
-    "hela",
-    "development",
-    "developer-experience",
-    "dx",
     "cli",
     "clone",
     "cmd",
     "command",
+    "developer-experience",
+    "development",
+    "dx",
     "flexible",
     "gh",
     "ghclone",
@@ -39,7 +36,10 @@
     "gitclone",
     "github",
     "github-clone",
-    "interface"
+    "hela",
+    "interface",
+    "tunnckocore-oss",
+    "tunnckocorehq"
   ],
   "scripts": {},
   "dependencies": {
@@ -70,6 +70,13 @@
     "lint": {
       "reflinks": true
     },
-    "reflinks": []
+    "reflinks": [
+      "dependencies-img",
+      "dependencies-url",
+      "gitclone"
+    ],
+    "related": {
+      "list": []
+    }
   }
 }

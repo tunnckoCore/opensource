@@ -19,29 +19,28 @@
     "src"
   ],
   "keywords": [
-    "develop",
-    "hela",
-    "helpers",
-    "monorepo",
-    "monorepo helpers",
-    "tunnckocore-opensource",
-    "tunnckocore-oss",
-    "tunnckocorehq",
-    "utilities",
-    "utils",
     "babel-preset",
     "babel-typescript",
+    "develop",
     "dynamic-import",
     "env",
     "hela",
+    "helpers",
     "import-meta",
+    "monorepo",
+    "monorepo helpers",
     "preset",
     "preset-env",
     "preset-react",
     "proposal-typescript",
     "react",
     "shareable configs",
-    "typescript"
+    "tunnckocore-opensource",
+    "tunnckocore-oss",
+    "tunnckocorehq",
+    "typescript",
+    "utilities",
+    "utils"
   ],
   "scripts": {},
   "peerDependencies": {
@@ -96,6 +95,12 @@
     "lint": {
       "reflinks": true
     },
-    "reflinks": []
+    "reflinks": [
+      "dependencies-img",
+      "dependencies-url"
+    ],
+    "related": {
+      "list": []
+    }
   }
 }

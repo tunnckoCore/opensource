@@ -19,12 +19,6 @@
     "dist"
   ],
   "keywords": [
-    "tunnckocorehq",
-    "tunnckocore-oss",
-    "hela",
-    "development",
-    "developer-experience",
-    "dx",
     "args",
     "arguments",
     "check",
@@ -33,14 +27,20 @@
     "create",
     "default",
     "defaults",
+    "developer-experience",
+    "development",
+    "dx",
     "flexible",
     "git",
     "gitclone",
     "gitclone-defaults",
     "gitcreate",
     "github",
+    "hela",
     "powerful",
     "signature",
+    "tunnckocore-oss",
+    "tunnckocorehq",
     "util",
     "validate"
   ],
@@ -87,7 +87,11 @@
     "lint": {
       "reflinks": true
     },
-    "reflinks": [],
+    "reflinks": [
+      "dependencies-img",
+      "dependencies-url",
+      "parse-github-url"
+    ],
     "related": {
       "list": []
     }

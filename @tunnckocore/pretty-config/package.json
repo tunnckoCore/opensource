@@ -19,22 +19,22 @@
     "dist"
   ],
   "keywords": [
-    "tunnckocorehq",
-    "tunnckocore-oss",
-    "hela",
-    "development",
-    "developer-experience",
-    "dx",
-    "config",
     " configs",
-    "configuration",
-    "loader",
+    "config",
     "config-loader",
+    "configuration",
+    "developer-experience",
+    "development",
+    "dx",
+    "hela",
+    "loader",
     "package-json",
-    "presets",
     "preset-loader",
+    "presets",
+    "rc",
     "rcconfig",
-    "rc"
+    "tunnckocore-oss",
+    "tunnckocorehq"
   ],
   "scripts": {},
   "dependencies": {
@@ -80,7 +80,10 @@
     "lint": {
       "reflinks": true
     },
-    "reflinks": [],
+    "reflinks": [
+      "dependencies-img",
+      "dependencies-url"
+    ],
     "related": {
       "list": []
     }
