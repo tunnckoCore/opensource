@@ -60,7 +60,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
       const outputFile = path.resolve(pkgRoot, docksConfig.outfile);
 
       const promo = docksConfig.promo
-        ? `_Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._`
+        ? `_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._`
         : '';
 
       const header = docksConfig.includeHeader ? '## API\n\n' : '';
