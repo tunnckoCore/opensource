@@ -1,7 +1,7 @@
 <p align="center">
   <img
     align="center"
-    src="./logo.png"
+    src="https://rawcdn.githack.com/tunnckoCore/opensource/820e49e8692e845205e50d5c5f5869d8313f4206/packages/glob-cache/logo.png"
   />
 </p>
 
