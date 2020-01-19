@@ -229,7 +229,7 @@ you can add more properties if you want.
 
 ## API
 
-_Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [parseFunction](./src/index.js#L52)
 

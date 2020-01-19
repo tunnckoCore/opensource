@@ -80,7 +80,7 @@ $ yarn add stringify-github-short-url
 
 ## API
 
-_Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [stringifyGithubShortUrl](./src/index.js#L30)
 

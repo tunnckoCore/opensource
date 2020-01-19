@@ -90,7 +90,7 @@ $ yarn add glob-cache
 
 ## API
 
-_Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [globCache](./src/index.js#L46)
 
