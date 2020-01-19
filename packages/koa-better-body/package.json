@@ -125,9 +125,7 @@
       "lazy-cache",
       "micromatch",
       "qs",
-      "raw-body",
-      "dependencies-img",
-      "dependencies-url"
+      "raw-body"
     ]
   }
 }

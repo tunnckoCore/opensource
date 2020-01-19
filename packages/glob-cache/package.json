@@ -77,9 +77,7 @@
       "cacache",
       "fast-glob",
       "glob",
-      "tiny-glob",
-      "dependencies-img",
-      "dependencies-url"
+      "tiny-glob"
     ],
     "related": {
       "list": []

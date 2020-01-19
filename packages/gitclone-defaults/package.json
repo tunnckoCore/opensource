@@ -88,8 +88,6 @@
       "reflinks": true
     },
     "reflinks": [
-      "dependencies-img",
-      "dependencies-url",
       "parse-github-url"
     ],
     "related": {

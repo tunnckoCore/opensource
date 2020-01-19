@@ -71,8 +71,6 @@
       "reflinks": true
     },
     "reflinks": [
-      "dependencies-img",
-      "dependencies-url",
       "gitclone"
     ],
     "related": {

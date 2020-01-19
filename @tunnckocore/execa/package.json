@@ -87,8 +87,6 @@
       "reflinks": true
     },
     "reflinks": [
-      "dependencies-img",
-      "dependencies-url",
       "execa"
     ],
     "related": {
