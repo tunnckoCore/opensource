@@ -85,9 +85,9 @@ function getParamType(tag) {
   // which is completely okay for most cases
   if (tag.type.type === 'TypeApplication') {
     paramType = tag.type.expression.name;
-    paramType += '<';
+    paramType += '&lt;';
     paramType += tag.type.applications[0].name;
-    paramType += '>';
+    paramType += '&gt;';
   }
 
   return paramType.length > 0 ? ` **{${paramType}}**` : '';

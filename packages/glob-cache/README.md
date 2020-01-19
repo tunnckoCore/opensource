@@ -98,7 +98,7 @@ function(options)
 
 **Params**
 
-- `options.include` **{Array<string>}** - string or array of string glob patterns
+- `options.include` **{Array&lt;string&gt;}** - string or array of string glob patterns
 - `options.exclude` **{string}** - ignore patterns
 - `options.hook` **{Function}** - a hook function passed with [Context](#context)
 - `options.always` **{boolean}** - a boolean that makes `options.hook` to always be called
