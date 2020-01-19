@@ -107,9 +107,7 @@ function(cmds, options)
 - `returns` **{Promise}** - resolved or rejected promises
 
 > It also can accept array of multiple strings of commands that will be
-> executed in series or in parallel (default).
-
-**Example**
+> executed in series or in parallel (default).**Example**
 
 ```js
 import { exec } from '@tunnckocore/execa';

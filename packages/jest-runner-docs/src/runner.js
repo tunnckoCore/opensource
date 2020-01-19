@@ -71,7 +71,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
           ? `\n\n${header}${promo}${apidocsContent}\n\n`
           : '\n';
 
-      const contents = `${docksStart}${cont}${docksEnd}\n`;
+      const contents = `${docksStart}${cont}${docksEnd}`;
 
       if (fs.existsSync(outputFile)) {
         const fileContent = fs.readFileSync(outputFile, 'utf8');

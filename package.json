@@ -22,10 +22,9 @@
     "clean:dist": "rm -rf {web,configs,packages,@tunnckocore}/*/dist",
     "clean:fresh": "lerna clean -y && rm -rf node_modules",
     "cleanup": "yarn clean:dist && yarn clean:fresh",
-    "patch:sade": "cp patches/sade/* node_modules/sade/lib/",
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
-    "postsetup": "yarn patch:verb && yarn patch:sade",
-    "postsetup:ci": "yarn patch:verb && yarn patch:sade",
+    "postsetup": "yarn patch:verb",
+    "postsetup:ci": "yarn patch:verb",
     "readme": "hela gen:readme > README.md",
     "refresh": "yarn run cleanup && yarn run setup",
     "release": "lerna version && lerna publish from-package",
@@ -62,7 +61,8 @@
     "enquirer": "^2.3.2",
     "eslint": "^6.6.0",
     "esm": "^3.2.25",
-    "hela": "^3.0.0-next.20200115.55",
+    "glob": "^7.1.6",
+    "hela": "^3.0.0-next.20200119.4",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
     "lerna": "^3.18.5",
@@ -125,8 +125,8 @@
       "color": "green"
     },
     "packages/glob-cache": {
-      "value": 6.93,
-      "color": "red"
+      "value": 100,
+      "color": "green"
     },
     "packages/jest-runner-docs": {
       "value": 6.82,
@@ -182,5 +182,8 @@
   },
   "renovate": {
     "extends": "@tunnckocore"
+  },
+  "devDependencies": {
+    "tiny-glob": "^0.2.6"
   }
 }
