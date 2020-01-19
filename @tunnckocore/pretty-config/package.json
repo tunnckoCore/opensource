@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/pretty-config",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Find and load configuration. Config resolver/loader, similar to cosmiconfig",
   "repository": {
     "type": "git",

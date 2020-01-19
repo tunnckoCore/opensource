@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.4](https://github.com/tunnckoCore/opensource/compare/parse-function@5.5.3...parse-function@5.5.4) (2020-01-19)
+
+
+### Bug Fixes
+
+* update badges & regenerate readmes ([9917d0a](https://github.com/tunnckoCore/opensource/commit/9917d0a8cb045e2b6f83935347d6bb35144686bc))
+
+
+
+
+
 ## [5.5.3](https://github.com/tunnckoCore/opensource/compare/parse-function@5.5.2...parse-function@5.5.3) (2020-01-19)
 
 

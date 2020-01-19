@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/execa",
-  "version": "5.1.2",
+  "version": "5.1.3",
   "description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence with control for concurrency",
   "repository": {
     "type": "git",
