@@ -102,9 +102,9 @@ function(cmds, options)
 
 **Params**
 
-- `cmds` - a commands to execute in parallel or series
+- `cmds` **{Array<string>}** - a commands to execute in parallel or series
 - `options` - directly passed to [execa][] and so to `child_process`
-- `returns` - resolved or rejected promises
+- `returns` **{Promise}** - resolved or rejected promises
 
 > It also can accept array of multiple strings of commands that will be
 > executed in series or in parallel (default).
@@ -144,9 +144,9 @@ function(cmds, options)
 
 **Params**
 
-- `cmds` - a commands to execute in parallel or series
-- `options` - directly passed to `execa`
-- `returns` - resolved or rejected promises
+- `cmds` **{Array<string>}** - a commands to execute in parallel or series
+- `options` **{object}** - directly passed to `execa`
+- `returns` **{Promise}** - resolved or rejected promises
 
 **Example**
 
@@ -195,9 +195,9 @@ function(file, args, options)
 
 **Params**
 
-- `file` - executable to run
-- `args` - arguments / flags to be passed to `file`
-- `options` - optional options, passed to `child_process`'s methods
+- `file` **{string}** - executable to run
+- `args` **{Array<string>}** - arguments / flags to be passed to `file`
+- `options` **{object}** - optional options, passed to `child_process`'s methods
 
 **Example**
 

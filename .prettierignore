@@ -20,7 +20,7 @@ coverage
 packages/function-arguments
 
 .*
-!.verb.md
+!.verb*.md
 patches
 **/static/**/*.css
 

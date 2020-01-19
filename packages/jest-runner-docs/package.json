@@ -46,16 +46,16 @@
     "tag": "latest"
   },
   "cov": {
-    "value": 7.7,
+    "value": 6.82,
     "color": "red"
   },
   "jest": {
     "coverageThreshold": {
       "src/docks.js": {
-        "statements": 17,
+        "statements": 11,
         "branches": 0,
         "functions": 0,
-        "lines": 17
+        "lines": 12
       },
       "src/runner.js": {
         "statements": 14,

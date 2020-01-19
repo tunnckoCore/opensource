@@ -43,7 +43,9 @@ module.exports = function docks(filepath, pkgRoot) {
         .map((tag) => {
           const descr = tag.description.replace(/-\s+/, '');
           const description = descr.length > 0 ? ` - ${descr}` : '';
-          return `- \`${tag.name}\`${description}`;
+          const tagType = getParamType(tag);
+
+          return `- \`${tag.name}\`${tagType}${description}`;
         })
         .join('\n');
 
@@ -68,3 +70,25 @@ module.exports = function docks(filepath, pkgRoot) {
     contents,
   };
 };
+
+function getParamType(tag) {
+  let paramType = '';
+
+  if (tag.type.type === 'NameExpression') {
+    paramType = tag.type.name;
+  }
+  if (tag.type.type === 'UnionType') {
+    paramType = tag.type.elements.map((x) => x.name).join('|');
+  }
+
+  // currently only works for basic cases like `Array<string>` and `string[]`
+  // which is completely okay for most cases
+  if (tag.type.type === 'TypeApplication') {
+    paramType = tag.type.expression.name;
+    paramType += '<';
+    paramType += tag.type.applications[0].name;
+    paramType += '>';
+  }
+
+  return paramType.length > 0 ? ` **{${paramType}}**` : '';
+}

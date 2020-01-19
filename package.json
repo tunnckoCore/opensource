@@ -34,8 +34,9 @@
     "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
     "test": "CI=1 yarn start test",
     "test:legacy": "CI=1 yarn run:node",
-    "testy": "hela gen:cov && yarn start docs && yarn run fmt",
+    "testy": "hela gen:cov && yarn run docs",
     "fmt": "yarn format '**/*'",
+    "docs": "yarn start docs && yarn run format '**/*.md'",
     "format": "prettier --write",
     "run:node": "jest -c packages/jest-runner-node/src/config.js"
   },
@@ -129,7 +130,7 @@
       "color": "red"
     },
     "packages/jest-runner-docs": {
-      "value": 7.7,
+      "value": 6.82,
       "color": "red"
     },
     "packages/jest-runner-node": {

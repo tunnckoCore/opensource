@@ -246,8 +246,8 @@ function(opts = {})
 
 **Params**
 
-- `opts` - optional, merged with options passed to `.parse` method
-- `returns` - app object with `.use` and `.parse` methods
+- `opts` **{Object}** - optional, merged with options passed to `.parse` method
+- `returns` **{Object}** - app object with `.use` and `.parse` methods
 
 **Example**
 
@@ -290,11 +290,11 @@ console.log(result.params); // => 'a, b, c'
 
 **Params**
 
-- `code` - any kind of function or string to be parsed
-- `options` - directly passed to the parser babylon, acorn, espree
-- `options.parse` - by default `babylon.parseExpression`,
+- `code` **{Function|String}** - any kind of function or string to be parsed
+- `options` **{Object}** - directly passed to the parser babylon, acorn, espree
+- `options.parse` **{Function}** - by default `babylon.parseExpression`,
   all `options` are passed as second argument
-- `returns` - result see [result section](#result) for more info
+- `returns` **{Object}** - result see [result section](#result) for more info
 
 **Example**
 
@@ -333,8 +333,8 @@ console.log(result.isGenerator); // => false
 
 **Params**
 
-- `fn` - plugin to be called
-- `returns` - app instance for chaining
+- `fn` **{Function}** - plugin to be called
+- `returns` **{Object}** - app instance for chaining
 
 _See [Plugins Architecture](#plugins-architecture) section._
 
@@ -378,10 +378,10 @@ console.log(result.thatIsArrow); // => undefined
 
 **Params**
 
-- `obj` - the object on which to define the property
-- `prop` - the name of the property to be defined or modified
-- `val` - the descriptor for the property being defined or modified
-- `returns` - obj the passed object, but modified
+- `obj` **{Object}** - the object on which to define the property
+- `prop` **{String}** - the name of the property to be defined or modified
+- `val` **{Any}** - the descriptor for the property being defined or modified
+- `returns` **{Object}** - obj the passed object, but modified
 
 **Example**
 
