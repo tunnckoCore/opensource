@@ -139,8 +139,8 @@ Released under the [MPL-2.0 License][license-url].
 <!-- Heading badges -->
 
 [npmv-url]: https://www.npmjs.com/package/@tunnckocore/prettier-config
-[npmv-img]: https://badgen.net/npm/v/@tunnckocore/prettier-config?icon=npm?cache=1
-[nodejs-img]: https://badgen.net/badge/node/>=10.13/green?cache=1
+[npmv-img]: https://badgen.net/npm/v/@tunnckocore/prettier-config?icon=npm&cache=123
+[nodejs-img]: https://badgen.net/badge/node/>=10.13/green?cache=123
 
 <!--
 [ghrelease-url]: https://github.com/tunnckoCore/opensource/releases/latest
@@ -148,52 +148,52 @@ Released under the [MPL-2.0 License][license-url].
 -->
 
 [license-url]: https://github.com/tunnckoCore/opensource/blob/master/@tunnckocore/prettier-config/LICENSE
-[license-img]: https://badgen.net/npm/license/@tunnckocore/prettier-config?cache=1
+[license-img]: https://badgen.net/npm/license/@tunnckocore/prettier-config?cache=123
 
 <!-- Front line badges -->
 
 [codestyle-url]: https://github.com/airbnb/javascript
-[codestyle-img]: https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb&cache=1
+[codestyle-img]: https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb&cache=123
 [linuxbuild-url]: https://github.com/tunnckocore/opensource/actions
-[linuxbuild-img]: https://badgen.net/github/checks/tunnckoCore/opensource/master?cache=1&label=build&icon=github
+[linuxbuild-img]: https://badgen.net/github/checks/tunnckoCore/opensource/master?cache=123&label=build&icon=github
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
-[codecoverage-img]: https://badgen.net/badge/coverage/unknown/grey?icon=codecov&cache=1
+[codecoverage-img]: https://badgen.net/badge/coverage/unknown/grey?icon=codecov&cache=123
 [dependencies-url]: https://david-dm.org/tunnckoCore/opensource
-[dependencies-img]: https://badgen.net/david/dep/tunnckoCore/opensource?label=deps&cache=1
+[dependencies-img]: https://badgen.net/david/dep/tunnckoCore/opensource?label=deps&cache=123
 [ccommits-url]: https://conventionalcommits.org/
-[ccommits-img]: https://badgen.net/badge/conventional%20commits/v1.0.0/green?cache=1
+[ccommits-img]: https://badgen.net/badge/conventional%20commits/v1.0.0/green?cache=123
 [standard-release-url]: https://github.com/standard-release/standard-release
-[standard-release-img]: https://badgen.net/badge/semantically/released/05c5ff?cache=1
-[community-img]: https://badgen.net/badge/join/community/7b16ff?cache=1
+[standard-release-img]: https://badgen.net/badge/semantically/released/05c5ff?cache=123
+[community-img]: https://badgen.net/badge/join/community/7b16ff?cache=123
 [community-url]: https://github.com/tunnckocorehq/community
-[last-commit-img]: https://badgen.net/github/last-commit/tunnckoCore/opensource/master?cache=1
+[last-commit-img]: https://badgen.net/github/last-commit/tunnckoCore/opensource/master?cache=123
 [last-commit-url]: https://github.com/tunnckoCore/opensource/commits/master
-[downloads-weekly-img]: https://badgen.net/npm/dw/@tunnckocore/prettier-config?icon=npm&cache=1
-[downloads-monthly-img]: https://badgen.net/npm/dm/@tunnckocore/prettier-config?icon=npm&cache=1
-[downloads-total-img]: https://badgen.net/npm/dt/@tunnckocore/prettier-config?icon=npm&cache=1
+[downloads-weekly-img]: https://badgen.net/npm/dw/@tunnckocore/prettier-config?icon=npm&cache=123
+[downloads-monthly-img]: https://badgen.net/npm/dm/@tunnckocore/prettier-config?icon=npm&cache=123
+[downloads-total-img]: https://badgen.net/npm/dt/@tunnckocore/prettier-config?icon=npm&cache=123
 [renovateapp-url]: https://renovatebot.com
-[renovateapp-img]: https://badgen.net/badge/renovate/enabled/green?cache=1
-[prs-welcome-img]: https://badgen.net/badge/PRs/welcome/green?cache=1
+[renovateapp-img]: https://badgen.net/badge/renovate/enabled/green?cache=123
+[prs-welcome-img]: https://badgen.net/badge/PRs/welcome/green?cache=123
 [prs-welcome-url]: http://makeapullrequest.com
 
 <!-- TODO: update icon -->
 
 [paypal-url]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HYJJEZNSGAPGC&source=url
-[paypal-img]: https://badgen.net/badge/PayPal/donate/003087?cache=1&icon=https://simpleicons.now.sh/paypal/fff
+[paypal-img]: https://badgen.net/badge/PayPal/donate/003087?cache=123&icon=https://simpleicons.now.sh/paypal/fff
 
 <!-- TODO: update icon -->
 
 [kofi-url]: https://ko-fi.com/tunnckoCore
-[kofi-img]: https://badgen.net/badge/Buy%20me/a%20coffee/29abe0c2?cache=1&icon=https://rawcdn.githack.com/tunnckoCore/badgen-icons/f8264c6414e0bec449dd86f2241d50a9b89a1203/icons/kofi.svg
+[kofi-img]: https://badgen.net/badge/Buy%20me/a%20coffee/29abe0c2?cache=123&icon=https://rawcdn.githack.com/tunnckoCore/badgen-icons/f8264c6414e0bec449dd86f2241d50a9b89a1203/icons/kofi.svg
 
 <!-- TODO: update icon -->
 
 [bitcoin-url]: https://www.blockchain.com/btc/payment_request?address=3QNHKun1K1SUui1b4Z3KEGPPsWC1TgtnqA&message=Open+Source+Software&amount_local=10&currency=USD
-[bitcoin-img]: https://badgen.net/badge/Bitcoin%20tip/3QNHKun...b4Z3KEGPPsWC1TgtnqA/yellow?cache=1&icon=https://simpleicons.now.sh/bitcoin/fff
+[bitcoin-img]: https://badgen.net/badge/Bitcoin%20tip/3QNHKun...b4Z3KEGPPsWC1TgtnqA/yellow?cache=123&icon=https://simpleicons.now.sh/bitcoin/fff
 [keybase-url]: https://keybase.io/tunnckoCore
-[keybase-img]: https://badgen.net/keybase/pgp/tunnckoCore?cache=1
+[keybase-img]: https://badgen.net/keybase/pgp/tunnckoCore?cache=123
 [twitter-url]: https://twitter.com/tunnckoCore
-[twitter-img]: https://badgen.net/twitter/follow/tunnckoCore?icon=twitter&color=1da1f2&cache=1
+[twitter-img]: https://badgen.net/twitter/follow/tunnckoCore?icon=twitter&color=1da1f2&cache=123
 [patreon-url]: https://www.patreon.com/bePatron?u=5579781
 [patreon-img]: https://badgen.net/badge/Become/a%20patron/F96854?icon=patreon
 
