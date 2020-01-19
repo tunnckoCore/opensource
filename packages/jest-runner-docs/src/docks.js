@@ -54,7 +54,7 @@ module.exports = function docks(filepath, pkgRoot) {
       }\n\n${signatureBlock}\n**Params**\n\n${tagsString}\n${comment.examples
         .map(
           (example) =>
-            `\n${example.description.trim()}**Example**\n\n\`\`\`${example.language ||
+            `\n${example.description.trim()}\n\n**Example**\n\n\`\`\`${example.language ||
               'js'}${example.value}\`\`\``,
         )
         .join('\n')}`;
