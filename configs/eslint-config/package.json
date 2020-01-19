@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/eslint-config",
-  "version": "5.2.2",
+  "version": "5.2.3",
   "description": "Shareable ESLint config for all @tunnckoCore projects",
   "repository": {
     "type": "git",
@@ -59,7 +59,7 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "@tunnckocore/utils": "^1.2.1",
+    "@tunnckocore/utils": "^1.2.2",
     "@typescript-eslint/eslint-plugin": "^2.8.0",
     "babel-eslint": "^11.0.0-beta.0",
     "buntis": "^0.2.0",

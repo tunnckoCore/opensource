@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.2](https://github.com/tunnckoCore/opensource/compare/gitclone-defaults@2.2.1...gitclone-defaults@2.2.2) (2020-01-19)
+
+
+### Bug Fixes
+
+* badges, regenerate readmes ([ccf3b73](https://github.com/tunnckoCore/opensource/commit/ccf3b73c123dc66f2b1964bb263ab9e331449d3c))
+
+
+
+
+
 ## [2.2.1](https://github.com/tunnckoCore/opensource/compare/gitclone-defaults@2.2.0...gitclone-defaults@2.2.1) (2020-01-19)
 
 

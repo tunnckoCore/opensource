@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.7](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/typescript-config@1.0.6...@tunnckocore/typescript-config@1.0.7) (2020-01-19)
+
+
+### Bug Fixes
+
+* badges, regenerate readmes ([ccf3b73](https://github.com/tunnckoCore/opensource/commit/ccf3b73c123dc66f2b1964bb263ab9e331449d3c))
+* update param type annotations, regen readmes ([783c4b9](https://github.com/tunnckoCore/opensource/commit/783c4b9ed402621ecdfbda524c0a53b30f83ae68))
+
+
+
+
+
 ## [1.0.6](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/typescript-config@1.0.5...@tunnckocore/typescript-config@1.0.6) (2019-11-21)
 
 

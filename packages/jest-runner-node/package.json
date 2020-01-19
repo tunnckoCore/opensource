@@ -1,6 +1,6 @@
 {
   "name": "jest-runner-node",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Running Node.js files, through Jest",
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
     }
   },
   "dependencies": {
-    "@tunnckocore/create-jest-runner": "^1.1.1",
+    "@tunnckocore/create-jest-runner": "^1.1.2",
     "execa": "^4.0.0"
   },
   "cov": {
