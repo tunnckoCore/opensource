@@ -180,9 +180,6 @@
       "parse-function"
     ]
   },
-  "renovate": {
-    "extends": "@tunnckocore"
-  },
   "devDependencies": {
     "tiny-glob": "^0.2.6"
   }
