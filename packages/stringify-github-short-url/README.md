@@ -55,6 +55,8 @@ Project is [semantically](https://semver.org) versioned & automatically released
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
+  - [stringifyGithubShortUrl](#stringifygithubshorturl)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -74,7 +76,50 @@ _We highly recommend to use Yarn when you think to contribute to this project._
 $ yarn add stringify-github-short-url
 ```
 
-() => include(process.cwd() + '/.verb.md')
+<!-- docks-start -->
+
+## API
+
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
+
+### [stringifyGithubShortUrl](./src/index.js#L30)
+
+Generate github / npm shorthand from list
+of arguments or object.
+
+**Signature**
+
+```ts
+function(owner, name, branch, npm)
+```
+
+**Params**
+
+- `<owner>` **{string|object}** - user or org string, or object
+- `[name]` **{string}** - repo name
+- `[branch]` **{string}** - branch name
+- `[npm]` **{string}** - pass `true` if you want to generate npm shorthand
+- `returns` **{string}** - generated shorthand
+
+**Example**
+
+```js
+import stringify from 'stringify-github-short-url';
+
+stringify('jonschlinkert', 'micromatch'); // => 'jonschlinkert/micromatch'
+stringify('jonschlinkert', 'micromatch', 'dev'); // => 'jonschlinkert/micromatch#dev'
+stringify('gulpjs', 'gulp', 'v3.8.1', true); // => 'gulpjs/gulp@v3.8.1'
+stringify({
+  owner: 'tunnckoCore',
+  name: 'parse-function',
+}); // => 'tunnckoCore/parse-function'
+stringify({
+  user: 'assemble',
+  repo: 'assemble-core',
+}); // => 'assemble/assemble-core'
+```
+
+<!-- docks-end -->
 
 **[back to top](#readme)**
 

@@ -52,11 +52,37 @@ Project is [semantically](https://semver.org) versioned & automatically released
 
 -->
 
-() => include(process.cwd() + '/.verb.head.md')
+## Features
+
+- Work for `koa@1` and `koa@2` (with deprecation messages), will also work in `koa@3` with [koa-convert][]
+- Totally flexible through `options` and absolutely lightweight using [lazy-cache][]
+- Accept few JSON types
+- Accept [JSON Patch [RFC6902]](https://tools.ietf.org/html/rfc6902) ([koajs/bodyparser#8](https://github.com/koajs/bodyparser/pull/8))
+- Accept [JSON API v1](http://jsonapi.org/) ([koajs/bodyparser#7](https://github.com/koajs/bodyparser/pull/7))
+- Accept [JSON csp-report](https://mathiasbynens.be/notes/csp-reports) ([#3](https://github.com/tunnckoCore/koa-better-body/issues/3))
+- Accept text and buffer bodies
+- Accept urlencoded and forms bodies
+- Accept multipart form data files and fields
+- Can parse correctly array data from forms - e.g. multiple fields to have same name - [dlau/koa-body#15](https://github.com/dlau/koa-body/pull/15)
+- Can parse correctly forms that accept multiple files - see [#26](https://github.com/tunnckoCore/koa-better-body/issues/26) and [dlau/koa-body#15](https://github.com/dlau/koa-body/pull/15)
+- Strict mode by default - see why on [IETF Message Semantics: Section 6.1](https://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-19#section-6.1)
+- Custom JSON request detect function - [koajs/bodyparser#f6a5ff](https://github.com/koajs/bodyparser/commit/f6a5ff7ef6162702540b101de5dde71ee5ad19cd)
+- Custom error handling function - [koajs/bodyparser#19418129](https://github.com/koajs/bodyparser/commit/194181298fe3bffce6b5fcf3cfebc35b8cda6c89)
+- Extending types of request that your app can accept - [koajs/bodyparser#ba7479b](https://github.com/koajs/bodyparser/commit/ba7479baf893fc3391fcdb88d3d8173ac4df05e7)
+- Using awesome [formidable][] package - [„battle-tested against hundreds of GB of file uploads“](https://github.com/felixge/node-formidable#current-status)
+- Passing a custom `formidable.IncomingForm` instance, allowing awesome customization
+- Passing all options to `formidable.IncomingForm`, allowing awesome control
 
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
+  - [koaBetterBody](#koabetterbody)
+- [Working with [koa-router][]](#working-with-koa-router)
+- [Options](#options)
+- [Note about `options.extendTypes`](#note-about-optionsextendtypes)
+- [Note about advanced `querystring` parsing](#note-about-advanced-querystring-parsing)
+- [Note about `strict` mode](#note-about-strict-mode)
 - [See Also](#see-also)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
@@ -77,7 +103,172 @@ _We highly recommend to use Yarn when you think to contribute to this project._
 $ yarn add koa-better-body
 ```
 
-() => include(process.cwd() + '/.verb.md')
+<!-- docks-start -->
+
+## API
+
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
+
+### [koaBetterBody](./src/index.js#L36)
+
+> Robust body parser for [koa][]@1, also works for `koa@2` (with deprecations).
+> Will also work for future `koa@3` with [koa-convert][].
+
+**Signature**
+
+```ts
+function(options)
+```
+
+**Params**
+
+- `options` **{object}** - see more on [options section](#options)
+- `returns` **{GeneratorFunction}** - plugin for Koa
+
+**Example**
+
+```js
+var koa = require('koa');
+var body = require('koa-better-body');
+var app = koa();
+
+app
+  .use(body())
+  .use(function*() {
+    console.log(this.request.body); // if buffer or text
+    console.log(this.request.files); // if multipart or urlencoded
+    console.log(this.request.fields); // if json
+  })
+  .listen(8080, function() {
+    console.log('koa server start listening on port 8080');
+  });
+```
+
+<!-- docks-end -->
+
+## Working with [koa-router][]
+
+```js
+'use strict';
+
+var app = require('koa')();
+var body = require('koa-better-body');
+var router = require('koa-router')();
+
+router.post('/upload', body(), function*(next) {
+  console.log(this.request.files);
+  console.log(this.request.fields);
+
+  // there's no `.body` when `multipart`,
+  // `urlencoded` or `json` request
+  console.log(this.request.body);
+
+  // print it to the API requester
+  this.body = JSON.stringify(
+    {
+      fields: this.request.fields,
+      files: this.request.files,
+      body: this.request.body || null,
+    },
+    null,
+    2,
+  );
+
+  yield next;
+});
+
+app.use(router.routes());
+app.listen(4292);
+
+var format = require('util').format;
+var host = 'http://localhost:4292';
+var cmd = 'curl -i %s/upload -F "source=@%s/.editorconfig"';
+
+console.log('Try it out with below CURL for `koa-better-body` repository.');
+console.log(format(cmd, host, __dirname));
+```
+
+## Options
+
+Sane defaults. :sparkles:
+
+Accepts JSON, [JSON API v1](http://jsonapi.org/), text, buffer, [csp-report](https://mathiasbynens.be/notes/csp-reports), multipart and urlencoded/form bodies. If you want to disallow accepting and parsing multipart body you should pass `multipart: false`. Most of the defaults you can see at [utils.defaultOptions and utils.defaultTypes](./utils.js). **All `options` are also been passed to [formidable][].IncomingForm!** Even you can pass IncomingForm instance to be able to handle the different formidable events.
+
+- `fields` **{Boolean|String}**: Default `false`, which means it will set fields on `this.request.fields`. If you pass a string, for example `'foo'`, you will have fields on `this.request.foo`.
+- `files` **{Boolean|String}**: Default `false`, which means it will set files on `this.request.files`. If you pass a string, for example `'bar'`, you will have files on `this.request.bar`.
+- `multipart` **{Boolean}**: Default `true`. If you pass `false` it won't accept/parse multipart bodies.
+- `textLimit` **{String}**: Default `'100kb'`. Passed to [bytes][].parse method.
+- `formLimit` **{String}**: Default `'100kb'`. Passed to [bytes][].parse method.
+- `urlencodedLimit` **{String}**: Default `'100kb'`. Alias of `opts.formLimit`.
+- `jsonLimit` **{String}**: Default `'100kb'`. Passed to [bytes][].parse method.
+- `bufferLimit` **{String}**: Default `'1mb'`. Passed to [bytes][].parse method.
+- `jsonStrict` **{Boolean}**: Default `true`. When set to true, JSON parser will only accept arrays and objects.
+- `detectJSON` **{Function}**: Custom JSON request detect function - `detectJSON(ctx)`.
+- `strict` **{Boolean}**: Default `true`. Pass `false` if you want to allow parsing GET, DELETE and HEAD requests.
+- `onerror` **{Function}**: Custom error handle, if throw an error, you can customize the response - `onerror(err, ctx)`.
+- `extendTypes` **{Object}**: Default accepting types can find on [utils.defaultTypes function](./utils.js#L83-L104). Allowing you to extend what your app can accept. By default works for JSON, [JSON API v1](http://jsonapi.org/), multipart, text, urlencoded and [csp-report](https://mathiasbynens.be/notes/csp-reports).
+- `IncomingForm` **{IncomingForm}**: Pass an instance of `formidable.IncomingForm` to be able to handle formidable events.
+- `handler` **{GeneratorFunction}**: Works with `options.extendTypes.custom` to handle custom types of content-type - `handler(ctx, options, next)`. More info below.
+- `querystring` **{Object}**: Querystring module to be used. By default builtin [`querystring`](https://nodejs.org/api/querystring.html). More info below.
+- `qs` **{Object}**: Alias of `opts.querystring`. All `opts` are also passed to [qs][] or [querystring module](https://nodejs.org/api/querystring.html).
+- `delimiter` **{String}**: Default is `&`. Delimiter of key/value pairs, passed to querystring lib
+- `sep` **{String}**: alias of `opts.delimiter`
+- `buffer` **{Boolean}**: Default `false`, pass `true` if you want to get body as buffer.
+
+## Note about `options.extendTypes`
+
+ExandTypes option gives you a flexible way to handle different content-types and modify the defaults which can be found [at utils.defaultTypes function](./utils.js#L83-L104). In addition you can pass combination of `options.extendTypes.custom` and `options.handler`. When the request has some of the "custom" content type, this middleware will call the `handler` **generator** function with `ctx, options, next`. You can see more at [issue #52](https://github.com/tunnckoCore/koa-better-body/issues/52).
+
+For example manually handle such content types `foo/bar-x`, `text/quix`:
+
+```js
+const app = require('koa')()
+const body = require('koa-better-body')
+
+app.use(body({
+  textLimit: '300kb'
+  extendTypes: {
+    custom: [
+      'foo/bar-x',
+      'text/quix'
+    ]
+  },
+  handler: function * (ctx, opts) {
+    // `ctx` is equal to `this` and `app`
+    // `opts` is current options object
+    // passed to `koa-better-body`
+    ctx.body = yield this.request.text(opts.textLimit)
+  }
+}))
+app.use(function * showBody () {
+  // `this.body` is text
+  console.log(this.body)
+})
+```
+
+## Note about advanced `querystring` parsing
+
+Because this middleware is fully based and integrated with [koa-body-parsers][], by default it uses Node's built-in module for that thing [querystring](https://nodejs.org/api/querystring.html). So if you have some issues with forms, think to add custom querystring module like [qs][] to `options.querystring` or `app.querystring`. Related to this is [issue #45](https://github.com/tunnckoCore/koa-better-body/issues/45).
+
+**Example**
+
+```js
+const app = require('koa')()
+const body = require('koa-better-body')
+
+app.use(body({
+  multipart: false
+  querystring: require('qs')
+}))
+```
+
+It's intentional that it's not included in the deps by default. In `v2` it was also working by passing it to `app.querystring`, because [koa-body-parsers][] works [that way (index.js#L53)](https://github.com/koajs/body-parsers/blob/master/index.js#L53).
+
+## Note about `strict` mode
+
+We are trying to follow standards. :cat2:
+
+You can pass `strict:false`, but see [IETF HTTP/1.1 Message Semantics: Section 6.1](https://tools.ietf.org/html/draft-ietf-httpbis-p2-semantics-19#section-6.1) to understand why we stay to _"strict mode"_ by default. GET, HEAD, and DELETE requests have no defined semantics for the request body, but this doesn't mean they may not be valid in certain use cases. Last two tests at [test/options.js](./test/options.js) are showing usage on non-strict and strict mode.
 
 **[back to top](#readme)**
 
