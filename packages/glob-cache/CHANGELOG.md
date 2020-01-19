@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/tunnckoCore/opensource/compare/glob-cache@0.1.3...glob-cache@0.1.4) (2020-01-19)
+
+
+### Bug Fixes
+
+* **glob-cache:** broken logo link ([14510f8](https://github.com/tunnckoCore/opensource/commit/14510f82f5a8a6e8abce5aa11165120d336b3790))
+
+
+
+
+
 ## [0.1.3](https://github.com/tunnckoCore/opensource/compare/glob-cache@0.1.2...glob-cache@0.1.3) (2020-01-19)
 
 
