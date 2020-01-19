@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.1.2...jest-runner-docs@1.1.3) (2020-01-19)
+
+
+### Bug Fixes
+
+* update param type annotations, regen readmes ([783c4b9](https://github.com/tunnckoCore/opensource/commit/783c4b9ed402621ecdfbda524c0a53b30f83ae68))
+* **docks:** supports param's type, run docs -> update readmes ([21da65c](https://github.com/tunnckoCore/opensource/commit/21da65ce3d0a73779a382262a8151da433f12ce3))
+
+
+
+
+
 ## [1.1.2](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.1.1...jest-runner-docs@1.1.2) (2020-01-16)
 
 **Note:** Version bump only for package jest-runner-docs

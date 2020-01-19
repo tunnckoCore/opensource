@@ -1,6 +1,6 @@
 {
   "name": "glob-cache",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Caching layer (using `cacache`) for any file globbing solution (`glob`, `fast-glob`, `tiny-glob`). Makes you Instant Fast™ and allows you to hook into very specific & important part of the process",
   "repository": {
     "type": "git",

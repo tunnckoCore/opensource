@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/tunnckoCore/opensource/compare/stringify-github-short-url@3.2.0...stringify-github-short-url@3.2.1) (2020-01-19)
+
+
+### Bug Fixes
+
+* update param type annotations, regen readmes ([783c4b9](https://github.com/tunnckoCore/opensource/commit/783c4b9ed402621ecdfbda524c0a53b30f83ae68))
+* **docks:** supports param's type, run docs -> update readmes ([21da65c](https://github.com/tunnckoCore/opensource/commit/21da65ce3d0a73779a382262a8151da433f12ce3))
+
+
+
+
+
 # [3.2.0](https://github.com/tunnckoCore/opensource/compare/stringify-github-short-url@3.1.5...stringify-github-short-url@3.2.0) (2019-11-21)
 
 
