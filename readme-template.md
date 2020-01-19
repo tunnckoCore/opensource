@@ -146,7 +146,6 @@ Released under the [{%= license %} License][license-url].
 
 [npmv-url]: https://www.npmjs.com/package/{%= name %}
 [npmv-img]: https://badgen.net/npm/v/{%= name %}?icon=npm?cache=1
-
 [nodejs-img]: https://badgen.net/badge/node/{%= engines.node %}/green?cache=1
 
 <!--
@@ -166,15 +165,10 @@ Released under the [{%= license %} License][license-url].
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 
 {% if (!cov.value) { %}
-
 [codecoverage-img]: https://badgen.net/badge/coverage/unknown/grey?icon=codecov&cache=1
-
 {% } else { %}
-
 [codecoverage-img]: https://badgen.net/badge/coverage/{%= cov.value %}%25/{%= cov.color %}?icon=codecov&cache=1
-
 {% } %}
-
 [dependencies-url]: https://david-dm.org/tunnckoCore/opensource
 [dependencies-img]: https://badgen.net/david/dep/tunnckoCore/opensource?label=deps&cache=1
 [ccommits-url]: https://conventionalcommits.org/
@@ -185,11 +179,9 @@ Released under the [{%= license %} License][license-url].
 [community-url]: https://github.com/tunnckocorehq/community
 [last-commit-img]: https://badgen.net/github/last-commit/tunnckoCore/opensource/master?cache=1
 [last-commit-url]: https://github.com/tunnckoCore/opensource/commits/master
-
 [downloads-weekly-img]: https://badgen.net/npm/dw/{%= name %}?icon=npm&cache=1
 [downloads-monthly-img]: https://badgen.net/npm/dm/{%= name %}?icon=npm&cache=1
 [downloads-total-img]: https://badgen.net/npm/dt/{%= name %}?icon=npm&cache=1
-
 [renovateapp-url]: https://renovatebot.com
 [renovateapp-img]: https://badgen.net/badge/renovate/enabled/green?cache=1
 [prs-welcome-img]: https://badgen.net/badge/PRs/welcome/green?cache=1

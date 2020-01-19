@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.3](https://github.com/tunnckoCore/opensource/compare/jest-runner-rollup@1.2.2...jest-runner-rollup@1.2.3) (2020-01-19)
+
+
+### Bug Fixes
+
+* badges, regenerate readmes ([ccf3b73](https://github.com/tunnckoCore/opensource/commit/ccf3b73c123dc66f2b1964bb263ab9e331449d3c))
+* update param type annotations, regen readmes ([783c4b9](https://github.com/tunnckoCore/opensource/commit/783c4b9ed402621ecdfbda524c0a53b30f83ae68))
+
+
+
+
+
 ## [1.2.2](https://github.com/tunnckoCore/opensource/compare/jest-runner-rollup@1.2.1...jest-runner-rollup@1.2.2) (2020-01-16)
 
 **Note:** Version bump only for package jest-runner-rollup

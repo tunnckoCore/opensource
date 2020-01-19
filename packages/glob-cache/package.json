@@ -1,6 +1,6 @@
 {
   "name": "glob-cache",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Caching layer (using `cacache`) for any file globbing solution (`glob`, `fast-glob`, `tiny-glob`). Makes you Instant Fast™ and allows you to hook into very specific & important part of the process",
   "repository": {
     "type": "git",
@@ -54,8 +54,8 @@
     }
   },
   "cov": {
-    "value": 6.93,
-    "color": "red"
+    "value": 100,
+    "color": "green"
   },
   "licenseStart": 2020,
   "verb": {

@@ -29,9 +29,9 @@ module.exports = function docks(filepath, pkgRoot) {
       // name = !name.startsWith('.') ? `.${name}` : name;
 
       const index = comment.code.value.indexOf('(');
-      const signature = comment.code.value.slice(index, -1);
+      const signature = comment.code.value.slice(index, -1).trim();
       const signatureBlock =
-        signature.trim().length > 0
+        signature.length > 0
           ? `**Signature**\n\n\`\`\`ts\nfunction${signature}\n\`\`\`\n`
           : '';
 
@@ -54,11 +54,8 @@ module.exports = function docks(filepath, pkgRoot) {
       }\n\n${signatureBlock}\n**Params**\n\n${tagsString}\n${comment.examples
         .map(
           (example) =>
-            `\n${
-              example.description
-            }\n\n**Example**\n\n\`\`\`${example.language || 'js'}${
-              example.value
-            }\`\`\``,
+            `\n${example.description.trim()}\n\n**Example**\n\n\`\`\`${example.language ||
+              'js'}${example.value}\`\`\``,
         )
         .join('\n')}`;
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/tunnckoCore/opensource/compare/glob-cache@0.1.1...glob-cache@0.1.2) (2020-01-19)
+
+
+### Bug Fixes
+
+* **glob-cache:** docs + 100% coverage :kiss: ([fde5f5f](https://github.com/tunnckoCore/opensource/commit/fde5f5fe6d707426f90041682eb1e7bbc75a682f))
+* badges, regenerate readmes ([ccf3b73](https://github.com/tunnckoCore/opensource/commit/ccf3b73c123dc66f2b1964bb263ab9e331449d3c))
+* **docks:** use html entities for < and >, regen readmes ([cd11b11](https://github.com/tunnckoCore/opensource/commit/cd11b1154edb8011495a979a96fbe6b5822bc05c))
+
+
+
+
+
 ## [0.1.1](https://github.com/tunnckoCore/opensource/compare/glob-cache@0.1.0...glob-cache@0.1.1) (2020-01-19)
 
 

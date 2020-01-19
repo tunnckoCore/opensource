@@ -107,7 +107,7 @@ $ yarn add koa-better-body
 
 ## API
 
-_Generated using [jest-runner-docs](https://npmjs.com/package/jest-runner-docs)._
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [koaBetterBody](./src/index.js#L36)
 
