@@ -12,6 +12,7 @@ const defaultOptions = {
   include: [],
   exclude: ['**/node_modules'],
   hook: () => {},
+  onBeforeHook: () => {},
   always: false,
   glob: fastGlob,
   globOptions: {},
@@ -81,6 +82,12 @@ module.exports = async function globCache(options) {
     cacheFiles,
   );
 
+  const onBeforeResult = await opts.onBeforeHook({
+    cached,
+    cacheLocation: cacheLoc,
+    missingFiles: missingFilesInCache,
+  });
+
   // source files are missing in cache, add them
   if (missingFilesInCache.length > 0) {
     // console.log('has missing', missingFilesInCache);
@@ -110,6 +117,7 @@ module.exports = async function globCache(options) {
             cacache,
             valid: true,
             missing: true,
+            onBeforeResult,
           };
 
           results.push(ctx);
@@ -152,6 +160,7 @@ module.exports = async function globCache(options) {
           cacache,
           valid,
           missing: false,
+          onBeforeResult,
         };
 
         results.push(ctx);

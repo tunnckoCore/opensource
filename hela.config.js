@@ -11,6 +11,8 @@ const dev = require('hela/src/dev');
 
 const config = { ...dev };
 
+config.eslint = require('./@hela/eslint/src/hela');
+
 config.check = hela()
   .command('check', 'Run lint, test and prettier')
   .action(async (...args) => {

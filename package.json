@@ -8,7 +8,8 @@
       "web/*",
       "configs/*",
       "packages/*",
-      "@tunnckocore/*"
+      "@tunnckocore/*",
+      "@hela/*"
     ],
     "nohoist": [
       "ghub.now.sh/**/*",

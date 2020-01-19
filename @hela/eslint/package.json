@@ -1,0 +1,85 @@
+{
+  "name": "@hela/eslint",
+  "version": "0.1.0",
+  "description": "Layer for faster ESLint CLI and better API",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@hela/eslint"
+  },
+  "homepage": "https://tunnckocore.com/opensource",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "license": "MPL-2.0",
+  "engines": {
+    "node": ">=10.13"
+  },
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "typings": "src/index.d.ts",
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "arrify": "^2.0.1",
+    "glob-cache": "^0.1.4",
+    "memoize-fs": "^1.4.1"
+  },
+  "peerDependencies": {
+    "eslint": "^6.8.0"
+  },
+  "keywords": [
+    "tunnckocorehq",
+    "tunnckocore-oss",
+    "hela",
+    "development",
+    "developer-experience",
+    "dx",
+    "eslint",
+    "eslint-cli",
+    "cli",
+    "faster",
+    "fast-eslint",
+    "caching",
+    "glob",
+    "glob-cache"
+  ],
+  "scripts": {},
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "cov": {
+    "color": "grey"
+  },
+  "licenseStart": 2020,
+  "verb": {
+    "readme": "../../readme-template.md",
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 4
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [],
+    "related": {
+      "list": []
+    }
+  }
+}

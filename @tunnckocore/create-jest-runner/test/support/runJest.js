@@ -1,4 +1,5 @@
-/* eslint-disable import/no-extraneous-dependencies */
+'use strict';
+
 const execa = require('execa');
 const path = require('path');
 const { stripColor } = require('ansi-colors');
@@ -6,18 +7,20 @@ const { stripColor } = require('ansi-colors');
 const rootDir = path.dirname(path.dirname(__dirname));
 
 function normalize(output) {
-  return output
-    .replace(/\(?\d*\.?\d+m?s\)?/g, '')
-    .replace(/, estimated/g, '')
-    .replace(new RegExp(rootDir, 'g'), '/mocked-path-to-jest-runner-mocha')
-    .replace(new RegExp('.*at .*\\n', 'g'), 'mocked-stack-trace')
-    .replace(/.*at .*\\n/g, 'mocked-stack-trace')
-    .replace(/(mocked-stack-trace)+/, '      at mocked-stack-trace')
-    .replace(/\s+\n/g, '\n');
+  return (
+    output
+      .replace(/\(?\d*\.?\d+m?s\)?/g, '')
+      .replace(/, estimated/g, '')
+      .replace(new RegExp(rootDir, 'g'), '/mocked-path-to-jest-runner-mocha')
+      // eslint-disable-next-line prefer-regex-literals
+      .replace(new RegExp('.*at .*\\n', 'g'), 'mocked-stack-trace')
+      .replace(/.*at .*\\n/g, 'mocked-stack-trace')
+      .replace(/(mocked-stack-trace)+/, '      at mocked-stack-trace')
+      .replace(/\s+\n/g, '\n')
+  );
 }
 
 module.exports = function runJest(project, options = []) {
-  // eslint-disable-next-line no-undef
   jest.setTimeout(15000);
 
   return execa(
