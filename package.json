@@ -156,7 +156,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo 'yarn run pre-commit'",
+      "pre-commit": "yarn run pre-commit",
       "commit-msg": "echo 'commitlint -E HUSKY_GIT_PARAMS'"
     }
   },
