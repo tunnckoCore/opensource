@@ -46,7 +46,7 @@
   ],
   "scripts": {},
   "devDependencies": {
-    "parse-github-url": "^1.0.2",
+    "parse-github-url": "1.0.2",
     "stringify-github-short-url": "^3.2.3"
   },
   "publishConfig": {

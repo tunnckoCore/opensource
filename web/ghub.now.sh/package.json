@@ -11,9 +11,9 @@
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "MPL-2.0",
   "dependencies": {
-    "ky": "^0.16.0",
-    "ky-universal": "^0.3.0",
-    "parse-github-url": "^1.0.2",
-    "parse-package-name": "^0.1.0"
+    "ky": "0.16.1",
+    "ky-universal": "0.3.0",
+    "parse-github-url": "1.0.2",
+    "parse-package-name": "0.1.0"
   }
 }

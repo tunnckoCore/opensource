@@ -51,10 +51,10 @@
     "arrify": "^2.0.1"
   },
   "devDependencies": {
-    "acorn": "^7.1.0",
-    "acorn-loose": "^7.0.0",
-    "espree": "^6.1.1",
-    "for-in": "^1.0.2"
+    "acorn": "7.1.0",
+    "acorn-loose": "7.0.0",
+    "espree": "6.1.2",
+    "for-in": "1.0.2"
   },
   "publishConfig": {
     "access": "public",
