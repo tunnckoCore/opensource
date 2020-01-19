@@ -25,10 +25,9 @@
  * console.log(arrIncludes(['foo', 'bar', 'qux'], ['a', 'b', 'foo'])); // => true
  * console.log(arrIncludes(['bar', 123, 'foo', 'qux'], ['a', 'b', 'foo'])); // => 2
  *
- * @param  {Array} arr array to check
- * @param  {Array|String} values array or string
- * @return {Boolean|Number} returns `false` if not found, `true` if **index is 0**
- *                                  from the array, otherwise `number` index
+ * @param  {Array} `arr` array to check
+ * @param  {Array|string[]} `values` array or string
+ * @return {boolean|number} returns `false` if not found, `true` if **index is 0** from the array, otherwise `number` index
  * @public
  */
 export default function arrIncludes(arr, values) {

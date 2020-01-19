@@ -122,7 +122,7 @@ function(options)
 
 **Params**
 
-- `options` **{Object}** - see more on [options section](#options)
+- `options` **{object}** - see more on [options section](#options)
 - `returns` **{GeneratorFunction}** - plugin for Koa
 
 **Example**

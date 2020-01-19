@@ -9,9 +9,9 @@
  * only when function is really anonymous and don't have
  * any name.
  *
- * @param  {Object} node
- * @param  {Object} result
- * @return {Object} result
+ * @param  {object} `node`
+ * @param  {object} `result`
+ * @return {object} `result`
  * @private
  */
 // eslint-disable-next-line unicorn/consistent-function-scoping

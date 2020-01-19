@@ -44,14 +44,14 @@ import stringify from 'stringify-github-short-url';
  * gitcloneDefaults('foo/bar#qux', true);
  * gitcloneDefaults('foo/bar#qux', true, { dest: 'ok' });
  *
- * @param  {String|Object} `owner` the `user/repo` pattern or anything
+ * @param  {string|object} `owner` the `user/repo` pattern or anything
  *                                 that [parse-github-url][] can parse
- * @param  {String|Boolean|Object} `name` if boolean treats it as `ssh`
- * @param  {String|Boolean|Object} `branch` if boolean treats it as `ssh`
- * @param  {Boolean|Object} `ssh` useful in higher-level libs, and if it
+ * @param  {string|boolean|object} `name` if boolean treats it as `ssh`
+ * @param  {string|boolean|object} `branch` if boolean treats it as `ssh`
+ * @param  {boolean|object} `ssh` useful in higher-level libs, and if it
  *                                is `object` it can contains `ssh`
  *                                and `dest` properties`
- * @return {Object} result object contains anything that [parse-github-url][]
+ * @return {object} result object contains anything that [parse-github-url][]
  *                  contains and in addition has `ssh` and `dest` properties
  * @public
  */

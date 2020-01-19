@@ -10,8 +10,8 @@ utils.arrayify = arrayify;
  * > Create default result object,
  * and normalize incoming arguments.
  *
- * @param  {Function|String} code
- * @return {Object} result
+ * @param  {function|string} code
+ * @return {object} result
  * @private
  */
 utils.setDefaults = function setDefaults(code) {
@@ -38,9 +38,9 @@ utils.setDefaults = function setDefaults(code) {
  * > Create hidden properties into
  * the result object.
  *
- * @param  {Object} result
- * @param  {Function|String} code
- * @return {Object} result
+ * @param  {object} result
+ * @param  {Function|string} code
+ * @return {object} result
  * @private
  */
 utils.setHiddenDefaults = function setHiddenDefaults(result, code) {
@@ -61,9 +61,9 @@ utils.setHiddenDefaults = function setHiddenDefaults(result, code) {
  * > Get needed AST tree, depending on what
  * parse method is used.
  *
- * @param  {Object} result
- * @param  {Object} opts
- * @return {Object} node
+ * @param  {object} result
+ * @param  {object} opts
+ * @return {object} node
  * @private
  */
 utils.getNode = function getNode(result, opts) {

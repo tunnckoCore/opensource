@@ -5,9 +5,9 @@
  * in the given function and collect them into
  * an `result.args` array and `result.params` string.
  *
- * @param  {Object} node
- * @param  {Object} result
- * @return {Object} result
+ * @param  {object} `node`
+ * @param  {object} `result`
+ * @return {object} `result`
  * @private
  */
 export default () => (node, result) => {

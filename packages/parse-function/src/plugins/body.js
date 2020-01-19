@@ -5,9 +5,9 @@
  * surrounding curly braces. It also preserves
  * the whitespaces and newlines - they are original.
  *
- * @param  {Object} node
- * @param  {Object} result
- * @return {Object} result
+ * @param  {object} `node`
+ * @param  {object} `result`
+ * @return {object} `result`
  * @private
  */
 export default () => (node, result) => {

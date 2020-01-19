@@ -147,13 +147,13 @@ function(owner, name, branch, ssh)
 
 **Params**
 
-- `owner` **{String|Object}** - the `user/repo` pattern or anything
+- `owner` **{string|object}** - the `user/repo` pattern or anything
   that [parse-github-url][] can parse
-- `name` **{String|Boolean|Object}** - if boolean treats it as `ssh`
-- `branch` **{String|Boolean|Object}** - if boolean treats it as `ssh`
-- `ssh` **{Boolean|Object}** - useful in higher-level libs, and if it
+- `name` **{string|boolean|object}** - if boolean treats it as `ssh`
+- `branch` **{string|boolean|object}** - if boolean treats it as `ssh`
+- `ssh` **{boolean|object}** - useful in higher-level libs, and if it
   is `object` it can contains `ssh`
-- `returns` **{Object}** - result object contains anything that [parse-github-url][]
+- `returns` **{object}** - result object contains anything that [parse-github-url][]
   contains and in addition has `ssh` and `dest` properties
 
 **Example**

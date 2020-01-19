@@ -31,8 +31,8 @@ import pMap from 'p-map';
  * main();
  *
  * @name   .exec
- * @param  {string|string[]} cmds a commands to execute in parallel or series
- * @param  {object} [options] directly passed to [execa][] and so to `child_process`
+ * @param  {string|string[]} `cmds` a string or array of string commands to execute in parallel or series
+ * @param  {object} `[options]` directly passed to [execa][] and so to `child_process`
  * @return {Promise} resolved or rejected promises
  * @public
  */

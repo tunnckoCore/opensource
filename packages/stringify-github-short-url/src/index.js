@@ -20,11 +20,11 @@
  * }); // => 'assemble/assemble-core'
  *
  * @name  stringifyGithubShortUrl
- * @param  {String|Object} `<owner>` user or org string, or object
- * @param  {String} `[name]` repo name
- * @param  {String} `[branch]` branch name
- * @param  {String} `[npm]` pass `true` if you want to generate npm shorthand
- * @return {String} generated shorthand
+ * @param  {string|object} `<owner>` user or org string, or object
+ * @param  {string} `[name]` repo name
+ * @param  {string} `[branch]` branch name
+ * @param  {string} `[npm]` pass `true` if you want to generate npm shorthand
+ * @return {string} generated shorthand
  * @public
  */
 export default function stringifyGithubShortUrl(owner, name, branch, npm) {

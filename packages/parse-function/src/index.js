@@ -44,8 +44,8 @@ import initial from './plugins/initial.js';
  * console.log(result.params) // => 'a, b, c'
  * ```
  *
- * @param  {Object} `opts` optional, merged with options passed to `.parse` method
- * @return {Object} `app` object with `.use` and `.parse` methods
+ * @param  {object} `opts` optional, merged with options passed to `.parse` method
+ * @return {object} `app` object with `.use` and `.parse` methods
  * @name  parseFunction
  * @api public
  */
@@ -80,12 +80,12 @@ export default function parseFunction(opts = {}) {
      * console.log(result.isGenerator) // => false
      * ```
      *
-     * @param  {Function|String} `code` any kind of function or string to be parsed
-     * @param  {Object} `options` directly passed to the parser - babylon, acorn, espree
+     * @param  {Function|string} `code` any kind of function or string to be parsed
+     * @param  {object} `options` directly passed to the parser - babylon, acorn, espree
      * @param  {Function} `options.parse` by default `babylon.parseExpression`,
      *                                    all `options` are passed as second argument
      *                                    to that provided function
-     * @return {Object} `result` see [result section](#result) for more info
+     * @return {object} `result` see [result section](#result) for more info
      * @name   .parse
      * @api public
      */
@@ -155,7 +155,7 @@ export default function parseFunction(opts = {}) {
      * ```
      *
      * @param  {Function} `fn` plugin to be called
-     * @return {Object} `app` instance for chaining
+     * @return {object} `app` instance for chaining
      * @name  .use
      * @api public
      */
@@ -212,10 +212,10 @@ export default function parseFunction(opts = {}) {
      * console.log(result.isAnonymous) // => true
      * ```
      *
-     * @param  {Object} `obj` the object on which to define the property
-     * @param  {String} `prop` the name of the property to be defined or modified
-     * @param  {Any} `val` the descriptor for the property being defined or modified
-     * @return {Object} `obj` the passed object, but modified
+     * @param  {object} `obj` the object on which to define the property
+     * @param  {string} `prop` the name of the property to be defined or modified
+     * @param  {any} `val` the descriptor for the property being defined or modified
+     * @return {object} `obj` the passed object, but modified
      * @name   .define
      * @api public
      */

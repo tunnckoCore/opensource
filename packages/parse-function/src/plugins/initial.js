@@ -9,9 +9,9 @@ import params from './params.js';
  * arrow functions, generator functions
  * and ES6 object method notation.
  *
- * @param  {Object} node
- * @param  {Object} result
- * @return {Object} resul
+ * @param  {object} `node`
+ * @param  {object} `result`
+ * @return {object} `resul`
  * @private
  */
 export default (app) => (node, result) => {

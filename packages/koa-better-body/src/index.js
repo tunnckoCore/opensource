@@ -28,7 +28,7 @@ import { defaultOptions, setParsers, isValid, parseBody } from './utils.js';
  *   })
  *
  * @name   koaBetterBody
- * @param  {Object} `options` see more on [options section](#options)
+ * @param  {object} `options` see more on [options section](#options)
  * @return {GeneratorFunction} - plugin for Koa
  * @api public
  */
