@@ -43,9 +43,9 @@
   ],
   "scripts": {},
   "dependencies": {
-    "git-username": "^1.0.0",
-    "gitclone": "^2.0.0",
-    "sade": "^1.6.1"
+    "git-username": "1.0.0",
+    "gitclone": "2.0.0",
+    "sade": "1.7.0"
   },
   "publishConfig": {
     "access": "public",

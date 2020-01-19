@@ -25,8 +25,8 @@
     "throat": "^4.1.0"
   },
   "devDependencies": {
-    "ansi-colors": "^4.1.1",
-    "execa": "^1.0.0"
+    "ansi-colors": "4.1.1",
+    "execa": "1.0.0"
   },
   "publishConfig": {
     "access": "public",
