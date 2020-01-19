@@ -26,7 +26,6 @@
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
     "postsetup": "yarn patch:verb && yarn patch:sade",
     "postsetup:ci": "yarn patch:verb && yarn patch:sade",
-    "pre-commit": "yarn docs && yarn fmt",
     "readme": "hela gen:readme > README.md",
     "refresh": "yarn run cleanup && yarn run setup",
     "release": "lerna version && lerna publish from-package",
@@ -156,7 +155,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run pre-commit",
+      "pre-commit": "echo 'yarn run pre-commit'",
       "commit-msg": "echo 'commitlint -E HUSKY_GIT_PARAMS'"
     }
   },
