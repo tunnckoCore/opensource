@@ -5,10 +5,7 @@ const path = require('path');
 module.exports = {
   rootDir: process.cwd(),
   displayName: 'node',
-  testMatch: [
-    '<rootDir>/packages/*/test.js',
-    '<rootDir>/@tunnckocore/*/test.js',
-  ],
+  testMatch: ['<rootDir>/packages/*/foo.js', '<rootDir>/@tunnckocore/*/foo.js'],
   testPathIgnorePatterns: [
     '/node_modules/',
     '/(?:__)?(?:fixtures?|supports?|shared)(?:__)?/',

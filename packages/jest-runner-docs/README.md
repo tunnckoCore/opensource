@@ -74,8 +74,7 @@ _We highly recommend to use Yarn when you think to contribute to this project._
 $ yarn add jest-runner-docs
 ```
 
-<!-- docks-start -->
-<!-- docks-end -->
+() => include(process.cwd() + '/.verb.md')
 
 **[back to top](#readme)**
 
