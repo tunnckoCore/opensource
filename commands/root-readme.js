@@ -3,6 +3,7 @@
 /* eslint-disable global-require, import/no-dynamic-require */
 
 const fs = require('fs');
+const util = require('util');
 const path = require('path');
 const crypto = require('crypto');
 const { getWorkspacesAndExtensions } = require('@tunnckocore/utils');
@@ -26,13 +27,13 @@ module.exports = require('hela')()
   .example('gen:readme > README.md')
   .alias(['r', 'root-readme', 'genreadme', 'readme'])
   .action(function main() {
-    console.log('# Open Source Monorepo');
-    console.log('');
-
-    console.log(require('../package.json').description);
-
-    console.log('## Workspaces');
-    console.log('');
+    const contents = [
+      '# Open Source Monorepo',
+      '',
+      require('../package.json').description,
+      '## Workspaces',
+      '',
+    ];
 
     const wsMap = {
       packages: { desc: 'Non-scoped general purpose packages' },
@@ -49,15 +50,17 @@ module.exports = require('hela')()
         const { link, desc } = wsMap[wsName];
         const wsDir = path.join(path.dirname(__dirname), wsName);
 
-        console.log(
-          '### %s',
-          link ? `[${wsName}](./tree/master/${wsName})` : wsName,
+        contents.push(
+          util.format(
+            '### %s',
+            link ? `[${wsName}](./tree/master/${wsName})` : wsName,
+          ),
         );
-        console.log('');
-        console.log('>  %s', desc);
-        console.log('');
-        console.log('| pkg | badges |');
-        console.log('| :--- | :---: |');
+        contents.push('');
+        contents.push(`> ${desc}`);
+        contents.push('');
+        contents.push('| pkg | badges |');
+        contents.push('| :--- | :---: |');
 
         const pkgs = fs
           .readdirSync(wsDir)
@@ -75,20 +78,25 @@ module.exports = require('hela')()
             const npmBadge = `[![npm][npm-${hash}-img]][npm-${hash}-url]`;
             const covBadge = `[![cov][cov-${hash}-img]][cov-${hash}-url]`;
 
-            console.log('| %s | %s %s |', pkgLoc, npmBadge, covBadge);
+            contents.push(`| ${pkgLoc} | ${npmBadge} ${covBadge} |`);
 
             return { name, hash, covBadgeLink };
           });
 
-        console.log('');
+        contents.push('');
 
         return acc.concat(pkgs);
       }, []);
 
     list.forEach(({ name, hash, covBadgeLink }) => {
-      console.log(`[npm-${hash}-url]: https://www.npmjs.com/package/${name}
+      contents.push(`[npm-${hash}-url]: https://www.npmjs.com/package/${name}
   [npm-${hash}-img]: https://badgen.net/npm/v/${name}?icon=npm
   [cov-${hash}-url]: https://www.npmjs.com/package/${name}
   [cov-${hash}-img]: ${covBadgeLink}`);
     });
+
+    fs.writeFileSync(
+      path.join(process.cwd(), 'README.md'),
+      contents.join('\n'),
+    );
   });
