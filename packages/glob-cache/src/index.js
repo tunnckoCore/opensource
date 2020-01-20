@@ -39,7 +39,7 @@ const defaultOptions = {
  * @param {string} options.exclude - ignore patterns
  * @param {boolean} options.always - a boolean that makes `options.hook` to always be called
  * @param {Function} options.hook - a hook function passed with [Context](#context-and-how-it-works)
- * @param {Function} options.glob - a globbing library like [glob][], [fast-glob][], [tiny-glob][], defaults to `fast-glob`
+ * @param {Function} options.glob - a globbing library like [glob][], [globby][], [fast-glob][], [tiny-glob][], defaults to `fast-glob`
  * @param {object} options.globOptions - options passed to the `options.glob` library
  * @param {string} options.cacheLocation - a filepath location of the cache, defaults to `./.cache/glob-cache`
  * @returns {Promise}
