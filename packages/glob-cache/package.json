@@ -1,7 +1,7 @@
 {
   "name": "glob-cache",
   "version": "0.1.4",
-  "description": "Caching layer (using `cacache`) for any file globbing solution (`glob`, `fast-glob`, `tiny-glob`). Makes you Instant Fast™ and allows you to hook into very specific & important part of the process",
+  "description": "Caching layer (using `cacache`) for any file globbing solution (`glob`, `fast-glob`, `tiny-glob` and `globby`). Makes you Instant Fast™ and allows you to hook into very specific & important part of the process",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
@@ -11,7 +11,7 @@
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "license": "(Parity-7.0.0 AND Prosperity-3.0.0) OR Patron-1.0.0",
   "engines": {
-    "node": ">=12.13"
+    "node": ">=10.18"
   },
   "dependencies": {
     "arr-diff": "^4.0.0",
@@ -82,5 +82,8 @@
     "related": {
       "list": []
     }
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.0"
   }
 }

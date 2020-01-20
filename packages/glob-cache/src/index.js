@@ -3,11 +3,13 @@
 'use strict';
 
 const fs = require('fs');
+const util = require('util');
 const crypto = require('crypto');
 const cacache = require('cacache');
 const fastGlob = require('fast-glob');
 const arrayDiff = require('arr-diff');
 
+const readFile = util.promisify(fs.readFile);
 const defaultOptions = {
   include: [],
   exclude: ['**/node_modules'],
@@ -64,7 +66,7 @@ module.exports = async function globCache(options) {
       if (typeof file === 'string') {
         file = { path: file };
       }
-      file.contents = await fs.promises.readFile(file.path);
+      file.contents = await readFile(file.path);
       return file;
     }),
   );
@@ -137,7 +139,7 @@ module.exports = async function globCache(options) {
           await cacache.verify(cacheLoc);
           return;
         }
-        const contents = await fs.promises.readFile(fp);
+        const contents = await readFile(fp);
         const integrity = integrityFromContents(contents);
         const hash = await cacache.get.hasContent(cacheLoc, integrity);
 

@@ -3,11 +3,13 @@
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
+const rimraf = require('rimraf');
 const nodeGlob = require('glob');
 const tinyGlob = require('tiny-glob');
 const globCache = require('../src');
 
-const globPromisified = util.promisify(nodeGlob);
+const del = util.promisify(rimraf);
+const glob = util.promisify(nodeGlob);
 const cwd = path.dirname(__dirname);
 const cacheLocation = path.join(__dirname, 'fixture-cache');
 
@@ -25,7 +27,7 @@ function fromFixtures(x) {
 }
 
 test('supports other glob libraries', async () => {
-  fs.rmdirSync(cacheLocation, { recursive: true });
+  await del(cacheLocation, { recursive: true });
 
   const { results } = await globCache({
     glob: tinyGlob,
@@ -52,7 +54,7 @@ test('supports other glob libraries', async () => {
   });
 
   const { results: res } = await globCache({
-    glob: globPromisified,
+    glob,
     globOptions: { cwd },
     include: 'test/fixtures/*.js',
     cacheLocation,
@@ -76,12 +78,12 @@ test('supports other glob libraries', async () => {
     expect(ctx.cacheFile.path).toMatch(pathStartsWith);
   });
 
-  fs.rmdirSync(cacheLocation, { recursive: true });
+  await del(cacheLocation, { recursive: true });
 });
 
 // eslint-disable-next-line max-statements
 test('work when you add new matching file which is not cached', async () => {
-  fs.rmdirSync(cacheLocation, { recursive: true });
+  await del(cacheLocation, { recursive: true });
 
   try {
     fs.unlinkSync(fromFixtures('quxie.js'));
@@ -126,7 +128,7 @@ test('work when you add new matching file which is not cached', async () => {
 });
 
 test('to call options.hook on missing (options.always: true)', async () => {
-  fs.rmdirSync(cacheLocation, { recursive: true });
+  await del(cacheLocation, { recursive: true });
 
   await runGlobCache({
     always: true,
@@ -139,7 +141,7 @@ test('to call options.hook on missing (options.always: true)', async () => {
 });
 
 test('to call options.hook on invalid (options.always: false)', async () => {
-  fs.rmdirSync(cacheLocation, { recursive: true });
+  await del(cacheLocation, { recursive: true });
 
   await runGlobCache({
     always: true,
@@ -157,6 +159,7 @@ test('to call options.hook on invalid (options.always: false)', async () => {
     hook: (ctx) => {
       if (ctx.file.path.endsWith('bar.js')) {
         expect(ctx).toHaveProperty('cacheFile');
+        console.log(ctx.cacheFile);
         expect(ctx.cacheFile).toHaveProperty('integrity');
         expect(ctx.valid).toBe(false);
         expect(ctx.missing).toBe(false);
@@ -166,5 +169,5 @@ test('to call options.hook on invalid (options.always: false)', async () => {
 
   // restore original `bar.js` file fixture
   fs.writeFileSync(fromFixtures('bar.js'), 'export default () => 123;\n');
-  fs.rmdirSync(cacheLocation, { recursive: true });
+  await del(cacheLocation, { recursive: true });
 });
