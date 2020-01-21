@@ -16,7 +16,7 @@ config.check = hela()
   .action(async (...args) => {
     await dev.lint(...args);
     await dev.test(...args);
-    await exec('prettier --write "**/*{.verb,README}.md"');
+    await exec('prettier --write "**/*.{json,md}"');
   });
 
 fs.readdirSync('./commands').forEach((cmdPath) => {
