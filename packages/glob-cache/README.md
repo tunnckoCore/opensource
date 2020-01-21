@@ -253,7 +253,7 @@ let worker = null;
 })();
 ```
 
-Above you are seeing on a basic solution similar what's done in Jest with the difference
+Above you're looking on a basic solution similar to what's done in Jest with the difference
 that Jest can detect changes only if it's a Git project. At least the `--onlyChanged`
 works that way (with Git requirement) - which isn't a big problem of course since mostly
 every project is using Git, but anyway.
