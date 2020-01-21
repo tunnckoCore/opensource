@@ -268,7 +268,9 @@ Similar implementation you can see in the [`hela-eslint-workers`](https://github
 where using `glob-cache` we are trying to speed up ESLint a bit,
 by putting `eslint.executeOnFiles` or `eslint.executeOnText` inside a worker.
 The thing is that it doesn't help much, because ESLint is just slow - for the same reason
-even the `jest-runner-eslint` doesn't help much with performance. I'm not saying that just to hate.
+even the `jest-runner-eslint` doesn't help much with performance. The complexity in ESLint
+is O(n) - the more configs and plugins you have in your config, the more slow it will run even on a
+single file - it's inevitable and a huge problem. I'm not saying all that just to hate.
 It's just because of the synchornous design of ESLint and the way it works. A big pain point is
 not only that it exposes & uses only sync methods, but also the architecture of resolving huge amount
 of configs and plugins. That may change if [RFC#9](https://github.com/eslint/rfcs/pull/9)
