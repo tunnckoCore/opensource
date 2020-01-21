@@ -156,7 +156,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "echo 'yarn run pre-commit'",
-      "commit-msg": "echo 'commitlint -E HUSKY_GIT_PARAMS'"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "jest": {
@@ -179,8 +179,5 @@
       "stringify-github-short-url",
       "parse-function"
     ]
-  },
-  "devDependencies": {
-    "tiny-glob": "^0.2.6"
   }
 }
