@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/tunnckoCore/opensource/compare/glob-cache@0.1.4...glob-cache@0.2.0) (2020-01-21)
+
+
+### Bug Fixes
+
+* update broken docs generation ([e6c743f](https://github.com/tunnckoCore/opensource/commit/e6c743ff89745dcc9d70c3b9628048d1e3047381))
+
+
+### Features
+
+* **glob-cache:** support node 10; plus more docs ([25b1987](https://github.com/tunnckoCore/opensource/commit/25b1987f132b425c7506dd95bd2cb7df923bbaa7))
+
+
+
+
+
 ## [0.1.4](https://github.com/tunnckoCore/opensource/compare/glob-cache@0.1.3...glob-cache@0.1.4) (2020-01-19)
 
 
