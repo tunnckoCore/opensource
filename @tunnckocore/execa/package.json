@@ -18,6 +18,11 @@
   "files": [
     "src"
   ],
+  "dependencies": {
+    "esm": "^3.2.25",
+    "execa": "^4.0.0",
+    "p-map": "^3.0.0"
+  },
   "keywords": [
     "bin",
     "binaries",
@@ -43,11 +48,6 @@
     "tunnckocorehq"
   ],
   "scripts": {},
-  "dependencies": {
-    "esm": "^3.2.25",
-    "execa": "^3.3.0",
-    "p-map": "^3.0.0"
-  },
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -65,10 +65,6 @@
         "lines": 83
       }
     }
-  },
-  "jestCov": {
-    "value": 86.01,
-    "color": "99CC09"
   },
   "licenseStart": 2017,
   "verb": {

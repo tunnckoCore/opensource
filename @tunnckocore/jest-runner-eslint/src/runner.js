@@ -1,15 +1,15 @@
-const cosmiconfig = require('cosmiconfig');
+const { cosmiconfigSync } = require('cosmiconfig');
 const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
 const { getWorkspacesAndExtensions } = require('@tunnckocore/utils');
 const { CLIEngine } = require('eslint');
 
-const explorer = cosmiconfig('jest-runner');
+const explorerSync = cosmiconfigSync('jest-runner');
 
 process.env.NODE_ENV = 'lint';
 
 module.exports = async function jestRunnerESLint({ testPath, config }) {
   const start = Date.now();
-  const options = normalizeOptions(explorer.searchSync(), config.rootDir);
+  const options = normalizeOptions(explorerSync.search(), config.rootDir);
 
   if (config.setupTestFrameworkScriptFile) {
     // eslint-disable-next-line import/no-dynamic-require,global-require

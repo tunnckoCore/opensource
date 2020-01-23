@@ -9,11 +9,11 @@ const {
   isMonorepo,
 } = require('@tunnckocore/utils');
 const { rollup } = require('rollup');
-const cosmiconfig = require('cosmiconfig');
+const { cosmiconfigSync } = require('cosmiconfig');
 
-const jestRunnerConfig = cosmiconfig('jest-runner');
-const jestRunnerRollupConfig = cosmiconfig('jest-runner-rollup');
-const rollupConfigFile = cosmiconfig('rollup');
+const jestRunnerConfig = cosmiconfigSync('jest-runner');
+const jestRunnerRollupConfig = cosmiconfigSync('jest-runner-rollup');
+const rollupConfigFile = cosmiconfigSync('rollup');
 
 const ROLLUP_CACHE = {};
 const CACHE_DIR = path.join(
@@ -244,7 +244,7 @@ async function tryCatch(testPath, start, fn) {
 async function tryLoadConfig({ testPath, config: jestConfig, start }) {
   const cfg = await tryCatch(testPath, start, () => {
     let result = null;
-    result = jestRunnerConfig.searchSync();
+    result = jestRunnerConfig.search();
 
     if (
       // if `jest-runner.config.js` not found
@@ -260,7 +260,7 @@ async function tryLoadConfig({ testPath, config: jestConfig, start }) {
           !result.config.rolldown))
     ) {
       // then we trying `jest-runner-rollup.config.js`
-      result = jestRunnerRollupConfig.searchSync();
+      result = jestRunnerRollupConfig.search();
     } else {
       // if `jest-runner.config.js` found, we try one of both properties
       result = {
@@ -273,7 +273,7 @@ async function tryLoadConfig({ testPath, config: jestConfig, start }) {
     // like `rollup.config.js`, `.rolluprc.js`, a `rollup` field in package.json,
     // or a `.rolluprc.json` and etc
     if (!result) {
-      result = rollupConfigFile.searchSync();
+      result = rollupConfigFile.search();
     }
 
     return result;

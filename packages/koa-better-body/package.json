@@ -54,11 +54,11 @@
     "koa-body-parsers": "tunnckoCore/body-parsers#patch-1"
   },
   "devDependencies": {
-    "is-buffer": "2.0.3",
-    "koa": "1.6.2",
-    "koa-route": "3.2.0",
-    "qs": "6.8.0",
-    "supertest": "4.0.2"
+    "is-buffer": "^2.0.4",
+    "koa": "^1.7.0",
+    "koa-route": "^3.2.0",
+    "qs": "^6.9.1",
+    "supertest": "^4.0.2"
   },
   "publishConfig": {
     "access": "public",

@@ -47,7 +47,7 @@
   "scripts": {},
   "dependencies": {
     "esm": "^3.2.25",
-    "global-dirs": "^2.0.0"
+    "global-dirs": "^2.0.1"
   },
   "publishConfig": {
     "access": "public",

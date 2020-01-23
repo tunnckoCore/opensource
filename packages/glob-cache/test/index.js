@@ -159,7 +159,6 @@ test('to call options.hook on invalid (options.always: false)', async () => {
     hook: (ctx) => {
       if (ctx.file.path.endsWith('bar.js')) {
         expect(ctx).toHaveProperty('cacheFile');
-        console.log(ctx.cacheFile);
         expect(ctx.cacheFile).toHaveProperty('integrity');
         expect(ctx.valid).toBe(false);
         expect(ctx.missing).toBe(false);

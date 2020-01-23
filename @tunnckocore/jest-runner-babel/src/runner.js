@@ -1,11 +1,11 @@
 const os = require('os');
 const fs = require('fs');
 const path = require('path');
-const cosmiconfig = require('cosmiconfig');
+const { cosmiconfigSync } = require('cosmiconfig');
 const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
 const { transformFileSync, loadPartialConfig } = require('@babel/core');
 
-const explorer = cosmiconfig('jest-runner');
+const explorerSync = cosmiconfigSync('jest-runner');
 
 const isWin32 = os.platform() === 'win32';
 
@@ -14,7 +14,7 @@ process.env.NODE_ENV = 'build';
 /* eslint max-statements: ["error", 25] */
 module.exports = async function jestRunnerBabel({ testPath, config }) {
   const start = new Date();
-  let options = normalizeRunnerConfig(explorer.searchSync());
+  let options = normalizeRunnerConfig(explorerSync.search());
   const cfgs = [].concat(options.babel).filter(Boolean);
 
   if (cfgs.length === 0) {

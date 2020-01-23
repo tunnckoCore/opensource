@@ -47,6 +47,7 @@
   "renovate-config": {
     "default": {
       "extends": [
+        "config:base",
         ":assignee(@tunnckoCore)",
         ":automergeAll",
         ":automergeLinters",
@@ -64,8 +65,7 @@
         ":prNotPending",
         ":rebaseStalePrs",
         ":semanticCommits",
-        ":separateMultipleMajorReleases",
-        "config:base"
+        ":separateMultipleMajorReleases"
       ],
       "rollbackPrs": true,
       "vulnerabilityAlerts": {

@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "rimraf": "^3.0.0",
+    "glob": "^7.1.6",
     "tiny-glob": "^0.2.6"
   },
   "main": "src/index.js",

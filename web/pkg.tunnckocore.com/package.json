@@ -2,7 +2,7 @@
   "name": "pkg.tunnckocore.com",
   "version": "0.2.0",
   "dependencies": {
-    "ky": "^0.16.0",
+    "ky": "^0.16.2",
     "ky-universal": "^0.3.0",
     "p-locate": "^4.1.0",
     "parse-github-url": "^1.0.2",

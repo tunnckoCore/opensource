@@ -35,7 +35,7 @@
   ],
   "peerDependencies": {
     "tslib": "^1.10.0",
-    "typescript": "^3.7.0-beta"
+    "typescript": "^3.7.5"
   },
   "publishConfig": {
     "access": "public",

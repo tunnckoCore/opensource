@@ -42,7 +42,7 @@
   ],
   "scripts": {},
   "peerDependencies": {
-    "browserslist": "^4.7.0"
+    "browserslist": "^4.8.5"
   },
   "publishConfig": {
     "access": "public",

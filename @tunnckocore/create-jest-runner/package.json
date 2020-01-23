@@ -21,12 +21,12 @@
   "scripts": {},
   "dependencies": {
     "chalk": "^3.0.0",
-    "jest-worker": "^24.0.0",
-    "throat": "^4.1.0"
+    "jest-worker": "^25.1.0",
+    "throat": "^5.0.0"
   },
   "devDependencies": {
     "ansi-colors": "^4.1.1",
-    "execa": "^1.0.0"
+    "execa": "^4.0.0"
   },
   "publishConfig": {
     "access": "public",

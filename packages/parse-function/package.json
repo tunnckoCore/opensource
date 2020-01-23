@@ -47,13 +47,13 @@
   ],
   "scripts": {},
   "dependencies": {
-    "@babel/parser": "^7.6.4",
+    "@babel/parser": "^7.8.3",
     "arrify": "^2.0.1"
   },
   "devDependencies": {
     "acorn": "^7.1.0",
     "acorn-loose": "^7.0.0",
-    "espree": "^6.1.1",
+    "espree": "^6.1.2",
     "for-in": "^1.0.2"
   },
   "publishConfig": {

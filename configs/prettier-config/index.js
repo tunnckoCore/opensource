@@ -45,13 +45,19 @@ module.exports = {
       files: ['**/*.json'],
       options: { parser: 'json-stringify' },
     },
-
+    {
+      files: ['**/package.json'],
+      options: {
+        parser: 'json-stringify',
+        // plugins: ['prettier-plugin-package'],
+      },
+    },
     {
       files: ['**/*.ts', '**/*.tsx'],
       options: { parser: 'typescript' },
     },
     {
-      files: ['**/*.js', '**/*.jsx', '**/*.mjs'],
+      files: ['**/*.js', '**/*.jsx', '**/*.mjs', '**/*.cjs'],
       options: { parser: 'babel' },
     },
     {

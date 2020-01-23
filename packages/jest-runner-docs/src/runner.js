@@ -7,11 +7,11 @@ const path = require('path');
 const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
 const { isMonorepo } = require('@tunnckocore/utils');
 
-const cosmiconfig = require('cosmiconfig');
+const { cosmiconfigSync } = require('cosmiconfig');
 const docks = require('./docks.js');
 
-const jestRunnerConfig = cosmiconfig('jest-runner');
-const jestRunnerDocks = cosmiconfig('docks');
+const jestRunnerConfig = cosmiconfigSync('jest-runner');
+const jestRunnerDocks = cosmiconfigSync('docks');
 
 process.env.NODE_ENV = 'docs';
 
@@ -136,10 +136,10 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
 async function tryLoadConfig(testPath, start) {
   return tryCatch(
     () => {
-      const cfg = jestRunnerDocks.searchSync();
+      const cfg = jestRunnerDocks.search();
 
       if (!cfg || (cfg && !cfg.config)) {
-        const runnersConf = jestRunnerConfig.searchSync();
+        const runnersConf = jestRunnerConfig.search();
 
         if (!runnersConf || (runnersConf && !runnersConf.config)) {
           return {};
