@@ -66,6 +66,7 @@
     "lerna": "^3.20.2",
     "mukla": "^0.4.9",
     "prettier": "^1.19.1",
+    "prettier-plugin-pkg": "^0.4.6",
     "react": "^16.12.0",
     "rollup": "^1.29.1",
     "rollup-plugin-babel": "^4.3.3",
