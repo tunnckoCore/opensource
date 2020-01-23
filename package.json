@@ -16,27 +16,28 @@
     ]
   },
   "scripts": {
-    "start": "hela",
     "bootstrap": "lerna bootstrap --since",
     "bundle": "ROLLUP_FORCE_RELOAD=1 yarn start bundle",
     "clean:dist": "rm -rf {web,configs,packages,@tunnckocore}/*/dist",
     "clean:fresh": "lerna clean -y && rm -rf node_modules",
     "cleanup": "yarn clean:dist && yarn clean:fresh",
+    "docs": "yarn start docs && yarn run format '**/*.{json,md}'",
+    "fmt": "yarn format '**/*'",
+    "format": "prettier --write",
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
     "postsetup": "yarn patch:verb",
     "postsetup:ci": "yarn patch:verb",
+    "presetup": "echo foo-bar",
     "readme": "hela gen:readme > README.md",
     "refresh": "yarn run cleanup && yarn run setup",
     "release": "lerna version && lerna publish from-package",
+    "run:node": "jest -c packages/jest-runner-node/src/config.js",
     "setup": "yarn && yarn bootstrap",
     "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
+    "start": "hela",
     "test": "CI=1 yarn start test",
     "test:legacy": "CI=1 yarn run:node",
-    "testy": "hela gen:cov && yarn run docs",
-    "fmt": "yarn format '**/*'",
-    "docs": "yarn start docs && yarn run format '**/*.{json,md}'",
-    "format": "prettier --write",
-    "run:node": "jest -c packages/jest-runner-node/src/config.js"
+    "testy": "hela gen:cov && yarn run docs"
   },
   "dependencies": {
     "@babel/cli": "^7.8.3",
@@ -78,18 +79,6 @@
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ]
-  },
-  "meta": {
-    "build": [
-      "koa-better-body",
-      "@tunnckocore/pretty-config"
-    ],
-    "bundle": [
-      "arr-includes",
-      "gitclone-defaults",
-      "stringify-github-short-url",
-      "parse-function"
     ]
   },
   "cov": {
@@ -175,6 +164,18 @@
       "**/dist/**/*",
       "**/test/support/**/*",
       "**/test/__snapshots__/**/*"
+    ]
+  },
+  "meta": {
+    "build": [
+      "koa-better-body",
+      "@tunnckocore/pretty-config"
+    ],
+    "bundle": [
+      "arr-includes",
+      "gitclone-defaults",
+      "stringify-github-short-url",
+      "parse-function"
     ]
   }
 }

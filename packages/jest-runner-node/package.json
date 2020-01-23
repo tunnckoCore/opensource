@@ -31,9 +31,17 @@
     "tunnckocorehq"
   ],
   "scripts": {},
+  "dependencies": {
+    "@tunnckocore/create-jest-runner": "^1.1.3",
+    "execa": "^4.0.0"
+  },
   "publishConfig": {
     "access": "public",
     "tag": "latest"
+  },
+  "cov": {
+    "value": 100,
+    "color": "green"
   },
   "jest": {
     "coverageThreshold": {
@@ -44,14 +52,6 @@
         "lines": 100
       }
     }
-  },
-  "dependencies": {
-    "@tunnckocore/create-jest-runner": "^1.1.3",
-    "execa": "^4.0.0"
-  },
-  "cov": {
-    "value": 100,
-    "color": "green"
   },
   "licenseStart": 2020,
   "verb": {

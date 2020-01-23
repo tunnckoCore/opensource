@@ -13,16 +13,6 @@
   "engines": {
     "node": ">=10.18"
   },
-  "dependencies": {
-    "arr-diff": "^4.0.0",
-    "cacache": "^13.0.1",
-    "fast-glob": "^3.1.1"
-  },
-  "devDependencies": {
-    "rimraf": "^3.0.0",
-    "glob": "^7.1.6",
-    "tiny-glob": "^0.2.6"
-  },
   "main": "src/index.js",
   "files": [
     "src"
@@ -44,9 +34,23 @@
     "tunnckocorehq"
   ],
   "scripts": {},
+  "dependencies": {
+    "arr-diff": "^4.0.0",
+    "cacache": "^13.0.1",
+    "fast-glob": "^3.1.1"
+  },
+  "devDependencies": {
+    "glob": "^7.1.6",
+    "rimraf": "^3.0.0",
+    "tiny-glob": "^0.2.6"
+  },
   "publishConfig": {
     "access": "public",
     "tag": "latest"
+  },
+  "cov": {
+    "value": 100,
+    "color": "green"
   },
   "jest": {
     "coverageThreshold": {
@@ -57,10 +61,6 @@
         "lines": 100
       }
     }
-  },
-  "cov": {
-    "value": 100,
-    "color": "green"
   },
   "licenseStart": 2020,
   "verb": {

@@ -16,8 +16,8 @@
   "main": "src/main.js",
   "module": "src/index.js",
   "files": [
-    "src",
-    "index.d.ts"
+    "index.d.ts",
+    "src"
   ],
   "keywords": [
     "bin",

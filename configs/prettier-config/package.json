@@ -42,7 +42,8 @@
   ],
   "scripts": {},
   "peerDependencies": {
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "prettier-plugin-pkg": "^0.4.6"
   },
   "publishConfig": {
     "access": "public",

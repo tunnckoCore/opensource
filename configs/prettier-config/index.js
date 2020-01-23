@@ -49,7 +49,7 @@ module.exports = {
       files: ['**/package.json'],
       options: {
         parser: 'json-stringify',
-        // plugins: ['prettier-plugin-package'],
+        plugins: ['prettier-plugin-pkg'],
       },
     },
     {
