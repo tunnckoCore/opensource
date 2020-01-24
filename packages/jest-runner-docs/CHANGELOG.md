@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.1.5...jest-runner-docs@1.2.0) (2020-01-24)
+
+
+### Bug Fixes
+
+* upgrade deps ([a744c6d](https://github.com/tunnckoCore/opensource/commit/a744c6dbef340b51e246ecf874579a752b7aa35a))
+
+
+### Features
+
+* format, npm funding field, prettier-plugin-pkgjson ([5cd0a38](https://github.com/tunnckoCore/opensource/commit/5cd0a389a731e5634636f1a124decbaf36807824))
+
+
+
+
+
 ## [1.1.5](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.1.4...jest-runner-docs@1.1.5) (2020-01-19)
 
 

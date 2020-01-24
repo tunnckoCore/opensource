@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/typescript-config@1.0.8...@tunnckocore/typescript-config@1.1.0) (2020-01-24)
+
+
+### Bug Fixes
+
+* upgrade deps ([a744c6d](https://github.com/tunnckoCore/opensource/commit/a744c6dbef340b51e246ecf874579a752b7aa35a))
+
+
+### Features
+
+* format, npm funding field, prettier-plugin-pkgjson ([5cd0a38](https://github.com/tunnckoCore/opensource/commit/5cd0a389a731e5634636f1a124decbaf36807824))
+
+
+
+
+
 ## [1.0.8](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/typescript-config@1.0.7...@tunnckocore/typescript-config@1.0.8) (2020-01-19)
 
 

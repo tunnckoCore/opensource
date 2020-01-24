@@ -1,6 +1,6 @@
 {
   "name": "parse-function",
-  "version": "5.5.4",
+  "version": "5.6.0",
   "licenseStart": 2016,
   "license": "MPL-2.0",
   "description": "Parse a function into an object using espree, acorn or babylon parsers. Extensible through Smart Plugins",
@@ -36,7 +36,6 @@
     "espree": "^6.1.2",
     "for-in": "^1.0.2"
   },
-  "peerDependencies": {},
   "jest": {
     "coverageThreshold": {
       "src/**/*.js": {

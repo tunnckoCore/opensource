@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/pretty-config@0.8.2...@tunnckocore/pretty-config@0.9.0) (2020-01-24)
+
+
+### Bug Fixes
+
+* cov, docs, readme, fmt ([b8139bb](https://github.com/tunnckoCore/opensource/commit/b8139bb6ee58d2219c9561ae022f6970b2deebce))
+* upgrade deps ([a744c6d](https://github.com/tunnckoCore/opensource/commit/a744c6dbef340b51e246ecf874579a752b7aa35a))
+
+
+### Features
+
+* format, npm funding field, prettier-plugin-pkgjson ([5cd0a38](https://github.com/tunnckoCore/opensource/commit/5cd0a389a731e5634636f1a124decbaf36807824))
+
+
+
+
+
 ## [0.8.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/pretty-config@0.8.1...@tunnckocore/pretty-config@0.8.2) (2020-01-19)
 
 

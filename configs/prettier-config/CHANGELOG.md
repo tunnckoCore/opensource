@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/prettier-config@1.1.2...@tunnckocore/prettier-config@1.2.0) (2020-01-24)
+
+
+### Bug Fixes
+
+* format package.json files ([5f87d70](https://github.com/tunnckoCore/opensource/commit/5f87d70d369e2939c8ab85aff8863a4cfe7f44e5))
+* upgrade deps ([a744c6d](https://github.com/tunnckoCore/opensource/commit/a744c6dbef340b51e246ecf874579a752b7aa35a))
+
+
+### Features
+
+* format, npm funding field, prettier-plugin-pkgjson ([5cd0a38](https://github.com/tunnckoCore/opensource/commit/5cd0a389a731e5634636f1a124decbaf36807824))
+
+
+
+
+
 ## [1.1.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/prettier-config@1.1.1...@tunnckocore/prettier-config@1.1.2) (2020-01-19)
 
 

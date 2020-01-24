@@ -1,6 +1,6 @@
 {
   "name": "ghub.now.sh",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "license": "MPL-2.0",
   "description": "Micro-service for ZEIT Now Platform, that redirects to location of a package, supports monorepos",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",

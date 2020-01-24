@@ -1,6 +1,6 @@
 {
   "name": "gitclone-cli",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "licenseStart": 2015,
   "license": "MPL-2.0",
   "description": "Simple command line interface for the `git clone` command, using [gitclone][] package",
