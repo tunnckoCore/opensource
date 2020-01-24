@@ -83,7 +83,8 @@
       "arr-includes",
       "gitclone-defaults",
       "stringify-github-short-url",
-      "parse-function"
+      "parse-function",
+      "parse-commit-message"
     ]
   },
   "jest": {
@@ -155,6 +156,10 @@
     "packages/koa-better-body": {
       "value": 95.56,
       "color": "99CC09"
+    },
+    "packages/parse-commit-message": {
+      "value": 65.61,
+      "color": "orange"
     },
     "packages/parse-function": {
       "value": 100,

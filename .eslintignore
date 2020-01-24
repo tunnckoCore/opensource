@@ -5,6 +5,7 @@ recipes
 patches
 
 packages/function-arguments
+semantic-pull-requests
 @hela/dev/src/configs/*/config.js
 
 *.js.snap
