@@ -1,20 +1,26 @@
 import { normalizeCommit, isBreakingChange } from '../utils.js';
 
 /**
- * A plugin that adds `increment` and `isBreaking` properties
- * to the `commit`. It is already included in the `plugins` named export,
+ * A plugin that adds `increment` property to the `commit`.
+ * It is already included in the `plugins` named export,
  * and in `mappers` named export.
  *
  * **Note: Since v4 this plugin doesn't add `isBreaking` property, use the `isBreaking` plugin instead.**
  *
  * _See the [.plugins](#plugins) and [.mappers](#mappers)  examples._
  *
- * @name  increment
+ * @example
+ * import { mappers, plugins } from 'parse-commit-message';
+ *
+ * console.log(mappers.increment); // => [Function: incrementPlugin]
+ * console.log(plugins[1]); // => [Function: incrementPlugin]
+ *
+ * @name  incrementPlugin
  * @param {Commit} commit a standard `Commit` object
  * @returns {Commit} plus `{ increment: string }`
  * @public
  */
-export default function increment(commit, options) {
+export default function incrementPlugin(commit, options) {
   const opts = { normalize: true, ...options };
   const cmt = opts.normalize ? normalizeCommit(commit, opts) : commit;
   const isBreaking = isBreakingChange(cmt);

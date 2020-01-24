@@ -40,7 +40,7 @@ export * from './utils.js';
  *
  * @example
  * import dedent from 'dedent';
- * import { applyPlugins, plugins, parse, check } from './src';
+ * import { applyPlugins, plugins, parse, check } from 'parse-commit-message';
  *
  * const commits = [
  *   'fix: bar qux',
@@ -126,8 +126,8 @@ export function applyPlugins(plugins, commits, options) {
 }
 
 /**
- * An array which includes `mentions` and `increment` built-in plugins.
- * The `mentions` is an array of objects. Basically what's returned from
+ * An array which includes `mentions`, `isBreakingChange` and `increment` built-in plugins.
+ * The `mentions` is an array of objects - basically what's returned from
  * the [collect-mentions][] package.
  *
  * @example

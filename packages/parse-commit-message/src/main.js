@@ -1,5 +1,4 @@
 import { parseCommit, stringifyCommit, checkCommit } from './commit.js';
-// import { Commit, CommitResult, PossibleCommit } from '../types';
 import { toArray, errorMsg } from './utils.js';
 
 /**

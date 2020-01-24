@@ -10,12 +10,18 @@ import { normalizeCommit /* getValue */ } from '../utils.js';
  *
  * _See the [.plugins](#plugins) and [.mappers](#mappers)  examples._
  *
- * @name  mentions
+ * @example
+ * import { mappers, plugins } from 'parse-commit-message';
+ *
+ * console.log(mappers.mentions); // => [Function: mentionsPlugin]
+ * console.log(plugins[0]); // => [Function: mentionsPlugin]
+ *
+ * @name  mentionsPlugin
  * @param {Commit} commit a standard `Commit` object
  * @returns {Commit} plus `{ mentions: Array<Mention> }`
  * @public
  */
-export default function mentions(commit, options) {
+export default function mentionsPlugin(commit, options) {
   const opts = { normalize: true, ...options };
   const cmt = opts.normalize ? normalizeCommit(commit, opts) : commit;
 

@@ -26,13 +26,18 @@ module.exports = function docks(filepath, pkgRoot) {
         : comment.tags;
 
       const name = (tagName && tagName.name) || comment.code.context.name;
+      const clearName = name.replace(/^\./, '').toLowerCase();
+      const paramsId = `<span id="${clearName}-params"></span>\n\n`;
+      const signatureId = `<span id="${clearName}-signature"></span>\n\n`;
+      const examplesId = `<span id="${clearName}-examples"></span>\n\n`;
+
       // name = !name.startsWith('.') ? `.${name}` : name;
 
       const index = comment.code.value.indexOf('(');
       const signature = comment.code.value.slice(index, -1).trim();
       const signatureBlock =
         signature.length > 0
-          ? `**Signature**\n\n\`\`\`ts\nfunction${signature}\n\`\`\`\n`
+          ? `${signatureId}#### Signature\n\n\`\`\`ts\nfunction${signature}\n\`\`\`\n`
           : '';
 
       const tagsStr = tags
@@ -49,18 +54,16 @@ module.exports = function docks(filepath, pkgRoot) {
         })
         .join('\n');
 
-      const nameIdParams = `${name.replace(/^\./, '').toLowerCase()}-params`;
+      // const nameIdParams = `${name.replace(/^\./, '').toLowerCase()}-params`;
       const params =
-        tagsStr.length > 0
-          ? `\n<span id="${nameIdParams}"></span>\n**Params**\n\n${tagsStr}`
-          : '';
+        tagsStr.length > 0 ? `\n${paramsId}#### Params\n\n${tagsStr}` : '';
 
       const str = `### [${name}](./${locUrl})\n\n${
         comment.description
       }\n\n${signatureBlock}${params}\n${comment.examples
         .map(
           (example) =>
-            `\n${example.description.trim()}\n\n**Example**\n\n\`\`\`${example.language ||
+            `\n${example.description.trim()}\n\n${examplesId}#### Examples\n\n\`\`\`${example.language ||
               'js'}${example.value}\`\`\``,
         )
         .join('\n')}`;
