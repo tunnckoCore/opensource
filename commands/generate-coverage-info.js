@@ -22,6 +22,7 @@ module.exports = require('hela')()
       throw err;
     }
 
-    fs.writeFileSync(res.packageJsonPath, JSON.stringify(res.pkg, null, 2));
+    const jsonStr = JSON.stringify(res.pkg, null, 2);
+    fs.writeFileSync(res.packageJsonPath, `${jsonStr}\n`);
     console.log(res.message);
   });

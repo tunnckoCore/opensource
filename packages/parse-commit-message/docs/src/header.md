@@ -1,5 +1,3 @@
-
-
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [.parseHeader](./src/header.js#L31)
@@ -71,8 +69,6 @@ function(header, options)
 - `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{string}** - a header stirng like `'fix(foo): bar baz'`
 
-
-
 <span id="stringifyheader-examples"></span>
 
 #### Examples
@@ -109,8 +105,6 @@ function(header, options)
 - `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{CommitResult}** - an object like `{ value: Array<Commit>, error: Error }`
 
-
-
 <span id="validateheader-examples"></span>
 
 #### Examples
@@ -131,9 +125,12 @@ console.log(value);
 //   footer: null,
 // }
 
-const { error } = validateHeader({
-  type: 'bar'
-}, true);
+const { error } = validateHeader(
+  {
+    type: 'bar',
+  },
+  true,
+);
 
 console.log(error);
 // => TypeError: header.subject should be non empty string
@@ -163,8 +160,6 @@ function(header, options)
 - `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{Header}** - returns the same as given if no problems, otherwise it will throw.
 
-
-
 <span id="checkheader-examples"></span>
 
 #### Examples
@@ -174,7 +169,7 @@ import { checkHeader } from 'parse-commit-message';
 
 try {
   checkHeader({ type: 'fix' });
-} catch(err) {
+} catch (err) {
   console.log(err);
   // => TypeError: header.subject should be non empty string
 }
@@ -185,4 +180,3 @@ checkHeader(123);
 checkHeader([]);
 checkHeader([{ type: 'foo', subject: 'bar' }]);
 ```
-

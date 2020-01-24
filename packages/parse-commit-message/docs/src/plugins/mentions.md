@@ -1,5 +1,3 @@
-
-
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [mentionsPlugin](./src/plugins/mentions.js#L27)
@@ -28,7 +26,7 @@ function(commit, options)
 - `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{Commit}** - plus `{ mentions: Array<Mention> }`
 
-_See the [.plugins](#plugins) and [.mappers](#mappers)  examples._
+_See the [.plugins](#plugins) and [.mappers](#mappers) examples._
 
 <span id="mentionsplugin-examples"></span>
 
@@ -40,4 +38,3 @@ import { mappers, plugins } from 'parse-commit-message';
 console.log(mappers.mentions); // => [Function: mentionsPlugin]
 console.log(plugins[0]); // => [Function: mentionsPlugin]
 ```
-

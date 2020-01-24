@@ -1,5 +1,3 @@
-
-
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [.parse](./src/main.js#L51)
@@ -25,8 +23,6 @@ function(commits, options)
 - `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{Array&lt;Commit&gt;}** - if array of commit objects
 
-
-
 <span id="parse-examples"></span>
 
 #### Examples
@@ -34,10 +30,7 @@ function(commits, options)
 ```js
 import { parse } from 'parse-commit-message';
 
-const commits = [
-  'fix(ci): tweaks for @circleci config',
-  'chore: bar qux'
-];
+const commits = ['fix(ci): tweaks for @circleci config', 'chore: bar qux'];
 const result = parse(commits);
 console.log(result);
 // => [{
@@ -139,8 +132,6 @@ function(commits, options)
 - `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{CommitResult}** - an object like `{ value: Array<Commit>, error: Error }`
 
-
-
 <span id="validate-examples"></span>
 
 #### Examples
@@ -188,7 +179,6 @@ const { error } = validate(commit);
 console.log(error);
 // => TypeError: header.subject should be non empty string
 
-
 const commit = { header: { type: 'fix', scope: 123, subject: 'okk' } };
 const { error } = validate(commit);
 console.log(error);
@@ -219,8 +209,6 @@ function(commits, options)
 - `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{Array&lt;Commit&gt;}** - returns the same as given if no problems, otherwise it will throw;
 
-
-
 <span id="check-examples"></span>
 
 #### Examples
@@ -230,7 +218,7 @@ import { check } from 'parse-commit-message';
 
 try {
   check({ header: { type: 'fix' } });
-} catch(err) {
+} catch (err) {
   console.log(err);
   // => TypeError: header.subject should be non empty string
 }
@@ -238,10 +226,9 @@ try {
 // Can also validate/check a strings, array of strings,
 // or even mixed - array of strings and objects
 try {
-  check('fix(): invalid scope, it cannot be empty')
-} catch(err) {
+  check('fix(): invalid scope, it cannot be empty');
+} catch (err) {
   console.log(err);
   // => TypeError: header.scope should be non empty string when given
 }
 ```
-

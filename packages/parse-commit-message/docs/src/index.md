@@ -1,5 +1,3 @@
-
-
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [.applyPlugins](./src/index.js#L102)
@@ -94,10 +92,6 @@ An array which includes `mentions`, `isBreakingChange` and `increment` built-in 
 The `mentions` is an array of objects - basically what's returned from
 the [collect-mentions][] package.
 
-
-
-
-
 <span id="plugins-examples"></span>
 
 #### Examples
@@ -154,10 +148,6 @@ console.log(commits);
 
 An object (named set) which includes `mentions` and `increment` built-in plugins.
 
-
-
-
-
 <span id="mappers-examples"></span>
 
 #### Examples
@@ -179,7 +169,7 @@ console.log(parsed);
 // }
 
 const commit = applyPlugins([mappers.increment], parsed);
-console.log(commit)
+console.log(commit);
 // => [{
 //   header: { type: 'feat', scope: 'cli', subject: 'awesome feature' },
 //   body: 'Super duper baz!',
@@ -187,4 +177,3 @@ console.log(commit)
 //   increment: 'patch',
 // }]
 ```
-

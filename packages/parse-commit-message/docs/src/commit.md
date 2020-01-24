@@ -1,5 +1,3 @@
-
-
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [.parseCommit](./src/commit.js#L33)
@@ -72,8 +70,6 @@ function(commit, options)
 - `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{string}** - a commit nessage stirng like `'fix(foo): bar baz'`
 
-
-
 <span id="stringifycommit-examples"></span>
 
 #### Examples
@@ -111,8 +107,6 @@ function(commit, options)
 - `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
 - `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{CommitResult}** - an object like `{ value: Array<Commit>, error: Error }`
-
-
 
 <span id="validatecommit-examples"></span>
 
@@ -162,8 +156,6 @@ function(commit, options)
 - `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{Commit}** - returns the same as given if no problems, otherwise it will throw.
 
-
-
 <span id="checkcommit-examples"></span>
 
 #### Examples
@@ -173,7 +165,7 @@ import { checkCommit } from 'parse-commit-message';
 
 try {
   checkCommit({ header: { type: 'fix' } });
-} catch(err) {
+} catch (err) {
   console.log(err);
   // => TypeError: header.subject should be non empty string
 }
@@ -183,4 +175,3 @@ checkCommit('foo bar baz');
 checkCommit(123);
 checkCommit([{ header: { type: 'foo', subject: 'bar' } }]);
 ```
-

@@ -1,5 +1,3 @@
-
-
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [incrementPlugin](./src/plugins/increment.js#L26)
@@ -28,7 +26,7 @@ function(commit, options)
 - `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{Commit}** - plus `{ increment: string }`
 
-_See the [.plugins](#plugins) and [.mappers](#mappers)  examples._
+_See the [.plugins](#plugins) and [.mappers](#mappers) examples._
 
 <span id="incrementplugin-examples"></span>
 
@@ -40,4 +38,3 @@ import { mappers, plugins } from 'parse-commit-message';
 console.log(mappers.increment); // => [Function: incrementPlugin]
 console.log(plugins[1]); // => [Function: incrementPlugin]
 ```
-

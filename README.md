@@ -19,6 +19,7 @@ Delivering delightful digital solutions. Open Source Monorepo (of monorepos), se
 | [`jest-runner-node`](https://ghub.now.sh/jest-runner-node)                     | [![npm][npm-13c18163b7-img]][npm-13c18163b7-url] [![cov][cov-13c18163b7-img]][cov-13c18163b7-url] |
 | [`jest-runner-rollup`](https://ghub.now.sh/jest-runner-rollup)                 | [![npm][npm-cf87a4edb8-img]][npm-cf87a4edb8-url] [![cov][cov-cf87a4edb8-img]][cov-cf87a4edb8-url] |
 | [`koa-better-body`](https://ghub.now.sh/koa-better-body)                       | [![npm][npm-e4f83c0c22-img]][npm-e4f83c0c22-url] [![cov][cov-e4f83c0c22-img]][cov-e4f83c0c22-url] |
+| [`parse-commit-message`](https://ghub.now.sh/parse-commit-message)             | [![npm][npm-c760c3945d-img]][npm-c760c3945d-url] [![cov][cov-c760c3945d-img]][cov-c760c3945d-url] |
 | [`parse-function`](https://ghub.now.sh/parse-function)                         | [![npm][npm-a236619861-img]][npm-a236619861-url] [![cov][cov-a236619861-img]][cov-a236619861-url] |
 | [`prettier-plugin-pkgjson`](https://ghub.now.sh/prettier-plugin-pkgjson)       | [![npm][npm-07945251a6-img]][npm-07945251a6-url] [![cov][cov-07945251a6-img]][cov-07945251a6-url] |
 | [`stringify-github-short-url`](https://ghub.now.sh/stringify-github-short-url) | [![npm][npm-3c6aafac3a-img]][npm-3c6aafac3a-url] [![cov][cov-3c6aafac3a-img]][cov-3c6aafac3a-url] |
@@ -59,7 +60,7 @@ Delivering delightful digital solutions. Open Source Monorepo (of monorepos), se
 [npm-bfbf73f3e5-url]: https://www.npmjs.com/package/jest-runner-docs
 [npm-bfbf73f3e5-img]: https://badgen.net/npm/v/jest-runner-docs?icon=npm
 [cov-bfbf73f3e5-url]: https://www.npmjs.com/package/jest-runner-docs
-[cov-bfbf73f3e5-img]: https://badgen.net/badge/coverage/6.82%25/red?icon=codecov
+[cov-bfbf73f3e5-img]: https://badgen.net/badge/coverage/6.7%25/red?icon=codecov
 [npm-13c18163b7-url]: https://www.npmjs.com/package/jest-runner-node
 [npm-13c18163b7-img]: https://badgen.net/npm/v/jest-runner-node?icon=npm
 [cov-13c18163b7-url]: https://www.npmjs.com/package/jest-runner-node
@@ -72,6 +73,10 @@ Delivering delightful digital solutions. Open Source Monorepo (of monorepos), se
 [npm-e4f83c0c22-img]: https://badgen.net/npm/v/koa-better-body?icon=npm
 [cov-e4f83c0c22-url]: https://www.npmjs.com/package/koa-better-body
 [cov-e4f83c0c22-img]: https://badgen.net/badge/coverage/95.56%25/99CC09?icon=codecov
+[npm-c760c3945d-url]: https://www.npmjs.com/package/parse-commit-message
+[npm-c760c3945d-img]: https://badgen.net/npm/v/parse-commit-message?icon=npm
+[cov-c760c3945d-url]: https://www.npmjs.com/package/parse-commit-message
+[cov-c760c3945d-img]: https://badgen.net/badge/coverage/65.61%25/orange?icon=codecov
 [npm-a236619861-url]: https://www.npmjs.com/package/parse-function
 [npm-a236619861-img]: https://badgen.net/npm/v/parse-function?icon=npm
 [cov-a236619861-url]: https://www.npmjs.com/package/parse-function

@@ -36,10 +36,10 @@
   "jest": {
     "coverageThreshold": {
       "src/docks.js": {
-        "statements": 11,
+        "statements": 10,
         "branches": 0,
         "functions": 0,
-        "lines": 11
+        "lines": 10
       },
       "src/runner.js": {
         "statements": 14,
