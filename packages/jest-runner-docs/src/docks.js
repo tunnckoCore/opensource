@@ -6,8 +6,10 @@ const Comments = require('parse-comments');
 
 const parser = new Comments();
 
-module.exports = function docks(filepath, pkgRoot) {
+module.exports = function docks(filepath, options) {
+  const { fileHeading, pkgRoot } = { fileHeading: false, ...options };
   const relativePath = path.relative(pkgRoot, filepath);
+  const heading = fileHeading ? '#' : '';
 
   const comments = parser.parse(fs.readFileSync(filepath, 'utf8'));
   const contents = comments
@@ -37,7 +39,7 @@ module.exports = function docks(filepath, pkgRoot) {
       const signature = comment.code.value.slice(index, -1).trim();
       const signatureBlock =
         signature.length > 0
-          ? `${signatureId}#### Signature\n\n\`\`\`ts\nfunction${signature}\n\`\`\`\n`
+          ? `${signatureId}####${heading} Signature\n\n\`\`\`ts\nfunction${signature}\n\`\`\`\n`
           : '';
 
       const tagsStr = tags
@@ -56,14 +58,16 @@ module.exports = function docks(filepath, pkgRoot) {
 
       // const nameIdParams = `${name.replace(/^\./, '').toLowerCase()}-params`;
       const params =
-        tagsStr.length > 0 ? `\n${paramsId}#### Params\n\n${tagsStr}` : '';
+        tagsStr.length > 0
+          ? `\n${paramsId}####${heading} Params\n\n${tagsStr}`
+          : '';
 
-      const str = `### [${name}](./${locUrl})\n\n${
+      const str = `###${heading} [${name}](./${locUrl})\n\n${
         comment.description
       }\n\n${signatureBlock}${params}\n${comment.examples
         .map(
           (example) =>
-            `\n${example.description.trim()}\n\n${examplesId}#### Examples\n\n\`\`\`${example.language ||
+            `\n${example.description.trim()}\n\n${examplesId}####${heading} Examples\n\n\`\`\`${example.language ||
               'js'}${example.value}\`\`\``,
         )
         .join('\n')}`;

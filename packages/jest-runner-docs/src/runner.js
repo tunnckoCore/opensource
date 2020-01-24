@@ -6,12 +6,22 @@ const path = require('path');
 
 const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
 const { isMonorepo } = require('@tunnckocore/utils');
+const { cosmiconfig } = require('cosmiconfig');
+const memoizeFS = require('memoize-fs');
 const findPkg = require('find-pkg');
-
-// const { cosmiconfigSync } = require('cosmiconfig');
 const docks = require('./docks.js');
 
-// const jestRunnerConfig = cosmiconfigSync('jest-runner');
+const memoizeCachePath = '.cache/docs-runner-memoized';
+const memoizeFN = memoizeFS({ cachePath: memoizeCachePath }).fn;
+const jestRunnerConfig = cosmiconfig('jest-runner');
+
+function memoize(func) {
+  return async (...args) => {
+    const fn = await memoizeFN(func);
+    const res = await fn(...args);
+    return res;
+  };
+}
 
 // let RUNNERS_CONF = {};
 
@@ -26,33 +36,40 @@ process.env.NODE_ENV = 'docs';
 
 module.exports = async function jestRunnerDocs({ testPath, config }) {
   const start = new Date();
-  // const conf = RUNNERS_CONF;
 
-  // if (conf.hasError) return conf.error;
+  const loadConfig = tryLoadConfig(testPath, start);
+  const conf = (await memoize(loadConfig))() || {};
+
+  if (conf.hasError) return conf.error;
 
   const docksConfig = {
-    promo: false,
+    promo: true,
+    flat: true,
     verbose: true,
     force: true,
-    includeHeader: false,
+    apiHeader: false, // default `false`
+    // fileHeading: false, // default `false` (reverse of `flat`)
     outfile: '.verb.md',
-    // ...conf,
+    ...conf,
   };
   docksConfig.outfile = docksConfig.outfile || docksConfig.outFile;
-  // console.log(docksConfig);
-  /** Find correct root path */
-  const pkgRoot = isMonorepo(config.cwd)
-    ? path.dirname(findPkg.sync(path.dirname(testPath)))
-    : config.rootDir;
+  docksConfig.fileHeading = docksConfig.flat !== true;
 
-  /** Handle if index.js is inside root (no src dirs in root of package) */
-  // pkgRoot = fs.existsSync(path.join(pkgRoot, 'package.json'))
-  //   ? pkgRoot
-  //   : path.dirname(pkgRoot);
+  /** Find correct root path */
+  // ! TODO: use memoize-fs for findPkg.sync
+  function getPkgRoot() {
+    return isMonorepo(config.cwd)
+      ? path.dirname(findPkg.sync(path.dirname(testPath)))
+      : config.rootDir;
+  }
+
+  const pkgRoot = await memoize(getPkgRoot)();
+
+  docksConfig.pkgRoot = pkgRoot;
 
   const outfile = await tryCatch(
     () => {
-      const { contents: apidocsContent } = docks(testPath, pkgRoot);
+      const { contents: apidocsContent } = docks(testPath, docksConfig);
 
       if (apidocsContent.length === 0 && !docksConfig.force) {
         return {
@@ -67,84 +84,54 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
         };
       }
 
-      // const newPath = path.join(path.dirname(testPath), `${basename}.md`);
       const relPath = path.relative(pkgRoot, testPath);
-      // const basename = path.basename(relPath, path.extname(relPath));
-
-      const outputFile = path.resolve(pkgRoot, docksConfig.outfile);
-      // const outputFile = path.join(pkgRoot, relPath);
+      const oldBasename = path.basename(relPath, path.extname(relPath));
+      const mdBasename = `${oldBasename}.md`;
+      const relDocsPath = path.join('docs', path.dirname(relPath), mdBasename);
+      const outputFile = path.join(pkgRoot, relDocsPath);
 
       const promo = docksConfig.promo
         ? `_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._`
         : '';
 
-      const header = docksConfig.includeHeader ? '## API\n\n' : '';
+      const header = docksConfig.fileHeading ? `\n\n### ${relPath}` : '';
       const docksStart = '<!-- docks-start -->';
       const docksEnd = '<!-- docks-end -->';
-      // const docksStart = `<!-- docks-start -->`;
-      // const docksEnd = `<!-- docks-end -->`;
       const cont =
         apidocsContent.length > 0
-          ? `\n\n${header}${promo}${apidocsContent.trim()}\n\n`
+          ? `${header}\n\n${promo}\n\n${apidocsContent.trim()}\n\n`
           : '\n';
 
-      const contents = (x = '') => `${docksStart}${cont}${x}${docksEnd}`;
-      let fileContents = null;
+      fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+      fs.writeFileSync(outputFile, cont);
 
-      if (fs.existsSync(outputFile)) {
-        fileContents = fs.readFileSync(outputFile, 'utf8');
-
+      const pkgVerbMd = path.join(pkgRoot, docksConfig.outfile);
+      if (fs.existsSync(pkgVerbMd)) {
+        const fileContents = fs.readFileSync(pkgVerbMd, 'utf8');
         if (
           fileContents.includes(docksStart) &&
           fileContents.includes(docksEnd)
         ) {
           const idxStart = fileContents.indexOf(docksStart) + docksStart.length;
           const idxEnd = fileContents.indexOf(docksEnd);
+          const oldApiContents = fileContents.slice(idxStart, idxEnd).trim();
+          const newContents = `\n{%= include(process.cwd() + ${JSON.stringify(
+            `/${relDocsPath}`,
+          )}) %}\n`;
 
-          // ! TODO!
-          const oldDocksContents = fileContents.slice(idxStart, idxEnd);
-          // const beforeDocks = fileContents.slice(0, idxStart).trim();
-          // const afterDocks = fileContents.slice(idxEnd).trim();
+          if (!oldApiContents.includes(newContents.trim())) {
+            const beforeApi = fileContents.slice(0, idxStart);
+            const api = `\n\n${oldApiContents}${newContents}\n`;
+            const afterApi = fileContents.slice(idxEnd);
 
-          fs.writeFileSync(outputFile, contents(oldDocksContents));
+            fs.writeFileSync(pkgVerbMd, `${beforeApi}${api}${afterApi}`);
+          }
         }
       } else {
-        const outDir = path.dirname(outputFile);
-        fs.mkdirSync(outDir, { recursive: true });
-        fs.writeFileSync(outputFile, contents());
+        fs.writeFileSync(pkgVerbMd, `${docksStart}\n${docksEnd}\n`);
       }
 
-      return testPath;
-      // if (fs.existsSync(outputFile)) {
-      //   const fileContent = fs.readFileSync(outputFile, 'utf8');
-
-      //   // if (
-      //   //   fileContent.includes(docksStart) &&
-      //   //   fileContent.includes(docksEnd)
-      //   // ) {
-      //   const idxStart = fileContent.indexOf(docksStart);
-      //   const idxEnd = fileContent.indexOf(docksEnd) + docksEnd.length;
-      //   const apiPart = fileContent.slice(idxStart, idxEnd);
-
-      //   const newContents = fileContent.replace(
-      //     apiPart,
-      //     `${apiPart.trim()}\n${docksStart}${cont}${docksEnd}\n`,
-      //     // `${apiPartWithoutDocksEnd}${cont}${docksEnd}`,
-      //   );
-
-      //   // fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-      //   fs.writeFileSync(outputFile, newContents);
-      //   return outputFile;
-      //   // }
-
-      //   // // probably never gets here
-      //   // throw new Error(`Outfile doesn't contain placeholders.`);
-      // }
-
-      // const outDir = path.dirname(outputFile);
-      // fs.mkdirSync(outDir, { recursive: true });
-      // fs.writeFileSync(outputFile, contents);
-      // return outputFile;
+      return outputFile;
     },
     { testPath, start, cfg: docksConfig },
   );
@@ -180,19 +167,20 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
   });
 };
 
-// async function tryLoadConfig(testPath, start) {
-//   return tryCatch(
-//     async () => {
-//       RUNNERS_CONF = RUNNERS_CONF || (await jestRunnerConfig.search());
+function tryLoadConfig(testPath, start) {
+  return () =>
+    tryCatch(
+      async () => {
+        const cfg = await jestRunnerConfig.search();
 
-//       if (!RUNNERS_CONF || (RUNNERS_CONF && !RUNNERS_CONF.config)) {
-//         return {};
-//       }
-//       return RUNNERS_CONF.config.docks || RUNNERS_CONF.config.docs;
-//     },
-//     { testPath, start },
-//   );
-// }
+        if (!cfg || (cfg && !cfg.config)) {
+          return {};
+        }
+        return cfg.config.docks || cfg.config.docs;
+      },
+      { testPath, start },
+    );
+}
 
 async function tryCatch(fn, { testPath, start, cfg }) {
   try {
@@ -229,7 +217,7 @@ function createFailed({ err, testPath, start, cfg }, message) {
       test: {
         path: testPath,
         title: 'Docks',
-        errorMessage: `jest-runner-docs: ${err.stack}`,
+        errorMessage: `jest-runner-docs: ${msg}`,
       },
     }),
   };
