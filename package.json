@@ -24,7 +24,6 @@
     "fmt": "yarn format '**/*'",
     "format": "prettier --write",
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
-    "readme": "hela gen:readme > README.md",
     "refresh": "yarn run cleanup && yarn run setup",
     "release": "lerna version && lerna publish from-package",
     "run:node": "jest -c packages/jest-runner-node/src/config.js",
@@ -114,7 +113,7 @@
       "color": "red"
     },
     "@tunnckocore/pretty-config": {
-      "value": 2.08,
+      "value": 6.25,
       "color": "red"
     },
     "@tunnckocore/utils": {
@@ -160,6 +159,10 @@
     "packages/parse-function": {
       "value": 100,
       "color": "green"
+    },
+    "packages/prettier-plugin-pkgjson": {
+      "value": 25,
+      "color": "red"
     },
     "packages/stringify-github-short-url": {
       "value": 100,

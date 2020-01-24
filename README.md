@@ -20,6 +20,7 @@ Delivering delightful digital solutions. Open Source Monorepo (of monorepos), se
 | [`jest-runner-rollup`](https://ghub.now.sh/jest-runner-rollup)                 | [![npm][npm-cf87a4edb8-img]][npm-cf87a4edb8-url] [![cov][cov-cf87a4edb8-img]][cov-cf87a4edb8-url] |
 | [`koa-better-body`](https://ghub.now.sh/koa-better-body)                       | [![npm][npm-e4f83c0c22-img]][npm-e4f83c0c22-url] [![cov][cov-e4f83c0c22-img]][cov-e4f83c0c22-url] |
 | [`parse-function`](https://ghub.now.sh/parse-function)                         | [![npm][npm-a236619861-img]][npm-a236619861-url] [![cov][cov-a236619861-img]][cov-a236619861-url] |
+| [`prettier-plugin-pkgjson`](https://ghub.now.sh/prettier-plugin-pkgjson)       | [![npm][npm-07945251a6-img]][npm-07945251a6-url] [![cov][cov-07945251a6-img]][cov-07945251a6-url] |
 | [`stringify-github-short-url`](https://ghub.now.sh/stringify-github-short-url) | [![npm][npm-3c6aafac3a-img]][npm-3c6aafac3a-url] [![cov][cov-3c6aafac3a-img]][cov-3c6aafac3a-url] |
 
 ### @tunnckocore
@@ -75,6 +76,10 @@ Delivering delightful digital solutions. Open Source Monorepo (of monorepos), se
 [npm-a236619861-img]: https://badgen.net/npm/v/parse-function?icon=npm
 [cov-a236619861-url]: https://www.npmjs.com/package/parse-function
 [cov-a236619861-img]: https://badgen.net/badge/coverage/100%25/green?icon=codecov
+[npm-07945251a6-url]: https://www.npmjs.com/package/prettier-plugin-pkgjson
+[npm-07945251a6-img]: https://badgen.net/npm/v/prettier-plugin-pkgjson?icon=npm
+[cov-07945251a6-url]: https://www.npmjs.com/package/prettier-plugin-pkgjson
+[cov-07945251a6-img]: https://badgen.net/badge/coverage/25%25/red?icon=codecov
 [npm-3c6aafac3a-url]: https://www.npmjs.com/package/stringify-github-short-url
 [npm-3c6aafac3a-img]: https://badgen.net/npm/v/stringify-github-short-url?icon=npm
 [cov-3c6aafac3a-url]: https://www.npmjs.com/package/stringify-github-short-url
@@ -98,7 +103,7 @@ Delivering delightful digital solutions. Open Source Monorepo (of monorepos), se
 [npm-9c57de05d6-url]: https://www.npmjs.com/package/@tunnckocore/pretty-config
 [npm-9c57de05d6-img]: https://badgen.net/npm/v/@tunnckocore/pretty-config?icon=npm
 [cov-9c57de05d6-url]: https://www.npmjs.com/package/@tunnckocore/pretty-config
-[cov-9c57de05d6-img]: https://badgen.net/badge/coverage/2.08%25/red?icon=codecov
+[cov-9c57de05d6-img]: https://badgen.net/badge/coverage/6.25%25/red?icon=codecov
 [npm-2ee61b0213-url]: https://www.npmjs.com/package/@tunnckocore/utils
 [npm-2ee61b0213-img]: https://badgen.net/npm/v/@tunnckocore/utils?icon=npm
 [cov-2ee61b0213-url]: https://www.npmjs.com/package/@tunnckocore/utils
