@@ -13,8 +13,10 @@ export function isValidString(x) {
  * When `options.headerRegex` is passed,
  * it should have 4 capturing groups: type, scope, bang, subject!
  *
- * @param {*} val
- * @param {object} options
+ * @param {string} val
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  */
 export function stringToHeader(val, options) {
   const opts = { caseSensitive: false, ...options };

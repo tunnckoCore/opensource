@@ -24,6 +24,9 @@ import { parseHeader, stringifyHeader, validateHeader } from './header.js';
  *
  * @name  .parseCommit
  * @param {string} commit a message like `'fix(foo): bar baz\n\nSome awesome body!'`
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {Commit} a standard object like `{ header: Header, body?, footer? }`
  * @public
  */
@@ -55,6 +58,9 @@ export function parseCommit(commit, options) {
  *
  * @name  .stringifyCommit
  * @param {Commit} commit a `Commit` object like `{ header: Header, body?, footer? }`
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {string} a commit nessage stirng like `'fix(foo): bar baz'`
  * @public
  */
@@ -102,6 +108,9 @@ export function stringifyCommit(commit, options) {
  *
  * @name  .validateCommit
  * @param {Commit} commit a `Commit` like `{ header: Header, body?, footer? }`
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {CommitResult} an object like `{ value: Array<Commit>, error: Error }`
  * @public
  */
@@ -139,6 +148,9 @@ export function validateCommit(commit, options) {
  *
  * @name  .checkCommit
  * @param {Commit} commit a `Commit` like `{ header: Header, body?, footer? }`
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {Commit} returns the same as given if no problems, otherwise it will throw.
  * @public
  */

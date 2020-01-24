@@ -74,7 +74,7 @@
     "toc": {
       "render": true,
       "method": "preWrite",
-      "maxdepth": 4
+      "maxdepth": 3
     },
     "layout": "empty",
     "tasks": [

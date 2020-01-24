@@ -17,6 +17,9 @@ import { normalizeCommit, isBreakingChange } from '../utils.js';
  *
  * @name  incrementPlugin
  * @param {Commit} commit a standard `Commit` object
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {Commit} plus `{ increment: string }`
  * @public
  */

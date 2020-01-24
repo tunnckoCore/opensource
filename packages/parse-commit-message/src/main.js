@@ -42,6 +42,9 @@ import { toArray, errorMsg } from './utils.js';
  *
  * @name  .parse
  * @param {PossibleCommit} commits a value to be parsed into an object like `Commit` type
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {Array<Commit>} if array of commit objects
  * @public
  */
@@ -89,6 +92,9 @@ export function parse(commits, options) {
  *
  * @name  .stringify
  * @param {PossibleCommit} commits a `Commit` object, or anything that can be passed to `check`
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {Array<string>} an array of commit strings like `'fix(foo): bar baz'`
  * @public
  */
@@ -166,6 +172,9 @@ export function stringify(commits, options) {
  *
  * @name  .validate
  * @param {PossibleCommit} commits a value to be parsed & validated into an object like `Commit` type
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {CommitResult} an object like `{ value: Array<Commit>, error: Error }`
  * @public
  */
@@ -207,6 +216,9 @@ export function validate(commits, options) {
  *
  * @name  .check
  * @param {PossibleCommit} commits a value to be parsed & validated into an object like `Commit` type
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {Array<Commit>} returns the same as given if no problems, otherwise it will throw;
  * @public
  */

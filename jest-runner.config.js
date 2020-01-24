@@ -24,7 +24,6 @@ module.exports = {
   },
   docs: {
     verbose: true,
-    outfile: '.verb.md',
     postHook: ({ pkgRoot, jestConfig: { rootDir } }) => {
       const pkgDir = path.relative(rootDir, pkgRoot);
       const pkgJsonPath = path.join(pkgRoot, 'package.json');

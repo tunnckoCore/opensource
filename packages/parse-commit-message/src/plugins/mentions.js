@@ -18,6 +18,9 @@ import { normalizeCommit /* getValue */ } from '../utils.js';
  *
  * @name  mentionsPlugin
  * @param {Commit} commit a standard `Commit` object
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {Commit} plus `{ mentions: Array<Mention> }`
  * @public
  */

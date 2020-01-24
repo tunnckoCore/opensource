@@ -22,6 +22,9 @@ import { isValidString, stringToHeader } from './utils.js';
  *
  * @name  .parseHeader
  * @param {string} header a header stirng like `'fix(foo): bar baz'`
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {Header} a `Header` object like `{ type, scope?, subject }`
  * @public
  */
@@ -47,6 +50,9 @@ export function parseHeader(header, options) {
  *
  * @name  .stringifyHeader
  * @param {Header} header a `Header` object like `{ type, scope?, subject }`
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {string} a header stirng like `'fix(foo): bar baz'`
  * @public
  */
@@ -100,6 +106,9 @@ export function stringifyHeader(header, options) {
  *
  * @name  .validateHeader
  * @param {Header} header a `Header` object like `{ type, scope?, subject }`
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {CommitResult} an object like `{ value: Array<Commit>, error: Error }`
  * @public
  */

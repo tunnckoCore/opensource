@@ -93,6 +93,9 @@ export * from './utils.js';
  * @name  .applyPlugins
  * @param {Plugins} plugins a simple function like `(commit) => {}`
  * @param {Array<string>|PossibleCommit} commits a PossibleCommit or an array of strings; a value which should already be gone through `parse`
+ * @param {object} options options to control the header regex and case sensitivity
+ * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
+ * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  * @returns {Array<Commit>} plus the modified or added properties from each function in `plugins`
  * @public
  */
