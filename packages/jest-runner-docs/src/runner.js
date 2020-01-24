@@ -23,15 +23,6 @@ function memoize(func) {
   };
 }
 
-// let RUNNERS_CONF = {};
-
-// try {
-//   const cfg = jestRunnerConfig.search();
-//   if (cfg && cfg.config) {
-//     RUNNERS_CONF = cfg.config.docks || cfg.config.docs;
-//   }
-// } catch (err) {}
-
 process.env.NODE_ENV = 'docs';
 
 module.exports = async function jestRunnerDocs({ testPath, config }) {
@@ -48,7 +39,6 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
     verbose: true,
     force: true,
     apiHeader: false, // default `false`
-    // fileHeading: false, // default `false` (reverse of `flat`)
     outfile: '.verb.md',
     ...conf,
   };
@@ -56,7 +46,6 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
   docksConfig.fileHeading = docksConfig.flat !== true;
 
   /** Find correct root path */
-  // ! TODO: use memoize-fs for findPkg.sync
   function getPkgRoot() {
     return isMonorepo(config.cwd)
       ? path.dirname(findPkg.sync(path.dirname(testPath)))
