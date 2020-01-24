@@ -1,19 +1,47 @@
 {
   "name": "@tunnckocore/jest-runner-babel",
   "version": "4.1.3",
-  "description": "Fork of the original Jest Runner for Babel and a lot better, plays nicely with monorepos",
-  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel",
-  "homepage": "https://tunnckocore.com/opensource",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "licenseStart": 2019,
   "license": "MPL-2.0",
-  "engines": {
-    "node": ">=10.13"
-  },
+  "description": "Fork of the original Jest Runner for Babel and a lot better, plays nicely with monorepos",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
+  "repository": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel",
   "main": "src/index.js",
   "module": "src/index.js",
   "files": [
     "src"
   ],
+  "engines": {
+    "node": ">=10.13"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@tunnckocore/create-jest-runner": "^1.1.3",
+    "cosmiconfig": "^6.0.0"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.6.0"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 17,
+        "branches": 0,
+        "functions": 0,
+        "lines": 17
+      }
+    }
+  },
+  "cov": {
+    "value": 8.93,
+    "color": "red"
+  },
   "keywords": [
     "bin",
     "binaries",
@@ -38,37 +66,6 @@
     "spawn",
     "tunnckocorehq"
   ],
-  "scripts": {},
-  "peerDependencies": {
-    "@babel/core": "^7.6.0"
-  },
-  "dependencies": {
-    "@tunnckocore/create-jest-runner": "^1.1.3",
-    "cosmiconfig": "^6.0.0"
-  },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "cov": {
-    "value": 8.93,
-    "color": "red"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "src/**/*.js": {
-        "statements": 17,
-        "branches": 0,
-        "functions": 0,
-        "lines": 17
-      }
-    }
-  },
-  "jestCov": {
-    "value": 8.93,
-    "color": "red"
-  },
-  "licenseStart": 2019,
   "verb": {
     "readme": "../../readme-template.md",
     "run": true,

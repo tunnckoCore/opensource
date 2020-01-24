@@ -1,8 +1,7 @@
 {
+  "private": true,
   "name": "@tunnckocore/opensource",
   "description": "Delivering delightful digital solutions. Open Source Monorepo (of monorepos), semantically versioned following Conventional Commits. Fully powered by Lerna, Jest and Babel.",
-  "homepage": "https://github.com/tunnckocore/opensource",
-  "private": true,
   "workspaces": {
     "packages": [
       "web/*",
@@ -25,15 +24,15 @@
     "fmt": "yarn format '**/*'",
     "format": "prettier --write",
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
-    "postsetup": "yarn patch:verb",
-    "postsetup:ci": "yarn patch:verb",
-    "presetup": "echo foo-bar",
     "readme": "hela gen:readme > README.md",
     "refresh": "yarn run cleanup && yarn run setup",
     "release": "lerna version && lerna publish from-package",
     "run:node": "jest -c packages/jest-runner-node/src/config.js",
+    "presetup": "echo foo-bar",
     "setup": "yarn && yarn bootstrap",
+    "postsetup": "yarn patch:verb",
     "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
+    "postsetup:ci": "yarn patch:verb",
     "start": "hela",
     "test": "CI=1 yarn start test",
     "test:legacy": "CI=1 yarn run:node",
@@ -66,7 +65,6 @@
     "lerna": "^3.20.2",
     "mukla": "^0.4.9",
     "prettier": "^1.19.1",
-    "prettier-plugin-pkg": "^0.4.6",
     "react": "^16.12.0",
     "rollup": "^1.29.1",
     "rollup-plugin-babel": "^4.3.3",
@@ -77,9 +75,25 @@
     "verb-generate-readme": "^0.8.0",
     "yaml": "^1.7.2"
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
+  "meta": {
+    "build": [
+      "koa-better-body",
+      "@tunnckocore/pretty-config"
+    ],
+    "bundle": [
+      "arr-includes",
+      "gitclone-defaults",
+      "stringify-github-short-url",
+      "parse-function"
+    ]
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "babel.config.js",
+      "babel-eslint.config.js",
+      "**/dist/**/*",
+      "**/test/support/**/*",
+      "**/test/__snapshots__/**/*"
     ]
   },
   "cov": {
@@ -158,25 +172,9 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "jest": {
-    "coveragePathIgnorePatterns": [
-      "babel.config.js",
-      "babel-eslint.config.js",
-      "**/dist/**/*",
-      "**/test/support/**/*",
-      "**/test/__snapshots__/**/*"
-    ]
-  },
-  "meta": {
-    "build": [
-      "koa-better-body",
-      "@tunnckocore/pretty-config"
-    ],
-    "bundle": [
-      "arr-includes",
-      "gitclone-defaults",
-      "stringify-github-short-url",
-      "parse-function"
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
     ]
   }
 }

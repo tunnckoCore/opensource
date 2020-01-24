@@ -1,23 +1,21 @@
 {
-  "name": "@tunnckocore/browserslist-config",
-  "version": "1.1.2",
-  "licenseStart": 2019,
+  "name": "prettier-plugin-pkgjson",
+  "version": "0.1.0",
+  "licenseStart": 2020,
   "license": "MPL-2.0",
-  "description": "Shareable Browserslist config for all @tunnckoCore projects",
+  "description": "Prettier plugin for clean and meaningful formatting of package.json files",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "homepage": "https://tunnckocore.com/opensource",
   "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
-    "directory": "configs/browserslist-config"
+    "directory": "packages/prettier-plugin-pkgjson"
   },
-  "main": "index.js",
-  "module": "index.js",
+  "main": "src/index.js",
+  "module": "src/index.js",
   "files": [
-    "index.js",
-    "latest.js",
-    "modern.js"
+    "src"
   ],
   "engines": {
     "node": ">=10.13"
@@ -27,31 +25,39 @@
     "tag": "latest"
   },
   "scripts": {},
+  "dependencies": {
+    "sort-package-json": "^1.39.0"
+  },
   "peerDependencies": {
-    "browserslist": "^4.8.5"
+    "prettier": "^1.19.1"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
   },
   "cov": {
     "color": "grey"
   },
   "keywords": [
-    "browser config",
-    "browsers",
-    "browserslist",
-    "browserslist-config",
-    "browserslist-preset",
-    "chrome",
-    "config",
-    "devest",
-    "env",
-    "esmodules",
-    "evergreen",
-    "hela",
-    "preset-env",
-    "react",
-    "shareable-configs",
-    "tunnckocore-opensource",
+    "tunnckocorehq",
     "tunnckocore-oss",
-    "tunnckocorehq"
+    "hela",
+    "development",
+    "developer-experience",
+    "dx",
+    "prettier",
+    "prettier-plugin",
+    "package-json",
+    "sort-package",
+    "sort-package-json",
+    "prettier-plugin-pkgjson",
+    "prettier-plugin-packagejson"
   ],
   "verb": {
     "readme": "../../readme-template.md",

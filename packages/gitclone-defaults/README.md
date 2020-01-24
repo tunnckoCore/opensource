@@ -54,6 +54,9 @@ Project is [semantically](https://semver.org) versioned & automatically released
 ## Table of Contents
 
 - [Install](#install)
+- [Examples](#examples)
+- [API](#api)
+  - [gitcloneDefaults](#gitclonedefaults)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -73,7 +76,134 @@ _We highly recommend to use Yarn when you think to contribute to this project._
 $ yarn add gitclone-defaults
 ```
 
-() => include(process.cwd() + '/.verb.md')
+## Examples
+
+```js
+gitcloneDefaults('foo/bar#dev');
+// =>
+// {
+//   "owner": "foo",
+//   "name": "bar",
+//   "repo": "foo/bar",
+//   "branch": "dev",
+//   "ssh": false,
+//   "dest": false
+// }
+
+gitcloneDefaults('tunnckoCore', 'parse-function');
+// =>
+// {
+//   "owner": "tunnckoCore",
+//   "name": "parse-function",
+//   "repo": "tunnckoCore/parse-function",
+//   "branch": "master",
+//   "ssh": false,
+//   "dest": false
+// }
+
+gitcloneDefaults('jonschlinkert', 'micromatch', 'dev', { dest: 'mm' });
+// =>
+// {
+//   "owner": "jonschlinkert",
+//   "name": "micromatch",
+//   "repo": "jonschlinkert/micromatch",
+//   "branch": "dev",
+//   "ssh": false,
+//   "dest": "mm"
+// }
+
+gitcloneDefaults({ owner: 'jonschlinkert', name: 'micromatch' });
+// =>
+// {
+//   "owner": "jonschlinkert",
+//   "name": "micromatch",
+//   "repo": "jonschlinkert/micromatch",
+//   "branch": "master",
+//   "ssh": false,
+//   "dest": false
+// }
+```
+
+<!-- docks-start -->
+
+## API
+
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
+
+### [gitcloneDefaults](./src/index.js#L58)
+
+Creates consistent parsed object from string
+pattern or from listed arguments. If `owner` is object,
+it can accepts `user` and `repo` properties. Treats that
+`owner` argument as owner if `name` is string (which is the `repo`)
+from the `user/repo` pattern.
+
+**Signature**
+
+```ts
+function(owner, name, branch, ssh)
+```
+
+**Params**
+
+- `owner` **{string|object}** - the `user/repo` pattern or anything
+  that [parse-github-url][] can parse
+- `name` **{string|boolean|object}** - if boolean treats it as `ssh`
+- `branch` **{string|boolean|object}** - if boolean treats it as `ssh`
+- `ssh` **{boolean|object}** - useful in higher-level libs, and if it
+  is `object` it can contains `ssh`
+- `returns` **{object}** - result object contains anything that [parse-github-url][]
+  contains and in addition has `ssh` and `dest` properties
+
+**Example**
+
+```js
+import gitcloneDefaults from 'gitclone-defaults';
+
+gitcloneDefaults(
+  {
+    user: 'foo',
+    repo: 'bar',
+    branch: 'zeta',
+  },
+  true,
+);
+gitcloneDefaults({
+  user: 'foo',
+  repo: 'bar',
+  branch: 'dev2',
+});
+gitcloneDefaults(
+  {
+    owner: 'foo',
+    name: 'bar',
+  },
+  { dest: 'beta', ssh: true },
+);
+gitcloneDefaults(
+  {
+    owner: 'foo',
+    name: 'bar',
+  },
+  { dest: 'beta' },
+  true,
+);
+gitcloneDefaults('foo/bar');
+gitcloneDefaults('foo', 'bar');
+gitcloneDefaults('foo', 'bar', 'dev3');
+gitcloneDefaults('foo', 'bar', 'dev3', { dest: 'dest3' });
+gitcloneDefaults('foo/bar', { ssh: true });
+gitcloneDefaults('foo/bar', { branch: 'opts' });
+gitcloneDefaults('foo/bar', { branch: 'opts' }, { ssh: true });
+gitcloneDefaults('foo/bar', { branch: 'opts' }, true);
+gitcloneDefaults('foo', 'bar', 'baz', true);
+gitcloneDefaults('foo/bar', { branch: 'qux' }, true);
+gitcloneDefaults('foo/bar#dev', { ssh: true });
+gitcloneDefaults('foo/bar#qux', true);
+gitcloneDefaults('foo/bar#qux', true, { dest: 'ok' });
+```
+
+<!-- docks-end -->
 
 **[back to top](#readme)**
 
@@ -200,3 +330,4 @@ Released under the [MPL-2.0 License][license-url].
 [tunnckocore_security]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/security/tunnckocore?label&color=ed1848&icon=https://svgshare.com/i/Dt6.svg
 [tunnckocore_opensource]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/opensource/tunnckocore?label&color=ff7a2f&icon=https://svgshare.com/i/Dt6.svg
 [tunnckocore_newsletter]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/newsletter/tunnckocore?label&color=5199FF&icon=https://svgshare.com/i/Dt6.svg
+[parse-github-url]: https://github.com/jonschlinkert/parse-github-url

@@ -1,23 +1,52 @@
 {
   "name": "@tunnckocore/jest-runner-eslint",
   "version": "1.1.4",
+  "licenseStart": 2019,
+  "license": "MPL-2.0",
   "description": "Fork of the original Jest Runner for ESLint",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "@tunnckocore/jest-runner-eslint"
-  },
-  "homepage": "https://tunnckocore.com/opensource",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "license": "MPL-2.0",
-  "engines": {
-    "node": ">=10.13"
   },
   "main": "src/index.js",
   "module": "src/index.js",
   "files": [
     "src"
   ],
+  "engines": {
+    "node": ">=10.13"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@tunnckocore/create-jest-runner": "^1.1.3",
+    "@tunnckocore/utils": "^1.2.3",
+    "cosmiconfig": "^6.0.0"
+  },
+  "peerDependencies": {
+    "eslint": "^6.4.0"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 22,
+        "branches": 0,
+        "functions": 0,
+        "lines": 22
+      }
+    }
+  },
+  "cov": {
+    "value": 11.29,
+    "color": "red"
+  },
   "keywords": [
     "bin",
     "binaries",
@@ -42,38 +71,6 @@
     "spawn",
     "tunnckocorehq"
   ],
-  "scripts": {},
-  "peerDependencies": {
-    "eslint": "^6.4.0"
-  },
-  "dependencies": {
-    "@tunnckocore/create-jest-runner": "^1.1.3",
-    "@tunnckocore/utils": "^1.2.3",
-    "cosmiconfig": "^6.0.0"
-  },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "cov": {
-    "value": 11.29,
-    "color": "red"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "src/**/*.js": {
-        "statements": 22,
-        "branches": 0,
-        "functions": 0,
-        "lines": 22
-      }
-    }
-  },
-  "jestCov": {
-    "value": 11.29,
-    "color": "red"
-  },
-  "licenseStart": 2019,
   "verb": {
     "readme": "../../readme-template.md",
     "run": true,

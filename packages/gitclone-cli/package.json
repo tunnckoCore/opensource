@@ -1,25 +1,40 @@
 {
   "name": "gitclone-cli",
   "version": "1.1.5",
+  "licenseStart": 2015,
+  "license": "MPL-2.0",
   "description": "Simple command line interface for the `git clone` command, using [gitclone][] package",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "packages/gitclone-cli"
   },
-  "homepage": "https://tunnckocore.com/opensource",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "license": "MPL-2.0",
-  "engines": {
-    "node": ">=8.11"
-  },
+  "files": [
+    "src"
+  ],
   "bin": {
     "gitclone": "src/cli.js",
     "gitclone-cli": "src/cli.js"
   },
-  "files": [
-    "src"
-  ],
+  "engines": {
+    "node": ">=8.11"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "dependencies": {
+    "git-username": "^1.0.0",
+    "gitclone": "^2.0.0",
+    "sade": "^1.7.0"
+  },
+  "cov": {
+    "color": "grey"
+  },
   "keywords": [
     "cli",
     "clone",
@@ -41,20 +56,6 @@
     "tunnckocore-oss",
     "tunnckocorehq"
   ],
-  "scripts": {},
-  "dependencies": {
-    "git-username": "^1.0.0",
-    "gitclone": "^2.0.0",
-    "sade": "^1.7.0"
-  },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "cov": {
-    "color": "grey"
-  },
-  "licenseStart": 2015,
   "verb": {
     "readme": "../../readme-template.md",
     "run": true,

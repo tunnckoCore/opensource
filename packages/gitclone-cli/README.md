@@ -73,7 +73,38 @@ _We highly recommend to use Yarn when you think to contribute to this project._
 $ yarn add gitclone-cli
 ```
 
-() => include(process.cwd() + '/.verb.md')
+<!-- docks-start -->
+<!-- docks-end -->
+
+```
+gitclone-cli --help
+
+  Description
+    Clone a git repository
+
+  Usage
+    $ gitclone [repository] [options]
+
+  Options
+    -s, --ssh        Clone SSH, not https  (default false)
+    -n, --name       Repository name, like `charlike`
+    -o, --owner      Owner of the repository  (default tunnckoCore)
+    -r, --repo       Repository slug, like `facebook/jest`
+    -b, --branch     Specific branch or sha hash  (default master)
+    -d, --dest       Destination place
+    -v, --version    Displays current version
+    -h, --help       Displays this message
+
+  Examples
+    $ gitclone owner/repo
+    $ gitclone repo
+    $ gitclone tunnckoCoreLabs/charlike -s
+    $ gitclone verbose/verb#dev
+    $ gitclone micromatch/micromatch
+    $ gitclone micromatch/micromatch --dest mm
+    $ gitclone facebook/jest
+    $ gitclone -o facebook -n jest
+```
 
 **[back to top](#readme)**
 

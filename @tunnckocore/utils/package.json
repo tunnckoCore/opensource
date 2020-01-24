@@ -1,45 +1,32 @@
 {
   "name": "@tunnckocore/utils",
   "version": "1.2.3",
+  "licenseStart": 2019,
+  "license": "MPL-2.0",
   "description": "Utility functions and helpers for internal usage and monorepos",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "@tunnckocore/utils"
-  },
-  "homepage": "https://tunnckocore.com/opensource",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "license": "MPL-2.0",
-  "engines": {
-    "node": ">=10.13"
   },
   "main": "src/index.js",
   "module": "src/index.js",
   "files": [
     "src"
   ],
-  "keywords": [
-    "develop",
-    "hela",
-    "helpers",
-    "monorepo",
-    "monorepo helpers",
-    "tunnckocore",
-    "tunnckocorehq",
-    "utilities",
-    "utils"
-  ],
-  "scripts": {},
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.3"
+  "engines": {
+    "node": ">=10.13"
   },
   "publishConfig": {
     "access": "public",
     "tag": "latest"
   },
-  "cov": {
-    "value": 100,
-    "color": "green"
+  "scripts": {},
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3"
   },
   "jest": {
     "coverageThreshold": {
@@ -51,11 +38,21 @@
       }
     }
   },
-  "jestCov": {
+  "cov": {
     "value": 100,
     "color": "green"
   },
-  "licenseStart": 2019,
+  "keywords": [
+    "develop",
+    "hela",
+    "helpers",
+    "monorepo",
+    "monorepo helpers",
+    "tunnckocore",
+    "tunnckocorehq",
+    "utilities",
+    "utils"
+  ],
   "verb": {
     "readme": "../../readme-template.md",
     "run": true,

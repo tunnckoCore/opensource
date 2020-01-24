@@ -1,24 +1,16 @@
 {
   "name": "parse-function",
   "version": "5.5.4",
+  "licenseStart": 2016,
+  "license": "MPL-2.0",
   "description": "Parse a function into an object using espree, acorn or babylon parsers. Extensible through Smart Plugins",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "packages/parse-function"
-  },
-  "homepage": "https://tunnckocore.com/opensource",
-  "funding": {
-    "url": "https://ko-fi.com/tunnckoCore/commissions"
-  },
-  "author": {
-    "name": "Charlike Mike Reagent",
-    "email": "opensource@tunnckocore.com",
-    "url": "https://tunnckocore.com"
-  },
-  "license": "MPL-2.0",
-  "engines": {
-    "node": ">=8.11"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -26,6 +18,39 @@
     "src",
     "index.d.ts"
   ],
+  "engines": {
+    "node": ">=8.11"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@babel/parser": "^7.8.3",
+    "arrify": "^2.0.1"
+  },
+  "devDependencies": {
+    "acorn": "^7.1.0",
+    "acorn-loose": "^7.0.0",
+    "espree": "^6.1.2",
+    "for-in": "^1.0.2"
+  },
+  "peerDependencies": {},
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "cov": {
+    "value": 100,
+    "color": "green"
+  },
   "keywords": [
     "args",
     "arguments",
@@ -53,37 +78,6 @@
     "typescript",
     "utilities"
   ],
-  "scripts": {},
-  "peerDependencies": {},
-  "dependencies": {
-    "@babel/parser": "^7.8.3",
-    "arrify": "^2.0.1"
-  },
-  "devDependencies": {
-    "acorn": "^7.1.0",
-    "acorn-loose": "^7.0.0",
-    "espree": "^6.1.2",
-    "for-in": "^1.0.2"
-  },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "cov": {
-    "value": 100,
-    "color": "green"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "src/**/*.js": {
-        "statements": 100,
-        "branches": 100,
-        "functions": 100,
-        "lines": 100
-      }
-    }
-  },
-  "licenseStart": 2016,
   "verb": {
     "readme": "../../readme-template.md",
     "run": true,

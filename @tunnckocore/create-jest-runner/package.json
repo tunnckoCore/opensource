@@ -1,23 +1,29 @@
 {
   "name": "@tunnckocore/create-jest-runner",
   "version": "1.1.3",
+  "licenseStart": 2019,
+  "license": "MPL-2.0",
   "description": "Fork of the original create-jest-runner, with support for couple of things, see issues there",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "@tunnckocore/create-jest-runner"
-  },
-  "homepage": "https://tunnckocore.com/opensource",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "license": "MPL-2.0",
-  "engines": {
-    "node": ">=10.13"
   },
   "main": "src/index.js",
   "module": "src/index.js",
   "files": [
     "src"
   ],
+  "engines": {
+    "node": ">=10.13"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
   "scripts": {},
   "dependencies": {
     "chalk": "^3.0.0",
@@ -27,14 +33,6 @@
   "devDependencies": {
     "ansi-colors": "^4.1.1",
     "execa": "^4.0.0"
-  },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "cov": {
-    "value": 20.11,
-    "color": "red"
   },
   "jest": {
     "coverageThreshold": {
@@ -70,11 +68,10 @@
       }
     }
   },
-  "jestCov": {
-    "value": 18.08,
+  "cov": {
+    "value": 20.11,
     "color": "red"
   },
-  "licenseStart": 2019,
   "verb": {
     "readme": "../../readme-template.md",
     "run": true,

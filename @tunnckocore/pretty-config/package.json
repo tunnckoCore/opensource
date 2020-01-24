@@ -1,23 +1,49 @@
 {
   "name": "@tunnckocore/pretty-config",
   "version": "0.8.2",
+  "licenseStart": 2017,
+  "license": "MPL-2.0",
   "description": "Find and load configuration. Config resolver/loader, similar to cosmiconfig",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "@tunnckocore/pretty-config"
-  },
-  "homepage": "https://tunnckocore.com/opensource",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "license": "MPL-2.0",
-  "engines": {
-    "node": ">=10.13"
   },
   "main": "dist/main/index.js",
   "module": "dist/module/index.js",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=10.13"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "dependencies": {
+    "esm": "^3.2.25",
+    "json-6": "^1.0.4",
+    "yaml": "^1.7.2"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 0,
+        "branches": 0,
+        "functions": 0,
+        "lines": 0
+      }
+    }
+  },
+  "cov": {
+    "value": 2.08,
+    "color": "red"
+  },
   "keywords": [
     "configs",
     "config",
@@ -36,35 +62,6 @@
     "tunnckocore-oss",
     "tunnckocorehq"
   ],
-  "scripts": {},
-  "dependencies": {
-    "esm": "^3.2.25",
-    "json-6": "^1.0.4",
-    "yaml": "^1.7.2"
-  },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "cov": {
-    "value": 2.08,
-    "color": "red"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "src/**/*.js": {
-        "statements": 0,
-        "branches": 0,
-        "functions": 0,
-        "lines": 0
-      }
-    }
-  },
-  "jestCov": {
-    "value": 2.08,
-    "color": "red"
-  },
-  "licenseStart": 2017,
   "verb": {
     "readme": "../../readme-template.md",
     "run": true,

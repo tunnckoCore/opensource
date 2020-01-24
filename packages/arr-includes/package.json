@@ -1,25 +1,50 @@
 {
   "name": "arr-includes",
   "version": "2.2.3",
+  "licenseStart": 2016,
+  "license": "MPL-2.0",
   "description": "Return positive value if (any of the) passed value(s) exists in array, or optionally an index",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "packages/arr-includes"
   },
-  "homepage": "https://tunnckocore.com/opensource",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "license": "MPL-2.0",
-  "engines": {
-    "node": ">=10.13"
-  },
   "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "umd:name": "arrIncludes",
   "unpkg": "dist/umd/index.js",
+  "module": "dist/esm/index.js",
   "files": [
     "dist",
     "index.d.ts"
   ],
+  "engines": {
+    "node": ">=10.13"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "dependencies": {
+    "arrify": "^2.0.1"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "cov": {
+    "value": 100,
+    "color": "green"
+  },
   "keywords": [
     "arr",
     "arr-includes",
@@ -40,34 +65,6 @@
     "validate",
     "values"
   ],
-  "scripts": {},
-  "dependencies": {
-    "arrify": "^2.0.1"
-  },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "cov": {
-    "value": 100,
-    "color": "green"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "src/**/*.js": {
-        "statements": 100,
-        "branches": 100,
-        "functions": 100,
-        "lines": 100
-      }
-    }
-  },
-  "jestCov": {
-    "value": 100,
-    "color": "green"
-  },
-  "licenseStart": 2016,
-  "umd:name": "arrIncludes",
   "verb": {
     "readme": "../../readme-template.md",
     "run": true,

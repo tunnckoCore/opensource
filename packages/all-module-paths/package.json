@@ -1,17 +1,16 @@
 {
   "name": "all-module-paths",
   "version": "0.9.2",
+  "licenseStart": 2018,
+  "license": "MPL-2.0",
   "description": "Get all possible javascript (npm/yarn/pnpm) global or local, binaries or packages paths, e.g. node_modules and node_modules/.bin. Also works for those using NVM or such",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "packages/all-module-paths"
-  },
-  "homepage": "https://tunnckocore.com/opensource",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "license": "MPL-2.0",
-  "engines": {
-    "node": ">=10.13"
   },
   "main": "src/main.js",
   "module": "src/index.js",
@@ -19,6 +18,32 @@
     "index.d.ts",
     "src"
   ],
+  "engines": {
+    "node": ">=10.13"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "dependencies": {
+    "esm": "^3.2.25",
+    "global-dirs": "^2.0.1"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 10,
+        "branches": 10,
+        "functions": 10,
+        "lines": 10
+      }
+    }
+  },
+  "cov": {
+    "value": 95.35,
+    "color": "99CC09"
+  },
   "keywords": [
     "bin",
     "bin-paths",
@@ -44,34 +69,6 @@
     "utils",
     "yarn"
   ],
-  "scripts": {},
-  "dependencies": {
-    "esm": "^3.2.25",
-    "global-dirs": "^2.0.1"
-  },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "cov": {
-    "value": 95.35,
-    "color": "99CC09"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "src/**/*.js": {
-        "statements": 10,
-        "branches": 10,
-        "functions": 10,
-        "lines": 10
-      }
-    }
-  },
-  "jestCov": {
-    "value": 95.35,
-    "color": "99CC09"
-  },
-  "licenseStart": 2018,
   "verb": {
     "readme": "../../readme-template.md",
     "run": true,

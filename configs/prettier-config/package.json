@@ -1,25 +1,39 @@
 {
   "name": "@tunnckocore/prettier-config",
   "version": "1.1.2",
+  "licenseStart": 2019,
+  "license": "MPL-2.0",
   "description": "Shareable Prettier config for all @tunnckoCore projects",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "configs/prettier-config"
   },
-  "homepage": "https://tunnckocore.com/opensource",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "license": "MPL-2.0",
-  "engines": {
-    "node": ">=10.13"
-  },
   "main": "index.js",
   "module": "index.js",
   "files": [
-    "index.js",
     "angular.js",
+    "index.js",
     "vue.js"
   ],
+  "engines": {
+    "node": ">=10.13"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "peerDependencies": {
+    "prettier": "^1.19.1",
+    "prettier-plugin-pkg": "^0.4.6"
+  },
+  "cov": {
+    "color": "grey"
+  },
   "keywords": [
     "browser-config",
     "browsers",
@@ -40,19 +54,6 @@
     "shareable-configs",
     "tunnckocorehq"
   ],
-  "scripts": {},
-  "peerDependencies": {
-    "prettier": "^1.19.1",
-    "prettier-plugin-pkg": "^0.4.6"
-  },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "cov": {
-    "color": "grey"
-  },
-  "licenseStart": 2019,
   "verb": {
     "readme": "../../readme-template.md",
     "run": true,

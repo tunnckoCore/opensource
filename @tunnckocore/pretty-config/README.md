@@ -73,7 +73,8 @@ _We highly recommend to use Yarn when you think to contribute to this project._
 $ yarn add @tunnckocore/pretty-config
 ```
 
-() => include(process.cwd() + '/.verb.md')
+<!-- docks-start -->
+<!-- docks-end -->
 
 **[back to top](#readme)**
 

@@ -1,23 +1,49 @@
 {
   "name": "gitclone-defaults",
   "version": "2.2.3",
+  "licenseStart": 2016,
+  "license": "MPL-2.0",
   "description": "Powerful and flexible signature for `gitclone` - defaults, checks, validating, etc",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "packages/gitclone-defaults"
   },
-  "homepage": "https://tunnckocore.com/opensource",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "license": "MPL-2.0",
-  "engines": {
-    "node": ">=10.13"
-  },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "typings": "sasa",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=10.13"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "devDependencies": {
+    "parse-github-url": "^1.0.2",
+    "stringify-github-short-url": "^3.2.3"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "cov": {
+    "value": 100,
+    "color": "green"
+  },
   "keywords": [
     "args",
     "arguments",
@@ -44,34 +70,6 @@
     "util",
     "validate"
   ],
-  "scripts": {},
-  "devDependencies": {
-    "parse-github-url": "^1.0.2",
-    "stringify-github-short-url": "^3.2.3"
-  },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "cov": {
-    "value": 100,
-    "color": "green"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "src/**/*.js": {
-        "statements": 100,
-        "branches": 100,
-        "functions": 100,
-        "lines": 100
-      }
-    }
-  },
-  "jestCov": {
-    "value": 100,
-    "color": "green"
-  },
-  "licenseStart": 2016,
   "verb": {
     "readme": "../../readme-template.md",
     "run": true,

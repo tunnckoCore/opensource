@@ -1,23 +1,32 @@
 {
   "name": "@tunnckocore/renovate-config",
   "version": "1.0.8",
+  "licenseStart": 2017,
+  "license": "MPL-2.0",
   "description": "Shareable Renovate config for all @tunnckoCore projects",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "configs/renovate-config"
-  },
-  "homepage": "https://tunnckocore.com/opensource",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "license": "MPL-2.0",
-  "engines": {
-    "node": ">=10.13"
   },
   "main": "src/index.js",
   "module": "src/index.js",
   "files": [
     "src"
   ],
+  "engines": {
+    "node": ">=10.13"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "cov": {
+    "color": "grey"
+  },
   "keywords": [
     "dependency updates",
     "deps",
@@ -33,17 +42,6 @@
     "shareable-configs",
     "tunnckocorehq"
   ],
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "cov": {
-    "color": "grey"
-  },
-  "jestCov": {
-    "color": "grey"
-  },
-  "licenseStart": 2017,
   "renovate-config": {
     "default": {
       "extends": [

@@ -1,6 +1,6 @@
-# @tunnckocore/execa [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url] [![Libera Manifesto][libera-manifesto-img]][libera-manifesto-url]
+# prettier-plugin-pkgjson [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url] [![Libera Manifesto][libera-manifesto-img]][libera-manifesto-url]
 
-> Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence with control for concurrency
+> Prettier plugin for clean and meaningful formatting of package.json files
 
 Please consider following this project's author, [Charlike Mike Reagent](https://github.com/tunnckoCore), and :star: the project to show your :heart: and support.
 
@@ -54,10 +54,6 @@ Project is [semantically](https://semver.org) versioned & automatically released
 ## Table of Contents
 
 - [Install](#install)
-- [API](#api)
-  - [.exec](#exec)
-  - [.shell](#shell)
-  - [execa](#execa)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -74,144 +70,10 @@ This project requires [**Node.js**](https://nodejs.org) **>=10.13** _(see [Suppo
 _We highly recommend to use Yarn when you think to contribute to this project._
 
 ```bash
-$ yarn add @tunnckocore/execa
+$ yarn add prettier-plugin-pkgjson
 ```
 
 <!-- docks-start -->
-
-## API
-
-_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
-
-### [.exec](./src/index.js#L39)
-
-Uses [execa][] v2, `execa.command()` method.
-As stated there, think of it as mix of `child_process`'s `.execFile` and `.spawn`.
-It is pretty similar to the `.shell` method too, but only visually because
-it does not uses the system's shell, meaning it does not have access to
-the system's environment variables. You also can control concurrency by
-passing `options.concurrency` option. For example, pass `concurrency: 1` to run in series
-instead of in parallel which is the default behavior.
-
-**Signature**
-
-```ts
-function(cmds, options)
-```
-
-**Params**
-
-- `cmds` **{Array&lt;string&gt;}** - a string or array of string commands to execute in parallel or series
-- `[options]` **{object}** - directly passed to [execa][] and so to `child_process`
-- `returns` **{Promise}** - resolved or rejected promises
-
-> It also can accept array of multiple strings of commands that will be
-> executed in series or in parallel (default).
-
-**Example**
-
-```js
-import { exec } from '@tunnckocore/execa';
-// or
-// const { exec } = require('@tunnckocore/execa');
-
-async function main() {
-  await exec('echo "hello world"', { stdio: 'inherit' });
-
-  // executes in series (because `concurrency` option is set to `1`)
-  await exec(
-    [
-      'prettier-eslint --write foobar.js',
-      'eslint --format codeframe foobar.js --fix',
-    ],
-    { stdio: 'inherit', preferLocal: true, concurrency: 1 },
-  );
-}
-
-main();
-```
-
-### [.shell](./src/index.js#L95)
-
-Similar to `exec`, but also **can** access the system's environment variables from the command.
-
-**Signature**
-
-```ts
-function(cmds, options)
-```
-
-**Params**
-
-- `cmds` **{Array&lt;string&gt;}** - a commands to execute in parallel or series
-- `options` **{object}** - directly passed to `execa`
-- `returns` **{Promise}** - resolved or rejected promises
-
-**Example**
-
-```js
-import { shell } from '@tunnckocore/execa';
-// or
-// const { shell } = require('@tunnckocore/execa');
-
-async function main() {
-  // executes in series
-  await shell(['echo unicorns', 'echo "foo-$HOME-bar"', 'echo dragons'], {
-    stdio: 'inherit',
-  });
-
-  // exits with code 3
-  try {
-    await shell(['exit 3', 'echo nah']);
-  } catch (er) {
-    console.error(er);
-    // => {
-    //  message: 'Command failed: /bin/sh -c exit 3'
-    //  killed: false,
-    //  code: 3,
-    //  signal: null,
-    //  cmd: '/bin/sh -c exit 3',
-    //  stdout: '',
-    //  stderr: '',
-    //  timedOut: false
-    // }
-  }
-}
-
-main();
-```
-
-### [execa](./src/index.js#L121)
-
-Same as [execa][]'s default export, see its documentation.
-Think of this as a mix of `child_process.execFile()` and `child_process.spawn()`.
-
-**Signature**
-
-```ts
-function(file, args, options)
-```
-
-**Params**
-
-- `file` **{string}** - executable to run
-- `args` **{Array&lt;string&gt;}** - arguments / flags to be passed to `file`
-- `options` **{object}** - optional options, passed to `child_process`'s methods
-
-**Example**
-
-```js
-import execa from '@tunnckocore/execa';
-// or
-// const execa = require('@tunnckocore/execa');
-
-async function main() {
-  await execa('npm', ['install', '--save-dev', 'react'], { stdio: 'inherit' });
-}
-
-main();
-```
-
 <!-- docks-end -->
 
 **[back to top](#readme)**
@@ -228,7 +90,7 @@ Consider reading the [Support and Release Policy](https://github.com/tunnckoCore
 
 ### Support the project
 
-[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/@tunnckocore/execa) sites too! :rocket:
+[Become a Partner or Sponsor?][patreon-url] :dollar: Check the **Partner**, **Sponsor** or **Omega-level** tiers! :tada: You can get your company logo, link & name on this file. It's also rendered on package page in [npmjs.com][npmv-url] and [yarnpkg.com](https://yarnpkg.com/en/package/prettier-plugin-pkgjson) sites too! :rocket:
 
 Not financial support? Okey! [Pull requests](https://github.com/tunnckoCoreLabs/contributing#opening-a-pull-request), stars and all kind of [contributions](https://opensource.guide/how-to-contribute/#what-it-means-to-contribute) are always
 welcome. :sparkles:
@@ -267,7 +129,7 @@ Consider showing your [support](#support-the-project) to them. :sparkling_heart:
 
 ## License
 
-Copyright (c) 2017-present, [Charlike Mike Reagent](https://tunnckocore.com) `<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br>
+Copyright (c) 2020-present, [Charlike Mike Reagent](https://tunnckocore.com) `<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br>
 Released under the [MPL-2.0 License][license-url].
 
 [contributing-url]: https://github.com/tunnckoCore/opensource/blob/master/CONTRIBUTING.md
@@ -275,16 +137,16 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- Heading badges -->
 
-[npmv-url]: https://www.npmjs.com/package/@tunnckocore/execa
-[npmv-img]: https://badgen.net/npm/v/@tunnckocore/execa?icon=npm&cache=300
-[license-url]: https://github.com/tunnckoCore/opensource/blob/master/@tunnckocore/execa/LICENSE
-[license-img]: https://badgen.net/npm/license/@tunnckocore/execa?cache=300
+[npmv-url]: https://www.npmjs.com/package/prettier-plugin-pkgjson
+[npmv-img]: https://badgen.net/npm/v/prettier-plugin-pkgjson?icon=npm&cache=300
+[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/prettier-plugin-pkgjson/LICENSE
+[license-img]: https://badgen.net/npm/license/prettier-plugin-pkgjson?cache=300
 [libera-manifesto-url]: https://liberamanifesto.com
 [libera-manifesto-img]: https://badgen.net/badge/libera/manifesto/grey
 
 <!-- Front line badges -->
 
-[codecoverage-img]: https://badgen.net/badge/coverage/86.01%25/99CC09?icon=codecov&cache=300
+[codecoverage-img]: https://badgen.net/badge/coverage/unknown/grey?icon=codecov&cache=300
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 [codestyle-url]: https://github.com/airbnb/javascript
 [codestyle-img]: https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb&cache=300
@@ -299,9 +161,9 @@ Released under the [MPL-2.0 License][license-url].
 [last-commit-img]: https://badgen.net/github/last-commit/tunnckoCore/opensource/master?cache=300
 [last-commit-url]: https://github.com/tunnckoCore/opensource/commits/master
 [nodejs-img]: https://badgen.net/badge/node/>=10.13/green?cache=300
-[downloads-weekly-img]: https://badgen.net/npm/dw/@tunnckocore/execa?icon=npm&cache=300
-[downloads-monthly-img]: https://badgen.net/npm/dm/@tunnckocore/execa?icon=npm&cache=300
-[downloads-total-img]: https://badgen.net/npm/dt/@tunnckocore/execa?icon=npm&cache=300
+[downloads-weekly-img]: https://badgen.net/npm/dw/prettier-plugin-pkgjson?icon=npm&cache=300
+[downloads-monthly-img]: https://badgen.net/npm/dm/prettier-plugin-pkgjson?icon=npm&cache=300
+[downloads-total-img]: https://badgen.net/npm/dt/prettier-plugin-pkgjson?icon=npm&cache=300
 [renovateapp-url]: https://renovatebot.com
 [renovateapp-img]: https://badgen.net/badge/renovate/enabled/green?cache=300
 [prs-welcome-img]: https://badgen.net/badge/PRs/welcome/green?cache=300
@@ -339,4 +201,3 @@ Released under the [MPL-2.0 License][license-url].
 [tunnckocore_security]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/security/tunnckocore?label&color=ed1848&icon=https://svgshare.com/i/Dt6.svg
 [tunnckocore_opensource]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/opensource/tunnckocore?label&color=ff7a2f&icon=https://svgshare.com/i/Dt6.svg
 [tunnckocore_newsletter]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/newsletter/tunnckocore?label&color=5199FF&icon=https://svgshare.com/i/Dt6.svg
-[execa]: https://github.com/sindresorhus/execa

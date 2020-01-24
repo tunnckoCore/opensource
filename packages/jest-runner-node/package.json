@@ -1,23 +1,48 @@
 {
   "name": "jest-runner-node",
   "version": "0.3.3",
+  "licenseStart": 2020,
+  "license": "MPL-2.0",
   "description": "Running Node.js files, through Jest",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
     "directory": "packages/jest-runner-node"
-  },
-  "homepage": "https://tunnckocore.com/opensource",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "license": "MPL-2.0",
-  "engines": {
-    "node": ">=10.13"
   },
   "main": "src/index.js",
   "module": "src/index.js",
   "files": [
     "src"
   ],
+  "engines": {
+    "node": ">=10.13"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@tunnckocore/create-jest-runner": "^1.1.3",
+    "execa": "^4.0.0"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "cov": {
+    "value": 100,
+    "color": "green"
+  },
   "keywords": [
     "developer-experience",
     "development",
@@ -30,30 +55,6 @@
     "tunnckocore-oss",
     "tunnckocorehq"
   ],
-  "scripts": {},
-  "dependencies": {
-    "@tunnckocore/create-jest-runner": "^1.1.3",
-    "execa": "^4.0.0"
-  },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "cov": {
-    "value": 100,
-    "color": "green"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "src/**/*.js": {
-        "statements": 100,
-        "branches": 100,
-        "functions": 100,
-        "lines": 100
-      }
-    }
-  },
-  "licenseStart": 2020,
   "verb": {
     "readme": "../../readme-template.md",
     "run": true,
