@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/execa",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "licenseStart": 2017,
   "license": "MPL-2.0",
   "description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence with control for concurrency",

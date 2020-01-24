@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.2.0...jest-runner-docs@1.3.0) (2020-01-24)
+
+
+### Bug Fixes
+
+* **jest-runner-docs:** partially [#114](https://github.com/tunnckoCore/opensource/issues/114) ([9a9d920](https://github.com/tunnckoCore/opensource/commit/9a9d920c33258905f7fa3e816fe0dc819bb7717c))
+
+
+### Features
+
+* **jest-runner-docs:** resolves [#114](https://github.com/tunnckoCore/opensource/issues/114) fully, see parse-commit-message ;p ([7f2b6ad](https://github.com/tunnckoCore/opensource/commit/7f2b6addf50b595762183e5e987e92204deb7285))
+
+
+
+
+
 # [1.2.0](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.1.5...jest-runner-docs@1.2.0) (2020-01-24)
 
 
