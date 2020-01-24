@@ -37,7 +37,7 @@
         "statements": 11,
         "branches": 0,
         "functions": 0,
-        "lines": 12
+        "lines": 11
       },
       "src/runner.js": {
         "statements": 14,
@@ -48,7 +48,7 @@
     }
   },
   "cov": {
-    "value": 6.82,
+    "value": 6.7,
     "color": "red"
   },
   "keywords": [

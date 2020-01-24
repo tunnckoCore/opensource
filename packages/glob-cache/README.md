@@ -103,6 +103,7 @@ and `cacache` is the [cacache][] package.
 function(options)
 ```
 
+<span id="globcache-params"></span>
 **Params**
 
 - `options.include` **{Array&lt;string&gt;}** - string or array of string glob patterns

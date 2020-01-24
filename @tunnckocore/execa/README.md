@@ -99,6 +99,7 @@ instead of in parallel which is the default behavior.
 function(cmds, options)
 ```
 
+<span id="exec-params"></span>
 **Params**
 
 - `cmds` **{Array&lt;string&gt;}** - a string or array of string commands to execute in parallel or series
@@ -141,6 +142,7 @@ Similar to `exec`, but also **can** access the system's environment variables fr
 function(cmds, options)
 ```
 
+<span id="shell-params"></span>
 **Params**
 
 - `cmds` **{Array&lt;string&gt;}** - a commands to execute in parallel or series
@@ -192,6 +194,7 @@ Think of this as a mix of `child_process.execFile()` and `child_process.spawn()`
 function(file, args, options)
 ```
 
+<span id="execa-params"></span>
 **Params**
 
 - `file` **{string}** - executable to run

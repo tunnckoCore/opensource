@@ -91,6 +91,7 @@ Check if any of `values` exists on `arr`.
 function(arr, values)
 ```
 
+<span id="arrincludes-params"></span>
 **Params**
 
 - `arr` **{Array}** - array to check

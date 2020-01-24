@@ -146,7 +146,7 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- Front line badges -->
 
-[codecoverage-img]: https://badgen.net/badge/coverage/6.82%25/red?icon=codecov&cache=300
+[codecoverage-img]: https://badgen.net/badge/coverage/6.7%25/red?icon=codecov&cache=300
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 [codestyle-url]: https://github.com/airbnb/javascript
 [codestyle-img]: https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb&cache=300

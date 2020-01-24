@@ -92,6 +92,7 @@ of arguments or object.
 function(owner, name, branch, npm)
 ```
 
+<span id="stringifygithubshorturl-params"></span>
 **Params**
 
 - `<owner>` **{string|object}** - user or org string, or object

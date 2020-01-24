@@ -243,6 +243,7 @@ _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 function(opts = {})
 ```
 
+<span id="parsefunction-params"></span>
 **Params**
 
 - `opts` **{object}** - optional, merged with options passed to `.parse` method
@@ -287,6 +288,7 @@ console.log(result.params); // => 'a, b, c'
 > In the below example will show how to use `acorn` parser, instead
 > of the default one.
 
+<span id="parse-params"></span>
 **Params**
 
 - `code` **{Function|string}** - any kind of function or string to be parsed
@@ -330,6 +332,7 @@ console.log(result.isGenerator); // => false
 > from the `.parse` method. This retuned function is called on each
 > node only when `.parse` method is called.
 
+<span id="use-params"></span>
 **Params**
 
 - `fn` **{Function}** - plugin to be called
@@ -375,6 +378,7 @@ console.log(result.thatIsArrow); // => undefined
 > a convenience mirror of the [define-property][] library,
 > so check out its docs. Useful to be used in plugins.
 
+<span id="define-params"></span>
 **Params**
 
 - `obj` **{object}** - the object on which to define the property

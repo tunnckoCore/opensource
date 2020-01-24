@@ -79,8 +79,7 @@ _We highly recommend to use Yarn when you think to contribute to this project._
 $ yarn add parse-commit-message
 ```
 
-_**TODO:** need to add support in [jest-runner-docs][] to handle multiple files in `src/`.
-For now read the comments there._
+_**TODO:** need to add support in [jest-runner-docs][] to handle multiple files in `src/`. For now read the comments there._
 
 ### Exposed named methods
 
@@ -266,8 +265,6 @@ An array which includes `mentions` and `increment` built-in plugins.
 The `mentions` is an array of objects. Basically what's returned from
 the [collect-mentions][] package.
 
-**Params**
-
 **Example**
 
 ```js
@@ -321,8 +318,6 @@ console.log(commits);
 ### [.mappers](./src/index.js#L216)
 
 An object (named set) which includes `mentions` and `increment` built-in plugins.
-
-**Params**
 
 **Example**
 
