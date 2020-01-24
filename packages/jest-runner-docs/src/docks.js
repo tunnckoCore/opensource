@@ -35,7 +35,7 @@ module.exports = function docks(filepath, pkgRoot) {
           ? `**Signature**\n\n\`\`\`ts\nfunction${signature}\n\`\`\`\n`
           : '';
 
-      const tagsString = tags
+      const tagsStr = tags
         .filter((tag) => !/api|public|private/.test(tag.title))
         .map((tag) =>
           /returns?/.test(tag.title) ? { ...tag, name: 'returns' } : tag,
@@ -49,9 +49,15 @@ module.exports = function docks(filepath, pkgRoot) {
         })
         .join('\n');
 
+      const nameIdParams = `${name.replace(/^\./, '').toLowerCase()}-params`;
+      const params =
+        tagsStr.length > 0
+          ? `\n<span id="${nameIdParams}"></span>\n**Params**\n\n${tagsStr}`
+          : '';
+
       const str = `### [${name}](./${locUrl})\n\n${
         comment.description
-      }\n\n${signatureBlock}\n**Params**\n\n${tagsString}\n${comment.examples
+      }\n\n${signatureBlock}${params}\n${comment.examples
         .map(
           (example) =>
             `\n${example.description.trim()}\n\n**Example**\n\n\`\`\`${example.language ||
