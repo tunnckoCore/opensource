@@ -1,3 +1,13 @@
 'use strict';
 
-module.exports = require('@tunnckocore/eslint-config/recommended');
+module.exports = {
+  extends: [
+    // '@tunnckocore/eslint-config/react',
+    '@tunnckocore/eslint-config',
+    '@tunnckocore/eslint-config/mdx',
+    '@tunnckocore/eslint-config/jest',
+    '@tunnckocore/eslint-config/node',
+    '@tunnckocore/eslint-config/promise',
+    '@tunnckocore/eslint-config/unicorn',
+  ],
+};

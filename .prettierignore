@@ -1,12 +1,7 @@
-CHANGELOG.md
-LICENSE
-LICENSE.md
-LICENSE*.md
+**/CHANGELOG.md
+**/LICENSE*
 dist
-fixture
-fixtures
-__fixture__
-__fixtures__
+**/*fixture*/**
 .gitkeep
 *.map
 *.lock
@@ -20,17 +15,19 @@ coverage
 *.jpeg
 *.jpg
 
+# !*.*js*
+# !*.*ts*
+# !*.*md*
+
 packages/function-arguments
 
-.*
-!.verb*.md
+# .*
+# !.verb*.md
 patches
 **/static/**/*.css
 
 *.tsbuildinfo
-.cache
-.*cache
-*.cache
+*.*cache
 
 # Package managers lockfiles
 package-lock.json

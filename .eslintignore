@@ -1,18 +1,19 @@
 CHANGELOG.md
-README.md
-*.d.ts
+# README.md
 recipes
 patches
 
 packages/function-arguments
-semantic-pull-requests
-@hela/dev/src/configs/*/config.js
+# semantic-pull-requests
+# @hela/dev/src/configs/*/config.js
+
+
+!*.*js*
+!*.*ts*
 
 *.js.snap
 *.tsbuildinfo
-.cache
-.*cache
-*.cache
+*.*cache
 
 # Build environment
 dist

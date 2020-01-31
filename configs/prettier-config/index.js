@@ -38,10 +38,6 @@ module.exports = {
 
   overrides: [
     {
-      files: ['**/*.js', '**/*.jsx', '**/*.mjs'],
-      options: { parser: 'babel' },
-    },
-    {
       files: ['**/*.json'],
       options: { parser: 'json-stringify' },
     },
@@ -61,19 +57,27 @@ module.exports = {
       options: { parser: 'babel' },
     },
     {
-      files: ['**/*.mdx'],
-      options: { parser: 'mdx' },
+      files: ['**/*.md'],
+      options: {
+        parser: 'markdown',
+        proseWrap: 'always',
+        printWidth: 80,
+      },
     },
     {
-      files: [
-        '**/angular.json',
-        '**/jsconfig.json',
-        '**/tsconfig.json',
-        '**/tsconfig.*.json',
-        '**/tslint.json',
-        '**/tslint.*.json',
-      ],
-      options: { parser: 'json' },
+      files: ['**/*.mdx'],
+      options: {
+        parser: 'mdx',
+        proseWrap: 'always',
+        printWidth: 80,
+      },
+    },
+    {
+      files: ['**/.all-contributorsrc'],
+      options: {
+        parser: 'json-stringify',
+        singleQuote: false,
+      },
     },
   ],
 };
