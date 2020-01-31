@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/prettier-config@1.2.0...@tunnckocore/prettier-config@1.3.0) (2020-01-31)
+
+
+### Features
+
+* better configs & ignores ([2e4e722](https://github.com/tunnckoCore/opensource/commit/2e4e72246c437e480fe3cc3eeb26210c5fd88ba5))
+
+
+
+
+
 # [1.2.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/prettier-config@1.1.2...@tunnckocore/prettier-config@1.2.0) (2020-01-24)
 
 
