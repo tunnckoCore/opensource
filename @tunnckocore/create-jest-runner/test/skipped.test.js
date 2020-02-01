@@ -1,4 +1,4 @@
-import runJest from './support/runJest.js';
+import runJest from './support/runJest';
 
 it('Works when it has skipped tests', async () => {
   const resultString = await runJest('skipped');

@@ -1,0 +1,30 @@
+{
+  "projectName": "node-formidable",
+  "projectOwner": "node-formidable",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "imageSize": 100,
+  "contributorsPerLine": 6,
+  "commitConvention": "angular",
+  "commit": true,
+  "skipCi": true,
+  "files": [
+    "CONTRIBUTORS.md"
+  ],
+  "contributors": [
+    {
+      "login": "tunnckoCore",
+      "name": "Charlike Mike Reagent",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5038030?v=4",
+      "profile": "https://tunnckoCore.com",
+      "contributions": [
+        "infra",
+        "code",
+        "doc",
+        "ideas",
+        "maintenance",
+        "test"
+      ]
+    }
+  ]
+}

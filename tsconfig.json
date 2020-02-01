@@ -1,18 +1,18 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
-  "extends": "@tunnckocore/typescript-config/monorepo",
+  // "extends": "@tunnckocore/typescript-config/monorepo",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "*": ["packages/*", "@tunnckocore/*"]
+      "*": ["@packages/*", "@tunnckocore/*"]
     },
     "typeRoots": ["./node_modules/@types", "./@types"],
-    "declarationDir": "dist/typings",
+    // "declarationDir": "dist/typings",
     "noImplicitAny": false
   },
   "include": [
-    "**/packages/*/**/*.d.ts",
-    "**/packages/*/**/*.ts",
+    "**/@packages/*/**/*.ts",
+    "**/@packages/*/**/*.d.ts",
     "**/@tunnckocore/*/**/*.ts",
     "**/@tunnckocore/*/**/*.d.ts"
   ]

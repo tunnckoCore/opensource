@@ -4,8 +4,8 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "packages": [
-    "configs/*",
-    "packages/*",
+    "@configs/*",
+    "@packages/*",
     "@tunnckocore/*"
   ],
   "changelog": {

@@ -4,9 +4,9 @@
   "description": "Delivering delightful digital solutions. Open Source Monorepo (of monorepos), semantically versioned following Conventional Commits. Fully powered by Lerna, Jest and Babel.",
   "workspaces": {
     "packages": [
-      "web/*",
-      "configs/*",
-      "packages/*",
+      "@web/*",
+      "@configs/*",
+      "@packages/*",
       "@tunnckocore/*"
     ],
     "nohoist": [
@@ -17,39 +17,40 @@
   "scripts": {
     "bootstrap": "lerna bootstrap --since",
     "bundle": "ROLLUP_FORCE_RELOAD=1 yarn start bundle",
-    "clean:dist": "rm -rf {web,configs,packages,@tunnckocore}/*/dist",
-    "clean:fresh": "lerna clean -y && rm -rf node_modules",
-    "cleanup": "yarn clean:dist && yarn clean:fresh",
+    "clean:dist": "rm -rf @{web,configs,packages,@tunnckocore}/*/dist",
+    "clean:fresh": "lerna clean -y && rm -rf node_modules yarn.lock",
+    "cleanup": "yarn run clean:dist && yarn run clean:fresh",
     "docs": "yarn start docs && yarn run format '**/*.{json,md}'",
-    "fmt": "yarn format '**/*'",
+    "fmt": "yarn run format '**/*'",
     "format": "prettier --write",
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
-    "refresh": "yarn run cleanup && yarn run setup",
+    "reinstall": "yarn run cleanup && yarn run setup",
     "release": "lerna version && lerna publish from-package",
     "run:node": "jest -c packages/jest-runner-node/src/config.js",
     "presetup": "echo foo-bar",
-    "setup": "yarn && yarn bootstrap",
-    "postsetup": "yarn patch:verb",
-    "setup:ci": "yarn --frozen-lockfile && yarn bootstrap",
-    "postsetup:ci": "yarn patch:verb",
+    "setup": "yarn && yarn run bootstrap",
+    "postsetup": "yarn run patch:verb",
+    "setup:ci": "yarn --frozen-lockfile && yarn run bootstrap",
+    "postsetup:ci": "yarn run patch:verb",
     "start": "hela",
     "test": "CI=1 yarn start test",
-    "test:legacy": "CI=1 yarn run:node",
+    "test:legacy": "CI=1 yarn run run:node",
     "testy": "hela gen:cov && yarn run docs"
   },
   "dependencies": {
-    "@babel/cli": "^7.8.3",
-    "@babel/core": "^7.8.3",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
     "@babel/plugin-transform-dotall-regex": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
     "@rollup/plugin-commonjs": "^11.0.1",
     "@rollup/plugin-json": "^4.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",
-    "@typescript-eslint/parser": "^2.17.0",
-    "@wessberg/rollup-plugin-ts": "^1.2.13",
+    "@typescript-eslint/parser": "^2.18.0",
+    "@wessberg/rollup-plugin-ts": "^1.2.15",
+    "all-contributors-cli": "^6.13.0",
     "asia": "^1.0.0-rc.20200116.next.1",
     "babel-preset-proposal-typescript": "^1.5.0",
     "builtin-modules": "^3.1.0",
@@ -65,10 +66,10 @@
     "mukla": "^0.4.9",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
-    "rollup": "^1.29.1",
+    "rollup": "^1.31.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-terser": "^5.2.0",
-    "semver": "^7.1.1",
+    "semver": "^7.1.2",
     "typescript": "^3.7.5",
     "verb": "verbose/verb#dev",
     "verb-generate-readme": "^0.8.0",
@@ -97,6 +98,58 @@
     ]
   },
   "cov": {
+    "@configs/babel-preset": {
+      "value": 74.92,
+      "color": "EEAA22"
+    },
+    "@packages/all-module-paths": {
+      "value": 95.35,
+      "color": "99CC09"
+    },
+    "@packages/arr-includes": {
+      "value": 100,
+      "color": "green"
+    },
+    "@packages/gitclone-defaults": {
+      "value": 100,
+      "color": "green"
+    },
+    "@packages/glob-cache": {
+      "value": 100,
+      "color": "green"
+    },
+    "@packages/jest-runner-docs": {
+      "value": 6.53,
+      "color": "red"
+    },
+    "@packages/jest-runner-node": {
+      "value": 100,
+      "color": "green"
+    },
+    "@packages/jest-runner-rollup": {
+      "value": 6.18,
+      "color": "red"
+    },
+    "@packages/koa-better-body": {
+      "value": 95.56,
+      "color": "99CC09"
+    },
+    "@packages/parse-commit-message": {
+      "value": 65.61,
+      "color": "orange"
+    },
+    "@packages/parse-function": {
+      "value": 100,
+      "color": "green"
+    },
+    "@packages/prettier-plugin-pkgjson": {
+      "value": 25,
+      "color": "red"
+    },
+    "@packages/stringify-github-short-url": {
+      "value": 100,
+      "color": "green"
+    },
     "@tunnckocore/create-jest-runner": {
       "value": 20.11,
       "color": "red"
@@ -118,58 +171,6 @@
       "color": "red"
     },
     "@tunnckocore/utils": {
-      "value": 100,
-      "color": "green"
-    },
-    "configs/babel-preset": {
-      "value": 74.92,
-      "color": "EEAA22"
-    },
-    "packages/all-module-paths": {
-      "value": 95.35,
-      "color": "99CC09"
-    },
-    "packages/arr-includes": {
-      "value": 100,
-      "color": "green"
-    },
-    "packages/gitclone-defaults": {
-      "value": 100,
-      "color": "green"
-    },
-    "packages/glob-cache": {
-      "value": 100,
-      "color": "green"
-    },
-    "packages/jest-runner-docs": {
-      "value": 6.87,
-      "color": "red"
-    },
-    "packages/jest-runner-node": {
-      "value": 100,
-      "color": "green"
-    },
-    "packages/jest-runner-rollup": {
-      "value": 6.18,
-      "color": "red"
-    },
-    "packages/koa-better-body": {
-      "value": 95.56,
-      "color": "99CC09"
-    },
-    "packages/parse-commit-message": {
-      "value": 65.61,
-      "color": "orange"
-    },
-    "packages/parse-function": {
-      "value": 100,
-      "color": "green"
-    },
-    "packages/prettier-plugin-pkgjson": {
-      "value": 25,
-      "color": "red"
-    },
-    "packages/stringify-github-short-url": {
       "value": 100,
       "color": "green"
     }

@@ -6,7 +6,20 @@
 
 const fs = require('fs');
 const path = require('path');
+// const memoizeFS = require('memoize-fs');
+
 const { cov } = require('./package.json');
+
+// const memoizeCachePath = path.join('.cache', 'docs-posthook-memoized');
+// const memoizeFN = memoizeFS({ cachePath: memoizeCachePath }).fn;
+
+// function memoize(func) {
+//   return async (...args) => {
+//     const fn = process.env.FORCE_RELOAD ? await memoizeFN(func) : func;
+//     const res = await fn(...args);
+//     return res;
+//   };
+// }
 
 const presetOptions = {
   react: true,
@@ -24,29 +37,44 @@ module.exports = {
   },
   docs: {
     verbose: true,
-    postHook: ({ pkgRoot, jestConfig: { rootDir } }) => {
+    postHook: async ({ pkgRoot, jestConfig: { rootDir } }) => {
       const pkgDir = path.relative(rootDir, pkgRoot);
       const pkgJsonPath = path.join(pkgRoot, 'package.json');
       const covField = cov[pkgDir];
 
       // eslint-disable-next-line import/no-dynamic-require, global-require
       const pkgJson = require(pkgJsonPath);
-      fs.writeFileSync(
-        pkgJsonPath,
-        JSON.stringify(
-          {
-            ...pkgJson,
-            cov: covField || { color: 'grey' },
-          },
-          null,
-          2,
-        ),
-      );
+
+      const json = {
+        ...pkgJson,
+        cov: covField || { color: 'grey' },
+      };
+
+      const pkgStr = JSON.stringify(json, null, 2);
+      fs.writeFileSync(pkgJsonPath, pkgStr);
 
       /* eslint-disable-next-line global-require */
       const { exec } = require('@tunnckocore/execa');
 
-      return exec('verb', { cwd: pkgRoot });
+      await exec('verb', { cwd: pkgRoot });
+
+      // const writeAndRun = await memoize(async (fp, pkgObj) => {
+      //   const json = {
+      //     ...pkgObj,
+      //     cov: covField || { color: 'grey' },
+      //   };
+
+      //   const pkgStr = JSON.stringify(json, null, 2);
+      //   fs.writeFileSync(fp, pkgStr);
+
+      //   /* eslint-disable-next-line global-require */
+      //   const { exec } = require('@tunnckocore/execa');
+
+      //   await exec('verb', { cwd: pkgRoot });
+      //   return pkgStr;
+      // });
+
+      // await writeAndRun(pkgJsonPath, pkgJson);
     },
   },
 

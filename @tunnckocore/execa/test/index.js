@@ -1,4 +1,4 @@
-import execa, { exec, shell } from '../src/index.js';
+import execa, { exec, shell } from '../src/index';
 
 test('default export execa v2 and named {shell, exec}', () => {
   expect(typeof execa).toBe('function');

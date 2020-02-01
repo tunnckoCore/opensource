@@ -36,7 +36,7 @@ module.exports = require('hela')()
     ];
 
     const wsMap = {
-      packages: { desc: 'Non-scoped general purpose packages' },
+      '@packages': { desc: 'Non-scoped general purpose packages' },
       '@tunnckocore': { desc: 'Scoped general purpose packages' },
       // '@hela': {
       //   link: '@hela',
@@ -45,7 +45,7 @@ module.exports = require('hela')()
     };
 
     const list = workspaces
-      .filter((x) => !/configs/.test(x))
+      .filter((x) => !/@configs/.test(x))
       .reduce((acc, wsName) => {
         const { link, desc } = wsMap[wsName];
         const wsDir = path.join(path.dirname(__dirname), wsName);
@@ -99,4 +99,6 @@ module.exports = require('hela')()
       path.join(process.cwd(), 'README.md'),
       contents.join('\n'),
     );
+
+    console.log('Done.');
   });

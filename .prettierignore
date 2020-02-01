@@ -9,6 +9,8 @@ dist
 .yarnrc
 *.js.snap
 coverage
+*.*ignore
+.editorconfig
 *.ico
 *.png
 *.svg
@@ -19,7 +21,7 @@ coverage
 # !*.*ts*
 # !*.*md*
 
-packages/function-arguments
+@packages/function-arguments
 
 # .*
 # !.verb*.md

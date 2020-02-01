@@ -1,0 +1,95 @@
+{
+  "name": "gitclone-defaults",
+  "version": "2.3.1",
+  "licenseStart": 2016,
+  "license": "MPL-2.0",
+  "description": "Powerful and flexible signature for `gitclone` - defaults, checks, validating, etc",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@packages/gitclone-defaults"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "sasa",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=10.13"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "devDependencies": {
+    "parse-github-url": "^1.0.2",
+    "stringify-github-short-url": "^3.3.1"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "cov": {
+    "value": 100,
+    "color": "green"
+  },
+  "keywords": [
+    "args",
+    "arguments",
+    "check",
+    "checks",
+    "clone",
+    "create",
+    "default",
+    "defaults",
+    "developer-experience",
+    "development",
+    "dx",
+    "flexible",
+    "git",
+    "gitclone",
+    "gitclone-defaults",
+    "gitcreate",
+    "github",
+    "hela",
+    "powerful",
+    "signature",
+    "tunnckocore-oss",
+    "tunnckocorehq",
+    "util",
+    "validate"
+  ],
+  "verb": {
+    "readme": "../../readme-template.md",
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 4
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [
+      "parse-github-url"
+    ],
+    "related": {
+      "list": []
+    }
+  }
+}

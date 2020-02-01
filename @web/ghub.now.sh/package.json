@@ -1,0 +1,20 @@
+{
+  "name": "ghub.now.sh",
+  "version": "0.3.0",
+  "license": "MPL-2.0",
+  "description": "Micro-service for ZEIT Now Platform, that redirects to location of a package, supports monorepos",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": "https://ko-fi.com/tunnckoCore/commissions",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@web/ghub.now.sh"
+  },
+  "dependencies": {
+    "ky": "^0.16.2",
+    "ky-universal": "^0.3.0",
+    "parse-github-url": "^1.0.2",
+    "parse-package-name": "^0.1.0"
+  }
+}
