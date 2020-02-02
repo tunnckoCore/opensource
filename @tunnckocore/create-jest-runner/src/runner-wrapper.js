@@ -28,7 +28,7 @@ module.exports = function runnerWrapper(runnerName, runnerFn) {
   function memoize(func, opts) {
     return async (...args) => {
       if (process.env.JEST_RUNNER_RELOAD_CACHE) {
-        await memoizer.invalidate('load-runner-config');
+        await memoizer.invalidate();
       }
       const memoizedFunc = await memoizer.fn(func, {
         astBody: true,
