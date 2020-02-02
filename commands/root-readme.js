@@ -31,6 +31,7 @@ module.exports = require('hela')()
       '# Open Source Monorepo',
       '',
       require('../package.json').description,
+      '',
       '## Workspaces',
       '',
     ];
@@ -43,6 +44,9 @@ module.exports = require('hela')()
       //   desc: 'Powerful software development',
       // },
     };
+
+    contents.push('<!-- prettier-ignore-start -->');
+    contents.push('');
 
     const list = workspaces
       .filter((x) => !/@configs/.test(x))
@@ -90,10 +94,13 @@ module.exports = require('hela')()
 
     list.forEach(({ name, hash, covBadgeLink }) => {
       contents.push(`[npm-${hash}-url]: https://www.npmjs.com/package/${name}
-  [npm-${hash}-img]: https://badgen.net/npm/v/${name}?icon=npm
-  [cov-${hash}-url]: https://www.npmjs.com/package/${name}
-  [cov-${hash}-img]: ${covBadgeLink}`);
+        [npm-${hash}-img]: https://badgen.net/npm/v/${name}?icon=npm
+        [cov-${hash}-url]: https://www.npmjs.com/package/${name}
+        [cov-${hash}-img]: ${covBadgeLink}`);
     });
+
+    contents.push('');
+    contents.push('<!-- prettier-ignore-end -->');
 
     fs.writeFileSync(
       path.join(process.cwd(), 'README.md'),
