@@ -1,4 +1,5 @@
 const createJestRunner = require('./createJestRunner');
+const runnerWrapper = require('./runner-wrapper');
 const pass = require('./pass');
 const fail = require('./fail');
 const skip = require('./skip');
@@ -12,6 +13,7 @@ exports.default = {
   todo,
 };
 
+exports.runner = runnerWrapper;
 exports.createJestRunner = createJestRunner;
 exports.pass = pass;
 exports.fail = fail;

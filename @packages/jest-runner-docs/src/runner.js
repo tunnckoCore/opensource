@@ -7,14 +7,14 @@ const path = require('path');
 const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
 const { isMonorepo } = require('@tunnckocore/utils');
 const { cosmiconfig } = require('cosmiconfig');
-const memoizeFS = require('@tunnckocore/memoize-fs');
 const findPkg = require('find-pkg');
 
+const memoizeFS = require('@tunnckocore/memoize-fs');
 const docks = require('./docks.js');
 
+const jestRunnerConfig = cosmiconfig('jest-runner');
 const memoizeCachePath = path.join('.cache', 'docs-runner-memoized');
 const mem = memoizeFS({ cachePath: memoizeCachePath });
-const jestRunnerConfig = cosmiconfig('jest-runner');
 
 function memoize(func, opts) {
   return async (...args) => {
