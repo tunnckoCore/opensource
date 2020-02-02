@@ -7,7 +7,7 @@ const path = require('path');
 const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
 const { isMonorepo } = require('@tunnckocore/utils');
 const { cosmiconfig } = require('cosmiconfig');
-const memoizeFS = require('memoize-fs');
+const memoizeFS = require('@tunnckocore/memoize-fs');
 const findPkg = require('find-pkg');
 
 const docks = require('./docks.js');
@@ -32,7 +32,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
   const loadConfig = tryLoadConfig(testPath, start);
   const cfgFunc = await memoize(loadConfig, {
     cacheId: 'load-config',
-    astBody: false, // TODO enable, when fork `memoize-fs` (shift-parser throws on ES6)
+    astBody: false,
     salt: 'cfg',
   });
   const conf = (await cfgFunc()) || {};
@@ -162,7 +162,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
     async () => {
       const hookMemoized = await memoize(postHookFunc, {
         cacheId: 'posthook',
-        astBody: false, // TODO enable, when fork `memoize-fs` (shift-parser throws on ES6)
+        astBody: true,
         salt: 'yep',
       });
       await hookMemoized(testPath, testPathContents);
