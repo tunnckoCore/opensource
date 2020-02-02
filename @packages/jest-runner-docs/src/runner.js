@@ -32,7 +32,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
   const loadConfig = tryLoadConfig(testPath, start);
   const cfgFunc = await memoize(loadConfig, {
     cacheId: 'load-config',
-    astBody: false,
+    astBody: true,
     salt: 'cfg',
   });
   const conf = (await cfgFunc()) || {};
