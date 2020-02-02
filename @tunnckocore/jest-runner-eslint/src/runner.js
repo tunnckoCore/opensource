@@ -1,21 +1,23 @@
-const { cosmiconfigSync } = require('cosmiconfig');
-const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
+'use strict';
+
+const fs = require('fs');
+const { pass, fail, skip, runner } = require('@tunnckocore/create-jest-runner');
 const { getWorkspacesAndExtensions } = require('@tunnckocore/utils');
 const { CLIEngine } = require('eslint');
 
-const explorerSync = cosmiconfigSync('jest-runner');
-
 process.env.NODE_ENV = 'lint';
 
-module.exports = async function jestRunnerESLint({ testPath, config }) {
+module.exports = runner('eslint', async (ctx) => {
   const start = Date.now();
-  const options = normalizeOptions(explorerSync.search(), config.rootDir);
+  const { testPath, config, runnerConfig, memoizer } = ctx;
+  const options = normalizeOptions(runnerConfig, config.rootDir);
 
   if (config.setupTestFrameworkScriptFile) {
-    // eslint-disable-next-line import/no-dynamic-require,global-require
+    // eslint-disable-next-line import/no-dynamic-require, global-require
     require(config.setupTestFrameworkScriptFile);
   }
 
+  const fileContents = fs.readFileSync(testPath, 'utf8');
   const engine = new CLIEngine(options);
 
   if (engine.isPathIgnored(testPath)) {
@@ -24,20 +26,41 @@ module.exports = async function jestRunnerESLint({ testPath, config }) {
       end: Date.now(),
       test: {
         path: testPath,
-        title: 'ESLint',
+        title: 'eslint',
       },
     });
   }
 
-  const report = engine.executeOnFiles([testPath]);
+  // const linter = new Linter();
 
-  if (options.fix && !options.fixDryRun) {
-    CLIEngine.outputFixes(report);
-  }
+  // const result = linter.verifyAndFix(fileContents, eslintConfig);
+  // console.log(result);
 
-  const message = engine.getFormatter(options.reporter)(
-    options.quiet ? CLIEngine.getErrorResults(report.results) : report.results,
+  const memoizedFn = await memoizer.memoize(
+    async (filepath, contents) => {
+      const report = engine.executeOnText(contents, filepath);
+
+      if (options.fix && !options.fixDryRun) {
+        CLIEngine.outputFixes(report);
+      }
+
+      const message = engine.getFormatter(options.reporter)(
+        options.quiet
+          ? CLIEngine.getErrorResults(report.results)
+          : report.results,
+      );
+
+      return {
+        filepath,
+        contents,
+        report,
+        message,
+      };
+    },
+    { cacheId: 'execute' },
   );
+
+  const { report, message } = await memoizedFn(testPath, fileContents);
 
   if (report.errorCount > 0) {
     return fail({
@@ -45,7 +68,7 @@ module.exports = async function jestRunnerESLint({ testPath, config }) {
       end: Date.now(),
       test: {
         path: testPath,
-        title: 'ESLint',
+        title: 'eslint',
         errorMessage: message,
       },
     });
@@ -60,7 +83,7 @@ module.exports = async function jestRunnerESLint({ testPath, config }) {
       end: Date.now(),
       test: {
         path: testPath,
-        title: 'ESLint',
+        title: 'eslint',
         errorMessage: `${message}\nESLint found too many warnings (maximum: ${options.maxWarnings}).`,
       },
     });
@@ -71,7 +94,7 @@ module.exports = async function jestRunnerESLint({ testPath, config }) {
     end: Date.now(),
     test: {
       path: testPath,
-      title: 'ESLint',
+      title: 'eslint',
     },
   });
 
@@ -86,15 +109,12 @@ module.exports = async function jestRunnerESLint({ testPath, config }) {
   }
 
   return result;
-};
+});
 
-function normalizeOptions(val, rootDir) {
+function normalizeOptions(runnerConfig, rootDir) {
   const { extensions } = getWorkspacesAndExtensions(rootDir);
-  const cfg = val && val.config ? val.config : {};
 
   const eslintOptions = {
-    // ignore: DEFAULT_IGNORE,
-    exit: true,
     quiet: true,
     warnings: false,
     maxWarnings: 10,
@@ -102,16 +122,9 @@ function normalizeOptions(val, rootDir) {
     extensions,
     fix: true,
     reportUnusedDisableDirectives: true,
-    ...cfg.eslint,
+    ...runnerConfig,
     cache: true,
-    // useEslintrc: false,
-    // baseConfig: {
-    //   extends: ['@tunnckocore'],
-    // },
   };
 
-  return {
-    ...cfg,
-    ...eslintOptions,
-  };
+  return eslintOptions;
 }

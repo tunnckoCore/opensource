@@ -8,7 +8,7 @@ const fail = require('./fail');
 
 const jestRunnerConfig = cosmiconfig('jest-runner');
 
-module.exports = async function runnerWrapper(runnerName, runnerFn) {
+module.exports = function runnerWrapper(runnerName, runnerFn) {
   assert.strictEqual(
     typeof runnerName,
     'string',
@@ -16,30 +16,35 @@ module.exports = async function runnerWrapper(runnerName, runnerFn) {
   );
   assert.strictEqual(
     typeof runnerFn,
-    'string',
-    'expect runnerFn to be a string',
+    'function',
+    'expect runnerFn to be a function',
   );
 
   const memoizeCachePath = path.join('.cache', `${runnerName}-runner`);
 
-  const mem = memoizeFS({ cachePath: memoizeCachePath });
+  const memoizer = memoizeFS({ cachePath: memoizeCachePath });
 
   // eslint-disable-next-line unicorn/consistent-function-scoping
   function memoize(func, opts) {
     return async (...args) => {
       if (process.env.JEST_RUNNER_RELOAD_CACHE) {
-        await mem.invalidate('load-runner-config');
+        await memoizer.invalidate('load-runner-config');
       }
-      const fn = await mem.fn(func, opts);
-      const res = await fn(...args);
+      const memoizedFunc = await memoizer.fn(func, {
+        astBody: true,
+        salt: runnerName,
+        ...opts,
+      });
+      const res = await memoizedFunc(...args);
       return res;
     };
   }
+  memoizer.memoize = memoize;
 
   return async ({ testPath, config, ...ctxRest }) => {
-    const start = new Date();
+    const startTime = Date.now();
 
-    const loadConfig = tryLoadConfig(testPath, start);
+    const loadConfig = tryLoadConfig({ testPath, startTime });
     const cfgFunc = await memoize(loadConfig, {
       cacheId: 'load-runner-config',
       astBody: true,
@@ -54,13 +59,14 @@ module.exports = async function runnerWrapper(runnerName, runnerFn) {
       config,
       runnerConfig,
       memoizeCachePath,
+      memoizer,
     });
 
     return result;
   };
 };
 
-function tryLoadConfig({ testPath, start, runnerName }) {
+function tryLoadConfig({ testPath, startTime, runnerName }) {
   return () =>
     tryCatch(
       async () => {
@@ -71,13 +77,13 @@ function tryLoadConfig({ testPath, start, runnerName }) {
         }
         return cfg.config[runnerName];
       },
-      { testPath, start, runnerName },
+      { testPath, startTime, runnerName },
     );
 }
 
-async function tryCatch(fn, { testPath, start, runnerName, cfg }) {
+async function tryCatch(fnc, { testPath, startTime, runnerName, cfg }) {
   try {
-    return await fn();
+    return await fnc();
   } catch (err) {
     if (err.command === 'verb') {
       const errMsg = err.all
@@ -89,14 +95,14 @@ async function tryCatch(fn, { testPath, start, runnerName, cfg }) {
         '$1Error: Failure in `verb`, $2',
       );
 
-      return createFailed({ err, testPath, start, runnerName, cfg }, msg);
+      return createFailed({ err, testPath, startTime, runnerName, cfg }, msg);
     }
 
-    return createFailed({ err, testPath, start, runnerName, cfg });
+    return createFailed({ err, testPath, startTime, runnerName, cfg });
   }
 }
 
-function createFailed({ err, testPath, start, runnerName, cfg }, message) {
+function createFailed({ err, testPath, startTime, runnerName, cfg }, message) {
   const msg =
     cfg && cfg.verbose
       ? message || err.stack || err.message
@@ -105,8 +111,8 @@ function createFailed({ err, testPath, start, runnerName, cfg }, message) {
   return {
     hasError: true,
     error: fail({
-      start,
-      end: new Date(),
+      start: startTime,
+      end: Date.now(),
       test: {
         path: testPath,
         title: runnerName,
