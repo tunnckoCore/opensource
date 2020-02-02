@@ -4,40 +4,22 @@
 const fs = require('fs');
 const path = require('path');
 
-const { pass, fail, skip } = require('@tunnckocore/create-jest-runner');
+const {
+  pass,
+  skip,
+  runner,
+  utils,
+} = require('@tunnckocore/create-jest-runner');
 const { isMonorepo } = require('@tunnckocore/utils');
-const { cosmiconfig } = require('cosmiconfig');
 const findPkg = require('find-pkg');
 
-const memoizeFS = require('@tunnckocore/memoize-fs');
 const docks = require('./docks.js');
-
-const jestRunnerConfig = cosmiconfig('jest-runner');
-const memoizeCachePath = path.join('.cache', 'docs-runner-memoized');
-const mem = memoizeFS({ cachePath: memoizeCachePath });
-
-function memoize(func, opts) {
-  return async (...args) => {
-    const fn = process.env.DOCS_RELOAD ? func : await mem.fn(func, opts);
-    const res = await fn(...args);
-    return res;
-  };
-}
 
 process.env.NODE_ENV = 'docs';
 
-module.exports = async function jestRunnerDocs({ testPath, config }) {
-  const start = new Date();
-
-  const loadConfig = tryLoadConfig(testPath, start);
-  const cfgFunc = await memoize(loadConfig, {
-    cacheId: 'load-config',
-    astBody: true,
-    salt: 'cfg',
-  });
-  const conf = (await cfgFunc()) || {};
-
-  if (conf.hasError) return conf.error;
+module.exports = runner('docks', async (ctx) => {
+  const start = Date.now();
+  const { testPath, config, runnerConfig, memoizer } = ctx;
 
   const docksConfig = {
     promo: true,
@@ -46,7 +28,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
     force: true,
     apiHeader: false, // default `false`
     outfile: '.verb.md',
-    ...conf,
+    ...runnerConfig,
   };
   docksConfig.outfile = docksConfig.outfile || docksConfig.outFile;
   docksConfig.fileHeading = docksConfig.flat !== true;
@@ -57,8 +39,6 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
       ? path.dirname(findPkg.sync(path.dirname(testPath)))
       : config.rootDir;
   }
-
-  // const pkgRoot = await memoize(getPkgRoot)();
   const pkgRoot = getPkgRoot();
 
   docksConfig.pkgRoot = pkgRoot;
@@ -66,7 +46,7 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
   const testPathContents = fs.readFileSync(testPath, 'utf-8');
   let apidocsContent = null;
 
-  const outfile = await tryCatch(
+  const outfile = await utils.tryCatch(
     () => {
       const resDocs = docks(testPath, docksConfig);
       apidocsContent = resDocs.contents;
@@ -158,12 +138,10 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
     return { fp, docksConfig, apidocsContent, contents };
   }
 
-  const res = await tryCatch(
+  const res = await utils.tryCatch(
     async () => {
-      const hookMemoized = await memoize(postHookFunc, {
+      const hookMemoized = await memoizer.memoize(postHookFunc, {
         cacheId: 'posthook',
-        astBody: true,
-        salt: 'yep',
       });
       await hookMemoized(testPath, testPathContents);
     },
@@ -179,76 +157,4 @@ module.exports = async function jestRunnerDocs({ testPath, config }) {
       title: 'Docks',
     },
   });
-};
-
-function tryLoadConfig(testPath, start) {
-  return () =>
-    tryCatch(
-      async () => {
-        const cfg = await jestRunnerConfig.search();
-
-        if (!cfg || (cfg && !cfg.config)) {
-          return {};
-        }
-        return cfg.config.docks || cfg.config.docs;
-      },
-      { testPath, start },
-    );
-}
-
-async function tryCatch(fn, { testPath, start, cfg }) {
-  try {
-    return await fn();
-  } catch (err) {
-    if (err.command === 'verb') {
-      const errMsg = err.all
-        .split('\n')
-        .filter((line) => !/\[.+].+/.test(line))
-        .join('\n');
-      const msg = errMsg.replace(
-        /(.*)Error:\s+(.+)/,
-        '$1Error: Failure in `verb`, $2',
-      );
-
-      return createFailed({ err, testPath, start, cfg }, msg);
-    }
-
-    return createFailed({ err, testPath, start, cfg });
-  }
-}
-
-function createFailed({ err, testPath, start, cfg }, message) {
-  const msg =
-    cfg && cfg.verbose
-      ? message || err.stack || err.message
-      : message || 'Some unknown error!';
-
-  return {
-    hasError: true,
-    error: fail({
-      start,
-      end: new Date(),
-      test: {
-        path: testPath,
-        title: 'Docks',
-        errorMessage: `jest-runner-docs: ${msg}`,
-      },
-    }),
-  };
-}
-
-// function tryExtensions(filepath, config) {
-//   const { extensions } = getWorkspacesAndExtensions(config.cwd);
-//   const hasExtension = path.extname(filepath).length > 0;
-
-//   if (hasExtension) {
-//     return filepath;
-//   }
-
-//   const extension = extensions.find((ext) => fs.existsSync(filepath + ext));
-//   if (!extension) {
-//     throw new Error(`Cannot find input file: ${filepath}`);
-//   }
-
-//   return filepath + extension;
-// }
+});

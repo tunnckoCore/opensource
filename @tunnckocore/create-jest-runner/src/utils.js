@@ -8,7 +8,7 @@ const fail = require('./fail');
 
 const jestRunnerConfig = cosmiconfig('jest-runner');
 
-module.exports = function runnerWrapper(runnerName, runnerFn) {
+function wrapper(runnerName, runnerFn) {
   assert.strictEqual(
     typeof runnerName,
     'string',
@@ -64,9 +64,12 @@ module.exports = function runnerWrapper(runnerName, runnerFn) {
 
     return result;
   };
-};
+}
+exports.wrapper = wrapper;
 
-function tryLoadConfig({ testPath, startTime, runnerName }) {
+function tryLoadConfig(ctx) {
+  const { testPath, startTime, runnerName } = ctx;
+
   return () =>
     tryCatch(
       async () => {
@@ -80,10 +83,14 @@ function tryLoadConfig({ testPath, startTime, runnerName }) {
       { testPath, startTime, runnerName },
     );
 }
+exports.tryLoadConfig = tryLoadConfig;
 
-async function tryCatch(fnc, { testPath, startTime, runnerName, cfg }) {
+async function tryCatch(fn, ctx) {
+  const { testPath, startTime, runnerName, cfg } = ctx;
+
   try {
-    return await fnc();
+    // important to be `return await`!
+    return await fn();
   } catch (err) {
     if (err.command === 'verb') {
       const errMsg = err.all
@@ -101,8 +108,10 @@ async function tryCatch(fnc, { testPath, startTime, runnerName, cfg }) {
     return createFailed({ err, testPath, startTime, runnerName, cfg });
   }
 }
+exports.tryCatch = tryCatch;
 
-function createFailed({ err, testPath, startTime, runnerName, cfg }, message) {
+function createFailed(ctx, message) {
+  const { err, testPath, startTime, runnerName, cfg } = ctx;
   const msg =
     cfg && cfg.verbose
       ? message || err.stack || err.message
@@ -121,3 +130,4 @@ function createFailed({ err, testPath, startTime, runnerName, cfg }, message) {
     }),
   };
 }
+exports.createFailed = createFailed;

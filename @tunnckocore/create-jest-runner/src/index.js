@@ -1,5 +1,5 @@
 const createJestRunner = require('./createJestRunner');
-const runnerWrapper = require('./runner-wrapper');
+const { wrapper, tryCatch, tryLoadConfig, createFailed } = require('./utils');
 const pass = require('./pass');
 const fail = require('./fail');
 const skip = require('./skip');
@@ -7,21 +7,28 @@ const todo = require('./todo');
 
 exports.default = {
   createJestRunner,
+  createRunner: createJestRunner,
+  defineJestRunner: wrapper,
+  defineRunner: wrapper,
+  runner: wrapper,
+  wrapper,
+  utils: {
+    tryCatch,
+    tryLoadConfig,
+    createFailed,
+  },
   pass,
   fail,
   skip,
   todo,
 };
 
-exports.runner = runnerWrapper;
-exports.createJestRunner = createJestRunner;
-exports.pass = pass;
-exports.fail = fail;
-exports.skip = skip;
-exports.todo = todo;
-
 // eslint-disable-next-line no-underscore-dangle
-const ___exportsWithoutDefault = Object.keys(exports)
+const ___exportsWithoutDefault = Object.keys(exports.default)
+  .map((k) => {
+    exports[k] = exports.default[k];
+    return k;
+  })
   .filter((x) => x !== 'default')
   .reduce((acc, key) => {
     acc[key] = exports[key];
