@@ -1,7 +1,20 @@
 'use strict';
 
-module.exports = (api, options) => {
+/**
+ * Be aware that when you use `minifyBuiltins: true` you _MAY_ get a bigger output,
+ * but that's not always guaranteed, just try for your case.
+ *
+ * @name  babelPresetOptimize
+ * @param {object} options - optionally control what can be included
+ * @param {boolean} options.react - default `false`, includes the React preset and 3 react plugins
+ * @param {boolean} options.typescript - default `false`, includes the TypeScript preset
+ * @param {boolean} options.minifyBuiltins - default `false`, includes [babel-plugin-minify-builtins][]
+ * @public
+ */
+module.exports = function babelPresetOptimize(api, options) {
   api.assertVersion(7);
+
+  // NOTE: minifyBuiltins: true might output a bigger output - it depends, try your codebase.
   const { react = false, typescript = false, minifyBuiltins = false } = {
     ...options,
   };

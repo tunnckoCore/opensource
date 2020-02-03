@@ -3,12 +3,12 @@ module.exports =
     ? {
         presets: [
           [
-            '@tunnckocore/babel-preset',
+            '@babel/preset-env',
             {
               modules: 'commonjs',
-              react: true,
-              typescript: true,
-              node: '8.11',
+              targets: {
+                node: 'current',
+              },
             },
           ],
         ],

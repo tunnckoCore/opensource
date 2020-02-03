@@ -169,7 +169,7 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- Front line badges -->
 
-[codecoverage-img]: https://badgen.net/badge/coverage/20.11%25/red?icon=codecov&cache=300 
+[codecoverage-img]: https://badgen.net/badge/coverage/19.99%25/red?icon=codecov&cache=300 
 
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 

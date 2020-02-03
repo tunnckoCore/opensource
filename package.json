@@ -23,6 +23,7 @@
     "docs": "yarn start docs && yarn run format '**/*.{json,md}'",
     "fmt": "yarn run format '**/*'",
     "format": "prettier --write",
+    "patch:docs": "cp patches/hela-dev/docs-config.js node_modules/hela/src/dev/configs/docs/index.js",
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
     "reinstall": "yarn run cleanup && yarn run setup",
     "release": "lerna version && lerna publish from-package",

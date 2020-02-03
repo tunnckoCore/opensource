@@ -1,7 +1,6 @@
-# jest-runner-docs [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url] [![Libera Manifesto][libera-manifesto-img]][libera-manifesto-url]
+# babel-preset-optimise [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url] [![Libera Manifesto][libera-manifesto-img]][libera-manifesto-url]
 
-> Jest runner for API documentation generation from code comments, supports
-> TypeScript. Very stable and reliable, based on `parse-comments` package
+> Babel preset with optimizations in mind, modern output
 
 Please consider following this project's author,
 [Charlike Mike Reagent](https://github.com/tunnckoCore), and :star: the project
@@ -60,6 +59,11 @@ from [GitHub Actions](https://github.com/features/actions) with
 ## Table of Contents
 
 - [Install](#install)
+- [Usage](#usage)
+- [What it includes?](#what-it-includes)
+  - [babelPresetOptimize](#babelpresetoptimize)
+    - [Signature](#signature)
+    - [Params](#params)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -78,10 +82,56 @@ Install it using [**yarn**](https://yarnpkg.com) or
 think to contribute to this project._
 
 ```bash
-$ yarn add jest-runner-docs
+$ yarn add babel-preset-optimise
 ```
 
+## Usage
+
+```js
+module.exports = {
+  presets: 'babel-preset-optimise',
+};
+```
+
+_**Note:** initially it was meant to be called `babel-preset-optimize`, but the
+package was squatted before I get able to push all this things_
+
+## What it includes?
+
+It uses the most recent and modern preset by the Babel Team -
+[@babel/preset-modules](https://ghub.now.sh/@babel/preset-modules), plus
+optionally the TypeScript and the React presets. It also includes a several
+optimization plugins from the Babel Minify project which are very well curated
+for best and small output.
+
 <!-- docks-start -->
+
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
+
+### [babelPresetOptimize](./src/index.js#L14)
+
+Be aware that when you use `minifyBuiltins: true` you _MAY_ get a bigger output,
+but that's not always guaranteed, just try for your case.
+
+<span id="babelpresetoptimize-signature"></span>
+
+#### Signature
+
+```ts
+function(api, options)
+```
+
+<span id="babelpresetoptimize-params"></span>
+
+#### Params
+
+- `options` **{object}** - optionally control what can be included
+- `options.react` **{boolean}** - default `false`, includes the React preset and
+  3 react plugins
+- `options.typescript` **{boolean}** - default `false`, includes the TypeScript
+  preset
+- `options.minifyBuiltins` **{boolean}** - default `false`, includes
+  [babel-plugin-minify-builtins][]
 
 <!-- docks-end -->
 
@@ -108,7 +158,7 @@ we proceed. In short, we support latest two even-numbered Node.js release lines.
 [Become a Partner or Sponsor?][kofi-url] :dollar: Check the **OpenSource**
 Commision (tier). :tada: You can get your company logo, link & name on this
 file. It's also rendered on package's page in [npmjs.com][npmv-url] and
-[yarnpkg.com](https://yarnpkg.com/en/package/jest-runner-docs) sites too!
+[yarnpkg.com](https://yarnpkg.com/en/package/babel-preset-optimise) sites too!
 :rocket:
 
 Not financial support? Okey!
@@ -145,9 +195,10 @@ your [support](#support-the-project) to them:
 
 ## License
 
-Copyright (c) 2019-present, [Charlike Mike Reagent](https://tunnckocore.com)
+Copyright (c) 2020-present, [Charlike Mike Reagent](https://tunnckocore.com)
 `<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br>
-Released under the [MPL-2.0 License][license-url].
+Released under the [(Parity-7.0.0 AND Prosperity-3.0.0) OR Patron-1.0.0
+License][license-url].
 
 <!-- badges -->
 
@@ -158,18 +209,18 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- Heading badges -->
 
-[npmv-url]: https://www.npmjs.com/package/jest-runner-docs
-[npmv-img]: https://badgen.net/npm/v/jest-runner-docs?icon=npm&cache=300
+[npmv-url]: https://www.npmjs.com/package/babel-preset-optimise
+[npmv-img]: https://badgen.net/npm/v/babel-preset-optimise?icon=npm&cache=300
 
-[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/jest-runner-docs/LICENSE
-[license-img]: https://badgen.net/npm/license/jest-runner-docs?cache=300
+[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/babel-preset-optimise/LICENSE
+[license-img]: https://badgen.net/npm/license/babel-preset-optimise?cache=300
 
 [libera-manifesto-url]: https://liberamanifesto.com
 [libera-manifesto-img]: https://badgen.net/badge/libera/manifesto/grey
 
 <!-- Front line badges -->
 
-[codecoverage-img]: https://badgen.net/badge/coverage/5.94%25/red?icon=codecov&cache=300 
+[codecoverage-img]: https://badgen.net/badge/coverage/unknown/grey?icon=codecov&cache=300
 
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 
@@ -193,9 +244,9 @@ Released under the [MPL-2.0 License][license-url].
 
 [nodejs-img]: https://badgen.net/badge/node/>=10.13/green?cache=300
 
-[downloads-weekly-img]: https://badgen.net/npm/dw/jest-runner-docs?icon=npm&cache=300
-[downloads-monthly-img]: https://badgen.net/npm/dm/jest-runner-docs?icon=npm&cache=300
-[downloads-total-img]: https://badgen.net/npm/dt/jest-runner-docs?icon=npm&cache=300
+[downloads-weekly-img]: https://badgen.net/npm/dw/babel-preset-optimise?icon=npm&cache=300
+[downloads-monthly-img]: https://badgen.net/npm/dm/babel-preset-optimise?icon=npm&cache=300
+[downloads-total-img]: https://badgen.net/npm/dt/babel-preset-optimise?icon=npm&cache=300
 
 [renovateapp-url]: https://renovatebot.com
 [renovateapp-img]: https://badgen.net/badge/renovate/enabled/green?cache=300
@@ -237,3 +288,5 @@ Released under the [MPL-2.0 License][license-url].
 [tunnckocore_newsletter]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/newsletter/tunnckocore?label&color=5199FF&icon=https://svgshare.com/i/Dt6.svg
 
 <!-- prettier-ignore-end -->
+
+[babel-plugin-minify-builtins]: https://github.com/babel/minify
