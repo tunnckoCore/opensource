@@ -119,7 +119,7 @@
       "color": "green"
     },
     "@packages/jest-runner-docs": {
-      "value": 6.53,
+      "value": 5.94,
       "color": "red"
     },
     "@packages/jest-runner-node": {
@@ -151,7 +151,7 @@
       "color": "green"
     },
     "@tunnckocore/create-jest-runner": {
-      "value": 20.11,
+      "value": 19.99,
       "color": "red"
     },
     "@tunnckocore/execa": {
@@ -159,11 +159,11 @@
       "color": "99CC09"
     },
     "@tunnckocore/jest-runner-babel": {
-      "value": 8.93,
+      "value": 6.96,
       "color": "red"
     },
     "@tunnckocore/jest-runner-eslint": {
-      "value": 11.29,
+      "value": 7.79,
       "color": "red"
     },
     "@tunnckocore/pretty-config": {

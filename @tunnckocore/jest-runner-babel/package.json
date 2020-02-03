@@ -31,10 +31,10 @@
   "jest": {
     "coverageThreshold": {
       "src/**/*.js": {
-        "statements": 17,
+        "statements": 10,
         "branches": 0,
         "functions": 0,
-        "lines": 17
+        "lines": 10
       }
     }
   },

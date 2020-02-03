@@ -41,10 +41,10 @@
         "lines": 10
       },
       "src/runner.js": {
-        "statements": 14,
+        "statements": 12,
         "branches": 0,
         "functions": 0,
-        "lines": 14
+        "lines": 13
       }
     }
   },
