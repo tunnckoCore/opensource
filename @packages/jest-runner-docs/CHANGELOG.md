@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.3.0...jest-runner-docs@1.4.0) (2020-02-03)
+
+
+### Bug Fixes
+
+* coverage && docs ([c309644](https://github.com/tunnckoCore/opensource/commit/c309644c16540b6d872b7a446487735dde0dce9e))
+* tweaks; babel runner switch to use caching layer ([4676c31](https://github.com/tunnckoCore/opensource/commit/4676c319784225d63556b5314faf534272cc2a13))
+* **runner-docs:** astBody true for loading config ([1639d82](https://github.com/tunnckoCore/opensource/commit/1639d82e4447dca8cb65d5dc77ac7dbf7f51c0bc))
+* **runner-docs:** temporary switch to forked memoize-fs ([7fc2bdf](https://github.com/tunnckoCore/opensource/commit/7fc2bdffa03d60bd2cd86ec0ae16036718246fb6))
+* mass update (docks,configs) + rename workspaces ([61ccee3](https://github.com/tunnckoCore/opensource/commit/61ccee33ca1cce122de9c7d6522a7a2913f65828))
+
+
+### Features
+
+* **create-jest-runner:** built-in caching layer for every runner ([fbafb08](https://github.com/tunnckoCore/opensource/commit/fbafb08f13d0649d87a12296b6af417a3097305b))
+* **docs-runner:** switch to use the caching layer ([4f00ba4](https://github.com/tunnckoCore/opensource/commit/4f00ba4c2f5730ac07598cfacd3e8a20ea9390bc))
+
+
+
+
+
 # [1.3.0](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.2.0...jest-runner-docs@1.3.0) (2020-01-24)
 
 

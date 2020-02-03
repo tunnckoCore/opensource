@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/typescript-config@1.1.0...@tunnckocore/typescript-config@1.1.1) (2020-02-03)
+
+
+### Bug Fixes
+
+* mass update (docks,configs) + rename workspaces ([61ccee3](https://github.com/tunnckoCore/opensource/commit/61ccee33ca1cce122de9c7d6522a7a2913f65828))
+
+
+
+
+
 # [1.1.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/typescript-config@1.0.8...@tunnckocore/typescript-config@1.1.0) (2020-01-24)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-optimise",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "licenseStart": 2020,
   "license": "(Parity-7.0.0 AND Prosperity-3.0.0) OR Patron-1.0.0",
   "description": "Babel preset with optimizations in mind, modern output",

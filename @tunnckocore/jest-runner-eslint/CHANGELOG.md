@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-eslint@1.2.0...@tunnckocore/jest-runner-eslint@1.2.1) (2020-02-03)
+
+
+### Bug Fixes
+
+* coverage && docs ([c309644](https://github.com/tunnckoCore/opensource/commit/c309644c16540b6d872b7a446487735dde0dce9e))
+* tweaks; babel runner switch to use caching layer ([4676c31](https://github.com/tunnckoCore/opensource/commit/4676c319784225d63556b5314faf534272cc2a13))
+* **eslint-runner:** use the caching layer ([6a58a3f](https://github.com/tunnckoCore/opensource/commit/6a58a3fe207ee6d84cb536a2bc6c3e2eed4b9766))
+* mass update (docks,configs) + rename workspaces ([61ccee3](https://github.com/tunnckoCore/opensource/commit/61ccee33ca1cce122de9c7d6522a7a2913f65828))
+
+
+
+
+
 # [1.2.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-eslint@1.1.4...@tunnckocore/jest-runner-eslint@1.2.0) (2020-01-24)
 
 

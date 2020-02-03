@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.1](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@4.2.0...@tunnckocore/jest-runner-babel@4.2.1) (2020-02-03)
+
+
+### Bug Fixes
+
+* coverage && docs ([c309644](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/commit/c309644c16540b6d872b7a446487735dde0dce9e))
+* mass update (docks,configs) + rename workspaces ([61ccee3](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/commit/61ccee33ca1cce122de9c7d6522a7a2913f65828))
+* tweaks; babel runner switch to use caching layer ([4676c31](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/commit/4676c319784225d63556b5314faf534272cc2a13))
+
+
+
+
+
 # [4.2.0](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@4.1.3...@tunnckocore/jest-runner-babel@4.2.0) (2020-01-24)
 
 

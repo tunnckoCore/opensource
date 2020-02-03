@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.2](https://github.com/tunnckoCore/opensource/compare/arr-includes@2.3.1...arr-includes@2.3.2) (2020-02-03)
+
+
+### Bug Fixes
+
+* mass update (docks,configs) + rename workspaces ([61ccee3](https://github.com/tunnckoCore/opensource/commit/61ccee33ca1cce122de9c7d6522a7a2913f65828))
+
+
+
+
+
 ## [2.3.1](https://github.com/tunnckoCore/opensource/compare/arr-includes@2.3.0...arr-includes@2.3.1) (2020-01-24)
 
 **Note:** Version bump only for package arr-includes

@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/renovate-config",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "licenseStart": 2017,
   "license": "MPL-2.0",
   "description": "Shareable Renovate config for all @tunnckoCore projects",

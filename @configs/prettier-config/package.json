@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/prettier-config",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "licenseStart": 2019,
   "license": "MPL-2.0",
   "description": "Shareable Prettier config for all @tunnckoCore projects",

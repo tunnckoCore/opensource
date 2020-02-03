@@ -1,6 +1,6 @@
 {
   "name": "pkg.tunnckocore.com",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "funding": "https://ko-fi.com/tunnckoCore/commissions",
   "dependencies": {
     "ky": "^0.16.2",
