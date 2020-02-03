@@ -1,12 +1,19 @@
 'use strict';
 
 const fs = require('fs');
-const { pass, fail, skip, runner } = require('@tunnckocore/create-jest-runner');
 const { getWorkspacesAndExtensions } = require('@tunnckocore/utils');
 const { CLIEngine } = require('eslint');
+const {
+  pass,
+  fail,
+  skip,
+  runner,
+  utils,
+} = require('@tunnckocore/create-jest-runner');
 
 process.env.NODE_ENV = 'lint';
 
+// eslint-disable-next-line max-statements
 module.exports = runner('eslint', async (ctx) => {
   const start = Date.now();
   const { testPath, config, runnerConfig, memoizer } = ctx;
@@ -60,7 +67,14 @@ module.exports = runner('eslint', async (ctx) => {
     { cacheId: 'execute' },
   );
 
-  const { report, message } = await memoizedFn(testPath, fileContents);
+  const res = await utils.tryCatch(async () => {
+    const val = await memoizedFn(testPath, fileContents);
+
+    return val;
+  });
+  if (res.hasError) return res.error;
+
+  const { report, message } = res;
 
   if (report.errorCount > 0) {
     return fail({

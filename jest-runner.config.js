@@ -35,7 +35,7 @@ module.exports = {
     //   extends: '@tunnckocore',
     // },
   },
-  docs: {
+  docks: {
     verbose: true,
     postHook: async ({ pkgRoot, jestConfig: { rootDir } }) => {
       const pkgDir = path.relative(rootDir, pkgRoot);

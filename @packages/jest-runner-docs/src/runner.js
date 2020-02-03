@@ -13,7 +13,7 @@ const {
 const { isMonorepo } = require('@tunnckocore/utils');
 const findPkg = require('find-pkg');
 
-const docks = require('./docks.js');
+const docks = require('./docks');
 
 process.env.NODE_ENV = 'docs';
 
@@ -145,7 +145,7 @@ module.exports = runner('docks', async (ctx) => {
       });
       await hookMemoized(testPath, testPathContents);
     },
-    { start, testPath, cfg: docksConfig },
+    { start, testPath, runnerConfig: docksConfig },
   );
   if (res && res.hasError) return res.error;
 

@@ -44,7 +44,7 @@ function wrapper(runnerName, runnerFn) {
   return async ({ testPath, config, ...ctxRest }) => {
     const startTime = Date.now();
 
-    const loadConfig = tryLoadConfig({ testPath, startTime });
+    const loadConfig = tryLoadConfig({ testPath, startTime, runnerName });
     const cfgFunc = await memoize(loadConfig, {
       cacheId: 'load-runner-config',
       astBody: true,
@@ -57,6 +57,7 @@ function wrapper(runnerName, runnerFn) {
       ...ctxRest,
       testPath,
       config,
+      runnerName,
       runnerConfig,
       memoizeCachePath,
       memoizer,
@@ -86,8 +87,6 @@ function tryLoadConfig(ctx) {
 exports.tryLoadConfig = tryLoadConfig;
 
 async function tryCatch(fn, ctx) {
-  const { testPath, startTime, runnerName, cfg } = ctx;
-
   try {
     // important to be `return await`!
     return await fn();
@@ -102,20 +101,20 @@ async function tryCatch(fn, ctx) {
         '$1Error: Failure in `verb`, $2',
       );
 
-      return createFailed({ err, testPath, startTime, runnerName, cfg }, msg);
+      return createFailed({ ...ctx, err }, msg);
     }
 
-    return createFailed({ err, testPath, startTime, runnerName, cfg });
+    return createFailed({ ...ctx, err });
   }
 }
 exports.tryCatch = tryCatch;
 
 function createFailed(ctx, message) {
-  const { err, testPath, startTime, runnerName, cfg } = ctx;
-  const msg =
-    cfg && cfg.verbose
-      ? message || err.stack || err.message
-      : message || 'Some unknown error!';
+  const { err, testPath, startTime, runnerName } = ctx;
+  // const msg =
+  //   runnerConfig && runnerConfig.verbose
+  //     ? message || err.stack || err.message
+  //     : message || 'Some unknown error!';
 
   return {
     hasError: true,
@@ -125,7 +124,7 @@ function createFailed(ctx, message) {
       test: {
         path: testPath,
         title: runnerName,
-        errorMessage: `${runnerName} runner: ${msg}`,
+        errorMessage: `${runnerName} runner: ${message || err.stack}`,
       },
     }),
   };

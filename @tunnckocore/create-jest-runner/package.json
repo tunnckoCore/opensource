@@ -27,6 +27,7 @@
   "scripts": {},
   "dependencies": {
     "chalk": "^3.0.0",
+    "cosmiconfig": "^6.0.0",
     "jest-worker": "^25.1.0",
     "throat": "^5.0.0"
   },

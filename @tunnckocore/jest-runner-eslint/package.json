@@ -27,8 +27,7 @@
   "scripts": {},
   "dependencies": {
     "@tunnckocore/create-jest-runner": "^1.2.0",
-    "@tunnckocore/utils": "^1.3.0",
-    "cosmiconfig": "^6.0.0"
+    "@tunnckocore/utils": "^1.3.0"
   },
   "peerDependencies": {
     "eslint": "^6.4.0"
