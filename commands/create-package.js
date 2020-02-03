@@ -86,7 +86,7 @@ module.exports = hela()
         onSubmit,
         skip() {
           if (!answers.scoped) {
-            answers.location = `packages/${answers.name}`;
+            answers.location = `@packages/${answers.name}`;
             return true;
           }
 
@@ -95,7 +95,7 @@ module.exports = hela()
         result(value) {
           if (answers.scoped) {
             if (/config|preset/.test(answers.name)) {
-              answers.location = `configs/${answers.name}`;
+              answers.location = `@configs/${answers.name}`;
             } else {
               answers.location = `${value}/${answers.name}`;
             }
@@ -126,8 +126,14 @@ module.exports = hela()
         type: 'autocomplete',
         name: 'license',
         message: 'What is the license of the package?',
-        initial: 0,
-        choices: ['Parity-7.0.0', 'Prosperity-3.0.0', 'MPL-2.0', 'Apache-2.0'],
+        initial: 1,
+        choices: [
+          'Parity-7.0.0',
+          '(Parity-7.0.0 AND Prosperity-3.0.0) OR Patron-1.0.0',
+          'Prosperity-3.0.0',
+          'MPL-2.0',
+          'Apache-2.0',
+        ],
       },
       {
         type: 'list',
