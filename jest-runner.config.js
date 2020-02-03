@@ -28,7 +28,6 @@ const presetOptions = {
 };
 
 module.exports = {
-  monorepo: true,
   eslint: {
     // useEslintrc: false,
     // baseConfig: {
@@ -86,6 +85,7 @@ module.exports = {
         sourceMaps: true,
       },
       outDir: 'dist/main',
+      monorepo: true,
     },
     {
       config: {
@@ -96,6 +96,7 @@ module.exports = {
         sourceMaps: true,
       },
       outDir: 'dist/module',
+      monorepo: true,
     },
   ],
 
