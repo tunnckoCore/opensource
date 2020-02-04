@@ -2,7 +2,7 @@
 
 const path = require('path');
 const assert = require('assert');
-const memoizeFS = require('@tunnckocore/memoize-fs');
+const memoizeFS = require('memoize-fs');
 const { cosmiconfig } = require('cosmiconfig');
 const fail = require('./fail');
 
@@ -19,6 +19,9 @@ function wrapper(runnerName, runnerFn) {
     'function',
     'expect runnerFn to be a function',
   );
+
+  // eslint-disable-next-line no-param-reassign
+  runnerName = String(runnerName);
 
   const memoizeCachePath = path.join('.cache', `${runnerName}-runner`);
 
@@ -42,7 +45,7 @@ function wrapper(runnerName, runnerFn) {
   memoizer.memoize = memoize;
 
   return async ({ testPath, config, ...ctxRest }) => {
-    const startTime = Date.now();
+    const startTime = new Date();
 
     const loadConfig = tryLoadConfig({ testPath, startTime, runnerName });
     const cfgFunc = await memoize(loadConfig, {
@@ -69,20 +72,15 @@ function wrapper(runnerName, runnerFn) {
 exports.wrapper = wrapper;
 
 function tryLoadConfig(ctx) {
-  const { testPath, startTime, runnerName } = ctx;
-
   return () =>
-    tryCatch(
-      async () => {
-        const cfg = await jestRunnerConfig.search();
+    tryCatch(async () => {
+      const cfg = await jestRunnerConfig.search();
 
-        if (!cfg || (cfg && !cfg.config)) {
-          return {};
-        }
-        return cfg.config[runnerName];
-      },
-      { testPath, startTime, runnerName },
-    );
+      if (!cfg || (cfg && !cfg.config)) {
+        return {};
+      }
+      return cfg.config[ctx.runnerName];
+    }, ctx);
 }
 exports.tryLoadConfig = tryLoadConfig;
 
@@ -120,11 +118,11 @@ function createFailed(ctx, message) {
     hasError: true,
     error: fail({
       start: startTime,
-      end: Date.now(),
+      end: new Date(),
       test: {
         path: testPath,
         title: runnerName,
-        errorMessage: `${runnerName} runner: ${message || err.stack}`,
+        errorMessage: `${runnerName} runZZZZZZZner: ${message || err.stack}`,
       },
     }),
   };

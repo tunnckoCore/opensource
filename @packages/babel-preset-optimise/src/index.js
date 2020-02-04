@@ -7,6 +7,7 @@
  * @name  babelPresetOptimize
  * @param {object} options - optionally control what can be included
  * @param {boolean} options.react - default `false`, includes the React preset and 3 react plugins
+ * @param {boolean} options.modules - default `false`, pass non-falsey value to transform to CommonJS
  * @param {boolean} options.typescript - default `false`, includes the TypeScript preset
  * @param {boolean} options.minifyBuiltins - default `false`, includes [babel-plugin-minify-builtins][]
  * @public
@@ -15,7 +16,12 @@ module.exports = function babelPresetOptimize(api, options) {
   api.assertVersion(7);
 
   // NOTE: minifyBuiltins: true might output a bigger output - it depends, try your codebase.
-  const { react = false, typescript = false, minifyBuiltins = false } = {
+  const {
+    react = false,
+    typescript = false,
+    minifyBuiltins = false,
+    modules = false,
+  } = {
     ...options,
   };
 
@@ -29,6 +35,7 @@ module.exports = function babelPresetOptimize(api, options) {
       react && '@babel/preset-react',
     ].filter(Boolean),
     plugins: [
+      modules && '@babel/plugin-transform-modules-commonjs',
       'babel-plugin-annotate-pure-calls',
       'babel-plugin-dev-expression',
       minifyBuiltins && 'babel-plugin-minify-builtins',

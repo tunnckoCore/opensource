@@ -29,6 +29,7 @@
     "chalk": "^3.0.0",
     "cosmiconfig": "^6.0.0",
     "jest-worker": "^25.1.0",
+    "memoize-fs": "^2.0.0",
     "throat": "^5.0.0"
   },
   "devDependencies": {
@@ -70,8 +71,7 @@
     }
   },
   "cov": {
-    "value": 19.99,
-    "color": "red"
+    "color": "grey"
   },
   "verb": {
     "readme": "../../readme-template.md",

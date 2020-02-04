@@ -1,6 +1,6 @@
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
-### [babelPresetOptimize](./src/index.js#L14)
+### [babelPresetOptimize](./src/index.js#L15)
 
 Be aware that when you use `minifyBuiltins: true` you _MAY_ get a bigger output,
 but that's not always guaranteed, just try for your case.
@@ -20,6 +20,8 @@ function(api, options)
 - `options` **{object}** - optionally control what can be included
 - `options.react` **{boolean}** - default `false`, includes the React preset and
   3 react plugins
+- `options.modules` **{boolean}** - default `false`, pass non-falsey value to
+  transform to CommonJS
 - `options.typescript` **{boolean}** - default `false`, includes the TypeScript
   preset
 - `options.minifyBuiltins` **{boolean}** - default `false`, includes

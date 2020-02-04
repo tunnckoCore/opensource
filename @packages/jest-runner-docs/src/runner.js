@@ -1,7 +1,6 @@
 'use strict';
 
 /* eslint-disable max-statements */
-const fs = require('fs');
 const path = require('path');
 
 const {
@@ -11,6 +10,7 @@ const {
   utils,
 } = require('@tunnckocore/create-jest-runner');
 const { isMonorepo } = require('@tunnckocore/utils');
+const fs = require('fs-extra');
 const findPkg = require('find-pkg');
 
 const docks = require('./docks');
@@ -43,11 +43,11 @@ module.exports = runner('docks', async (ctx) => {
 
   docksConfig.pkgRoot = pkgRoot;
 
-  const testPathContents = fs.readFileSync(testPath, 'utf-8');
+  const testPathContents = await fs.readFile(testPath, 'utf-8');
   let apidocsContent = null;
 
   const outfile = await utils.tryCatch(
-    () => {
+    async () => {
       const resDocs = docks(testPath, docksConfig);
       apidocsContent = resDocs.contents;
 
@@ -82,12 +82,17 @@ module.exports = runner('docks', async (ctx) => {
           ? `${header}\n\n${promo}\n\n${apidocsContent.trim()}\n\n`
           : '\n';
 
-      fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-      fs.writeFileSync(outputFile, cont);
+      await fs.outputFile(outputFile, cont);
+      // const outDir = path.dirname(outputFile);
+      // if (!fs.existsSync(outDir)) {
+      //   await mkdirp(outDir, { recursive: true });
+      // }
+      // // fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+      // await writeFile(outputFile, cont);
 
       const pkgVerbMd = path.join(pkgRoot, docksConfig.outfile);
       if (fs.existsSync(pkgVerbMd)) {
-        const fileContents = fs.readFileSync(pkgVerbMd, 'utf8');
+        const fileContents = await fs.readFile(pkgVerbMd, 'utf8');
         if (
           fileContents.includes(docksStart) &&
           fileContents.includes(docksEnd)
@@ -104,11 +109,11 @@ module.exports = runner('docks', async (ctx) => {
             const api = `\n\n${oldApiContents}${newContents}\n`;
             const afterApi = fileContents.slice(idxEnd);
 
-            fs.writeFileSync(pkgVerbMd, `${beforeApi}${api}${afterApi}`);
+            await fs.outputFile(pkgVerbMd, `${beforeApi}${api}${afterApi}`);
           }
         }
       } else {
-        fs.writeFileSync(pkgVerbMd, `${docksStart}\n${docksEnd}\n`);
+        await fs.outputFile(pkgVerbMd, `${docksStart}\n${docksEnd}\n`);
       }
 
       return outputFile;

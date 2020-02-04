@@ -20,19 +20,22 @@
     "clean:dist": "rm -rf @{web,configs,packages,@tunnckocore}/*/dist",
     "clean:fresh": "lerna clean -y && rm -rf node_modules yarn.lock",
     "cleanup": "yarn run clean:dist && yarn run clean:fresh",
-    "docs": "yarn start docs && yarn run format '**/*.{json,md}'",
+    "docs": "yarn start docs && yarn run docs:verb && yarn run format '**/*.{json,md}'",
+    "docs:verb": "lerna exec --parallel \"verb --cwd $PWD\"",
     "fmt": "yarn run format '**/*'",
     "format": "prettier --write",
     "patch:docs": "cp patches/hela-dev/docs-config.js node_modules/hela/src/dev/configs/docs/index.js",
+    "patch:memoize": "cp patches/memoize-fs/index.js node_modules/memoize-fs/index.js",
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
+    "patches": "yarn run patch:verb && yarn run patch:docs && yarn run patch:memoize",
     "reinstall": "yarn run cleanup && yarn run setup",
     "release": "lerna version && lerna publish from-package",
     "run:node": "jest -c packages/jest-runner-node/src/config.js",
     "presetup": "echo foo-bar",
     "setup": "yarn && yarn run bootstrap",
-    "postsetup": "yarn run patch:verb",
+    "postsetup": "yarn run patches",
     "setup:ci": "yarn --frozen-lockfile && yarn run bootstrap",
-    "postsetup:ci": "yarn run patch:verb",
+    "postsetup:ci": "yarn run patches",
     "start": "hela",
     "test": "CI=1 yarn start test",
     "test:legacy": "CI=1 yarn run run:node",
@@ -74,6 +77,7 @@
     "typescript": "^3.7.5",
     "verb": "verbose/verb#dev",
     "verb-generate-readme": "^0.8.0",
+    "write-file-atomic": "^3.0.1",
     "yaml": "^1.7.2"
   },
   "meta": {
@@ -99,79 +103,83 @@
     ]
   },
   "cov": {
-    "@configs/babel-preset": {
-      "value": 74.92,
-      "color": "EEAA22"
+    "babel-preset/src": {
+      "value": 2.17,
+      "color": "red"
     },
-    "@packages/all-module-paths": {
+    "all-module-paths/src": {
       "value": 95.35,
       "color": "99CC09"
     },
-    "@packages/arr-includes": {
+    "arr-includes/src": {
       "value": 100,
       "color": "green"
     },
-    "@packages/gitclone-defaults": {
+    "babel-preset-optimise/src": {
+      "value": 98.61,
+      "color": "99CC09"
+    },
+    "gitclone-defaults/src": {
       "value": 100,
       "color": "green"
     },
-    "@packages/glob-cache": {
+    "glob-cache/src": {
       "value": 100,
       "color": "green"
     },
-    "@packages/jest-runner-docs": {
-      "value": 5.94,
+    "jest-runner-docs/src": {
+      "value": 5.99,
       "color": "red"
     },
-    "@packages/jest-runner-node": {
+    "jest-runner-node/src": {
       "value": 100,
       "color": "green"
     },
-    "@packages/jest-runner-rollup": {
+    "jest-runner-rollup/src": {
       "value": 6.18,
       "color": "red"
     },
-    "@packages/koa-better-body": {
+    "koa-better-body/src": {
       "value": 95.56,
       "color": "99CC09"
     },
-    "@packages/parse-commit-message": {
+    "parse-commit-message/src": {
       "value": 65.61,
       "color": "orange"
     },
-    "@packages/parse-function": {
+    "parse-function/src": {
       "value": 100,
       "color": "green"
     },
-    "@packages/prettier-plugin-pkgjson": {
+    "prettier-plugin-pkgjson/src": {
       "value": 25,
       "color": "red"
     },
-    "@packages/stringify-github-short-url": {
+    "stringify-github-short-url/src": {
       "value": 100,
       "color": "green"
     },
-    "@tunnckocore/create-jest-runner": {
-      "value": 19.99,
+    "create-jest-runner/src": {
+      "value": 20.38,
       "color": "red"
     },
-    "@tunnckocore/execa": {
+    "execa/src": {
       "value": 86.01,
       "color": "99CC09"
     },
-    "@tunnckocore/jest-runner-babel": {
+    "jest-runner-babel/src": {
       "value": 6.96,
       "color": "red"
     },
-    "@tunnckocore/jest-runner-eslint": {
+    "jest-runner-eslint/src": {
       "value": 7.79,
       "color": "red"
     },
-    "@tunnckocore/pretty-config": {
+    "pretty-config/src": {
       "value": 6.25,
       "color": "red"
     },
-    "@tunnckocore/utils": {
+    "utils/src": {
       "value": 100,
       "color": "green"
     }
