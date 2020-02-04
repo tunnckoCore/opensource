@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://github.com/tunnckoCore/opensource/compare/jest-runner-node@0.4.3...jest-runner-node@0.4.4) (2020-02-04)
+
+
+### Bug Fixes
+
+* docs runner, regen docs, and create-jest-runner updates ([d854e3d](https://github.com/tunnckoCore/opensource/commit/d854e3d335fa1d2c82d87321a07c6659fe6dcee1))
+* dooh, readmes and bugs ([871666e](https://github.com/tunnckoCore/opensource/commit/871666e7eabbca6bf65cbc257311f0a46d410752))
+
+
+
+
+
 ## [0.4.3](https://github.com/tunnckoCore/opensource/compare/jest-runner-node@0.4.2...jest-runner-node@0.4.3) (2020-02-04)
 
 

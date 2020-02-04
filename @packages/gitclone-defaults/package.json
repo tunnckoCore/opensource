@@ -1,6 +1,6 @@
 {
   "name": "gitclone-defaults",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "licenseStart": 2016,
   "license": "MPL-2.0",
   "description": "Powerful and flexible signature for `gitclone` - defaults, checks, validating, etc",
@@ -28,7 +28,7 @@
   "scripts": {},
   "devDependencies": {
     "parse-github-url": "^1.0.2",
-    "stringify-github-short-url": "^3.3.3"
+    "stringify-github-short-url": "^3.3.4"
   },
   "jest": {
     "coverageThreshold": {

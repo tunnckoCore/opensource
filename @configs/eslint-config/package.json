@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/eslint-config",
-  "version": "5.4.3",
+  "version": "5.4.4",
   "licenseStart": 2019,
   "license": "MPL-2.0",
   "description": "Shareable ESLint config for all @tunnckoCore projects",

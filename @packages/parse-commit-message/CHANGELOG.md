@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-canary.20200124.5](https://github.com/tunnckoCore/opensource/compare/parse-commit-message@4.0.0-canary.20200124.4...parse-commit-message@4.0.0-canary.20200124.5) (2020-02-04)
+
+
+### Bug Fixes
+
+* docs runner, regen docs, and create-jest-runner updates ([d854e3d](https://github.com/tunnckoCore/opensource/commit/d854e3d335fa1d2c82d87321a07c6659fe6dcee1))
+* dooh, readmes and bugs ([871666e](https://github.com/tunnckoCore/opensource/commit/871666e7eabbca6bf65cbc257311f0a46d410752))
+
+
+
+
+
 # [4.0.0-canary.20200124.4](https://github.com/tunnckoCore/opensource/compare/parse-commit-message@4.0.0-canary.20200124.3...parse-commit-message@4.0.0-canary.20200124.4) (2020-02-04)
 
 
