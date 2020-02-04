@@ -54,7 +54,8 @@
     }
   },
   "cov": {
-    "color": "grey"
+    "value": 95.56,
+    "color": "99CC09"
   },
   "keywords": [
     "api",

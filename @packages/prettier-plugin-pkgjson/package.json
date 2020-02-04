@@ -42,7 +42,8 @@
     }
   },
   "cov": {
-    "color": "grey"
+    "value": 25,
+    "color": "red"
   },
   "keywords": [
     "tunnckocorehq",

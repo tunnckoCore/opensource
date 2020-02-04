@@ -77,7 +77,6 @@
     "typescript": "^3.7.5",
     "verb": "verbose/verb#dev",
     "verb-generate-readme": "^0.8.0",
-    "write-file-atomic": "^3.0.1",
     "yaml": "^1.7.2"
   },
   "meta": {
@@ -103,83 +102,83 @@
     ]
   },
   "cov": {
-    "babel-preset/src": {
+    "@configs/babel-preset": {
       "value": 2.17,
       "color": "red"
     },
-    "all-module-paths/src": {
+    "@packages/all-module-paths": {
       "value": 95.35,
       "color": "99CC09"
     },
-    "arr-includes/src": {
+    "@packages/arr-includes": {
       "value": 100,
       "color": "green"
     },
-    "babel-preset-optimise/src": {
+    "@packages/babel-preset-optimise": {
       "value": 98.61,
       "color": "99CC09"
     },
-    "gitclone-defaults/src": {
+    "@packages/gitclone-defaults": {
       "value": 100,
       "color": "green"
     },
-    "glob-cache/src": {
+    "@packages/glob-cache": {
       "value": 100,
       "color": "green"
     },
-    "jest-runner-docs/src": {
+    "@packages/jest-runner-docs": {
       "value": 5.99,
       "color": "red"
     },
-    "jest-runner-node/src": {
+    "@packages/jest-runner-node": {
       "value": 100,
       "color": "green"
     },
-    "jest-runner-rollup/src": {
+    "@packages/jest-runner-rollup": {
       "value": 6.18,
       "color": "red"
     },
-    "koa-better-body/src": {
+    "@packages/koa-better-body": {
       "value": 95.56,
       "color": "99CC09"
     },
-    "parse-commit-message/src": {
+    "@packages/parse-commit-message": {
       "value": 65.61,
       "color": "orange"
     },
-    "parse-function/src": {
+    "@packages/parse-function": {
       "value": 100,
       "color": "green"
     },
-    "prettier-plugin-pkgjson/src": {
+    "@packages/prettier-plugin-pkgjson": {
       "value": 25,
       "color": "red"
     },
-    "stringify-github-short-url/src": {
+    "@packages/stringify-github-short-url": {
       "value": 100,
       "color": "green"
     },
-    "create-jest-runner/src": {
+    "@tunnckocore/create-jest-runner": {
       "value": 20.38,
       "color": "red"
     },
-    "execa/src": {
+    "@tunnckocore/execa": {
       "value": 86.01,
       "color": "99CC09"
     },
-    "jest-runner-babel/src": {
+    "@tunnckocore/jest-runner-babel": {
       "value": 6.96,
       "color": "red"
     },
-    "jest-runner-eslint/src": {
+    "@tunnckocore/jest-runner-eslint": {
       "value": 7.79,
       "color": "red"
     },
-    "pretty-config/src": {
+    "@tunnckocore/pretty-config": {
       "value": 6.25,
       "color": "red"
     },
-    "utils/src": {
+    "@tunnckocore/utils": {
       "value": 100,
       "color": "green"
     }

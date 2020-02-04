@@ -39,7 +39,8 @@
     }
   },
   "cov": {
-    "color": "grey"
+    "value": 100,
+    "color": "green"
   },
   "keywords": [
     "develop",

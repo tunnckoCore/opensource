@@ -42,7 +42,8 @@
     }
   },
   "cov": {
-    "color": "grey"
+    "value": 65.61,
+    "color": "orange"
   },
   "keywords": [
     "commit message parser",

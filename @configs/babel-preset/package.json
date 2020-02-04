@@ -50,7 +50,8 @@
     }
   },
   "cov": {
-    "color": "grey"
+    "value": 2.17,
+    "color": "red"
   },
   "keywords": [
     "babel-preset",

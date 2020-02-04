@@ -57,7 +57,8 @@
     }
   },
   "cov": {
-    "color": "grey"
+    "value": 98.61,
+    "color": "99CC09"
   },
   "keywords": [
     "tunnckocorehq",

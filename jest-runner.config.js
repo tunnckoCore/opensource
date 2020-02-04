@@ -4,23 +4,22 @@
 // const nodeResolve = require('rollup-plugin-node-resolve');
 // const commonjs = require('rollup-plugin-commonjs');
 
+const fs = require('fs');
 const path = require('path');
-const memoizeFS = require('memoize-fs');
-const writeFile = require('write-file-atomic');
 const { cov } = require('./package.json');
 
-const memoizeCachePath = path.join('.cache', 'docs-posthook-memoized');
-const memoizeFN = memoizeFS({ cachePath: memoizeCachePath }).fn;
+// const memoizeCachePath = path.join('.cache', 'docs-posthook-memoized');
+// const memoizeFN = memoizeFS({ cachePath: memoizeCachePath }).fn;
 
-function memoize(func) {
-  return async (...args) => {
-    const fn = process.env.JEST_RUNNER_RELOAD_CACHE
-      ? await memoizeFN(func)
-      : func;
-    const res = await fn(...args);
-    return res;
-  };
-}
+// function memoize(func) {
+//   return async (...args) => {
+//     const fn = process.env.JEST_RUNNER_RELOAD_CACHE
+//       ? await memoizeFN(func)
+//       : func;
+//     const res = await fn(...args);
+//     return res;
+//   };
+// }
 
 const presetOptions = {
   react: true,
@@ -51,7 +50,7 @@ module.exports = {
       };
 
       const pkgStr = JSON.stringify(json, null, 2);
-      await writeFile(pkgJsonPath, `${pkgStr}\n`);
+      await fs.writeFileSync(pkgJsonPath, `${pkgStr}\n`);
     },
   },
 

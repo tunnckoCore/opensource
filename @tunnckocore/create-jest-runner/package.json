@@ -71,7 +71,8 @@
     }
   },
   "cov": {
-    "color": "grey"
+    "value": 20.38,
+    "color": "red"
   },
   "verb": {
     "readme": "../../readme-template.md",

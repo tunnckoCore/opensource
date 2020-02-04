@@ -263,10 +263,18 @@ function testCoverage(rootDir, testCovPath) {
     pkg: {
       ...pkg,
       cov: Object.keys(jestCov).reduce((acc, k) => {
-        const newKey = k
-          .split('/')
-          .slice(1)
-          .join('/');
+        // const newKey = k
+        //   .split('/')
+        //   .slice(1)
+        //   .join('/');
+
+        /* istanbul ignore next */
+        const newKey = k.endsWith('src')
+          ? k
+              .split('/')
+              .slice(0, -1)
+              .join('/')
+          : k;
 
         acc[newKey] = jestCov[k];
         return acc;
