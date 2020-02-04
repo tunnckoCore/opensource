@@ -1,8 +1,6 @@
 # Open Source Monorepo
 
-Delivering delightful digital solutions. Open Source Monorepo (of monorepos),
-semantically versioned following Conventional Commits. Fully powered by Lerna,
-Jest and Babel.
+Delivering delightful digital solutions. Open Source Monorepo (of monorepos), semantically versioned following Conventional Commits. Fully powered by Lerna, Jest and Babel.
 
 ## Workspaces
 
@@ -89,7 +87,7 @@ Jest and Babel.
 [npm-a236619861-url]: https://www.npmjs.com/package/parse-function
         [npm-a236619861-img]: https://badgen.net/npm/v/parse-function?icon=npm
         [cov-a236619861-url]: https://www.npmjs.com/package/parse-function
-        [cov-a236619861-img]: https://badgen.net/badge/coverage/100%25/green?icon=codecov
+        [cov-a236619861-img]: https://badgen.net/badge/coverage/unknown/grey?icon=codecov
 [npm-07945251a6-url]: https://www.npmjs.com/package/prettier-plugin-pkgjson
         [npm-07945251a6-img]: https://badgen.net/npm/v/prettier-plugin-pkgjson?icon=npm
         [cov-07945251a6-url]: https://www.npmjs.com/package/prettier-plugin-pkgjson
@@ -101,11 +99,11 @@ Jest and Babel.
 [npm-76c512834b-url]: https://www.npmjs.com/package/@tunnckocore/create-jest-runner
         [npm-76c512834b-img]: https://badgen.net/npm/v/@tunnckocore/create-jest-runner?icon=npm
         [cov-76c512834b-url]: https://www.npmjs.com/package/@tunnckocore/create-jest-runner
-        [cov-76c512834b-img]: https://badgen.net/badge/coverage/19.99%25/red?icon=codecov
+        [cov-76c512834b-img]: https://badgen.net/badge/coverage/unknown/grey?icon=codecov
 [npm-0ee88d61eb-url]: https://www.npmjs.com/package/@tunnckocore/execa
         [npm-0ee88d61eb-img]: https://badgen.net/npm/v/@tunnckocore/execa?icon=npm
         [cov-0ee88d61eb-url]: https://www.npmjs.com/package/@tunnckocore/execa
-        [cov-0ee88d61eb-img]: https://badgen.net/badge/coverage/86.01%25/99CC09?icon=codecov
+        [cov-0ee88d61eb-img]: https://badgen.net/badge/coverage/unknown/grey?icon=codecov
 [npm-66996266fb-url]: https://www.npmjs.com/package/@tunnckocore/jest-runner-babel
         [npm-66996266fb-img]: https://badgen.net/npm/v/@tunnckocore/jest-runner-babel?icon=npm
         [cov-66996266fb-url]: https://www.npmjs.com/package/@tunnckocore/jest-runner-babel
