@@ -93,10 +93,14 @@ module.exports = require('hela')()
       }, []);
 
     list.forEach(({ name, hash, covBadgeLink }) => {
-      contents.push(`[npm-${hash}-url]: https://www.npmjs.com/package/${name}
-        [npm-${hash}-img]: https://badgen.net/npm/v/${name}?icon=npm
-        [cov-${hash}-url]: https://www.npmjs.com/package/${name}
-        [cov-${hash}-img]: ${covBadgeLink}`);
+      contents.push(
+        `
+[npm-${hash}-url]: https://www.npmjs.com/package/${name}
+[npm-${hash}-img]: https://badgen.net/npm/v/${name}?icon=npm
+[cov-${hash}-url]: https://www.npmjs.com/package/${name}
+[cov-${hash}-img]: ${covBadgeLink}
+        `.trim(),
+      );
     });
 
     contents.push('');

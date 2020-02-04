@@ -49,8 +49,7 @@
     }
   },
   "cov": {
-    "value": 5.94,
-    "color": "red"
+    "color": "grey"
   },
   "keywords": [
     "comments",

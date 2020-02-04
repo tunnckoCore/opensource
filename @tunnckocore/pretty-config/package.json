@@ -41,8 +41,7 @@
     }
   },
   "cov": {
-    "value": 6.25,
-    "color": "red"
+    "color": "grey"
   },
   "keywords": [
     "configs",

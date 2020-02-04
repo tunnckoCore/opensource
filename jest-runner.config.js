@@ -45,18 +45,13 @@ module.exports = {
       // eslint-disable-next-line import/no-dynamic-require, global-require
       const pkgJson = require(pkgJsonPath);
 
-      const writeAndRun = await memoize(async (fp, pkgObj) => {
-        const json = {
-          ...pkgObj,
-          cov: covField || { color: 'grey' },
-        };
+      const json = {
+        ...pkgJson,
+        cov: covField || { color: 'grey' },
+      };
 
-        const pkgStr = JSON.stringify(json, null, 2);
-        await writeFile(fp, pkgStr);
-        return { fp, json };
-      });
-
-      await writeAndRun(pkgJsonPath, pkgJson);
+      const pkgStr = JSON.stringify(json, null, 2);
+      await writeFile(pkgJsonPath, `${pkgStr}\n`);
     },
   },
 

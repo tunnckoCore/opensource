@@ -43,8 +43,7 @@
     }
   },
   "cov": {
-    "value": 7.79,
-    "color": "red"
+    "color": "grey"
   },
   "keywords": [
     "bin",

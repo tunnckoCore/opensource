@@ -36,8 +36,7 @@
     }
   },
   "cov": {
-    "value": 100,
-    "color": "green"
+    "color": "grey"
   },
   "keywords": [
     "branch",

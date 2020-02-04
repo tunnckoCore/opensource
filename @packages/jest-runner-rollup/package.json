@@ -45,8 +45,7 @@
     }
   },
   "cov": {
-    "value": 6.18,
-    "color": "red"
+    "color": "grey"
   },
   "keywords": [
     "build",
