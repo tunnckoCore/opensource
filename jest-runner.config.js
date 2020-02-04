@@ -51,6 +51,10 @@ module.exports = {
 
       const pkgStr = JSON.stringify(json, null, 2);
       await fs.writeFileSync(pkgJsonPath, `${pkgStr}\n`);
+
+      // eslint-disable-next-line global-require
+      const { exec } = require('@tunnckocore/execa');
+      await exec('verb', { cwd: pkgRoot });
     },
   },
 

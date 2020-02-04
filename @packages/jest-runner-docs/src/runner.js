@@ -26,7 +26,7 @@ module.exports = runner('docks', async (ctx) => {
     flat: true,
     verbose: true,
     force: true,
-    apiHeader: false, // default `false`
+    fileHeading: true, // default `false`
     outfile: '.verb.md',
     ...runnerConfig,
   };
@@ -74,7 +74,7 @@ module.exports = runner('docks', async (ctx) => {
         ? `_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._`
         : '';
 
-      const header = docksConfig.fileHeading ? `\n\n### ${relPath}` : '';
+      const header = docksConfig.fileHeading ? `\n\n## ${relPath}` : '';
       const docksStart = '<!-- docks-start -->';
       const docksEnd = '<!-- docks-end -->';
       const cont =

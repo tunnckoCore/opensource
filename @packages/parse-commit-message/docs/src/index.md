@@ -1,10 +1,13 @@
+
+
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [.applyPlugins](./src/index.js#L102)
 
-Apply a set of `plugins` over all of the given `commits`. A plugin is a simple
-function passed with `Commit` object, which may be returned to modify and set
-additional properties to the `Commit` object.
+Apply a set of `plugins` over all of the given `commits`.
+A plugin is a simple function passed with `Commit` object,
+which may be returned to modify and set additional properties
+to the `Commit` object.
 
 <span id="applyplugins-signature"></span>
 
@@ -19,19 +22,14 @@ function(plugins, commits, options)
 #### Params
 
 - `plugins` **{Plugins}** - a simple function like `(commit) => {}`
-- `commits` **{PossibleCommit}** - a PossibleCommit or an array of strings; a
-  value which should already be gone through `parse`
-- `options` **{object}** - options to control the header regex and case
-  sensitivity
-- `options.headerRegex` **{RegExp|string}** - string regular expression or
-  instance of RegExp
-- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
-  defaults to `false`
-- `returns` **{Array&lt;Commit&gt;}** - plus the modified or added properties
-  from each function in `plugins`
+- `commits` **{PossibleCommit}** - a PossibleCommit or an array of strings; a value which should already be gone through `parse`
+- `options` **{object}** - options to control the header regex and case sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
+- `returns` **{Array&lt;Commit&gt;}** - plus the modified or added properties from each function in `plugins`
 
-_The `commits` should be coming from `parse`, `validate` (with `ret` option) or
-the `check` methods. It does not do checking and validation._
+_The `commits` should be coming from `parse`, `validate` (with `ret` option)
+or the `check` methods. It does not do checking and validation._
 
 <span id="applyplugins-examples"></span>
 
@@ -92,9 +90,13 @@ console.log(results);
 
 ### [.plugins](./src/index.js#L186)
 
-An array which includes `mentions`, `isBreakingChange` and `increment` built-in
-plugins. The `mentions` is an array of objects - basically what's returned from
+An array which includes `mentions`, `isBreakingChange` and `increment` built-in plugins.
+The `mentions` is an array of objects - basically what's returned from
 the [collect-mentions][] package.
+
+
+
+
 
 <span id="plugins-examples"></span>
 
@@ -150,8 +152,11 @@ console.log(commits);
 
 ### [.mappers](./src/index.js#L219)
 
-An object (named set) which includes `mentions` and `increment` built-in
-plugins.
+An object (named set) which includes `mentions` and `increment` built-in plugins.
+
+
+
+
 
 <span id="mappers-examples"></span>
 
@@ -174,7 +179,7 @@ console.log(parsed);
 // }
 
 const commit = applyPlugins([mappers.increment], parsed);
-console.log(commit);
+console.log(commit)
 // => [{
 //   header: { type: 'feat', scope: 'cli', subject: 'awesome feature' },
 //   body: 'Super duper baz!',
@@ -182,3 +187,4 @@ console.log(commit);
 //   increment: 'patch',
 // }]
 ```
+

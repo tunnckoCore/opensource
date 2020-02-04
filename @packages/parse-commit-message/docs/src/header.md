@@ -1,10 +1,12 @@
+
+
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [.parseHeader](./src/header.js#L31)
 
-Parses given `header` string into an header object. Basically the same as
-[.parse](#parse), except that it only can accept single string and returns a
-`Header` object.
+Parses given `header` string into an header object.
+Basically the same as [.parse](#parse), except that
+it only can accept single string and returns a `Header` object.
 
 <span id="parseheader-signature"></span>
 
@@ -19,17 +21,14 @@ function(header, options)
 #### Params
 
 - `header` **{string}** - a header stirng like `'fix(foo): bar baz'`
-- `options` **{object}** - options to control the header regex and case
-  sensitivity
-- `options.headerRegex` **{RegExp|string}** - string regular expression or
-  instance of RegExp
-- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
-  defaults to `false`
+- `options` **{object}** - options to control the header regex and case sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{Header}** - a `Header` object like `{ type, scope?, subject }`
 
-_The `parse*` methods are not doing any checking and validation, so you may want
-to pass the result to `validateHeader` or `checkHeader`, or to `validateHeader`
-with `ret` option set to `true`._
+_The `parse*` methods are not doing any checking and validation,
+so you may want to pass the result to `validateHeader` or `checkHeader`,
+or to `validateHeader` with `ret` option set to `true`._
 
 <span id="parseheader-examples"></span>
 
@@ -49,10 +48,10 @@ console.log(headerObj);
 
 ### [.stringifyHeader](./src/header.js#L59)
 
-Receives a `header` object, validates it using `validateHeader`, builds a
-"header" string and returns it. Method throws if problems found. Basically the
-same as [.stringify](#stringify), except that it only can accept single `Header`
-object.
+Receives a `header` object, validates it using `validateHeader`,
+builds a "header" string and returns it. Method throws if problems found.
+Basically the same as [.stringify](#stringify), except that
+it only can accept single `Header` object.
 
 <span id="stringifyheader-signature"></span>
 
@@ -67,13 +66,12 @@ function(header, options)
 #### Params
 
 - `header` **{Header}** - a `Header` object like `{ type, scope?, subject }`
-- `options` **{object}** - options to control the header regex and case
-  sensitivity
-- `options.headerRegex` **{RegExp|string}** - string regular expression or
-  instance of RegExp
-- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
-  defaults to `false`
+- `options` **{object}** - options to control the header regex and case sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{string}** - a header stirng like `'fix(foo): bar baz'`
+
+
 
 <span id="stringifyheader-examples"></span>
 
@@ -88,9 +86,10 @@ console.log(headerStr); // => 'foo: bar qux'
 
 ### [.validateHeader](./src/header.js#L115)
 
-Validates given `header` object and returns `boolean`. You may want to pass
-`ret` to return an object instead of throwing. Basically the same as
-[.validate](#validate), except that it only can accept single `Header` object.
+Validates given `header` object and returns `boolean`.
+You may want to pass `ret` to return an object instead of throwing.
+Basically the same as [.validate](#validate), except that
+it only can accept single `Header` object.
 
 <span id="validateheader-signature"></span>
 
@@ -105,14 +104,12 @@ function(header, options)
 #### Params
 
 - `header` **{Header}** - a `Header` object like `{ type, scope?, subject }`
-- `options` **{object}** - options to control the header regex and case
-  sensitivity
-- `options.headerRegex` **{RegExp|string}** - string regular expression or
-  instance of RegExp
-- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
-  defaults to `false`
-- `returns` **{CommitResult}** - an object like
-  `{ value: Array<Commit>, error: Error }`
+- `options` **{object}** - options to control the header regex and case sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
+- `returns` **{CommitResult}** - an object like `{ value: Array<Commit>, error: Error }`
+
+
 
 <span id="validateheader-examples"></span>
 
@@ -134,12 +131,9 @@ console.log(value);
 //   footer: null,
 // }
 
-const { error } = validateHeader(
-  {
-    type: 'bar',
-  },
-  true,
-);
+const { error } = validateHeader({
+  type: 'bar'
+}, true);
 
 console.log(error);
 // => TypeError: header.subject should be non empty string
@@ -147,8 +141,9 @@ console.log(error);
 
 ### [.checkHeader](./src/header.js#L156)
 
-Receives a `Header` and checks if it is valid. Basically the same as
-[.check](#check), except that it only can accept single `Header` object.
+Receives a `Header` and checks if it is valid.
+Basically the same as [.check](#check), except that
+it only can accept single `Header` object.
 
 <span id="checkheader-signature"></span>
 
@@ -163,14 +158,12 @@ function(header, options)
 #### Params
 
 - `header` **{Header}** - a `Header` object like `{ type, scope?, subject }`
-- `options` **{object}** - options to control the header regex and case
-  sensitivity
-- `options.headerRegex` **{RegExp|string}** - string regular expression or
-  instance of RegExp
-- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
-  defaults to `false`
-- `returns` **{Header}** - returns the same as given if no problems, otherwise
-  it will throw.
+- `options` **{object}** - options to control the header regex and case sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
+- `returns` **{Header}** - returns the same as given if no problems, otherwise it will throw.
+
+
 
 <span id="checkheader-examples"></span>
 
@@ -181,7 +174,7 @@ import { checkHeader } from 'parse-commit-message';
 
 try {
   checkHeader({ type: 'fix' });
-} catch (err) {
+} catch(err) {
   console.log(err);
   // => TypeError: header.subject should be non empty string
 }
@@ -192,3 +185,4 @@ checkHeader(123);
 checkHeader([]);
 checkHeader([{ type: 'foo', subject: 'bar' }]);
 ```
+
