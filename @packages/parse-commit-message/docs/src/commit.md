@@ -1,10 +1,13 @@
+
+
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [.parseCommit](./src/commit.js#L33)
 
 Receives a full commit message `string` and parses it into an `Commit` object
-and returns it. Basically the same as [.parse](#parse), except that it only can
-accept single string.
+and returns it.
+Basically the same as [.parse](#parse), except that
+it only can accept single string.
 
 <span id="parsecommit-signature"></span>
 
@@ -18,20 +21,15 @@ function(commit, options)
 
 #### Params
 
-- `commit` **{string}** - a message like
-  `'fix(foo): bar baz\n\nSome awesome body!'`
-- `options` **{object}** - options to control the header regex and case
-  sensitivity
-- `options.headerRegex` **{RegExp|string}** - string regular expression or
-  instance of RegExp
-- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
-  defaults to `false`
-- `returns` **{Commit}** - a standard object like
-  `{ header: Header, body?, footer? }`
+- `commit` **{string}** - a message like `'fix(foo): bar baz\n\nSome awesome body!'`
+- `options` **{object}** - options to control the header regex and case sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
+- `returns` **{Commit}** - a standard object like `{ header: Header, body?, footer? }`
 
-_The `parse*` methods are not doing any checking and validation, so you may want
-to pass the result to `validateCommit` or `checkCommit`, or to `validateCommit`
-with `ret` option set to `true`._
+_The `parse*` methods are not doing any checking and validation,
+so you may want to pass the result to `validateCommit` or `checkCommit`,
+or to `validateCommit` with `ret` option set to `true`._
 
 <span id="parsecommit-examples"></span>
 
@@ -51,10 +49,10 @@ console.log(commitObj);
 
 ### [.stringifyCommit](./src/commit.js#L67)
 
-Receives a `Commit` object, validates it using `validateCommit`, builds a
-"commit" string and returns it. Method throws if problems found. Basically the
-same as [.stringify](#stringify), except that it only can accept single `Commit`
-object.
+Receives a `Commit` object, validates it using `validateCommit`,
+builds a "commit" string and returns it. Method throws if problems found.
+Basically the same as [.stringify](#stringify), except that
+it only can accept single `Commit` object.
 
 <span id="stringifycommit-signature"></span>
 
@@ -68,15 +66,13 @@ function(commit, options)
 
 #### Params
 
-- `commit` **{Commit}** - a `Commit` object like
-  `{ header: Header, body?, footer? }`
-- `options` **{object}** - options to control the header regex and case
-  sensitivity
-- `options.headerRegex` **{RegExp|string}** - string regular expression or
-  instance of RegExp
-- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
-  defaults to `false`
+- `commit` **{Commit}** - a `Commit` object like `{ header: Header, body?, footer? }`
+- `options` **{object}** - options to control the header regex and case sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{string}** - a commit nessage stirng like `'fix(foo): bar baz'`
+
+
 
 <span id="stringifycommit-examples"></span>
 
@@ -94,9 +90,9 @@ console.log(commitStr); // => 'foo: bar qux\n\nokey dude'
 
 ### [.validateCommit](./src/commit.js#L117)
 
-Validates given `Commit` object and returns `CommitResult`. Basically the same
-as [.validate](#validate), except that it only can accept single `Commit`
-object.
+Validates given `Commit` object and returns `CommitResult`.
+Basically the same as [.validate](#validate), except that
+it only can accept single `Commit` object.
 
 <span id="validatecommit-signature"></span>
 
@@ -111,14 +107,12 @@ function(commit, options)
 #### Params
 
 - `commit` **{Commit}** - a `Commit` like `{ header: Header, body?, footer? }`
-- `options` **{object}** - options to control the header regex and case
-  sensitivity
-- `options.headerRegex` **{RegExp|string}** - string regular expression or
-  instance of RegExp
-- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
-  defaults to `false`
-- `returns` **{CommitResult}** - an object like
-  `{ value: Array<Commit>, error: Error }`
+- `options` **{object}** - options to control the header regex and case sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
+- `returns` **{CommitResult}** - an object like `{ value: Array<Commit>, error: Error }`
+
+
 
 <span id="validatecommit-examples"></span>
 
@@ -147,8 +141,8 @@ console.log(value);
 ### [.checkCommit](./src/commit.js#L157)
 
 Receives a `Commit` and checks if it is valid. Method throws if problems found.
-Basically the same as [.check](#check), except that it only can accept single
-`Commit` object.
+Basically the same as [.check](#check), except that
+it only can accept single `Commit` object.
 
 <span id="checkcommit-signature"></span>
 
@@ -163,14 +157,12 @@ function(commit, options)
 #### Params
 
 - `commit` **{Commit}** - a `Commit` like `{ header: Header, body?, footer? }`
-- `options` **{object}** - options to control the header regex and case
-  sensitivity
-- `options.headerRegex` **{RegExp|string}** - string regular expression or
-  instance of RegExp
-- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
-  defaults to `false`
-- `returns` **{Commit}** - returns the same as given if no problems, otherwise
-  it will throw.
+- `options` **{object}** - options to control the header regex and case sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
+- `returns` **{Commit}** - returns the same as given if no problems, otherwise it will throw.
+
+
 
 <span id="checkcommit-examples"></span>
 
@@ -181,7 +173,7 @@ import { checkCommit } from 'parse-commit-message';
 
 try {
   checkCommit({ header: { type: 'fix' } });
-} catch (err) {
+} catch(err) {
   console.log(err);
   // => TypeError: header.subject should be non empty string
 }
@@ -191,3 +183,4 @@ checkCommit('foo bar baz');
 checkCommit(123);
 checkCommit([{ header: { type: 'foo', subject: 'bar' } }]);
 ```
+

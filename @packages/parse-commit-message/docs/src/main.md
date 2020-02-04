@@ -1,3 +1,5 @@
+
+
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [.parse](./src/main.js#L51)
@@ -17,15 +19,13 @@ function(commits, options)
 
 #### Params
 
-- `commits` **{PossibleCommit}** - a value to be parsed into an object like
-  `Commit` type
-- `options` **{object}** - options to control the header regex and case
-  sensitivity
-- `options.headerRegex` **{RegExp|string}** - string regular expression or
-  instance of RegExp
-- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
-  defaults to `false`
+- `commits` **{PossibleCommit}** - a value to be parsed into an object like `Commit` type
+- `options` **{object}** - options to control the header regex and case sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
 - `returns` **{Array&lt;Commit&gt;}** - if array of commit objects
+
+
 
 <span id="parse-examples"></span>
 
@@ -34,7 +34,10 @@ function(commits, options)
 ```js
 import { parse } from 'parse-commit-message';
 
-const commits = ['fix(ci): tweaks for @circleci config', 'chore: bar qux'];
+const commits = [
+  'fix(ci): tweaks for @circleci config',
+  'chore: bar qux'
+];
 const result = parse(commits);
 console.log(result);
 // => [{
@@ -66,8 +69,8 @@ console.log(res);
 
 ### [.stringify](./src/main.js#L101)
 
-Receives a `Commit` object, validates it using `validate`, builds a "commit"
-message string and returns it.
+Receives a `Commit` object, validates it using `validate`,
+builds a "commit" message string and returns it.
 
 <span id="stringify-signature"></span>
 
@@ -81,19 +84,15 @@ function(commits, options)
 
 #### Params
 
-- `commits` **{PossibleCommit}** - a `Commit` object, or anything that can be
-  passed to `check`
-- `options` **{object}** - options to control the header regex and case
-  sensitivity
-- `options.headerRegex` **{RegExp|string}** - string regular expression or
-  instance of RegExp
-- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
-  defaults to `false`
-- `returns` **{Array&lt;string&gt;}** - an array of commit strings like
-  `'fix(foo): bar baz'`
+- `commits` **{PossibleCommit}** - a `Commit` object, or anything that can be passed to `check`
+- `options` **{object}** - options to control the header regex and case sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
+- `returns` **{Array&lt;string&gt;}** - an array of commit strings like `'fix(foo): bar baz'`
 
-This method does checking and validation too, so if you pass a string, it will
-be parsed and validated, and after that turned again to string.
+This method does checking and validation too,
+so if you pass a string, it will be parsed and validated,
+and after that turned again to string.
 
 <span id="stringify-examples"></span>
 
@@ -119,8 +118,8 @@ console.log(str === commitMessage);
 
 ### [.validate](./src/main.js#L181)
 
-Validates a single or multiple commit message(s) in form of string, object,
-array of strings, array of objects or mixed.
+Validates a single or multiple commit message(s) in form of string,
+object, array of strings, array of objects or mixed.
 
 <span id="validate-signature"></span>
 
@@ -134,16 +133,13 @@ function(commits, options)
 
 #### Params
 
-- `commits` **{PossibleCommit}** - a value to be parsed & validated into an
-  object like `Commit` type
-- `options` **{object}** - options to control the header regex and case
-  sensitivity
-- `options.headerRegex` **{RegExp|string}** - string regular expression or
-  instance of RegExp
-- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
-  defaults to `false`
-- `returns` **{CommitResult}** - an object like
-  `{ value: Array<Commit>, error: Error }`
+- `commits` **{PossibleCommit}** - a value to be parsed & validated into an object like `Commit` type
+- `options` **{object}** - options to control the header regex and case sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
+- `returns` **{CommitResult}** - an object like `{ value: Array<Commit>, error: Error }`
+
+
 
 <span id="validate-examples"></span>
 
@@ -192,6 +188,7 @@ const { error } = validate(commit);
 console.log(error);
 // => TypeError: header.subject should be non empty string
 
+
 const commit = { header: { type: 'fix', scope: 123, subject: 'okk' } };
 const { error } = validate(commit);
 console.log(error);
@@ -200,9 +197,9 @@ console.log(error);
 
 ### [.check](./src/main.js#L225)
 
-Receives a single or multiple commit message(s) in form of string, object, array
-of strings, array of objects or mixed. Throws if find some error. Think of it as
-"assert", it's basically that.
+Receives a single or multiple commit message(s) in form of string,
+object, array of strings, array of objects or mixed.
+Throws if find some error. Think of it as "assert", it's basically that.
 
 <span id="check-signature"></span>
 
@@ -216,16 +213,13 @@ function(commits, options)
 
 #### Params
 
-- `commits` **{PossibleCommit}** - a value to be parsed & validated into an
-  object like `Commit` type
-- `options` **{object}** - options to control the header regex and case
-  sensitivity
-- `options.headerRegex` **{RegExp|string}** - string regular expression or
-  instance of RegExp
-- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
-  defaults to `false`
-- `returns` **{Array&lt;Commit&gt;}** - returns the same as given if no
-  problems, otherwise it will throw;
+- `commits` **{PossibleCommit}** - a value to be parsed & validated into an object like `Commit` type
+- `options` **{object}** - options to control the header regex and case sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive, defaults to `false`
+- `returns` **{Array&lt;Commit&gt;}** - returns the same as given if no problems, otherwise it will throw;
+
+
 
 <span id="check-examples"></span>
 
@@ -236,7 +230,7 @@ import { check } from 'parse-commit-message';
 
 try {
   check({ header: { type: 'fix' } });
-} catch (err) {
+} catch(err) {
   console.log(err);
   // => TypeError: header.subject should be non empty string
 }
@@ -244,9 +238,10 @@ try {
 // Can also validate/check a strings, array of strings,
 // or even mixed - array of strings and objects
 try {
-  check('fix(): invalid scope, it cannot be empty');
-} catch (err) {
+  check('fix(): invalid scope, it cannot be empty')
+} catch(err) {
   console.log(err);
   // => TypeError: header.scope should be non empty string when given
 }
 ```
+

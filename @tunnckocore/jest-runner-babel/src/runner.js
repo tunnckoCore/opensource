@@ -17,7 +17,7 @@ process.env.NODE_ENV = 'build';
 module.exports = runner('babel', async (ctx) => {
   const start = Date.now();
   const { testPath, config, runnerName, runnerConfig, memoizer } = ctx;
-  let options = normalizeOptions(runnerConfig);
+  let options = runnerConfig;
   const cfgs = [].concat(options).filter(Boolean);
 
   if (cfgs.length === 0) {
@@ -39,8 +39,10 @@ module.exports = runner('babel', async (ctx) => {
 
   const results = cfgs.reduce(async (prevPromise, { config: cfg, ...opts }) => {
     const acc = await prevPromise;
-    options = { ...options, ...opts };
+    options = normalizeOptions({ ...opts });
+
     const babelConfig = { ...cfg };
+
     const result = await utils.tryCatch(
       async () => {
         const transform = await memoizer.memoize(
@@ -63,6 +65,7 @@ module.exports = runner('babel', async (ctx) => {
 
     // eslint-disable-next-line prefer-const
     let { outFile, outDir } = createOuts({ relativeTestPath, config, options });
+
     outFile = path.join(
       outDir,
       `${path.basename(outFile, path.extname(outFile))}.js`,
@@ -147,5 +150,6 @@ function createOuts({ relativeTestPath, config, options }) {
     ...outs.file.filter(Boolean),
   );
   const outDir = path.dirname(outFile);
+
   return { outFile, outDir };
 }

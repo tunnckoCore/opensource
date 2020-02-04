@@ -4,6 +4,9 @@ const path = require('path');
 const assert = require('assert');
 const memoizeFS = require('memoize-fs');
 const { cosmiconfig } = require('cosmiconfig');
+
+// TODO eventually, still have problems, so may not worth
+const { serialize, unserialize: deserialize } = require('node-serialize');
 const fail = require('./fail');
 
 const jestRunnerConfig = cosmiconfig('jest-runner');
@@ -25,35 +28,46 @@ function wrapper(runnerName, runnerFn) {
 
   const memoizeCachePath = path.join('.cache', `${runnerName}-runner`);
 
-  const memoizer = memoizeFS({ cachePath: memoizeCachePath });
+  const memoizer = memoizeFS({
+    cachePath: memoizeCachePath,
+    serialize,
+    deserialize,
+  });
 
   // eslint-disable-next-line unicorn/consistent-function-scoping
   function memoize(func, opts) {
-    return async (...args) => await func(...args);
-    // if (process.env.JEST_RUNNER_RELOAD_CACHE) {
-    //   await memoizer.invalidate();
-    // }
-    // const memoizedFunc = await memoizer.fn(func, {
-    //   astBody: true,
-    //   salt: runnerName,
-    //   ...opts,
-    // });
-    // const res = await memoizedFunc(...args);
-    // return res;
+    return async (...args) => {
+      if (process.env.JEST_RUNNER_RELOAD_CACHE) {
+        await memoizer.invalidate();
+      }
+      const memoizedFunc = await memoizer.fn(func, {
+        astBody: true,
+        salt: runnerName,
+        ...opts,
+      });
+      const res = await memoizedFunc(...args);
+      return res;
+    };
   }
   memoizer.memoize = memoize;
 
   return async ({ testPath, config, ...ctxRest }) => {
-    const startTime = new Date();
+    const start = Date.now();
 
-    const loadConfig = tryLoadConfig({ testPath, startTime, runnerName });
+    const loadConfig = tryLoadConfig({
+      ...ctxRest,
+      testPath,
+      config,
+      start,
+      runnerName,
+    });
     const cfgFunc = await memoize(loadConfig, {
       cacheId: 'load-runner-config',
       astBody: true,
       salt: runnerName,
     });
     const runnerConfig = (await cfgFunc()) || {};
-    if (runnerConfig.hasError) return runnerConfig.error;
+    if (runnerConfig && runnerConfig.hasError) return runnerConfig.error;
 
     const result = await runnerFn({
       ...ctxRest,
@@ -71,7 +85,7 @@ function wrapper(runnerName, runnerFn) {
 exports.wrapper = wrapper;
 
 function tryLoadConfig(ctx) {
-  return (_fp) =>
+  return () =>
     tryCatch(async () => {
       const cfg = await jestRunnerConfig.search();
 
@@ -79,14 +93,20 @@ function tryLoadConfig(ctx) {
         return {};
       }
       return cfg.config[ctx.runnerName];
+      // TODO in next release
+      // return {
+      //   config: cfg.config[ctx.runnerName],
+      //   filepath: cfg.filepath,
+      // };
     }, ctx);
 }
 exports.tryLoadConfig = tryLoadConfig;
 
 async function tryCatch(fn, ctx) {
+  let res = null;
+
   try {
-    // important to be `return await`!
-    return await fn();
+    res = await fn();
   } catch (err) {
     if (err.command === 'verb') {
       const errMsg = err.all
@@ -103,25 +123,27 @@ async function tryCatch(fn, ctx) {
 
     return createFailed({ ...ctx, err });
   }
+
+  return res;
 }
 exports.tryCatch = tryCatch;
 
 function createFailed(ctx, message) {
-  const { err, testPath, startTime, runnerName } = ctx;
-  // const msg =
-  //   runnerConfig && runnerConfig.verbose
-  //     ? message || err.stack || err.message
-  //     : message || 'Some unknown error!';
+  const { err, testPath, start, runnerConfig, runnerName } = ctx;
+  const msg =
+    runnerConfig && runnerConfig.verbose
+      ? message || err.stack || err.message
+      : message || err.message || 'Some unknown error!';
 
   return {
     hasError: true,
     error: fail({
-      start: startTime,
-      end: new Date(),
+      start,
+      end: Date.now(),
       test: {
         path: testPath,
         title: runnerName,
-        errorMessage: `${runnerName} runZZZZZZZner: ${message || err.stack}`,
+        errorMessage: `${runnerName} runner: ${msg}`,
       },
     }),
   };

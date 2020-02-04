@@ -1,12 +1,10 @@
+/* eslint-disable global-require */
+
 'use strict';
 
 // const builtins = require('builtin-modules');
 // const nodeResolve = require('rollup-plugin-node-resolve');
 // const commonjs = require('rollup-plugin-commonjs');
-
-const fs = require('fs');
-const path = require('path');
-const { cov } = require('./package.json');
 
 // const memoizeCachePath = path.join('.cache', 'docs-posthook-memoized');
 // const memoizeFN = memoizeFS({ cachePath: memoizeCachePath }).fn;
@@ -36,12 +34,20 @@ module.exports = {
   },
   docks: {
     verbose: true,
+    // NOTE functions passed to a config must be "pure functions",
+    // e.g. no variables from outer scope
     postHook: async ({ pkgRoot, jestConfig: { rootDir } }) => {
+      const fs = require('fs');
+      const path = require('path');
+
+      // eslint-disable-next-line import/no-dynamic-require
+      const { cov } = require(path.join(rootDir, 'package.json'));
+
       const pkgDir = path.relative(rootDir, pkgRoot);
       const pkgJsonPath = path.join(pkgRoot, 'package.json');
       const covField = cov[pkgDir];
 
-      // eslint-disable-next-line import/no-dynamic-require, global-require
+      // eslint-disable-next-line import/no-dynamic-require
       const pkgJson = require(pkgJsonPath);
 
       const json = {
@@ -53,10 +59,9 @@ module.exports = {
       await fs.writeFileSync(pkgJsonPath, `${pkgStr}\n`);
 
       // eslint-disable-next-line global-require
-      const execa = require('execa');
+      const { exec } = require('@tunnckocore/execa');
 
-      // TODO not run?! WTF?
-      await execa.command('verb', { cwd: pkgRoot });
+      await exec('verb', { cwd: pkgRoot });
     },
   },
 

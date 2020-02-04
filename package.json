@@ -19,8 +19,9 @@
     "bundle": "ROLLUP_FORCE_RELOAD=1 yarn start bundle",
     "clean:dist": "rm -rf @{web,configs,packages,tunnckocore}/*/dist",
     "clean:fresh": "lerna clean -y && rm -rf node_modules yarn.lock",
-    "cleanup": "yarn run clean:dist && yarn run clean:fresh",
-    "docs": "yarn start docs && yarn run docs:verb && yarn run format '**/*.{json,md}'",
+    "clean:readmes": "rm -rf @{configs,packages,tunnckocore}/*/README.md",
+    "cleanup": "yarn run clean:dist && yarn run clean:fresh && yarn run clean:readmes",
+    "docs": "yarn start docs && yarn run format '**/*.{json,md}'",
     "docs:verb": "lerna exec --parallel \"verb --cwd $PWD\"",
     "fmt": "yarn run format '**/*'",
     "format": "prettier --write",
@@ -128,7 +129,7 @@
       "color": "green"
     },
     "@packages/jest-runner-docs": {
-      "value": 5.99,
+      "value": 6.11,
       "color": "red"
     },
     "@packages/jest-runner-node": {
@@ -160,7 +161,7 @@
       "color": "green"
     },
     "@tunnckocore/create-jest-runner": {
-      "value": 20.38,
+      "value": 19.91,
       "color": "red"
     },
     "@tunnckocore/execa": {

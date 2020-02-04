@@ -3,8 +3,10 @@ const path = require('path')
 const crypto = require('crypto')
 const meriyah = require('meriyah')
 
-module.exports = buildMemoizer
-module.exports.getCacheFilePath = getCacheFilePath
+const serializer = {
+  serialize: serialize,
+  deserialize: deserialize
+}
 
 function serialize (val) {
   const circRefColl = []
@@ -24,6 +26,13 @@ function serialize (val) {
   })
 }
 
+function deserialize (...args) {
+  return JSON.parse(...args)
+}
+
+module.exports = buildMemoizer
+module.exports.getCacheFilePath = getCacheFilePath
+
 function getCacheFilePath (fn, args, opt) {
   const salt = opt.salt || ''
   let fnStr = ''
@@ -34,16 +43,15 @@ function getCacheFilePath (fn, args, opt) {
     }
     fnStr = opt.astBody ? JSON.stringify(fnStr) : fnStr
   }
-  const argsStr = serialize(args)
+  const argsStr = opt.serialize(args)
   const hash = crypto.createHash('md5').update(fnStr + argsStr + salt).digest('hex')
   return path.join(opt.cachePath, opt.cacheId, hash)
 }
 
 function buildMemoizer (options) {
   const promiseCache = {}
-
   // check args
-  if (typeof options !== 'object') {
+  if (!options || (options && typeof options !== 'object')) {
     throw new Error('options of type object expected')
   }
   if (typeof options.cachePath !== 'string') {
@@ -77,13 +85,19 @@ function buildMemoizer (options) {
       if (optExt.maxAge && typeof optExt.maxAge !== 'number') {
         throw new Error('maxAge option of type number bigger zero expected')
       }
+      if (optExt.serialize && typeof optExt.serialize !== 'function') {
+        throw new Error('serialize option of type function expected')
+      }
+      if (optExt.deserialize && typeof optExt.deserialize !== 'function') {
+        throw new Error('deserialize option of type function expected')
+      }
     }
 
     if (opt && typeof opt !== 'object') {
       throw new Error('opt of type object expected, got \'' + typeof opt + '\'')
     }
 
-    const optExt = opt || {}
+    const optExt = {...serializer, ...options, ...opt}
 
     if (typeof fn !== 'function') {
       throw new Error('fn of type function expected')
@@ -117,7 +131,7 @@ function buildMemoizer (options) {
                 let resultString
                 if ((r && typeof r === 'object') || typeof r === 'string') {
                   resultObj = { data: r }
-                  resultString = serialize(resultObj)
+                  resultString = optExt.serialize(resultObj)
                 } else {
                   resultString = '{"data":' + r + '}'
                 }
@@ -158,7 +172,7 @@ function buildMemoizer (options) {
                 } catch (e) {
                   return reject(e)
                 }
-                if (result && result.then && typeof result.then === 'function') {
+                if (result && typeof result.then === 'function') {
                   // result is a promise instance
                   return result.then(function (retObj) {
                     writeResult(retObj, function () {
@@ -193,7 +207,9 @@ function buildMemoizer (options) {
 
               function parseResult (resultString) {
                 try {
-                  return JSON.parse(resultString).data // will fail on NaN
+                  const deserializedValue = optExt.deserialize(resultString)
+                  return deserializedValue.data || deserializedValue
+                  // return JSON.parse(resultString).data // will fail on NaN
                 } catch (e) {
                   return undefined
                 }

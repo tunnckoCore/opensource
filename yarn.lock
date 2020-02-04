@@ -11522,6 +11522,11 @@ node-releases@^1.1.46, node-releases@^1.1.47:
   dependencies:
     semver "^6.3.0"
 
+node-serialize@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/node-serialize/-/node-serialize-0.0.4.tgz#b73a49e1353306657103a5e49f7f05279ba97f7f"
+  integrity sha1-tzpJ4TUzBmVxA6Xkn38FJ5upf38=
+
 nodemon@^1.18.6:
   version "1.19.4"
   resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.19.4.tgz#56db5c607408e0fdf8920d2b444819af1aae0971"

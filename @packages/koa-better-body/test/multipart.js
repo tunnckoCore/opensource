@@ -48,10 +48,10 @@ test('should get multipart body by default', async () => {
       expect(this.request.files).toBeTruthy();
       // possible fails, because it not respect order, it's async
       // strictEqual(this.request.files[0].name, 'package.json')
-      // strictEqual(this.request.files[1].name, 'README.md')
+      // strictEqual(this.request.files[1].name, 'CHANGELOG.md')
       // strictEqual(this.request.files[2].name, 'example.js')
       // strictEqual(this.request.fields.foo[0].name, 'package.json')
-      // strictEqual(this.request.fields.foo[1].name, 'README.md')
+      // strictEqual(this.request.fields.foo[1].name, 'CHANGELOG.md')
       // strictEqual(this.request.fields.bar[0].name, 'example.js')
       expect(this.request.files).toHaveLength(3);
       expect(this.request.fields.foo).toHaveLength(2);
@@ -64,7 +64,7 @@ test('should get multipart body by default', async () => {
       .post('/')
       .type('multipart/form-data')
       .attach('foo', filepath('package.json'))
-      .attach('foo', filepath('README.md'))
+      .attach('foo', filepath('CHANGELOG.md'))
       .attach('bar', filepath('example.js'))
       .expect(200)
       .expect('ok1')
