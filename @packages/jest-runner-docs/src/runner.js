@@ -18,7 +18,7 @@ const docks = require('./docks');
 process.env.NODE_ENV = 'docs';
 
 module.exports = runner('docks', async (ctx) => {
-  const start = Date.now();
+  const start = new Date();
   const { testPath, config, runnerConfig, memoizer } = ctx;
 
   const docksConfig = {
@@ -82,7 +82,9 @@ module.exports = runner('docks', async (ctx) => {
           ? `${header}\n\n${promo}\n\n${apidocsContent.trim()}\n\n`
           : '\n';
 
-      await fs.outputFile(outputFile, cont);
+      const outDir = path.dirname(outputFile);
+      await fs.mkdir(outDir, { recursive: true });
+      await fs.writeFile(outputFile, cont);
       // const outDir = path.dirname(outputFile);
       // if (!fs.existsSync(outDir)) {
       //   await mkdirp(outDir, { recursive: true });
@@ -109,11 +111,11 @@ module.exports = runner('docks', async (ctx) => {
             const api = `\n\n${oldApiContents}${newContents}\n`;
             const afterApi = fileContents.slice(idxEnd);
 
-            await fs.outputFile(pkgVerbMd, `${beforeApi}${api}${afterApi}`);
+            await fs.writeFile(pkgVerbMd, `${beforeApi}${api}${afterApi}`);
           }
         }
       } else {
-        await fs.outputFile(pkgVerbMd, `${docksStart}\n${docksEnd}\n`);
+        await fs.writeFile(pkgVerbMd, `${docksStart}\n${docksEnd}\n`);
       }
 
       return outputFile;
@@ -145,10 +147,19 @@ module.exports = runner('docks', async (ctx) => {
 
   const res = await utils.tryCatch(
     async () => {
-      const hookMemoized = await memoizer.memoize(postHookFunc, {
-        cacheId: 'posthook',
+      await postHookFunc({
+        pkgRoot,
+        jestConfig: config,
+        docksConfig,
+        outfile,
+        outFile: outfile,
+        testPath,
+        contents: testPathContents,
       });
-      await hookMemoized(testPath, testPathContents);
+      // const hookMemoized = await memoizer.memoize(postHookFunc, {
+      //   cacheId: 'posthook',
+      // });
+      // await hookMemoized(testPath, testPathContents);
     },
     { start, testPath, runnerConfig: docksConfig },
   );

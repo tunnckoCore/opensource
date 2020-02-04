@@ -59,6 +59,7 @@ from [GitHub Actions](https://github.com/features/actions) with
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -79,6 +80,8 @@ think to contribute to this project._
 ```bash
 $ yarn add jest-runner-rollup
 ```
+
+## API
 
 <!-- docks-start -->
 

@@ -68,6 +68,7 @@ from [GitHub Actions](https://github.com/features/actions) with
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
   - [globCache](#globcache)
     - [Signature](#signature)
     - [Params](#params)
@@ -92,6 +93,8 @@ think to contribute to this project._
 ```bash
 $ yarn add glob-cache
 ```
+
+## API
 
 <!-- docks-start -->
 

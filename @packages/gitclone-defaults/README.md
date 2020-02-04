@@ -60,6 +60,7 @@ from [GitHub Actions](https://github.com/features/actions) with
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
   - [gitcloneDefaults](#gitclonedefaults)
     - [Signature](#signature)
     - [Params](#params)
@@ -84,6 +85,8 @@ think to contribute to this project._
 ```bash
 $ yarn add gitclone-defaults
 ```
+
+## API
 
 <!-- docks-start -->
 

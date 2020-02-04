@@ -59,6 +59,7 @@ from [GitHub Actions](https://github.com/features/actions) with
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
   - [stringifyGithubShortUrl](#stringifygithubshorturl)
     - [Signature](#signature)
     - [Params](#params)
@@ -83,6 +84,8 @@ think to contribute to this project._
 ```bash
 $ yarn add stringify-github-short-url
 ```
+
+## API
 
 <!-- docks-start -->
 

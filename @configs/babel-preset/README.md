@@ -59,6 +59,7 @@ from [GitHub Actions](https://github.com/features/actions) with
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -79,6 +80,8 @@ think to contribute to this project._
 ```bash
 $ yarn add @tunnckocore/babel-preset
 ```
+
+## API
 
 <!-- docks-start -->
 
@@ -168,7 +171,7 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- Front line badges -->
 
-[codecoverage-img]: https://badgen.net/badge/coverage/74.92%25/EEAA22?icon=codecov&cache=300 
+[codecoverage-img]: https://badgen.net/badge/coverage/2.17%25/red?icon=codecov&cache=300 
 
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 

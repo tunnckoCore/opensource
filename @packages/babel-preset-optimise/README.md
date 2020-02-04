@@ -61,6 +61,7 @@ from [GitHub Actions](https://github.com/features/actions) with
 - [Install](#install)
 - [Usage](#usage)
 - [What it includes?](#what-it-includes)
+- [API](#api)
   - [babelPresetOptimize](#babelpresetoptimize)
     - [Signature](#signature)
     - [Params](#params)
@@ -104,11 +105,13 @@ optionally the TypeScript and the React presets. It also includes a several
 optimization plugins from the Babel Minify project which are very well curated
 for best and small output.
 
+## API
+
 <!-- docks-start -->
 
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
-### [babelPresetOptimize](./src/index.js#L14)
+### [babelPresetOptimize](./src/index.js#L15)
 
 Be aware that when you use `minifyBuiltins: true` you _MAY_ get a bigger output,
 but that's not always guaranteed, just try for your case.
@@ -128,6 +131,8 @@ function(api, options)
 - `options` **{object}** - optionally control what can be included
 - `options.react` **{boolean}** - default `false`, includes the React preset and
   3 react plugins
+- `options.modules` **{boolean}** - default `false`, pass non-falsey value to
+  transform to CommonJS
 - `options.typescript` **{boolean}** - default `false`, includes the TypeScript
   preset
 - `options.minifyBuiltins` **{boolean}** - default `false`, includes
@@ -220,7 +225,7 @@ License][license-url].
 
 <!-- Front line badges -->
 
-[codecoverage-img]: https://badgen.net/badge/coverage/unknown/grey?icon=codecov&cache=300
+[codecoverage-img]: https://badgen.net/badge/coverage/98.61%25/99CC09?icon=codecov&cache=300
 
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 

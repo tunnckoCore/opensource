@@ -29,18 +29,17 @@ function wrapper(runnerName, runnerFn) {
 
   // eslint-disable-next-line unicorn/consistent-function-scoping
   function memoize(func, opts) {
-    return async (...args) => {
-      if (process.env.JEST_RUNNER_RELOAD_CACHE) {
-        await memoizer.invalidate();
-      }
-      const memoizedFunc = await memoizer.fn(func, {
-        astBody: true,
-        salt: runnerName,
-        ...opts,
-      });
-      const res = await memoizedFunc(...args);
-      return res;
-    };
+    return async (...args) => await func(...args);
+    // if (process.env.JEST_RUNNER_RELOAD_CACHE) {
+    //   await memoizer.invalidate();
+    // }
+    // const memoizedFunc = await memoizer.fn(func, {
+    //   astBody: true,
+    //   salt: runnerName,
+    //   ...opts,
+    // });
+    // const res = await memoizedFunc(...args);
+    // return res;
   }
   memoizer.memoize = memoize;
 
@@ -72,7 +71,7 @@ function wrapper(runnerName, runnerFn) {
 exports.wrapper = wrapper;
 
 function tryLoadConfig(ctx) {
-  return () =>
+  return (_fp) =>
     tryCatch(async () => {
       const cfg = await jestRunnerConfig.search();
 

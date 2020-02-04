@@ -53,8 +53,10 @@ module.exports = {
       await fs.writeFileSync(pkgJsonPath, `${pkgStr}\n`);
 
       // eslint-disable-next-line global-require
-      const { exec } = require('@tunnckocore/execa');
-      await exec('verb', { cwd: pkgRoot });
+      const execa = require('execa');
+
+      // TODO not run?! WTF?
+      await execa.command('verb', { cwd: pkgRoot });
     },
   },
 

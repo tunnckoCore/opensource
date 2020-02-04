@@ -60,6 +60,7 @@ from [GitHub Actions](https://github.com/features/actions) with
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
   - [isBreakingChangePlugin](#isbreakingchangeplugin)
   - [mentionsPlugin](#mentionsplugin)
   - [.parseHeader](#parseheader)
@@ -98,6 +99,8 @@ think to contribute to this project._
 ```bash
 $ yarn add parse-commit-message
 ```
+
+## API
 
 <!-- docks-start -->
 

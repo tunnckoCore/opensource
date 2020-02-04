@@ -17,7 +17,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap --since",
     "bundle": "ROLLUP_FORCE_RELOAD=1 yarn start bundle",
-    "clean:dist": "rm -rf @{web,configs,packages,@tunnckocore}/*/dist",
+    "clean:dist": "rm -rf @{web,configs,packages,tunnckocore}/*/dist",
     "clean:fresh": "lerna clean -y && rm -rf node_modules yarn.lock",
     "cleanup": "yarn run clean:dist && yarn run clean:fresh",
     "docs": "yarn start docs && yarn run docs:verb && yarn run format '**/*.{json,md}'",
@@ -62,6 +62,7 @@
     "enquirer": "^2.3.4",
     "eslint": "^6.8.0",
     "esm": "^3.2.25",
+    "execa": "^4.0.0",
     "glob": "^7.1.6",
     "hela": "^3.0.0-next.20200119.4",
     "husky": "^4.2.1",

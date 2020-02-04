@@ -1,5 +1,3 @@
-
-
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [arrIncludes](./src/index.js#L33)
@@ -20,9 +18,8 @@ function(arr, values)
 
 - `arr` **{Array}** - array to check
 - `values` **{Array&lt;string&gt;}** - array or string
-- `returns` **{boolean|number}** - returns `false` if not found, `true` if **index is 0** from the array, otherwise `number` index
-
-
+- `returns` **{boolean|number}** - returns `false` if not found, `true` if
+  **index is 0** from the array, otherwise `number` index
 
 <span id="arrincludes-examples"></span>
 
@@ -52,4 +49,3 @@ console.log(arrIncludes(['foo', 'bb', 'b'], ['a', 'b'])); // => 2
 console.log(arrIncludes(['foo', 'bar', 'qux'], ['a', 'b', 'foo'])); // => true
 console.log(arrIncludes(['bar', 123, 'foo', 'qux'], ['a', 'b', 'foo'])); // => 2
 ```
-

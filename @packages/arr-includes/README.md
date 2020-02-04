@@ -60,6 +60,7 @@ from [GitHub Actions](https://github.com/features/actions) with
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
   - [arrIncludes](#arrincludes)
     - [Signature](#signature)
     - [Params](#params)
@@ -84,6 +85,8 @@ think to contribute to this project._
 ```bash
 $ yarn add arr-includes
 ```
+
+## API
 
 <!-- docks-start -->
 
