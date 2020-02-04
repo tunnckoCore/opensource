@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.4.0...jest-runner-docs@1.4.1) (2020-02-04)
+
+
+### Bug Fixes
+
+* bugs, missing deps, docs ([e769ef4](https://github.com/tunnckoCore/opensource/commit/e769ef467a254e534948bc6ca0a59db52cc55b3f))
+* coverage bugs, regen ([997f459](https://github.com/tunnckoCore/opensource/commit/997f459bff26b47f9119b4b7046f7b7d8b7afd6c))
+* docks bug, re-run ([286e4af](https://github.com/tunnckoCore/opensource/commit/286e4af4de74899decf0bf71124b0abb214c887a))
+* **babel-preset-optimise:** add tests; misc stuff ([b64da31](https://github.com/tunnckoCore/opensource/commit/b64da319543e3caa5a0da74fafcd736b9a10d46b))
+
+
+
+
+
 # [1.4.0](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.3.0...jest-runner-docs@1.4.0) (2020-02-03)
 
 

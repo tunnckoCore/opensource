@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/babel-preset@1.2.1...@tunnckocore/babel-preset@1.2.2) (2020-02-04)
+
+
+### Bug Fixes
+
+* bugs, missing deps, docs ([e769ef4](https://github.com/tunnckoCore/opensource/commit/e769ef467a254e534948bc6ca0a59db52cc55b3f))
+* coverage bugs, regen ([997f459](https://github.com/tunnckoCore/opensource/commit/997f459bff26b47f9119b4b7046f7b7d8b7afd6c))
+* docks bug, re-run ([286e4af](https://github.com/tunnckoCore/opensource/commit/286e4af4de74899decf0bf71124b0abb214c887a))
+
+
+
+
+
 ## [1.2.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/babel-preset@1.2.0...@tunnckocore/babel-preset@1.2.1) (2020-02-03)
 
 
