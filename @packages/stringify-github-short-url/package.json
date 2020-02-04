@@ -1,6 +1,6 @@
 {
   "name": "stringify-github-short-url",
-  "version": "3.3.2",
+  "version": "3.3.3",
   "licenseStart": 2015,
   "license": "MPL-2.0",
   "description": "Generate Github / npm shorthand from list of arguments or object",

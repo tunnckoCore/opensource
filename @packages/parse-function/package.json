@@ -1,6 +1,6 @@
 {
   "name": "parse-function",
-  "version": "5.6.2",
+  "version": "5.6.3",
   "licenseStart": 2016,
   "license": "MPL-2.0",
   "description": "Parse a function into an object using espree, acorn or babylon parsers. Extensible through Smart Plugins",

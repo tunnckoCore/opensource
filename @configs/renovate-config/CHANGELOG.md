@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/renovate-config@1.1.1...@tunnckocore/renovate-config@1.1.2) (2020-02-04)
+
+
+### Bug Fixes
+
+* readme generation, API heading ([aa96c3f](https://github.com/tunnckoCore/opensource/commit/aa96c3f06af5a27b0e3b4119b92a9f7978e0e251))
+
+
+
+
+
 ## [1.1.1](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/renovate-config@1.1.0...@tunnckocore/renovate-config@1.1.1) (2020-02-03)
 
 

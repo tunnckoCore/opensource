@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/tunnckoCore/opensource/compare/glob-cache@0.3.2...glob-cache@0.3.3) (2020-02-04)
+
+
+### Bug Fixes
+
+* coverage bugs, regen ([997f459](https://github.com/tunnckoCore/opensource/commit/997f459bff26b47f9119b4b7046f7b7d8b7afd6c))
+* docks bug, re-run ([286e4af](https://github.com/tunnckoCore/opensource/commit/286e4af4de74899decf0bf71124b0abb214c887a))
+* readme generation, API heading ([aa96c3f](https://github.com/tunnckoCore/opensource/commit/aa96c3f06af5a27b0e3b4119b92a9f7978e0e251))
+
+
+
+
+
 ## [0.3.2](https://github.com/tunnckoCore/opensource/compare/glob-cache@0.3.1...glob-cache@0.3.2) (2020-02-03)
 
 

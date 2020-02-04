@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.3](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.4.2...@tunnckocore/eslint-config@5.4.3) (2020-02-04)
+
+
+### Bug Fixes
+
+* readme generation, API heading ([aa96c3f](https://github.com/tunnckoCore/opensource/commit/aa96c3f06af5a27b0e3b4119b92a9f7978e0e251))
+
+
+
+
+
 ## [5.4.2](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.4.1...@tunnckocore/eslint-config@5.4.2) (2020-02-04)
 
 **Note:** Version bump only for package @tunnckocore/eslint-config
