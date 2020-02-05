@@ -1,16 +1,14 @@
-
-
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [.exec](./src/index.js#L39)
 
-Uses [execa][] v2, `execa.command()` method.
-As stated there, think of it as mix of `child_process`'s `.execFile` and `.spawn`.
-It is pretty similar to the `.shell` method too, but only visually because
-it does not uses the system's shell, meaning it does not have access to
-the system's environment variables. You also can control concurrency by
-passing `options.concurrency` option. For example, pass `concurrency: 1` to run in series
-instead of in parallel which is the default behavior.
+Uses [execa][] v2, `execa.command()` method. As stated there, think of it as mix
+of `child_process`'s `.execFile` and `.spawn`. It is pretty similar to the
+`.shell` method too, but only visually because it does not uses the system's
+shell, meaning it does not have access to the system's environment variables.
+You also can control concurrency by passing `options.concurrency` option. For
+example, pass `concurrency: 1` to run in series instead of in parallel which is
+the default behavior.
 
 <span id="exec-signature"></span>
 
@@ -24,12 +22,14 @@ function(cmds, options)
 
 #### Params
 
-- `cmds` **{Array&lt;string&gt;}** - a string or array of string commands to execute in parallel or series
-- `[options]` **{object}** - directly passed to [execa][] and so to `child_process`
+- `cmds` **{Array&lt;string&gt;}** - a string or array of string commands to
+  execute in parallel or series
+- `[options]` **{object}** - directly passed to [execa][] and so to
+  `child_process`
 - `returns` **{Promise}** - resolved or rejected promises
 
-> It also can accept array of multiple strings of commands that will be
-executed in series or in parallel (default).
+> It also can accept array of multiple strings of commands that will be executed
+> in series or in parallel (default).
 
 <span id="exec-examples"></span>
 
@@ -44,10 +44,13 @@ async function main() {
   await exec('echo "hello world"', { stdio: 'inherit' });
 
   // executes in series (because `concurrency` option is set to `1`)
-  await exec([
-    'prettier-eslint --write foobar.js',
-    'eslint --format codeframe foobar.js --fix'
-  ], { stdio: 'inherit', preferLocal: true, concurrency: 1 });
+  await exec(
+    [
+      'prettier-eslint --write foobar.js',
+      'eslint --format codeframe foobar.js --fix',
+    ],
+    { stdio: 'inherit', preferLocal: true, concurrency: 1 },
+  );
 }
 
 main();
@@ -55,7 +58,8 @@ main();
 
 ### [.shell](./src/index.js#L95)
 
-Similar to `exec`, but also **can** access the system's environment variables from the command.
+Similar to `exec`, but also **can** access the system's environment variables
+from the command.
 
 <span id="shell-signature"></span>
 
@@ -73,8 +77,6 @@ function(cmds, options)
 - `options` **{object}** - directly passed to `execa`
 - `returns` **{Promise}** - resolved or rejected promises
 
-
-
 <span id="shell-examples"></span>
 
 #### Examples
@@ -86,18 +88,13 @@ import { shell } from '@tunnckocore/execa';
 
 async function main() {
   // executes in series
-  await shell([
-    'echo unicorns',
-    'echo "foo-$HOME-bar"',
-    'echo dragons'
-  ], { stdio: 'inherit' });
+  await shell(['echo unicorns', 'echo "foo-$HOME-bar"', 'echo dragons'], {
+    stdio: 'inherit',
+  });
 
   // exits with code 3
   try {
-    await shell([
-      'exit 3',
-      'echo nah'
-    ]);
+    await shell(['exit 3', 'echo nah']);
   } catch (er) {
     console.error(er);
     // => {
@@ -118,8 +115,8 @@ main();
 
 ### [execa](./src/index.js#L121)
 
-Same as [execa][]'s default export, see its documentation.
-Think of this as a mix of `child_process.execFile()` and `child_process.spawn()`.
+Same as [execa][]'s default export, see its documentation. Think of this as a
+mix of `child_process.execFile()` and `child_process.spawn()`.
 
 <span id="execa-signature"></span>
 
@@ -137,14 +134,12 @@ function(file, args, options)
 - `args` **{Array&lt;string&gt;}** - arguments / flags to be passed to `file`
 - `options` **{object}** - optional options, passed to `child_process`'s methods
 
-
-
 <span id="execa-examples"></span>
 
 #### Examples
 
 ```js
-import execa from '@tunnckocore/execa'
+import execa from '@tunnckocore/execa';
 // or
 // const execa = require('@tunnckocore/execa');
 
@@ -154,4 +149,3 @@ async function main() {
 
 main();
 ```
-
