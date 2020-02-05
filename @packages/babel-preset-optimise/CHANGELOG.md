@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/tunnckoCore/opensource/compare/babel-preset-optimise@0.2.3...babel-preset-optimise@0.2.4) (2020-02-05)
+
+
+### Bug Fixes
+
+* **babel-preset-optimise:** update repo link ([298f206](https://github.com/tunnckoCore/opensource/commit/298f20644cb58dcf56dcadfc03f291ee249fe61f))
+
+
+
+
+
 ## [0.2.3](https://github.com/tunnckoCore/opensource/compare/babel-preset-optimise@0.2.2...babel-preset-optimise@0.2.3) (2020-02-04)
 
 
