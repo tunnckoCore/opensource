@@ -45,26 +45,42 @@
   "renovate-config": {
     "default": {
       "extends": [
-        "config:base",
-        ":assignee(@tunnckoCore)",
-        ":automergeAll",
+        ":onlyNpm",
+        ":semanticCommits",
+        ":semanticPrefixFixDepsChoreOthers",
+        ":prHourlyLimitNone",
+        ":prConcurrentLimitNone",
+        ":prNotPending",
+        ":rebaseStalePrs",
         ":automergeLinters",
-        ":automergeMajor",
-        ":automergePr",
         ":automergeTypes",
+        ":automergePatch",
+        ":automergeMinor",
+        ":automergeMajor",
+        ":automergeAll",
+        ":automergePr",
+        ":assignAndReview(@tunnckoCore)",
         ":enableVulnerabilityAlerts",
         ":gitSignOff",
         ":label(dependencies)",
-        ":maintainLockFilesWeekly",
-        ":onlyNpm",
-        ":prConcurrentLimit20",
+        ":ignoreModulesAndTests",
+        ":updateNotScheduled",
         ":preserveSemverRanges",
-        ":prHourlyLimitNone",
-        ":prNotPending",
-        ":rebaseStalePrs",
-        ":semanticCommits",
+        ":separateMajorReleases",
         ":separateMultipleMajorReleases"
       ],
+      "schedule": [
+        "after 7pm",
+        "before 6am"
+      ],
+      "lockFileMaintenance": {
+        "enabled": true,
+        "automerge": true,
+        "schedule": [
+          "after 7pm",
+          "before 6am"
+        ]
+      },
       "rollbackPrs": true,
       "vulnerabilityAlerts": {
         "enabled": true,
