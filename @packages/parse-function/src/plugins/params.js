@@ -18,6 +18,18 @@ export default () => (node, result) => {
     const restArgName =
       param.type === 'RestElement' && param.argument && param.argument.name;
 
+    if (
+      param.type === 'ObjectPattern' &&
+      param.properties &&
+      param.properties.length > 0
+    ) {
+      param.properties.forEach((prop) => {
+        const { name } = prop.value;
+        result.args.push(name);
+      });
+      return;
+    }
+
     const name = param.name || defaultArgsName || restArgName;
 
     result.args.push(name);
