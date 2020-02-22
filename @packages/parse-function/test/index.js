@@ -63,6 +63,7 @@ const fixtures = {
     'e => {return e + 5235 / e}',
     '(a, b) => a + 3 + b',
     '(x, y, ...restArgs) => console.log({ value: x * y })',
+    '({x, y}) => {}',
   ],
 };
 
