@@ -29,7 +29,7 @@
   "scripts": {},
   "peerDependencies": {
     "prettier": "^1.19.1",
-    "prettier-plugin-pkg": "^0.4.6"
+    "prettier-plugin-pkgjson": "^0.2.3"
   },
   "cov": {
     "color": "grey"
