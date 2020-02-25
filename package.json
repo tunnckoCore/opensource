@@ -30,7 +30,7 @@
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
     "patches": "yarn run patch:verb && yarn run patch:docs && yarn run patch:memoize",
     "reinstall": "yarn run cleanup && yarn run setup",
-    "release": "lerna version && lerna publish from-package",
+    "release": "lerna version && lerna publish from-package --otp",
     "run:node": "jest -c packages/jest-runner-node/src/config.js",
     "presetup": "echo foo-bar",
     "setup": "yarn && yarn run bootstrap",
