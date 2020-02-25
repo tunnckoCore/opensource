@@ -73,6 +73,7 @@ from [GitHub Actions](https://github.com/features/actions) with
     - [Signature](#signature)
     - [Params](#params)
     - [Examples](#examples)
+- [Context and how it works](#context-and-how-it-works)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -148,6 +149,167 @@ glob({ include: 'src/*.js', glob: tinyGlob }).then(({ results }) => {
 ```
 
 <!-- docks-end -->
+
+## Context and how it works
+
+Each context contains a `{ file, cacheFile, cacheLocation, cacache }` and more
+properties. The `file` one represents the fresh file loaded from the system, the
+`cacheFile` represents the file from the cache. Both has `path`, `size` and
+`integrity` properties, plus more.
+
+The `cacheFile` can be `null` if it's the first hit (not found in cache), in
+such case the `ctx.missing` will be `true` and on next runs this will be
+`false`.
+
+Important to note is that `cacheFile` don't have a `contents` property, but has
+`path` which points to the place of the cache file on the disk.
+
+The interesting one is the `ctx.valid`. This one is the reason for the whole
+existance of this module. If both the "source" file and cache file are the same,
+e.g. same size and integrity (which means the contents/shasum are equal), then
+`ctx.valid: true`, otherwise this will be `false`. Simply said, when you change
+your file(s) matched by a the given glob pattern(s), then it will be
+`valid: false` and the `options.hook` will be called.
+
+There is also one more key point, and it's in the `options`. We have
+`options.hook` and `options.always`. By default we only call the `options.hook`
+when `valid: false` which is important and intentional, because most of the time
+you only want to do or run something when there are actual changes in the files,
+right? But there are also a cases when you want more control, that's why we have
+`options.always` option which bypass the previous validation and so the
+`options.hook` will always be called and so you can decide what to do or make
+more additional checks - for example, listen the `mtime` - or track the
+dependencies of the file. Tracking dependencies is something that some test
+runner may benefit.
+
+Because all that, we also expose `cacache` to that `options.hook`, so you can
+update or clean the cache - it's up to you.
+
+Example `results` array with context (which is also passed to `options.hook`):
+
+```
+[
+  {
+    file: {
+      path: '/home/charlike/github/tunnckoCore/opensource/packages/glob-cache/test/index.js',
+      contents: <Buffer 27 75 73 65 20 73 74 72 69 63 74 27 3b 0a 0a 63 6f 6e 73 74 20 70 61 74 68 20 3d 20 72 65 71 75 69 72 65 28 27 70 61 74 68 27 29 3b 0a 63 6f 6e 73 74 ... 350 more bytes>,
+      size: 400,
+      integrity: 'sha512-p5daDYwu9vhNNjT9vfRrWHXIwwlPxeqeub4gs3qMZ88J//ONUH7Je2Muu9o+MxjA1Fv3xwbgkBdjcHgdj7ar4A=='
+    },
+    cacheFile: null,
+    cacheLocation: '/home/charlike/github/tunnckoCore/opensource/packages/glob-cache/test/fixture-cache',
+    cacache: { /* cacache instance */ },
+    valid: true,
+    missing: true
+  },
+  {
+    file: {
+      path: '/home/charlike/github/tunnckoCore/opensource/packages/glob-cache/src/index.js',
+      contents: <Buffer 2f 2a 20 65 73 6c 69 6e 74 2d 64 69 73 61 62 6c 65 20 6e 6f 2d 70 61 72 61 6d 2d 72 65 61 73 73 69 67 6e 20 2a 2f 0a 0a 27 75 73 65 20 73 74 72 69 63 ... 5268 more bytes>,
+      size: 5318,
+      integrity: 'sha512-946V9t8jWq6oGdAVnrl206b077+Ejl0VFn/MK1axZdsFyvzGrT+MfzH2aVQOUPMcp8jm5tZvES7A1XXEsRvZ9w=='
+    },
+    cacheFile: null,
+    cacheLocation: '/home/charlike/github/tunnckoCore/opensource/packages/glob-cache/test/fixture-cache',
+    cacache: { /* cacache instance */ },
+    valid: true,
+    missing: true
+  }
+]
+```
+
+And when you run it for the second time, the `cacheFile` won't be `null`
+anymore, like so
+
+```
+{
+  file: {
+    path: '/home/charlike/github/tunnckoCore/opensource/packages/glob-cache/src/index.js',
+    contents: <Buffer 2f 2a 20 65 73 6c 69 6e 74 2d 64 69 73 61 62 6c 65 20 6e 6f 2d 70 61 72 61 6d 2d 72 65 61 73 73 69 67 6e 20 2a 2f 0a 0a 27 75 73 65 20 73 74 72 69 63 ... 5268 more bytes>,
+    size: 5318,
+    integrity: 'sha512-946V9t8jWq6oGdAVnrl206b077+Ejl0VFn/MK1axZdsFyvzGrT+MfzH2aVQOUPMcp8jm5tZvES7A1XXEsRvZ9w=='
+  },
+  cacheFile: {
+    key: '/home/charlike/github/tunnckoCore/opensource/packages/glob-cache/src/index.js',
+    integrity: 'sha512-946V9t8jWq6oGdAVnrl206b077+Ejl0VFn/MK1axZdsFyvzGrT+MfzH2aVQOUPMcp8jm5tZvES7A1XXEsRvZ9w==',
+    path: '/home/charlike/github/tunnckoCore/opensource/packages/glob-cache/test/fixture-cache/content-v2/sha512/78/84/a154130fdefee002a708cee1ae570db54b1a278fed9b7a3847c73b2545bd48947c2cd192d365f9d87653f098f80d98b4ee37923ba467dbc314acf0f42e39',
+    size: 5318,
+    time: 1579561781331,
+    metadata: undefined
+  },
+  cacheLocation: '/home/charlike/github/tunnckoCore/opensource/packages/glob-cache/test/fixture-cache',
+  cacache: { /* cacache instance */ },
+  valid: true,
+  missing: false
+}
+```
+
+As you can see above, both the `file.integrity` and `cacheFile.integrity` are
+the same, also the `size`, so the both files are equal (and so `valid: true`),
+and if you didn't put `always: true`, in this case the `hook` won't be called.
+
+One more thing to clarify. When there is no cache, e.g. the state is "missing",
+and if you look over the code you'll see that the `valid` is hard-coded/forced
+to be `true`. You may expect the hook to be called in the first run but it will
+not. For that behavior you should use the `always: true`.
+
+In case you use the `options.always: true` option, you may need to have similar
+check in your `options.hook`:
+
+```js
+const JestWorker = require('jest-worker');
+
+let worker = null;
+
+(async () => {
+  await globCache({
+    async hook(ctx) {
+      if (ctx.valid === false || (ctx.valid && ctx.missing)) {
+        // If we are here, it's either the first run, or
+        // only when there's a difference between the actual file and the cache file.
+        // So we can, for example, call our worker/runner or whatever here.
+        worker =
+          worker ||
+          new JestWorker(require.resolve('./my-awesome-worker-or-runner.js'), {
+            numWorkers: 7,
+            forkOptions: { stdio: 'inherit' },
+          });
+
+        await worker.default(ctx);
+        await worker.end();
+      }
+    },
+  });
+})();
+```
+
+Above you're looking on a basic solution similar to what's done in Jest with the
+difference that Jest can detect changes only if it's a Git project. At least the
+`--onlyChanged` works that way (with Git requirement) - which isn't a big
+problem of course since mostly every project is using Git, but anyway.
+
+The point is, that you can do whatever you want in custom conditions based on
+your preferences and needs.
+
+In above example you may wonder why we are instatiating JestWorker inside the
+`if` statement. That's because if you instantiate it before the call of
+`globCache` (where is the `let worker` assignment) then you have no way to end
+the worker in any meaningful and easy way.
+
+Similar implementation you can see in the
+[`hela-eslint-workers`](https://github.com/tunnckoCore/opensource/tree/hela-eslint-workers/%40hela/eslint/src)
+branch where using `glob-cache` we are trying to speed up ESLint a bit, by
+putting `eslint.executeOnFiles` or `eslint.executeOnText` inside a worker. The
+thing is that it doesn't help much, because ESLint is just slow - for the same
+reason even the `jest-runner-eslint` doesn't help much with performance. The
+complexity in ESLint is O(n) - the more configs and plugins you have in your
+config, the more slow it will run even on a single file - it's inevitable and a
+huge problem. I'm not saying all that just to hate. It's just because of the
+synchornous design of ESLint and the way it works. A big pain point is not only
+that it exposes & uses only sync methods, but also the architecture of resolving
+huge amount of configs and plugins. That may change if
+[RFC#9](https://github.com/eslint/rfcs/pull/9) is accepted, for which I have big
+hopes. Even if it's accepted it will take few major releases.
 
 **[back to top](#readme)**
 
