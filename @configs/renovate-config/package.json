@@ -67,20 +67,13 @@
         ":updateNotScheduled",
         ":preserveSemverRanges",
         ":separateMajorReleases",
-        ":separateMultipleMajorReleases"
+        ":separateMultipleMajorReleases",
+        ":maintainLockFilesWeekly"
       ],
       "schedule": [
         "after 7pm",
         "before 6am"
       ],
-      "lockFileMaintenance": {
-        "enabled": true,
-        "automerge": true,
-        "schedule": [
-          "after 7pm",
-          "before 6am"
-        ]
-      },
       "rollbackPrs": true,
       "vulnerabilityAlerts": {
         "enabled": true,
