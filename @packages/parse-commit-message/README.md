@@ -60,6 +60,25 @@ from [GitHub Actions](https://github.com/features/actions) with
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
+  - [isBreakingChangePlugin](#isbreakingchangeplugin)
+  - [mentionsPlugin](#mentionsplugin)
+  - [.parseHeader](#parseheader)
+  - [.stringifyHeader](#stringifyheader)
+  - [.validateHeader](#validateheader)
+  - [.checkHeader](#checkheader)
+  - [.applyPlugins](#applyplugins)
+  - [.plugins](#plugins)
+  - [.mappers](#mappers)
+  - [.parseCommit](#parsecommit)
+  - [.stringifyCommit](#stringifycommit)
+  - [.validateCommit](#validatecommit)
+  - [.checkCommit](#checkcommit)
+  - [.parse](#parse)
+  - [.stringify](#stringify)
+  - [.validate](#validate)
+  - [.check](#check)
+  - [incrementPlugin](#incrementplugin)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -81,7 +100,972 @@ think to contribute to this project._
 $ yarn add parse-commit-message
 ```
 
-() => include(process.cwd() + '/.verb.md')
+## API
+
+<!-- docks-start -->
+
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
+
+### [isBreakingChangePlugin](./src/plugins/is-breaking-change.js#L30)
+
+A plugin that adds `isBreakingChange` and `isBreaking` (_deprecated_) properties
+to the `commit`. It is already included in the `plugins` named export, and in
+`mappers` named export. Be aware that there's a difference between the utility
+`isBreakingChange` which has named export (as everything from `src/utils`) and
+this plugin function.
+
+**Note: This plugin was included in v4 release version, previously was part of
+the `increment` plugin.**
+
+<span id="isbreakingchangeplugin-signature"></span>
+
+#### Signature
+
+```ts
+function(commit, options)
+```
+
+<span id="isbreakingchangeplugin-params"></span>
+
+#### Params
+
+- `commit` **{Commit}** - a standard `Commit` object
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{Commit}** - plus `{ isBreakingChange: boolean }`
+
+_See the [.plugins](#plugins) and [.mappers](#mappers) examples._
+
+<span id="isbreakingchangeplugin-examples"></span>
+
+#### Examples
+
+```js
+import { mappers, plugins } from 'parse-commit-message';
+
+console.log(mappers.isBreakingChange); // => [Function: isBreakingChangePlugin]
+console.log(plugins[2]); // => [Function: isBreakingChangePlugin]
+```
+
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
+
+### [mentionsPlugin](./src/plugins/mentions.js#L27)
+
+A plugin that adds `mentions` array property to the `commit`. It is already
+included in the `plugins` named export, and in `mappers` named export. Basically
+each entry in that array is an object, directly returned from the
+[collect-mentions][].
+
+<span id="mentionsplugin-signature"></span>
+
+#### Signature
+
+```ts
+function(commit, options)
+```
+
+<span id="mentionsplugin-params"></span>
+
+#### Params
+
+- `commit` **{Commit}** - a standard `Commit` object
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{Commit}** - plus `{ mentions: Array<Mention> }`
+
+_See the [.plugins](#plugins) and [.mappers](#mappers) examples._
+
+<span id="mentionsplugin-examples"></span>
+
+#### Examples
+
+```js
+import { mappers, plugins } from 'parse-commit-message';
+
+console.log(mappers.mentions); // => [Function: mentionsPlugin]
+console.log(plugins[0]); // => [Function: mentionsPlugin]
+```
+
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
+
+### [.parseHeader](./src/header.js#L31)
+
+Parses given `header` string into an header object. Basically the same as
+[.parse](#parse), except that it only can accept single string and returns a
+`Header` object.
+
+<span id="parseheader-signature"></span>
+
+#### Signature
+
+```ts
+function(header, options)
+```
+
+<span id="parseheader-params"></span>
+
+#### Params
+
+- `header` **{string}** - a header stirng like `'fix(foo): bar baz'`
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{Header}** - a `Header` object like `{ type, scope?, subject }`
+
+_The `parse*` methods are not doing any checking and validation, so you may want
+to pass the result to `validateHeader` or `checkHeader`, or to `validateHeader`
+with `ret` option set to `true`._
+
+<span id="parseheader-examples"></span>
+
+#### Examples
+
+```js
+import { parseHeader } from 'parse-commit-message';
+
+const longCommitMsg = `fix: bar qux
+
+Awesome body!`;
+
+const headerObj = parseCommit(longCommitMsg);
+console.log(headerObj);
+// => { type: 'fix', scope: null, subject: 'bar qux' }
+```
+
+### [.stringifyHeader](./src/header.js#L59)
+
+Receives a `header` object, validates it using `validateHeader`, builds a
+"header" string and returns it. Method throws if problems found. Basically the
+same as [.stringify](#stringify), except that it only can accept single `Header`
+object.
+
+<span id="stringifyheader-signature"></span>
+
+#### Signature
+
+```ts
+function(header, options)
+```
+
+<span id="stringifyheader-params"></span>
+
+#### Params
+
+- `header` **{Header}** - a `Header` object like `{ type, scope?, subject }`
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{string}** - a header stirng like `'fix(foo): bar baz'`
+
+<span id="stringifyheader-examples"></span>
+
+#### Examples
+
+```js
+import { stringifyHeader } from 'parse-commit-message';
+
+const headerStr = stringifyCommit({ type: 'foo', subject: 'bar qux' });
+console.log(headerStr); // => 'foo: bar qux'
+```
+
+### [.validateHeader](./src/header.js#L115)
+
+Validates given `header` object and returns `boolean`. You may want to pass
+`ret` to return an object instead of throwing. Basically the same as
+[.validate](#validate), except that it only can accept single `Header` object.
+
+<span id="validateheader-signature"></span>
+
+#### Signature
+
+```ts
+function(header, options)
+```
+
+<span id="validateheader-params"></span>
+
+#### Params
+
+- `header` **{Header}** - a `Header` object like `{ type, scope?, subject }`
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{CommitResult}** - an object like
+  `{ value: Array<Commit>, error: Error }`
+
+<span id="validateheader-examples"></span>
+
+#### Examples
+
+```js
+import { validateHeader } from 'parse-commit-message';
+
+const header = { type: 'foo', subject: 'bar qux' };
+
+const headerIsValid = validateHeader(header);
+console.log(headerIsValid); // => true
+
+const { value } = validateHeader(header, true);
+console.log(value);
+// => {
+//   header: { type: 'foo', scope: null, subject: 'bar qux' },
+//   body: 'okey dude',
+//   footer: null,
+// }
+
+const { error } = validateHeader(
+  {
+    type: 'bar',
+  },
+  true,
+);
+
+console.log(error);
+// => TypeError: header.subject should be non empty string
+```
+
+### [.checkHeader](./src/header.js#L156)
+
+Receives a `Header` and checks if it is valid. Basically the same as
+[.check](#check), except that it only can accept single `Header` object.
+
+<span id="checkheader-signature"></span>
+
+#### Signature
+
+```ts
+function(header, options)
+```
+
+<span id="checkheader-params"></span>
+
+#### Params
+
+- `header` **{Header}** - a `Header` object like `{ type, scope?, subject }`
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{Header}** - returns the same as given if no problems, otherwise
+  it will throw.
+
+<span id="checkheader-examples"></span>
+
+#### Examples
+
+```js
+import { checkHeader } from 'parse-commit-message';
+
+try {
+  checkHeader({ type: 'fix' });
+} catch (err) {
+  console.log(err);
+  // => TypeError: header.subject should be non empty string
+}
+
+// throws because can accept only Header objects
+checkHeader('foo bar baz');
+checkHeader(123);
+checkHeader([]);
+checkHeader([{ type: 'foo', subject: 'bar' }]);
+```
+
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
+
+### [.applyPlugins](./src/index.js#L102)
+
+Apply a set of `plugins` over all of the given `commits`. A plugin is a simple
+function passed with `Commit` object, which may be returned to modify and set
+additional properties to the `Commit` object.
+
+<span id="applyplugins-signature"></span>
+
+#### Signature
+
+```ts
+function(plugins, commits, options)
+```
+
+<span id="applyplugins-params"></span>
+
+#### Params
+
+- `plugins` **{Plugins}** - a simple function like `(commit) => {}`
+- `commits` **{PossibleCommit}** - a PossibleCommit or an array of strings; a
+  value which should already be gone through `parse`
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{Array&lt;Commit&gt;}** - plus the modified or added properties
+  from each function in `plugins`
+
+_The `commits` should be coming from `parse`, `validate` (with `ret` option) or
+the `check` methods. It does not do checking and validation._
+
+<span id="applyplugins-examples"></span>
+
+#### Examples
+
+```js
+import dedent from 'dedent';
+import { applyPlugins, plugins, parse, check } from 'parse-commit-message';
+
+const commits = [
+  'fix: bar qux',
+  dedent`feat(foo): yea yea
+
+  Awesome body here with @some mentions
+  resolves #123
+
+  BREAKING CHANGE: ouch!`,
+  'chore(ci): updates for ci config',
+  {
+    header: { type: 'fix', subject: 'Barry White' },
+    body: 'okey dude',
+    foo: 'possible',
+  },
+];
+
+// Parses, normalizes, validates
+// and applies plugins
+const results = applyPlugins(plugins, check(parse(commits)));
+
+console.log(results);
+// => [ { body: null,
+//   footer: null,
+//   header: { scope: null, type: 'fix', subject: 'bar qux' },
+//   mentions: [],
+//   increment: 'patch',
+//   isBreaking: false },
+// { body: 'Awesome body here with @some mentions\nresolves #123',
+//   footer: 'BREAKING CHANGE: ouch!',
+//   header: { scope: 'foo', type: 'feat', subject: 'yea yea' },
+//   mentions: [ [Object] ],
+//   increment: 'major',
+//   isBreaking: true },
+// { body: null,
+//   footer: null,
+//   header:
+//    { scope: 'ci', type: 'chore', subject: 'updates for ci config' },
+//   mentions: [],
+//   increment: false,
+//   isBreaking: false },
+// { body: 'okey dude',
+//   footer: null,
+//   header: { scope: null, type: 'fix', subject: 'Barry White' },
+//   foo: 'possible',
+//   mentions: [],
+//   increment: 'patch',
+//   isBreaking: false } ]
+```
+
+### [.plugins](./src/index.js#L186)
+
+An array which includes `mentions`, `isBreakingChange` and `increment` built-in
+plugins. The `mentions` is an array of objects - basically what's returned from
+the [collect-mentions][] package.
+
+<span id="plugins-examples"></span>
+
+#### Examples
+
+```js
+import { plugins, applyPlugins, parse } from 'parse-commit-message';
+
+console.log(plugins); // =>  [mentions, increment]
+console.log(plugins[0]); // => [Function mentions]
+console.log(plugins[0]); // => [Function increment]
+
+const cmts = parse([
+  'fix: foo @bar @qux haha',
+  'feat(cli): awesome @tunnckoCore feature\n\nSuper duper baz!'
+  'fix: ooh\n\nBREAKING CHANGE: some awful api change'
+]);
+
+const commits = applyPlugins(plugins, cmts);
+console.log(commits);
+// => [
+//   {
+//     header: { type: 'fix', scope: '', subject: 'foo bar baz' },
+//     body: '',
+//     footer: '',
+//     increment: 'patch',
+//     isBreaking: false,
+//     mentions: [
+//       { handle: '@bar', mention: 'bar', index: 8 },
+//       { handle: '@qux', mention: 'qux', index: 13 },
+//     ]
+//   },
+//   {
+//     header: { type: 'feat', scope: 'cli', subject: 'awesome feature' },
+//     body: 'Super duper baz!',
+//     footer: '',
+//     increment: 'minor',
+//     isBreaking: false,
+//     mentions: [
+//       { handle: '@tunnckoCore', mention: 'tunnckoCore', index: 18 },
+//     ]
+//   },
+//   {
+//     header: { type: 'fix', scope: '', subject: 'ooh' },
+//     body: 'BREAKING CHANGE: some awful api change',
+//     footer: '',
+//     increment: 'major',
+//     isBreaking: true,
+//     mentions: [],
+//   },
+// ]
+```
+
+### [.mappers](./src/index.js#L219)
+
+An object (named set) which includes `mentions` and `increment` built-in
+plugins.
+
+<span id="mappers-examples"></span>
+
+#### Examples
+
+```js
+import { mappers, applyPlugins, parse } from 'parse-commit-message';
+
+console.log(mappers); // => { mentions, increment }
+console.log(mappers.mentions); // => [Function mentions]
+console.log(mappers.increment); // => [Function increment]
+
+const flat = true;
+const parsed = parse('fix: bar', flat);
+console.log(parsed);
+// => {
+//   header: { type: 'feat', scope: 'cli', subject: 'awesome feature' },
+//   body: 'Super duper baz!',
+//   footer: '',
+// }
+
+const commit = applyPlugins([mappers.increment], parsed);
+console.log(commit);
+// => [{
+//   header: { type: 'feat', scope: 'cli', subject: 'awesome feature' },
+//   body: 'Super duper baz!',
+//   footer: '',
+//   increment: 'patch',
+// }]
+```
+
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
+
+### [.parseCommit](./src/commit.js#L33)
+
+Receives a full commit message `string` and parses it into an `Commit` object
+and returns it. Basically the same as [.parse](#parse), except that it only can
+accept single string.
+
+<span id="parsecommit-signature"></span>
+
+#### Signature
+
+```ts
+function(commit, options)
+```
+
+<span id="parsecommit-params"></span>
+
+#### Params
+
+- `commit` **{string}** - a message like
+  `'fix(foo): bar baz\n\nSome awesome body!'`
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{Commit}** - a standard object like
+  `{ header: Header, body?, footer? }`
+
+_The `parse*` methods are not doing any checking and validation, so you may want
+to pass the result to `validateCommit` or `checkCommit`, or to `validateCommit`
+with `ret` option set to `true`._
+
+<span id="parsecommit-examples"></span>
+
+#### Examples
+
+```js
+import { parseCommit } from 'parse-commit-message';
+
+const commitObj = parseCommit('foo: bar qux\n\nokey dude');
+console.log(commitObj);
+// => {
+//   header: { type: 'foo', scope: null, subject: 'bar qux' },
+//   body: 'okey dude',
+//   footer: null,
+// }
+```
+
+### [.stringifyCommit](./src/commit.js#L67)
+
+Receives a `Commit` object, validates it using `validateCommit`, builds a
+"commit" string and returns it. Method throws if problems found. Basically the
+same as [.stringify](#stringify), except that it only can accept single `Commit`
+object.
+
+<span id="stringifycommit-signature"></span>
+
+#### Signature
+
+```ts
+function(commit, options)
+```
+
+<span id="stringifycommit-params"></span>
+
+#### Params
+
+- `commit` **{Commit}** - a `Commit` object like
+  `{ header: Header, body?, footer? }`
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{string}** - a commit nessage stirng like `'fix(foo): bar baz'`
+
+<span id="stringifycommit-examples"></span>
+
+#### Examples
+
+```js
+import { stringifyCommit } from 'parse-commit-message';
+
+const commitStr = stringifyCommit({
+  header: { type: 'foo', subject: 'bar qux' },
+  body: 'okey dude',
+});
+console.log(commitStr); // => 'foo: bar qux\n\nokey dude'
+```
+
+### [.validateCommit](./src/commit.js#L117)
+
+Validates given `Commit` object and returns `CommitResult`. Basically the same
+as [.validate](#validate), except that it only can accept single `Commit`
+object.
+
+<span id="validatecommit-signature"></span>
+
+#### Signature
+
+```ts
+function(commit, options)
+```
+
+<span id="validatecommit-params"></span>
+
+#### Params
+
+- `commit` **{Commit}** - a `Commit` like `{ header: Header, body?, footer? }`
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{CommitResult}** - an object like
+  `{ value: Array<Commit>, error: Error }`
+
+<span id="validatecommit-examples"></span>
+
+#### Examples
+
+```js
+import { validateCommit } from 'parse-commit-message';
+
+const commit = {
+  header: { type: 'foo', subject: 'bar qux' },
+  body: 'okey dude',
+};
+
+const commitIsValid = validateCommit(commit);
+console.log(commitIsValid); // => true
+
+const { value } = validateCommit(commit, true);
+console.log(value);
+// => {
+//   header: { type: 'foo', scope: null, subject: 'bar qux' },
+//   body: 'okey dude',
+//   footer: null,
+// }
+```
+
+### [.checkCommit](./src/commit.js#L157)
+
+Receives a `Commit` and checks if it is valid. Method throws if problems found.
+Basically the same as [.check](#check), except that it only can accept single
+`Commit` object.
+
+<span id="checkcommit-signature"></span>
+
+#### Signature
+
+```ts
+function(commit, options)
+```
+
+<span id="checkcommit-params"></span>
+
+#### Params
+
+- `commit` **{Commit}** - a `Commit` like `{ header: Header, body?, footer? }`
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{Commit}** - returns the same as given if no problems, otherwise
+  it will throw.
+
+<span id="checkcommit-examples"></span>
+
+#### Examples
+
+```js
+import { checkCommit } from 'parse-commit-message';
+
+try {
+  checkCommit({ header: { type: 'fix' } });
+} catch (err) {
+  console.log(err);
+  // => TypeError: header.subject should be non empty string
+}
+
+// throws because can accept only Commit objects
+checkCommit('foo bar baz');
+checkCommit(123);
+checkCommit([{ header: { type: 'foo', subject: 'bar' } }]);
+```
+
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
+
+### [.parse](./src/main.js#L51)
+
+Receives and parses a single or multiple commit message(s) in form of string,
+object, array of strings, array of objects or mixed.
+
+<span id="parse-signature"></span>
+
+#### Signature
+
+```ts
+function(commits, options)
+```
+
+<span id="parse-params"></span>
+
+#### Params
+
+- `commits` **{PossibleCommit}** - a value to be parsed into an object like
+  `Commit` type
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{Array&lt;Commit&gt;}** - if array of commit objects
+
+<span id="parse-examples"></span>
+
+#### Examples
+
+```js
+import { parse } from 'parse-commit-message';
+
+const commits = ['fix(ci): tweaks for @circleci config', 'chore: bar qux'];
+const result = parse(commits);
+console.log(result);
+// => [{
+//   header: { type: 'fix', scope: 'ci', subject: 'tweaks for @circleci config' },
+//   body: null,
+//   footer: null,
+// }, {
+//   header: { type: 'chore', scope: null, subject: 'bar qux' },
+//   body: null,
+//   footer: null,
+// }]
+
+const commitMessage = `feat: awesome yeah
+
+Awesome body!
+resolves #123
+
+Signed-off-by: And Footer <abc@exam.pl>`;
+
+const res = parse(commitMessage);
+
+console.log(res);
+// => {
+//   header: { type: 'feat', scope: null, subject: 'awesome yeah' },
+//   body: 'Awesome body!\nresolves #123',
+//   footer: 'Signed-off-by: And Footer <abc@exam.pl>',
+// }
+```
+
+### [.stringify](./src/main.js#L101)
+
+Receives a `Commit` object, validates it using `validate`, builds a "commit"
+message string and returns it.
+
+<span id="stringify-signature"></span>
+
+#### Signature
+
+```ts
+function(commits, options)
+```
+
+<span id="stringify-params"></span>
+
+#### Params
+
+- `commits` **{PossibleCommit}** - a `Commit` object, or anything that can be
+  passed to `check`
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{Array&lt;string&gt;}** - an array of commit strings like
+  `'fix(foo): bar baz'`
+
+This method does checking and validation too, so if you pass a string, it will
+be parsed and validated, and after that turned again to string.
+
+<span id="stringify-examples"></span>
+
+#### Examples
+
+```js
+import { parse, stringify } from 'parse-commit-message';
+
+const commitMessage = `feat: awesome yeah
+
+Awesome body!
+resolves #123
+
+Signed-off-by: And Footer <abc@exam.pl>`;
+
+const flat = true;
+const res = parse(commitMessage, flat);
+
+const str = stringify(res, flat);
+console.log(str);
+console.log(str === commitMessage);
+```
+
+### [.validate](./src/main.js#L181)
+
+Validates a single or multiple commit message(s) in form of string, object,
+array of strings, array of objects or mixed.
+
+<span id="validate-signature"></span>
+
+#### Signature
+
+```ts
+function(commits, options)
+```
+
+<span id="validate-params"></span>
+
+#### Params
+
+- `commits` **{PossibleCommit}** - a value to be parsed & validated into an
+  object like `Commit` type
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{CommitResult}** - an object like
+  `{ value: Array<Commit>, error: Error }`
+
+<span id="validate-examples"></span>
+
+#### Examples
+
+```js
+import { validate } from 'parse-commit-message';
+
+console.log(validate('foo bar qux')); // false
+console.log(validate('foo: bar qux')); // true
+console.log(validate('fix(ci): bar qux')); // true
+
+console.log(validate(['a bc cqux', 'foo bar qux'])); // false
+
+console.log(validate({ qux: 1 })); // false
+console.log(validate({ header: { type: 'fix' } })); // false
+console.log(validate({ header: { type: 'fix', subject: 'ok' } })); // true
+
+const commitObject = {
+  header: { type: 'test', subject: 'updating tests' },
+  foo: 'bar',
+  isBreaking: false,
+  body: 'oh ah',
+};
+console.log(validate(commitObject)); // true
+
+const result = validate('foo bar qux');
+console.log(result.error);
+// => Error: expect \`commit\` to follow:
+// <type>[optional scope]: <description>
+//
+// [optional body]
+//
+// [optional footer]
+
+const res = validate('fix(ci): okey barry');
+console.log(result.value);
+// => [{
+//   header: { type: 'fix', scope: 'ci', subject: 'okey barry' },
+//   body: null,
+//   footer: null,
+// }]
+
+const commit = { header: { type: 'fix' } };
+const { error } = validate(commit);
+console.log(error);
+// => TypeError: header.subject should be non empty string
+
+const commit = { header: { type: 'fix', scope: 123, subject: 'okk' } };
+const { error } = validate(commit);
+console.log(error);
+// => TypeError: header.scope should be non empty string when given
+```
+
+### [.check](./src/main.js#L225)
+
+Receives a single or multiple commit message(s) in form of string, object, array
+of strings, array of objects or mixed. Throws if find some error. Think of it as
+"assert", it's basically that.
+
+<span id="check-signature"></span>
+
+#### Signature
+
+```ts
+function(commits, options)
+```
+
+<span id="check-params"></span>
+
+#### Params
+
+- `commits` **{PossibleCommit}** - a value to be parsed & validated into an
+  object like `Commit` type
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{Array&lt;Commit&gt;}** - returns the same as given if no
+  problems, otherwise it will throw;
+
+<span id="check-examples"></span>
+
+#### Examples
+
+```js
+import { check } from 'parse-commit-message';
+
+try {
+  check({ header: { type: 'fix' } });
+} catch (err) {
+  console.log(err);
+  // => TypeError: header.subject should be non empty string
+}
+
+// Can also validate/check a strings, array of strings,
+// or even mixed - array of strings and objects
+try {
+  check('fix(): invalid scope, it cannot be empty');
+} catch (err) {
+  console.log(err);
+  // => TypeError: header.scope should be non empty string when given
+}
+```
+
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
+
+### [incrementPlugin](./src/plugins/increment.js#L26)
+
+A plugin that adds `increment` property to the `commit`. It is already included
+in the `plugins` named export, and in `mappers` named export.
+
+**Note: Since v4 this plugin doesn't add `isBreaking` property, use the
+`isBreaking` plugin instead.**
+
+<span id="incrementplugin-signature"></span>
+
+#### Signature
+
+```ts
+function(commit, options)
+```
+
+<span id="incrementplugin-params"></span>
+
+#### Params
+
+- `commit` **{Commit}** - a standard `Commit` object
+- `options` **{object}** - options to control the header regex and case
+  sensitivity
+- `options.headerRegex` **{RegExp|string}** - string regular expression or
+  instance of RegExp
+- `options.caseSensitive` **{boolean}** - whether or not to be case sensitive,
+  defaults to `false`
+- `returns` **{Commit}** - plus `{ increment: string }`
+
+_See the [.plugins](#plugins) and [.mappers](#mappers) examples._
+
+<span id="incrementplugin-examples"></span>
+
+#### Examples
+
+```js
+import { mappers, plugins } from 'parse-commit-message';
+
+console.log(mappers.increment); // => [Function: incrementPlugin]
+console.log(plugins[1]); // => [Function: incrementPlugin]
+```
+
+<!-- docks-end -->
 
 **[back to top](#readme)**
 
@@ -167,7 +1151,7 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- Front line badges -->
 
-[codecoverage-img]: https://badgen.net/badge/coverage/65.61%25/orange?icon=codecov&cache=300 
+[codecoverage-img]: https://badgen.net/badge/coverage/65.61%25/orange?icon=codecov&cache=300
 
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 
@@ -235,3 +1219,17 @@ Released under the [MPL-2.0 License][license-url].
 [tunnckocore_newsletter]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/newsletter/tunnckocore?label&color=5199FF&icon=https://svgshare.com/i/Dt6.svg
 
 <!-- prettier-ignore-end -->
+
+[babylon]: https://babeljs.io/
+[cacache]: https://github.com/npm/cacache
+[collect-mentions]: https://github.com/olstenlarck/collect-mentions
+[define-property]: https://github.com/jonschlinkert/define-property
+[execa]: https://github.com/sindresorhus/execa
+[fast-glob]: https://github.com/mrmlnc/fast-glob
+[glob]: https://github.com/isaacs/node-glob
+[globby]: https://github.com/sindresorhus/globby
+[jest-runner-docs]: https://tunnckocore.com/opensource
+[koa-convert]: https://github.com/gyson/koa-convert
+[koa]: https://github.com/koajs/koa
+[parse-github-url]: https://github.com/jonschlinkert/parse-github-url
+[tiny-glob]: https://github.com/terkelg/tiny-glob
