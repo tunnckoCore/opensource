@@ -1,11 +1,16 @@
-const fs = require('fs-extra')
+'use strict'
+
 const path = require('path')
 const crypto = require('crypto')
 const meriyah = require('meriyah')
+const fs = require('fs-extra')
+
+module.exports = buildMemoizer
+module.exports.getCacheFilePath = getCacheFilePath
 
 const serializer = {
-  serialize: serialize,
-  deserialize: deserialize
+  serialize,
+  deserialize
 }
 
 function serialize (val) {
@@ -27,29 +32,30 @@ function serialize (val) {
 }
 
 function deserialize (...args) {
-  return JSON.parse(...args)
+  return JSON.parse(...args).data
 }
 
-module.exports = buildMemoizer
-module.exports.getCacheFilePath = getCacheFilePath
-
 function getCacheFilePath (fn, args, opt) {
-  const salt = opt.salt || ''
+  const options = { ...serializer, ...opt }
+  const salt = options.salt || ''
   let fnStr = ''
-  if (!opt.noBody) {
+  if (!options.noBody) {
     fnStr = String(fn)
-    if (opt.astBody) {
+    if (options.astBody) {
       fnStr = meriyah.parse(fnStr, { jsx: true, next: true })
     }
-    fnStr = opt.astBody ? JSON.stringify(fnStr) : fnStr
+    fnStr = options.astBody ? JSON.stringify(fnStr) : fnStr
   }
-  const argsStr = opt.serialize(args)
+
+  const argsStr = options.serialize(args)
   const hash = crypto.createHash('md5').update(fnStr + argsStr + salt).digest('hex')
-  return path.join(opt.cachePath, opt.cacheId, hash)
+
+  return path.join(options.cachePath, options.cacheId, hash)
 }
 
 function buildMemoizer (options) {
   const promiseCache = {}
+
   // check args
   if (!options || (options && typeof options !== 'object')) {
     throw new Error('options of type object expected')
@@ -57,54 +63,55 @@ function buildMemoizer (options) {
   if (typeof options.cachePath !== 'string') {
     throw new Error('option cachePath of type string expected')
   }
+  options = { ...serializer, ...options }
+  checkOptions(options)
+
+  function checkOptions (opts) {
+    if (opts.salt && typeof opts.salt !== 'string') {
+      throw new TypeError('salt option of type string expected, got: ' + typeof opts.salt)
+    }
+    if (opts.cacheId && typeof opts.cacheId !== 'string') {
+      throw new TypeError('cacheId option of type string expected, got: ' + typeof opts.cacheId)
+    }
+    if (opts.maxAge && typeof opts.maxAge !== 'number') {
+      throw new TypeError('maxAge option of type number bigger zero expected')
+    }
+    if (opts.serialize && typeof opts.serialize !== 'function') {
+      throw new TypeError('serialize option of type function expected')
+    }
+    if (opts.deserialize && typeof opts.deserialize !== 'function') {
+      throw new TypeError('deserialize option of type function expected')
+    }
+  }
 
   // check for existing cache folder, if not found, create folder, then resolve
-  function initCache (cachePath) {
+  function initCache (cachePath, opts) {
     return new Promise(function (resolve, reject) {
-      return fs.ensureDir(cachePath, {recursive: true}).then(() => {
-        resolve()
-      }).catch((err) => {
-        if (err.code === 'EEXIST') {
+      return fs.ensureDir(cachePath, { recursive: true })
+        .then(() => {
           resolve()
-          return
-        }
-
-        reject(err)
-      })
+        })
+        .catch((err) => {
+          if (err && err.code === 'EEXIST' && opts.throwError === false) {
+            resolve()
+            return
+          }
+          reject(err)
+        })
     })
   }
 
   function memoizeFn (fn, opt) {
-    function checkOptions (optExt) {
-      if (optExt.salt && typeof optExt.salt !== 'string') {
-        throw new Error('salt option of type string expected, got \'' + typeof optExt.salt + '\'')
-      }
-      if (optExt.cacheId && typeof optExt.cacheId !== 'string') {
-        throw new Error('cacheId option of type string expected, got \'' + typeof optExt.cacheId + '\'')
-      }
-      if (optExt.maxAge && typeof optExt.maxAge !== 'number') {
-        throw new Error('maxAge option of type number bigger zero expected')
-      }
-      if (optExt.serialize && typeof optExt.serialize !== 'function') {
-        throw new Error('serialize option of type function expected')
-      }
-      if (optExt.deserialize && typeof optExt.deserialize !== 'function') {
-        throw new Error('deserialize option of type function expected')
-      }
-    }
-
     if (opt && typeof opt !== 'object') {
       throw new Error('opt of type object expected, got \'' + typeof opt + '\'')
     }
 
-    const optExt = {...serializer, ...options, ...opt}
-
     if (typeof fn !== 'function') {
       throw new Error('fn of type function expected')
     }
-    checkOptions(optExt)
 
-    optExt.cacheId = optExt.cacheId || './'
+    const optExt = { cacheId: './', ...options, ...opt }
+    checkOptions(optExt)
 
     function resolveWithMemFn () {
       return new Promise(function (resolve) {
@@ -137,14 +144,14 @@ function buildMemoizer (options) {
                 }
                 if (optExt.maxAge) {
                   setTimeout(function () {
-                    fs.remove(filePath, function (err) {
+                    fs.unlink(filePath, function (err) {
                       if (err && err.code !== 'ENOENT') {
                         throw err
                       }
                     })
                   }, optExt.maxAge)
                 }
-                fs.outputFile(filePath, resultString, cb)
+                fs.writeFile(filePath, resultString, cb)
               }
 
               function processFnAsync () {
@@ -208,8 +215,8 @@ function buildMemoizer (options) {
               function parseResult (resultString) {
                 try {
                   const deserializedValue = optExt.deserialize(resultString)
-                  return deserializedValue.data || deserializedValue
-                  // return JSON.parse(resultString).data // will fail on NaN
+
+                  return deserializedValue
                 } catch (e) {
                   return undefined
                 }
@@ -249,7 +256,7 @@ function buildMemoizer (options) {
       })
     }
 
-    return initCache(path.join(options.cachePath, optExt.cacheId)).then(resolveWithMemFn)
+    return initCache(path.join(options.cachePath, optExt.cacheId), optExt).then(resolveWithMemFn)
   }
 
   function invalidateCache (cacheId) {
@@ -258,19 +265,15 @@ function buildMemoizer (options) {
         reject(Error('cacheId option of type string expected, got \'' + typeof cacheId + '\''))
       } else {
         const cachPath = cacheId ? path.join(options.cachePath, cacheId) : options.cachePath
-        fs.remove(cachPath, function (err) {
-          if (err) {
-            reject(err)
-          } else {
-            resolve()
-          }
-        })
+        fs.remove(cachPath)
+          .then(resolve)
+          .catch(reject)
       }
     })
   }
 
   function getCacheFilePathBound (fn, args, opt) {
-    return getCacheFilePath(fn, args, Object.assign({}, opt, { cachePath: options.cachePath }))
+    return getCacheFilePath(fn, args, { ...options, ...opt, cachePath: options.cachePath })
   }
 
   const cache = initCache(options.cachePath)
