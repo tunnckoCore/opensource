@@ -89,6 +89,7 @@
       "@tunnckocore/pretty-config"
     ],
     "bundle": [
+      "@tunnckocore/package-json",
       "arr-includes",
       "gitclone-defaults",
       "stringify-github-short-url",
@@ -177,6 +178,10 @@
     "@tunnckocore/jest-runner-eslint": {
       "value": 7.79,
       "color": "red"
+    },
+    "@tunnckocore/package-json": {
+      "value": 76.73,
+      "color": "EEAA22"
     },
     "@tunnckocore/pretty-config": {
       "value": 6.25,

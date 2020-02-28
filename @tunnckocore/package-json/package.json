@@ -1,0 +1,89 @@
+{
+  "name": "@tunnckocore/package-json",
+  "version": "1.0.3",
+  "licenseStart": 2018,
+  "license": "MPL-2.0",
+  "description": "Get package.json metadata for npm module from JSDelivr or fallback to Unpkg, because the npm registry is slow and ugly",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": [
+    "https://ko-fi.com/tunnckoCore/commissions",
+    "https://github.com/sponsors/tunnckoCore",
+    "https://patreon.com/tunnckoCore"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@tunnckocore/package-json"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=10.13"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "dependencies": {
+    "ky": "^0.18.0",
+    "ky-universal": "^0.5.0",
+    "parse-package-name": "^0.1.0"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 72,
+        "branches": 87,
+        "functions": 75,
+        "lines": 72
+      }
+    }
+  },
+  "cov": {
+    "value": 76.73,
+    "color": "EEAA22"
+  },
+  "keywords": [
+    "tunnckocorehq",
+    "tunnckocore-oss",
+    "hela",
+    "development",
+    "developer-experience",
+    "dx",
+    "package-json",
+    "pkg-json",
+    "package",
+    "json",
+    "get-package-json",
+    "get-pkg",
+    "metadata",
+    "pkg metadata",
+    "get package",
+    "package.json"
+  ],
+  "verb": {
+    "readme": "../../readme-template.md",
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 3
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [],
+    "related": {
+      "list": []
+    }
+  }
+}
