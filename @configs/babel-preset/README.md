@@ -81,29 +81,6 @@ think to contribute to this project._
 $ yarn add @tunnckocore/babel-preset
 ```
 
-## Usage
-
-By default this preset is just a mirror of [babel-preset-optimise][], inheriting its options.
-
-For example, in case you use Jest for testing you can do something
-like the following `babel.config.js`:
-
-```js
-module.exports = process.env.NODE_ENV === 'test'
-  ? { presets: ['@tunnckocore/babel-preset', { modules: true }] }
-  : process.env.NODE_ENV === 'build-esm'
-    ? { presets: ['@tunnckocore/babel-preset'] }
-    : { presets: ['@tunnckocore/babel-preset', { modules: 'commonjs' }] }
-```
-
-Which will mean that it will 1) convert ESM to CJS modules in testing environment,
-2) do not convert ES Modules on `build-esm` env, and 3) same as 1 in other cases.
-
-Passing non falsey (true or whatever, e.g. `'commonjs'`)
-value to `modules` option means it will convert ESM to CJS.
-
-
-
 **[back to top](#readme)**
 
 ## Contributing
