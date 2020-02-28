@@ -1,8 +1,6 @@
 # Open Source Monorepo
 
-Delivering delightful digital solutions. Open Source Monorepo (of monorepos),
-semantically versioned following Conventional Commits. Fully powered by Lerna,
-Jest and Babel.
+Delivering delightful digital solutions. Open Source Monorepo (of monorepos), semantically versioned following Conventional Commits. Fully powered by Lerna, Jest and Babel.
 
 ## Workspaces
 
@@ -118,7 +116,7 @@ Jest and Babel.
 [npm-1e25d483ed-url]: https://www.npmjs.com/package/@tunnckocore/package-json
 [npm-1e25d483ed-img]: https://badgen.net/npm/v/@tunnckocore/package-json?icon=npm
 [cov-1e25d483ed-url]: https://www.npmjs.com/package/@tunnckocore/package-json
-[cov-1e25d483ed-img]: https://badgen.net/badge/coverage/unknown/grey?icon=codecov
+[cov-1e25d483ed-img]: https://badgen.net/badge/coverage/76.73%25/EEAA22?icon=codecov
 [npm-9c57de05d6-url]: https://www.npmjs.com/package/@tunnckocore/pretty-config
 [npm-9c57de05d6-img]: https://badgen.net/npm/v/@tunnckocore/pretty-config?icon=npm
 [cov-9c57de05d6-url]: https://www.npmjs.com/package/@tunnckocore/pretty-config
