@@ -1,5 +1,3 @@
-
-
 _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [babelPresetOptimize](./src/index.js#L15)
@@ -20,8 +18,11 @@ function(api, options)
 #### Params
 
 - `options` **{object}** - optionally control what can be included
-- `options.react` **{boolean}** - default `false`, includes the React preset and 3 react plugins
-- `options.modules` **{boolean}** - default `false`, pass non-falsey value to transform to CommonJS
-- `options.typescript` **{boolean}** - default `false`, includes the TypeScript preset
-- `options.minifyBuiltins` **{boolean}** - default `false`, includes [babel-plugin-minify-builtins][]
-
+- `options.react` **{boolean}** - default `false`, includes the React preset and
+  3 react plugins
+- `options.modules` **{boolean}** - default `false`, pass non-falsey value to
+  transform to CommonJS
+- `options.typescript` **{boolean}** - default `false`, includes the TypeScript
+  preset
+- `options.minifyBuiltins` **{boolean}** - default `false`, includes
+  [babel-plugin-minify-builtins][]
