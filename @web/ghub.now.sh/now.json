@@ -1,8 +1,5 @@
 {
   "version": 2,
-  "alias": [
-    "ghub.now.sh"
-  ],
   "routes": [
     {
       "src": "/(?!static|service-worker*)(.+)",

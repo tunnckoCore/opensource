@@ -8,7 +8,7 @@ import {
   isString,
   cleanSlashes,
   ORIGIN,
-} from './_utils.js';
+} from './_utils';
 
 /**
  * Scoped:
@@ -72,17 +72,23 @@ async function handler(req, res) {
     const gh = parseGithub(`${pkgUrl}${dir}`);
 
     if (dir) {
+      const loc = `https://${gh.host}/${gh.repo}${dir}`;
+      res.setHeader('X-Redirect-Location', loc);
       // res.send(`A: https://${gh.host}/${gh.repo}${dir}`);
-      res.send(`https://${gh.host}/${gh.repo}${dir}`, 301);
+      res.send(loc, 301);
       return;
     }
 
+    const loc = `https://${gh.host}/${gh.repo}`;
+    res.setHeader('X-Redirect-Location', loc);
     // res.send(`B: https://${gh.host}/${fp}`);
-    res.send(`https://${gh.host}/${gh.repo}`, 301);
+    res.send(loc, 301);
     return;
   }
   if (isString(pkg.homepage)) {
     // res.send(`C: ${pkg.homepage}`);
+
+    res.setHeader('X-Redirect-Location', pkg.homepage);
     res.send(pkg.homepage, 301);
     return;
   }
