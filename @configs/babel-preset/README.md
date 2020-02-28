@@ -83,7 +83,8 @@ $ yarn add @tunnckocore/babel-preset
 
 ## Usage
 
-By default this preset is just a mirror of [babel-preset-optimise][], inheriting
+By default this preset is just a mirror of
+[babel-preset-optimise](https://ghub.now.sh/babel-preset-optimise), inheriting
 its options.
 
 For example, in case you use Jest for testing you can do something like the
@@ -189,7 +190,7 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- Front line badges -->
 
-[codecoverage-img]: https://badgen.net/badge/coverage/2.17%25/red?icon=codecov&cache=300
+[codecoverage-img]: https://badgen.net/badge/coverage/2.17%25/red?icon=codecov&cache=300 
 
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 
@@ -257,5 +258,3 @@ Released under the [MPL-2.0 License][license-url].
 [tunnckocore_newsletter]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/newsletter/tunnckocore?label&color=5199FF&icon=https://svgshare.com/i/Dt6.svg
 
 <!-- prettier-ignore-end -->
-
-[babel-preset-optimise]: https://tunnckocore.com/opensource
