@@ -35,7 +35,7 @@ module.exports = {
   docks: {
     verbose: true,
     // NOTE functions passed to a config must be "pure functions",
-    // e.g. no variables from outer scope
+    // e.g. no variables from outer scope (and do not expect CommonJS wrapper)
     postHook: async ({ pkgRoot, jestConfig: { rootDir } }) => {
       const fs = require('fs');
       const path = require('path');
@@ -61,7 +61,7 @@ module.exports = {
       // eslint-disable-next-line global-require
       const { exec } = require('@tunnckocore/execa');
 
-      await exec('verb', { cwd: pkgRoot });
+      await exec('verb', { cwd: pkgRoot, stdio: 'inherit' });
     },
   },
 

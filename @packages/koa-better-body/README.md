@@ -355,7 +355,7 @@ are just related. So, thanks for your existance!
 
 - [formidable](https://www.npmjs.com/package/formidable): A node.js module for
   parsing form data, especially file uploads. |
-  [homepage](https://github.com/felixge/node-formidable 'A node.js module for parsing form data, especially file uploads.')
+  [homepage](https://github.com/node-formidable/formidable 'A node.js module for parsing form data, especially file uploads.')
 - [ip-filter](https://www.npmjs.com/package/ip-filter): Validates valid IPs
   (IPv4 and IPv6) using [micromatch][] - glob…
   [more](https://github.com/tunnckocore/ip-filter#readme) |
@@ -529,7 +529,7 @@ Released under the [MPL-2.0 License][license-url].
 <!-- prettier-ignore-end -->
 
 [bytes]: https://github.com/visionmedia/bytes.js
-[formidable]: https://github.com/felixge/node-formidable
+[formidable]: https://github.com/node-formidable/formidable
 [koa-body-parsers]: https://github.com/koajs/body-parsers
 [koa-convert]: https://github.com/gyson/koa-convert
 [koa-router]: https://github.com/koajs/router

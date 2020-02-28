@@ -59,6 +59,7 @@ from [GitHub Actions](https://github.com/features/actions) with
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -80,7 +81,11 @@ think to contribute to this project._
 $ yarn add @tunnckocore/utils
 ```
 
-() => include(process.cwd() + '/.verb.md')
+## API
+
+<!-- docks-start -->
+
+<!-- docks-end -->
 
 **[back to top](#readme)**
 

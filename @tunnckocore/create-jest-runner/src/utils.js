@@ -5,8 +5,7 @@ const assert = require('assert');
 const memoizeFS = require('memoize-fs');
 const { cosmiconfig } = require('cosmiconfig');
 
-// TODO eventually, still have problems, so may not worth
-const { serialize, unserialize: deserialize } = require('node-serialize');
+const serialize = require('serialize-javascript');
 const fail = require('./fail');
 
 const jestRunnerConfig = cosmiconfig('jest-runner');
@@ -31,7 +30,9 @@ function wrapper(runnerName, runnerFn) {
   const memoizer = memoizeFS({
     cachePath: memoizeCachePath,
     serialize,
-    deserialize,
+    // eslint-disable-next-line no-eval
+    deserialize: (serializedJavascript) => eval(`(${serializedJavascript})`),
+    throwError: false,
   });
 
   // eslint-disable-next-line unicorn/consistent-function-scoping

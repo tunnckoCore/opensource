@@ -129,27 +129,28 @@ module.exports = runner('docks', async (ctx) => {
   if (outfile.hasError) return outfile.error;
   if (outfile.skip) return outfile.skip;
 
-  const postHook =
-    typeof docksConfig.postHook === 'function'
-      ? docksConfig.postHook
-      : () => {};
+  if (docksConfig.postHook) {
+    if (typeof docksConfig.postHook !== 'function') {
+      throw new TypeError(
+        'expect options.postHook of type function when passed',
+      );
+    }
 
-  const res = await utils.tryCatch(async () => {
-    // NOTE should not be memoized
-    await postHook({
-      pkgRoot,
-      jestConfig: config,
-      docksConfig,
-      outfile,
-      outFile: outfile,
-      testPath,
-      contents: testPathContents,
-    });
-  }, ctx);
+    const res = await utils.tryCatch(async () => {
+      // NOTE should not be memoized
+      await docksConfig.postHook({
+        pkgRoot,
+        jestConfig: config,
+        docksConfig,
+        outfile,
+        outFile: outfile,
+        testPath,
+        contents: testPathContents,
+      });
+    }, ctx);
 
-  // console.log('res', res);
-
-  if (res && res.hasError) return res.error;
+    if (res && res.hasError) return res.error;
+  }
 
   return pass({
     start,
