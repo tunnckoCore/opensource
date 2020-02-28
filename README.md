@@ -39,6 +39,7 @@ Jest and Babel.
 | [`@tunnckocore/execa`](https://ghub.now.sh/@tunnckocore/execa) | [![npm][npm-0ee88d61eb-img]][npm-0ee88d61eb-url] [![cov][cov-0ee88d61eb-img]][cov-0ee88d61eb-url] |
 | [`@tunnckocore/jest-runner-babel`](https://ghub.now.sh/@tunnckocore/jest-runner-babel) | [![npm][npm-66996266fb-img]][npm-66996266fb-url] [![cov][cov-66996266fb-img]][cov-66996266fb-url] |
 | [`@tunnckocore/jest-runner-eslint`](https://ghub.now.sh/@tunnckocore/jest-runner-eslint) | [![npm][npm-c7106a6fc9-img]][npm-c7106a6fc9-url] [![cov][cov-c7106a6fc9-img]][cov-c7106a6fc9-url] |
+| [`@tunnckocore/package-json`](https://ghub.now.sh/@tunnckocore/package-json) | [![npm][npm-1e25d483ed-img]][npm-1e25d483ed-url] [![cov][cov-1e25d483ed-img]][cov-1e25d483ed-url] |
 | [`@tunnckocore/pretty-config`](https://ghub.now.sh/@tunnckocore/pretty-config) | [![npm][npm-9c57de05d6-img]][npm-9c57de05d6-url] [![cov][cov-9c57de05d6-img]][cov-9c57de05d6-url] |
 | [`@tunnckocore/utils`](https://ghub.now.sh/@tunnckocore/utils) | [![npm][npm-2ee61b0213-img]][npm-2ee61b0213-url] [![cov][cov-2ee61b0213-img]][cov-2ee61b0213-url] |
 
@@ -69,7 +70,7 @@ Jest and Babel.
 [npm-bfbf73f3e5-url]: https://www.npmjs.com/package/jest-runner-docs
 [npm-bfbf73f3e5-img]: https://badgen.net/npm/v/jest-runner-docs?icon=npm
 [cov-bfbf73f3e5-url]: https://www.npmjs.com/package/jest-runner-docs
-[cov-bfbf73f3e5-img]: https://badgen.net/badge/coverage/5.99%25/red?icon=codecov
+[cov-bfbf73f3e5-img]: https://badgen.net/badge/coverage/6.11%25/red?icon=codecov
 [npm-13c18163b7-url]: https://www.npmjs.com/package/jest-runner-node
 [npm-13c18163b7-img]: https://badgen.net/npm/v/jest-runner-node?icon=npm
 [cov-13c18163b7-url]: https://www.npmjs.com/package/jest-runner-node
@@ -101,7 +102,7 @@ Jest and Babel.
 [npm-76c512834b-url]: https://www.npmjs.com/package/@tunnckocore/create-jest-runner
 [npm-76c512834b-img]: https://badgen.net/npm/v/@tunnckocore/create-jest-runner?icon=npm
 [cov-76c512834b-url]: https://www.npmjs.com/package/@tunnckocore/create-jest-runner
-[cov-76c512834b-img]: https://badgen.net/badge/coverage/20.38%25/red?icon=codecov
+[cov-76c512834b-img]: https://badgen.net/badge/coverage/19.91%25/red?icon=codecov
 [npm-0ee88d61eb-url]: https://www.npmjs.com/package/@tunnckocore/execa
 [npm-0ee88d61eb-img]: https://badgen.net/npm/v/@tunnckocore/execa?icon=npm
 [cov-0ee88d61eb-url]: https://www.npmjs.com/package/@tunnckocore/execa
@@ -114,6 +115,10 @@ Jest and Babel.
 [npm-c7106a6fc9-img]: https://badgen.net/npm/v/@tunnckocore/jest-runner-eslint?icon=npm
 [cov-c7106a6fc9-url]: https://www.npmjs.com/package/@tunnckocore/jest-runner-eslint
 [cov-c7106a6fc9-img]: https://badgen.net/badge/coverage/7.79%25/red?icon=codecov
+[npm-1e25d483ed-url]: https://www.npmjs.com/package/@tunnckocore/package-json
+[npm-1e25d483ed-img]: https://badgen.net/npm/v/@tunnckocore/package-json?icon=npm
+[cov-1e25d483ed-url]: https://www.npmjs.com/package/@tunnckocore/package-json
+[cov-1e25d483ed-img]: https://badgen.net/badge/coverage/unknown/grey?icon=codecov
 [npm-9c57de05d6-url]: https://www.npmjs.com/package/@tunnckocore/pretty-config
 [npm-9c57de05d6-img]: https://badgen.net/npm/v/@tunnckocore/pretty-config?icon=npm
 [cov-9c57de05d6-url]: https://www.npmjs.com/package/@tunnckocore/pretty-config
