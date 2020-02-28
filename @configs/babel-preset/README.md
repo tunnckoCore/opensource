@@ -59,7 +59,7 @@ from [GitHub Actions](https://github.com/features/actions) with
 ## Table of Contents
 
 - [Install](#install)
-- [API](#api)
+- [Usage](#usage)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -80,6 +80,30 @@ think to contribute to this project._
 ```bash
 $ yarn add @tunnckocore/babel-preset
 ```
+
+## Usage
+
+By default this preset is just a mirror of [babel-preset-optimise][], inheriting
+its options.
+
+For example, in case you use Jest for testing you can do something like the
+following `babel.config.js`:
+
+```js
+module.exports =
+  process.env.NODE_ENV === 'test'
+    ? { presets: ['@tunnckocore/babel-preset', { modules: true }] }
+    : process.env.NODE_ENV === 'build-esm'
+    ? { presets: ['@tunnckocore/babel-preset'] }
+    : { presets: ['@tunnckocore/babel-preset', { modules: 'commonjs' }] };
+```
+
+Which will mean that it will a) convert ESM to CJS modules in testing
+environment, b) do not convert ES Modules on `build-esm` env, and c) same as 1
+in other cases.
+
+Passing non falsey (true or whatever, e.g. `'commonjs'`) value to `modules`
+option means it will convert ESM to CJS.
 
 **[back to top](#readme)**
 
@@ -233,3 +257,5 @@ Released under the [MPL-2.0 License][license-url].
 [tunnckocore_newsletter]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/newsletter/tunnckocore?label&color=5199FF&icon=https://svgshare.com/i/Dt6.svg
 
 <!-- prettier-ignore-end -->
+
+[babel-preset-optimise]: https://tunnckocore.com/opensource
