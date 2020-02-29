@@ -6,7 +6,11 @@
   "description": "Jest runner for API documentation generation from code comments, supports TypeScript. Very stable and reliable, based on `parse-comments` package",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "homepage": "https://tunnckocore.com/opensource",
-  "funding": "https://ko-fi.com/tunnckoCore/commissions",
+  "funding": [
+    "https://ko-fi.com/tunnckoCore/commissions",
+    "https://github.com/sponsors/tunnckoCore",
+    "https://patreon.com/tunnckoCore"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",

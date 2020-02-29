@@ -6,7 +6,11 @@
   "description": "Get all possible javascript (npm/yarn/pnpm) global or local, binaries or packages paths, e.g. node_modules and node_modules/.bin. Also works for those using NVM or such",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "homepage": "https://tunnckocore.com/opensource",
-  "funding": "https://ko-fi.com/tunnckoCore/commissions",
+  "funding": [
+    "https://ko-fi.com/tunnckoCore/commissions",
+    "https://github.com/sponsors/tunnckoCore",
+    "https://patreon.com/tunnckoCore"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/tunnckoCore/opensource.git",
