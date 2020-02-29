@@ -4,7 +4,6 @@
   "description": "Delivering delightful digital solutions. Open Source Monorepo (of monorepos), semantically versioned following Conventional Commits. Fully powered by Lerna, Jest and Babel.",
   "workspaces": {
     "packages": [
-      "@web/*",
       "@configs/*",
       "@packages/*",
       "@tunnckocore/*"
@@ -25,6 +24,7 @@
     "docs:verb": "lerna exec --parallel \"verb --cwd $PWD\"",
     "fmt": "yarn run format '**/*'",
     "format": "prettier --write",
+    "lint:lockfile": "lockfile-lint --path yarn.lock --type yarn --validate-https",
     "patch:docs": "cp patches/hela-dev/docs-config.js node_modules/hela/src/dev/configs/docs/index.js",
     "patch:memoize": "cp patches/memoize-fs/index.js node_modules/memoize-fs/index.js",
     "patch:verb": "cp patches/verb-repo-helpers/index.js node_modules/verb-repo-helpers/index.js",
@@ -33,9 +33,9 @@
     "release": "lerna version && lerna publish from-package --otp",
     "run:node": "jest -c packages/jest-runner-node/src/config.js",
     "presetup": "echo foo-bar",
-    "setup": "yarn && yarn run bootstrap",
+    "setup": "yarn && yarn run lint:lockfile &&yarn run bootstrap",
     "postsetup": "yarn run patches",
-    "setup:ci": "yarn --frozen-lockfile && yarn run bootstrap",
+    "setup:ci": "yarn --frozen-lockfile && yarn run lint:lockfile && yarn run bootstrap",
     "postsetup:ci": "yarn run patches",
     "start": "hela",
     "test": "CI=1 yarn start test",
@@ -71,6 +71,7 @@
     "husky": "^4.2.1",
     "jest": "^25.1.0",
     "lerna": "^3.20.2",
+    "lockfile-lint": "^4.0.0",
     "mukla": "^0.4.9",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
@@ -78,6 +79,7 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-terser": "^5.2.0",
     "semver": "^7.1.2",
+    "snyk": "^1.297.2",
     "typescript": "^3.7.5",
     "verb": "verbose/verb#dev",
     "verb-generate-readme": "^0.8.0",
