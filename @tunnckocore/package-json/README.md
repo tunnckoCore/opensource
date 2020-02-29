@@ -60,6 +60,7 @@ from [GitHub Actions](https://github.com/features/actions) with
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
   - [packageJson](#packagejson)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
@@ -81,6 +82,8 @@ think to contribute to this project._
 ```bash
 $ yarn add @tunnckocore/package-json
 ```
+
+## API
 
 <!-- docks-start -->
 
