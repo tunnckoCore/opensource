@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/babel-preset@1.2.4...@tunnckocore/babel-preset@1.3.0) (2020-02-29)
+
+
+### Features
+
+* update babel preset to use babel-preset-optimise ([84da9cb](https://github.com/tunnckoCore/opensource/commit/84da9cb26aedc0c6b81d9102a033db307574cf59))
+
+
+
+
+
 ## [1.2.4](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/babel-preset@1.2.3...@tunnckocore/babel-preset@1.2.4) (2020-02-04)
 
 

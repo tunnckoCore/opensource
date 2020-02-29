@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.5](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/renovate-config@1.1.4...@tunnckocore/renovate-config@1.1.5) (2020-02-29)
+
+
+### Bug Fixes
+
+* **renovate-config:** maintain lockfiles weekly ([0f8ada8](https://github.com/tunnckoCore/opensource/commit/0f8ada8e96aa7649b90a233ba83b9689fe5d60bd))
+
+
+
+
+
 ## [1.1.4](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/renovate-config@1.1.3...@tunnckocore/renovate-config@1.1.4) (2020-02-15)
 
 **Note:** Version bump only for package @tunnckocore/renovate-config

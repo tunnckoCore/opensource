@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.5](https://github.com/tunnckoCore/opensource/compare/koa-better-body@3.3.4...koa-better-body@3.3.5) (2020-02-29)
+
+
+### Bug Fixes
+
+* switch to latest memoize-fs; update deps; re-run docs; ([ab08601](https://github.com/tunnckoCore/opensource/commit/ab086010ad49091b3d25874ba7c207c85dfa8ff9))
+
+
+
+
+
 ## [3.3.4](https://github.com/tunnckoCore/opensource/compare/koa-better-body@3.3.3...koa-better-body@3.3.4) (2020-02-04)
 
 

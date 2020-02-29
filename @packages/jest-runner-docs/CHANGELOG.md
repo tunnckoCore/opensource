@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.4](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.4.3...jest-runner-docs@1.4.4) (2020-02-29)
+
+
+### Bug Fixes
+
+* switch to latest memoize-fs; update deps; re-run docs; ([ab08601](https://github.com/tunnckoCore/opensource/commit/ab086010ad49091b3d25874ba7c207c85dfa8ff9))
+
+
+
+
+
 ## [1.4.3](https://github.com/tunnckoCore/opensource/compare/jest-runner-docs@1.4.2...jest-runner-docs@1.4.3) (2020-02-04)
 
 

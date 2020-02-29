@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.4](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/prettier-config@1.3.3...@tunnckocore/prettier-config@1.3.4) (2020-02-29)
+
+
+### Bug Fixes
+
+* **prettier-config:** update peer deps ([ea0a510](https://github.com/tunnckoCore/opensource/commit/ea0a5107bb80066991d8d4c61f520c85b1b9eb89))
+
+
+
+
+
 ## [1.3.3](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/prettier-config@1.3.2...@tunnckocore/prettier-config@1.3.3) (2020-02-04)
 
 

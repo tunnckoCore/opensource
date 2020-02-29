@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.5](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-eslint@1.2.4...@tunnckocore/jest-runner-eslint@1.2.5) (2020-02-29)
+
+**Note:** Version bump only for package @tunnckocore/jest-runner-eslint
+
+
+
+
+
 ## [1.2.4](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/jest-runner-eslint@1.2.3...@tunnckocore/jest-runner-eslint@1.2.4) (2020-02-04)
 
 

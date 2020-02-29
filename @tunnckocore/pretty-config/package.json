@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/pretty-config",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "licenseStart": 2017,
   "license": "MPL-2.0",
   "description": "Find and load configuration. Config resolver/loader, similar to cosmiconfig",
