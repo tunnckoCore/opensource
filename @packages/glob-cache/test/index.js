@@ -5,39 +5,37 @@ const path = require('path');
 const util = require('util');
 const rimraf = require('rimraf');
 const nodeGlob = require('glob');
-const tinyGlob = require('tiny-glob');
-const globCache = require('../src');
+const globby = require('globby');
+const globCache = require('../srcx');
 
 const del = util.promisify(rimraf);
 const glob = util.promisify(nodeGlob);
 const cwd = path.dirname(__dirname);
-const cacheLocation = path.join(__dirname, 'fixture-cache');
+const cacheRoot = path.join(cwd, '.cache');
+const cacheLocation = path.join(cacheRoot, 'fixture-cache');
 
 async function runGlobCache(opts) {
-  const { results } = await globCache({
+  const results = await globCache.promise({
+    buffered: true,
     include: 'test/fixtures/*.js',
-    globOptions: { cwd },
+    cwd,
     cacheLocation,
     ...opts,
   });
   return results;
 }
+
 function fromFixtures(x) {
   return path.join(__dirname, 'fixtures', x);
 }
 
 test('supports other glob libraries', async () => {
-  await del(cacheLocation, { recursive: true });
+  await del(cacheRoot, { recursive: true });
 
-  const { results } = await globCache({
-    glob: tinyGlob,
-    globOptions: { cwd },
-    include: 'test/fixtures/*.js',
-    cacheLocation,
-  });
+  const results = await runGlobCache({ glob: globby.stream });
   results.forEach((ctx) => {
-    expect(ctx.valid).toBe(true);
-    expect(ctx.missing).toBe(true);
+    expect(ctx.changed).toBe(true);
+    expect(ctx.notFound).toBe(true);
 
     expect(ctx).toHaveProperty('cacache');
     expect(ctx).toHaveProperty('cacheFile');
@@ -53,15 +51,10 @@ test('supports other glob libraries', async () => {
     expect(ctx.cacheFile).toBeNull();
   });
 
-  const { results: res } = await globCache({
-    glob,
-    globOptions: { cwd },
-    include: 'test/fixtures/*.js',
-    cacheLocation,
-  });
+  const res = await runGlobCache({ glob });
   res.forEach((ctx) => {
-    expect(ctx.valid).toBe(true);
-    expect(ctx.missing).toBe(false);
+    expect(ctx.changed).toBe(false);
+    expect(ctx.notFound).toBe(false);
     expect(ctx.cacheLocation).toStrictEqual(cacheLocation);
 
     expect(ctx).toHaveProperty('cacheFile');
@@ -70,7 +63,6 @@ test('supports other glob libraries', async () => {
     expect(ctx.cacheFile).toHaveProperty('path');
     expect(ctx.cacheFile).toHaveProperty('integrity');
     expect(ctx.cacheFile).toHaveProperty('size');
-    expect(ctx.cacheFile).toHaveProperty('sri');
     expect(ctx.cacheFile).toHaveProperty('stat');
     expect(ctx.cacheFile.key).toBe(ctx.file.path);
 
@@ -78,12 +70,12 @@ test('supports other glob libraries', async () => {
     expect(ctx.cacheFile.path).toMatch(pathStartsWith);
   });
 
-  await del(cacheLocation, { recursive: true });
+  await del(cacheRoot, { recursive: true });
 });
 
 // eslint-disable-next-line max-statements
 test('work when you add new matching file which is not cached', async () => {
-  await del(cacheLocation, { recursive: true });
+  await del(cacheRoot, { recursive: true });
 
   try {
     fs.unlinkSync(fromFixtures('quxie.js'));
@@ -107,66 +99,180 @@ test('work when you add new matching file which is not cached', async () => {
 
   const fixtureQuxie = res2.find((ctx) => ctx.file.path.endsWith('quxie.js'));
   expect(fixtureQuxie.file.path).toBe(fromFixtures('quxie.js'));
-  expect(fixtureQuxie.valid).toBe(true);
-  expect(fixtureQuxie.missing).toBe(true);
+  expect(fixtureQuxie.changed).toBe(true);
+  expect(fixtureQuxie.notFound).toBe(true);
 
   const res3 = await runGlobCache();
   const quxie = res3.find((ctx) => ctx.file.path.endsWith('quxie.js'));
-  expect(quxie.valid).toBe(true);
-  expect(quxie.missing).toBe(false);
+  expect(quxie.changed).toBe(false);
+  expect(quxie.notFound).toBe(false);
 
-  // fourth run should be invalid, because we change the content here
   fs.writeFileSync(fromFixtures('quxie.js'), 'exports.hoho = 99999;');
 
+  // fourth run should be invalid, because we change the content here
   const zaz = (await runGlobCache()).find((ctx) =>
     ctx.file.path.endsWith('quxie.js'),
   );
-  expect(zaz.valid).toBe(false);
-  expect(zaz.missing).toBe(false);
+  expect(zaz.changed).toBe(true);
+  expect(zaz.notFound).toBe(false);
 
   fs.unlinkSync(fromFixtures('quxie.js'));
+
+  await del(cacheRoot, { recursive: true });
 });
 
-test('to call options.hook on missing (options.always: true)', async () => {
-  await del(cacheLocation, { recursive: true });
+test('to call `notFound` and `always` hooks on missing from cache', async () => {
+  await del(cacheRoot, { recursive: true });
 
   await runGlobCache({
-    always: true,
-    hook: (ctx) => {
-      expect(ctx).toHaveProperty('file');
-      expect(ctx).toHaveProperty('cacheFile');
-      expect(ctx.cacheFile).toBeNull();
+    hooks: {
+      notFound(ctx) {
+        expect(ctx.changed).toBe(true);
+        expect(ctx.notFound).toBe(true);
+        expect(ctx).toHaveProperty('file');
+        expect(ctx).toHaveProperty('cacheFile');
+        expect(ctx.cacheFile).toBeNull();
+      },
+      always(ctx) {
+        expect(ctx.changed).toBe(true);
+        expect(ctx.notFound).toBe(true);
+        expect(ctx).toHaveProperty('file');
+        expect(ctx).toHaveProperty('cacheFile');
+        expect(ctx.cacheFile).toBeNull();
+      },
     },
   });
+
+  await del(cacheRoot, { recursive: true });
 });
 
-test('to call options.hook on invalid (options.always: false)', async () => {
-  await del(cacheLocation, { recursive: true });
+test('to call options.hooks.changed on invalid', async () => {
+  await del(cacheRoot, { recursive: true });
 
   await runGlobCache({
-    always: true,
-    hook: (ctx) => {
-      expect(ctx.valid).toBe(true);
-      expect(ctx.missing).toBe(true);
-      expect(ctx).toHaveProperty('cacheFile');
+    hooks: {
+      always(ctx) {
+        expect(ctx.changed).toBe(true);
+        expect(ctx.notFound).toBe(true);
+        expect(ctx).toHaveProperty('cacheFile');
+        expect(ctx.cacheFile).toBeNull();
+      },
+    },
+  });
+  await runGlobCache({
+    hooks: {
+      always(ctx) {
+        expect(ctx.changed).toBe(false);
+        expect(ctx.notFound).toBe(false);
+        expect(ctx).toHaveProperty('cacheFile');
+        expect(ctx.cacheFile).not.toBeNull();
+        expect(ctx.cacheFile).toHaveProperty('integrity');
+      },
     },
   });
 
   fs.writeFileSync(fromFixtures('bar.js'), 'const aloha = 123;');
 
   await runGlobCache({
-    always: false,
-    hook: (ctx) => {
-      if (ctx.file.path.endsWith('bar.js')) {
-        expect(ctx).toHaveProperty('cacheFile');
-        expect(ctx.cacheFile).toHaveProperty('integrity');
-        expect(ctx.valid).toBe(false);
-        expect(ctx.missing).toBe(false);
-      }
+    hooks: {
+      changed(ctx) {
+        expect(ctx.changed).toBe(true);
+        expect(ctx.notFound).toBe(false);
+
+        if (ctx.file.path.endsWith('bar.js')) {
+          expect(ctx).toHaveProperty('cacheFile');
+          expect(ctx.cacheFile).not.toBeNull();
+          expect(ctx.cacheFile).toHaveProperty('integrity');
+        }
+      },
     },
   });
 
   // restore original `bar.js` file fixture
   fs.writeFileSync(fromFixtures('bar.js'), 'export default () => 123;\n');
-  await del(cacheLocation, { recursive: true });
+
+  await del(cacheRoot, { recursive: true });
+});
+
+test('throw if any hook is not a function', async () => {
+  await del(cacheRoot, { recursive: true });
+
+  // eslint-disable-next-line unicorn/consistent-function-scoping
+  async function fixtureToThrows() {
+    await globCache.promise({
+      buffered: false,
+      cwd,
+      hooks: { foo: 123 },
+    });
+  }
+
+  await expect(fixtureToThrows()).rejects.toThrow(Error);
+  await expect(fixtureToThrows()).rejects.toThrow(
+    /expect hook "foo" to be function/,
+  );
+  await del(cacheRoot, { recursive: true });
+});
+
+test('streaming works and returns async iterable', async () => {
+  await del(cacheRoot, { recursive: true });
+
+  let count = 0;
+  const iterable = globCache({
+    cwd,
+    patterns: 'test/fixtures/*.js',
+    ignores: ['fake.js'],
+  });
+
+  // eslint-disable-next-line no-restricted-syntax
+  for await (const ctx of iterable) {
+    expect(ctx.changed).toBe(true);
+    expect(ctx.notFound).toBe(true);
+    expect(ctx).toHaveProperty('cacheFile');
+    expect(ctx.cacheFile).toBeNull();
+    count += 1;
+  }
+  expect(count).toStrictEqual(2);
+  count = 0;
+
+  const stream = globCache.stream({
+    cwd,
+    patterns: 'test/fixtures/*.js',
+    globOptions: {
+      ignore: 'test/fixtures/bar.js',
+    },
+  });
+
+  // eslint-disable-next-line no-restricted-syntax
+  for await (const ctx of stream) {
+    expect(ctx.changed).toBe(false);
+    expect(ctx.notFound).toBe(false);
+    expect(ctx).toHaveProperty('cacheFile');
+    expect(ctx.cacheFile).not.toBeNull();
+    count += 1;
+  }
+
+  expect(count).toStrictEqual(1);
+
+  await del(cacheRoot, { recursive: true });
+});
+
+test('promise API return empty results array when options.buffered is falsey', async () => {
+  await del(cacheRoot, { recursive: true });
+
+  const res = await globCache.promise({
+    buffered: false,
+    cwd,
+    include: 'test/fixtures/*.js',
+    hooks: {
+      always(ctx) {
+        expect(ctx.changed).toBe(true);
+        expect(ctx.notFound).toBe(true);
+      },
+    },
+  });
+
+  expect(res).toStrictEqual([]);
+  expect(res.length).toStrictEqual(0);
+
+  await del(cacheRoot, { recursive: true });
 });
