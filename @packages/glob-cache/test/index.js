@@ -6,7 +6,7 @@ const util = require('util');
 const rimraf = require('rimraf');
 const nodeGlob = require('glob');
 const globby = require('globby');
-const globCache = require('../srcx');
+const globCache = require('../src/index');
 
 const del = util.promisify(rimraf);
 const glob = util.promisify(nodeGlob);
