@@ -7,7 +7,7 @@
 
 # glob-cache [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url] [![Libera Manifesto][libera-manifesto-img]][libera-manifesto-url]
 
-> Caching layer (using `cacache`) for any file globbing solution (`glob`, `fast-glob`, `tiny-glob` and `globby`). Makes you Instant Fast™ and allows you to hook into very specific & important part of the process
+> Best and fastest file globbing solution for Node.js - can use **any** glob library like `glob`, `globby` or `fast-glob`! Streaming, Promise and Hook APIs, with built in caching layer using `cacache`. Makes you Instant Fast™.
 
 Please consider following this project's author,
 [Charlike Mike Reagent](https://github.com/tunnckoCore), and :star: the project
@@ -468,7 +468,7 @@ your [support](#support-the-project) to them:
 Copyright (c) 2020-present,
 [Charlike Mike Reagent](https://tunnckocore.com) `<opensource@tunnckocore.com>`
 & [contributors](#wonderful-contributors).<br> Released under the
-[(Parity-7.0.0 AND Prosperity-3.0.0) OR Patron-1.0.0 License][license-url].
+[MPL-2.0 License][license-url].
 
 <!-- badges -->
 

@@ -2,8 +2,8 @@
   "name": "glob-cache",
   "version": "0.3.5",
   "licenseStart": 2020,
-  "license": "(Parity-7.0.0 AND Prosperity-3.0.0) OR Patron-1.0.0",
-  "description": "Caching layer (using `cacache`) for any file globbing solution (`glob`, `fast-glob`, `tiny-glob` and `globby`). Makes you Instant Fast™ and allows you to hook into very specific & important part of the process",
+  "license": "MPL-2.0",
+  "description": "Best and fastest file globbing solution for Node.js - can use **any** glob library like `glob`, `globby` or `fast-glob`! Streaming, Promise and Hook APIs, with built in caching layer using `cacache`. Makes you Instant Fast™.",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
   "homepage": "https://tunnckocore.com/opensource",
   "funding": [
