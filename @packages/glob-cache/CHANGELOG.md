@@ -3,6 +3,134 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/tunnckoCore/opensource/compare/glob-cache@0.3.5...glob-cache@1.0.0) (2020-03-05)
+
+
+### Bug Fixes
+
+* **glob-cache:** include mpl-2.0 license file ([90f1e4e](https://github.com/tunnckoCore/opensource/commit/90f1e4e20ef2660db8e7c6036c2305e20531b50f))
+
+
+### Features
+
+* **glob-cache:** streaming API, use async iterables under the h… ([#124](https://github.com/tunnckoCore/opensource/issues/124)) ([a77e7f7](https://github.com/tunnckoCore/opensource/commit/a77e7f7a1bd1478500cad9ae36dd5efda528a47a))
+
+
+### BREAKING CHANGES
+
+* **glob-cache:** use async iterables + expose Stream, Promise, and Hooks APIs
+
+## "Streaming" / async iterables API
+Uses `fastGlob.stream` by default, plus `for await ... of`.
+
+The main default export is async generator `async function * () {}` and it returns async iterable, so you need to call `iterable.next()` or to use `for await` loop (which requires `async` function).
+
+```js
+const globCache = require('glob-cache');
+
+async function main() {
+  const iterable = globCache('src/**/*.js');
+  // or like so, both are equivalent
+  const iter = globCache.stream({ include: 'src/**/*.js' });
+
+  for await (const ctx of iterable) {
+    console.log(ctx);
+  }
+}
+
+main().catch(console.error);
+```
+
+## Promise API
+
+There is also exported `globCache.promise` API, which is `async function` and so returns a Promise.
+
+```js
+const globCache = require('glob-cache');
+
+const promise = globCache.promise({ include: 'src/**/*.js' });
+
+promise
+  .then((results) => {
+    console.log(results); // []
+  })
+  .catch(console.error);
+```
+
+Important to note. By default the Promise API resolves to an empty array. That's intentional since we also have the so-called Hooks API and so it's unnecessary to pollute the memory when you are using this api. If you don't use the Hooks API, but just want the results then pass `buffered: true` and the promise will resolve to an array of Context objects. You can later filter this `results` array of contexts by `ctx.changed` or `ctx.notFound`, or whatever.
+
+```js
+const globCache = require('glob-cache');
+
+async function main() {
+  const results = await globCache.promise({
+    include: 'src/**/*.js',
+    buffered: true,
+  });
+
+  console.log(results);
+  // => [Context, Context, Context, ...]
+}
+
+main().catch(console.error);
+```
+
+## Hooks API
+
+**It's not recommended to use the Hooks API when using the Stream API.**
+
+Previously we had just a single `options.hook` function, now it is `options.hooks` object. And we needed to determine based on `ctx.valid` and `ctx.missing` booleans. 
+
+Now we just have hooks for everything - `hooks.changed`, `hooks.notChanged`, `hooks.found`, `hooks.notFound` and `hooks.always`. It's pretty obvious by their names. Hooks can also be async functions - using async/await or regular function returning a promise.
+
+The `ctx.valid` and `ctx.missing` are replaced by `ctx.changed` and `ctx.notFound` - both has almost the same meaning as previously. Both are available through all the hooks. In combination with hooks it becomes great.
+
+```
+1. on very first hit
+  -> ctx.changed === true
+  -> ctx.notFound === true
+2. on second hit (without changes to files)
+  -> ctx.changed === false
+  -> ctx.notFound === false
+3. on third hit (with changes)
+  -> ctx.changed === true
+  -> ctx.notFound === false
+```
+
+Same as above applies for the hooks calls.
+
+```js
+const globCache = require('glob-cache');
+
+(async () => {
+
+await globCache.promise({
+  include: 'src/*.js',
+  hooks: {
+    changed(ctx) {
+      if (ctx.notFound) {
+        console.log(ctx.file.path, 'first hit');
+      } else {
+        console.log(ctx.file.path, 'changed');
+      }
+    },
+    always() {
+      console.log('file', ctx.file.path);
+    },
+  },
+});
+
+})()
+```
+
+Notice that `changed` hook is also called when "not found" (i.e. first hit).
+
+Signed-off-by: Charlike Mike Reagent <opensource@tunnckocore.com>
+
+
+
+
+
 ## [0.3.5](https://github.com/tunnckoCore/opensource/compare/glob-cache@0.3.4...glob-cache@0.3.5) (2020-02-29)
 
 
