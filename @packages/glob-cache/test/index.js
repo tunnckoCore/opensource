@@ -217,9 +217,8 @@ test('streaming works and returns async iterable', async () => {
   await del(cacheRoot, { recursive: true });
 
   let count = 0;
-  const iterable = globCache({
+  const iterable = globCache('test/fixtures/*.js', {
     cwd,
-    patterns: 'test/fixtures/*.js',
     ignores: ['fake.js'],
   });
 
