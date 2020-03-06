@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/tunnckoCore/opensource/compare/glob-cache@1.0.0...glob-cache@1.0.1) (2020-03-06)
+
+
+### Bug Fixes
+
+* **glob-cache:** check if info is not null ([24df806](https://github.com/tunnckoCore/opensource/commit/24df806bc32c1d599f0366ea1874acc81789e0c7))
+
+
+
+
+
 # [1.0.0](https://github.com/tunnckoCore/opensource/compare/glob-cache@0.3.5...glob-cache@1.0.0) (2020-03-05)
 
 
