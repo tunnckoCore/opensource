@@ -161,7 +161,7 @@ globCache.stream = async function* globCacheStream(options) {
     };
 
     ctx.cacheFile = info;
-    if (hash) {
+    if (hash && info) {
       ctx.cacheFile.stat = hash.stat;
     }
 
