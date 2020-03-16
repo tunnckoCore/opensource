@@ -1,29 +1,51 @@
 {
   "name": "to-file-path",
   "version": "1.0.0",
+  "licenseStart": 2016,
+  "license": "MPL-2.0",
   "description": "Create a filepath from an object path (dot notation), list of arguments, array, number or Arguments object.",
-  "repository": "tunnckoCore/to-file-path",
-  "author": "Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)",
-  "precommit.silent": true,
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "test": "standard && node test.js"
-  },
-  "dependencies": {
-    "arr-map": "^2.0.0",
-    "is-arguments": "^1.0.2",
-    "isarray": "^1.0.0",
-    "lazy-cache": "^2.0.0"
-  },
-  "devDependencies": {
-    "assertit": "^0.1.0",
-    "pre-commit": "*"
-  },
-  "files": [
-    "index.js",
-    "utils.js"
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "homepage": "https://tunnckocore.com/opensource",
+  "funding": [
+    "https://github.com/sponsors/tunnckoCore",
+    "https://ko-fi.com/tunnckoCore/commissions",
+    "https://patreon.com/tunnckoCore"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@packages/to-file-path"
+  },
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=10.13"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "dependencies": {
+    "arr-map": "^2.0.2",
+    "is-arguments": "^1.0.4"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "src/**/*.js": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "cov": {
+    "value": 100,
+    "color": "green"
+  },
   "keywords": [
     "args",
     "arguments",
@@ -43,15 +65,27 @@
     "to-filepath",
     "to-path",
     "util",
-    "utils"
+    "utility",
+    "tunnckocore-oss",
+    "tunnckocorehq",
+    "valid",
+    "validate"
   ],
   "verb": {
+    "readme": "../../readme-template.md",
     "run": true,
-    "toc": false,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 3
+    },
     "layout": "empty",
     "tasks": [
       "readme"
     ],
+    "lint": {
+      "reflinks": true
+    },
     "related": {
       "list": [
         "to-object-path",
@@ -65,11 +99,9 @@
     },
     "reflinks": [
       "ip-filter",
-      "to-object-path",
-      "in-array"
-    ],
-    "lint": {
-      "reflinks": true
-    }
+      "is-match",
+      "koa",
+      "micromatch"
+    ]
   }
 }
