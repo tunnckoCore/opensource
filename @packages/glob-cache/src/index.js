@@ -7,11 +7,12 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 const crypto = require('crypto');
-const fastGlob = require('fast-glob');
+const isGlob = require('is-glob');
 const cacache = require('cacache');
+const fastGlob = require('fast-glob');
 const memoizeFs = require('memoize-fs');
 
-const readFile = util.promisify(fs.readFile);
+const utils = require('./utils');
 
 /**
  * A mirror of `globCache.stream` and so an "async generator" function,
@@ -133,24 +134,13 @@ globCache.stream = async function* globCacheStream(options) {
   const iterable = await glob(opts.patterns || opts.include, globConfig);
   const integrityMemoized = await memoizer.fn(getIntegrityFor);
 
-  for await (let data of iterable) {
-    // in case of `globby()` or promisified `node-glob`
-    data =
-      typeof data === 'string'
-        ? { path: data, name: path.basename(data) }
-        : data;
-
-    const contents = await readFile(data.path);
-    const integrity = await integrityMemoized(contents);
-    const info = await cacache.get.info(opts.cacheLocation, data.path);
+  for await (const data of iterable) {
+    const file = utils.toFile(data);
+    const integrity = await integrityMemoized(file.contents);
+    const info = await cacache.get.info(opts.cacheLocation, file.path);
     const hash = await cacache.get.hasContent(opts.cacheLocation, integrity);
 
-    const file = {
-      ...data,
-      contents,
-      size: contents.length,
-      integrity,
-    };
+    file.integrity = integrity;
 
     const ctx = {
       file,

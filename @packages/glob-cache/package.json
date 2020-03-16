@@ -31,6 +31,7 @@
   "dependencies": {
     "cacache": "^13.0.1",
     "fast-glob": "^3.1.1",
+    "is-glob": "^4.0.1",
     "memoize-fs": "^2.1.0"
   },
   "devDependencies": {
