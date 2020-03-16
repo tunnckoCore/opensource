@@ -3515,7 +3515,7 @@ arr-flatten@^1.0.1, arr-flatten@^1.0.3, arr-flatten@^1.1.0:
   resolved "https://registry.yarnpkg.com/arr-flatten/-/arr-flatten-1.1.0.tgz#36048bbff4e7b47e136644316c99669ea5ae91f1"
   integrity sha512-L3hKV5R/p5o81R7O02IGnwpDmkp6E982XhtbuwSe3O4qOtMMMtodicASA1Cny2U+aCXcNpml+m4dPsvsJ3jatg==
 
-arr-map@^2.0.0:
+arr-map@^2.0.0, arr-map@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/arr-map/-/arr-map-2.0.2.tgz#3a77345ffc1cf35e2a91825601f9e58f2e24cac4"
   integrity sha1-Onc0X/wc814qkYJWAfnljy4kysQ=
@@ -9172,7 +9172,7 @@ is-answer@^0.1.0:
     is-primitive "^2.0.0"
     omit-empty "^0.4.1"
 
-is-arguments@^1.0.2:
+is-arguments@^1.0.2, is-arguments@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/is-arguments/-/is-arguments-1.0.4.tgz#3faf966c7cba0ff437fb31f6250082fcf0448cf3"
   integrity sha512-xPh0Rmt8NE65sNzvyUmWgI1tz3mKq74lGA0mL8LYZcoIzKOzDh6HmrYm3d18k60nHerC8A9Km8kYu87zfSFnLA==
@@ -16003,16 +16003,6 @@ to-fast-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
   integrity sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=
-
-to-file-path@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/to-file-path/-/to-file-path-1.0.0.tgz#4c55a9f2d2755d455d2258314a3411e19106d1d4"
-  integrity sha1-TFWp8tJ1XUVdIlgxSjQR4ZEG0dQ=
-  dependencies:
-    arr-map "^2.0.0"
-    is-arguments "^1.0.2"
-    isarray "^1.0.0"
-    lazy-cache "^1.0.3"
 
 to-file@^0.2.0:
   version "0.2.0"

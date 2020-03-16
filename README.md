@@ -29,6 +29,7 @@ Jest and Babel.
 | [`parse-function`](https://ghub.now.sh/parse-function) | [![npm][npm-a236619861-img]][npm-a236619861-url] [![cov][cov-a236619861-img]][cov-a236619861-url] |
 | [`prettier-plugin-pkgjson`](https://ghub.now.sh/prettier-plugin-pkgjson) | [![npm][npm-07945251a6-img]][npm-07945251a6-url] [![cov][cov-07945251a6-img]][cov-07945251a6-url] |
 | [`stringify-github-short-url`](https://ghub.now.sh/stringify-github-short-url) | [![npm][npm-3c6aafac3a-img]][npm-3c6aafac3a-url] [![cov][cov-3c6aafac3a-img]][cov-3c6aafac3a-url] |
+| [`to-file-path`](https://ghub.now.sh/to-file-path) | [![npm][npm-062ecde707-img]][npm-062ecde707-url] [![cov][cov-062ecde707-img]][cov-062ecde707-url] |
 
 ### @tunnckocore
 
@@ -104,6 +105,10 @@ Jest and Babel.
 [npm-3c6aafac3a-img]: https://badgen.net/npm/v/stringify-github-short-url?icon=npm
 [cov-3c6aafac3a-url]: https://www.npmjs.com/package/stringify-github-short-url
 [cov-3c6aafac3a-img]: https://badgen.net/badge/coverage/100%25/green?icon=codecov
+[npm-062ecde707-url]: https://www.npmjs.com/package/to-file-path
+[npm-062ecde707-img]: https://badgen.net/npm/v/to-file-path?icon=npm
+[cov-062ecde707-url]: https://www.npmjs.com/package/to-file-path
+[cov-062ecde707-img]: https://badgen.net/badge/coverage/100%25/green?icon=codecov
 [npm-76c512834b-url]: https://www.npmjs.com/package/@tunnckocore/create-jest-runner
 [npm-76c512834b-img]: https://badgen.net/npm/v/@tunnckocore/create-jest-runner?icon=npm
 [cov-76c512834b-url]: https://www.npmjs.com/package/@tunnckocore/create-jest-runner

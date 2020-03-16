@@ -20,8 +20,8 @@
     "clean:fresh": "lerna clean -y && rm -rf node_modules yarn.lock",
     "clean:readmes": "rm -rf @{configs,packages,tunnckocore}/*/README.md",
     "cleanup": "yarn run clean:dist && yarn run clean:fresh && yarn run clean:readmes",
-    "docs": "rm -rf .cache && yarn run clean:readmes && yarn start docs && yarn run format '**/*.{json,md}'",
-    "docs:verb": "lerna exec --parallel 'verb'",
+    "docs": "rm -rf .cache && yarn start docs && yarn run format '**/*.{json,md}'",
+    "docs:verb": "lerna exec --parallel 'verb' && yarn run format '**/*.{json,md}'",
     "fmt": "yarn run format '**/*'",
     "format": "prettier --write",
     "lint:lockfile": "lockfile-lint --path yarn.lock --type yarn --validate-https",
@@ -166,6 +166,10 @@
       "color": "red"
     },
     "@packages/stringify-github-short-url": {
+      "value": 100,
+      "color": "green"
+    },
+    "@packages/to-file-path": {
       "value": 100,
       "color": "green"
     },
