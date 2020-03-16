@@ -136,6 +136,8 @@ module.exports = runner('docks', async (ctx) => {
       );
     }
 
+    console.log(docksConfig);
+
     const res = await utils.tryCatch(async () => {
       // NOTE should not be memoized
       await docksConfig.postHook({

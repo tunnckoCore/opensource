@@ -61,6 +61,7 @@ from [GitHub Actions](https://github.com/features/actions) with
 ## Table of Contents
 
 - [Install](#install)
+- [API](#api)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -82,7 +83,11 @@ think to contribute to this project._
 $ yarn add all-module-paths
 ```
 
-() => include(process.cwd() + '/.verb.md')
+## API
+
+<!-- docks-start -->
+
+<!-- docks-end -->
 
 **[back to top](#readme)**
 
@@ -226,7 +231,7 @@ Released under the [MPL-2.0 License][license-url].
 <!-- [patreon-img]: https://badgen.net/badge/Patreon/tunnckoCore/F96854?icon=patreon -->
 
 [patreon-sponsor-img]: https://badgen.net/badge/become/a%20sponsor/F96854?icon=patreon
-[twitter-share-url]: https://twitter.com/intent/tweet?text=https://github.com/tunnckoCore/opensource/tree/master&via=tunnckoCore
+[twitter-share-url]: https://twitter.com/intent/tweet?text=https://ghub.now.sh/all-module-paths&via=tunnckoCore
 [twitter-share-img]: https://badgen.net/badge/twitter/share/1da1f2?icon=twitter
 [open-issue-url]: https://github.com/tunnckoCore/opensource/issues/new
 [tunnckocore_legal]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/legal/tunnckocore?label&color=A56016&icon=https://svgshare.com/i/Dt6.svg

@@ -1,6 +1,8 @@
 # Open Source Monorepo
 
-Delivering delightful digital solutions. Open Source Monorepo (of monorepos), semantically versioned following Conventional Commits. Fully powered by Lerna, Jest and Babel.
+Delivering delightful digital solutions. Open Source Monorepo (of monorepos),
+semantically versioned following Conventional Commits. Fully powered by Lerna,
+Jest and Babel.
 
 ## Workspaces
 
