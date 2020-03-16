@@ -249,7 +249,7 @@ Copyright (c) 2015-present,
 
 <!-- Front line badges -->
 
-[codecoverage-img]: https://badgen.net/badge/coverage/unknown/grey?icon=codecov&cache=300
+[codecoverage-img]: https://badgen.net/badge/coverage/100%25/green?icon=codecov&cache=300
 
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 

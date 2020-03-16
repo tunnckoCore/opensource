@@ -18,6 +18,7 @@ Delivering delightful digital solutions. Open Source Monorepo (of monorepos), se
 | [`gitclone-cli`](https://ghub.now.sh/gitclone-cli) | [![npm][npm-dec4d0cc05-img]][npm-dec4d0cc05-url] [![cov][cov-dec4d0cc05-img]][cov-dec4d0cc05-url] |
 | [`gitclone-defaults`](https://ghub.now.sh/gitclone-defaults) | [![npm][npm-cac2bd5e92-img]][npm-cac2bd5e92-url] [![cov][cov-cac2bd5e92-img]][cov-cac2bd5e92-url] |
 | [`glob-cache`](https://ghub.now.sh/glob-cache) | [![npm][npm-9d6fa88185-img]][npm-9d6fa88185-url] [![cov][cov-9d6fa88185-img]][cov-9d6fa88185-url] |
+| [`ip-filter`](https://ghub.now.sh/ip-filter) | [![npm][npm-ef046d0b75-img]][npm-ef046d0b75-url] [![cov][cov-ef046d0b75-img]][cov-ef046d0b75-url] |
 | [`jest-runner-docs`](https://ghub.now.sh/jest-runner-docs) | [![npm][npm-bfbf73f3e5-img]][npm-bfbf73f3e5-url] [![cov][cov-bfbf73f3e5-img]][cov-bfbf73f3e5-url] |
 | [`jest-runner-node`](https://ghub.now.sh/jest-runner-node) | [![npm][npm-13c18163b7-img]][npm-13c18163b7-url] [![cov][cov-13c18163b7-img]][cov-13c18163b7-url] |
 | [`jest-runner-rollup`](https://ghub.now.sh/jest-runner-rollup) | [![npm][npm-cf87a4edb8-img]][npm-cf87a4edb8-url] [![cov][cov-cf87a4edb8-img]][cov-cf87a4edb8-url] |
@@ -65,6 +66,10 @@ Delivering delightful digital solutions. Open Source Monorepo (of monorepos), se
 [npm-9d6fa88185-img]: https://badgen.net/npm/v/glob-cache?icon=npm
 [cov-9d6fa88185-url]: https://www.npmjs.com/package/glob-cache
 [cov-9d6fa88185-img]: https://badgen.net/badge/coverage/100%25/green?icon=codecov
+[npm-ef046d0b75-url]: https://www.npmjs.com/package/ip-filter
+[npm-ef046d0b75-img]: https://badgen.net/npm/v/ip-filter?icon=npm
+[cov-ef046d0b75-url]: https://www.npmjs.com/package/ip-filter
+[cov-ef046d0b75-img]: https://badgen.net/badge/coverage/100%25/green?icon=codecov
 [npm-bfbf73f3e5-url]: https://www.npmjs.com/package/jest-runner-docs
 [npm-bfbf73f3e5-img]: https://badgen.net/npm/v/jest-runner-docs?icon=npm
 [cov-bfbf73f3e5-url]: https://www.npmjs.com/package/jest-runner-docs
