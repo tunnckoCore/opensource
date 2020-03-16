@@ -16,12 +16,12 @@
   "scripts": {
     "bootstrap": "lerna bootstrap --since",
     "bundle": "ROLLUP_FORCE_RELOAD=1 yarn start bundle",
-    "clean:dist": "rm -rf @{web,configs,packages,tunnckocore}/*/dist",
+    "clean:dist": "rm -rf @{configs,packages,tunnckocore}/*/dist",
     "clean:fresh": "lerna clean -y && rm -rf node_modules yarn.lock",
     "clean:readmes": "rm -rf @{configs,packages,tunnckocore}/*/README.md",
     "cleanup": "yarn run clean:dist && yarn run clean:fresh && yarn run clean:readmes",
-    "docs": "yarn start docs && yarn run format '**/*.{json,md}'",
-    "docs:verb": "lerna exec --parallel \"verb --cwd $PWD\"",
+    "docs": "rm -rf .cache && yarn start docs && yarn run format '**/*.{json,md}'",
+    "docs:verb": "lerna exec --parallel 'verb' && yarn run format '**/*.{json,md}'",
     "fmt": "yarn run format '**/*'",
     "format": "prettier --write",
     "lint:lockfile": "lockfile-lint --path yarn.lock --type yarn --validate-https",
@@ -110,8 +110,8 @@
   },
   "cov": {
     "@configs/babel-preset": {
-      "value": 2.17,
-      "color": "red"
+      "value": 41.66,
+      "color": "orange"
     },
     "@packages/all-module-paths": {
       "value": 95.35,
@@ -133,8 +133,12 @@
       "value": 100,
       "color": "green"
     },
+    "@packages/ip-filter": {
+      "value": 100,
+      "color": "green"
+    },
     "@packages/jest-runner-docs": {
-      "value": 6.11,
+      "value": 5.99,
       "color": "red"
     },
     "@packages/jest-runner-node": {
@@ -165,8 +169,12 @@
       "value": 100,
       "color": "green"
     },
+    "@packages/to-file-path": {
+      "value": 100,
+      "color": "green"
+    },
     "@tunnckocore/create-jest-runner": {
-      "value": 19.91,
+      "value": 19.97,
       "color": "red"
     },
     "@tunnckocore/execa": {
@@ -186,7 +194,7 @@
       "color": "EEAA22"
     },
     "@tunnckocore/pretty-config": {
-      "value": 6.25,
+      "value": 2.08,
       "color": "red"
     },
     "@tunnckocore/utils": {

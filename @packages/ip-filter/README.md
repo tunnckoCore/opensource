@@ -1,6 +1,7 @@
-# prettier-plugin-pkgjson [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url] [![Libera Manifesto][libera-manifesto-img]][libera-manifesto-url]
+# ip-filter [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url] [![Libera Manifesto][libera-manifesto-img]][libera-manifesto-url]
 
-> Prettier plugin for clean and meaningful formatting of package.json files
+> Validates valid IPs (IPv4 and IPv6) using [micromatch][] - glob patterns,
+> RegExp, string or array of globs. If match returns the IP, otherwise null.
 
 Please consider following this project's author,
 [Charlike Mike Reagent](https://github.com/tunnckoCore), and :star: the project
@@ -60,6 +61,8 @@ from [GitHub Actions](https://github.com/features/actions) with
 
 - [Install](#install)
 - [API](#api)
+  - [ipFilter](#ipfilter)
+- [See Also](#see-also)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -78,14 +81,107 @@ Install it using [**yarn**](https://yarnpkg.com) or
 think to contribute to this project._
 
 ```bash
-$ yarn add prettier-plugin-pkgjson
+$ yarn add ip-filter
 ```
 
 ## API
 
 <!-- docks-start -->
 
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
+
+### [ipFilter](./src/index.js#L44)
+
+Filter `ip` against glob `patterns`, using [micromatch][] under the hood, so
+`options` are passed to it.
+
+<span id="ipfilter-signature"></span>
+
+#### Signature
+
+```ts
+function(ip, patterns, options)
+```
+
+<span id="ipfilter-params"></span>
+
+#### Params
+
+- `ip` **{string}** - Accepts only valid IPs by default
+- `patterns` **{string|array}** - Basically everything that [micromatch][]'s
+  second argument can accept.
+- `options` **{object}** - Pass `strict: false` if want to validate non-ip
+  values, options are also passed to [micromatch][].
+- `returns` **{string}** - a `string` or `null` If not match returns `null`,
+  otherwise the passed `ip` as string.
+
+<span id="ipfilter-examples"></span>
+
+#### Examples
+
+```js
+const ipFilter = require('ip-filter');
+
+console.log(ipFilter('123.77.34.89', '123.??.34.8*')); // => '123.77.34.89'
+console.log(ipFilter('123.222.34.88', '123.??.34.8*')); // => null
+console.log(ipFilter('123.222.33.1', ['123.*.34.*', '*.222.33.*'])); // => '123.222.33.1'
+
+// should notice the difference
+console.log(ipFilter('123.222.34.88', ['123.*.34.*', '!123.222.**']));
+// => null
+console.log(ipFilter('123.222.34.88', ['123.*.34.*', '!123.222.*']));
+// => '123.222.34.88'
+```
+
+<span id="ipfilter-examples"></span>
+
+#### Examples
+
+```js
+const ipFilter = require('ip-filter');
+//
+// NON-STRICT mode
+//
+
+const res = ipFilter('x-koaip', ['*-koaip', '!foo-koa*'], { strict: false });
+console.log(res); // => 'x-koaip'
+
+const res = ipFilter('x-koa.foo', ['*-koa.*', '!foo-koa.*'], { strict: false });
+console.log(res); // => 'x-koa.foo'
+```
+
 <!-- docks-end -->
+
+**[back to top](#readme)**
+
+## See Also
+
+Some of these projects are used here or were inspiration for this one, others
+are just related. So, thanks for your existance!
+
+- [ip-regex](https://www.npmjs.com/package/ip-regex): Regular expression for
+  matching IP addresses (IPv4 & IPv6) |
+  [homepage](https://github.com/sindresorhus/ip-regex#readme 'Regular expression for matching IP addresses (IPv4 & IPv6)')
+- [is-match-ip](https://www.npmjs.com/package/is-match-ip): Matching IPs using
+  [micromatch][] and [ip-filter][] - glob patterns, RegExp…
+  [more](https://github.com/tunnckocore/is-match-ip#readme) |
+  [homepage](https://github.com/tunnckocore/is-match-ip#readme 'Matching IPs using [micromatch][] and [ip-filter][] - glob patterns, RegExp, string or array of globs. Returns matcher function.')
+- [is-match](https://www.npmjs.com/package/is-match): Create a matching function
+  from a glob pattern, regex, string…
+  [more](https://github.com/jonschlinkert/is-match) |
+  [homepage](https://github.com/jonschlinkert/is-match 'Create a matching function from a glob pattern, regex, string, array, object or function.')
+- [koa-ip-filter](https://www.npmjs.com/package/koa-ip-filter): Middleware for
+  [koa][] that filters IPs against glob patterns, RegExp…
+  [more](https://github.com/tunnckocore/koa-ip-filter#readme) |
+  [homepage](https://github.com/tunnckocore/koa-ip-filter#readme 'Middleware for [koa][] that filters IPs against glob patterns, RegExp, string or array of globs. Support custom `403 Forbidden` message and custom ID.')
+- [micromatch](https://www.npmjs.com/package/micromatch): Glob matching for
+  javascript/node.js. A replacement and faster alternative to…
+  [more](https://github.com/micromatch/micromatch) |
+  [homepage](https://github.com/micromatch/micromatch 'Glob matching for javascript/node.js. A replacement and faster alternative to minimatch and multimatch.')
+- [to-file-path](https://www.npmjs.com/package/to-file-path): Create a filepath
+  from an object path (dot notation), list…
+  [more](https://github.com/tunnckocore/to-file-path#readme) |
+  [homepage](https://github.com/tunnckocore/to-file-path#readme 'Create a filepath from an object path (dot notation), list of arguments, array, number or Arguments object.')
 
 **[back to top](#readme)**
 
@@ -110,8 +206,7 @@ we proceed. In short, we support latest two even-numbered Node.js release lines.
 [Become a Partner or Sponsor?][kofi-url] :dollar: Check the **OpenSource**
 Commision (tier). :tada: You can get your company logo, link & name on this
 file. It's also rendered on package's page in [npmjs.com][npmv-url] and
-[yarnpkg.com](https://yarnpkg.com/en/package/prettier-plugin-pkgjson) sites too!
-:rocket:
+[yarnpkg.com](https://yarnpkg.com/en/package/ip-filter) sites too! :rocket:
 
 Not financial support? Okey!
 [Pull requests](https://github.com/tunnckoCoreLabs/contributing#opening-a-pull-request),
@@ -147,7 +242,7 @@ your [support](#support-the-project) to them:
 
 ## License
 
-Copyright (c) 2020-present, [Charlike Mike Reagent](https://tunnckocore.com)
+Copyright (c) 2015-present, [Charlike Mike Reagent](https://tunnckocore.com)
 `<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br>
 Released under the [MPL-2.0 License][license-url].
 
@@ -160,18 +255,18 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- Heading badges -->
 
-[npmv-url]: https://www.npmjs.com/package/prettier-plugin-pkgjson
-[npmv-img]: https://badgen.net/npm/v/prettier-plugin-pkgjson?icon=npm&cache=300
+[npmv-url]: https://www.npmjs.com/package/ip-filter
+[npmv-img]: https://badgen.net/npm/v/ip-filter?icon=npm&cache=300
 
-[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/prettier-plugin-pkgjson/LICENSE
-[license-img]: https://badgen.net/npm/license/prettier-plugin-pkgjson?cache=300
+[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/ip-filter/LICENSE
+[license-img]: https://badgen.net/npm/license/ip-filter?cache=300
 
 [libera-manifesto-url]: https://liberamanifesto.com
 [libera-manifesto-img]: https://badgen.net/badge/libera/manifesto/grey
 
 <!-- Front line badges -->
 
-[codecoverage-img]: https://badgen.net/badge/coverage/25%25/red?icon=codecov&cache=300 
+[codecoverage-img]: https://badgen.net/badge/coverage/100%25/green?icon=codecov&cache=300
 
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 
@@ -195,9 +290,9 @@ Released under the [MPL-2.0 License][license-url].
 
 [nodejs-img]: https://badgen.net/badge/node/>=10.13/green?cache=300
 
-[downloads-weekly-img]: https://badgen.net/npm/dw/prettier-plugin-pkgjson?icon=npm&cache=300
-[downloads-monthly-img]: https://badgen.net/npm/dm/prettier-plugin-pkgjson?icon=npm&cache=300
-[downloads-total-img]: https://badgen.net/npm/dt/prettier-plugin-pkgjson?icon=npm&cache=300
+[downloads-weekly-img]: https://badgen.net/npm/dw/ip-filter?icon=npm&cache=300
+[downloads-monthly-img]: https://badgen.net/npm/dm/ip-filter?icon=npm&cache=300
+[downloads-total-img]: https://badgen.net/npm/dt/ip-filter?icon=npm&cache=300
 
 [renovateapp-url]: https://renovatebot.com
 [renovateapp-img]: https://badgen.net/badge/renovate/enabled/green?cache=300
@@ -229,7 +324,7 @@ Released under the [MPL-2.0 License][license-url].
 <!-- [patreon-img]: https://badgen.net/badge/Patreon/tunnckoCore/F96854?icon=patreon -->
 
 [patreon-sponsor-img]: https://badgen.net/badge/become/a%20sponsor/F96854?icon=patreon
-[twitter-share-url]: https://twitter.com/intent/tweet?text=https://ghub.now.sh/prettier-plugin-pkgjson&via=tunnckoCore
+[twitter-share-url]: https://twitter.com/intent/tweet?text=https://ghub.now.sh/ip-filter&via=tunnckoCore
 [twitter-share-img]: https://badgen.net/badge/twitter/share/1da1f2?icon=twitter
 [open-issue-url]: https://github.com/tunnckoCore/opensource/issues/new
 [tunnckocore_legal]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/legal/tunnckocore?label&color=A56016&icon=https://svgshare.com/i/Dt6.svg
@@ -239,3 +334,8 @@ Released under the [MPL-2.0 License][license-url].
 [tunnckocore_newsletter]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/newsletter/tunnckocore?label&color=5199FF&icon=https://svgshare.com/i/Dt6.svg
 
 <!-- prettier-ignore-end -->
+
+[ip-filter]: https://github.com/tunnckocore/ip-filter
+[is-match]: https://github.com/jonschlinkert/is-match
+[koa]: https://github.com/koajs/koa
+[micromatch]: https://github.com/micromatch/micromatch

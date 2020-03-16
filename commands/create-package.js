@@ -162,8 +162,8 @@ module.exports = hela()
 
     const baseLine =
       answers.publishType === 'source'
-        ? "const mod = require('../src')"
-        : "import mod from '../src'";
+        ? "const mod = require('../src/index')"
+        : "import mod from '../src/index'";
 
     const testFile = `${baseLine};
 

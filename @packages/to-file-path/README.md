@@ -1,6 +1,7 @@
-# prettier-plugin-pkgjson [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url] [![Libera Manifesto][libera-manifesto-img]][libera-manifesto-url]
+# to-file-path [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url] [![Libera Manifesto][libera-manifesto-img]][libera-manifesto-url]
 
-> Prettier plugin for clean and meaningful formatting of package.json files
+> Create a filepath from an object path (dot notation), list of arguments,
+> array, number or Arguments object.
 
 Please consider following this project's author,
 [Charlike Mike Reagent](https://github.com/tunnckoCore), and :star: the project
@@ -60,6 +61,8 @@ from [GitHub Actions](https://github.com/features/actions) with
 
 - [Install](#install)
 - [API](#api)
+  - [toFilePath](#tofilepath)
+- [See Also](#see-also)
 - [Contributing](#contributing)
   - [Guides and Community](#guides-and-community)
   - [Support the project](#support-the-project)
@@ -78,14 +81,82 @@ Install it using [**yarn**](https://yarnpkg.com) or
 think to contribute to this project._
 
 ```bash
-$ yarn add prettier-plugin-pkgjson
+$ yarn add to-file-path
 ```
 
 ## API
 
 <!-- docks-start -->
 
+_Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
+
+### [toFilePath](./src/index.js#L23)
+
+Create filepath from different type of arguments.
+
+<span id="tofilepath-signature"></span>
+
+#### Signature
+
+```ts
+function(args)
+```
+
+<span id="tofilepath-params"></span>
+
+#### Params
+
+- `...args` **{string|array|Arguments|number|boolean}** - Pass any type and any
+  number of arguments.
+- `returns` **{string}** - always slash separated filepath
+
+<span id="tofilepath-examples"></span>
+
+#### Examples
+
+```js
+const toFilePath = require('to-file-path');
+
+console.log(toFilePath('foo.bar.baz')); // => 'foo/bar/baz'
+console.log(toFilePath('foo.bar', 'qux.baz', 'xxx')); // => 'foo/bar/qux/baz/xxx'
+console.log(toFilePath('foo', 'qux', 'baz')); // => 'foo/qux/baz'
+console.log(toFilePath([1, 2, 3], 'foo', 4, 'bar')); // => '1/2/3/foo/4/bar'
+console.log(toFilePath(null, true)); // => 'null/true'
+console.log(toFilePath(1, 2, 3)); // => '1/2/3'
+```
+
 <!-- docks-end -->
+
+**[back to top](#readme)**
+
+## See Also
+
+Some of these projects are used here or were inspiration for this one, others
+are just related. So, thanks for your existance!
+
+- [arr-includes](https://www.npmjs.com/package/arr-includes): Return positive
+  value if (any of the) passed value(s) exists…
+  [more](https://tunnckocore.com/opensource) |
+  [homepage](https://tunnckocore.com/opensource 'Return positive value if (any of the) passed value(s) exists in array, or optionally an index')
+- [arr-map](https://www.npmjs.com/package/arr-map): Faster, node.js focused
+  alternative to JavaScript's native array map. |
+  [homepage](https://github.com/jonschlinkert/arr-map "Faster, node.js focused alternative to JavaScript's native array map.")
+- [get-fn-name](https://www.npmjs.com/package/get-fn-name): Get function name
+  with strictness and correctness in mind. Also…
+  [more](https://github.com/tunnckocore/get-fn-name#readme) |
+  [homepage](https://github.com/tunnckocore/get-fn-name#readme 'Get function name with strictness and correctness in mind. Also works for arrow functions and getting correct name of bounded functions. Powered by [fn-name][].')
+- [in-array](https://www.npmjs.com/package/in-array): Return true if a value
+  exists in an array. Faster… [more](https://github.com/jonschlinkert/in-array)
+  |
+  [homepage](https://github.com/jonschlinkert/in-array "Return true if a value exists in an array. Faster than using indexOf and won't blow up on null values.")
+- [ip-filter](https://www.npmjs.com/package/ip-filter): Validates valid IPs
+  (IPv4 and IPv6) using [micromatch][] - glob…
+  [more](https://github.com/tunnckocore/ip-filter#readme) |
+  [homepage](https://github.com/tunnckocore/ip-filter#readme 'Validates valid IPs (IPv4 and IPv6) using [micromatch][] - glob patterns, RegExp, string or array of globs. If match returns the IP, otherwise null.')
+- [to-object-path](https://www.npmjs.com/package/to-object-path): Create an
+  object path from a list or array of…
+  [more](https://github.com/jonschlinkert/to-object-path) |
+  [homepage](https://github.com/jonschlinkert/to-object-path 'Create an object path from a list or array of strings.')
 
 **[back to top](#readme)**
 
@@ -110,8 +181,7 @@ we proceed. In short, we support latest two even-numbered Node.js release lines.
 [Become a Partner or Sponsor?][kofi-url] :dollar: Check the **OpenSource**
 Commision (tier). :tada: You can get your company logo, link & name on this
 file. It's also rendered on package's page in [npmjs.com][npmv-url] and
-[yarnpkg.com](https://yarnpkg.com/en/package/prettier-plugin-pkgjson) sites too!
-:rocket:
+[yarnpkg.com](https://yarnpkg.com/en/package/to-file-path) sites too! :rocket:
 
 Not financial support? Okey!
 [Pull requests](https://github.com/tunnckoCoreLabs/contributing#opening-a-pull-request),
@@ -147,7 +217,7 @@ your [support](#support-the-project) to them:
 
 ## License
 
-Copyright (c) 2020-present, [Charlike Mike Reagent](https://tunnckocore.com)
+Copyright (c) 2016-present, [Charlike Mike Reagent](https://tunnckocore.com)
 `<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br>
 Released under the [MPL-2.0 License][license-url].
 
@@ -160,18 +230,18 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- Heading badges -->
 
-[npmv-url]: https://www.npmjs.com/package/prettier-plugin-pkgjson
-[npmv-img]: https://badgen.net/npm/v/prettier-plugin-pkgjson?icon=npm&cache=300
+[npmv-url]: https://www.npmjs.com/package/to-file-path
+[npmv-img]: https://badgen.net/npm/v/to-file-path?icon=npm&cache=300
 
-[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/prettier-plugin-pkgjson/LICENSE
-[license-img]: https://badgen.net/npm/license/prettier-plugin-pkgjson?cache=300
+[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/to-file-path/LICENSE
+[license-img]: https://badgen.net/npm/license/to-file-path?cache=300
 
 [libera-manifesto-url]: https://liberamanifesto.com
 [libera-manifesto-img]: https://badgen.net/badge/libera/manifesto/grey
 
 <!-- Front line badges -->
 
-[codecoverage-img]: https://badgen.net/badge/coverage/25%25/red?icon=codecov&cache=300 
+[codecoverage-img]: https://badgen.net/badge/coverage/100%25/green?icon=codecov&cache=300
 
 [codecoverage-url]: https://codecov.io/gh/tunnckoCore/opensource
 
@@ -195,9 +265,9 @@ Released under the [MPL-2.0 License][license-url].
 
 [nodejs-img]: https://badgen.net/badge/node/>=10.13/green?cache=300
 
-[downloads-weekly-img]: https://badgen.net/npm/dw/prettier-plugin-pkgjson?icon=npm&cache=300
-[downloads-monthly-img]: https://badgen.net/npm/dm/prettier-plugin-pkgjson?icon=npm&cache=300
-[downloads-total-img]: https://badgen.net/npm/dt/prettier-plugin-pkgjson?icon=npm&cache=300
+[downloads-weekly-img]: https://badgen.net/npm/dw/to-file-path?icon=npm&cache=300
+[downloads-monthly-img]: https://badgen.net/npm/dm/to-file-path?icon=npm&cache=300
+[downloads-total-img]: https://badgen.net/npm/dt/to-file-path?icon=npm&cache=300
 
 [renovateapp-url]: https://renovatebot.com
 [renovateapp-img]: https://badgen.net/badge/renovate/enabled/green?cache=300
@@ -229,7 +299,7 @@ Released under the [MPL-2.0 License][license-url].
 <!-- [patreon-img]: https://badgen.net/badge/Patreon/tunnckoCore/F96854?icon=patreon -->
 
 [patreon-sponsor-img]: https://badgen.net/badge/become/a%20sponsor/F96854?icon=patreon
-[twitter-share-url]: https://twitter.com/intent/tweet?text=https://ghub.now.sh/prettier-plugin-pkgjson&via=tunnckoCore
+[twitter-share-url]: https://twitter.com/intent/tweet?text=https://ghub.now.sh/to-file-path&via=tunnckoCore
 [twitter-share-img]: https://badgen.net/badge/twitter/share/1da1f2?icon=twitter
 [open-issue-url]: https://github.com/tunnckoCore/opensource/issues/new
 [tunnckocore_legal]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/legal/tunnckocore?label&color=A56016&icon=https://svgshare.com/i/Dt6.svg
@@ -239,3 +309,9 @@ Released under the [MPL-2.0 License][license-url].
 [tunnckocore_newsletter]: https://badgen.net/https/liam-badge-daknys6gadky.runkit.sh/com/newsletter/tunnckocore?label&color=5199FF&icon=https://svgshare.com/i/Dt6.svg
 
 <!-- prettier-ignore-end -->
+
+[fn-name]: https://github.com/sindresorhus/fn-name
+[ip-filter]: https://github.com/tunnckocore/ip-filter
+[is-match]: https://github.com/jonschlinkert/is-match
+[koa]: https://github.com/koajs/koa
+[micromatch]: https://github.com/micromatch/micromatch
