@@ -1,3 +1,30 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 3.0.0 (2020-03-16)
+
+
+### chore
+
+* import `ip-filter` package + v3 of it ([#127](https://github.com/tunnckoCore/opensource/issues/127)) ([da3e887](https://github.com/tunnckoCore/opensource/commit/da3e887af6242ab4180d985cad69f506463baf21))
+
+
+### BREAKING CHANGES
+
+* release v3, see #127 
+
+- require `node >= 10.13`
+- relicense to `MPL-2.0`
+- switch to use `micromatch@4` directly instead of legacy `is-match`
+- continuation of https://github.com/tunnckoCore/ip-filter/issues/8
+- new home https://ghub.now.sh/ip-filter (`@packages/ip-filter`)
+
+
+
+
+
 
 
 ## 2.0.0 - 2016-10-06
