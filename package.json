@@ -23,7 +23,6 @@
     "docs": "rm -rf .cache && yarn run clean:readmes && yarn start docs && yarn run format '**/*.{json,md}'",
     "docs:verb": "lerna exec --parallel 'verb'",
     "fmt": "yarn run format '**/*'",
-    "foo": "echo $npm_package_name",
     "format": "prettier --write",
     "lint:lockfile": "lockfile-lint --path yarn.lock --type yarn --validate-https",
     "patch:docs": "cp patches/hela-dev/docs-config.js node_modules/hela/src/dev/configs/docs/index.js",
