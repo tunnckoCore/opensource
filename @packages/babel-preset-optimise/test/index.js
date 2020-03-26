@@ -22,8 +22,8 @@ test('should preset return plugins and presets', () => {
   );
 });
 
-test('should include react presets', () => {
-  const config = preset({ assertVersion() {} }, { react: true });
+test('should include react presets & plugins', () => {
+  const config = preset({ assertVersion() {} }, { jsx: true });
 
   expect(config).toHaveProperty('plugins');
   expect(config).toHaveProperty('presets');
@@ -33,10 +33,21 @@ test('should include react presets', () => {
   );
 });
 
+test('should include transform-modules-commonjs when options.commonjs: true', () => {
+  const config = preset({ assertVersion() {} }, { commonjs: true });
+
+  expect(config).toHaveProperty('plugins');
+  expect(config).toHaveProperty('presets');
+  expect(config.presets.length).toBe(1);
+  expect(config.plugins).toEqual(
+    expect.arrayContaining(['@babel/plugin-transform-modules-commonjs']),
+  );
+});
+
 test('should include react and typescript presets', () => {
   const config = preset(
     { assertVersion() {} },
-    { typescript: true, react: true },
+    { typescript: true, jsx: true },
   );
 
   expect(config.presets.length).toBe(3);
@@ -45,6 +56,25 @@ test('should include react and typescript presets', () => {
       '@babel/preset-modules',
       '@babel/preset-react',
       ['@babel/preset-typescript', { isTSX: true, allExtensions: true }],
+    ]),
+  );
+});
+
+test('should allow JSX/react customization', () => {
+  const config = preset(
+    { assertVersion() {} },
+    { typescript: true, jsx: { pragma: 'h', useSpread: true } },
+  );
+
+  expect(config.presets.length).toBe(3);
+  expect(config.presets).toEqual(
+    expect.arrayContaining([
+      '@babel/preset-modules',
+      ['@babel/preset-react', { pragma: 'h', useSpread: true }],
+      [
+        '@babel/preset-typescript',
+        { jsxPragma: 'h', isTSX: true, allExtensions: true },
+      ],
     ]),
   );
 });
@@ -59,10 +89,20 @@ test('should include minify-builtins plugin', () => {
   );
 });
 
+test('should include all presets (3) and plugins (15)', () => {
+  const config = preset(
+    { assertVersion() {} },
+    { jsx: true, commonjs: true, typescript: true, minifyBuiltins: true },
+  );
+
+  expect(config.presets.length).toBe(3);
+  expect(config.plugins.length).toBe(15);
+});
+
 test('should add react plugins when react: true', () => {
   const config = preset(
     { assertVersion() {} },
-    { minifyBuiltins: true, react: true },
+    { minifyBuiltins: true, jsx: true },
   );
 
   expect(config.presets.length).toBe(2);
