@@ -40,7 +40,7 @@
     "start": "hela",
     "test": "CI=1 yarn start test",
     "test:legacy": "CI=1 yarn run run:node",
-    "testy": "hela gen:cov && yarn run docs"
+    "testy": "hela gen:cov && hela gen:readme && yarn run docs"
   },
   "dependencies": {
     "@babel/cli": "^7.8.4",
@@ -122,7 +122,7 @@
       "color": "green"
     },
     "@packages/babel-preset-optimise": {
-      "value": 98.61,
+      "value": 91.55,
       "color": "99CC09"
     },
     "@packages/gitclone-defaults": {
@@ -138,7 +138,7 @@
       "color": "green"
     },
     "@packages/jest-runner-docs": {
-      "value": 5.99,
+      "value": 5.94,
       "color": "red"
     },
     "@packages/jest-runner-node": {
