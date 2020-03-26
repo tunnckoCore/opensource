@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/tunnckoCore/opensource/compare/babel-preset-optimise@0.2.5...babel-preset-optimise@1.0.0) (2020-03-26)
+
+
+### Bug Fixes
+
+* **preset-optimise:** update deps & switch to mpl-2.0 ([e610821](https://github.com/tunnckoCore/opensource/commit/e610821f1b056ca982e8d3fece2af7f0a3d00319))
+
+
+### Features
+
+* **preset-optimise:** add & rename options, better defaults ([#130](https://github.com/tunnckoCore/opensource/issues/130)) ([3840a62](https://github.com/tunnckoCore/opensource/commit/3840a62a010017444f454a8ae692a94b87c31e51))
+
+
+### BREAKING CHANGES
+
+* **preset-optimise:** add & rename options, better defaults (#130)
+
+
+
+
+
 ## [0.2.5](https://github.com/tunnckoCore/opensource/compare/babel-preset-optimise@0.2.4...babel-preset-optimise@0.2.5) (2020-02-05)
 
 
