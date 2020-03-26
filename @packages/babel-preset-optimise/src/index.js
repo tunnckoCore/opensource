@@ -4,10 +4,16 @@
  * Be aware that when you use `minifyBuiltins: true` you _MAY_ get a bigger output,
  * but that's not always guaranteed, just try for your case.
  *
+ * If you want to use JSX (React) in typescript, pass `options.jsx: true`.
+ * If you want to use other JSX library (in typescript or javascript),
+ * pass an object to the `options.jsx` for further customization, because
+ * it is directly passed to `preset-react` with its defaults.
+ *
+ *
  * @name  babelPresetOptimize
  * @param {object} options - optionally control what can be included
- * @param {boolean} options.react - default `false`, includes the React preset and 3 react plugins
- * @param {boolean} options.modules - default `false`, pass non-falsey value to transform to CommonJS
+ * @param {boolean} options.jsx - default `false`, pass `true` if you want `react`; pass an object for more customization (passed to react preset)
+ * @param {boolean} options.commonjs - default `false`, pass non-falsey value to transform ESModules to CommonJS
  * @param {boolean} options.typescript - default `false`, includes the TypeScript preset
  * @param {boolean} options.minifyBuiltins - default `false`, includes [babel-plugin-minify-builtins][]
  * @public
@@ -17,25 +23,29 @@ module.exports = function babelPresetOptimize(api, options) {
 
   // NOTE: minifyBuiltins: true might output a bigger output - it depends, try your codebase.
   const {
-    react = false,
+    jsx = false,
+    commonjs = false,
     typescript = false,
     minifyBuiltins = false,
-    modules = false,
-  } = {
-    ...options,
-  };
+  } = { ...options };
+
+  const hasJsxOptions = jsx && typeof jsx === 'object';
+  const pragma = hasJsxOptions ? jsx.pragma : undefined;
+  const jsxPreset = hasJsxOptions ? ['@babel/preset-react', jsx] : undefined;
+
+  const react = jsx === true ? '@babel/preset-react' : jsxPreset;
 
   return {
     presets: [
       typescript && [
         '@babel/preset-typescript',
-        { isTSX: react, allExtensions: true },
+        { jsxPragma: pragma, isTSX: true, allExtensions: true },
       ],
       '@babel/preset-modules',
-      react && '@babel/preset-react',
+      react,
     ].filter(Boolean),
     plugins: [
-      modules && '@babel/plugin-transform-modules-commonjs',
+      commonjs && '@babel/plugin-transform-modules-commonjs',
       'babel-plugin-annotate-pure-calls',
       'babel-plugin-dev-expression',
       minifyBuiltins && 'babel-plugin-minify-builtins',
