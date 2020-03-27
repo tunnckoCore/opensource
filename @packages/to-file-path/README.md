@@ -151,8 +151,8 @@ are just related. So, thanks for your existance!
   [homepage](https://github.com/jonschlinkert/in-array "Return true if a value exists in an array. Faster than using indexOf and won't blow up on null values.")
 - [ip-filter](https://www.npmjs.com/package/ip-filter): Validates valid IPs
   (IPv4 and IPv6) using [micromatch][] - glob…
-  [more](https://github.com/tunnckocore/ip-filter#readme) |
-  [homepage](https://github.com/tunnckocore/ip-filter#readme 'Validates valid IPs (IPv4 and IPv6) using [micromatch][] - glob patterns, RegExp, string or array of globs. If match returns the IP, otherwise null.')
+  [more](https://tunnckocore.com/opensource) |
+  [homepage](https://tunnckocore.com/opensource 'Validates valid IPs (IPv4 and IPv6) using [micromatch][] - glob patterns, RegExp, string or array of globs. If match returns the IP, otherwise null.')
 - [to-object-path](https://www.npmjs.com/package/to-object-path): Create an
   object path from a list or array of…
   [more](https://github.com/jonschlinkert/to-object-path) |
@@ -311,7 +311,7 @@ Released under the [MPL-2.0 License][license-url].
 <!-- prettier-ignore-end -->
 
 [fn-name]: https://github.com/sindresorhus/fn-name
-[ip-filter]: https://github.com/tunnckocore/ip-filter
+[ip-filter]: https://tunnckocore.com/opensource
 [is-match]: https://github.com/jonschlinkert/is-match
 [koa]: https://github.com/koajs/koa
 [micromatch]: https://github.com/micromatch/micromatch

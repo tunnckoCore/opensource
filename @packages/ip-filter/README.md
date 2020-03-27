@@ -180,8 +180,8 @@ are just related. So, thanks for your existance!
   [homepage](https://github.com/micromatch/micromatch 'Glob matching for javascript/node.js. A replacement and faster alternative to minimatch and multimatch.')
 - [to-file-path](https://www.npmjs.com/package/to-file-path): Create a filepath
   from an object path (dot notation), list…
-  [more](https://github.com/tunnckocore/to-file-path#readme) |
-  [homepage](https://github.com/tunnckocore/to-file-path#readme 'Create a filepath from an object path (dot notation), list of arguments, array, number or Arguments object.')
+  [more](https://tunnckocore.com/opensource) |
+  [homepage](https://tunnckocore.com/opensource 'Create a filepath from an object path (dot notation), list of arguments, array, number or Arguments object.')
 
 **[back to top](#readme)**
 
@@ -335,7 +335,7 @@ Released under the [MPL-2.0 License][license-url].
 
 <!-- prettier-ignore-end -->
 
-[ip-filter]: https://github.com/tunnckocore/ip-filter
+[ip-filter]: https://tunnckocore.com/opensource
 [is-match]: https://github.com/jonschlinkert/is-match
 [koa]: https://github.com/koajs/koa
 [micromatch]: https://github.com/micromatch/micromatch
