@@ -1,6 +1,6 @@
 {
   "name": "glob-cache",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "licenseStart": 2020,
   "license": "MPL-2.0",
   "description": "Best and fastest file globbing solution for Node.js - can use **any** glob library like `glob`, `globby` or `fast-glob`! Streaming, Promise and Hook APIs, with built in caching layer using `cacache`. Makes you Instant Fast™.",

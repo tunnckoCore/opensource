@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-pkgjson",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "licenseStart": 2020,
   "license": "MPL-2.0",
   "description": "Prettier plugin for clean and meaningful formatting of package.json files",

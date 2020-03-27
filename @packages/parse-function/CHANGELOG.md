@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.6](https://github.com/tunnckoCore/opensource/compare/parse-function@5.6.5...parse-function@5.6.6) (2020-03-27)
+
+
+### Bug Fixes
+
+* upgrade prettier to v2 ([#131](https://github.com/tunnckoCore/opensource/issues/131)) ([8b9f668](https://github.com/tunnckoCore/opensource/commit/8b9f66828baf27d92ce704f0f3c3c9a706ff39ed))
+
+
+
+
+
 ## [5.6.5](https://github.com/tunnckoCore/opensource/compare/parse-function@5.6.4...parse-function@5.6.5) (2020-02-29)
 
 **Note:** Version bump only for package parse-function
