@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.5](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@5.2.4...@tunnckocore/execa@5.2.5) (2020-03-27)
+
+**Note:** Version bump only for package @tunnckocore/execa
+
+
+
+
+
 ## [5.2.4](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@5.2.3...@tunnckocore/execa@5.2.4) (2020-02-29)
 
 

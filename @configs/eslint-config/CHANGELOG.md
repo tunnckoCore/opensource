@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.7](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.4.6...@tunnckocore/eslint-config@5.4.7) (2020-03-27)
+
+**Note:** Version bump only for package @tunnckocore/eslint-config
+
+
+
+
+
 ## [5.4.6](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/eslint-config@5.4.5...@tunnckocore/eslint-config@5.4.6) (2020-03-27)
 
 
