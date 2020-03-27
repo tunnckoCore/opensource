@@ -73,7 +73,7 @@
     "lerna": "^3.20.2",
     "lockfile-lint": "^4.0.0",
     "mukla": "^0.4.9",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.2",
     "react": "^16.12.0",
     "rollup": "^1.31.0",
     "rollup-plugin-babel": "^4.3.3",
