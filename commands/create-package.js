@@ -5,7 +5,7 @@ const path = require('path');
 const semver = require('semver');
 const { prompt } = require('enquirer');
 
-const { hela } = require('hela');
+const { hela } = require('@hela/core');
 
 const answers = {
   license: 'MPL-2.0',

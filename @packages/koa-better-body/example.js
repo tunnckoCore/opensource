@@ -7,7 +7,7 @@
 const app = require('koa')();
 const router = require('koa-router')();
 
-router.post('/upload', body(), function*(next) {
+router.post('/upload', body(), function* (next) {
   console.log(this.request.files);
   console.log(this.request.fields);
 

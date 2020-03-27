@@ -11,14 +11,10 @@ const { getWorkspacesAndExtensions } = require('@tunnckocore/utils');
 const { workspaces } = getWorkspacesAndExtensions(path.dirname(__dirname));
 
 function toHash(input) {
-  return crypto
-    .createHash('md5')
-    .update(input)
-    .digest('hex')
-    .slice(0, 10);
+  return crypto.createHash('md5').update(input).digest('hex').slice(0, 10);
 }
 
-module.exports = require('hela')()
+module.exports = require('@hela/core')()
   .command(
     'gen:readme',
     'Generate monorepo root readme with useful info about each package',

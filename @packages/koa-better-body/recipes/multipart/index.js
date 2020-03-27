@@ -12,7 +12,7 @@ app
       keepExtensions: true,
     }),
   )
-  .use(function*() {
+  .use(function* () {
     console.log(this.request.files); // or `this.body.files`
     console.log(this.body.files.foo.name); // => README.md
     console.log(this.body.files.foo.path); // => full filepath to where is uploaded

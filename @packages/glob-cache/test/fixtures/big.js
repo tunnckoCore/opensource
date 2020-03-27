@@ -1,4 +1,4 @@
-import bar from './bar.js';
+import bar from './bar';
 
 export const foo = bar();
 

@@ -19,12 +19,6 @@
 //   };
 // }
 
-const presetOptions = {
-  react: true,
-  typescript: true,
-  node: '8.11',
-};
-
 module.exports = {
   eslint: {
     // useEslintrc: false,
@@ -68,7 +62,12 @@ module.exports = {
   babel: [
     {
       config: {
-        presets: [['@tunnckocore/babel-preset', presetOptions]],
+        presets: [
+          [
+            'babel-preset-optimise',
+            { jsx: true, commonjs: true, typescript: true },
+          ],
+        ],
         comments: false,
         sourceMaps: true,
       },
@@ -77,9 +76,7 @@ module.exports = {
     },
     {
       config: {
-        presets: [
-          ['@tunnckocore/babel-preset', { ...presetOptions, modules: false }],
-        ],
+        presets: [['babel-preset-optimise', { typescript: true }]],
         comments: false,
         sourceMaps: true,
       },

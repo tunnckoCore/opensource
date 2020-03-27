@@ -29,7 +29,7 @@ app
       IncomingForm: form,
     }),
   )
-  .use(function*() {
+  .use(function* () {
     console.log(this.body.user); // => test
     console.log(this.request.files); // or `this.body.files`
     console.log(this.body.files.foo.name); // => README.md

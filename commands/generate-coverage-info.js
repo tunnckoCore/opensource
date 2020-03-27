@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { testCoverage } = require('@tunnckocore/utils');
 
-module.exports = require('hela')()
+module.exports = require('@hela/core')()
   .command(
     'gen:cov',
     'Gen coverage info (see pkg.cov), run nyc/istanbul/jest before that',

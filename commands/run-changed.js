@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { hela, exec } = require('hela');
+const { hela, exec } = require('@hela/core');
 const chalk = require('chalk');
 const yaml = require('yaml');
 
