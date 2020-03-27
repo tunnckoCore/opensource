@@ -32,7 +32,7 @@
   },
   "scripts": {},
   "peerDependencies": {
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.2",
     "prettier-plugin-pkgjson": "^0.2.3"
   },
   "cov": {

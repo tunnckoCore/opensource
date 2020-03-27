@@ -11,7 +11,7 @@
 
 'use strict';
 
-const { parsers } = require('prettier/parser-babylon');
+const { parsers } = require('prettier/parser-babel');
 const sortPackageJson = require('sort-package-json');
 
 const parser = parsers['json-stringify'];

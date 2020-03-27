@@ -270,10 +270,7 @@ function testCoverage(rootDir, testCovPath) {
 
         /* istanbul ignore next */
         const newKey = k.endsWith('src')
-          ? k
-              .split('/')
-              .slice(0, -1)
-              .join('/')
+          ? k.split('/').slice(0, -1).join('/')
           : k;
 
         acc[newKey] = jestCov[k];

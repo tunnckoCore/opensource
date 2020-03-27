@@ -332,11 +332,7 @@ async function hooker(hookFn, options = {}) {
 }
 
 function revHash(input, len = 20) {
-  return crypto
-    .createHash('md5')
-    .update(input)
-    .digest('hex')
-    .slice(0, len);
+  return crypto.createHash('md5').update(input).digest('hex').slice(0, len);
 }
 
 function serializeJson(input) {

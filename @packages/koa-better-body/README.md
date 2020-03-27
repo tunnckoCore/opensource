@@ -162,12 +162,12 @@ var app = koa();
 
 app
   .use(body())
-  .use(function*() {
+  .use(function* () {
     console.log(this.request.body); // if buffer or text
     console.log(this.request.files); // if multipart or urlencoded
     console.log(this.request.fields); // if json
   })
-  .listen(8080, function() {
+  .listen(8080, function () {
     console.log('koa server start listening on port 8080');
   });
 ```
@@ -185,7 +185,7 @@ var app = require('koa')();
 var body = require('koa-better-body');
 var router = require('koa-router')();
 
-router.post('/upload', body(), function*(next) {
+router.post('/upload', body(), function* (next) {
   console.log(this.request.files);
   console.log(this.request.fields);
 
@@ -358,8 +358,8 @@ are just related. So, thanks for your existance!
   [homepage](https://github.com/node-formidable/formidable 'A node.js module for parsing form data, especially file uploads.')
 - [ip-filter](https://www.npmjs.com/package/ip-filter): Validates valid IPs
   (IPv4 and IPv6) using [micromatch][] - glob…
-  [more](https://github.com/tunnckocore/ip-filter#readme) |
-  [homepage](https://github.com/tunnckocore/ip-filter#readme 'Validates valid IPs (IPv4 and IPv6) using [micromatch][] - glob patterns, RegExp, string or array of globs. If match returns the IP, otherwise null.')
+  [more](https://tunnckocore.com/opensource) |
+  [homepage](https://tunnckocore.com/opensource 'Validates valid IPs (IPv4 and IPv6) using [micromatch][] - glob patterns, RegExp, string or array of globs. If match returns the IP, otherwise null.')
 - [koa-body-parsers](https://www.npmjs.com/package/koa-body-parsers): collection
   of koa body parsers |
   [homepage](https://github.com/koajs/body-parsers#readme 'collection of koa body parsers')

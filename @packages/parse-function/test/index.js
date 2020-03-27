@@ -305,7 +305,7 @@ test(`real anonymous fn has .name: null`, () => {
   const app = parseFunction({ ecmaVersion: 2017 });
 
   /* eslint-disable-next-line prefer-arrow-callback, func-names */
-  const actual = app.parse(function() {});
+  const actual = app.parse(function () {});
   expect(actual.name).toBeNull();
   expect(actual.isAnonymous).toStrictEqual(true);
 });

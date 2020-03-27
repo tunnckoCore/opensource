@@ -22,9 +22,7 @@ function postBody() {
 }
 
 test('should parse a json body', async () => {
-  const server = koa()
-    .use(betterBody())
-    .use(postBody());
+  const server = koa().use(betterBody()).use(postBody());
 
   await new Promise((resolve, reject) => {
     request(server.callback())
@@ -37,9 +35,7 @@ test('should parse a json body', async () => {
 });
 
 test('should parse a string json body', async () => {
-  const server = koa()
-    .use(betterBody())
-    .use(postBody());
+  const server = koa().use(betterBody()).use(postBody());
 
   await new Promise((resolve, reject) => {
     request(server.callback())
@@ -53,9 +49,7 @@ test('should parse a string json body', async () => {
 });
 
 test('should throw on json non-object body in strict mode (default)', async () => {
-  const server = koa()
-    .use(betterBody())
-    .use(postBody());
+  const server = koa().use(betterBody()).use(postBody());
 
   await new Promise((resolve, reject) => {
     request(server.callback())

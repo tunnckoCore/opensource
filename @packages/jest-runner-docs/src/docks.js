@@ -67,8 +67,9 @@ module.exports = function docks(filepath, options) {
       }\n\n${signatureBlock}${params}\n${comment.examples
         .map(
           (example) =>
-            `\n${example.description.trim()}\n\n${examplesId}####${heading} Examples\n\n\`\`\`${example.language ||
-              'js'}${example.value}\`\`\``,
+            `\n${example.description.trim()}\n\n${examplesId}####${heading} Examples\n\n\`\`\`${
+              example.language || 'js'
+            }${example.value}\`\`\``,
         )
         .join('\n')}`;
 

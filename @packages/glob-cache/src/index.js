@@ -183,10 +183,7 @@ globCache.stream = async function* globCacheStream(options) {
 
 function hasha(value, opts) {
   const { algorithm, digest } = { ...opts };
-  return crypto
-    .createHash(algorithm)
-    .update(value)
-    .digest(digest);
+  return crypto.createHash(algorithm).update(value).digest(digest);
 }
 
 function getIntegrityFor(contents, hash = 'sha512') {

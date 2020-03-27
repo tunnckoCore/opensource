@@ -30,10 +30,10 @@
   },
   "scripts": {},
   "dependencies": {
-    "sort-package-json": "^1.39.0"
+    "sort-package-json": "^1.40.0"
   },
   "peerDependencies": {
-    "prettier": "^1.19.1"
+    "prettier": "^2.0.2"
   },
   "jest": {
     "coverageThreshold": {
