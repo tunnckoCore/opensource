@@ -62,11 +62,11 @@ module.exports = {
   babel: [
     {
       config: {
+        plugins: [
+          ['babel-plugin-add-module-exports', { addDefaultProperty: true }],
+        ],
         presets: [
-          [
-            'babel-preset-optimise',
-            { jsx: true, commonjs: true, typescript: true },
-          ],
+          ['babel-preset-optimise', { commonjs: true, typescript: true }],
         ],
         comments: false,
         sourceMaps: true,

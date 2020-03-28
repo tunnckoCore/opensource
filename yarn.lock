@@ -8788,6 +8788,18 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+hela@3.0.0-next.20200119.4:
+  version "3.0.0-next.20200119.4"
+  resolved "https://registry.yarnpkg.com/hela/-/hela-3.0.0-next.20200119.4.tgz#b05312d679536cc6ac4571979ccfc82330119cb5"
+  integrity sha512-zogLHRmsChHQvbdZkUb7nYwkjTm5opkXXeSc8NV51Frzd9DnCD7bAaxwn3FH9XnNaiZkfgt8QhRZw9Cgy3px+g==
+  dependencies:
+    dargs "^7.0.0"
+    execa "^4.0.0"
+    global-dirs "^2.0.1"
+    is-ci "^2.0.0"
+    mri "^1.1.4"
+    picomatch "^2.2.1"
+
 helper-apidocs@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/helper-apidocs/-/helper-apidocs-0.5.1.tgz#8edd3c801ce61a20dc0ba36f113cb8fd2853a2e8"
@@ -11750,9 +11762,9 @@ merge2@^1.2.3, merge2@^1.3.0:
   integrity sha512-2j4DAdlBOkiSZIsaXk4mTE3sRS02yBHAtfy127xRV3bQUFqXkjHCHLW6Scv7DwNRbIWNHH8zpnz9zMaKXIdvYw==
 
 meriyah@^1.9.7:
-  version "1.9.9"
-  resolved "https://registry.yarnpkg.com/meriyah/-/meriyah-1.9.9.tgz#bf3c3e2589b209ee8771ea6dc2bb59a5c0f467a3"
-  integrity sha512-fdsk+7Z+7fyo7Rt8Be5rIAEMIOTjHELGTyXe0a4O9nuO6gOHza+oAgGyZHg84r72C5ijk2oSoujBRzTSIDnh7A==
+  version "1.9.10"
+  resolved "https://registry.yarnpkg.com/meriyah/-/meriyah-1.9.10.tgz#e10709f25625fae620de6b9e1bd02c9c1ff3eb90"
+  integrity sha512-ioBDRH32++zd4XQ8nuwne9P2mktCk4Mu7A3RRcuggwOnZp/SKO+xQLf6RkLU7bTI0mQ3bxsH2yqphj10bAVI/w==
 
 methods@^1.1.1, methods@^1.1.2, methods@~1.1.0:
   version "1.1.2"
@@ -16436,9 +16448,9 @@ ua-parser-js@^0.7.21:
   integrity sha512-+O8/qh/Qj8CgC6eYBVBykMrNtp5Gebn4dlGD/kKXVkJNDwyrAwSIqwz8CDf+tsAIWVycKcku6gIXJ0qwx/ZXaQ==
 
 uglify-js@^3.1.4:
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.8.0.tgz#f3541ae97b2f048d7e7e3aa4f39fd8a1f5d7a805"
-  integrity sha512-ugNSTT8ierCsDHso2jkBHXYrU8Y5/fY2ZUprfrJUiD7YpuFvV4jODLFmb3h4btQjqr5Nh4TX4XtgDfCU1WdioQ==
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.8.1.tgz#43bb15ce6f545eaa0a64c49fd29375ea09fa0f93"
+  integrity sha512-W7KxyzeaQmZvUFbGj4+YFshhVrMBGSg2IbcYAjGWGvx8DHvJMclbTDMpffdxFUGPBHjIytk7KJUR/KUXstUGDw==
   dependencies:
     commander "~2.20.3"
     source-map "~0.6.1"

@@ -6,8 +6,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const { hela, exec } = require('@hela/core');
-const dev = require('@hela/dev');
+const { hela, exec } = require('hela');
+const dev = require('hela/src/dev');
 
 const config = { ...dev };
 
