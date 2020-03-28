@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/utils",
-  "version": "1.3.7",
+  "version": "1.3.8",
   "licenseStart": 2019,
   "license": "MPL-2.0",
   "description": "Utility functions and helpers for internal usage and monorepos",

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-canary.20200124.9](https://github.com/tunnckoCore/opensource/compare/parse-commit-message@4.0.0-canary.20200124.8...parse-commit-message@4.0.0-canary.20200124.9) (2020-03-28)
+
+**Note:** Version bump only for package parse-commit-message
+
+
+
+
+
 # [4.0.0-canary.20200124.8](https://github.com/tunnckoCore/opensource/compare/parse-commit-message@4.0.0-canary.20200124.7...parse-commit-message@4.0.0-canary.20200124.8) (2020-03-28)
 
 **Note:** Version bump only for package parse-commit-message

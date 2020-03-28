@@ -1,6 +1,6 @@
 {
   "name": "arr-includes",
-  "version": "2.3.7",
+  "version": "2.3.8",
   "licenseStart": 2016,
   "license": "MPL-2.0",
   "description": "Return positive value if (any of the) passed value(s) exists in array, or optionally an index",

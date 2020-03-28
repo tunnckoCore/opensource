@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.8](https://github.com/tunnckoCore/opensource/compare/stringify-github-short-url@3.3.7...stringify-github-short-url@3.3.8) (2020-03-28)
+
+**Note:** Version bump only for package stringify-github-short-url
+
+
+
+
+
 ## [3.3.7](https://github.com/tunnckoCore/opensource/compare/stringify-github-short-url@3.3.6...stringify-github-short-url@3.3.7) (2020-03-28)
 
 **Note:** Version bump only for package stringify-github-short-url

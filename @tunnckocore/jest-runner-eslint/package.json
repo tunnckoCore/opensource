@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/jest-runner-eslint",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "licenseStart": 2019,
   "license": "MPL-2.0",
   "description": "Fork of the original Jest Runner for ESLint",
@@ -30,8 +30,8 @@
   },
   "scripts": {},
   "dependencies": {
-    "@tunnckocore/create-jest-runner": "^1.3.6",
-    "@tunnckocore/utils": "^1.3.7"
+    "@tunnckocore/create-jest-runner": "^1.3.7",
+    "@tunnckocore/utils": "^1.3.8"
   },
   "peerDependencies": {
     "eslint": "^6.4.0"

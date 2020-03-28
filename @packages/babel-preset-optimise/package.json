@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-optimise",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "licenseStart": 2020,
   "license": "MPL-2.0",
   "description": "Babel preset with optimizations in mind, modern output",
