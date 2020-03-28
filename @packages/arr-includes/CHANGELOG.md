@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.7](https://github.com/tunnckoCore/opensource/compare/arr-includes@2.3.6...arr-includes@2.3.7) (2020-03-28)
+
+**Note:** Version bump only for package arr-includes
+
+
+
+
+
 ## [2.3.6](https://github.com/tunnckoCore/opensource/compare/arr-includes@2.3.5...arr-includes@2.3.6) (2020-03-27)
 
 **Note:** Version bump only for package arr-includes

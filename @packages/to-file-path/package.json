@@ -1,6 +1,6 @@
 {
   "name": "to-file-path",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "licenseStart": 2016,
   "license": "MPL-2.0",
   "description": "Create a filepath from an object path (dot notation), list of arguments, array, number or Arguments object.",

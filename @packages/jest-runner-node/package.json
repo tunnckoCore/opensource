@@ -1,6 +1,6 @@
 {
   "name": "jest-runner-node",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "licenseStart": 2020,
   "license": "MPL-2.0",
   "description": "Running Node.js files, through Jest",
@@ -30,7 +30,7 @@
   },
   "scripts": {},
   "dependencies": {
-    "@tunnckocore/create-jest-runner": "^1.3.5",
+    "@tunnckocore/create-jest-runner": "^1.3.6",
     "execa": "^4.0.0"
   },
   "jest": {

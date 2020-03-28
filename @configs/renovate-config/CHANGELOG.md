@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.7](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/renovate-config@1.1.6...@tunnckocore/renovate-config@1.1.7) (2020-03-28)
+
+**Note:** Version bump only for package @tunnckocore/renovate-config
+
+
+
+
+
 ## [1.1.6](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/renovate-config@1.1.5...@tunnckocore/renovate-config@1.1.6) (2020-03-27)
 
 **Note:** Version bump only for package @tunnckocore/renovate-config

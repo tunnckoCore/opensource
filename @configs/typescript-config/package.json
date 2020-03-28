@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/typescript-config",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "licenseStart": 2019,
   "license": "MPL-2.0",
   "description": "Shareable TypeScript configs for all @tunnckoCore projects",

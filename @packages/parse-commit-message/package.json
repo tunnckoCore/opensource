@@ -1,6 +1,6 @@
 {
   "name": "parse-commit-message",
-  "version": "4.0.0-canary.20200124.7",
+  "version": "4.0.0-canary.20200124.8",
   "licenseStart": 2018,
   "license": "MPL-2.0",
   "description": "Extensible parser for git commit messages following Conventional Commits Specification",

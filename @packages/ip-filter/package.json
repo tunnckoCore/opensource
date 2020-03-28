@@ -1,6 +1,6 @@
 {
   "name": "ip-filter",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "licenseStart": 2015,
   "license": "MPL-2.0",
   "description": "Validates valid IPs (IPv4 and IPv6) using [micromatch][] - glob patterns, RegExp, string or array of globs. If match returns the IP, otherwise null.",
@@ -31,7 +31,7 @@
   "dependencies": {
     "ip-regex": "^4.1.0",
     "micromatch": "^4.0.2",
-    "to-file-path": "^2.0.2"
+    "to-file-path": "^2.0.3"
   },
   "jest": {
     "coverageThreshold": {

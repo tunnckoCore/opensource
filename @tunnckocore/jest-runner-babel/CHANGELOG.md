@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.7](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@4.2.6...@tunnckocore/jest-runner-babel@4.2.7) (2020-03-28)
+
+**Note:** Version bump only for package @tunnckocore/jest-runner-babel
+
+
+
+
+
 ## [4.2.6](https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/jest-runner-babel/compare/@tunnckocore/jest-runner-babel@4.2.5...@tunnckocore/jest-runner-babel@4.2.6) (2020-03-27)
 
 **Note:** Version bump only for package @tunnckocore/jest-runner-babel

@@ -1,6 +1,6 @@
 {
   "name": "@tunnckocore/package-json",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "licenseStart": 2018,
   "license": "MPL-2.0",
   "description": "Get package.json metadata for npm module from JSDelivr or fallback to Unpkg, because the npm registry is slow and ugly",
