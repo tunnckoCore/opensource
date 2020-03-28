@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.10](https://github.com/tunnckoCore/opensource/compare/parse-function@5.6.9...parse-function@5.6.10) (2020-03-28)
+
+
+### Bug Fixes
+
+* **parse-function:** dist files ([8d9e106](https://github.com/tunnckoCore/opensource/commit/8d9e106363030b4dda30ab4c44b94a29f66dde76))
+
+
+
+
+
 ## [5.6.9](https://github.com/tunnckoCore/opensource/compare/parse-function@5.6.8...parse-function@5.6.9) (2020-03-28)
 
 **Note:** Version bump only for package parse-function
