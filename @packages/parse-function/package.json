@@ -20,7 +20,7 @@
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "files": [
-    "src",
+    "dist",
     "index.d.ts"
   ],
   "engines": {
