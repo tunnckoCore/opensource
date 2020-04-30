@@ -28,7 +28,10 @@
     "access": "public",
     "tag": "latest"
   },
-  "scripts": {},
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
   "dependencies": {
     "@babel/parser": "^7.8.3",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
@@ -38,7 +41,8 @@
     "@babel/preset-typescript": "^7.8.3",
     "@babel/runtime": "^7.8.3",
     "babel-plugin-add-module-exports": "^1.0.2",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24"
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "snyk": "^1.316.1"
   },
   "peerDependencies": {
     "@babel/core": "^7.8.3"
@@ -100,5 +104,6 @@
     "related": {
       "list": []
     }
-  }
+  },
+  "snyk": true
 }
