@@ -28,9 +28,13 @@
     "access": "public",
     "tag": "latest"
   },
-  "scripts": {},
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3"
+    "cheerio": "^1.0.0-rc.3",
+    "snyk": "^1.316.1"
   },
   "jest": {
     "coverageThreshold": {
@@ -76,5 +80,6 @@
     "related": {
       "list": []
     }
-  }
+  },
+  "snyk": true
 }
