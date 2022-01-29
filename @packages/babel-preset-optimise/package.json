@@ -32,7 +32,7 @@
     "babel-plugin-dev-expression": "^0.2.2",
     "babel-plugin-minify-builtins": "^0.5.0",
     "babel-plugin-minify-constant-folding": "^0.5.0",
-    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
+    "babel-plugin-transform-inline-environment-variables": "^6.8.0",
     "babel-plugin-transform-node-env-inline": "^0.4.3",
     "babel-plugin-transform-react-constant-elements": "^6.23.0",
     "babel-plugin-transform-react-pure-class-to-function": "^1.0.1",
