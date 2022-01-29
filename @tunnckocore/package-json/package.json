@@ -32,7 +32,7 @@
   "dependencies": {
     "ky": "^0.19.0",
     "ky-universal": "^0.5.0",
-    "parse-package-name": "^0.1.0"
+    "parse-package-name": "^1.0.0"
   },
   "jest": {
     "coverageThreshold": {
