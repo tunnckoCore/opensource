@@ -34,7 +34,7 @@
     "cosmiconfig": "^6.0.0",
     "jest-worker": "^25.1.0",
     "memoize-fs": "^2.0.0",
-    "serialize-javascript": "^3.0.0",
+    "serialize-javascript": "^6.0.0",
     "throat": "^5.0.0"
   },
   "devDependencies": {
