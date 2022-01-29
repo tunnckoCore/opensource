@@ -35,7 +35,7 @@
     "jest-worker": "^25.1.0",
     "memoize-fs": "^2.0.0",
     "serialize-javascript": "^3.0.0",
-    "throat": "^5.0.0"
+    "throat": "^6.0.1"
   },
   "devDependencies": {
     "ansi-colors": "^4.1.1",
