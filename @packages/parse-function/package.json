@@ -33,7 +33,7 @@
   "scripts": {},
   "dependencies": {
     "@babel/parser": "^7.8.3",
-    "arrify": "^2.0.1"
+    "arrify": "^3.0.0"
   },
   "devDependencies": {
     "acorn": "^7.1.0",
