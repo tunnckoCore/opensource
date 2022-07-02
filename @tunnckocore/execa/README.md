@@ -102,7 +102,7 @@ _Generated using [jest-runner-docs](https://ghub.now.sh/jest-runner-docs)._
 
 ### [.exec](./src/index.js#L39)
 
-Uses [execa][] v2, `execa.command()` method. As stated there, think of it as mix
+Uses [execa][], `{ execaCommand }` method. As stated there, think of it as mix
 of `child_process`'s `.execFile` and `.spawn`. It is pretty similar to the
 `.shell` method too, but only visually because it does not uses the system's
 shell, meaning it does not have access to the system's environment variables.
@@ -239,7 +239,7 @@ function(file, args, options)
 #### Examples
 
 ```js
-import { execa } from '@tunnckocore/execa';
+import { execa, execaCommand, execaNode } from '@tunnckocore/execa';
 // or
 // const { execa } = require('@tunnckocore/execa');
 

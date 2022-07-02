@@ -103,7 +103,7 @@ export async function shell(cmds, options) {
  * Think of this as a mix of `child_process.execFile()` and `child_process.spawn()`.
  *
  * @example
- * import { execa, execaCommand, execaNode } from '@tunnckocore/execa'
+ * import { execa, execaCommand, execaNode } from '@tunnckocore/execa';
  * // or
  * // const { execa } = require('@tunnckocore/execa');
  *
@@ -113,7 +113,7 @@ export async function shell(cmds, options) {
  *
  * main();
  *
- * @name  execa
+ * @name  .execa
  * @param {string} file executable to run
  * @param {Array<string>} args arguments / flags to be passed to `file`
  * @param {object} options optional options, passed to `child_process`'s methods

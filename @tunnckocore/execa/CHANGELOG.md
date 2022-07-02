@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## v6.0.0
+
+- convert it to be pure [ESM-only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) package
+- require Node.js v16+, or see `engines` field in this package
+- switch testing frameworks
+- bump dependencies to `execa@6.1.0` and `p-map@5.5.0`
+
+
 ## [5.2.7](https://github.com/tunnckoCore/opensource/compare/@tunnckocore/execa@5.2.6...@tunnckocore/execa@5.2.7) (2020-03-28)
 
 **Note:** Version bump only for package @tunnckocore/execa
