@@ -9,8 +9,9 @@ import { parallel } from '@tunnckocore/p-all';
 export async function readJSON(filepath) {
 	return JSON.parse(await fs.readFile(filepath, 'utf8'));
 }
-export async function writeJSON(filepath, data, space = '\t') {
-	return fs.writeFile(filepath, JSON.stringify(data, undefined, space), 'utf8');
+export async function writeJSON(filepath, data, width = '\t') {
+	const content = JSON.stringify(data, undefined, width);
+	return fs.writeFile(filepath, content + '\n', 'utf8');
 }
 
 export function getWorkspaceFile(options = {}) {
