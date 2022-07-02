@@ -32,7 +32,7 @@
   "scripts": {},
   "dependencies": {
     "esm": "^3.2.25",
-    "global-dirs": "^2.0.1"
+    "global-dirs": "^3.0.0"
   },
   "jest": {
     "coverageThreshold": {
