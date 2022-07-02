@@ -1,0 +1,68 @@
+{
+	"name": "gitcommit",
+	"version": "1.0.14",
+	"licenseStart": 2020,
+	"license": "MPL-2.0",
+	"description": "WIP: Lightweight and joyful `git commit` replacement. Conventional Commits compliant.",
+	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/gitcommit",
+	"funding": [
+		"https://ko-fi.com/tunnckoCore/commissions",
+		"https://github.com/sponsors/tunnckoCore"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tunnckoCore/opensource.git",
+		"directory": "modules/gitcommit"
+	},
+	"type": "module",
+	"main": "src/index.js",
+	"files": [
+		"src"
+	],
+	"engines": {
+		"node": ">=16 <17 || >=18 <19 || >=20"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org",
+		"tag": "latest"
+	},
+	"scripts": {},
+	"dependencies": {
+		"execa": "^3.0.0",
+		"prompts": "^2.0.0",
+		"yaro": "*"
+	},
+	"jest": {
+		"coverageThreshold": {
+			"src/**/*.js": {
+				"statements": 100,
+				"branches": 100,
+				"functions": 100,
+				"lines": 100
+			}
+		}
+	},
+	"keywords": [
+		"tunnckocorehq",
+		"tunnckocore-oss",
+		"hela",
+		"development",
+		"developer-experience",
+		"dx",
+		"monorepos",
+		"tooling",
+		"software development",
+		"jest",
+		"jest system",
+		"build system",
+		"monorepo tools",
+		"multirepo",
+		"jest build",
+		"management"
+	],
+	"contributors": [
+		"Charlike Mike Reagent <opensource@tunnckocore.com>"
+	]
+}

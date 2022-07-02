@@ -1,0 +1,61 @@
+{
+	"name": "@tunnckocore/p-all",
+	"version": "0.2.0",
+	"licenseStart": 2022,
+	"license": "Apache-2.0",
+	"description": "Map or loop through promises, promise-returning or async functions, serially or in parallel, based on Promise.all! Has a hooks system: start, beforeEach, afterEach, finish.",
+	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/p-all",
+	"funding": [
+		"https://ko-fi.com/tunnckoCore/commissions",
+		"https://github.com/sponsors/tunnckoCore"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tunnckoCore/opensource.git",
+		"directory": "@tunnckocore/p-all"
+	},
+	"type": "module",
+	"main": "src/index.js",
+	"files": [
+		"src"
+	],
+	"engines": {
+		"node": ">=16 <17 || >=18 <19 || >=20"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org",
+		"tag": "latest"
+	},
+	"scripts": {
+		"cov": "ASIA_NO_CACHE=1 c8 yarn test",
+		"test": "node test/index.js",
+		"test:fresh": "ASIA_NO_CACHE=1 yarn test"
+	},
+	"dependencies": {},
+	"keywords": [
+		"promises",
+		"loop",
+		"map",
+		"parallel",
+		"promise-map",
+		"p-map",
+		"p-map-series",
+		"serially",
+		"series",
+		"promise map",
+		"async functions",
+		"promise-returning",
+		"utility",
+		"foreach",
+		"for of",
+		"forawait",
+		"for loop",
+		"for-await",
+		"for await of"
+	],
+	"contributors": [
+		"Charlike Mike Reagent <opensource@tunnckocore.com>"
+	]
+}

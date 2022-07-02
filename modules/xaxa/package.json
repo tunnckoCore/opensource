@@ -1,0 +1,68 @@
+{
+	"name": "xaxa",
+	"version": "3.0.0",
+	"licenseStart": 2018,
+	"license": "Apache-2.0",
+	"description": "Zero-config linting, powered by few amazing unicorns, AirBnB & Prettier.",
+	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/xaxa",
+	"funding": [
+		"https://ko-fi.com/tunnckoCore/commissions",
+		"https://github.com/sponsors/tunnckoCore"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tunnckoCore/opensource.git",
+		"directory": "modules/xaxa"
+	},
+	"type": "module",
+	"main": "src/index.js",
+	"files": [
+		"src"
+	],
+	"bin": "src/bin.js",
+	"engines": {
+		"node": ">=16 <17 || >=18 <19 || >=20"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org",
+		"tag": "latest"
+	},
+	"scripts": {},
+	"dependencies": {
+		"eslint": "^8.18.0",
+		"eslint-config-xaxa": "*",
+		"glob-cache": "^1.0.5",
+		"yaro": "*"
+	},
+	"peerDependencies": {
+		"@hela/core": "^4.0.0"
+	},
+	"keywords": [
+		"xaxa",
+		"eslint",
+		"es6",
+		"esmodules",
+		"es module",
+		"linting",
+		"lint parallel",
+		"parallel",
+		"fast",
+		"format",
+		"prettier",
+		"eslint-prettier",
+		"prettier-eslint",
+		"airbnb",
+		"codestyle",
+		"styleguide",
+		"modern javascript",
+		"javascript",
+		"promises",
+		"typescript",
+		"unicorn"
+	],
+	"contributors": [
+		"Charlike Mike Reagent <opensource@tunnckocore.com>"
+	]
+}

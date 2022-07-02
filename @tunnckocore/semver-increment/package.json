@@ -1,0 +1,43 @@
+{
+	"name": "@tunnckocore/semver-increment",
+	"version": "0.2.0",
+	"licenseStart": 2022,
+	"license": "ISC",
+	"description": "Trimmed down version of the `semver` package, with just `increment` (semver.inc) functionality and converted to ESM",
+	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/semver-increment",
+	"funding": [
+		"https://ko-fi.com/tunnckoCore/commissions",
+		"https://github.com/sponsors/tunnckoCore"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tunnckoCore/opensource.git",
+		"directory": "@tunnckocore/semver-increment"
+	},
+	"type": "module",
+	"main": "src/index.js",
+	"files": [
+		"src"
+	],
+	"engines": {
+		"node": ">=16 <17 || >=18 <19 || >=20"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org",
+		"tag": "latest"
+	},
+	"scripts": {},
+	"dependencies": {},
+	"keywords": [
+		"tunnckocore",
+		"semver",
+		"increment",
+		"semver fork",
+		"minimal semver"
+	],
+	"contributors": [
+		"Charlike Mike Reagent <opensource@tunnckocore.com>"
+	]
+}
