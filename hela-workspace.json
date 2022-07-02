@@ -9,19 +9,19 @@
 	],
 	"resolved": [
 		"@tunnckocore/create-jest-runner",
-		"@tunnckocore/create-project",
 		"@tunnckocore/execa",
+		"@tunnckocore/create-project",
 		"@tunnckocore/jest-runner-babel",
 		"@hela/cli",
 		"@hela/core",
 		"@hela/preset-tunnckocore",
 		"@hela/preset-workspaces",
-		"xaxa/eslint-config-xaxa",
-		"xaxa/xaxa",
 		"modules/arr-includes",
 		"modules/asia",
 		"modules/asia-cli",
 		"modules/asia-core",
+		"xaxa/eslint-config-xaxa",
+		"xaxa/xaxa",
 		"@tunnckocore/jest-runner-eslint",
 		"@tunnckocore/p-all",
 		"@tunnckocore/package-json",
@@ -35,19 +35,19 @@
 	],
 	"packages": [
 		"@tunnckocore/create-jest-runner",
-		"@tunnckocore/create-project",
 		"@tunnckocore/execa",
+		"@tunnckocore/create-project",
 		"@tunnckocore/jest-runner-babel",
 		"@hela/cli",
 		"@hela/core",
 		"@hela/preset-tunnckocore",
 		"@hela/preset-workspaces",
-		"eslint-config-xaxa",
-		"xaxa",
 		"arr-includes",
 		"asia",
 		"asia-cli",
 		"asia-core",
+		"eslint-config-xaxa",
+		"xaxa",
 		"@tunnckocore/jest-runner-eslint",
 		"@tunnckocore/p-all",
 		"@tunnckocore/package-json",
@@ -75,14 +75,14 @@
 				}
 			]
 		},
-		"@tunnckocore/create-project": {
-			"name": "@tunnckocore/create-project",
-			"resolved": "@tunnckocore/create-project"
-		},
 		"@tunnckocore/execa": {
 			"name": "@tunnckocore/execa",
 			"resolved": "@tunnckocore/execa",
 			"license": "MPL-2.0"
+		},
+		"@tunnckocore/create-project": {
+			"name": "@tunnckocore/create-project",
+			"resolved": "@tunnckocore/create-project"
 		},
 		"@tunnckocore/jest-runner-babel": {
 			"name": "@tunnckocore/jest-runner-babel",
@@ -124,34 +124,6 @@
 			"name": "@hela/preset-workspaces",
 			"resolved": "@hela/preset-workspaces",
 			"license": "MPL-2.0",
-			"dependents": [
-				{
-					"name": "@hela/preset-tunnckocore",
-					"resolved": "@hela/preset-tunnckocore"
-				}
-			]
-		},
-		"eslint-config-xaxa": {
-			"name": "eslint-config-xaxa",
-			"resolved": "xaxa/eslint-config-xaxa",
-			"license": "Apache-2.0",
-			"dependents": [
-				{
-					"name": "xaxa",
-					"resolved": "xaxa/xaxa",
-					"dependents": [
-						{
-							"name": "@hela/preset-tunnckocore",
-							"resolved": "@hela/preset-tunnckocore"
-						}
-					]
-				}
-			]
-		},
-		"xaxa": {
-			"name": "xaxa",
-			"resolved": "xaxa/xaxa",
-			"license": "Apache-2.0",
 			"dependents": [
 				{
 					"name": "@hela/preset-tunnckocore",
@@ -213,6 +185,34 @@
 				}
 			]
 		},
+		"eslint-config-xaxa": {
+			"name": "eslint-config-xaxa",
+			"resolved": "xaxa/eslint-config-xaxa",
+			"license": "Apache-2.0",
+			"dependents": [
+				{
+					"name": "xaxa",
+					"resolved": "xaxa/xaxa",
+					"dependents": [
+						{
+							"name": "@hela/preset-tunnckocore",
+							"resolved": "@hela/preset-tunnckocore"
+						}
+					]
+				}
+			]
+		},
+		"xaxa": {
+			"name": "xaxa",
+			"resolved": "xaxa/xaxa",
+			"license": "Apache-2.0",
+			"dependents": [
+				{
+					"name": "@hela/preset-tunnckocore",
+					"resolved": "@hela/preset-tunnckocore"
+				}
+			]
+		},
 		"@tunnckocore/jest-runner-eslint": {
 			"name": "@tunnckocore/jest-runner-eslint",
 			"resolved": "@tunnckocore/jest-runner-eslint",
@@ -263,7 +263,13 @@
 		"@tunnckocore/prettier-config": {
 			"name": "@tunnckocore/prettier-config",
 			"resolved": "@tunnckocore/prettier-config",
-			"license": "MPL-2.0"
+			"license": "MPL-2.0",
+			"dependents": [
+				{
+					"name": "eslint-config-xaxa",
+					"resolved": "xaxa/eslint-config-xaxa"
+				}
+			]
 		},
 		"gitcommit": {
 			"name": "gitcommit",
@@ -300,8 +306,8 @@
 					]
 				},
 				{
-					"name": "xaxa",
-					"resolved": "xaxa/xaxa",
+					"name": "asia-cli",
+					"resolved": "modules/asia-cli",
 					"dependents": [
 						{
 							"name": "@hela/preset-tunnckocore",
@@ -310,8 +316,8 @@
 					]
 				},
 				{
-					"name": "asia-cli",
-					"resolved": "modules/asia-cli",
+					"name": "xaxa",
+					"resolved": "xaxa/xaxa",
 					"dependents": [
 						{
 							"name": "@hela/preset-tunnckocore",
