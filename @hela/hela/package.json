@@ -1,11 +1,11 @@
 {
-	"name": "@hela/cli",
+	"name": "hela",
 	"version": "4.0.0",
 	"licenseStart": 2017,
 	"license": "MPL-2.0",
-	"description": "Hela v4. Powerful, simple and fast software development and management system.",
+	"description": "A wrapper package of `@hela/core` and `@hela/cli`.",
 	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/@hela/cli",
+	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/@hela",
 	"funding": [
 		"https://ko-fi.com/tunnckoCore/commissions",
 		"https://github.com/sponsors/tunnckoCore"
@@ -13,7 +13,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/tunnckoCore/opensource.git",
-		"directory": "@hela/cli"
+		"directory": "hela/hela"
 	},
 	"type": "module",
 	"main": "src/index.js",
@@ -34,6 +34,7 @@
 	},
 	"scripts": {},
 	"dependencies": {
+		"@hela/cli": "*",
 		"@hela/core": "*"
 	},
 	"keywords": [

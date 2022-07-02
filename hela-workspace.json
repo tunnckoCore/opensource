@@ -15,8 +15,8 @@
 		"@tunnckocore/jest-runner-babel",
 		"@hela/cli",
 		"@hela/core",
+		"@hela/hela",
 		"@hela/preset-tunnckocore",
-		"@hela/preset-workspaces",
 		"modules/arr-includes",
 		"modules/gitcommit",
 		"modules/kind-error",
@@ -30,6 +30,7 @@
 		"@tunnckocore/p-all",
 		"@tunnckocore/package-json",
 		"@tunnckocore/prettier-config",
+		"@hela/preset-workspaces",
 		"@tunnckocore/pretty-config",
 		"@tunnckocore/semver-increment",
 		"@tunnckocore/utils"
@@ -41,8 +42,8 @@
 		"@tunnckocore/jest-runner-babel",
 		"@hela/cli",
 		"@hela/core",
+		"hela",
 		"@hela/preset-tunnckocore",
-		"@hela/preset-workspaces",
 		"arr-includes",
 		"gitcommit",
 		"kind-error",
@@ -56,6 +57,7 @@
 		"@tunnckocore/p-all",
 		"@tunnckocore/package-json",
 		"@tunnckocore/prettier-config",
+		"@hela/preset-workspaces",
 		"@tunnckocore/pretty-config",
 		"@tunnckocore/semver-increment",
 		"@tunnckocore/utils"
@@ -93,7 +95,13 @@
 		"@hela/cli": {
 			"name": "@hela/cli",
 			"resolved": "@hela/cli",
-			"license": "MPL-2.0"
+			"license": "MPL-2.0",
+			"dependents": [
+				{
+					"name": "hela",
+					"resolved": "@hela/hela"
+				}
+			]
 		},
 		"@hela/core": {
 			"name": "@hela/core",
@@ -103,6 +111,10 @@
 				{
 					"name": "@hela/cli",
 					"resolved": "@hela/cli"
+				},
+				{
+					"name": "hela",
+					"resolved": "@hela/hela"
 				},
 				{
 					"name": "@hela/preset-workspaces",
@@ -116,21 +128,15 @@
 				}
 			]
 		},
+		"hela": {
+			"name": "hela",
+			"resolved": "@hela/hela",
+			"license": "MPL-2.0"
+		},
 		"@hela/preset-tunnckocore": {
 			"name": "@hela/preset-tunnckocore",
 			"resolved": "@hela/preset-tunnckocore",
 			"license": "Apache-2.0"
-		},
-		"@hela/preset-workspaces": {
-			"name": "@hela/preset-workspaces",
-			"resolved": "@hela/preset-workspaces",
-			"license": "MPL-2.0",
-			"dependents": [
-				{
-					"name": "@hela/preset-tunnckocore",
-					"resolved": "@hela/preset-tunnckocore"
-				}
-			]
 		},
 		"arr-includes": {
 			"name": "arr-includes",
@@ -170,6 +176,10 @@
 						{
 							"name": "@hela/cli",
 							"resolved": "@hela/cli"
+						},
+						{
+							"name": "hela",
+							"resolved": "@hela/hela"
 						},
 						{
 							"name": "@hela/preset-workspaces",
@@ -285,16 +295,6 @@
 			"license": "Apache-2.0",
 			"dependents": [
 				{
-					"name": "@hela/preset-workspaces",
-					"resolved": "@hela/preset-workspaces",
-					"dependents": [
-						{
-							"name": "@hela/preset-tunnckocore",
-							"resolved": "@hela/preset-tunnckocore"
-						}
-					]
-				},
-				{
 					"name": "asia-core",
 					"resolved": "asia/asia-core",
 					"dependents": [
@@ -313,6 +313,16 @@
 							]
 						}
 					]
+				},
+				{
+					"name": "@hela/preset-workspaces",
+					"resolved": "@hela/preset-workspaces",
+					"dependents": [
+						{
+							"name": "@hela/preset-tunnckocore",
+							"resolved": "@hela/preset-tunnckocore"
+						}
+					]
 				}
 			]
 		},
@@ -324,11 +334,22 @@
 		"@tunnckocore/prettier-config": {
 			"name": "@tunnckocore/prettier-config",
 			"resolved": "@tunnckocore/prettier-config",
-			"license": "MPL-2.0",
+			"license": "Apache-2.0",
 			"dependents": [
 				{
 					"name": "eslint-config-xaxa",
 					"resolved": "xaxa/eslint-config-xaxa"
+				}
+			]
+		},
+		"@hela/preset-workspaces": {
+			"name": "@hela/preset-workspaces",
+			"resolved": "@hela/preset-workspaces",
+			"license": "MPL-2.0",
+			"dependents": [
+				{
+					"name": "@hela/preset-tunnckocore",
+					"resolved": "@hela/preset-tunnckocore"
 				}
 			]
 		},
