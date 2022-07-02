@@ -11,7 +11,7 @@ export async function readJSON(filepath) {
 }
 export async function writeJSON(filepath, data, width = '\t') {
 	const content = JSON.stringify(data, undefined, width);
-	return fs.writeFile(filepath, content + '\n', 'utf8');
+	return fs.writeFile(filepath, `${content}\n`, 'utf8');
 }
 
 export function getWorkspaceFile(options = {}) {

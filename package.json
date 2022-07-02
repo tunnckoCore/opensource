@@ -12,8 +12,9 @@
 	"scripts": {
 		"cleanup": "node scripts/clean-node-modules.js && rm yarn.lock",
 		"fresh": "yarn cleanup && yarn && hela init --verbose",
-		"lint": "eslint . --quiet --cache --cache-location .cache/eslintcache --fix --format codeframe",
-		"new": "node scripts/create-package.js"
+		"lint": "xaxa --log",
+		"new": "node scripts/create-package.js",
+		"test": "asia"
 	},
 	"dependencies": {
 		"c8": "^7.11.3",

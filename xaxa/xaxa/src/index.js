@@ -128,8 +128,10 @@ export async function lint(patterns, options) {
 
 	await verifyCache(cacheLocation);
 
-	const problemsCount = results.reduce((acc, x) => acc + x.messages.length, 0);
-	const lintedCount = results.length;
+	const res = results.flat().filter(Boolean);
+	const problemsCount = res.reduce((acc, x) => acc + x.messages.length, 0);
+
+	const lintedCount = res.length;
 
 	console.log('Found %s problem(s) in %s file(s).', problemsCount, lintedCount);
 }
