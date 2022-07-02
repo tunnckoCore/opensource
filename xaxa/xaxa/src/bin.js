@@ -14,12 +14,13 @@ import { Yaro } from 'yaro';
 import { readJSON, command } from './index.js';
 
 const pkgRoot = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const pkg = readJSON(path.join(pkgRoot, 'package.json'));
 
-const program = new Yaro('asia', {
+const program = new Yaro(pkg.name, {
 	defaultsToHelp: false,
 	allowUnknownFlags: true,
 	singleMode: true,
-	version: readJSON(path.join(pkgRoot, 'package.json')).version,
+	version: pkg.version,
 });
 
 await command(null, program);
