@@ -10,41 +10,41 @@
 
 import request from 'supertest';
 import Koa from 'koa';
-import betterBody from '../src/index';
+import betterBody from '../src/index.js';
 
 function koa() {
-  return new Koa();
+	return new Koa();
 }
 
 test('should get the raw text body', async () => {
-  const server = koa()
-    .use(betterBody())
-    .use(function* sasa() {
-      expect(this.request.fields).toBeUndefined();
-      expect(this.request.body).toStrictEqual('message=lol');
-      this.body = this.request.body;
-    });
+	const server = koa()
+		.use(betterBody())
+		.use(function* sasa() {
+			expect(this.request.fields).toBeUndefined();
+			expect(this.request.body).toStrictEqual('message=lol');
+			this.body = this.request.body;
+		});
 
-  await new Promise((resolve, reject) => {
-    request(server.callback())
-      .post('/')
-      .type('text')
-      .send('message=lol')
-      .expect(200)
-      .expect('message=lol')
-      .end((err) => (err ? reject(err) : resolve()));
-  });
+	await new Promise((resolve, reject) => {
+		request(server.callback())
+			.post('/')
+			.type('text')
+			.send('message=lol')
+			.expect(200)
+			.expect('message=lol')
+			.end((err) => (err ? reject(err) : resolve()));
+	});
 });
 
 test('should throw if the body is too large', async () => {
-  const server = koa().use(betterBody({ textLimit: '2b' }));
+	const server = koa().use(betterBody({ textLimit: '2b' }));
 
-  await new Promise((resolve, reject) => {
-    request(server.callback())
-      .post('/')
-      .type('text')
-      .send('foobar')
-      .expect(413)
-      .end((err) => (err ? reject(err) : resolve()));
-  });
+	await new Promise((resolve, reject) => {
+		request(server.callback())
+			.post('/')
+			.type('text')
+			.send('foobar')
+			.expect(413)
+			.end((err) => (err ? reject(err) : resolve()));
+	});
 });

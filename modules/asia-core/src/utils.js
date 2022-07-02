@@ -47,6 +47,8 @@ export function basicReporter(item, cfg) {
 // eslint-disable-next-line no-unused-vars
 export function filter(cfg, { title, testPath, callsites }) {
 	const match = cfg.env.ASIA_MATCH || '';
+
+	console.log(match);
 	const byPath = match
 		? testPath.includes(match) || new RegExp(match).test(testPath)
 		: false;

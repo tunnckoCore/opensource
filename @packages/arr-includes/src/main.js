@@ -8,12 +8,11 @@ const esmRequire = esmLoader(module);
 
 const mod = esmRequire(path.join(__dirname, 'main.js'));
 
-// eslint-disable-next-line no-underscore-dangle
 const ___exportsWithoutDefault = Object.keys(mod)
-  .filter((x) => x !== 'default')
-  .reduce((acc, key) => {
-    acc[key] = mod[key];
-    return acc;
-  }, {});
+	.filter((x) => x !== 'default')
+	.reduce((acc, key) => {
+		acc[key] = mod[key];
+		return acc;
+	}, {});
 
 module.exports = Object.assign(mod.default, ___exportsWithoutDefault);

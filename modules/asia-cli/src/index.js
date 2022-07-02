@@ -70,10 +70,11 @@ export async function runAsia(patterns, options = {}) {
 	const globs = arrayifiy(patterns);
 	const input = globs.length > 0 ? globs : DEFAULT_PATTERNS;
 
-	console.log(flags);
 	process.env.ASIA_NO_CACHE = flags.force === true ? '1' : undefined;
 	process.env.ASIA_RELOAD = flags.cacheClean === true ? '1' : undefined;
-	process.env.ASIA_MATCH = flags.filter ?? undefined;
+	// NOTE: not needed, since we can just pass patterns
+	// to filter out what we want to test
+	// process.env.ASIA_MATCH = flags.filter ?? undefined;
 	process.env.ASIA_ONLY_FAILED = flags.onlyFailed === true ? '1' : undefined;
 
 	const testFiles = await fastGlob(input, flags);

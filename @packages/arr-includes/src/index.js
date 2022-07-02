@@ -31,32 +31,32 @@
  * @public
  */
 export default function arrIncludes(arr, values) {
-  if (!Array.isArray(values)) return inArray(arr, values);
-  const len = values.length;
-  let i = -1;
+	if (!Array.isArray(values)) return inArray(arr, values);
+	const len = values.length;
+	let i = -1;
 
-  // eslint-disable-next-line no-plusplus
-  while (i++ < len) {
-    const j = inArray(arr, values[i]);
-    if (j) {
-      return j;
-    }
-  }
+	// eslint-disable-next-line no-plusplus
+	while (i++ < len) {
+		const j = inArray(arr, values[i]);
+		if (j) {
+			return j;
+		}
+	}
 
-  return false;
+	return false;
 }
 
 function inArray(arr, val) {
-  const items = [].concat(arr).filter(Boolean);
-  const len = items.length;
-  let i = null;
+	const items = [arr].flat().filter(Boolean);
+	const len = items.length;
+	let i = null;
 
-  // eslint-disable-next-line no-plusplus
-  for (i = 0; i < len; i++) {
-    if (arr[i] === val) {
-      return i === 0 ? true : i;
-    }
-  }
+	// eslint-disable-next-line no-plusplus
+	for (i = 0; i < len; i++) {
+		if (arr[i] === val) {
+			return i === 0 ? true : i;
+		}
+	}
 
-  return false;
+	return false;
 }

@@ -16,18 +16,18 @@
  */
 // eslint-disable-next-line unicorn/consistent-function-scoping
 export default () => (node, result) => {
-  result.isArrow = node.type.startsWith('Arrow');
-  result.isAsync = node.async || false;
-  result.isGenerator = node.generator || false;
-  result.isExpression = node.expression || false;
-  result.isAnonymous = node.id === null;
-  result.isNamed = !result.isAnonymous;
+	result.isArrow = node.type.startsWith('Arrow');
+	result.isAsync = node.async || false;
+	result.isGenerator = node.generator || false;
+	result.isExpression = node.expression || false;
+	result.isAnonymous = node.id === null;
+	result.isNamed = !result.isAnonymous;
 
-  // if real anonymous -> set to null,
-  // notice that you can name you function `anonymous`, haha
-  // and it won't be "real" anonymous, so `isAnonymous` will be `false`
+	// if real anonymous -> set to null,
+	// notice that you can name you function `anonymous`, haha
+	// and it won't be "real" anonymous, so `isAnonymous` will be `false`
 
-  result.name = result.isAnonymous ? null : node.id.name;
+	result.name = result.isAnonymous ? null : node.id.name;
 
-  return result;
+	return result;
 };

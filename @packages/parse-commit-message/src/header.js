@@ -1,4 +1,4 @@
-import { isValidString, stringToHeader } from './utils';
+import { isValidString, stringToHeader } from './utils.js';
 
 /**
  * Parses given `header` string into an header object.
@@ -29,11 +29,11 @@ import { isValidString, stringToHeader } from './utils';
  * @public
  */
 export function parseHeader(header, options) {
-  if (!isValidString(header)) {
-    throw new TypeError('expect `header` to be non empty string');
-  }
+	if (!isValidString(header)) {
+		throw new TypeError('expect `header` to be non empty string');
+	}
 
-  return stringToHeader(header.trim(), options);
+	return stringToHeader(header.trim(), options);
 }
 
 /**
@@ -57,22 +57,22 @@ export function parseHeader(header, options) {
  * @public
  */
 export function stringifyHeader(header, options) {
-  const res = validateHeader(header, options);
+	const res = validateHeader(header, options);
 
-  if (res.error) {
-    throw res.error;
-  }
+	if (res.error) {
+		throw res.error;
+	}
 
-  // if SimpleHeader (res.value is like { value: 'chore: foobar' })
-  // TODO(@tunnckoCore): not sure...
-  /* istanbul ignore next */
-  if (res.value && typeof res.value === 'object' && 'value' in res.value) {
-    return res.value.value;
-  }
+	// if SimpleHeader (res.value is like { value: 'chore: foobar' })
+	// TODO(@tunnckoCore): not sure...
+	/* istanbul ignore next */
+	if (res.value && typeof res.value === 'object' && 'value' in res.value) {
+		return res.value.value;
+	}
 
-  const { type, scope, subject } = res.value;
+	const { type, scope, subject } = res.value;
 
-  return `${type}${scope ? `(${scope})` : ''}: ${subject}`.trim();
+	return `${type}${scope ? `(${scope})` : ''}: ${subject}`.trim();
 }
 
 /**
@@ -113,15 +113,15 @@ export function stringifyHeader(header, options) {
  * @public
  */
 export function validateHeader(header, options) {
-  const result = {};
+	const result = {};
 
-  try {
-    result.value = checkHeader(header, options);
-  } catch (err) {
-    return { error: err };
-  }
+	try {
+		result.value = checkHeader(header, options);
+	} catch (err) {
+		return { error: err };
+	}
 
-  return result;
+	return result;
 }
 
 /**
@@ -154,30 +154,30 @@ export function validateHeader(header, options) {
  * @public
  */
 export function checkHeader(header, options) {
-  // handy trick to suppress/mute typescript
-  if (header && typeof header === 'object' && 'value' in header) {
-    const { value } = header;
-    return stringToHeader(value, options);
-  }
-  // else: we have Header
+	// handy trick to suppress/mute typescript
+	if (header && typeof header === 'object' && 'value' in header) {
+		const { value } = header;
+		return stringToHeader(value, options);
+	}
+	// else: we have Header
 
-  if (!isValidString(header.type)) {
-    throw new TypeError('header.type should be non empty string');
-  }
-  if (!isValidString(header.subject)) {
-    throw new TypeError('header.subject should be non empty string');
-  }
+	if (!isValidString(header.type)) {
+		throw new TypeError('header.type should be non empty string');
+	}
+	if (!isValidString(header.subject)) {
+		throw new TypeError('header.subject should be non empty string');
+	}
 
-  const isValidScope =
-    'scope' in header && header.scope !== null
-      ? isValidString(header.scope)
-      : true;
+	const isValidScope =
+		'scope' in header && header.scope !== null
+			? isValidString(header.scope)
+			: true;
 
-  if (!isValidScope) {
-    throw new TypeError(
-      'commit.header.scope should be non empty string when given',
-    );
-  }
+	if (!isValidScope) {
+		throw new TypeError(
+			'commit.header.scope should be non empty string when given',
+		);
+	}
 
-  return { scope: null, ...header };
+	return { scope: null, ...header };
 }

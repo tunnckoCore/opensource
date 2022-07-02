@@ -29,9 +29,9 @@
 		"tag": "latest"
 	},
 	"scripts": {
-		"cov": "ASIA_NO_CACHE=1 c8 yarn test",
-		"test": "node test/index.js",
-		"test:fresh": "ASIA_NO_CACHE=1 yarn test"
+		"cov": "c8 asia --force",
+		"test": "asia",
+		"test:fresh": "asia --force"
 	},
 	"dependencies": {},
 	"keywords": [

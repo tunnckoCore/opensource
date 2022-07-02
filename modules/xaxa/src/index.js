@@ -29,7 +29,6 @@ export const DEFAULT_PATTERNS = ['**/*.js', '**/*.mjs'].concat(
 );
 
 async function commandAction({ flags }, _, ...globs) {
-	console.log(flags);
 	await lint(globs, flags);
 }
 
@@ -70,7 +69,9 @@ export async function lint(patterns, options) {
 	const cacheLocation = path.join(flags.cwd, '.cache', 'xaxa-cache');
 
 	if (flags.force === true) {
-		await fs.rm(cacheLocation, { recursive: true });
+		try {
+			await fs.rm(cacheLocation, { recursive: true });
+		} catch {}
 	}
 
 	let verifyCache = null;
@@ -104,9 +105,19 @@ export async function lint(patterns, options) {
 				if (flags.log) {
 					console.log('skipped:', file.path);
 				}
-				const { metadata } = await cacache.get.info(cacheLocation, file.path);
 
-				results.push(metadata);
+				const info = await cacache.get.info(cacheLocation, file.path);
+				if (info) {
+					results.push(info.metadata);
+				}
+
+				// NOTE: in case the content exists in cache, but it's with different key
+				if (!info && flags.verbose) {
+					console.log(
+						'File skipped for some reason and no cache: %s',
+						file.path,
+					);
+				}
 			},
 
 			async always({ cacache }) {

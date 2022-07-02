@@ -1,4 +1,4 @@
-import { normalizeCommit, isBreakingChange } from '../utils';
+import { normalizeCommit, isBreakingChange } from '../utils.js';
 
 /**
  * A plugin that adds `increment` property to the `commit`.
@@ -24,20 +24,20 @@ import { normalizeCommit, isBreakingChange } from '../utils';
  * @public
  */
 export default function incrementPlugin(commit, options) {
-  const opts = { normalize: true, ...options };
-  const cmt = opts.normalize ? normalizeCommit(commit, opts) : commit;
-  const isBreaking = isBreakingChange(cmt);
-  let commitIncrement = '';
+	const opts = { normalize: true, ...options };
+	const cmt = opts.normalize ? normalizeCommit(commit, opts) : commit;
+	const isBreaking = isBreakingChange(cmt);
+	let commitIncrement = '';
 
-  if (/fix|bugfix|patch/i.test(cmt.header.type)) {
-    commitIncrement = 'patch';
-  }
-  if (/feat|feature|minor/i.test(cmt.header.type)) {
-    commitIncrement = 'minor';
-  }
-  if (isBreaking) {
-    commitIncrement = 'major';
-  }
+	if (/fix|bugfix|patch/i.test(cmt.header.type)) {
+		commitIncrement = 'patch';
+	}
+	if (/feat|feature|minor/i.test(cmt.header.type)) {
+		commitIncrement = 'minor';
+	}
+	if (isBreaking) {
+		commitIncrement = 'major';
+	}
 
-  return { increment: commitIncrement };
+	return { increment: commitIncrement };
 }

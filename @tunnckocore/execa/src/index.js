@@ -37,14 +37,14 @@ import pMap from 'p-map';
  * @public
  */
 export async function exec(cmds, options) {
-  const commands = [].concat(cmds).filter(Boolean);
-  const { concurrency = Infinity, ...opts } = {
-    preferLocal: true,
-    ...options,
-    all: true,
-  };
+	const commands = [cmds].flat().filter(Boolean);
+	const { concurrency = Number.POSITIVE_INFINITY, ...opts } = {
+		preferLocal: true,
+		...options,
+		all: true,
+	};
 
-  return pMap(commands, (cmd) => execaOrig.command(cmd, opts), { concurrency });
+	return pMap(commands, (cmd) => execaOrig.command(cmd, opts), { concurrency });
 }
 
 /**
@@ -93,7 +93,7 @@ export async function exec(cmds, options) {
  * @public
  */
 export function shell(cmds, options) {
-  return exec(cmds, { ...options, shell: true });
+	return exec(cmds, { ...options, shell: true });
 }
 
 /**
@@ -119,12 +119,13 @@ export function shell(cmds, options) {
  */
 
 function execa(file, args, options) {
-  // ! this is just a tweak because the docs generation (parse-comments bugs)...
-  return execaOrig(file, args, options);
+	// ! this is just a tweak because the docs generation (parse-comments bugs)...
+	return execaOrig(file, args, options);
 }
 
 // ! this is just a tweak because the docs generation (parse-comments bugs)...
 execaOrig.execa = execa;
 
 // ! this is just a tweak because the docs generation (parse-comments bugs)...
-export default execaOrig;
+
+export { default } from 'execa';

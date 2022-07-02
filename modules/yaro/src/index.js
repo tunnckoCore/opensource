@@ -1,7 +1,8 @@
-/* eslint-disable no-param-reassign */
 // SPDX-License-Identifier: MPL-2.0
+
 // big portions derived from `lukeed/mri` MIT
 
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-continue */
 /* eslint-disable class-methods-use-this */
 

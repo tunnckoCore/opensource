@@ -11,14 +11,14 @@
  * @private
  */
 export default () => (node, result) => {
-  result.body = result.value.slice(node.body.start, node.body.end);
+	result.body = result.value.slice(node.body.start, node.body.end);
 
-  const openCurly = result.body.charCodeAt(0) === 123;
-  const closeCurly = result.body.charCodeAt(result.body.length - 1) === 125;
+	const openCurly = result.body.charCodeAt(0) === 123;
+	const closeCurly = result.body.charCodeAt(result.body.length - 1) === 125;
 
-  if (openCurly && closeCurly) {
-    result.body = result.body.slice(1, -1);
-  }
+	if (openCurly && closeCurly) {
+		result.body = result.body.slice(1, -1);
+	}
 
-  return result;
+	return result;
 };

@@ -15,23 +15,23 @@ utils.arrayify = arrayify;
  * @private
  */
 utils.setDefaults = function setDefaults(code) {
-  const result = {
-    name: null,
-    body: '',
-    args: [],
-    params: '',
-  };
+	const result = {
+		name: null,
+		body: '',
+		args: [],
+		params: '',
+	};
 
-  if (typeof code === 'function') {
-    code = code.toString('utf8');
-  }
+	if (typeof code === 'function') {
+		code = code.toString('utf8');
+	}
 
-  // makes result.isValid === false
-  if (typeof code !== 'string') {
-    code = '';
-  }
+	// makes result.isValid === false
+	if (typeof code !== 'string') {
+		code = '';
+	}
 
-  return utils.setHiddenDefaults(result, code || '');
+	return utils.setHiddenDefaults(result, code || '');
 };
 
 /**
@@ -44,17 +44,17 @@ utils.setDefaults = function setDefaults(code) {
  * @private
  */
 utils.setHiddenDefaults = function setHiddenDefaults(result, code) {
-  result.defaults = {};
-  result.value = code;
-  result.isValid = code.length > 0;
-  result.isArrow = false;
-  result.isAsync = false;
-  result.isNamed = false;
-  result.isAnonymous = false;
-  result.isGenerator = false;
-  result.isExpression = false;
+	result.defaults = {};
+	result.value = code;
+	result.isValid = code.length > 0;
+	result.isArrow = false;
+	result.isAsync = false;
+	result.isNamed = false;
+	result.isAnonymous = false;
+	result.isGenerator = false;
+	result.isExpression = false;
 
-  return result;
+	return result;
 };
 
 /**
@@ -67,16 +67,16 @@ utils.setHiddenDefaults = function setHiddenDefaults(result, code) {
  * @private
  */
 utils.getNode = function getNode(result, opts) {
-  if (typeof opts.parse === 'function') {
-    result.value = `(${result.value})`;
+	if (typeof opts.parse === 'function') {
+		result.value = `(${result.value})`;
 
-    const ast = opts.parse(result.value, opts);
-    const body = (ast.program && ast.program.body) || ast.body;
+		const ast = opts.parse(result.value, opts);
+		const body = (ast.program && ast.program.body) || ast.body;
 
-    return body[0].expression;
-  }
+		return body[0].expression;
+	}
 
-  return parseExpression(result.value, opts);
+	return parseExpression(result.value, opts);
 };
 
 export default utils;

@@ -1,7 +1,5 @@
 // SPDX-License-Identifier: MPL-2.0
 
-/* xeslint-disable node/no-unsupported-features/node-builtins */
-
 import process from 'node:process';
 import { hela, utils } from '@hela/core';
 
