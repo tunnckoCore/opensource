@@ -1,11 +1,11 @@
 {
-	"name": "asia-core",
-	"version": "2.5.0",
+	"name": "asia",
+	"version": "3.0.0",
 	"licenseStart": 2017,
 	"license": "MPL-2.0",
 	"description": "Modern, fast, and innovative test runner with parallelism, concurrency, caching and incremental testing. Since 2017.",
 	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/asia-core",
+	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/asia",
 	"funding": [
 		"https://ko-fi.com/tunnckoCore/commissions",
 		"https://github.com/sponsors/tunnckoCore"
@@ -13,13 +13,14 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/tunnckoCore/opensource.git",
-		"directory": "modules/asia-core"
+		"directory": "asia/asia"
 	},
 	"type": "module",
 	"main": "src/index.js",
 	"files": [
 		"src",
-		"example.js"
+		"*-example.js",
+		"logo.png"
 	],
 	"engines": {
 		"node": ">=16 <17 || >=18 <19 || >=20"
@@ -27,11 +28,11 @@
 	"publishConfig": {
 		"access": "public",
 		"registry": "https://registry.npmjs.org",
-		"tag": "canary"
+		"tag": "latest"
 	},
 	"scripts": {},
 	"dependencies": {
-		"@tunnckocore/p-all": "*"
+		"asia-core": "*"
 	},
 	"keywords": [
 		"testing",

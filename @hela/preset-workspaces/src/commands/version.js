@@ -21,6 +21,10 @@ export default hela()
 		'hela-workspace.json',
 	)
 	.option(
+		'--tag',
+		'Pass npm dist-tag to be update. Writes it to publishConfig.tag',
+	)
+	.option(
 		'--dry-run',
 		'Run the command without writing new versions to disk',
 		false,
@@ -110,6 +114,10 @@ function incrementer(flags, { version, type }) {
 		if (flags.dryRun !== true) {
 			console.log('%s: %s -> %s', item.name, oldVersion, nextVersion);
 			pkg.version = nextVersion;
+			if (typeof flags.tag === 'string') {
+				// eslint-disable-next-line unicorn/consistent-destructuring
+				pkg.publishConfig.tag = flags.tag;
+			}
 			await writeJSON(packageJson, pkg);
 		}
 

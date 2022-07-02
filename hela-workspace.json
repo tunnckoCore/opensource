@@ -5,7 +5,8 @@
 		"@tunnckocore/*",
 		"@hela/*",
 		"modules/*",
-		"xaxa/*"
+		"xaxa/*",
+		"asia/*"
 	],
 	"resolved": [
 		"@tunnckocore/create-jest-runner",
@@ -17,18 +18,18 @@
 		"@hela/preset-tunnckocore",
 		"@hela/preset-workspaces",
 		"modules/arr-includes",
-		"modules/asia",
-		"modules/asia-cli",
-		"modules/asia-core",
+		"modules/gitcommit",
+		"modules/kind-error",
+		"modules/yaro",
 		"xaxa/eslint-config-xaxa",
 		"xaxa/xaxa",
+		"asia/asia",
+		"asia/asia-cli",
+		"asia/asia-core",
 		"@tunnckocore/jest-runner-eslint",
 		"@tunnckocore/p-all",
 		"@tunnckocore/package-json",
 		"@tunnckocore/prettier-config",
-		"modules/gitcommit",
-		"modules/kind-error",
-		"modules/yaro",
 		"@tunnckocore/pretty-config",
 		"@tunnckocore/semver-increment",
 		"@tunnckocore/utils"
@@ -43,18 +44,18 @@
 		"@hela/preset-tunnckocore",
 		"@hela/preset-workspaces",
 		"arr-includes",
+		"gitcommit",
+		"kind-error",
+		"yaro",
+		"eslint-config-xaxa",
+		"xaxa",
 		"asia",
 		"asia-cli",
 		"asia-core",
-		"eslint-config-xaxa",
-		"xaxa",
 		"@tunnckocore/jest-runner-eslint",
 		"@tunnckocore/p-all",
 		"@tunnckocore/package-json",
 		"@tunnckocore/prettier-config",
-		"gitcommit",
-		"kind-error",
-		"yaro",
 		"@tunnckocore/pretty-config",
 		"@tunnckocore/semver-increment",
 		"@tunnckocore/utils"
@@ -148,34 +149,57 @@
 				}
 			]
 		},
-		"asia": {
-			"name": "asia",
-			"resolved": "modules/asia",
+		"gitcommit": {
+			"name": "gitcommit",
+			"resolved": "modules/gitcommit",
 			"license": "MPL-2.0"
 		},
-		"asia-cli": {
-			"name": "asia-cli",
-			"resolved": "modules/asia-cli",
-			"license": "MPL-2.0",
-			"dependents": [
-				{
-					"name": "@hela/preset-tunnckocore",
-					"resolved": "@hela/preset-tunnckocore"
-				}
-			]
+		"kind-error": {
+			"name": "kind-error",
+			"resolved": "modules/kind-error"
 		},
-		"asia-core": {
-			"name": "asia-core",
-			"resolved": "modules/asia-core",
+		"yaro": {
+			"name": "yaro",
+			"resolved": "modules/yaro",
 			"license": "MPL-2.0",
 			"dependents": [
 				{
-					"name": "asia",
-					"resolved": "modules/asia"
+					"name": "@hela/core",
+					"resolved": "@hela/core",
+					"dependents": [
+						{
+							"name": "@hela/cli",
+							"resolved": "@hela/cli"
+						},
+						{
+							"name": "@hela/preset-workspaces",
+							"resolved": "@hela/preset-workspaces",
+							"dependents": [
+								{
+									"name": "@hela/preset-tunnckocore",
+									"resolved": "@hela/preset-tunnckocore"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "gitcommit",
+					"resolved": "modules/gitcommit"
+				},
+				{
+					"name": "xaxa",
+					"resolved": "xaxa/xaxa",
+					"dependents": [
+						{
+							"name": "@hela/preset-tunnckocore",
+							"resolved": "@hela/preset-tunnckocore"
+						}
+					]
 				},
 				{
 					"name": "asia-cli",
-					"resolved": "modules/asia-cli",
+					"resolved": "asia/asia-cli",
 					"dependents": [
 						{
 							"name": "@hela/preset-tunnckocore",
@@ -213,6 +237,43 @@
 				}
 			]
 		},
+		"asia": {
+			"name": "asia",
+			"resolved": "asia/asia",
+			"license": "MPL-2.0"
+		},
+		"asia-cli": {
+			"name": "asia-cli",
+			"resolved": "asia/asia-cli",
+			"license": "MPL-2.0",
+			"dependents": [
+				{
+					"name": "@hela/preset-tunnckocore",
+					"resolved": "@hela/preset-tunnckocore"
+				}
+			]
+		},
+		"asia-core": {
+			"name": "asia-core",
+			"resolved": "asia/asia-core",
+			"license": "MPL-2.0",
+			"dependents": [
+				{
+					"name": "asia",
+					"resolved": "asia/asia"
+				},
+				{
+					"name": "asia-cli",
+					"resolved": "asia/asia-cli",
+					"dependents": [
+						{
+							"name": "@hela/preset-tunnckocore",
+							"resolved": "@hela/preset-tunnckocore"
+						}
+					]
+				}
+			]
+		},
 		"@tunnckocore/jest-runner-eslint": {
 			"name": "@tunnckocore/jest-runner-eslint",
 			"resolved": "@tunnckocore/jest-runner-eslint",
@@ -235,15 +296,15 @@
 				},
 				{
 					"name": "asia-core",
-					"resolved": "modules/asia-core",
+					"resolved": "asia/asia-core",
 					"dependents": [
 						{
 							"name": "asia",
-							"resolved": "modules/asia"
+							"resolved": "asia/asia"
 						},
 						{
 							"name": "asia-cli",
-							"resolved": "modules/asia-cli",
+							"resolved": "asia/asia-cli",
 							"dependents": [
 								{
 									"name": "@hela/preset-tunnckocore",
@@ -268,66 +329,6 @@
 				{
 					"name": "eslint-config-xaxa",
 					"resolved": "xaxa/eslint-config-xaxa"
-				}
-			]
-		},
-		"gitcommit": {
-			"name": "gitcommit",
-			"resolved": "modules/gitcommit",
-			"license": "MPL-2.0"
-		},
-		"kind-error": {
-			"name": "kind-error",
-			"resolved": "modules/kind-error"
-		},
-		"yaro": {
-			"name": "yaro",
-			"resolved": "modules/yaro",
-			"license": "MPL-2.0",
-			"dependents": [
-				{
-					"name": "@hela/core",
-					"resolved": "@hela/core",
-					"dependents": [
-						{
-							"name": "@hela/cli",
-							"resolved": "@hela/cli"
-						},
-						{
-							"name": "@hela/preset-workspaces",
-							"resolved": "@hela/preset-workspaces",
-							"dependents": [
-								{
-									"name": "@hela/preset-tunnckocore",
-									"resolved": "@hela/preset-tunnckocore"
-								}
-							]
-						}
-					]
-				},
-				{
-					"name": "asia-cli",
-					"resolved": "modules/asia-cli",
-					"dependents": [
-						{
-							"name": "@hela/preset-tunnckocore",
-							"resolved": "@hela/preset-tunnckocore"
-						}
-					]
-				},
-				{
-					"name": "xaxa",
-					"resolved": "xaxa/xaxa",
-					"dependents": [
-						{
-							"name": "@hela/preset-tunnckocore",
-							"resolved": "@hela/preset-tunnckocore"
-						}
-					]
-				},
-				{
-					"name": "gitcommit",
-					"resolved": "modules/gitcommit"
 				}
 			]
 		},

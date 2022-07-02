@@ -5,7 +5,8 @@
 		"@tunnckocore/*",
 		"@hela/*",
 		"modules/*",
-		"xaxa/*"
+		"xaxa/*",
+		"asia/*"
 	],
 	"type": "module",
 	"scripts": {

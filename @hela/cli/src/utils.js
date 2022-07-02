@@ -29,8 +29,8 @@ export async function loadConfig(cfgName, argv, prog) {
 
 	try {
 		cfg = await import(name);
-	} catch {
-		throw new HelaError(`Failed to load config: ${name}`);
+	} catch (err) {
+		throw new HelaError(`Failed to load config: ${name}. Error: ${err.stack}`);
 	}
 
 	// if it's a promise, e.g. a promise resolving to object
