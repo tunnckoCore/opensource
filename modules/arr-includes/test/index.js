@@ -1,3 +1,5 @@
+import test from 'asia';
+import { expect } from 'expect';
 import arrIncludes from '../src/index.js';
 
 test('should return true if the value exists in the array.', async () => {

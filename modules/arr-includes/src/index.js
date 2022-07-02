@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MPL-2.0
+
 /**
  * Check if any of `values` exists on `arr`.
  *
