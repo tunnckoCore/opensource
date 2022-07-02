@@ -115,7 +115,7 @@ function(args)
 #### Examples
 
 ```js
-const toFilePath = require('to-file-path');
+import toFilePath from 'to-file-path';
 
 console.log(toFilePath('foo.bar.baz')); // => 'foo/bar/baz'
 console.log(toFilePath('foo.bar', 'qux.baz', 'xxx')); // => 'foo/bar/qux/baz/xxx'
