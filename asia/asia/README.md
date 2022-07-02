@@ -1,6 +1,11 @@
-# asia
+<p align="center">
+  <img
+    align="center"
+    src="https://rawcdn.githack.com/tunnckoCore/opensource/master/asia/asia/logo.png"
+  />
+</p>
 
-![ASIA v2 logo](./logo.png)
+# asia
 
 > Modern, fast, and innovative test runner with parallelism, concurrency,
 > caching and incremental testing. Since 2017.
@@ -72,6 +77,7 @@ or in your scripts with `c8` (a modern `nyc` replacement, test coverage)
 	}
 	"dependencies": {
 		"asia": "*",
+		"asia-cli": "*",
 		"c8": "*"
 	}
 }
