@@ -19,5 +19,7 @@ export default async (options, program) => {
 	// it works if the default is non-boolean, e.g. the `-c, --config` works
 	return prog
 		.option('-f, --force', 'Force running test without cache', false)
-		.option('--cache-clean', 'Clear the disk cache', false);
+		.option('--cache-clean', 'Clear the disk cache', false)
+		.option('--only-failed', 'Print only failed tests', false)
+		.option('--filter', 'Filter tests by path or by title');
 };
