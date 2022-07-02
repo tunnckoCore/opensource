@@ -5,7 +5,7 @@
 	"license": "MPL-2.0",
 	"description": "Create a filepath from an object path (dot notation), list of arguments, array, number or Arguments object.",
 	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/arr-includes",
+	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/to-file-path",
 	"funding": [
 		"https://ko-fi.com/tunnckoCore/commissions",
 		"https://github.com/sponsors/tunnckoCore"
@@ -13,7 +13,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/tunnckoCore/opensource.git",
-		"directory": "modules/arr-includes"
+		"directory": "modules/to-file-path"
 	},
 	"type": "module",
 	"main": "src/index.js",
