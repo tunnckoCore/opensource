@@ -6,7 +6,7 @@
 import process from 'node:process';
 import dargs from 'dargs';
 import { npm, yarn } from 'global-dirs';
-import { execa } from 'execa';
+import { execaCommand } from 'execa';
 import { Yaro } from 'yaro';
 
 const processEnv = process.env;
@@ -39,7 +39,7 @@ async function exec(cmd, options = {}) {
 	const envPATH = `${processEnv.PATH}:${globalBins.join(':')}`;
 	const env = { ...defaultExecaOptions.env, PATH: envPATH };
 
-	return execa.command(cmd, { ...defaultExecaOptions, env, ...options });
+	return execaCommand(cmd, { ...defaultExecaOptions, env, ...options });
 }
 
 class HelaError extends Error {
