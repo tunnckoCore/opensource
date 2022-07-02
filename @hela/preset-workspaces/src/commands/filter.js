@@ -41,7 +41,7 @@ export default hela()
 		});
 
 		if (flags.npm) {
-			const npmResult = res.map((pkgName) => {
+			const npmResult = res.reverse().map((pkgName) => {
 				const dir = ws.graph[pkgName].resolved;
 
 				return `--workspace ${dir}`;
