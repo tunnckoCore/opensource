@@ -25,9 +25,8 @@ export default function asia(settings = {}) {
 	const specs = [];
 	const tests = cfg.tests || new Map();
 
-	console.log('asia() cfg', cfg);
 	cfg.filter = typeof cfg.filter === 'function' ? cfg.filter : utils.filter;
-	console.log('asia() filter', cfg.filter);
+
 	function test(title, fn) {
 		const callsites = utils.callplaces();
 		const testPath = callsites[1].getFileName();
