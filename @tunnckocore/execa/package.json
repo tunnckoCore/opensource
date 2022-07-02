@@ -1,97 +1,64 @@
 {
-  "name": "@tunnckocore/execa",
-  "version": "5.2.7",
-  "licenseStart": 2017,
-  "license": "MPL-2.0",
-  "description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence with control for concurrency",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "homepage": "https://tunnckocore.com/opensource",
-  "funding": [
-    "https://ko-fi.com/tunnckoCore/commissions",
-    "https://github.com/sponsors/tunnckoCore",
-    "https://patreon.com/tunnckoCore"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tunnckoCore/opensource.git",
-    "directory": "@tunnckocore/execa"
-  },
-  "main": "src/main.js",
-  "module": "src/index.js",
-  "files": [
-    "src"
-  ],
-  "engines": {
-    "node": ">=10.13"
-  },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "scripts": {},
-  "dependencies": {
-    "esm": "^3.2.25",
-    "execa": "^4.0.0",
-    "p-map": "^3.0.0"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "src/index.js": {
-        "statements": 85,
-        "branches": 100,
-        "functions": 75,
-        "lines": 83
-      }
-    }
-  },
-  "cov": {
-    "value": 86.01,
-    "color": "99CC09"
-  },
-  "keywords": [
-    "bin",
-    "binaries",
-    "binary",
-    "child",
-    "concurrency",
-    "develop",
-    "exec",
-    "execa",
-    "execfile",
-    "execute",
-    "file",
-    "fork",
-    "local",
-    "npm",
-    "parallel",
-    "path",
-    "process",
-    "sequence",
-    "series",
-    "shell",
-    "spawn",
-    "tunnckocorehq"
-  ],
-  "verb": {
-    "readme": "../../readme-template.md",
-    "run": true,
-    "toc": {
-      "render": true,
-      "method": "preWrite",
-      "maxdepth": 4
-    },
-    "layout": "empty",
-    "tasks": [
-      "readme"
-    ],
-    "lint": {
-      "reflinks": true
-    },
-    "reflinks": [
-      "execa"
-    ],
-    "related": {
-      "list": []
-    }
-  }
+	"name": "@tunnckocore/execa",
+	"version": "6.0.0",
+	"licenseStart": 2017,
+	"license": "MPL-2.0",
+	"description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence with control for concurrency",
+	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/execa",
+	"funding": [
+		"https://ko-fi.com/tunnckoCore/commissions",
+		"https://github.com/sponsors/tunnckoCore"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tunnckoCore/opensource.git",
+		"directory": "@tunnckocore/execa"
+	},
+	"type": "module",
+	"main": "src/index.js",
+	"files": [
+		"src"
+	],
+	"engines": {
+		"node": ">=16 <17 || >=18 <19 || >=20"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org",
+		"tag": "latest"
+	},
+	"scripts": {
+		"cov": "c8 asia --force",
+		"test": "asia",
+		"test:fresh": "asia --force"
+	},
+	"dependencies": {
+		"execa": "^6.1.0",
+		"p-map": "^5.5.0"
+	},
+	"keywords": [
+		"bin",
+		"binaries",
+		"binary",
+		"child",
+		"concurrency",
+		"develop",
+		"exec",
+		"execa",
+		"execfile",
+		"execute",
+		"file",
+		"fork",
+		"local",
+		"npm",
+		"parallel",
+		"path",
+		"process",
+		"sequence",
+		"series",
+		"shell",
+		"spawn",
+		"tunnckocorehq"
+	]
 }

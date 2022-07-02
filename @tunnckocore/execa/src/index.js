@@ -1,8 +1,8 @@
-import execaOrig from 'execa';
+import { execaCommand } from 'execa';
 import pMap from 'p-map';
 
 /**
- * Uses [execa][] v2, `execa.command()` method.
+ * Uses [execa][], `{ execaCommand }` method.
  * As stated there, think of it as mix of `child_process`'s `.execFile` and `.spawn`.
  * It is pretty similar to the `.shell` method too, but only visually because
  * it does not uses the system's shell, meaning it does not have access to
@@ -44,7 +44,9 @@ export async function exec(cmds, options) {
 		all: true,
 	};
 
-	return pMap(commands, (cmd) => execaOrig.command(cmd, opts), { concurrency });
+	return pMap(commands, async (cmd) => execaCommand(cmd, opts), {
+		concurrency,
+	});
 }
 
 /**
@@ -92,18 +94,18 @@ export async function exec(cmds, options) {
  * @return {Promise} resolved or rejected promises
  * @public
  */
-export function shell(cmds, options) {
+export async function shell(cmds, options) {
 	return exec(cmds, { ...options, shell: true });
 }
 
 /**
- * Same as [execa][]'s default export, see its documentation.
+ * All [execa][] named exports, see its documentation.
  * Think of this as a mix of `child_process.execFile()` and `child_process.spawn()`.
  *
  * @example
- * import execa from '@tunnckocore/execa'
+ * import { execa, execaCommand, execaNode } from '@tunnckocore/execa'
  * // or
- * // const execa = require('@tunnckocore/execa');
+ * // const { execa } = require('@tunnckocore/execa');
  *
  * async function main() {
  *   await execa('npm', ['install', '--save-dev', 'react'], { stdio: 'inherit' });
@@ -118,14 +120,4 @@ export function shell(cmds, options) {
  * @public
  */
 
-function execa(file, args, options) {
-	// ! this is just a tweak because the docs generation (parse-comments bugs)...
-	return execaOrig(file, args, options);
-}
-
-// ! this is just a tweak because the docs generation (parse-comments bugs)...
-execaOrig.execa = execa;
-
-// ! this is just a tweak because the docs generation (parse-comments bugs)...
-
-export { default } from 'execa';
+export * from 'execa';

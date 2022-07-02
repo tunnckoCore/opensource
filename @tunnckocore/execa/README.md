@@ -69,7 +69,7 @@ from [GitHub Actions](https://github.com/features/actions) with
     - [Signature](#signature-1)
     - [Params](#params-1)
     - [Examples](#examples-1)
-  - [execa](#execa)
+  - [all exports from `execa`](#execa)
     - [Signature](#signature-2)
     - [Params](#params-2)
     - [Examples](#examples-2)
@@ -141,16 +141,16 @@ import { exec } from '@tunnckocore/execa';
 // const { exec } = require('@tunnckocore/execa');
 
 async function main() {
-  await exec('echo "hello world"', { stdio: 'inherit' });
+	await exec('echo "hello world"', { stdio: 'inherit' });
 
-  // executes in series (because `concurrency` option is set to `1`)
-  await exec(
-    [
-      'prettier-eslint --write foobar.js',
-      'eslint --format codeframe foobar.js --fix',
-    ],
-    { stdio: 'inherit', preferLocal: true, concurrency: 1 },
-  );
+	// executes in series (because `concurrency` option is set to `1`)
+	await exec(
+		[
+			'prettier-eslint --write foobar.js',
+			'eslint --format codeframe foobar.js --fix',
+		],
+		{ stdio: 'inherit', preferLocal: true, concurrency: 1 },
+	);
 }
 
 main();
@@ -187,36 +187,36 @@ import { shell } from '@tunnckocore/execa';
 // const { shell } = require('@tunnckocore/execa');
 
 async function main() {
-  // executes in series
-  await shell(['echo unicorns', 'echo "foo-$HOME-bar"', 'echo dragons'], {
-    stdio: 'inherit',
-  });
+	// executes in series
+	await shell(['echo unicorns', 'echo "foo-$HOME-bar"', 'echo dragons'], {
+		stdio: 'inherit',
+	});
 
-  // exits with code 3
-  try {
-    await shell(['exit 3', 'echo nah']);
-  } catch (er) {
-    console.error(er);
-    // => {
-    //  message: 'Command failed: /bin/sh -c exit 3'
-    //  killed: false,
-    //  code: 3,
-    //  signal: null,
-    //  cmd: '/bin/sh -c exit 3',
-    //  stdout: '',
-    //  stderr: '',
-    //  timedOut: false
-    // }
-  }
+	// exits with code 3
+	try {
+		await shell(['exit 3', 'echo nah']);
+	} catch (er) {
+		console.error(er);
+		// => {
+		//  message: 'Command failed: /bin/sh -c exit 3'
+		//  killed: false,
+		//  code: 3,
+		//  signal: null,
+		//  cmd: '/bin/sh -c exit 3',
+		//  stdout: '',
+		//  stderr: '',
+		//  timedOut: false
+		// }
+	}
 }
 
 main();
 ```
 
-### [execa](./src/index.js#L121)
+### [.execa](./src/index.js#L121)
 
-Same as [execa][]'s default export, see its documentation. Think of this as a
-mix of `child_process.execFile()` and `child_process.spawn()`.
+All [execa][] named exports, see its documentation. Think of this as a mix of
+`child_process.execFile()` and `child_process.spawn()`.
 
 <span id="execa-signature"></span>
 
@@ -239,12 +239,12 @@ function(file, args, options)
 #### Examples
 
 ```js
-import execa from '@tunnckocore/execa';
+import { execa } from '@tunnckocore/execa';
 // or
-// const execa = require('@tunnckocore/execa');
+// const { execa } = require('@tunnckocore/execa');
 
 async function main() {
-  await execa('npm', ['install', '--save-dev', 'react'], { stdio: 'inherit' });
+	await execa('npm', ['install', '--save-dev', 'react'], { stdio: 'inherit' });
 }
 
 main();
