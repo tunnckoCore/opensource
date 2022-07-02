@@ -29,7 +29,9 @@
 		"tag": "latest"
 	},
 	"scripts": {},
-	"dependencies": {},
+	"dependencies": {
+		"prettier-plugin-pkgjson": "^0.2.8"
+	},
 	"contributors": [
 		"Charlike Mike Reagent <opensource@tunnckocore.com>"
 	]

@@ -4,7 +4,8 @@
 	"workspaces": [
 		"@tunnckocore/*",
 		"@hela/*",
-		"modules/*"
+		"modules/*",
+		"xaxa/*"
 	],
 	"resolved": [
 		"@tunnckocore/create-jest-runner",
@@ -15,17 +16,18 @@
 		"@hela/core",
 		"@hela/preset-tunnckocore",
 		"@hela/preset-workspaces",
+		"xaxa/eslint-config-xaxa",
+		"xaxa/xaxa",
+		"modules/arr-includes",
 		"modules/asia",
 		"modules/asia-cli",
 		"modules/asia-core",
-		"modules/eslint-config-xaxa",
 		"@tunnckocore/jest-runner-eslint",
 		"@tunnckocore/p-all",
 		"@tunnckocore/package-json",
 		"@tunnckocore/prettier-config",
 		"modules/gitcommit",
 		"modules/kind-error",
-		"modules/xaxa",
 		"modules/yaro",
 		"@tunnckocore/pretty-config",
 		"@tunnckocore/semver-increment",
@@ -40,17 +42,18 @@
 		"@hela/core",
 		"@hela/preset-tunnckocore",
 		"@hela/preset-workspaces",
+		"eslint-config-xaxa",
+		"xaxa",
+		"arr-includes",
 		"asia",
 		"asia-cli",
 		"asia-core",
-		"eslint-config-xaxa",
 		"@tunnckocore/jest-runner-eslint",
 		"@tunnckocore/p-all",
 		"@tunnckocore/package-json",
 		"@tunnckocore/prettier-config",
 		"gitcommit",
 		"kind-error",
-		"xaxa",
 		"yaro",
 		"@tunnckocore/pretty-config",
 		"@tunnckocore/semver-increment",
@@ -128,6 +131,51 @@
 				}
 			]
 		},
+		"eslint-config-xaxa": {
+			"name": "eslint-config-xaxa",
+			"resolved": "xaxa/eslint-config-xaxa",
+			"license": "Apache-2.0",
+			"dependents": [
+				{
+					"name": "xaxa",
+					"resolved": "xaxa/xaxa",
+					"dependents": [
+						{
+							"name": "@hela/preset-tunnckocore",
+							"resolved": "@hela/preset-tunnckocore"
+						}
+					]
+				}
+			]
+		},
+		"xaxa": {
+			"name": "xaxa",
+			"resolved": "xaxa/xaxa",
+			"license": "Apache-2.0",
+			"dependents": [
+				{
+					"name": "@hela/preset-tunnckocore",
+					"resolved": "@hela/preset-tunnckocore"
+				}
+			]
+		},
+		"arr-includes": {
+			"name": "arr-includes",
+			"resolved": "modules/arr-includes",
+			"license": "MPL-2.0",
+			"dependents": [
+				{
+					"name": "@hela/preset-workspaces",
+					"resolved": "@hela/preset-workspaces",
+					"dependents": [
+						{
+							"name": "@hela/preset-tunnckocore",
+							"resolved": "@hela/preset-tunnckocore"
+						}
+					]
+				}
+			]
+		},
 		"asia": {
 			"name": "asia",
 			"resolved": "modules/asia",
@@ -156,23 +204,6 @@
 				{
 					"name": "asia-cli",
 					"resolved": "modules/asia-cli",
-					"dependents": [
-						{
-							"name": "@hela/preset-tunnckocore",
-							"resolved": "@hela/preset-tunnckocore"
-						}
-					]
-				}
-			]
-		},
-		"eslint-config-xaxa": {
-			"name": "eslint-config-xaxa",
-			"resolved": "modules/eslint-config-xaxa",
-			"license": "Apache-2.0",
-			"dependents": [
-				{
-					"name": "xaxa",
-					"resolved": "modules/xaxa",
 					"dependents": [
 						{
 							"name": "@hela/preset-tunnckocore",
@@ -243,17 +274,6 @@
 			"name": "kind-error",
 			"resolved": "modules/kind-error"
 		},
-		"xaxa": {
-			"name": "xaxa",
-			"resolved": "modules/xaxa",
-			"license": "Apache-2.0",
-			"dependents": [
-				{
-					"name": "@hela/preset-tunnckocore",
-					"resolved": "@hela/preset-tunnckocore"
-				}
-			]
-		},
 		"yaro": {
 			"name": "yaro",
 			"resolved": "modules/yaro",
@@ -280,6 +300,16 @@
 					]
 				},
 				{
+					"name": "xaxa",
+					"resolved": "xaxa/xaxa",
+					"dependents": [
+						{
+							"name": "@hela/preset-tunnckocore",
+							"resolved": "@hela/preset-tunnckocore"
+						}
+					]
+				},
+				{
 					"name": "asia-cli",
 					"resolved": "modules/asia-cli",
 					"dependents": [
@@ -292,16 +322,6 @@
 				{
 					"name": "gitcommit",
 					"resolved": "modules/gitcommit"
-				},
-				{
-					"name": "xaxa",
-					"resolved": "modules/xaxa",
-					"dependents": [
-						{
-							"name": "@hela/preset-tunnckocore",
-							"resolved": "@hela/preset-tunnckocore"
-						}
-					]
 				}
 			]
 		},

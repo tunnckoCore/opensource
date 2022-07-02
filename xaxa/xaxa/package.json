@@ -1,11 +1,11 @@
 {
-	"name": "eslint-config-xaxa",
+	"name": "xaxa",
 	"version": "3.0.0",
 	"licenseStart": 2018,
 	"license": "Apache-2.0",
 	"description": "Zero-config linting, powered by few amazing unicorns, AirBnB & Prettier.",
 	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/eslint-config-xaxa",
+	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/xaxa",
 	"funding": [
 		"https://ko-fi.com/tunnckoCore/commissions",
 		"https://github.com/sponsors/tunnckoCore"
@@ -13,13 +13,14 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/tunnckoCore/opensource.git",
-		"directory": "modules/eslint-config-xaxa"
+		"directory": "xaxa/xaxa"
 	},
-	"type": "commonjs",
+	"type": "module",
 	"main": "src/index.js",
 	"files": [
 		"src"
 	],
+	"bin": "src/bin.js",
 	"engines": {
 		"node": ">=16 <17 || >=18 <19 || >=20"
 	},
@@ -30,15 +31,13 @@
 	},
 	"scripts": {},
 	"dependencies": {
-		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-config-prettier": "^8.5.0",
-		"eslint-import-resolver-alias": "^1.1.2",
-		"eslint-plugin-import": "^2.26.0",
-		"eslint-plugin-no-use-extend-native": "^0.5.0",
-		"eslint-plugin-node": "^11.1.0",
-		"eslint-plugin-prettier": "^4.1.0",
-		"eslint-plugin-promise": "^6.0.0",
-		"eslint-plugin-unicorn": "^42.0.0"
+		"eslint": "^8.18.0",
+		"eslint-config-xaxa": "*",
+		"glob-cache": "^1.0.5",
+		"yaro": "*"
+	},
+	"peerDependencies": {
+		"@hela/core": "^4.0.0"
 	},
 	"keywords": [
 		"xaxa",
