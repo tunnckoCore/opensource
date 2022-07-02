@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+## v3.0.0
+
+- convert it to be pure [ESM-only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) package
+- require Node.js v16+, or see `engines` field in this package
+- switch testing frameworks
+- bump dependencies to latest
+
+
 ## [2.0.4](https://github.com/tunnckoCore/opensource/compare/to-file-path@2.0.3...to-file-path@2.0.4) (2020-03-28)
 
 **Note:** Version bump only for package to-file-path

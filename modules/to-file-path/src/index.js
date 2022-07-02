@@ -1,7 +1,7 @@
-'use strict';
+// SPDX-License-Identifier: MPL-2.0
 
-const arrMap = require('arr-map');
-const isArguments = require('is-arguments');
+import arrMap from 'arr-map';
+import isArguments from 'is-arguments';
 
 /**
  * Create filepath from different type of arguments.
@@ -20,14 +20,16 @@ const isArguments = require('is-arguments');
  * @return {string} always slash separated filepath
  * @api public
  */
-module.exports = function toFilePath(args) {
+export default function toFilePath(args) {
 	if (arguments.length > 1) {
 		// eslint-disable-next-line prefer-rest-params
 		return toFilePath(arguments);
 	}
+
 	if (Array.isArray(args) || isArguments(args)) {
 		return arrMap(args, (val) => toFilePath(val)).join('/');
 	}
+
 	if (typeof args === 'string') {
 		return args.split('.').join('/');
 	}
@@ -36,5 +38,6 @@ module.exports = function toFilePath(args) {
 	if (typeof args === 'object') {
 		val = JSON.stringify(args);
 	}
+
 	return toFilePath(String(val));
-};
+}

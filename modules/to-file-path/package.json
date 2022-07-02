@@ -1,0 +1,97 @@
+{
+	"name": "to-file-path",
+	"version": "3.0.0",
+	"licenseStart": 2016,
+	"license": "MPL-2.0",
+	"description": "Create a filepath from an object path (dot notation), list of arguments, array, number or Arguments object.",
+	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/arr-includes",
+	"funding": [
+		"https://ko-fi.com/tunnckoCore/commissions",
+		"https://github.com/sponsors/tunnckoCore"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tunnckoCore/opensource.git",
+		"directory": "modules/arr-includes"
+	},
+	"type": "module",
+	"main": "src/index.js",
+	"files": [
+		"src"
+	],
+	"engines": {
+		"node": ">=16 <17 || >=18 <19 || >=20"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org",
+		"tag": "latest"
+	},
+	"scripts": {
+		"cov": "c8 asia --force",
+		"test": "asia"
+	},
+	"dependencies": {
+		"arr-map": "^2.0.2",
+		"is-arguments": "^1.1.1"
+	},
+	"keywords": [
+		"args",
+		"arguments",
+		"dot",
+		"dot-notation",
+		"file",
+		"filepath",
+		"fp",
+		"list",
+		"notation",
+		"obj",
+		"object",
+		"path",
+		"to",
+		"to-file",
+		"to-file-path",
+		"to-filepath",
+		"to-path",
+		"util",
+		"utility",
+		"tunnckocore-oss",
+		"tunnckocorehq",
+		"valid",
+		"validate"
+	],
+	"verb": {
+		"readme": "../../readme-template.md",
+		"run": true,
+		"toc": {
+			"render": true,
+			"method": "preWrite",
+			"maxdepth": 3
+		},
+		"layout": "empty",
+		"tasks": [
+			"readme"
+		],
+		"lint": {
+			"reflinks": true
+		},
+		"related": {
+			"list": [
+				"to-object-path",
+				"ip-filter",
+				"function-arugments",
+				"get-fn-name",
+				"arr-map",
+				"arr-includes",
+				"in-array"
+			]
+		},
+		"reflinks": [
+			"ip-filter",
+			"is-match",
+			"koa",
+			"micromatch"
+		]
+	}
+}
