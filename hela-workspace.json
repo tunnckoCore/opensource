@@ -9,8 +9,8 @@
 	],
 	"resolved": [
 		"@tunnckocore/create-jest-runner",
-		"@tunnckocore/execa",
 		"@tunnckocore/create-project",
+		"@tunnckocore/execa",
 		"@tunnckocore/jest-runner-babel",
 		"@hela/cli",
 		"@hela/core",
@@ -35,8 +35,8 @@
 	],
 	"packages": [
 		"@tunnckocore/create-jest-runner",
-		"@tunnckocore/execa",
 		"@tunnckocore/create-project",
+		"@tunnckocore/execa",
 		"@tunnckocore/jest-runner-babel",
 		"@hela/cli",
 		"@hela/core",
@@ -75,14 +75,14 @@
 				}
 			]
 		},
+		"@tunnckocore/create-project": {
+			"name": "@tunnckocore/create-project",
+			"resolved": "@tunnckocore/create-project"
+		},
 		"@tunnckocore/execa": {
 			"name": "@tunnckocore/execa",
 			"resolved": "@tunnckocore/execa",
 			"license": "MPL-2.0"
-		},
-		"@tunnckocore/create-project": {
-			"name": "@tunnckocore/create-project",
-			"resolved": "@tunnckocore/create-project"
 		},
 		"@tunnckocore/jest-runner-babel": {
 			"name": "@tunnckocore/jest-runner-babel",
