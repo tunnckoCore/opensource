@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+## v4.0.0
+
+- convert it to be pure [ESM-only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) package
+- require Node.js v16+, or see `engines` field in this package, use still can use it other environments by passing `--ignore-engines` to your package manager install command
+- switch testing frameworks
+- bump dependencies to latest
+
 ## [3.0.5](https://github.com/tunnckoCore/opensource/compare/ip-filter@3.0.4...ip-filter@3.0.5) (2020-03-28)
 
 **Note:** Version bump only for package ip-filter
@@ -56,7 +64,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-* release v3, see #127 
+* release v3, see #127
 
 - require `node >= 10.13`
 - relicense to `MPL-2.0`

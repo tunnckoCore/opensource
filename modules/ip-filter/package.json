@@ -1,0 +1,98 @@
+{
+	"name": "ip-filter",
+	"version": "4.0.0",
+	"licenseStart": 2015,
+	"license": "MPL-2.0",
+	"description": "Validates given IPs (IPv4 and IPv6) using [micromatch][] - glob patterns, RegExp, string or array of globs. If match returns the IP, otherwise null.",
+	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/ip-filter",
+	"funding": [
+		"https://ko-fi.com/tunnckoCore/commissions",
+		"https://github.com/sponsors/tunnckoCore"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tunnckoCore/opensource.git",
+		"directory": "modules/ip-filter"
+	},
+	"type": "module",
+	"main": "src/index.js",
+	"files": [
+		"src"
+	],
+	"engines": {
+		"node": ">=16 <17 || >=18 <19 || >=20"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org",
+		"tag": "latest"
+	},
+	"scripts": {
+		"cov": "c8 asia --force",
+		"test": "asia"
+	},
+	"dependencies": {
+		"ip-regex": "^5.0.0",
+		"micromatch": "^4.0.5",
+		"to-file-path": "^3.0.0"
+	},
+	"keywords": [
+		"array",
+		"check",
+		"development",
+		"dx",
+		"filter",
+		"glob",
+		"hela",
+		"ip",
+		"ip-filter",
+		"ips",
+		"ipv",
+		"ismatch",
+		"match",
+		"matcher",
+		"micro",
+		"micromatch",
+		"modern",
+		"patterns",
+		"regexp",
+		"string",
+		"tunnckocore-oss",
+		"tunnckocorehq",
+		"valid",
+		"validate"
+	],
+	"verb": {
+		"readme": "../../readme-template.md",
+		"run": true,
+		"toc": {
+			"render": true,
+			"method": "preWrite",
+			"maxdepth": 3
+		},
+		"layout": "empty",
+		"tasks": [
+			"readme"
+		],
+		"lint": {
+			"reflinks": true
+		},
+		"related": {
+			"list": [
+				"to-file-path",
+				"ip-regex",
+				"is-match",
+				"micromatch",
+				"koa-ip-filter",
+				"is-match-ip"
+			]
+		},
+		"reflinks": [
+			"ip-filter",
+			"is-match",
+			"koa",
+			"micromatch"
+		]
+	}
+}

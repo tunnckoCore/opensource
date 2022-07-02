@@ -1,13 +1,7 @@
-/*!
- * ip-filter <https://github.com/tunnckoCore/ip-filter>
- *
- * Copyright (c) 2015-2016 Charlike Mike Reagent <@tunnckoCore> (http://www.tunnckocore.tk)
- * Released under the MIT license.
- */
+import test from 'asia';
+import { expect } from 'expect';
 
-'use strict';
-
-const ipFilter = require('../src/index');
+import ipFilter from '../src/index.js';
 
 test('should throw TypeError if `ip` not a string', () => {
 	expect(() => ipFilter(123)).toThrow(TypeError);

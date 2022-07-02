@@ -1,6 +1,6 @@
 # ip-filter [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url] [![Libera Manifesto][libera-manifesto-img]][libera-manifesto-url]
 
-> Validates valid IPs (IPv4 and IPv6) using [micromatch][] - glob patterns,
+> Validates given IPs (IPv4 and IPv6) using [micromatch][] - glob patterns,
 > RegExp, string or array of globs. If match returns the IP, otherwise null.
 
 Please consider following this project's author,
@@ -120,7 +120,7 @@ function(ip, patterns, options)
 #### Examples
 
 ```js
-const ipFilter = require('ip-filter');
+import ipFilter from 'ip-filter';
 
 console.log(ipFilter('123.77.34.89', '123.??.34.8*')); // => '123.77.34.89'
 console.log(ipFilter('123.222.34.88', '123.??.34.8*')); // => null
@@ -138,7 +138,7 @@ console.log(ipFilter('123.222.34.88', ['123.*.34.*', '!123.222.*']));
 #### Examples
 
 ```js
-const ipFilter = require('ip-filter');
+import ipFilter from 'ip-filter';
 //
 // NON-STRICT mode
 //
