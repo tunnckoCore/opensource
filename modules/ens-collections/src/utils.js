@@ -12,11 +12,18 @@ export function getTokens(str) {
 }
 
 export function getNamesFromCSV(str) {
-	return str.split(/\s+/g).map((line) => {
-		const [name, _] = line.split(',');
+	return str
+		.split(/\s+/g)
+		.map((line) => {
+			const [name, _] = line.split(',');
+			// skip headers
+			if (name === 'name') {
+				return null;
+			}
 
-		return name.trim();
-	});
+			return name.trim();
+		})
+		.filter(Boolean);
 }
 
 export function getTokenInfo(name) {
