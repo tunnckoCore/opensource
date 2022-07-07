@@ -29,6 +29,7 @@
 		"asia/asia-cli",
 		"asia/asia-core",
 		"modules/arr-includes",
+		"modules/ens-collections",
 		"modules/gitcommit",
 		"modules/ip-filter",
 		"modules/kind-error",
@@ -57,6 +58,7 @@
 		"asia",
 		"asia-cli",
 		"asia-core",
+		"ens-collections",
 		"eslint-config-xaxa",
 		"gitcommit",
 		"hela",
@@ -158,6 +160,10 @@
 			"resolved": "@tunnckocore/p-all",
 			"license": "Apache-2.0",
 			"dependents": [
+				{
+					"name": "ens-collections",
+					"resolved": "modules/ens-collections"
+				},
 				{
 					"name": "asia-core",
 					"resolved": "asia/asia-core",
@@ -292,6 +298,11 @@
 					]
 				}
 			]
+		},
+		"ens-collections": {
+			"name": "ens-collections",
+			"resolved": "modules/ens-collections",
+			"license": "Apache-2.0"
 		},
 		"eslint-config-xaxa": {
 			"name": "eslint-config-xaxa",
