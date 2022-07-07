@@ -21,9 +21,9 @@ import { collectionsList, collections } from './index.js';
 // console.log('Collections:', collectionsList.length);
 // console.log('1 Hex Club:', collections['palindrome-cities']);
 
-collectionsList.map((x) =>
-	console.log('-', x.info.name, x.info.verified ? '**(verified)**' : ''),
-);
+collectionsList.map((x) => {
+	console.log(`-`, x.info.name, x.info.verified ? '**(verified)**' : '');
+});
 
 console.log(collectionsList.length);
 // await updateMetadata();

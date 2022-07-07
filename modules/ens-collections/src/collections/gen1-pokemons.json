@@ -1,6 +1,6 @@
 {
 	"info": {
-		"slug": "gen1-pokemon",
+		"slug": "gen1-pokemons",
 		"supply": 151,
 		"verified": false,
 		"links": [],
@@ -9,7 +9,7 @@
 			"https://discord.com/invite/nfWYw9mctW"
 		],
 		"description": "Pokemon from Gen1 numbers 1-151.",
-		"name": "Gen1 Pokemon"
+		"name": "Gen1 Pokemons"
 	},
 	"data": {
 		"abra": "30783733060411156823039748531161647593942071968294490196449796508014505753373",

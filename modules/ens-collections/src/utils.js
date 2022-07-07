@@ -3,7 +3,7 @@
 import fsSync, { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parallel } from '@tunnckocore/p-all';
+import { parallel, serial } from '@tunnckocore/p-all';
 import uts46 from 'idna-uts46-hx';
 import { ethers } from 'ethers';
 
@@ -88,7 +88,8 @@ export async function getCollections(list, mapper) {
 
 	const expose = list ? [] : {};
 
-	await parallel(collections, async ({ value: collectionPath }) => {
+	await serial(collections, async ({ value: collectionPath }) => {
+		// console.log('collectionPath abc:', collectionPath);
 		const collection = await readJSON(collectionPath);
 		const name = path.basename(collectionPath, path.extname(collectionPath));
 

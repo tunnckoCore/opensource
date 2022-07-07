@@ -1,12 +1,12 @@
 {
 	"info": {
-		"slug": "months",
+		"slug": "full-months",
 		"supply": 12,
 		"verified": false,
 		"links": [],
 		"community": [],
 		"description": "Full Months in the Gregorian calendar",
-		"name": "Months"
+		"name": "Full Months"
 	},
 	"data": {
 		"april": "32204501216624945251598865820144571365295720223551708871190834676743801725878",

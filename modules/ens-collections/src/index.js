@@ -5,6 +5,6 @@
 import * as utils from './utils.js';
 
 const collections = await utils.getCollections();
-const collectionsList = Object.values(collections);
+const collectionsList = await utils.getCollections(true);
 
 export { collections, collectionsList, utils };

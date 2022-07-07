@@ -1,6 +1,6 @@
 {
 	"info": {
-		"slug": "double-ethmoji",
+		"slug": "ethmoji-double-club",
 		"supply": 865,
 		"verified": false,
 		"links": [],
@@ -8,7 +8,8 @@
 			"https://twitter.com/EthmojiClub",
 			"https://discord.gg/vv6H4Rjuzm"
 		],
-		"description": "Names with True Double Emojis."
+		"description": "Names with True Double Emojis.",
+		"name": "Ethmoji Double Club"
 	},
 	"data": {
 		"0⃣0⃣": "1392097603369179995004007092627846396596207891450002957018083815474330126876",
