@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
-// import path from 'node:path';
-// import fs from 'node:fs/promises';
-// import { parallel } from '@tunnckocore/p-all';
-// import * as utils from './utils.js';
+import path from 'node:path';
+import fs from 'node:fs/promises';
+import { parallel, serial } from '@tunnckocore/p-all';
+import * as utils from './utils.js';
 import { collectionsList, collections } from './index.js';
 
 // console.log(utils.getTokens(utils.getNamesFromCSV(`〇〇九,sasa\n〇四六,dj4s`)));
@@ -21,11 +21,35 @@ import { collectionsList, collections } from './index.js';
 // console.log('Collections:', collectionsList.length);
 // console.log('1 Hex Club:', collections['palindrome-cities']);
 
-collectionsList.map((x) => {
-	console.log(`-`, x.info.name, x.info.verified ? '**(verified)**' : '');
-});
+await convertLogos();
 
-console.log(collectionsList.length);
+async function convertLogos() {
+	await serial(collectionsList, async ({ value: collection }) => {
+		const logoDir = utils
+			.getCollectionsPath()
+			.replace(/\/collections/g, '/logos');
+		const logoPath = path.join(logoDir, `${collection.info.slug}.png`);
+		let buf = null;
+
+		// console.log('logoDir', logoDir);
+		// console.log('logoPath', logoPath);
+		try {
+			buf = await fs.readFile(logoPath);
+		} catch {
+			console.log('collection NOT OK:', collection.info.slug);
+			buf = Buffer.from(''); // empty logo
+		}
+
+		console.log(`data:image/png;base64,${buf.toString('base64url')}`);
+		// console.log('collection OK');
+	});
+}
+
+// collectionsList.map((x) => {
+// 	console.log(`-`, x.info.name, x.info.verified ? '**(verified)**' : '');
+// });
+
+// console.log(collectionsList.length);
 // await updateMetadata();
 
 // async function updateMetadata() {
