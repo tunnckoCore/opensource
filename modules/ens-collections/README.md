@@ -22,7 +22,7 @@ type Project = {
 };
 ```
 
-# Collections
+# Collections (83, for now)
 
 - 0x99 Club **(verified)**
 - 0x999 Club

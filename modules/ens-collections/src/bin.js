@@ -25,6 +25,7 @@ collectionsList.map((x) =>
 	console.log('-', x.info.name, x.info.verified ? '**(verified)**' : ''),
 );
 
+console.log(collectionsList.length);
 // await updateMetadata();
 
 // async function updateMetadata() {
