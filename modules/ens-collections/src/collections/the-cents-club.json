@@ -8,7 +8,8 @@
       "https://twitter.com/TheCentsClub",
       "https://discord.gg/YbNGdmCNwT"
     ],
-    "description": "Ens domains for 1cent to 100cents"
+    "description": "Ens domains for 1cent to 100cents",
+    "name": "The Cents Club"
   },
   "data": {
     "100cents": "50714721893276018735274284123608016675099662016171361894220140377752264039929",

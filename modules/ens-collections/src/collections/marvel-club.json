@@ -7,7 +7,8 @@
     "community": [
       "https://twitter.com/MarvelENSClub"
     ],
-    "description": "Names of Marvel Characters. Top 230."
+    "description": "Names of Marvel Characters. Top 230.",
+    "name": "Marvel Club"
   },
   "data": {
     "adamwarlock": "33664022145851035960873868132967975809533620457021524765354936820273642105417",

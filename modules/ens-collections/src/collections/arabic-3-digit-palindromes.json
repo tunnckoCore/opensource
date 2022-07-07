@@ -8,7 +8,8 @@
       "https://twitter.com/999ENSArabic",
       "https://discord.gg/QNEmFx6DzW"
     ],
-    "description": "Palindromes with Arabic 3 Digits."
+    "description": "Palindromes with Arabic 3 Digits.",
+    "name": "Arabic 3 Digit Palindromes"
   },
   "data": {
     "٠٠٠": "84050361106369352261275496948675546794304931307791131745217415677215063453854",

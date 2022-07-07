@@ -8,7 +8,8 @@
       "https://twitter.com/ENSletters",
       "https://discord.gg/9maV66mE2e"
     ],
-    "description": "Names with 3 Letters."
+    "description": "Names with 3 Letters.",
+    "name": "3 Letters"
   },
   "data": {
     "aaa": "83970925145461833815699410595310049924093205447041552242859136489764709676343",

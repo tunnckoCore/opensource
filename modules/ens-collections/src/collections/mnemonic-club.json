@@ -5,7 +5,8 @@
     "verified": false,
     "links": [],
     "community": [],
-    "description": "2048 mnemonic seed phrases."
+    "description": "2048 mnemonic seed phrases.",
+    "name": "Mnemonic Club"
   },
   "data": {
     "abandon": "6762428313145907517469582357859307789995886663441785728747115375443535690435",

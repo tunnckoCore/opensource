@@ -5,7 +5,8 @@
     "verified": false,
     "links": [],
     "community": [],
-    "description": "Palindromes with 6 digits"
+    "description": "Palindromes with 6 digits",
+    "name": "6 Digit Palindromes"
   },
   "data": {
     "100001": "14571127853282860727731573582155427578045248609317872820270360080326653617214",

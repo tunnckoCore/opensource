@@ -9,7 +9,8 @@
     "community": [
       "https://twitter.com/BIP39Club"
     ],
-    "description": "2048 words from the BIP39 English wordlist."
+    "description": "2048 words from the BIP39 English wordlist.",
+    "name": "Bip39 Club"
   },
   "data": {
     "abandon": "6762428313145907517469582357859307789995886663441785728747115375443535690435",

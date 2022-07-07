@@ -8,7 +8,8 @@
       "https://twitter.com/24ClockTimes",
       "https://discord.gg/eWEdvcT5SS"
     ],
-    "description": "Collection with 1am-12am and 1pm-12pm"
+    "description": "Collection with 1am-12am and 1pm-12pm",
+    "name": "24 Clock Times"
   },
   "data": {
     "10am": "90741943210497768197108604734583354284293525360119839302646974862720557254060",

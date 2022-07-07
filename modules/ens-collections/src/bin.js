@@ -2,36 +2,44 @@
 
 // import path from 'node:path';
 // import fs from 'node:fs/promises';
-// import { parallel } from '@tunnckocore/p-all';
+import { parallel } from '@tunnckocore/p-all';
 import * as utils from './utils.js';
 
 // console.log(utils.getTokens(utils.getNamesFromCSV(`〇〇九,sasa\n〇四六,dj4s`)));
-console.log(utils.getTokens(`〇〇九,〇四六\nfoo jan\n121`));
+// console.log(utils.getTokens(`〇〇九,〇四六\nfoo jan\n121`));
+
+// console.log(utils.namify('ens-full-date-club'));
+// console.log(utils.namify('english-verbs'));
+// console.log(utils.namify('3-digit-palindromes'));
+// console.log(utils.namify('3-letter-first-names'));
+// console.log(utils.namify('arabic-3-digit-palindromes'));
 
 // console.log(utils.getTokenInfo('⁉️⁉️.eth'));
 // console.log(utils.getTokenInfo('٥٦٤.eth'));
 
-// async function updateMetadata() {
-// 	await parallel(await utils.getCollections(true), async ({ value: item }) => {
-// 		const collection = item;
-// 		collection.info.supply = Object.keys(collection.data).length;
+async function updateMetadata() {
+	await parallel(await utils.getCollections(true), async ({ value: item }) => {
+		const collection = item;
 
-// 		if (collection.info.verified) {
-// 			console.log('club', collection.info.slug);
-// 			console.log('================');
-// 		}
-// 		// console.log(
-// 		// 	'club %s (%s)',
-// 		// 	collection.info.slug,
-// 		// 	collection.info.verified ? 'verified' : 'not verified',
-// 		// );
+		collection.info.name = utils.namify(item.info.slug);
+		// collection.info.supply = Object.keys(collection.data).length;
 
-// 		// await utils.writeCollection(collection);
-// 	});
-// }
+		// if (collection.info.verified) {
+		// 	console.log('club', collection.info.slug);
+		// 	console.log('================');
+		// }
+		// console.log(
+		// 	'club %s (%s)',
+		// 	collection.info.slug,
+		// 	collection.info.verified ? 'verified' : 'not verified',
+		// );
+
+		await utils.writeCollection(collection);
+	});
+}
 
 // await convertCategoriesToCollections();
-// await updateMetadata();
+await updateMetadata();
 
 // async function convertCategoriesToCollections() {
 // 	const categoryPath = path.join(

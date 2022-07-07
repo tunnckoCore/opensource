@@ -8,7 +8,8 @@
       "https://twitter.com/nasdaq_ensindex",
       "https://discord.gg/5J9xE2X7XH"
     ],
-    "description": "ENS Club for Nasdaq Index from AABA to ZYNE"
+    "description": "ENS Club for Nasdaq Index from AABA to ZYNE",
+    "name": "Nasdaq Index Club"
   },
   "data": {
     "aaba": "38617805858847161878964319556158539722142995701202497545469846914853834103007",

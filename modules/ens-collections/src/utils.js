@@ -119,6 +119,12 @@ export function decamelize(str = '') {
 		.replace(/([A-Z]+)([A-Z][\da-z]+)/g, '$1 $2');
 }
 
+export function namify(str = '') {
+	const parts = str.split('-');
+
+	return parts.map((p) => p.slice(0, 1).toUpperCase() + p.slice(1)).join(' ');
+}
+
 export function slugify(val = '') {
 	return decamelize(val.trim())
 		.toLowerCase()
@@ -209,13 +215,13 @@ export async function getCollection(name) {
 
 export async function verifyCollection(val) {
 	const name = typeof val === 'string' ? slugify(val) : val.info.slug;
-	const project = await getCollection(name);
+	const collection = await getCollection(name);
 
-	project.info.verified = true;
+	collection.info.verified = true;
 
-	await writeCollection(project);
+	await writeCollection(collection);
 
-	return project;
+	return collection;
 }
 
 export function normalizeCollection(project = {}) {
@@ -229,6 +235,7 @@ export function normalizeCollection(project = {}) {
 
 	// if no slug provided, we create one from the given name
 	result.info.slug = slugify(result.info.slug ?? result.info.name);
+	result.info.name = result.info.name ?? namify(result.info.slug);
 	result.info.description = result.info.desc || result.info.description;
 	result.info.description = result.info.description?.trim();
 	result.info.links = arrayify(result.info.links);
@@ -238,6 +245,23 @@ export function normalizeCollection(project = {}) {
 	result.data = sortObject(result.data);
 
 	return result;
+}
+
+export async function addLinkToCollection(val, links, community = false) {
+	const name = typeof val === 'string' ? slugify(val) : val.info.slug;
+	const collection = await getCollection(name);
+	const _links = arrayify(links);
+	const type = community ? 'community' : 'links';
+
+	collection.info[type].push(..._links);
+
+	await writeCollection(collection);
+
+	return collection;
+}
+
+export async function addCommunityToCollection(val, links) {
+	return addLinkToCollection(val, links, true);
 }
 
 // testing unicodes
