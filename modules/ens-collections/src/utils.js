@@ -92,7 +92,7 @@ export async function getCollections(list, mapper) {
 		const collection = await readJSON(collectionPath);
 		const name = path.basename(collectionPath, path.extname(collectionPath));
 
-		// don't buffer huge amounts of that into memory
+		// don't buffer huge amounts of data into memory
 		if (typeof mapper === 'function') {
 			await mapper(collection, name);
 			return;
