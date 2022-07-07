@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"licenseStart": 2022,
 	"license": "Apache-2.0",
-	"description": "A standardized list of all ENS (Ethereum Name Service) based collections, used by https://ens.vision",
+	"description": "A standardized list of ENS-based collections, verified upon community vote. Used by https://ens.vision and more!",
 	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
 	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/ens-collections",
 	"funding": [
@@ -29,7 +29,11 @@
 		"tag": "latest"
 	},
 	"scripts": {},
-	"dependencies": {},
+	"dependencies": {
+		"@tunnckocore/p-all": "^0.2.0",
+		"ethers": "^5.6.9",
+		"idna-uts46-hx": "^4.0.3"
+	},
 	"contributors": [
 		"Charlike Mike Reagent <opensource@tunnckocore.com>"
 	]
