@@ -7,6 +7,18 @@ import { parallel } from '@tunnckocore/p-all';
 import uts46 from 'idna-uts46-hx';
 import { ethers } from 'ethers';
 
+export function getTokens(str) {
+	return getListOfNames(str).map((name) => getTokenInfo(name));
+}
+
+export function getNamesFromCSV(str) {
+	return str.split(/\s+/g).map((line) => {
+		const [name, _] = line.split(',');
+
+		return name.trim();
+	});
+}
+
 export function getTokenInfo(name) {
 	if (!name) {
 		throw new TypeError('getToken: requires non-empty `name` string argument');
@@ -116,28 +128,14 @@ export async function generateCollection(info, names) {
 			{ info: { ...info, supply: 0 }, data: {} },
 		);
 
-	// Normalizations
-	result.info.verified = false;
-	result.info.name = result.info.name.trim();
-	result.info.slug = result.info.slug?.trim();
-
-	// if no slug provided, we create one from the given name
-	result.info.slug = slugify(result.info.slug ?? result.info.name);
-	result.info.description = result.info.desc || result.info.description;
-	result.info.description = result.info.description.trim();
-	result.info.links = arrayify(result.info.links);
-	result.info.community = arrayify(result.info.community);
-
-	// sort names/labels
-	result.data = sortObject(result.data);
-
-	return result;
+	return normalizeCollection(result);
 }
 
 /**
  *
  * type Project = {
  *	info: {
+ *    verified: boolean;
  *		name: string;
  *	 	description: string;
  *	  slug?: string;
@@ -179,6 +177,28 @@ export async function verifyCollection(val) {
 	await writeCollection(project);
 
 	return project;
+}
+
+export function normalizeCollection(project) {
+	const result = { ...project };
+
+	// Normalizations
+	result.info.verified = false;
+	result.info.name = result.info.name.trim();
+	result.info.slug = result.info.slug?.trim();
+	result.info.supply = result.info.supply ?? Object.keys(result.data).length;
+
+	// if no slug provided, we create one from the given name
+	result.info.slug = slugify(result.info.slug ?? result.info.name);
+	result.info.description = result.info.desc || result.info.description;
+	result.info.description = result.info.description.trim();
+	result.info.links = arrayify(result.info.links);
+	result.info.community = arrayify(result.info.community);
+
+	// sort names/labels
+	result.data = sortObject(result.data);
+
+	return result;
 }
 
 // testing unicodes
