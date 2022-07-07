@@ -18,8 +18,12 @@ import { collectionsList, collections } from './index.js';
 // console.log(utils.getTokenInfo('⁉️⁉️.eth'));
 // console.log(utils.getTokenInfo('٥٦٤.eth'));
 
-console.log('Collections:', collectionsList.length);
-console.log('1 Hex Club:', collections['palindrome-cities']);
+// console.log('Collections:', collectionsList.length);
+// console.log('1 Hex Club:', collections['palindrome-cities']);
+
+collectionsList.map((x) =>
+	console.log('-', x.info.name, x.info.verified ? '**(verified)**' : ''),
+);
 
 // await updateMetadata();
 
