@@ -2,7 +2,7 @@
 
 /* eslint-disable unicorn/prefer-export-from */
 
-import utils from './utils.js';
+import * as utils from './utils.js';
 
 const collections = await utils.getCollections();
 
