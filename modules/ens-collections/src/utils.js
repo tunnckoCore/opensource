@@ -81,7 +81,7 @@ export function getCollectionsPath(tryCreate = true) {
  *
  * @returns {object}
  */
-export async function getCollections(list) {
+export async function getCollections(list, mapper) {
 	const collectionsPath = getCollectionsPath();
 	const allCollections = await fs.readdir(collectionsPath);
 	const collections = allCollections.map((x) => path.join(collectionsPath, x));
@@ -91,6 +91,12 @@ export async function getCollections(list) {
 	await parallel(collections, async ({ value: collectionPath }) => {
 		const collection = await readJSON(collectionPath);
 		const name = path.basename(collectionPath, path.extname(collectionPath));
+
+		// don't buffer huge amounts of that into memory
+		if (typeof mapper === 'function') {
+			await mapper(collection, name);
+			return;
+		}
 
 		if (list) {
 			expose.push(collection);
@@ -117,6 +123,12 @@ export function decamelize(str = '') {
 
 		.replace(/([\da-z])([A-Z])/g, '$1 $2')
 		.replace(/([A-Z]+)([A-Z][\da-z]+)/g, '$1 $2');
+}
+
+export function camelize(str = '') {
+	const name = namify(str).split(' ').join('');
+
+	return name.slice(0, 1).toLowerCase() + name.slice(1);
 }
 
 export function namify(str = '') {
