@@ -18,7 +18,8 @@
 	"type": "module",
 	"main": "src/index.js",
 	"files": [
-		"src"
+		"src",
+		"collections"
 	],
 	"engines": {
 		"node": ">=16 <17 || >=18 <19 || >=20"
@@ -31,7 +32,6 @@
 	"scripts": {},
 	"dependencies": {
 		"@tunnckocore/p-all": "^0.2.0",
-		"eth-ens-namehash": "^2.0.8",
 		"ethers": "^5.6.9",
 		"idna-uts46-hx": "^4.0.3"
 	},

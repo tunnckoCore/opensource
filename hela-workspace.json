@@ -392,10 +392,6 @@
 					]
 				},
 				{
-					"name": "gitcommit",
-					"resolved": "modules/gitcommit"
-				},
-				{
 					"name": "xaxa",
 					"resolved": "xaxa/xaxa",
 					"dependents": [
@@ -404,6 +400,10 @@
 							"resolved": "@hela/preset-tunnckocore"
 						}
 					]
+				},
+				{
+					"name": "gitcommit",
+					"resolved": "modules/gitcommit"
 				},
 				{
 					"name": "asia-cli",

@@ -65,7 +65,7 @@ export async function readJSON(filepath) {
 }
 
 export function getCollectionsPath(tryCreate = true) {
-	const $$dirname = path.dirname(fileURLToPath(import.meta.url));
+	const $$dirname = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 	const collectionsDir = path.join($$dirname, 'collections');
 
 	if (tryCreate) {

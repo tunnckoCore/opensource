@@ -107,4 +107,4 @@ type Project = {
 - Roman Numerals Club
 - Single Digit Multiply **(verified)**
 - Substances Club
-- The Cents Club 80
+- The Cents Club
