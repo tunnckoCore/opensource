@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
-import fs from 'node:fs/promises';
+import fsSync, { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parallel } from '@tunnckocore/p-all';
@@ -30,18 +30,29 @@ export function getTokenInfo(name) {
 	if (!name) {
 		throw new TypeError('getToken: requires non-empty `name` string argument');
 	}
+	const clearName = name.replace(/\.eth$/, '');
 
-	const label = uts46.toUnicode(name.replace(/\.eth$/, ''), {
+	// INFO: eth-ens-namehash uses .toAscii ...
+	// at least we use the default options from there
+	const label = uts46.toUnicode(clearName, {
 		useStd3ASCII: true,
+		transitional: false,
+	});
+
+	const ascii = uts46.toAscii(clearName, {
+		useStd3ASCII: true,
+		transitional: false,
 	});
 
 	const hash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(label));
 	const id = ethers.BigNumber.from(hash).toString();
 
 	return {
-		id,
+		ascii,
+		name: `${clearName}.eth`,
 		label,
 		hash,
+		id,
 	};
 }
 
@@ -53,9 +64,13 @@ export async function readJSON(filepath) {
 	return JSON.parse(await fs.readFile(filepath, 'utf8'));
 }
 
-export function getCollectionsPath() {
+export function getCollectionsPath(tryCreate = true) {
 	const $$dirname = path.dirname(fileURLToPath(import.meta.url));
 	const collectionsDir = path.join($$dirname, 'collections');
+
+	if (tryCreate) {
+		fsSync.mkdirSync(collectionsDir, { recursive: true });
+	}
 
 	return collectionsDir;
 }
@@ -66,18 +81,22 @@ export function getCollectionsPath() {
  *
  * @returns {object}
  */
-export async function getCollections() {
+export async function getCollections(list) {
 	const collectionsPath = getCollectionsPath();
 	const allCollections = await fs.readdir(collectionsPath);
 	const collections = allCollections.map((x) => path.join(collectionsPath, x));
 
-	const expose = {};
+	const expose = list ? [] : {};
 
 	await parallel(collections, async ({ value: collectionPath }) => {
 		const collection = await readJSON(collectionPath);
 		const name = path.basename(collectionPath, path.extname(collectionPath));
 
-		expose[name] = collection;
+		if (list) {
+			expose.push(collection);
+		} else {
+			expose[name] = collection;
+		}
 	});
 
 	return expose;
@@ -126,8 +145,20 @@ export async function generateCollection(info, names) {
 		.filter(Boolean)
 		.reduce(
 			(acc, name) => {
-				const { label, id } = getTokenInfo(name);
-				acc.data[label] = id;
+				let token = null;
+
+				try {
+					token = getTokenInfo(name);
+				} catch (err) {
+					// skip gracefully, it's invalid domain
+					if (err.message.includes('Illegal char')) {
+						console.log('skipping %s, invalid domain!', name);
+						return acc;
+					}
+					throw err;
+				}
+
+				acc.data[token.label] = token.id;
 				acc.info.supply += 1;
 
 				return acc;
@@ -161,10 +192,11 @@ export async function generateCollection(info, names) {
 export async function writeCollection(project) {
 	const collectionsDir = getCollectionsPath();
 	const collectionDestination = path.join(collectionsDir, project.info.slug);
+	const dest = `${collectionDestination}.json`;
 
-	await fs.writeFile(collectionDestination, JSON.stringify(project, null, 2));
+	await fs.writeFile(dest, JSON.stringify(project, null, 2));
 
-	return collectionDestination;
+	return dest;
 }
 
 export async function getCollection(name) {
@@ -186,19 +218,19 @@ export async function verifyCollection(val) {
 	return project;
 }
 
-export function normalizeCollection(project) {
-	const result = { ...project };
+export function normalizeCollection(project = {}) {
+	const result = { info: { ...project.info }, data: { ...project.data } };
 
 	// Normalizations
 	result.info.verified = false;
-	result.info.name = result.info.name.trim();
+	result.info.name = result.info.name?.trim();
 	result.info.slug = result.info.slug?.trim();
 	result.info.supply = result.info.supply ?? Object.keys(result.data).length;
 
 	// if no slug provided, we create one from the given name
 	result.info.slug = slugify(result.info.slug ?? result.info.name);
 	result.info.description = result.info.desc || result.info.description;
-	result.info.description = result.info.description.trim();
+	result.info.description = result.info.description?.trim();
 	result.info.links = arrayify(result.info.links);
 	result.info.community = arrayify(result.info.community);
 
