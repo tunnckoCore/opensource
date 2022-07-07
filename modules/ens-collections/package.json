@@ -1,0 +1,36 @@
+{
+	"name": "ens-collections",
+	"version": "0.1.0",
+	"licenseStart": 2022,
+	"license": "Apache-2.0",
+	"description": "A standardized list of all ENS (Ethereum Name Service) based collections, used by https://ens.vision",
+	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/ens-collections",
+	"funding": [
+		"https://ko-fi.com/tunnckoCore/commissions",
+		"https://github.com/sponsors/tunnckoCore"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tunnckoCore/opensource.git",
+		"directory": "modules/ens-collections"
+	},
+	"type": "module",
+	"main": "src/index.js",
+	"files": [
+		"src"
+	],
+	"engines": {
+		"node": ">=16 <17 || >=18 <19 || >=20"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org",
+		"tag": "latest"
+	},
+	"scripts": {},
+	"dependencies": {},
+	"contributors": [
+		"Charlike Mike Reagent <opensource@tunnckocore.com>"
+	]
+}
