@@ -21,7 +21,7 @@ import { collectionsList, collections } from './index.js';
 // console.log('Collections:', collectionsList.length);
 // console.log('1 Hex Club:', collections['palindrome-cities']);
 
-await convertLogos();
+// await convertLogos();
 
 async function convertLogos() {
 	await serial(collectionsList, async ({ value: collection }) => {

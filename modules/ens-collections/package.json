@@ -1,6 +1,6 @@
 {
 	"name": "ens-collections",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"licenseStart": 2022,
 	"license": "Apache-2.0",
 	"description": "A standardized list of ENS-based collections, verified upon community vote. Used by https://ens.vision and more!",
@@ -32,8 +32,9 @@
 	"scripts": {},
 	"dependencies": {
 		"@tunnckocore/p-all": "^0.2.0",
-		"ethers": "^5.6.9",
-		"idna-uts46-hx": "^4.0.3"
+		"bn.js": "5.2.1",
+		"idna-uts46-hx": "^4.0.3",
+		"keccak256": "1.0.6"
 	},
 	"contributors": [
 		"Charlike Mike Reagent <opensource@tunnckocore.com>"

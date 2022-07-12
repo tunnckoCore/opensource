@@ -2,10 +2,13 @@
 
 import fsSync, { promises as fs } from 'node:fs';
 import path from 'node:path';
+import process from 'node:process';
 import { fileURLToPath } from 'node:url';
-import { parallel, serial } from '@tunnckocore/p-all';
+import { serial } from '@tunnckocore/p-all';
 import uts46 from 'idna-uts46-hx';
-import { ethers } from 'ethers';
+
+import BigNumber from 'bn.js';
+import keccak256 from 'keccak256';
 
 export function getTokens(str) {
 	return getListOfNames(str).map((name) => getTokenInfo(name));
@@ -15,13 +18,14 @@ export function getNamesFromCSV(str) {
 	return str
 		.split(/\s+/g)
 		.map((line) => {
+			// skip given ids, we regenerate correct ones
 			const [name, _] = line.split(',');
 			// skip headers
 			if (name === 'name') {
 				return null;
 			}
 
-			return name.trim();
+			return name.trim().toLowerCase();
 		})
 		.filter(Boolean);
 }
@@ -44,13 +48,13 @@ export function getTokenInfo(name) {
 		transitional: false,
 	});
 
-	const hash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(label));
-	const id = ethers.BigNumber.from(hash).toString();
+	const hash = keccak256(label);
+	const id = new BigNumber(hash, 'hex').toString();
 
 	return {
 		ascii,
-		name: `${clearName}.eth`,
 		label,
+		name: `${clearName}.eth`,
 		hash,
 		id,
 	};
@@ -64,9 +68,11 @@ export async function readJSON(filepath) {
 	return JSON.parse(await fs.readFile(filepath, 'utf8'));
 }
 
-export function getCollectionsPath(tryCreate = true) {
-	const $$dirname = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-	const collectionsDir = path.join($$dirname, 'collections');
+export function getCollectionsPath(tryCreate = true, cwd = false) {
+	const ensCwd = process.env.ENS_COLLECTIONS_CWD;
+	const pwd = ensCwd || (cwd ? cwd.replace('file://') : null);
+	const dir = pwd || path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+	const collectionsDir = path.join(dir, 'collections');
 
 	if (tryCreate) {
 		fsSync.mkdirSync(collectionsDir, { recursive: true });
@@ -81,8 +87,8 @@ export function getCollectionsPath(tryCreate = true) {
  *
  * @returns {object}
  */
-export async function getCollections(list, mapper) {
-	const collectionsPath = getCollectionsPath();
+export async function getCollections(list, mapper, { tryCreate, cwd } = {}) {
+	const collectionsPath = getCollectionsPath(tryCreate, cwd);
 	const allCollections = await fs.readdir(collectionsPath);
 	const collections = allCollections.map((x) => path.join(collectionsPath, x));
 
@@ -95,7 +101,7 @@ export async function getCollections(list, mapper) {
 
 		// don't buffer huge amounts of data into memory
 		if (typeof mapper === 'function') {
-			await mapper(collection, name);
+			await mapper(collection, name, collectionPath);
 			return;
 		}
 
@@ -156,7 +162,7 @@ export function getListOfNames(val) {
 
 	const names = val.split(/[\s,]+/g);
 
-	return names.map((x) => x.trim()).filter(Boolean);
+	return names.map((x) => x.trim().toLowerCase()).filter(Boolean);
 }
 
 export async function generateCollection(info, names) {
@@ -208,8 +214,8 @@ export async function generateCollection(info, names) {
  *
  * @param {Project} project
  */
-export async function writeCollection(project) {
-	const collectionsDir = getCollectionsPath();
+export async function writeCollection(project, { tryCreate, cwd } = {}) {
+	const collectionsDir = getCollectionsPath(tryCreate, cwd);
 	const collectionDestination = path.join(collectionsDir, project.info.slug);
 	const dest = `${collectionDestination}.json`;
 
@@ -218,9 +224,9 @@ export async function writeCollection(project) {
 	return dest;
 }
 
-export async function getCollection(name) {
+export async function getCollection(name, { tryCreate, cwd } = {}) {
 	const collection = await readJSON(
-		path.join(getCollectionsPath(), `${name}.json`),
+		path.join(getCollectionsPath(tryCreate, cwd), `${name}.json`),
 	);
 
 	return collection;
@@ -276,6 +282,33 @@ export async function addLinkToCollection(val, links, community = false) {
 export async function addCommunityToCollection(val, links) {
 	return addLinkToCollection(val, links, true);
 }
+
+export async function addNamesToCollection(collectionName, names) {
+	const collection = await getCollection(collectionName);
+
+	getTokens(names).map((token) => {
+		collection.data[token.label] = token.id;
+		collection.info.supply += 1;
+
+		return null;
+	});
+
+	// console.log(collection);
+	// const project = await generateCollection(collection, names);
+
+	const collectionDest = await writeCollection(normalizeCollection(collection));
+
+	return collectionDest;
+}
+
+// export async function extractCollections(cwd) {
+// 	await getCollections(null, async (collection, _, collectionPath) => {
+// 		const collectionFilename = path.basename(collectionPath);
+// 		const collectionsDir = await getCollectionsPath(true, cwd);
+// 		const dest = path.join(collectionsDir, collectionFilename);
+// 		console.log('xx', dest);
+// 	});
+// }
 
 // testing unicodes
 // console.log(getToken('tunnckocore.eth'));
