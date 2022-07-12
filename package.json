@@ -24,7 +24,6 @@
 		"fast-glob": "^3.2.11",
 		"prettier": "^2.7.1"
 	},
-	"hela": "@hela/preset-tunnckocore",
 	"contributors": [
 		"Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)"
 	],

@@ -1,6 +1,52 @@
 // SPDX-License-Identifier: Apache-2.0
 
-import path from 'node:path';
+import { hela } from '@hela/core';
+
+export const createCollection = hela()
+	.command('ens:create <collection>', 'Create collection')
+	.alias(['create', 'craet'])
+	.action(async () => {
+		console.log('create!');
+	});
+
+export const verify = hela()
+	.command('ens:verify <collection>', 'Make a collection verified')
+	.alias(['verify', 'veryfi', 'veryfy'])
+	.action(async () => {});
+
+export const certify = hela()
+	.command('ens:certify <collection>', 'Make a collection certified')
+	.alias(['certify', 'certyfi', 'certyfy'])
+	.action(async () => {});
+
+export const addNames = hela()
+	.command('ens:add:names [...names]', 'Add missing names to a collection')
+	.alias(['add:names', 'add:name'])
+	.action(async ({ flags, _, ...names }) => {
+		console.log(names);
+	});
+
+export const addCommunity = hela()
+	.command(
+		'ens:add:community [...socials]',
+		'Add community links to a collection.',
+	)
+	.alias(['add:community', 'add:commumity', 'add:social', 'add:socials'])
+	.action(async ({ flags, _, ...socials }) => {
+		console.log(socials);
+	});
+
+export const addWebsites = hela()
+	.command(
+		'ens:add:website [...websites]',
+		'Add website links to a collection.',
+	)
+	.alias(['add:website', 'add:websites', 'add:link', 'add:links'])
+	.action(async ({ flags, _, ...websites }) => {
+		console.log(websites);
+	});
+
+// import path from 'node:path';
 // import fs from 'node:fs/promises';
 // import { parallel, serial } from '@tunnckocore/p-all';
 // import * as utils from './utils.js';
