@@ -1,9 +1,9 @@
 {
 	"name": "ens-collections",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"licenseStart": 2022,
 	"license": "Apache-2.0",
-	"description": "A standardized list of ENS-based collections, verified upon community vote. Used by https://ens.vision and more!",
+	"description": "Utilities for creating, managing and working with standardized ENS-based collections.",
 	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
 	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/ens-collections",
 	"funding": [
@@ -18,8 +18,7 @@
 	"type": "module",
 	"main": "src/index.js",
 	"files": [
-		"src",
-		"collections"
+		"src"
 	],
 	"engines": {
 		"node": ">=16 <17 || >=18 <19 || >=20"
