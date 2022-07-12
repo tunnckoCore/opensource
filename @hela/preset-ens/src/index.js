@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import path from 'node:path';
-import fs from 'node:fs/promises';
-import { parallel, serial } from '@tunnckocore/p-all';
-import * as utils from './utils.js';
-import { collectionsList, collections } from './index.js';
+// import fs from 'node:fs/promises';
+// import { parallel, serial } from '@tunnckocore/p-all';
+// import * as utils from './utils.js';
+// import { collectionsList, collections } from './index.js';
 
 // console.log(utils.getTokens(utils.getNamesFromCSV(`〇〇九,sasa\n〇四六,dj4s`)));
 // console.log(utils.getTokens(`〇〇九,〇四六\nfoo jan\n121`));
@@ -23,27 +23,27 @@ import { collectionsList, collections } from './index.js';
 
 // await convertLogos();
 
-async function convertLogos() {
-	await serial(collectionsList, async ({ value: collection }) => {
-		const logoDir = utils
-			.getCollectionsPath()
-			.replace(/\/collections/g, '/logos');
-		const logoPath = path.join(logoDir, `${collection.info.slug}.png`);
-		let buf = null;
+// async function convertLogos() {
+// 	await serial(collectionsList, async ({ value: collection }) => {
+// 		const logoDir = utils
+// 			.getCollectionsPath()
+// 			.replace(/\/collections/g, '/logos');
+// 		const logoPath = path.join(logoDir, `${collection.info.slug}.png`);
+// 		let buf = null;
 
-		// console.log('logoDir', logoDir);
-		// console.log('logoPath', logoPath);
-		try {
-			buf = await fs.readFile(logoPath);
-		} catch {
-			console.log('collection NOT OK:', collection.info.slug);
-			buf = Buffer.from(''); // empty logo
-		}
+// 		// console.log('logoDir', logoDir);
+// 		// console.log('logoPath', logoPath);
+// 		try {
+// 			buf = await fs.readFile(logoPath);
+// 		} catch {
+// 			console.log('collection NOT OK:', collection.info.slug);
+// 			buf = Buffer.from(''); // empty logo
+// 		}
 
-		console.log(`data:image/png;base64,${buf.toString('base64url')}`);
-		// console.log('collection OK');
-	});
-}
+// 		console.log(`data:image/png;base64,${buf.toString('base64url')}`);
+// 		// console.log('collection OK');
+// 	});
+// }
 
 // collectionsList.map((x) => {
 // 	console.log(`-`, x.info.name, x.info.verified ? '**(verified)**' : '');
