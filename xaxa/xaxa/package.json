@@ -1,6 +1,6 @@
 {
   "name": "xaxa",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "licenseStart": 2018,
   "license": "Apache-2.0",
   "description": "Zero-config linting, powered by few amazing unicorns, AirBnB & Prettier.",
@@ -35,9 +35,6 @@
     "eslint-config-xaxa": "*",
     "glob-cache": "^1.0.5",
     "yaro": "*"
-  },
-  "peerDependencies": {
-    "@hela/core": "^4.0.0"
   },
   "keywords": [
     "xaxa",
