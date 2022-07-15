@@ -39,7 +39,7 @@ async function run(cmd, options) {
   const opts = { serial: true, ...options };
   const runIn = opts.serial ? serial : parallel;
 
-  return runIn(cmd, async ({ value: command }) =>
+  return runIn([cmd].flat(), async ({ value: command }) =>
     execaCommand(command, { ...defaultExecaOptions, env, ...options }),
   );
 }

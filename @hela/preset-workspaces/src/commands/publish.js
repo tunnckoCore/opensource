@@ -69,7 +69,10 @@ export default (prog) =>
       }
 
       if (wspc === false) {
-        wspc = await workspaces(prog)({ flags, ...data }, meta);
+        wspc = await workspaces(prog)(
+          { flags: { ...flags, raw: true }, ...data },
+          meta,
+        );
       }
 
       for (const name of wspc.packages) {
@@ -78,23 +81,37 @@ export default (prog) =>
         }
       }
 
+      // TODO: monitor the reverse() thing, i think it's random
+      const wsResolved = [...res.values()].map((x) => x.resolved).reverse();
+
       const npmFlagsString = toFlags({
         otp: flags.otp,
         dryRun: flags.dryRun,
 
-        // TODO: monitor the reverse() thing, i think it's random
-        workspace: [...res.values()].map((x) => x.resolved).reverse(),
+        workspace: wsResolved,
       });
 
-      await runNpmPublishCommand(npmFlagsString, flags);
+      await runNpmPublishCommand(npmFlagsString, wsResolved, flags);
     });
 
-async function runNpmPublishCommand(npmFlagsString, opts = {}) {
+async function runNpmPublishCommand(npmFlagsString, wsResolved, opts = {}) {
   const command = `npm publish -ws ${npmFlagsString}`;
+
+  if (opts.verbose) {
+    console.log('');
+    console.log('Preparing to publish:');
+    wsResolved.map((pkgPath) => console.log('-', pkgPath));
+  }
 
   if (opts.dry) {
     console.log('Command that would be executed:\n  $ %s', command);
   } else {
     await runCommands(command);
+  }
+
+  if (opts.verbose) {
+    console.log('');
+    console.log('Published:');
+    wsResolved.map((pkgPath) => console.log('-', pkgPath));
   }
 }
