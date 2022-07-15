@@ -50,7 +50,7 @@ function hela(settings) {
     helpByDefault: true,
     allowUnknownOptions: true, // todo: temporary
     singleMode: false,
-    cliVersion: '4.0.0',
+    cliVersion: '5.0.0',
   });
   cli.isHela = true;
 
