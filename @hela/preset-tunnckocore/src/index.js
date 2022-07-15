@@ -10,7 +10,7 @@ export default async (prog) => {
   return {
     ...workspaces,
     lint: await xaxaAsHelaCommand(),
-    // test: await asiaAsHelaCommand(null, prog),
+    test: await asiaAsHelaCommand(),
 
     // TODO: prettier command
   };
