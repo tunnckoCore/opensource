@@ -1,6 +1,6 @@
 {
   "name": "hela",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "licenseStart": 2017,
   "license": "MPL-2.0",
   "description": "A wrapper package of `@hela/core` and `@hela/cli`.",

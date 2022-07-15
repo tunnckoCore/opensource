@@ -1,6 +1,6 @@
 {
   "name": "asia-core",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "licenseStart": 2017,
   "license": "MPL-2.0",
   "description": "Modern, fast, and innovative test runner with parallelism, concurrency, caching and incremental testing. Since 2017.",

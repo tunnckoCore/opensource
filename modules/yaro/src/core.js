@@ -14,19 +14,27 @@ export class Yaro {
       name = 'cli';
     }
 
+    this.isYaro = true;
     this.cliName = typeof name === 'string' ? name : 'cli';
     this.commands = [];
+    this.examples = [];
     this.flags = [];
     this._cmd = false;
     this.settings = {
       allowInvalidOptionType: false,
       allowUnknownOptions: false,
       helpByDefault: false,
+      mergedOptions: false,
+      cliName: this.cliName,
       cliVersion: '0.0.0',
       singleMode: settings === true,
       exit: () => {},
       ...settings,
     };
+
+    this.cliName = this.settings.singleMode
+      ? this.cliName
+      : this.settings.cliName;
 
     this.cliVersion = this.settings.cliVersion;
 
@@ -44,6 +52,54 @@ export class Yaro {
       this.command(this.cliName);
       this.cliName = cliNameParts[0];
     }
+  }
+
+  // force using single mode if we just inherit from instance,
+  // or in case we don't want to make a whole new instance
+  singleMode(usage) {
+    this.settings.singleMode = true;
+    this.cliName = usage.split(' ')[0];
+    this.command(usage);
+    return this;
+  }
+
+  mergeInto(prog) {
+    const { flags, commands, examples } = this;
+
+    // do not merge basic flags
+    const globalFlags = flags.filter((x) => !/version|help/.test(x.name));
+
+    for (const flag of globalFlags) {
+      prog.option(flag.rawName, flag.description, flag.config);
+    }
+
+    // console.log('commands:', commands);
+    for (const command of commands) {
+      const prg = prog.command(
+        command.rawName,
+        command.description,
+        command.config,
+      );
+
+      prg.alias(command.aliasNames);
+
+      for (const cmdFlag of command.flags) {
+        prg.option(cmdFlag.rawName, cmdFlag.description, cmdFlag.config);
+      }
+      for (const explText of command.examples) {
+        prg.example(explText);
+      }
+
+      prg.action(command.handler);
+
+      prog = prg;
+    }
+
+    for (const text of examples) {
+      prog.example(text);
+    }
+
+    return prog;
   }
 
   notFoundCommandsOf(commandName) {
@@ -72,6 +128,7 @@ export class Yaro {
       name,
       args,
       parts: name.split(' '),
+      examples: [],
       description,
       aliasNames: [],
       config: { ...config },
@@ -82,6 +139,16 @@ export class Yaro {
     if (!this.settings.singleMode) {
       this.option('-h, --help', `Display help for "${name}" command.`);
     }
+    return this;
+  }
+
+  example(text) {
+    if (!this._cmd) {
+      this.examples.push(text);
+      return this;
+    }
+
+    this.currentCommand.examples.push(text);
     return this;
   }
 
@@ -99,10 +166,14 @@ export class Yaro {
     return this;
   }
 
-  option(rawName, description = '', config = {}) {
+  option(rawName, description, config) {
+    // console.log('SINGLECOMMANDMODE', this);
+    if (config && typeof config !== 'object') {
+      config = { default: config, type: typeof config };
+    }
     const flag = {
       rawName,
-      description,
+      description: description || '',
       negated: false,
       config: { ...config },
     };
@@ -206,7 +277,12 @@ export class Yaro {
       args.push(...globalFlags['--']);
     }
 
-    return { error: parsed.error, args, flags: globalFlags };
+    return {
+      error: parsed.error,
+      defaulted: parsed.defaulted,
+      args,
+      flags: globalFlags,
+    };
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -264,7 +340,9 @@ export class Yaro {
     this.settings.exit(1);
   }
 
-  #handleDefaults(details) {
+  #handleDefaults() {
+    const details = this.parsedInfo;
+
     if (details.flags.version) {
       this.outputVersion();
       this.settings.exit(0);
@@ -398,73 +476,83 @@ export class Yaro {
     this.settings.exit(0);
   }
 
-  #runCommand(match, details) {
+  #runCommand(match, details, run) {
     const { command: cmd, args } = match;
-    const actionArgument = {};
+    const data = {};
 
     for (const [index, arg] of cmd.args.entries()) {
       const argValue = arg.variadic ? args.slice(index) : args[index];
       const argName = arg.name;
 
-      actionArgument[argName] = argValue;
+      data[argName] = argValue;
     }
 
     this.#checkMissingArguments(match);
     this.#checkOptionValue(cmd.flags, cmd.options);
 
-    actionArgument.options = this.settings.mergeOptions
+    data.options = this.settings.mergedOptions
       ? { ...details.flags, ...cmd.options }
       : cmd.options;
 
-    actionArgument.flags = cmd.options;
+    data.flags = cmd.options;
 
-    return cmd.handler.call(this, actionArgument, {
+    const meta = {
       globalOptions: details.flags,
+      g: details.flags,
       options: cmd.options,
       flags: cmd.options,
       match,
       details,
-    });
+    };
+
+    return run ? cmd.handler.call(this, data, meta) : { data, meta };
   }
 
-  parse(argv, yargsCfg = {}) {
-    const cfg = { run: true, ...yargsCfg };
-    this.argz = this.settings.processArgv || this.settings.argv || argv;
+  parseArgv(argv, yargsCfg) {
+    this.argz = argv || this.settings.processArgv || this.settings.argv;
 
     if (this.settings.singleMode) {
       this.argz = [this.cliName, ...this.argz];
     }
 
-    const details = this.#yargs(this.argz, this.flags, {
+    this.parsedInfo = this.#yargs(this.argz, this.flags, {
       ...yargsCfg,
       'halt-at-non-option': true,
     });
 
     // Check for global unknown options
-    this.#handleUnknownOptions(details.flags);
+    this.#handleUnknownOptions(this.parsedInfo.flags);
 
-    this.#checkOptionValue(this.flags, details.flags);
+    this.#checkOptionValue(this.flags, this.parsedInfo.flags);
 
+    return this.parsedInfo;
+  }
+
+  parse(argv, yargsCfg = {}) {
+    const cfg = { run: true, ...yargsCfg };
+
+    this.parseArgv(argv, yargsCfg);
+
+    return this.run(cfg, cfg.run);
+  }
+
+  run(yargsCfg = {}, shouldRun = true) {
     // Handle defaults like showing help, parsing error, or version output
-    this.#handleDefaults(details);
+    this.#handleDefaults(this.parsedInfo);
 
     // Search in commands (supports sub-commands, git-style)
-    const match = this.#searchCommand(details, yargsCfg);
+    const match = this.#searchCommand(this.parsedInfo, yargsCfg);
 
-    this.#handleUnknownCommand(match, details);
+    this.#handleUnknownCommand(match, this.parsedInfo);
 
     // Check for unknown command options
     this.#handleUnknownOptions(match.command.options, match.command);
 
     this.#handleFailedCommand(match);
 
-    this.commandHelp(match, details);
+    this.commandHelp(match, this.parsedInfo);
 
-    if (cfg.run) {
-      return this.#runCommand(match, details);
-    }
-
-    return { details, match };
+    return this.#runCommand(match, this.parsedInfo, shouldRun);
   }
 }
 

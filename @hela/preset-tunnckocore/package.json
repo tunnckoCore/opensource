@@ -1,6 +1,6 @@
 {
   "name": "@hela/preset-tunnckocore",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "licenseStart": 2022,
   "license": "Apache-2.0",
   "description": "Shareable config for Hela-based / @tunnckoCore monorepos",

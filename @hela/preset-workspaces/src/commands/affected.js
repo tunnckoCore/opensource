@@ -2,64 +2,74 @@
 
 /* eslint-disable consistent-return */
 
-import { hela } from '@hela/core';
-import { serial } from '@tunnckocore/p-all';
+import { serial } from '@hela/core';
 import workspaces from './workspaces.js';
 
-export default hela()
-  .command(
-    'affected [name]',
-    'List affected workspaces of change in `name` package',
-  )
-  .option('--raw', 'Print raw-only output', false)
-  .option(
-    '-p, --packages',
-    'Print affected package names, instead of workspaces (default)',
-  )
-  // TODO: Yaro should camelize flags
-  .option(
-    '--workspace-file',
-    'File path to write workspaces metadata',
-    'hela-workspace.json',
-  )
-  .action(async ({ flags }, _, input) => {
-    const ws = await workspaces({ flags: { ...flags, raw: true } }, _);
+export default (prog) =>
+  prog
+    .command(
+      'affected [name]',
+      'List affected workspaces of change in `name` package',
+    )
+    .option('--raw', 'Print raw-only output', false)
+    .option(
+      '-p, --packages',
+      'Print affected package names, instead of workspaces (which is default)',
+      false,
+    )
+    .option('--workspace-file', 'File path to write workspaces metadata', {
+      default: 'hela-workspace.json',
+      type: 'string',
+      normalize: true,
+    })
+    .alias('aff', 'affcted', 'affecetd')
+    .action(async ({ flags, name: input, ...data }, { g, ...meta }) => {
+      // console.log('affectedcmd:', flags, meta);
 
-    if (flags.verbose) {
-      console.log('Resolved workspaces (%s):', ws.resolved.length, ws.resolved);
-    }
+      const ws = await workspaces(prog)(
+        { ...data, flags: { ...flags, raw: true } },
+        { g, ...meta },
+      );
 
-    if (input) {
-      const aff = await affectedOf(input, ws.graph);
-
-      if (flags.verbose) {
+      if (g.verbose) {
         console.log(
-          'Affected packages of %s (%s):',
-          input,
-          aff.packages.length,
-          aff.packages,
+          'Resolved workspaces (%s):',
+          ws.resolved.length,
+          ws.resolved,
         );
+      }
 
-        console.log(
-          'Affected workspaces of %s (%s):',
-          input,
-          aff.workspaces.length,
-          aff.workspaces,
-        );
-      } else {
-        const arr = flags.packages ? aff.packages : aff.workspaces;
+      if (input) {
+        const aff = await affectedOf(input, ws.graph);
 
-        if (!flags.raw) {
-          for (const name of arr) console.log(name);
+        if (g.verbose) {
+          console.log(
+            'Affected packages of %s (%s):',
+            input,
+            aff.packages.length,
+            aff.packages,
+          );
+
+          console.log(
+            'Affected workspaces of %s (%s):',
+            input,
+            aff.workspaces.length,
+            aff.workspaces,
+          );
         } else {
-          return arr;
+          const arr = flags.packages ? aff.packages : aff.workspaces;
+
+          if (!flags.raw) {
+            for (const name of arr) console.log(name);
+          } else {
+            return arr;
+          }
+          return;
         }
         return;
       }
-      return;
-    }
-    console.log('TODO: implement general affected (using git?)');
-  });
+      console.log('TODO: implement general affected (using git?)');
+    });
 
 async function affectedOf(name, graph) {
   const affected_ = { packages: new Set(), workspaces: new Set() };

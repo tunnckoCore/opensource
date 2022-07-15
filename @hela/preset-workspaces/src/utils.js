@@ -3,6 +3,7 @@
 import path from 'node:path';
 import process from 'node:process';
 import fs from 'node:fs/promises';
+import { hela } from '@hela/core';
 import { fileURLToPath } from 'node:url';
 import { parallel } from '@tunnckocore/p-all';
 
@@ -23,18 +24,21 @@ export function getWorkspaceFile(options = {}) {
   );
 }
 
-export async function importCommands() {
+export async function importCommands(progam) {
   const $$dirname = path.dirname(fileURLToPath(import.meta.url));
   const commandsPath = path.join($$dirname, 'commands');
   const cmds = await fs.readdir(commandsPath);
   const commands = cmds.map((x) => path.join(commandsPath, x));
+
+  // single instance for all commands
+  const prog = progam || hela();
 
   const mod = {};
   await parallel(commands, async ({ value: commandPath }) => {
     const cmd = await import(commandPath);
     const name = path.basename(commandPath, path.extname(commandPath));
 
-    mod[name] = cmd.default;
+    mod[name] = cmd.default(prog);
   });
 
   return mod;

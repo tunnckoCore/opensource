@@ -1,27 +1,22 @@
 #!/usr/bin/env node
 
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: Apache-2.0
 
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-// `yaro` is smaller than `hela`
-// that's why we're using it by default
-// but anyone can just import the exported hela command in any hela CLI app
-// that's why `hela` sits there as peerDependency, only if needed
-import { Yaro } from 'yaro';
-
 import { readJSON, command } from './index.js';
 
 const pkgRoot = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const pkg = readJSON(path.join(pkgRoot, 'package.json'));
 
-const prog = new Yaro('asia', {
-  defaultsToHelp: false,
-  allowUnknownFlags: true,
-  singleMode: true,
-  version: readJSON(path.join(pkgRoot, 'package.json')).version,
+// you can pass a program (hela) instance as second argument,
+// otherwise it automatically creates a program in single command mode
+const prog = await command({
+  helpByDefault: false, // we want to run with the default globs patterns
+  allowUnknownOptions: true,
+  cliVersion: pkg.version,
 });
 
-await command(null, prog.usage('[...patterns]'));
-
+// await not needed, but for safety
 await prog.parse();

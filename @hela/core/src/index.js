@@ -1,13 +1,11 @@
 // SPDX-License-Identifier: MPL-2.0
 
-/* eslint-disable max-classes-per-file */
-/* eslint-disable no-param-reassign */
-
 import process from 'node:process';
 import dargs from 'dargs';
 import { npm, yarn } from 'global-dirs';
+import { parallel, serial } from '@tunnckocore/p-all';
 import { execaCommand } from 'execa';
-import { Yaro } from 'yaro';
+import { yaro } from 'yaro';
 
 const processEnv = process.env;
 const globalBins = [npm.binaries, yarn.binaries];
@@ -35,38 +33,39 @@ function toFlags(argv, options) {
  * @param {object} [options]
  * @public
  */
-async function exec(cmd, options = {}) {
+async function run(cmd, options) {
   const envPATH = `${processEnv.PATH}:${globalBins.join(':')}`;
   const env = { ...defaultExecaOptions.env, PATH: envPATH };
+  const opts = { serial: true, ...options };
+  const runIn = opts.serial ? serial : parallel;
 
-  return execaCommand(cmd, { ...defaultExecaOptions, env, ...options });
+  return runIn(cmd, async ({ value: command }) =>
+    execaCommand(command, { ...defaultExecaOptions, env, ...options }),
+  );
 }
 
-class HelaError extends Error {
-  constructor(msg) {
-    super(msg);
-    this.name = 'HelaError';
+function hela(settings) {
+  const cli = yaro('hela', {
+    ...settings,
+    helpByDefault: true,
+    allowUnknownOptions: true, // todo: temporary
+    singleMode: false,
+    cliVersion: '4.0.0',
+  });
+  cli.isHela = true;
+
+  if (!cli.settings.pupulateEnv) {
+    return cli;
   }
+
+  return cli.option(
+    '--env',
+    'Populates from `process.env` (support multiple times, and dot-notation).',
+    { default: { ...processEnv } },
+  );
 }
 
-class Hela extends Yaro {
-  // eslint-disable-next-line default-param-last
-  constructor(progName = 'hela', options) {
-    if (progName && typeof progName === 'object') {
-      options = progName;
-      progName = 'hela';
-    }
-    super(progName, {
-      defaultsToHelp: true,
-      allowUnknownFlags: true,
-      version: '4.0.0',
-      ...options,
-    });
-    this.isHela = true;
-  }
-}
-
-const hela = (...args) => new Hela(...args);
-export { toFlags, exec, hela, Hela, HelaError };
 export default hela;
+export { toFlags, run, hela };
 export { utils, Yaro } from 'yaro';
+export { serial, parallel } from '@tunnckocore/p-all';

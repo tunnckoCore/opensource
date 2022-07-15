@@ -2,7 +2,6 @@
 
 import path from 'node:path';
 import fs from 'node:fs';
-import { HelaError } from '@hela/core';
 
 export function isObject(val) {
   return val && typeof val === 'object' && Array.isArray(val) === false;
@@ -30,7 +29,9 @@ export async function loadConfig(cfgName, argv, prog) {
   try {
     cfg = await import(name);
   } catch (err) {
-    throw new HelaError(`Failed to load config: ${name}. Error: ${err.stack}`);
+    throw new Error(
+      `[hela:fail] Failed to load config: ${name}. Error: ${err.stack}`,
+    );
   }
 
   // if it's a promise, e.g. a promise resolving to object
@@ -64,7 +65,7 @@ export async function loadConfig(cfgName, argv, prog) {
   };
 
   if (argv.verbose) {
-    console.log('[info] hela: Loading config ->', name);
+    console.log('[hela:info] Loading config ->', name);
   }
 
   return res;

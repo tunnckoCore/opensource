@@ -1,9 +1,9 @@
 {
   "name": "@hela/core",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "licenseStart": 2017,
   "license": "MPL-2.0",
-  "description": "Hela v4. Powerful, simple and fast software development and management system.",
+  "description": "Powerful, simple and fast software development and management system. Support for monorepos and non-monorepo setups. Supports multiple fixed and/or multiple independent-versioned projects in one repo.",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
   "homepage": "https://github.com/tunnckoCore/opensource/tree/master/@hela/core",
   "funding": [
@@ -30,6 +30,7 @@
   },
   "scripts": {},
   "dependencies": {
+    "@tunnckocore/p-all": "*",
     "dargs": "^8.1.0",
     "execa": "^6.1.0",
     "global-dirs": "^3.0.0",
