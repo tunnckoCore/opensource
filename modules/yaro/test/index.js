@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MPL-2.0
+
 /* eslint-disable promise/prefer-await-to-then */
 
 import { setTimeout as delay } from 'node:timers/promises';

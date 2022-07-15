@@ -1,9 +1,9 @@
 {
   "name": "yaro",
-  "version": "0.1.0",
+  "version": "4.0.0",
   "licenseStart": 2020,
   "license": "MPL-2.0",
-  "description": "WIP: A companion to Hela. Creating CLI programs, easily. ESM-only default. Similar to Sade, because there were different things we need and try to accomplish",
+  "description": "A companion to Hela, based on `yargs-parser@21`. Creating CLI programs, easily. Deno support and ESM-only default. Similar to CAC, Yargs, and Sade, because there are different problems and viewpoints.",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
   "homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/yaro",
   "funding": [
@@ -18,7 +18,8 @@
   "type": "module",
   "main": "src/index.js",
   "files": [
-    "src"
+    "src",
+    "example.js"
   ],
   "engines": {
     "node": ">=16 <17 || >=18 <19 || >=20"
@@ -30,8 +31,7 @@
   },
   "scripts": {},
   "dependencies": {
-    "dset": "^3.1.2",
-    "mri": "^1.2.0"
+    "yargs-parser": "^21.0.1"
   },
   "contributors": [
     "Charlike Mike Reagent <opensource@tunnckocore.com>"
