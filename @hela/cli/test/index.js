@@ -5,5 +5,5 @@ import test from 'asia';
 import mod from '../src/index.js';
 
 test('todo tests for @hela/cli package', async () => {
-	assert.equal(typeof mod, 'function');
+  assert.equal(typeof mod, 'function');
 });

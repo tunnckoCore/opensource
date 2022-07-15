@@ -5,13 +5,13 @@ import { command as xaxaAsHelaCommand } from 'xaxa';
 import { command as asiaAsHelaCommand } from 'asia-cli';
 
 export default async () => {
-	const workspaces = await workspaceCommands();
+  const workspaces = await workspaceCommands();
 
-	return {
-		...workspaces,
-		lint: await xaxaAsHelaCommand(),
-		test: await asiaAsHelaCommand(),
+  return {
+    ...workspaces,
+    lint: await xaxaAsHelaCommand(),
+    test: await asiaAsHelaCommand(),
 
-		// TODO: prettier command
-	};
+    // TODO: prettier command
+  };
 };

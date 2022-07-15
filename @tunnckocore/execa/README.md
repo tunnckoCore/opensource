@@ -141,16 +141,16 @@ import { exec } from '@tunnckocore/execa';
 // const { exec } = require('@tunnckocore/execa');
 
 async function main() {
-	await exec('echo "hello world"', { stdio: 'inherit' });
+  await exec('echo "hello world"', { stdio: 'inherit' });
 
-	// executes in series (because `concurrency` option is set to `1`)
-	await exec(
-		[
-			'prettier-eslint --write foobar.js',
-			'eslint --format codeframe foobar.js --fix',
-		],
-		{ stdio: 'inherit', preferLocal: true, concurrency: 1 },
-	);
+  // executes in series (because `concurrency` option is set to `1`)
+  await exec(
+    [
+      'prettier-eslint --write foobar.js',
+      'eslint --format codeframe foobar.js --fix',
+    ],
+    { stdio: 'inherit', preferLocal: true, concurrency: 1 },
+  );
 }
 
 main();
@@ -187,27 +187,27 @@ import { shell } from '@tunnckocore/execa';
 // const { shell } = require('@tunnckocore/execa');
 
 async function main() {
-	// executes in series
-	await shell(['echo unicorns', 'echo "foo-$HOME-bar"', 'echo dragons'], {
-		stdio: 'inherit',
-	});
+  // executes in series
+  await shell(['echo unicorns', 'echo "foo-$HOME-bar"', 'echo dragons'], {
+    stdio: 'inherit',
+  });
 
-	// exits with code 3
-	try {
-		await shell(['exit 3', 'echo nah']);
-	} catch (er) {
-		console.error(er);
-		// => {
-		//  message: 'Command failed: /bin/sh -c exit 3'
-		//  killed: false,
-		//  code: 3,
-		//  signal: null,
-		//  cmd: '/bin/sh -c exit 3',
-		//  stdout: '',
-		//  stderr: '',
-		//  timedOut: false
-		// }
-	}
+  // exits with code 3
+  try {
+    await shell(['exit 3', 'echo nah']);
+  } catch (er) {
+    console.error(er);
+    // => {
+    //  message: 'Command failed: /bin/sh -c exit 3'
+    //  killed: false,
+    //  code: 3,
+    //  signal: null,
+    //  cmd: '/bin/sh -c exit 3',
+    //  stdout: '',
+    //  stderr: '',
+    //  timedOut: false
+    // }
+  }
 }
 
 main();
@@ -244,7 +244,7 @@ import { execa, execaCommand, execaNode } from '@tunnckocore/execa';
 // const { execa } = require('@tunnckocore/execa');
 
 async function main() {
-	await execa('npm', ['install', '--save-dev', 'react'], { stdio: 'inherit' });
+  await execa('npm', ['install', '--save-dev', 'react'], { stdio: 'inherit' });
 }
 
 main();

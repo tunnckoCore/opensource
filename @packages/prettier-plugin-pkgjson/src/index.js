@@ -36,101 +36,101 @@ const parser = parsers['json-stringify'];
 // };
 
 module.exports = {
-	name: 'prettier-plugin-pkgjson',
-	parsers: {
-		'json-stringify': {
-			...parser,
-			parse(text, _, options) {
-				let txt = text;
+  name: 'prettier-plugin-pkgjson',
+  parsers: {
+    'json-stringify': {
+      ...parser,
+      parse(text, _, options) {
+        let txt = text;
 
-				if (options.filepath && /package\.json$/.test(options.filepath)) {
-					txt = sortPackageJson(txt, {
-						sortOrder: [
-							'private',
-							'name',
-							'version',
+        if (options.filepath && /package\.json$/.test(options.filepath)) {
+          txt = sortPackageJson(txt, {
+            sortOrder: [
+              'private',
+              'name',
+              'version',
 
-							// custom to @tunnckoCore for docs generation
-							'licenseStart',
+              // custom to @tunnckoCore for docs generation
+              'licenseStart',
 
-							// important to be in the top in a visible place
-							// because in ton of cases there are no badges or signals in the README
-							'license',
+              // important to be in the top in a visible place
+              // because in ton of cases there are no badges or signals in the README
+              'license',
 
-							'description',
+              'description',
 
-							// only in monorepo setups, where the root package.json
-							// doesn't have anything of below until `scripts` and `dependencies`
-							'workspaces',
+              // only in monorepo setups, where the root package.json
+              // doesn't have anything of below until `scripts` and `dependencies`
+              'workspaces',
 
-							// Usually not obects
-							'author',
-							'homepage',
+              // Usually not obects
+              'author',
+              'homepage',
 
-							// npm funding support
-							// it can be an object or a string
-							'funding',
+              // npm funding support
+              // it can be an object or a string
+              'funding',
 
-							'repository',
+              'repository',
 
-							// Node.js ESM Support
-							'type',
-							'exports',
+              // Node.js ESM Support
+              'type',
+              'exports',
 
-							// inputs / outputs
-							'src',
-							'main',
-							'umd:main',
-							'umd:name',
-							'jsdelivr',
-							'unpkg',
-							'module',
-							'source',
-							'jsnext:main',
-							'browser',
+              // inputs / outputs
+              'src',
+              'main',
+              'umd:main',
+              'umd:name',
+              'jsdelivr',
+              'unpkg',
+              'module',
+              'source',
+              'jsnext:main',
+              'browser',
 
-							// TypeScript
-							'types',
-							'typings',
+              // TypeScript
+              'types',
+              'typings',
 
-							// objects & arrays
-							'files',
-							'bin',
-							'engines',
-							'publishConfig',
-							'scripts',
+              // objects & arrays
+              'files',
+              'bin',
+              'engines',
+              'publishConfig',
+              'scripts',
 
-							// dependenices and yarn resolutions, plus Yarn v2
-							'resolutions',
-							'dependencies',
-							'devDependencies',
-							'peerDependencies',
-							'peerDependenciesMeta',
-							'optionalDependencies',
-							'bundledDependencies',
-							'bundleDependencies',
+              // dependenices and yarn resolutions, plus Yarn v2
+              'resolutions',
+              'dependencies',
+              'devDependencies',
+              'peerDependencies',
+              'peerDependenciesMeta',
+              'optionalDependencies',
+              'bundledDependencies',
+              'bundleDependencies',
 
-							// custom to @tunnckoCore
-							'hela',
-							'meta',
+              // custom to @tunnckoCore
+              'hela',
+              'meta',
 
-							// Jest config (on per package, and in the root too)
-							'jest',
+              // Jest config (on per package, and in the root too)
+              'jest',
 
-							// custom to @tunnckoCore
-							'cov',
+              // custom to @tunnckoCore
+              'cov',
 
-							'bugs',
+              'bugs',
 
-							// the rest not defined here and after the `keywords`
-							// will be formatted by sort-package-json
-							'keywords',
-						],
-					});
-				}
+              // the rest not defined here and after the `keywords`
+              // will be formatted by sort-package-json
+              'keywords',
+            ],
+          });
+        }
 
-				return parser.parse(txt, _, options);
-			},
-		},
-	},
+        return parser.parse(txt, _, options);
+      },
+    },
+  },
 };

@@ -84,32 +84,32 @@ export * from './utils.js';
  * @public
  */
 export function applyPlugins(plugins, commits, options) {
-	const opts = { caseSensitive: false, normalize: true, ...options };
-	// because some freaking weird things is happening
-	// and it does report `toArray` as "cannot find name" by typescript
-	// and as "no undef" by eslint.
-	const arr = [];
-	const cmts = [];
-	const plgs = arr.concat(plugins).filter(Boolean);
+  const opts = { caseSensitive: false, normalize: true, ...options };
+  // because some freaking weird things is happening
+  // and it does report `toArray` as "cannot find name" by typescript
+  // and as "no undef" by eslint.
+  const arr = [];
+  const cmts = [];
+  const plgs = arr.concat(plugins).filter(Boolean);
 
-	return cmts
-		.concat(commits)
-		.filter(Boolean)
-		.reduce((result, commit) => {
-			let commitObject = {};
+  return cmts
+    .concat(commits)
+    .filter(Boolean)
+    .reduce((result, commit) => {
+      let commitObject = {};
 
-			if (typeof commit === 'string') {
-				commitObject = { header: { value: commit } };
-			} else if (typeof commit === 'object' && !Array.isArray(commit)) {
-				commitObject = commit;
-			}
-			const cmt = plgs.reduce((acc, fn) => {
-				const res = fn(acc, opts);
-				return mixinDeep(acc, res);
-			}, commitObject);
+      if (typeof commit === 'string') {
+        commitObject = { header: { value: commit } };
+      } else if (typeof commit === 'object' && !Array.isArray(commit)) {
+        commitObject = commit;
+      }
+      const cmt = plgs.reduce((acc, fn) => {
+        const res = fn(acc, opts);
+        return mixinDeep(acc, res);
+      }, commitObject);
 
-			return result.concat(cmt);
-		}, []);
+      return result.concat(cmt);
+    }, []);
 }
 
 /**
@@ -201,23 +201,23 @@ export const plugins = [mentions, increment, isBreakingChange];
  * @public
  */
 export const mappers = {
-	mentions,
-	increment,
-	isBreaking: isBreakingChange,
-	isBreakingChange,
+  mentions,
+  increment,
+  isBreaking: isBreakingChange,
+  isBreakingChange,
 };
 
 export { parse, validate } from './main.js';
 export { stringify, check } from './main.js';
 export {
-	parseHeader,
-	stringifyHeader,
-	checkHeader,
-	validateHeader,
+  parseHeader,
+  stringifyHeader,
+  checkHeader,
+  validateHeader,
 } from './header.js';
 export {
-	parseCommit,
-	stringifyCommit,
-	checkCommit,
-	validateCommit,
+  parseCommit,
+  stringifyCommit,
+  checkCommit,
+  validateCommit,
 } from './commit.js';

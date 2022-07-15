@@ -13,11 +13,11 @@ const t = {};
 let R = 0;
 
 const createToken = (name, value, isGlobal) => {
-	// eslint-disable-next-line no-plusplus
-	const index = R++;
-	t[name] = index;
-	src[index] = value;
-	re[index] = new RegExp(value, isGlobal ? 'g' : undefined);
+  // eslint-disable-next-line no-plusplus
+  const index = R++;
+  t[name] = index;
+  src[index] = value;
+  re[index] = new RegExp(value, isGlobal ? 'g' : undefined);
 };
 
 // The following Regular Expressions can be used for tokenizing,
@@ -39,30 +39,30 @@ createToken('NONNUMERICIDENTIFIER', '\\d*[a-zA-Z-][a-zA-Z0-9-]*');
 // Three dot-separated numeric identifiers.
 
 createToken(
-	'MAINVERSION',
-	`(${src[t.NUMERICIDENTIFIER]})\\.` +
-		`(${src[t.NUMERICIDENTIFIER]})\\.` +
-		`(${src[t.NUMERICIDENTIFIER]})`,
+  'MAINVERSION',
+  `(${src[t.NUMERICIDENTIFIER]})\\.` +
+    `(${src[t.NUMERICIDENTIFIER]})\\.` +
+    `(${src[t.NUMERICIDENTIFIER]})`,
 );
 
 createToken(
-	'MAINVERSIONLOOSE',
-	`(${src[t.NUMERICIDENTIFIERLOOSE]})\\.` +
-		`(${src[t.NUMERICIDENTIFIERLOOSE]})\\.` +
-		`(${src[t.NUMERICIDENTIFIERLOOSE]})`,
+  'MAINVERSIONLOOSE',
+  `(${src[t.NUMERICIDENTIFIERLOOSE]})\\.` +
+    `(${src[t.NUMERICIDENTIFIERLOOSE]})\\.` +
+    `(${src[t.NUMERICIDENTIFIERLOOSE]})`,
 );
 
 // ## Pre-release Version Identifier
 // A numeric identifier, or a non-numeric identifier.
 
 createToken(
-	'PRERELEASEIDENTIFIER',
-	`(?:${src[t.NUMERICIDENTIFIER]}|${src[t.NONNUMERICIDENTIFIER]})`,
+  'PRERELEASEIDENTIFIER',
+  `(?:${src[t.NUMERICIDENTIFIER]}|${src[t.NONNUMERICIDENTIFIER]})`,
 );
 
 createToken(
-	'PRERELEASEIDENTIFIERLOOSE',
-	`(?:${src[t.NUMERICIDENTIFIERLOOSE]}|${src[t.NONNUMERICIDENTIFIER]})`,
+  'PRERELEASEIDENTIFIERLOOSE',
+  `(?:${src[t.NUMERICIDENTIFIERLOOSE]}|${src[t.NONNUMERICIDENTIFIER]})`,
 );
 
 // ## Pre-release Version
@@ -70,15 +70,15 @@ createToken(
 // identifiers.
 
 createToken(
-	'PRERELEASE',
-	`(?:-(${src[t.PRERELEASEIDENTIFIER]}(?:\\.${src[t.PRERELEASEIDENTIFIER]})*))`,
+  'PRERELEASE',
+  `(?:-(${src[t.PRERELEASEIDENTIFIER]}(?:\\.${src[t.PRERELEASEIDENTIFIER]})*))`,
 );
 
 createToken(
-	'PRERELEASELOOSE',
-	`(?:-?(${src[t.PRERELEASEIDENTIFIERLOOSE]}(?:\\.${
-		src[t.PRERELEASEIDENTIFIERLOOSE]
-	})*))`,
+  'PRERELEASELOOSE',
+  `(?:-?(${src[t.PRERELEASEIDENTIFIERLOOSE]}(?:\\.${
+    src[t.PRERELEASEIDENTIFIERLOOSE]
+  })*))`,
 );
 
 // ## Build Metadata Identifier
@@ -91,8 +91,8 @@ createToken('BUILDIDENTIFIER', '[0-9A-Za-z-]+');
 // identifiers.
 
 createToken(
-	'BUILD',
-	`(?:\\+(${src[t.BUILDIDENTIFIER]}(?:\\.${src[t.BUILDIDENTIFIER]})*))`,
+  'BUILD',
+  `(?:\\+(${src[t.BUILDIDENTIFIER]}(?:\\.${src[t.BUILDIDENTIFIER]})*))`,
 );
 
 // ## Full Version String
@@ -105,8 +105,8 @@ createToken(
 // comparison.
 
 createToken(
-	'FULLPLAIN',
-	`v?${src[t.MAINVERSION]}${src[t.PRERELEASE]}?${src[t.BUILD]}?`,
+  'FULLPLAIN',
+  `v?${src[t.MAINVERSION]}${src[t.PRERELEASE]}?${src[t.BUILD]}?`,
 );
 
 createToken('FULL', `^${src[t.FULLPLAIN]}$`);
@@ -115,10 +115,10 @@ createToken('FULL', `^${src[t.FULLPLAIN]}$`);
 // also, 1.0.0alpha1 (prerelease without the hyphen) which is pretty
 // common in the npm registry.
 createToken(
-	'LOOSEPLAIN',
-	`[v=\\s]*${src[t.MAINVERSIONLOOSE]}${src[t.PRERELEASELOOSE]}?${
-		src[t.BUILD]
-	}?`,
+  'LOOSEPLAIN',
+  `[v=\\s]*${src[t.MAINVERSIONLOOSE]}${src[t.PRERELEASELOOSE]}?${
+    src[t.BUILD]
+  }?`,
 );
 
 createToken('LOOSE', `^${src[t.LOOSEPLAIN]}$`);

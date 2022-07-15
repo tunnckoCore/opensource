@@ -16,10 +16,10 @@ import { readJSON, command } from './index.js';
 const pkgRoot = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 
 const prog = new Yaro('asia', {
-	defaultsToHelp: false,
-	allowUnknownFlags: true,
-	singleMode: true,
-	version: readJSON(path.join(pkgRoot, 'package.json')).version,
+  defaultsToHelp: false,
+  allowUnknownFlags: true,
+  singleMode: true,
+  version: readJSON(path.join(pkgRoot, 'package.json')).version,
 });
 
 await command(null, prog.usage('[...patterns]'));

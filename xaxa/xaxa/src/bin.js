@@ -17,10 +17,10 @@ const pkgRoot = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const pkg = readJSON(path.join(pkgRoot, 'package.json'));
 
 const program = new Yaro(pkg.name, {
-	defaultsToHelp: false,
-	allowUnknownFlags: true,
-	singleMode: true,
-	version: pkg.version,
+  defaultsToHelp: false,
+  allowUnknownFlags: true,
+  singleMode: true,
+  version: pkg.version,
 });
 
 await command(null, program);

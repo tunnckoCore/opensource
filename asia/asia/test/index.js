@@ -8,6 +8,6 @@ import mod from '../src/index.js';
 const delay = async (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test('todo tests for asia package', async () => {
-	await delay(5000);
-	assert.equal(typeof mod, 'function');
+  await delay(5000);
+  assert.equal(typeof mod, 'function');
 });

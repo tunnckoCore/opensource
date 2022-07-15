@@ -1,37 +1,37 @@
 {
-	"private": true,
-	"name": "monorepo",
-	"workspaces": [
-		"@tunnckocore/*",
-		"@hela/*",
-		"modules/*",
-		"xaxa/*",
-		"asia/*"
-	],
-	"type": "module",
-	"scripts": {
-		"cleanup": "node scripts/clean-node-modules.js && rm yarn.lock",
-		"fresh": "yarn cleanup && yarn && hela init --verbose",
-		"lint": "xaxa --log",
-		"new": "node scripts/create-package.js",
-		"test": "asia"
-	},
-	"dependencies": {
-		"c8": "^7.11.3",
-		"eslint": "^8.18.0",
-		"eslint-formatter-codeframe": "^7.32.1",
-		"expect": "^28.1.1",
-		"fast-glob": "^3.2.11",
-		"prettier": "^2.7.1"
-	},
-	"hela": "@hela/preset-tunnckocore",
-	"contributors": [
-		"Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)"
-	],
-	"prettier": "@tunnckocore/prettier-config",
-	"eslintConfig": {
-		"extends": [
-			"xaxa"
-		]
-	}
+  "private": true,
+  "name": "monorepo",
+  "workspaces": [
+    "@tunnckocore/*",
+    "@hela/*",
+    "modules/*",
+    "xaxa/*",
+    "asia/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "cleanup": "node scripts/clean-node-modules.js && rm yarn.lock",
+    "fresh": "yarn cleanup && yarn && hela init --verbose",
+    "lint": "xaxa --log",
+    "new": "node scripts/create-package.js",
+    "test": "asia"
+  },
+  "dependencies": {
+    "c8": "^7.11.3",
+    "eslint": "^8.18.0",
+    "eslint-formatter-codeframe": "^7.32.1",
+    "expect": "^28.1.1",
+    "fast-glob": "^3.2.11",
+    "prettier": "^2.7.1"
+  },
+  "hela": "@hela/preset-tunnckocore",
+  "contributors": [
+    "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)"
+  ],
+  "prettier": "@tunnckocore/prettier-config",
+  "eslintConfig": {
+    "extends": [
+      "xaxa"
+    ]
+  }
 }

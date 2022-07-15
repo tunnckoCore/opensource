@@ -28,16 +28,16 @@ import { normalizeCommit, /* cleaner, */ isBreakingChange } from '../utils.js';
  * @public
  */
 export default function isBreakingChangePlugin(commit, options) {
-	const opts = { normalize: true, ...options };
-	const cmt = opts.normalize ? normalizeCommit(commit, opts) : commit;
-	const isBreaking = isBreakingChange(cmt);
+  const opts = { normalize: true, ...options };
+  const cmt = opts.normalize ? normalizeCommit(commit, opts) : commit;
+  const isBreaking = isBreakingChange(cmt);
 
-	return {
-		isBreakingChange: isBreaking,
-		isBreaking, // ! deprecated
-	};
-	// return mixinDeep(cleaner(cmt), {
-	//   isBreakingChange: isBreaking,
-	//   isBreaking, // ! deprecated
-	// });
+  return {
+    isBreakingChange: isBreaking,
+    isBreaking, // ! deprecated
+  };
+  // return mixinDeep(cleaner(cmt), {
+  //   isBreakingChange: isBreaking,
+  //   isBreaking, // ! deprecated
+  // });
 }

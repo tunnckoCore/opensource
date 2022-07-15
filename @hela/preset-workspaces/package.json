@@ -1,49 +1,49 @@
 {
-	"name": "@hela/preset-workspaces",
-	"version": "4.0.2",
-	"licenseStart": 2022,
-	"license": "MPL-2.0",
-	"description": "Hela v4. A preset functions and commands for monorepo management",
-	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/@hela/preset-workspaces",
-	"funding": [
-		"https://ko-fi.com/tunnckoCore/commissions",
-		"https://github.com/sponsors/tunnckoCore"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/tunnckoCore/opensource.git",
-		"directory": "@hela/preset-workspaces"
-	},
-	"type": "module",
-	"main": "src/index.js",
-	"files": [
-		"src"
-	],
-	"engines": {
-		"node": ">=16 <17 || >=18 <19 || >=20"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org",
-		"tag": "latest"
-	},
-	"scripts": {
-		"cov": "ASIA_NO_CACHE=1 c8 yarn test",
-		"test": "node test/index.js",
-		"test:fresh": "ASIA_NO_CACHE=1 yarn test"
-	},
-	"dependencies": {
-		"@hela/core": "*",
-		"@tunnckocore/p-all": "*",
-		"@tunnckocore/semver-increment": "*",
-		"arr-includes": "^2.3.8",
-		"fast-glob": "^3.2.11",
-		"picomatch": "^2.3.1",
-		"semver": "^7.3.7"
-	},
-	"keywords": [],
-	"contributors": [
-		"Charlike Mike Reagent <opensource@tunnckocore.com>"
-	]
+  "name": "@hela/preset-workspaces",
+  "version": "4.0.2",
+  "licenseStart": 2022,
+  "license": "MPL-2.0",
+  "description": "Hela v4. A preset functions and commands for monorepo management",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+  "homepage": "https://github.com/tunnckoCore/opensource/tree/master/@hela/preset-workspaces",
+  "funding": [
+    "https://ko-fi.com/tunnckoCore/commissions",
+    "https://github.com/sponsors/tunnckoCore"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@hela/preset-workspaces"
+  },
+  "type": "module",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=16 <17 || >=18 <19 || >=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "tag": "latest"
+  },
+  "scripts": {
+    "cov": "ASIA_NO_CACHE=1 c8 yarn test",
+    "test": "node test/index.js",
+    "test:fresh": "ASIA_NO_CACHE=1 yarn test"
+  },
+  "dependencies": {
+    "@hela/core": "*",
+    "@tunnckocore/p-all": "*",
+    "@tunnckocore/semver-increment": "*",
+    "arr-includes": "^2.3.8",
+    "fast-glob": "^3.2.11",
+    "picomatch": "^2.3.1",
+    "semver": "^7.3.7"
+  },
+  "keywords": [],
+  "contributors": [
+    "Charlike Mike Reagent <opensource@tunnckocore.com>"
+  ]
 }

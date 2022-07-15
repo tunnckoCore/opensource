@@ -21,23 +21,23 @@ import isArguments from 'is-arguments';
  * @api public
  */
 export default function toFilePath(args) {
-	if (arguments.length > 1) {
-		// eslint-disable-next-line prefer-rest-params
-		return toFilePath(arguments);
-	}
+  if (arguments.length > 1) {
+    // eslint-disable-next-line prefer-rest-params
+    return toFilePath(arguments);
+  }
 
-	if (Array.isArray(args) || isArguments(args)) {
-		return arrMap(args, (val) => toFilePath(val)).join('/');
-	}
+  if (Array.isArray(args) || isArguments(args)) {
+    return arrMap(args, (val) => toFilePath(val)).join('/');
+  }
 
-	if (typeof args === 'string') {
-		return args.split('.').join('/');
-	}
+  if (typeof args === 'string') {
+    return args.split('.').join('/');
+  }
 
-	let val = args;
-	if (typeof args === 'object') {
-		val = JSON.stringify(args);
-	}
+  let val = args;
+  if (typeof args === 'object') {
+    val = JSON.stringify(args);
+  }
 
-	return toFilePath(String(val));
+  return toFilePath(String(val));
 }

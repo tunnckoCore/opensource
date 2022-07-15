@@ -13,10 +13,10 @@ const processEnv = process.env;
 const globalBins = [npm.binaries, yarn.binaries];
 
 const defaultExecaOptions = {
-	stdio: 'inherit',
-	env: { ...processEnv },
-	cwd: process.cwd(),
-	concurrency: 1,
+  stdio: 'inherit',
+  env: { ...processEnv },
+  cwd: process.cwd(),
+  concurrency: 1,
 };
 
 /**
@@ -25,8 +25,8 @@ const defaultExecaOptions = {
  * @param {object} options
  */
 function toFlags(argv, options) {
-	const opts = { shortFlag: true, ...options };
-	return dargs(argv, opts).join(' ');
+  const opts = { shortFlag: true, ...options };
+  return dargs(argv, opts).join(' ');
 }
 
 /**
@@ -36,34 +36,34 @@ function toFlags(argv, options) {
  * @public
  */
 async function exec(cmd, options = {}) {
-	const envPATH = `${processEnv.PATH}:${globalBins.join(':')}`;
-	const env = { ...defaultExecaOptions.env, PATH: envPATH };
+  const envPATH = `${processEnv.PATH}:${globalBins.join(':')}`;
+  const env = { ...defaultExecaOptions.env, PATH: envPATH };
 
-	return execaCommand(cmd, { ...defaultExecaOptions, env, ...options });
+  return execaCommand(cmd, { ...defaultExecaOptions, env, ...options });
 }
 
 class HelaError extends Error {
-	constructor(msg) {
-		super(msg);
-		this.name = 'HelaError';
-	}
+  constructor(msg) {
+    super(msg);
+    this.name = 'HelaError';
+  }
 }
 
 class Hela extends Yaro {
-	// eslint-disable-next-line default-param-last
-	constructor(progName = 'hela', options) {
-		if (progName && typeof progName === 'object') {
-			options = progName;
-			progName = 'hela';
-		}
-		super(progName, {
-			defaultsToHelp: true,
-			allowUnknownFlags: true,
-			version: '4.0.0',
-			...options,
-		});
-		this.isHela = true;
-	}
+  // eslint-disable-next-line default-param-last
+  constructor(progName = 'hela', options) {
+    if (progName && typeof progName === 'object') {
+      options = progName;
+      progName = 'hela';
+    }
+    super(progName, {
+      defaultsToHelp: true,
+      allowUnknownFlags: true,
+      version: '4.0.0',
+      ...options,
+    });
+    this.isHela = true;
+  }
 }
 
 const hela = (...args) => new Hela(...args);

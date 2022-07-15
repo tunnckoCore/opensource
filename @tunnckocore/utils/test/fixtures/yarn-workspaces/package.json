@@ -1,12 +1,12 @@
 {
   "private": true,
   "name": "some-fixture-yarn-workspaces",
-  "extensions": [
-    "js",
-    "ts"
-  ],
   "workspaces": [
     "@tunnckocore/*",
     "@hela/*"
+  ],
+  "extensions": [
+    "js",
+    "ts"
   ]
 }
