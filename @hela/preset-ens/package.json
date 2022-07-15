@@ -31,6 +31,7 @@
 	"scripts": {},
 	"dependencies": {
 		"@hela/core": "*",
+		"cac": "^6.7.12",
 		"ens-collections": "*"
 	},
 	"keywords": [],
