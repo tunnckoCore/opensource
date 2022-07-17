@@ -10,6 +10,6 @@ on your config:
 
 ```json
 {
-	"prettier": "@tunnckocore/prettier-config"
+  "prettier": "@tunnckocore/prettier-config"
 }
 ```

@@ -1,41 +1,41 @@
 {
-	"name": "@tunnckocore/prettier-config",
-	"version": "2.0.0",
-	"licenseStart": 2019,
-	"license": "Apache-2.0",
-	"description": "Shareable Prettier config for all @tunnckoCore projects",
-	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/prettier-config",
-	"funding": [
-		"https://ko-fi.com/tunnckoCore/commissions",
-		"https://github.com/sponsors/tunnckoCore"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/tunnckoCore/opensource.git",
-		"directory": "@tunnckocore/prettier-config"
-	},
-	"type": "commonjs",
-	"main": "src/index.js",
-	"files": [
-		"src"
-	],
-	"engines": {
-		"node": ">=16 <17 || >=18 <19 || >=20"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org",
-		"tag": "latest"
-	},
-	"scripts": {},
-	"dependencies": {
-		"prettier-plugin-pkgjson": "^0.2.8"
-	},
-	"peerDependencies": {
-		"prettier": "^2.7.1"
-	},
-	"contributors": [
-		"Charlike Mike Reagent <opensource@tunnckocore.com>"
-	]
+  "name": "@tunnckocore/prettier-config",
+  "version": "3.0.0",
+  "licenseStart": 2019,
+  "license": "Apache-2.0",
+  "description": "Shareable Prettier config for all @tunnckoCore projects",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+  "homepage": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/prettier-config",
+  "funding": [
+    "https://ko-fi.com/tunnckoCore/commissions",
+    "https://github.com/sponsors/tunnckoCore"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@tunnckocore/prettier-config"
+  },
+  "type": "commonjs",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=16 <17 || >=18 <19 || >=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "dependencies": {
+    "prettier-plugin-pkgjson": "^0.2.8"
+  },
+  "peerDependencies": {
+    "prettier": "^2.7.1"
+  },
+  "contributors": [
+    "Charlike Mike Reagent <opensource@tunnckocore.com>"
+  ]
 }

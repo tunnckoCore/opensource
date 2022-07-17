@@ -1,68 +1,68 @@
 {
-	"name": "asia-cli",
-	"version": "3.0.1",
-	"licenseStart": 2017,
-	"license": "MPL-2.0",
-	"description": "Modern, fast, and innovative test runner with parallelism, concurrency, caching and incremental testing. Since 2017.",
-	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/asia",
-	"funding": [
-		"https://ko-fi.com/tunnckoCore/commissions",
-		"https://github.com/sponsors/tunnckoCore"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/tunnckoCore/opensource.git",
-		"directory": "asia/asia-cli"
-	},
-	"type": "module",
-	"main": "src/index.js",
-	"files": [
-		"src"
-	],
-	"bin": {
-		"asia": "src/bin.js",
-		"asia-cli": "src/bin.js"
-	},
-	"engines": {
-		"node": ">=16 <17 || >=18 <19 || >=20"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org",
-		"tag": "latest"
-	},
-	"scripts": {},
-	"dependencies": {
-		"asia-core": "*",
-		"fast-glob": "^3.2.11",
-		"yaro": "*"
-	},
-	"keywords": [
-		"testing",
-		"innovative",
-		"test",
-		"runner",
-		"concurrency",
-		"parallel",
-		"incremental",
-		"incremental testing",
-		"fast runner",
-		"assertion",
-		"promises",
-		"async await",
-		"async",
-		"await",
-		"function",
-		"caching",
-		"snapshots",
-		"test framework",
-		"test runner",
-		"asia",
-		"ava",
-		"jest"
-	],
-	"contributors": [
-		"Charlike Mike Reagent <opensource@tunnckocore.com>"
-	]
+  "name": "asia-cli",
+  "version": "3.1.0",
+  "licenseStart": 2017,
+  "license": "MPL-2.0",
+  "description": "Modern, fast, and innovative test runner with parallelism, concurrency, caching and incremental testing. Since 2017.",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+  "homepage": "https://github.com/tunnckoCore/opensource/tree/master/asia",
+  "funding": [
+    "https://ko-fi.com/tunnckoCore/commissions",
+    "https://github.com/sponsors/tunnckoCore"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "asia/asia-cli"
+  },
+  "type": "module",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "bin": {
+    "asia": "src/bin.js",
+    "asia-cli": "src/bin.js"
+  },
+  "engines": {
+    "node": ">=16 <17 || >=18 <19 || >=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "dependencies": {
+    "asia-core": "*",
+    "fast-glob": "^3.2.11",
+    "yaro": "*"
+  },
+  "keywords": [
+    "testing",
+    "innovative",
+    "test",
+    "runner",
+    "concurrency",
+    "parallel",
+    "incremental",
+    "incremental testing",
+    "fast runner",
+    "assertion",
+    "promises",
+    "async await",
+    "async",
+    "await",
+    "function",
+    "caching",
+    "snapshots",
+    "test framework",
+    "test runner",
+    "asia",
+    "ava",
+    "jest"
+  ],
+  "contributors": [
+    "Charlike Mike Reagent <opensource@tunnckocore.com>"
+  ]
 }

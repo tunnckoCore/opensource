@@ -37,16 +37,16 @@ import pMap from 'p-map';
  * @public
  */
 export async function exec(cmds, options) {
-	const commands = [cmds].flat().filter(Boolean);
-	const { concurrency = Number.POSITIVE_INFINITY, ...opts } = {
-		preferLocal: true,
-		...options,
-		all: true,
-	};
+  const commands = [cmds].flat().filter(Boolean);
+  const { concurrency = Number.POSITIVE_INFINITY, ...opts } = {
+    preferLocal: true,
+    ...options,
+    all: true,
+  };
 
-	return pMap(commands, async (cmd) => execaCommand(cmd, opts), {
-		concurrency,
-	});
+  return pMap(commands, async (cmd) => execaCommand(cmd, opts), {
+    concurrency,
+  });
 }
 
 /**
@@ -95,7 +95,7 @@ export async function exec(cmds, options) {
  * @public
  */
 export async function shell(cmds, options) {
-	return exec(cmds, { ...options, shell: true });
+  return exec(cmds, { ...options, shell: true });
 }
 
 /**

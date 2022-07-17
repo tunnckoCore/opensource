@@ -28,26 +28,26 @@
  * @public
  */
 export default function stringifyGithubShortUrl(owner, name, branch, npm) {
-	if (owner && typeof owner === 'object') {
-		const params = owner;
-		owner = params.owner || params.user;
-		name = params.name || params.repo;
-		branch = params.branch;
-		npm = params.npm;
-	}
+  if (owner && typeof owner === 'object') {
+    const params = owner;
+    owner = params.owner || params.user;
+    name = params.name || params.repo;
+    branch = params.branch;
+    npm = params.npm;
+  }
 
-	if (typeof owner !== 'string') {
-		throw new TypeError(
-			'stringify-github-short-url: expects `owner` to be a string',
-		);
-	}
-	if (typeof name !== 'string') {
-		return owner;
-	}
+  if (typeof owner !== 'string') {
+    throw new TypeError(
+      'stringify-github-short-url: expects `owner` to be a string',
+    );
+  }
+  if (typeof name !== 'string') {
+    return owner;
+  }
 
-	const url = `${owner}/${name}`;
-	if (typeof branch === 'string' && branch.length > 0) {
-		return url + (npm === true ? '@' : '#') + branch;
-	}
-	return url;
+  const url = `${owner}/${name}`;
+  if (typeof branch === 'string' && branch.length > 0) {
+    return url + (npm === true ? '@' : '#') + branch;
+  }
+  return url;
 }

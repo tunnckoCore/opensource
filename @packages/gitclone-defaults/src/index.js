@@ -56,22 +56,22 @@ import stringify from 'stringify-github-short-url';
  * @public
  */
 export default function gitcloneDefaults(owner, name, branch, ssh) {
-	let res = null;
-	res =
-		typeof owner === 'string' && arguments.length === 1
-			? parse(owner)
-			: parse(stringify(owner, name, branch));
+  let res = null;
+  res =
+    typeof owner === 'string' && arguments.length === 1
+      ? parse(owner)
+      : parse(stringify(owner, name, branch));
 
-	res.ssh = (owner && owner.ssh) || (name && name.ssh) || false;
-	res.ssh = res.ssh || (typeof name === 'boolean' && name) || false;
-	res.ssh = res.ssh || (typeof branch === 'boolean' && branch) || false;
-	res.ssh = res.ssh || (typeof ssh === 'boolean' && ssh) || false;
-	res.ssh = res.ssh || (branch && branch.ssh) || false;
-	res.branch = (name && name.branch) || (branch && branch.branch) || res.branch;
-	res.branch = typeof res.branch === 'string' && res.branch;
-	res.dest = (owner && owner.dest) || (name && name.dest) || false;
-	res.dest = res.dest || (branch && branch.dest) || false;
-	res.dest = res.dest || (ssh && ssh.dest) || false;
-	res.dest = (typeof res.dest === 'string' && res.dest) || false;
-	return res;
+  res.ssh = (owner && owner.ssh) || (name && name.ssh) || false;
+  res.ssh = res.ssh || (typeof name === 'boolean' && name) || false;
+  res.ssh = res.ssh || (typeof branch === 'boolean' && branch) || false;
+  res.ssh = res.ssh || (typeof ssh === 'boolean' && ssh) || false;
+  res.ssh = res.ssh || (branch && branch.ssh) || false;
+  res.branch = (name && name.branch) || (branch && branch.branch) || res.branch;
+  res.branch = typeof res.branch === 'string' && res.branch;
+  res.dest = (owner && owner.dest) || (name && name.dest) || false;
+  res.dest = res.dest || (branch && branch.dest) || false;
+  res.dest = res.dest || (ssh && ssh.dest) || false;
+  res.dest = (typeof res.dest === 'string' && res.dest) || false;
+  return res;
 }

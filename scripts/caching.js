@@ -8,52 +8,52 @@ import path from 'node:path';
 import ssri from 'ssri';
 
 function toHex(val, digest = 'hex') {
-	return Buffer.from(val).toString(digest);
+  return Buffer.from(val).toString(digest);
 }
 
 function makeData(val, { algorithms = ['sha512'] } = {}) {
-	const sri = ssri.fromData(val, { algorithms });
-	const integrity = sri.toString();
-	const hex = Buffer.from(integrity.slice(7), 'base64').toString('hex');
-	return { sri, hex, integrity };
+  const sri = ssri.fromData(val, { algorithms });
+  const integrity = sri.toString();
+  const hex = Buffer.from(integrity.slice(7), 'base64').toString('hex');
+  return { sri, hex, integrity };
 }
 
 class Cache {
-	constructor(name, options) {
-		this.name = name || makeData(String(Date.now())).hex;
-		this.options = { cwd: process.cwd(), dir: '.cache', ...options };
-		this.cache = path.resolve(this.options.cwd, this.options.dir, this.name);
-		this.contentsDir = path.join(this.cache, 'contents-v1');
-		this.index = path.join(this.cache, 'index');
+  constructor(name, options) {
+    this.name = name || makeData(String(Date.now())).hex;
+    this.options = { cwd: process.cwd(), dir: '.cache', ...options };
+    this.cache = path.resolve(this.options.cwd, this.options.dir, this.name);
+    this.contentsDir = path.join(this.cache, 'contents-v1');
+    this.index = path.join(this.cache, 'index');
 
-		fs.mkdirSync(this.contentsDir, { recursive: true });
-	}
+    fs.mkdirSync(this.contentsDir, { recursive: true });
+  }
 
-	async put(data, metadata) {
-		const { sri, hex, integrity } = makeData(data);
-		const key = `"key":"${hex}"`;
-		const value = `{${key},"integrity":"${integrity}","time":${Date.now()}}\n`;
+  async put(data, metadata) {
+    const { sri, hex, integrity } = makeData(data);
+    const key = `"key":"${hex}"`;
+    const value = `{${key},"integrity":"${integrity}","time":${Date.now()}}\n`;
 
-		const indexSource = fs.createReadStream(this.index, {
-			highWaterMark: 16 * 1024, // 16kb
-			encoding: 'utf8',
-		});
-		// const indexDestination = fs.createWriteStream('./foobie', { flags: 'a' });
+    const indexSource = fs.createReadStream(this.index, {
+      highWaterMark: 16 * 1024, // 16kb
+      encoding: 'utf8',
+    });
+    // const indexDestination = fs.createWriteStream('./foobie', { flags: 'a' });
 
-		let shouldWrite = false;
-		for await (const chunk of indexSource) {
-			if (!chunk.includes(key)) {
-				shouldWrite = true;
-			}
-		}
+    let shouldWrite = false;
+    for await (const chunk of indexSource) {
+      if (!chunk.includes(key)) {
+        shouldWrite = true;
+      }
+    }
 
-		console.log('write?', shouldWrite);
-		// stream.push('xxxx');
+    console.log('write?', shouldWrite);
+    // stream.push('xxxx');
 
-		// await fsp.appendFile(this.index, value);
-	}
+    // await fsp.appendFile(this.index, value);
+  }
 
-	async get(key) {}
+  async get(key) {}
 }
 
 const filename = path.resolve('./colorsx.js');

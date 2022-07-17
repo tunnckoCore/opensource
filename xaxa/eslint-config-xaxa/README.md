@@ -11,8 +11,8 @@ eslint config
 
 ```json
 {
-	"eslintConfig": {
-		"extends": ["xaxa"]
-	}
+  "eslintConfig": {
+    "extends": ["xaxa"]
+  }
 }
 ```

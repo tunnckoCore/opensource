@@ -4,7 +4,7 @@
 import cli from '@hela/cli';
 
 try {
-	await cli();
+  await cli();
 } catch (err) {
-	console.error('[hela] Failure!', err.stack);
+  console.error('[hela] Failure!', err.stack);
 }

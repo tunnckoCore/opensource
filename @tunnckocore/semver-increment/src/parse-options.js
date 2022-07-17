@@ -9,18 +9,18 @@
 const opts = ['includePrerelease', 'loose', 'rtl'];
 
 function parseOptions(options) {
-	if (!options) return {};
-	if (typeof options !== 'object') {
-		return { loose: true };
-	}
+  if (!options) return {};
+  if (typeof options !== 'object') {
+    return { loose: true };
+  }
 
-	return opts
-		.filter((k) => options[k])
+  return opts
+    .filter((k) => options[k])
 
-		.reduce((acc, k) => {
-			acc[k] = true;
-			return acc;
-		}, {});
+    .reduce((acc, k) => {
+      acc[k] = true;
+      return acc;
+    }, {});
 }
 
 export default parseOptions;

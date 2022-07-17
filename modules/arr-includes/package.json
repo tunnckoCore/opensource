@@ -1,59 +1,59 @@
 {
-	"name": "arr-includes",
-	"version": "3.0.0",
-	"licenseStart": 2016,
-	"license": "MPL-2.0",
-	"description": "Return positive value if (any of the) passed value(s) exists in array, or optionally an index",
-	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/arr-includes",
-	"funding": [
-		"https://ko-fi.com/tunnckoCore/commissions",
-		"https://github.com/sponsors/tunnckoCore"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/tunnckoCore/opensource.git",
-		"directory": "modules/arr-includes"
-	},
-	"type": "module",
-	"main": "src/index.js",
-	"files": [
-		"src"
-	],
-	"engines": {
-		"node": ">=16 <17 || >=18 <19 || >=20"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org",
-		"tag": "latest"
-	},
-	"scripts": {
-		"cov": "c8 asia --force",
-		"test": "asia"
-	},
-	"dependencies": {},
-	"keywords": [
-		"arr",
-		"arr-includes",
-		"arr-utils",
-		"array",
-		"array-utils",
-		"array-values",
-		"checks",
-		"developer-experience",
-		"development",
-		"dx",
-		"exists",
-		"hela",
-		"in-array",
-		"includes",
-		"tunnckocore-oss",
-		"tunnckocorehq",
-		"validate",
-		"values"
-	],
-	"contributors": [
-		"Charlike Mike Reagent <opensource@tunnckocore.com>"
-	]
+  "name": "arr-includes",
+  "version": "3.0.0",
+  "licenseStart": 2016,
+  "license": "MPL-2.0",
+  "description": "Return positive value if (any of the) passed value(s) exists in array, or optionally an index",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+  "homepage": "https://github.com/tunnckoCore/opensource/tree/master/modules/arr-includes",
+  "funding": [
+    "https://ko-fi.com/tunnckoCore/commissions",
+    "https://github.com/sponsors/tunnckoCore"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "modules/arr-includes"
+  },
+  "type": "module",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=16 <17 || >=18 <19 || >=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "tag": "latest"
+  },
+  "scripts": {
+    "cov": "c8 asia --force",
+    "test": "asia"
+  },
+  "dependencies": {},
+  "keywords": [
+    "arr",
+    "arr-includes",
+    "arr-utils",
+    "array",
+    "array-utils",
+    "array-values",
+    "checks",
+    "developer-experience",
+    "development",
+    "dx",
+    "exists",
+    "hela",
+    "in-array",
+    "includes",
+    "tunnckocore-oss",
+    "tunnckocorehq",
+    "validate",
+    "values"
+  ],
+  "contributors": [
+    "Charlike Mike Reagent <opensource@tunnckocore.com>"
+  ]
 }

@@ -11,8 +11,8 @@ package.json
 
 ```json
 {
-	"scripts": {
-		"lint": "xaxa"
-	}
+  "scripts": {
+    "lint": "xaxa"
+  }
 }
 ```

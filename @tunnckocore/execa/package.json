@@ -1,64 +1,64 @@
 {
-	"name": "@tunnckocore/execa",
-	"version": "6.0.0",
-	"licenseStart": 2017,
-	"license": "MPL-2.0",
-	"description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence with control for concurrency",
-	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/execa",
-	"funding": [
-		"https://ko-fi.com/tunnckoCore/commissions",
-		"https://github.com/sponsors/tunnckoCore"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/tunnckoCore/opensource.git",
-		"directory": "@tunnckocore/execa"
-	},
-	"type": "module",
-	"main": "src/index.js",
-	"files": [
-		"src"
-	],
-	"engines": {
-		"node": ">=16 <17 || >=18 <19 || >=20"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org",
-		"tag": "latest"
-	},
-	"scripts": {
-		"cov": "c8 asia --force",
-		"test": "asia",
-		"test:fresh": "asia --force"
-	},
-	"dependencies": {
-		"execa": "^6.1.0",
-		"p-map": "^5.5.0"
-	},
-	"keywords": [
-		"bin",
-		"binaries",
-		"binary",
-		"child",
-		"concurrency",
-		"develop",
-		"exec",
-		"execa",
-		"execfile",
-		"execute",
-		"file",
-		"fork",
-		"local",
-		"npm",
-		"parallel",
-		"path",
-		"process",
-		"sequence",
-		"series",
-		"shell",
-		"spawn",
-		"tunnckocorehq"
-	]
+  "name": "@tunnckocore/execa",
+  "version": "6.0.0",
+  "licenseStart": 2017,
+  "license": "MPL-2.0",
+  "description": "Thin layer on top of `execa` that allows executing multiple commands in parallel or in sequence with control for concurrency",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+  "homepage": "https://github.com/tunnckoCore/opensource/tree/master/@tunnckocore/execa",
+  "funding": [
+    "https://ko-fi.com/tunnckoCore/commissions",
+    "https://github.com/sponsors/tunnckoCore"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@tunnckocore/execa"
+  },
+  "type": "module",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=16 <17 || >=18 <19 || >=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "tag": "latest"
+  },
+  "scripts": {
+    "cov": "c8 asia --force",
+    "test": "asia",
+    "test:fresh": "asia --force"
+  },
+  "dependencies": {
+    "execa": "^6.1.0",
+    "p-map": "^5.5.0"
+  },
+  "keywords": [
+    "bin",
+    "binaries",
+    "binary",
+    "child",
+    "concurrency",
+    "develop",
+    "exec",
+    "execa",
+    "execfile",
+    "execute",
+    "file",
+    "fork",
+    "local",
+    "npm",
+    "parallel",
+    "path",
+    "process",
+    "sequence",
+    "series",
+    "shell",
+    "spawn",
+    "tunnckocorehq"
+  ]
 }

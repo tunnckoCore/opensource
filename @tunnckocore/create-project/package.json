@@ -1,28 +1,28 @@
 {
-	"name": "@tunnckocore/create-project",
-	"version": "0.1.0",
-	"description": "foo bar",
-	"author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-	"funding": [
-		"https://ko-fi.com/tunnckoCore/commissions",
-		"https://github.com/sponsors/tunnckoCore"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/tunnckoCore/opensource.git",
-		"directory": "@tunnckocore/create-project"
-	},
-	"type": "module",
-	"main": "index.js",
-	"engines": {
-		"node": ">=16 <17 || >=18 <19 || >=20"
-	},
-	"publishConfig": {
-		"access": "public",
-		"tag": "latest"
-	},
-	"dependencies": {},
-	"contributors": [
-		"Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)"
-	]
+  "name": "@tunnckocore/create-project",
+  "version": "0.1.0",
+  "description": "foo bar",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
+  "funding": [
+    "https://ko-fi.com/tunnckoCore/commissions",
+    "https://github.com/sponsors/tunnckoCore"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@tunnckocore/create-project"
+  },
+  "type": "module",
+  "main": "index.js",
+  "engines": {
+    "node": ">=16 <17 || >=18 <19 || >=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "dependencies": {},
+  "contributors": [
+    "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)"
+  ]
 }

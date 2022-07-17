@@ -42,26 +42,26 @@ import toFilePath from 'to-file-path';
  * @api public
  */
 export default function ipFilter(ip, patterns, options) {
-	if (typeof ip !== 'string') {
-		throw new TypeError('ip-filter: expect `ip` to be a string');
-	}
+  if (typeof ip !== 'string') {
+    throw new TypeError('ip-filter: expect `ip` to be a string');
+  }
 
-	const opts = { ...options };
-	opts.strict = typeof opts.strict === 'boolean' ? opts.strict : true;
+  const opts = { ...options };
+  opts.strict = typeof opts.strict === 'boolean' ? opts.strict : true;
 
-	if (opts.strict && !ipRegex().test(ip)) {
-		throw new Error('ip-filter: expect only valid IPs when `opts.strict` mode');
-	}
+  if (opts.strict && !ipRegex().test(ip)) {
+    throw new Error('ip-filter: expect only valid IPs when `opts.strict` mode');
+  }
 
-	const id = opts.strict ? tofp(ip) : ip;
-	const globs = opts.strict ? tofp(patterns) : patterns;
+  const id = opts.strict ? tofp(ip) : ip;
+  const globs = opts.strict ? tofp(patterns) : patterns;
 
-	const matches = micromatch(id, globs, opts);
+  const matches = micromatch(id, globs, opts);
 
-	return matches && matches.length > 0 ? ip : null;
+  return matches && matches.length > 0 ? ip : null;
 }
 
 function tofp(val) {
-	const value = typeof val === 'string' ? toFilePath(val) : val;
-	return Array.isArray(value) ? value.flat().map((p) => toFilePath(p)) : value;
+  const value = typeof val === 'string' ? toFilePath(val) : val;
+  return Array.isArray(value) ? value.flat().map((p) => toFilePath(p)) : value;
 }

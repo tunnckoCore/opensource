@@ -31,14 +31,14 @@ import { parseHeader, stringifyHeader, validateHeader } from './header.js';
  * @public
  */
 export function parseCommit(commit, options) {
-	if (!isValidString(commit)) {
-		throw new TypeError(`expect \`commit\` to be non empty string`);
-	}
+  if (!isValidString(commit)) {
+    throw new TypeError(`expect \`commit\` to be non empty string`);
+  }
 
-	const header = parseHeader(commit, options);
-	const [body = null, footer = null] = commit.split('\n\n').slice(1);
+  const header = parseHeader(commit, options);
+  const [body = null, footer = null] = commit.split('\n\n').slice(1);
 
-	return { header, body, footer };
+  return { header, body, footer };
 }
 
 /**
@@ -65,21 +65,21 @@ export function parseCommit(commit, options) {
  * @public
  */
 export function stringifyCommit(commit, options) {
-	const result = validateCommit(commit, options);
+  const result = validateCommit(commit, options);
 
-	if (result.error) {
-		throw result.error;
-	}
+  if (result.error) {
+    throw result.error;
+  }
 
-	const header = stringifyHeader(result.value.header, options);
-	const EOL = '\n';
+  const header = stringifyHeader(result.value.header, options);
+  const EOL = '\n';
 
-	result.value.body = result.value.body ? EOL + EOL + result.value.body : '';
-	result.value.footer = result.value.footer
-		? EOL + EOL + result.value.footer
-		: '';
+  result.value.body = result.value.body ? EOL + EOL + result.value.body : '';
+  result.value.footer = result.value.footer
+    ? EOL + EOL + result.value.footer
+    : '';
 
-	return `${header}${result.value.body}${result.value.footer}`;
+  return `${header}${result.value.body}${result.value.footer}`;
 }
 
 /**
@@ -115,15 +115,15 @@ export function stringifyCommit(commit, options) {
  * @public
  */
 export function validateCommit(commit, options) {
-	const result = {};
+  const result = {};
 
-	try {
-		result.value = checkCommit(commit, options);
-	} catch (err) {
-		return { error: err };
-	}
+  try {
+    result.value = checkCommit(commit, options);
+  } catch (err) {
+    return { error: err };
+  }
 
-	return result;
+  return result;
 }
 
 /**
@@ -155,28 +155,28 @@ export function validateCommit(commit, options) {
  * @public
  */
 export function checkCommit(commit, options) {
-	const { error, value: headerObj } = validateHeader(commit.header, options);
-	if (error) {
-		throw error;
-	}
+  const { error, value: headerObj } = validateHeader(commit.header, options);
+  if (error) {
+    throw error;
+  }
 
-	const isValidBody =
-		'body' in commit && commit.body !== null
-			? typeof commit.body === 'string'
-			: true;
+  const isValidBody =
+    'body' in commit && commit.body !== null
+      ? typeof commit.body === 'string'
+      : true;
 
-	if (!isValidBody) {
-		throw new TypeError('commit.body should be string when given');
-	}
+  if (!isValidBody) {
+    throw new TypeError('commit.body should be string when given');
+  }
 
-	const isValid =
-		'footer' in commit && commit.footer !== null
-			? typeof commit.footer === 'string'
-			: true;
+  const isValid =
+    'footer' in commit && commit.footer !== null
+      ? typeof commit.footer === 'string'
+      : true;
 
-	if (!isValid) {
-		throw new TypeError('commit.footer should be string when given');
-	}
+  if (!isValid) {
+    throw new TypeError('commit.footer should be string when given');
+  }
 
-	return { body: null, footer: null, ...commit, header: headerObj };
+  return { body: null, footer: null, ...commit, header: headerObj };
 }

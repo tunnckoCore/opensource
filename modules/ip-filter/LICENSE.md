@@ -4,8 +4,8 @@ Mozilla Public License, version 2.0
 
 1.1. “Contributor”
 
-means each individual or legal entity that creates, contributes to the
-creation of, or owns Covered Software.
+means each individual or legal entity that creates, contributes to the creation
+of, or owns Covered Software.
 
 1.2. “Contributor Version”
 

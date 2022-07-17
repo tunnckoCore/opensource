@@ -1,69 +1,69 @@
 {
-	"name": "eslint-config-xaxa",
-	"version": "3.0.3",
-	"licenseStart": 2018,
-	"license": "Apache-2.0",
-	"description": "Zero-config linting, powered by few amazing unicorns, AirBnB & Prettier.",
-	"author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
-	"homepage": "https://github.com/tunnckoCore/opensource/tree/master/xaxa/eslint-config-xaxa",
-	"funding": [
-		"https://ko-fi.com/tunnckoCore/commissions",
-		"https://github.com/sponsors/tunnckoCore"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/tunnckoCore/opensource.git",
-		"directory": "xaxa/eslint-config-xaxa"
-	},
-	"type": "commonjs",
-	"main": "src/index.js",
-	"files": [
-		"src"
-	],
-	"engines": {
-		"node": ">=16 <17 || >=18 <19 || >=20"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org",
-		"tag": "latest"
-	},
-	"scripts": {},
-	"dependencies": {
-		"@tunnckocore/prettier-config": "*",
-		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-config-prettier": "^8.5.0",
-		"eslint-import-resolver-alias": "^1.1.2",
-		"eslint-plugin-import": "^2.26.0",
-		"eslint-plugin-no-use-extend-native": "^0.5.0",
-		"eslint-plugin-node": "^11.1.0",
-		"eslint-plugin-prettier": "^4.1.0",
-		"eslint-plugin-promise": "^6.0.0",
-		"eslint-plugin-unicorn": "^42.0.0"
-	},
-	"keywords": [
-		"eslint",
-		"es6",
-		"esmodules",
-		"es module",
-		"linting",
-		"lint parallel",
-		"parallel",
-		"fast",
-		"format",
-		"prettier",
-		"eslint-prettier",
-		"prettier-eslint",
-		"airbnb",
-		"codestyle",
-		"styleguide",
-		"modern javascript",
-		"javascript",
-		"promises",
-		"typescript",
-		"unicorn"
-	],
-	"contributors": [
-		"Charlike Mike Reagent <opensource@tunnckocore.com>"
-	]
+  "name": "eslint-config-xaxa",
+  "version": "4.0.1",
+  "licenseStart": 2018,
+  "license": "Apache-2.0",
+  "description": "Zero-config linting, powered by few amazing unicorns, AirBnB & Prettier.",
+  "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
+  "homepage": "https://github.com/tunnckoCore/opensource/tree/master/xaxa/eslint-config-xaxa",
+  "funding": [
+    "https://ko-fi.com/tunnckoCore/commissions",
+    "https://github.com/sponsors/tunnckoCore"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "xaxa/eslint-config-xaxa"
+  },
+  "type": "commonjs",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=16 <17 || >=18 <19 || >=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "tag": "latest"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@tunnckocore/prettier-config": "*",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-no-use-extend-native": "^0.5.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-unicorn": "^42.0.0"
+  },
+  "keywords": [
+    "eslint",
+    "es6",
+    "esmodules",
+    "es module",
+    "linting",
+    "lint parallel",
+    "parallel",
+    "fast",
+    "format",
+    "prettier",
+    "eslint-prettier",
+    "prettier-eslint",
+    "airbnb",
+    "codestyle",
+    "styleguide",
+    "modern javascript",
+    "javascript",
+    "promises",
+    "typescript",
+    "unicorn"
+  ],
+  "contributors": [
+    "Charlike Mike Reagent <opensource@tunnckocore.com>"
+  ]
 }

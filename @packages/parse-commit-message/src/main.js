@@ -49,20 +49,20 @@ import { toArray, errorMsg } from './utils.js';
  * @public
  */
 export function parse(commits, options) {
-	const result = toArray(commits)
-		.filter(Boolean)
-		.reduce((acc, val) => {
-			if (typeof val === 'string') {
-				return acc.concat(parseCommit(val, options));
-			}
-			if (typeof val === 'object' && !Array.isArray(val)) {
-				return acc.concat(val);
-			}
+  const result = toArray(commits)
+    .filter(Boolean)
+    .reduce((acc, val) => {
+      if (typeof val === 'string') {
+        return acc.concat(parseCommit(val, options));
+      }
+      if (typeof val === 'object' && !Array.isArray(val)) {
+        return acc.concat(val);
+      }
 
-			return acc.concat(parse(val, options));
-		}, []);
+      return acc.concat(parse(val, options));
+    }, []);
 
-	return result;
+  return result;
 }
 
 /**
@@ -99,22 +99,22 @@ export function parse(commits, options) {
  * @public
  */
 export function stringify(commits, options) {
-	const result = toArray(commits)
-		.filter(Boolean)
-		.reduce(
-			(acc, val) =>
-				acc.concat(
-					toArray(
-						check(
-							typeof val === 'string' ? { header: { value: val } } : val,
-							options,
-						),
-					).map((x) => stringifyCommit(x, options)),
-				),
-			[],
-		);
+  const result = toArray(commits)
+    .filter(Boolean)
+    .reduce(
+      (acc, val) =>
+        acc.concat(
+          toArray(
+            check(
+              typeof val === 'string' ? { header: { value: val } } : val,
+              options,
+            ),
+          ).map((x) => stringifyCommit(x, options)),
+        ),
+      [],
+    );
 
-	return result;
+  return result;
 }
 
 /**
@@ -179,15 +179,15 @@ export function stringify(commits, options) {
  * @public
  */
 export function validate(commits, options) {
-	const result = {};
+  const result = {};
 
-	try {
-		result.value = check(commits, options);
-	} catch (err) {
-		return { error: err };
-	}
+  try {
+    result.value = check(commits, options);
+  } catch (err) {
+    return { error: err };
+  }
 
-	return result;
+  return result;
 }
 
 /**
@@ -223,18 +223,18 @@ export function validate(commits, options) {
  * @public
  */
 export function check(commits, options) {
-	const result = toArray(commits).reduce((acc, commit) => {
-		if (typeof commit === 'string') {
-			// eslint-disable-next-line no-param-reassign
-			commit = parseCommit(commit, options);
-		}
+  const result = toArray(commits).reduce((acc, commit) => {
+    if (typeof commit === 'string') {
+      // eslint-disable-next-line no-param-reassign
+      commit = parseCommit(commit, options);
+    }
 
-		return acc.concat(checkCommit(commit, options));
-	}, []);
+    return acc.concat(checkCommit(commit, options));
+  }, []);
 
-	if (result.length === 0) {
-		throw new Error(errorMsg);
-	}
+  if (result.length === 0) {
+    throw new Error(errorMsg);
+  }
 
-	return result;
+  return result;
 }

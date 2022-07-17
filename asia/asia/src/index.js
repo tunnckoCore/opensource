@@ -8,13 +8,13 @@ import asia, { loadConfig } from 'asia-core';
 import main from './main.js';
 
 const core = await main({
-	fs,
-	path,
-	asia,
-	loadConfig,
-	cwd: process.cwd(),
-	env: process.env,
-	nextTick: process.nextTick,
+  fs,
+  path,
+  asia,
+  loadConfig,
+  cwd: process.cwd(),
+  env: process.env,
+  nextTick: process.nextTick,
 });
 
 export const { cwd, test, run, env, cache, Cache, config, configPath } = core;

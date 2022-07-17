@@ -71,14 +71,13 @@
 //   create-readdir-stream
 //   stream-copy-dir
 // `
-// 	.split('\n')
-// 	.map((x) => x.trim())
-// 	.filter((x) => !x.startsWith('//'));
+//  .split('\n')
+//  .map((x) => x.trim())
+//  .filter((x) => !x.startsWith('//'));
 
 // const tunnckocoreScoped = `
-
 // `
-// 	.split('\n')
-// 	.map((x) => x.trim());
+//  .split('\n')
+//  .map((x) => x.trim());
 
 // // mappings.add("error-format", "packages/error-format");

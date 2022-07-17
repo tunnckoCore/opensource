@@ -1,19 +1,18 @@
 // SPDX-License-Identifier: MPL-2.0
 
-/* eslint-disable node/prefer-global/process */
-
-import yargsParser from 'yargs-parser';
+import yargsParser from 'https://esm.sh/yargs-parser@21';
 import { Yaro } from './core.js';
 
-const platformInfo = `${process.platform}-${process.arch} node-${process.version}`;
+const processExit = Deno.exit;
+const platformInfo = `${Deno.build.os}-${Deno.build.arch} deno-${Deno.version.deno}`;
 
 export const yaro = (name, settings) =>
   new Yaro(name, {
     ...settings,
 
     parser: yargsParser.detailed,
-    argv: process.argv.slice(2),
-    exit: process.exit,
+    argv: Deno.args,
+    exit: Deno.exit,
     platformInfo,
   });
 

@@ -25,13 +25,13 @@ import { normalizeCommit /* getValue */ } from '../utils.js';
  * @public
  */
 export default function mentionsPlugin(commit, options) {
-	const opts = { normalize: true, ...options };
-	const cmt = opts.normalize ? normalizeCommit(commit, opts) : commit;
+  const opts = { normalize: true, ...options };
+  const cmt = opts.normalize ? normalizeCommit(commit, opts) : commit;
 
-	const commitMentions = [getMentions(cmt.header)]
-		.flat()
-		.concat(getMentions(cmt.body))
-		.concat(getMentions(cmt.footer));
+  const commitMentions = [getMentions(cmt.header)]
+    .flat()
+    .concat(getMentions(cmt.body))
+    .concat(getMentions(cmt.footer));
 
-	return { mentions: commitMentions };
+  return { mentions: commitMentions };
 }
