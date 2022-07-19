@@ -1,6 +1,6 @@
 {
   "name": "yaro-plugins",
-  "version": "4.0.0",
+  "version": "5.0.0-canary.1",
   "licenseStart": 2020,
   "license": "MPL-2.0",
   "description": "Simple plugins (utility functions) for `yaro-parser` command line options parser, for more easier working with (enforcing of) aliases, defaults, type coercing, and checking for required flags.",
@@ -26,7 +26,7 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",
-    "tag": "latest"
+    "tag": "canary"
   },
   "scripts": {},
   "dependencies": {},

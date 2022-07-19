@@ -1,6 +1,6 @@
 {
   "name": "yaro",
-  "version": "4.0.0",
+  "version": "5.0.0-canary.1",
   "licenseStart": 2020,
   "license": "MPL-2.0",
   "description": "Fast, minimalist, pluggable and functional command line parsing. Create CLIs easily. A wrapper package exporting everything from `yaro-plugins` and `yaro-parser` packages.",
@@ -26,7 +26,7 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org",
-    "tag": "latest"
+    "tag": "canary"
   },
   "scripts": {},
   "dependencies": {
