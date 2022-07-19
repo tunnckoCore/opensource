@@ -11,7 +11,7 @@ export function pipeline(...fns) {
     const plugins = lastIsConfig ? fns.slice(0, -1) : fns;
 
     for (const [i, plugin] of plugins.entries()) {
-      const ret = plugin(flags || argv, result, { config: cfg, argv });
+      const ret = plugin(flags || argv, result, { config: cfg, argv, flags });
 
       // first plugin is always the parser, it is passed argv array (process.argv),
       // and it returns the parsed arguments object (flags/options)
@@ -121,3 +121,12 @@ export function required(config) {
     return res;
   };
 }
+
+export const plugins = [defaults, aliases, coerce, required];
+export const plugin = {
+  defaults,
+  aliases,
+  alias,
+  coerce,
+  required,
+};

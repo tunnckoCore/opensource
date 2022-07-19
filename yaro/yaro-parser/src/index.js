@@ -3,7 +3,7 @@
 export const parse = yaro;
 export function yaro(argv /* , config = {} */) {
   const REPLACER = '@@@@__REPLACE_VALUE__@@@@';
-  const res = {};
+  const res = { _: [] };
 
   function set(name, value, replaceValue) {
     res[name] = res[name] || [];
@@ -19,9 +19,19 @@ export function yaro(argv /* , config = {} */) {
     return res;
   }
 
+  const flagsStartIdx = argv.findIndex(
+    (x) => (x !== '-' && x[0] === '-') || x[0] === '-',
+  );
+
+  const ____ = flagsStartIdx >= 1 ? argv.slice(0, flagsStartIdx) : argv;
+  const args = flagsStartIdx >= 0 ? argv.slice(flagsStartIdx) : [];
+
+  res._ = [____].flat();
+
   let prev = null;
   let idx = 0;
-  for (const arg of argv) {
+
+  for (const arg of args) {
     idx += 1;
     const isDashPositional = arg[0] === '-' && arg.length === 1;
     const isShort = arg[0] === '-' && arg[1] !== '-';
@@ -36,7 +46,7 @@ export function yaro(argv /* , config = {} */) {
     }
 
     if (isDoubleDash) {
-      set('--', argv.slice(idx));
+      set('--', [argv.slice(idx)].flat());
       break;
     }
 
@@ -84,7 +94,9 @@ export function yaro(argv /* , config = {} */) {
   }
 
   return Object.entries(res).reduce((acc, [key, value]) => {
-    if (value.length === 1) {
+    if (['_', '-', '--'].includes(key)) {
+      acc[key] = key === '--' ? value.slice(1) : value;
+    } else if (value.length === 1) {
       acc[key] = value[0] === REPLACER ? true : value[0];
     } else {
       acc[key] = value.every((x) => x === true) ? value.length : value;
