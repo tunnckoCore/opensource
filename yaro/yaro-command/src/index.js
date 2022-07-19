@@ -58,6 +58,7 @@ function createOption(rawName, desc, config) {
 
       let j;
 
+      // eslint-disable-next-line no-plusplus
       for (j = 0; j < name.length; j++) {
         if (name.codePointAt(j) !== 45) break; // "-"
       }
