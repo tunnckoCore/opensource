@@ -4,6 +4,7 @@
   "workspaces": [
     "@tunnckocore/*",
     "@hela/*",
+    "yaro/*",
     "modules/*",
     "xaxa/*",
     "asia/*"
@@ -11,6 +12,7 @@
   "type": "module",
   "scripts": {
     "cleanup": "node scripts/clean-node-modules.js && rm yarn.lock",
+    "fmt": "prettier '**/*.{js,json}' --write",
     "fresh": "yarn cleanup && yarn && hela init --verbose",
     "lint": "xaxa --log",
     "new": "node scripts/create-package.js",
@@ -32,6 +34,9 @@
   "eslintConfig": {
     "extends": [
       "xaxa"
-    ]
+    ],
+    "rules": {
+      "max-statements": "off"
+    }
   }
 }
