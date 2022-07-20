@@ -31,12 +31,22 @@ export function pipeline(...fns) {
   };
 }
 
-export function defaults(config = {}) {
+export function defaults(config, _aliases) {
   return (flags, result) => {
+    const alis = { ..._aliases };
+    const cfg = { ...config };
     const res = { ...result };
 
-    for (const key of Object.keys(config)) {
-      res[key] = res[key] ?? config[key];
+    for (const [name, value] of Object.entries(cfg)) {
+      res[name] = flags[name] ?? res[name] ?? value;
+      // const foo = res[name];
+
+      const alibis = alis[name];
+
+      for (const k of alibis) {
+        res[k] = res[k] === res[name] ? res[k] : res[name];
+        res[name] = res[k];
+      }
     }
 
     return res;
@@ -44,15 +54,17 @@ export function defaults(config = {}) {
 }
 
 export const aliases = alias;
-export function alias(config = {}) {
+export function alias(config, _defaults) {
   return (flags, result) => {
+    const defs = { ..._defaults };
+    const cfg = { ...config };
     const res = { ...result };
 
-    for (const flagName of Object.keys(config)) {
-      const alibi = [config[flagName]].flat();
-      for (const key of alibi) {
-        res[key] = res[flagName];
-        res[flagName] = res[key];
+    for (const [name, _aliases] of Object.entries(cfg)) {
+      res[name] = res[name] ?? defs[name] ?? flags[name];
+      for (const k of _aliases) {
+        res[k] = flags[name] ?? flags[k] ?? res[name];
+        res[name] = res[k];
       }
     }
 
@@ -60,17 +72,22 @@ export function alias(config = {}) {
   };
 }
 
-export function coerce(config = {}) {
+export function coerce(config, _aliases) {
   return (flags, result) => {
+    const alis = { ..._aliases };
+    const cfg = { ...config };
     const res = { ...result };
+    const keys = Object.keys(cfg).sort((a, b) => b.length - a.length);
 
-    for (const key of Object.keys(config)) {
-      const flagValue = res[key] ?? undefined;
+    for (const k of keys) {
+      const flagValue = res[k] ?? flags[k] ?? undefined;
+      const fn = typeof cfg[k] === 'function' ? cfg[k] : () => flagValue;
 
-      res[key] = flagValue ? config[key](flagValue) : undefined;
+      res[k] = fn(flagValue);
 
-      if (Number.isNaN(res[key])) {
-        throw new TypeError(`option "${key}" failed to be coerced correctly`);
+      if (Number.isNaN(res[k])) {
+        const names = namePair(alis, k);
+        throw new TypeError(`option "${names}" failed to be coerced correctly`);
       }
     }
 
@@ -78,8 +95,9 @@ export function coerce(config = {}) {
   };
 }
 
-export function required(config) {
-  return (argv, result) => {
+export function required(config, _aliases) {
+  return (flags, result) => {
+    const alis = { ..._aliases };
     const res = { ...result };
 
     if (Array.isArray(config)) {
@@ -94,9 +112,10 @@ export function required(config) {
     if (config && typeof config === 'object') {
       for (const flagName of Object.keys(config)) {
         const flagValue = res[flagName];
-        const valueType = typeof flagValue;
+        const valType = typeof flagValue;
         let def = config[flagName];
         const isDefined = res[flagName] !== undefined;
+        const isDifferent = res[flagName] !== flags[flagName];
 
         if (def === true && !isDefined) {
           throw new Error(`required option "${flagName}" is not passed`);
@@ -104,15 +123,30 @@ export function required(config) {
         if (typeof def === 'string') {
           def = { type: def };
         }
-        if (isDefined && def && def.type && valueType !== def.type) {
+        if (isDefined && def && def.type && valType !== def.type) {
           throw new Error(
-            `required option "${flagName}" expect value of type "${def.type}", but "${valueType}" given`,
+            `required option "${flagName}" expect value of type "${def.type}", but "${valType}" given`,
           );
         }
         if (typeof def === 'function') {
-          const ret = def(flagName, flagValue, valueType);
+          let ret = def({
+            flagName,
+            flagValue,
+            isDefined,
+            flagType: valType,
+            flag: res[flagName],
+            passed: flags[flagName],
+            isDifferent,
+          });
+          // console.log('zzzzz', ret);
+          // note: temporary type casting for booleans
+          if (typeof ret === 'function') {
+            res[flagName] = ret(res[flagName]);
+            ret = true;
+          }
           if (ret !== true) {
-            throw new Error(`required option "${flagName}" failed validation`);
+            const names = namePair(alis, flagName);
+            throw new Error(`required option "${names}" failed validation`);
           }
         }
       }
@@ -130,3 +164,22 @@ export const plugin = {
   coerce,
   required,
 };
+
+export function isRequired({ flagValue, isDefined, flagType }) {
+  const val = Number(flagValue);
+
+  return (
+    Number.isNaN(val) &&
+    typeof val === 'number' &&
+    isDefined &&
+    flagType === 'string'
+  );
+}
+
+function namePair(ali, k) {
+  return [k, ali[k]]
+    .flat()
+    .filter(Boolean)
+    .map((x) => (x.length === 1 ? `-${x}` : `--${x}`))
+    .join(',');
+}

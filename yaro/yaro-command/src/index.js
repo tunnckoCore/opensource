@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MPL-2.0
 
-import { yaro as yaroParser } from 'yaro-parser';
+/* eslint-disable no-param-reassign */
+
+import { pipeline, parser, defaults, aliases, coerce, required } from 'yaro';
 
 export { command };
 export default function command(usage, settings) {
@@ -12,11 +14,18 @@ export default function command(usage, settings) {
 
   if (typeof settings === 'function') {
     action = settings;
-    // eslint-disable-next-line no-param-reassign
+
     settings = {};
   }
   const cfg = { allowUnknown: false, terminate: false, ...settings };
-  const cli = { settings: cfg, usage, fn: action, options: [] };
+  const meta = {
+    defaults: {},
+    aliases: {},
+    coerces: {},
+    required: {},
+    flags: {},
+  };
+  const cli = { settings: cfg, usage, fn: action, meta };
 
   cli.option = createOptionMethod(cli, cfg);
   cli.action = createActionMethod(cli, cfg);
@@ -26,7 +35,33 @@ export default function command(usage, settings) {
 
 function createOptionMethod(cli /* , settings */) {
   return (rawName, desc, config) => {
-    cli.options.push(createOption(rawName, desc, config));
+    const flag = createOption(rawName, desc, config);
+
+    cli.meta.flags[flag.name] = flag;
+
+    cli.meta.aliases = flag.aliases.reduce((acc, k) => {
+      acc[k] =
+        flag.aliases.length === 1
+          ? flag.aliases
+          : flag.aliases.filter((x) => x !== k);
+
+      return acc;
+    }, cli.meta.aliases);
+
+    cli.meta.defaults = flag.aliases.reduce((acc, k) => {
+      acc[k] = flag.default;
+      return acc;
+    }, cli.meta.defaults);
+
+    cli.meta.coerces = flag.aliases.reduce((acc, k) => {
+      acc[k] = flag.type;
+      return acc;
+    }, cli.meta.coerces);
+
+    cli.meta.required = flag.aliases.reduce((acc, k) => {
+      acc[k] = flag.required;
+      return acc;
+    }, cli.meta.required);
 
     return cli;
   };
@@ -36,20 +71,21 @@ function createOption(rawName, desc, config) {
   let cfg = config;
   if (desc && typeof desc === 'object') {
     cfg = desc;
-    // eslint-disable-next-line no-param-reassign
+
     desc = cfg.desc || cfg.description || '';
   }
-  if (cfg && typeof cfg !== 'object') {
+  if (cfg !== null && typeof cfg !== 'object') {
     cfg = { default: cfg };
   }
+
+  cfg = { ...cfg };
 
   const flag = {
     rawName,
     desc: desc || '',
-    negated: false,
+    default: cfg.default,
+    type: cfg.type,
   };
-  flag.default = cfg?.default;
-  flag.type = cfg?.type;
 
   const names = removeBrackets(rawName)
     .split(',')
@@ -82,7 +118,7 @@ function createOption(rawName, desc, config) {
   // Use the longest name (last one) as actual option name
   flag.name = names[names.length - 1];
   flag.name = flag.name.includes('-') ? names[names.length - 2] : flag.name;
-  flag.names = [...new Set(names)];
+  flag.aliases = [...new Set(names)];
 
   if (flag.negated) {
     flag.default = true;
@@ -93,6 +129,8 @@ function createOption(rawName, desc, config) {
   } else if (rawName.includes('[')) {
     flag.required = false;
   }
+
+  flag.required = cfg.required ?? flag.required;
 
   return flag;
 }
@@ -154,69 +192,27 @@ function createActionMethod(cli) {
     return async (parsedFlags) => {
       const args = findAllBrackets(cli.usage);
 
-      // in "single command mode" (i.e. in cli's bin),
-      // you can pass just the process.argv
-      // or if you use the command in hela-based app, it works too
-      const flags = Array.isArray(parsedFlags)
-        ? yaroParser(parsedFlags) // todo: cli.options to be passed to `yaro-plugins`
-        : parsedFlags;
+      const argv = pipeline(
+        parser(),
+        aliases(cli.meta.aliases),
+        defaults(cli.meta.defaults, cli.meta.aliases),
+        // todo: buggy, better use `required`? seems fixed.
+        coerce(cli.meta.coerces),
+        required(cli.meta.required, cli.meta.aliases),
+      )(parsedFlags);
 
       const actionArgs = [];
       for (const [index, arg] of args.entries()) {
         if (arg.variadic) {
-          actionArgs.push(flags._.slice(index));
+          actionArgs.push(argv._.slice(index));
         } else {
-          actionArgs.push(flags._[index]);
+          actionArgs.push(argv._[index]);
         }
       }
 
-      // todo: above todo
-      console.log('cli.options', cli.options);
+      const { _, ...flagsOptions } = argv;
 
-      return handler.call(null, flags, ...actionArgs);
+      return handler.call(null, flagsOptions, ...actionArgs);
     };
   };
 }
-
-// export const xaxa = command('[...files] [options]')
-//   .option()
-//   .option()
-//   .action(() => {});
-
-// export const fmt = command('[...files]', 'format with prettier', {
-//   default: ['src/*.js'],
-//   required: true,
-// })
-//   .option()
-//   .option();
-
-// export const build = createCli('[...files]')
-//   .option('-x', 'some arr', { type: 'array' })
-//   .option('-c, --count [num]', { type: 'number' })
-//   .option('-s, --show-stack', 'cmael cased option')
-//   .option('-f, --force', 'some boolean option')
-//   .option('-n, --name-sake [pkg]', 'some option with optional value')
-//   .option('-p, --patterns <...foo>', 'option with required value')
-//   .action((flags, src, dist) => {});
-
-// export const lint = (flags, patterns) => {};
-
-// const argv = parse(process.argv.slice(2));
-
-// let commandParts = null;
-// let commandArgs = null;
-// let commandOptions = null;
-
-// if (argv['--']) {
-//   const commandOptionsStart = argv['--'].findIndex((x) => x[0] === '-');
-//   commandParts = commandOptionsStart
-//     ? argv['--'].slice(0, commandOptionsStart).join(' ')
-//     : argv['--'];
-//   commandArgs = argv['--'].slice(commandOptionsStart);
-//   commandOptions = parse(commandArgs);
-// }
-
-// console.log('global options:', argv);
-// console.log('command:', commandParts);
-// // console.log(commandArgs);
-// console.log('cmd options:', commandOptions);

@@ -23,7 +23,7 @@ export function yaro(argv /* , config = {} */) {
     (x) => (x !== '-' && x[0] === '-') || x[0] === '-',
   );
 
-  const ____ = flagsStartIdx >= 1 ? argv.slice(0, flagsStartIdx) : argv;
+  const ____ = flagsStartIdx >= 0 ? argv.slice(0, flagsStartIdx) : argv;
   const args = flagsStartIdx >= 0 ? argv.slice(flagsStartIdx) : [];
 
   res._ = [____].flat();
