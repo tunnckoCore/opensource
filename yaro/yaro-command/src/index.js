@@ -4,31 +4,46 @@
 
 import { pipeline, parser, defaults, aliases, coerce, required } from 'yaro';
 
+let unnamedCommandsCount = 0;
+export const UNNAMED_COMMAND_PREFIX = '___UNNAMED_COMMAND-';
+
 export { command };
-export default function command(usage, settings) {
+export default function command(usage, settings, action) {
+  if (typeof usage === 'function') {
+    action = usage;
+    usage = '';
+  }
   if (typeof usage !== 'string') {
     throw new TypeError('cli requires `usage` to be passed and be a string');
   }
-
-  let action = null;
 
   if (typeof settings === 'function') {
     action = settings;
 
     settings = {};
   }
-  const cfg = { allowUnknown: false, terminate: false, ...settings };
+  const cfg = { ...settings };
   const meta = {
     defaults: {},
     aliases: {},
     coerces: {},
     required: {},
     flags: {},
+    ...cfg.meta,
   };
-  const cli = { settings: cfg, usage, fn: action, meta };
+  const cli = { settings: cfg, usage, meta, aliases: [] };
+
+  cli.alias = (...names) => {
+    cli.aliases.push(...names.flat());
+    return cli;
+  };
 
   cli.option = createOptionMethod(cli, cfg);
   cli.action = createActionMethod(cli, cfg);
+
+  if (typeof action === 'function') {
+    return cli.action(action);
+  }
 
   return cli;
 }
@@ -135,7 +150,7 @@ function createOption(rawName, desc, config) {
   return flag;
 }
 
-function removeBrackets(v) {
+export function removeBrackets(v) {
   return v.replace(/[<[].+/, '').trim();
 }
 
@@ -146,7 +161,7 @@ function camelcase(input) {
   );
 }
 
-function findAllBrackets(v) {
+export function findAllBrackets(v) {
   const ANGLED_BRACKET_RE_GLOBAL = /<([^>]+)>/g;
   const SQUARE_BRACKET_RE_GLOBAL = /\[([^\]]+)]/g;
 
@@ -189,30 +204,65 @@ function createActionMethod(cli) {
       throw new TypeError('cli do not have action handler function');
     }
 
-    return async (parsedFlags) => {
-      const args = findAllBrackets(cli.usage);
+    const commandHandler = cli.fn || handler;
 
+    cli.name = removeBrackets(cli.usage);
+    cli.args = findAllBrackets(cli.usage);
+    cli.parts = cli.name.split(' ');
+    cli.usage = cli.usage.slice(cli.name.length).trim();
+
+    if (cli.name.length === 0) {
+      unnamedCommandsCount += 1;
+      cli.name = String(UNNAMED_COMMAND_PREFIX + unnamedCommandsCount);
+    }
+
+    commandAction.isYaroCommand = true;
+    commandAction.cli = cli;
+    commandHandler.isYaroCommand = true;
+    commandHandler.cli = cli;
+
+    return commandAction;
+
+    async function commandAction(parsedFlags, ...argz) {
       const argv = pipeline(
-        parser(),
-        aliases(cli.meta.aliases),
+        // run parser only if when we are given process.argv array
+        Array.isArray(parsedFlags) && parser(),
+        aliases(cli.meta.aliases), // aliases always first
         defaults(cli.meta.defaults, cli.meta.aliases),
         // todo: buggy, better use `required`? seems fixed.
-        coerce(cli.meta.coerces),
+        coerce(cli.meta.coerces), // casting should be before `required`
         required(cli.meta.required, cli.meta.aliases),
       )(parsedFlags);
 
-      const actionArgs = [];
-      for (const [index, arg] of args.entries()) {
-        if (arg.variadic) {
-          actionArgs.push(argv._.slice(index));
-        } else {
-          actionArgs.push(argv._[index]);
-        }
+      const { _: positionals, ...flags } = argv;
+
+      // if we are passed another arguments,
+      // then this is called manually by the user
+      // so it will be passed the needed/correct arguments
+      // otherwise it is called by a runner/cli
+      if (argz.length > 0) {
+        return commandHandler.call(null, flags, ...argz);
       }
 
-      const { _, ...flagsOptions } = argv;
+      const actionArgs = [];
+      for (const [index, arg] of cli.args.entries()) {
+        const value = arg.variadic
+          ? positionals.slice(index)
+          : positionals[index];
 
-      return handler.call(null, flagsOptions, ...actionArgs);
-    };
+        if (arg.required && !value) {
+          const cmdUsage = `${cli.name} ${cli.usage}`;
+          const err = new Error(
+            `missing required argument "${arg.name}" from "${cli.usage}" command`,
+          );
+          err.cmdUsage = cmdUsage;
+          throw err;
+        }
+
+        actionArgs.push(value);
+      }
+
+      return commandHandler.call(null, flags, ...actionArgs);
+    }
   };
 }

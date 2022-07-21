@@ -5,10 +5,14 @@ export function pipeline(...fns) {
     const last = fns[fns.length - 1];
     const lastIsConfig = last && typeof last === 'object';
     const cfg = lastIsConfig ? { ...last } : {};
-    let result = {};
     let flags = null;
 
-    const plugins = lastIsConfig ? fns.slice(0, -1) : fns;
+    const plgs = lastIsConfig ? fns.slice(0, -1) : fns;
+    const hasParser = plgs.find((x) => x.name === 'yaroParserPlugin');
+    const plugins = hasParser ? plgs : plgs.filter(Boolean);
+
+    // if we do not have parser, we assume we are already passed parsed argv
+    let result = hasParser ? {} : { _: [], ...argv };
 
     for (const [i, plugin] of plugins.entries()) {
       const ret = plugin(flags || argv, result, { config: cfg, argv, flags });
@@ -16,7 +20,7 @@ export function pipeline(...fns) {
       // first plugin is always the parser, it is passed argv array (process.argv),
       // and it returns the parsed arguments object (flags/options)
       // which will be passed to the next plugins
-      if (i === 0) {
+      if (i === 0 && hasParser) {
         flags = ret;
       }
 
@@ -156,11 +160,11 @@ export function required(config, _aliases) {
   };
 }
 
-export const plugins = [defaults, aliases, coerce, required];
+export const plugins = [aliases, defaults, coerce, required];
 export const plugin = {
-  defaults,
-  aliases,
   alias,
+  aliases,
+  defaults,
   coerce,
   required,
 };

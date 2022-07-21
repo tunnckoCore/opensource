@@ -2,8 +2,8 @@
 
 export const parse = yaro;
 export function yaro(argv /* , config = {} */) {
-  const REPLACER = '@@@@__REPLACE_VALUE__@@@@';
   const res = { _: [] };
+  const REPLACER = '@@@@__REPLACE_VALUE__@@@@';
 
   function set(name, value, replaceValue) {
     res[name] = res[name] || [];
@@ -106,5 +106,7 @@ export function yaro(argv /* , config = {} */) {
 }
 
 export function parser(config = {}) {
-  return (argv) => yaro(argv, config);
+  return function yaroParserPlugin(argv) {
+    return yaro(argv, config);
+  };
 }
