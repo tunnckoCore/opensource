@@ -90,7 +90,7 @@ async function yaroCreateCli(argv, config) {
 
 function getCommands(cfg) {
   return Object.entries({ ...cfg.commands })
-    .filter(([_, cmd]) => typeof cmd === 'function')
+    .filter(([_, cmd]) => cmd.isYaroCommand || typeof cmd === 'function')
     .map(([key, _cmd]) => {
       const cmd = _cmd;
       let kk = key;
@@ -103,7 +103,9 @@ function getCommands(cfg) {
         } else {
           kk = cmd.cli.name;
         }
-      } else if (cfg.yaroCommand) {
+      }
+
+      if (!cmd.isYaroCommand && typeof cmd === 'function' && cfg.yaroCommand) {
         // in case we get just a bare function, treat it like command
         return [kk, cfg.yaroCommand(cmd)];
       }
@@ -125,7 +127,7 @@ function findCommand(commands, parsedInfo) {
           break;
         }
 
-        const tmp = parsed._.slice(0, idx).join(' ');
+        const tmp = parsed._.slice(0, idx + 1).join(' ');
         matched = cmd.cli.aliases.find((x) => x === tmp) || '';
 
         if (matched) {
@@ -134,6 +136,7 @@ function findCommand(commands, parsedInfo) {
       }
 
       if (matched) {
+        // console.log('matching alias:', matched);
         parsed._ = parsed._.slice(matched.split(' ').length);
         return true;
       }

@@ -2,7 +2,8 @@ import { createCli, command } from '../src/index.js';
 
 // node ./examples/linter-cli.js --help
 
-const lint = command('[...files]', async (options, files) => {
+// todo: fix single command mode without command name passed in .command()
+const lint = command('lint [...files]', async (options, files) => {
   console.log('Linting files:', files);
   console.log('Options:', options);
 });

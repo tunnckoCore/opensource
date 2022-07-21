@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 
+/* eslint-disable unicorn/consistent-function-scoping */
 /* eslint-disable no-param-reassign */
 
 let unnamedCommandsCount = 0;
@@ -34,6 +35,10 @@ export default (yaroPlugins) => {
 
       settings = {};
     }
+    if (typeof settings === 'string') {
+      settings = { desc: settings };
+    }
+
     const cfg = { ...settings };
     const meta = {
       defaults: {},
@@ -179,7 +184,6 @@ export default (yaroPlugins) => {
 
     const res = [];
 
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const parseMatch = (match) => {
       let variadic = false;
       let value = match[1];
