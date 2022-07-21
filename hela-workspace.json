@@ -38,6 +38,7 @@
     "xaxa/xaxa",
     "yaro/yaro",
     "yaro/yaro-command",
+    "yaro/yaro-create-cli",
     "yaro/yaro-parser",
     "yaro/yaro-plugins"
   ],
@@ -70,6 +71,7 @@
     "xaxa",
     "yaro",
     "yaro-command",
+    "yaro-create-cli",
     "yaro-parser",
     "yaro-plugins"
   ],
@@ -194,6 +196,10 @@
           "resolved": "asia/asia-core",
           "dependents": [
             {
+              "name": "asia",
+              "resolved": "asia/asia"
+            },
+            {
               "name": "asia-cli",
               "resolved": "asia/asia-cli",
               "dependents": [
@@ -202,10 +208,6 @@
                   "resolved": "@hela/preset-tunnckocore"
                 }
               ]
-            },
-            {
-              "name": "asia",
-              "resolved": "asia/asia"
             }
           ]
         }
@@ -299,6 +301,10 @@
       "license": "MPL-2.0",
       "dependents": [
         {
+          "name": "asia",
+          "resolved": "asia/asia"
+        },
+        {
           "name": "asia-cli",
           "resolved": "asia/asia-cli",
           "dependents": [
@@ -307,10 +313,6 @@
               "resolved": "@hela/preset-tunnckocore"
             }
           ]
-        },
-        {
-          "name": "asia",
-          "resolved": "asia/asia"
         }
       ]
     },
@@ -430,6 +432,11 @@
     "yaro-command": {
       "name": "yaro-command",
       "resolved": "yaro/yaro-command",
+      "license": "MPL-2.0"
+    },
+    "yaro-create-cli": {
+      "name": "yaro-create-cli",
+      "resolved": "yaro/yaro-create-cli",
       "license": "MPL-2.0"
     },
     "yaro-parser": {
@@ -555,6 +562,10 @@
               ]
             }
           ]
+        },
+        {
+          "name": "yaro-command",
+          "resolved": "yaro/yaro-command"
         }
       ]
     }

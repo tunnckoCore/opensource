@@ -26,4 +26,6 @@ await yaroCreateCli(Deno.args, {
   name: 'deno-cli-app',
   version: '1.1.0',
   exit: Deno.exit,
+  yaroParse,
+  yaroCommand,
 });

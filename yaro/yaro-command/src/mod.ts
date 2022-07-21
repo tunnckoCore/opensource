@@ -2,7 +2,6 @@
 
 import {
   pipeline,
-  parser,
   defaults,
   aliases,
   coerce,
