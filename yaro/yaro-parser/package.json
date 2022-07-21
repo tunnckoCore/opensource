@@ -1,6 +1,6 @@
 {
   "name": "yaro-parser",
-  "version": "5.0.0-canary.1",
+  "version": "5.0.0-canary.2",
   "licenseStart": 2020,
   "license": "MPL-2.0",
   "description": "Fast and minimalist command line arguments/options parser, with focus on small footprint and parsing mainly flags not commands. 100 lines of code. Cross-platform. For more extended use try `yaro`, `yaro-plugins`, or `hela`.",

@@ -6,6 +6,7 @@
     "@hela/*",
     "modules/*",
     "xaxa/*",
+    "yaro/*",
     "asia/*"
   ],
   "type": "module",
