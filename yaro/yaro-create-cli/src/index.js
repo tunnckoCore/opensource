@@ -67,6 +67,7 @@ async function yaroCreateCli(argv, config) {
 
   if (match) {
     const [_, commandAction] = match;
+
     try {
       await commandAction(meta.argv);
     } catch (err) {
@@ -98,7 +99,7 @@ function getCommands(cfg) {
       if (cmd.isYaroCommand) {
         if (cmd.cli.name.startsWith(UNNAMED_COMMAND_PREFIX)) {
           cmd.cli.name = kk;
-          cmd.cli.args = [];
+          // cmd.cli.args = [];
           cmd.cli.parts = [''];
         } else {
           kk = cmd.cli.name;
@@ -116,7 +117,6 @@ function getCommands(cfg) {
 
 function findCommand(commands, parsedInfo) {
   const parsed = parsedInfo;
-
   return commands.find(([name, cmd]) => {
     if (cmd.isYaroCommand) {
       let matched = false;
@@ -194,12 +194,6 @@ function buildOutput(parsedInfo, meta) {
 }
 
 function listCommands(entries, cliName) {
-  // if (entries.length === 1) {
-  //   const usg = entries.length === 1 ? '' : ' <command>';
-  //   console.log('$ %s%s [options]', cliName, usg);
-  //   console.log('');
-  //   return;
-  // }
   console.log('$ %s <command> [options]', cliName);
   console.log('');
 
