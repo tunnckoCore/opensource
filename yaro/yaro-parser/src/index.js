@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MPL-2.0
 
 export const parse = yaro;
+export const yaroParse = yaro;
+
 export function yaro(argv /* , config = {} */) {
   const res = { _: [] };
   const REPLACER = '@@@@__REPLACE_VALUE__@@@@';
@@ -110,3 +112,4 @@ export function parser(config = {}) {
     return yaro(argv, config);
   };
 }
+export const yaroParser = parser;

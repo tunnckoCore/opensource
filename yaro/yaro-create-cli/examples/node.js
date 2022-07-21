@@ -1,6 +1,6 @@
 import process from 'node:process';
-import { yaro as yaroParse } from 'yaro-parser';
-import { command as yaroCommand } from 'yaro-command';
+import { yaroParse } from 'yaro-parser';
+import { yaroCommand } from 'yaro-command';
 
 import { yaroCreateCli } from '../src/index.js';
 import * as commands from './commands.js';

@@ -2,9 +2,8 @@
 // import { command as yaroCommand } from 'https://esm.sh/yaro-command/src/mod.ts';
 
 // replace with above when you create cli apps
-import { yaro as yaroParse } from 'yaro-parser';
-import { command as yaroCommand } from '../../yaro-command/src/mod.ts';
-
+import { yaroParse } from 'yaro-parser';
+import { yaroCommand } from '../../yaro-command/src/mod.ts';
 import { yaroCreateCli } from '../src/index.js';
 
 const lint = command('gaga [...files]', async (options, files) => {

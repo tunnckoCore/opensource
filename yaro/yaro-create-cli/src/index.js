@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MPL-2.0
 
-export { yaroCreateCli };
-export default yaroCreateCli;
-
 const UNNAMED_COMMAND_PREFIX = '___UNNAMED_COMMAND-';
+
+export { yaroCreateCli, UNNAMED_COMMAND_PREFIX };
+export default yaroCreateCli;
 
 async function yaroCreateCli(argv, config) {
   const cfg = Array.isArray(argv) ? { argv, ...config } : { argv: [], ...argv };
@@ -19,7 +19,12 @@ async function yaroCreateCli(argv, config) {
   cfg.buildOutput = cfg.buildOutput ?? buildOutput;
 
   const parse = cfg.yaroParse || (cfg.yaro && cfg.yaro.parse) || cfg.yaro;
-  const parsedInfo = cfg.parsedInfo || cfg.parsedInfo || parse(cfg.argv);
+
+  if (typeof parse !== 'function') {
+    throw new TypeError('requires parser: `cfg.yaroParse` or `cfg.yaro`');
+  }
+
+  const parsedInfo = parse(cfg.argv);
   const commands = getCommands(cfg);
   let usg = '';
 

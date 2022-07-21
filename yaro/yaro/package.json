@@ -3,7 +3,7 @@
   "version": "5.0.0-canary.1",
   "licenseStart": 2020,
   "license": "MPL-2.0",
-  "description": "Fast, minimalist, pluggable and functional command line parsing. Create CLIs easily. A wrapper package exporting everything from `yaro-plugins` and `yaro-parser` packages.",
+  "description": "Fast, minimalist, pluggable and functional command line parsing. Create CLIs easily. A wrapper package exporting everything from several Yaro packages.",
   "author": "Charlike Mike Reagent <opensource@tunnckocore.com>",
   "homepage": "https://github.com/tunnckoCore/opensource/tree/master/yaro/yaro",
   "funding": [
@@ -30,6 +30,8 @@
   },
   "scripts": {},
   "dependencies": {
+    "yaro-command": "*",
+    "yaro-create-cli": "*",
     "yaro-parser": "*",
     "yaro-plugins": "*"
   },

@@ -3065,18 +3065,6 @@ yargs@^16.2.0:
     y18n "^5.0.5"
     yargs-parser "^20.2.2"
 
-yaro-command@*:
-  version "5.0.0-canary.1"
-  dependencies:
-    yaro-parser "*"
-    yaro-plugins "*"
-
-yaro-parser@*:
-  version "5.0.0-canary.1"
-
-yaro-plugins@*:
-  version "5.0.0-canary.1"
-
 yaro@*:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/yaro/-/yaro-4.0.0.tgz#22b3da681dfd96927bda6ef2a382dd8056a0884d"

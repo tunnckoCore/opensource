@@ -1,5 +1,5 @@
 import process from 'node:process';
-import { yaro as yaroParse } from 'yaro-parser';
+import { yaroParse } from 'yaro-parser';
 
 import { yaroCreateCli } from '../src/index.js';
 

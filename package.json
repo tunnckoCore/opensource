@@ -4,7 +4,6 @@
   "workspaces": [
     "@tunnckocore/*",
     "@hela/*",
-    "yaro/*",
     "modules/*",
     "xaxa/*",
     "asia/*"
