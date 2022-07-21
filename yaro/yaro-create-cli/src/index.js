@@ -50,9 +50,10 @@ async function yaroCreateCli(argv, config) {
     return;
   }
 
-  let match = findCommand(commands, parsedInfo);
+  // eslint-disable-next-line prefer-const
+  let { rootCommand, cmds, match } = findCommand(commands, parsedInfo);
 
-  if (!match && commands.length === 1) {
+  if (!match && commands.length === 1 && !rootCommand) {
     match = commands[0];
   }
 
@@ -60,16 +61,30 @@ async function yaroCreateCli(argv, config) {
     notFound: parsedInfo._.length > 0,
     argv: { ...parsedInfo },
     config: cfg,
-    commands: Object.fromEntries(commands),
-    entries: commands,
+    commands: Object.fromEntries(cmds),
+    entries: cmds,
     match,
   };
 
+  if (parsedInfo.help) {
+    cfg.buildOutput({ ...parsedInfo }, { ...meta, exitCode: 0 });
+    cfg.exit(0);
+    return;
+  }
+
   if (match) {
-    const [_, commandAction] = match;
+    const [_, matchedCommand] = match;
 
     try {
-      await commandAction(meta.argv);
+      let manualCall = false;
+
+      if (rootCommand) {
+        manualCall = await rootCommand(meta.argv, { ...meta, matchedCommand });
+      }
+
+      await (typeof manualCall === 'function'
+        ? manualCall(meta.argv)
+        : matchedCommand(meta.argv));
     } catch (err) {
       const exitCode = err.code && typeof err.code === 'number' ? err.code : 1;
       cfg.buildOutput(meta.argv, {
@@ -117,7 +132,10 @@ function getCommands(cfg) {
 
 function findCommand(commands, parsedInfo) {
   const parsed = parsedInfo;
-  return commands.find(([name, cmd]) => {
+  const [___, rootCommand] = commands.find(([x]) => x === '_');
+
+  const cmds = commands.filter(([x]) => x !== '_');
+  const match = cmds.find(([name, cmd]) => {
     if (cmd.isYaroCommand) {
       let matched = false;
 
@@ -152,6 +170,8 @@ function findCommand(commands, parsedInfo) {
     }
     return false;
   });
+
+  return { rootCommand, match, cmds };
 }
 
 function buildOutput(parsedInfo, meta) {
@@ -200,13 +220,13 @@ function listCommands(entries, cliName) {
   if (entries.length > 0) {
     console.log('Available commands:');
     for (const [keyName, cmd] of entries) {
-      const name = cmd.cli.name.startsWith(UNNAMED_COMMAND_PREFIX)
+      const name = cmd.cli?.name?.startsWith(UNNAMED_COMMAND_PREFIX)
         ? keyName
-        : cmd.cli.name;
-      const ali = cmd.cli.aliases.length > 0 ? cmd.cli.aliases : [];
+        : cmd.cli?.name ?? keyName;
+      const ali = cmd.cli?.aliases?.length > 0 ? cmd?.cli?.aliases : [];
       const hints = ali.length > 0 ? `(aliases: ${ali.join(', ').trim()})` : '';
 
-      console.log('-', name, cmd.cli.usage, hints);
+      console.log('-', name, cmd.cli?.usage ?? '', hints);
     }
     console.log('');
   }
