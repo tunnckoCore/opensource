@@ -1,5 +1,6 @@
 import process from 'node:process';
 import { yaroParse } from 'yaro-parser';
+import { yaroCommand } from 'yaro-command';
 
 import { yaroCreateCli } from '../src/index.js';
 
@@ -13,4 +14,5 @@ await yaroCreateCli(process.argv.slice(2), {
   version: '1.1.0',
   exit: process.exit,
   yaroParse,
+  yaroCommand,
 });

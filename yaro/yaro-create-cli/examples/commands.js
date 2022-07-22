@@ -19,7 +19,7 @@ export const affected = command(
     // normalize: true,
   })
   .action(async (options, names) => {
-    console.log('affected command', options, names);
+    console.log('affected command', { options, names });
   });
 
 export const ensCreate = command(
@@ -37,12 +37,12 @@ export const ensCreate = command(
     await affected(options, names);
   });
 
-export const ens = command('ens <command>', async (options, cmd, ...args) => {
-  await ensCreate(options, ...args);
-});
+// export const ens = command('ens <command>', async (options, cmd, ...args) => {
+//   await ensCreate(options, ...args);
+// });
 
 export const lint = command('gaga [...files]', async (options, files) => {
-  console.log('formatting and linting files', files);
+  console.log('gaga: formatting and linting files', { options, files });
 });
 
 export const xaxa = command((options) => {

@@ -1,5 +1,9 @@
 // SPDX-License-Identifier: MPL-2.0
 
+/* eslint-disable no-param-reassign */
+
+import { buildOutput } from './utils.js';
+
 const UNNAMED_COMMAND_PREFIX = '___UNNAMED_COMMAND-';
 
 export { yaroCreateCli, UNNAMED_COMMAND_PREFIX };
@@ -25,87 +29,91 @@ async function yaroCreateCli(argv, config) {
   }
 
   const parsedInfo = parse(cfg.argv);
-  const commands = getCommands(cfg);
-  let usg = '';
-
-  if (commands.length === 1) {
-    const [_, cmd] = commands[0];
-    if (cmd.cli) {
-      const { usage, name } = cmd.cli;
-      usg = usage.length > 0 ? `${name} ${usage}` : name;
-    }
-
-    cfg.name = cfg.name ?? usg ?? _;
-  }
-
-  if (parsedInfo.help && commands.length === 1) {
-    console.log('$ %s [options]', cfg.name);
-    cfg.exit(0);
-    return;
-  }
+  const { rootCommand, entries } = getCommands(cfg);
+  const cliInfo = getCliInfo(rootCommand, entries, cfg);
 
   if (parsedInfo.version) {
-    console.log(cfg.version ?? '0.0.0');
+    console.log(cliInfo.version);
     cfg.exit(0);
     return;
-  }
-
-  // eslint-disable-next-line prefer-const
-  let { rootCommand, cmds, match } = findCommand(commands, parsedInfo);
-
-  if (!match && commands.length === 1 && !rootCommand) {
-    match = commands[0];
   }
 
   const meta = {
-    notFound: parsedInfo._.length > 0,
-    argv: { ...parsedInfo },
     config: cfg,
-    commands: Object.fromEntries(cmds),
-    entries: cmds,
-    match,
+    cliInfo: { ...cliInfo },
+    argv: { ...parsedInfo },
+    rootCommand,
+    commands: Object.fromEntries(entries),
+    entries,
   };
 
   if (parsedInfo.help) {
-    cfg.buildOutput({ ...parsedInfo }, { ...meta, exitCode: 0 });
-    cfg.exit(0);
+    await cfg.buildOutput(meta.argv, meta, { isHelp: true });
     return;
   }
 
-  if (match) {
-    const [_, matchedCommand] = match;
+  if (rootCommand && meta.entries.length === 0) {
+    await tryCatch('ERR_ROOT_COMMAND_FAILED', meta, rootCommand);
+    return;
+  }
 
-    try {
-      let manualCall = false;
+  const matchedCommand = findMatchCommand(meta.entries, meta);
+  if (!matchedCommand) {
+    const noCommandSpecified = meta.argv._.length === 0;
+    const commandNotFound = noCommandSpecified === false;
 
-      if (rootCommand) {
-        manualCall = await rootCommand(meta.argv, { ...meta, matchedCommand });
-      }
+    await cfg.buildOutput(meta.argv, meta, {
+      noCommandSpecified,
+      commandNotFound,
+      exitCode: 1,
+    });
+    return;
+  }
 
-      await (typeof manualCall === 'function'
-        ? manualCall(meta.argv)
-        : matchedCommand(meta.argv));
-    } catch (err) {
-      const exitCode = err.code && typeof err.code === 'number' ? err.code : 1;
-      cfg.buildOutput(meta.argv, {
-        ...meta,
-        exitCode,
-        code: 'ERR_COMMAND_FAILED',
-        error: err,
-      });
+  if (rootCommand) {
+    const rootReturn = await tryCatch('ERR_ROOT_FAILURE', meta, rootCommand);
+    if (typeof rootReturn === 'function') {
+      const handler = () => rootReturn({ ...meta, matchedCommand });
+      meta.matchedCommand = matchedCommand;
+      await tryCatch('ERR_MATCHED_COMMAND_FAILURE', meta, handler);
       return;
     }
 
+    const code = 'ERR_UNKNOWN_STATE';
+    console.error(
+      '%s: expects `rootCommand` to return a function which calls `{ matchedCommand }` which is passed as argument',
+      code,
+    );
+    await cfg.buildOutput(meta.argv, meta, { isHelp: true, exitCode: 1 });
     return;
   }
 
-  const exitCode = meta.notFound ? 1 : 0;
-  const code = meta.notFound ? 'ERR_COMMAND_NOT_FOUND' : 'ERR_NO_ARGUMENTS';
-  cfg.buildOutput({ ...parsedInfo }, { ...meta, exitCode, code });
+  await tryCatch('ERR_COMMAND_FAILED', meta, matchedCommand);
 }
 
 function getCommands(cfg) {
-  return Object.entries({ ...cfg.commands })
+  const cmds = { ...cfg.commands };
+  let commands = Object.entries(cmds);
+  let rootCmd = null;
+
+  if (typeof cfg.rootCommand === 'function') {
+    rootCmd = cfg.rootCommand;
+  }
+
+  if (!rootCmd) {
+    const allDef = Object.keys(cmds).length;
+    rootCmd = allDef === 1 ? (commands[0] ? commands[0][1] : null) : null;
+    commands = allDef === 1 ? [] : commands;
+  }
+
+  const rootCommand = typeof rootCmd === 'function' ? rootCmd : null;
+
+  if (rootCommand && rootCommand.cli) {
+    const { name: n } = rootCommand.cli;
+    rootCommand.cli.name = n.startsWith(UNNAMED_COMMAND_PREFIX) ? '_' : n;
+  }
+
+  const entries = commands
     .filter(([_, cmd]) => cmd.isYaroCommand || typeof cmd === 'function')
     .map(([key, _cmd]) => {
       const cmd = _cmd;
@@ -114,7 +122,6 @@ function getCommands(cfg) {
       if (cmd.isYaroCommand) {
         if (cmd.cli.name.startsWith(UNNAMED_COMMAND_PREFIX)) {
           cmd.cli.name = kk;
-          // cmd.cli.args = [];
           cmd.cli.parts = [''];
         } else {
           kk = cmd.cli.name;
@@ -128,41 +135,86 @@ function getCommands(cfg) {
 
       return [kk, cmd];
     });
+
+  return { rootCommand, entries };
 }
 
-function findCommand(commands, parsedInfo) {
-  const parsed = parsedInfo;
-  const [___, rootCommand] = commands.find(([x]) => x === '_');
+function getCliInfo(rootCommand, commands, cfg) {
+  const version = cfg.version || '0.0.0';
 
-  const cmds = commands.filter(([x]) => x !== '_');
-  const match = cmds.find(([name, cmd]) => {
+  if (rootCommand && rootCommand.cli) {
+    const { name, usage } = rootCommand.cli;
+    const n = name === '_' ? cfg.name ?? 'cli' : name;
+
+    return { name: n, usage, helpLine: `${n} ${usage}`.trim(), version };
+  }
+
+  const name = cfg.name || 'cli';
+  const usage = commands.length > 0 ? '<command>' : '';
+  return { name, usage, helpLine: `${name} ${usage}`.trim(), version };
+}
+
+async function tryCatch(code, meta, fn) {
+  let result = null;
+  try {
+    result = await fn(meta.argv);
+  } catch (err) {
+    const exitCode = err.code && typeof err.code === 'number' ? err.code : 1;
+    err.code = code;
+    err.meta = meta;
+    err.exitCode = exitCode;
+
+    if (meta.entries.length === 0) {
+      meta.config.buildOutput(meta.argv, meta, { error: err, exitCode, code });
+      return null;
+    }
+    if (fn.isYaroCommand) {
+      const nnn = fn.cli.name;
+      const uuu = fn.cli.usage;
+      meta.cliInfo.name = nnn;
+      meta.cliInfo.usage = uuu;
+
+      meta.cliInfo.helpLine = `${
+        meta.config.name || 'cli'
+      } ${nnn} ${uuu}`.trim();
+
+      meta.config.buildOutput(meta.argv, meta, { error: err, exitCode, code });
+      return null;
+    }
+
+    meta.config.buildOutput(meta.argv, meta, { error: err, exitCode, code });
+    return null;
+  }
+
+  return result;
+}
+
+function findMatchCommand(entries, meta) {
+  const match = entries.find(([name, cmd]) => {
     if (cmd.isYaroCommand) {
       let matched = false;
 
-      for (const [idx, arg] of parsed._.entries()) {
+      for (const [idx, arg] of meta.argv._.entries()) {
         if (cmd.cli.aliases.includes(arg)) {
           matched = arg;
           break;
         }
 
-        const tmp = parsed._.slice(0, idx + 1).join(' ');
+        const tmp = meta.argv._.slice(0, idx + 1).join(' ');
         matched = cmd.cli.aliases.find((x) => x === tmp) || '';
-
         if (matched) {
           break;
         }
       }
 
       if (matched) {
-        // console.log('matching alias:', matched);
-        parsed._ = parsed._.slice(matched.split(' ').length);
+        meta.argv._ = meta.argv._.slice(matched.split(' ').length);
         return true;
       }
 
-      const cmdName = parsed._.slice(0, cmd.cli.parts.length).join(' ');
-
+      const cmdName = meta.argv._.slice(0, cmd.cli.parts.length).join(' ');
       if (name === cmdName) {
-        parsed._ = parsed._.slice(cmd.cli.parts.length);
+        meta.argv._ = meta.argv._.slice(cmd.cli.parts.length);
         return true;
       }
 
@@ -171,63 +223,5 @@ function findCommand(commands, parsedInfo) {
     return false;
   });
 
-  return { rootCommand, match, cmds };
-}
-
-function buildOutput(parsedInfo, meta) {
-  // const { exitCode, code, error, notFound, config, entries } = meta;
-
-  const cliName = meta.config.name ?? 'cli';
-
-  if (meta.error) {
-    console.error('[%s] %s: %s', cliName, meta.code, meta.error.message);
-
-    console.error('\n$ %s %s [options]\n', cliName, meta.error.cmdUsage);
-
-    console.error('exit code:', meta.exitCode);
-    meta.config.exit(1);
-    return;
-  }
-
-  // if here, the cli isn't passed any arguments,
-  // so it's not exactly an error and can output help
-  if (!meta.notFound) {
-    listCommands(meta.entries, cliName);
-
-    console.log('exit code:', meta.exitCode);
-    meta.config.exit(0);
-    return;
-  }
-
-  console.log(
-    '[%s] %s: %s',
-    cliName,
-    meta.code,
-    meta.notFound ? parsedInfo._.join(' ') : undefined,
-  );
-  console.log('');
-
-  listCommands(meta.entries, cliName);
-
-  console.error('exit code:', meta.exitCode);
-  meta.config.exit(meta.exitCode);
-}
-
-function listCommands(entries, cliName) {
-  console.log('$ %s <command> [options]', cliName);
-  console.log('');
-
-  if (entries.length > 0) {
-    console.log('Available commands:');
-    for (const [keyName, cmd] of entries) {
-      const name = cmd.cli?.name?.startsWith(UNNAMED_COMMAND_PREFIX)
-        ? keyName
-        : cmd.cli?.name ?? keyName;
-      const ali = cmd.cli?.aliases?.length > 0 ? cmd?.cli?.aliases : [];
-      const hints = ali.length > 0 ? `(aliases: ${ali.join(', ').trim()})` : '';
-
-      console.log('-', name, cmd.cli?.usage ?? '', hints);
-    }
-    console.log('');
-  }
+  return match && match[1];
 }

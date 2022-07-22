@@ -221,9 +221,9 @@ acorn-jsx@^5.3.2:
   integrity sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==
 
 acorn@^8.7.1:
-  version "8.7.1"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.1.tgz#0197122c843d1bf6d0a5e83220a788f278f63c30"
-  integrity sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==
+  version "8.8.0"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.0.tgz#88c0187620435c7f6015803f5539dae05a9dbea8"
+  integrity sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==
 
 aggregate-error@^3.0.0:
   version "3.1.0"
@@ -1348,9 +1348,9 @@ global-dirs@^3.0.0:
     ini "2.0.0"
 
 globals@^13.15.0:
-  version "13.16.0"
-  resolved "https://registry.yarnpkg.com/globals/-/globals-13.16.0.tgz#9be4aca28f311aaeb974ea54978ebbb5e35ce46a"
-  integrity sha512-A1lrQfpNF+McdPOnnFqY3kSN0AFTy485bTi1bkLk4mVPODIUEcSfhHgRqA+QdXPksrSTTztYXx37NFV+GpGk3Q==
+  version "13.17.0"
+  resolved "https://registry.yarnpkg.com/globals/-/globals-13.17.0.tgz#902eb1e680a41da93945adbdcb5a9f361ba69bd4"
+  integrity sha512-1C+6nQRb1GwGMKm2dH/E7enFAMxGTmGI7/dEdhy/DNelv85w9B72t3uc5frtMNXIbzrarJJ/lTCjcaZwbLJmyw==
   dependencies:
     type-fest "^0.20.2"
 
@@ -2952,19 +2952,19 @@ yargs@^16.2.0:
     yargs-parser "^20.2.2"
 
 yaro-command@*:
-  version "5.0.0-canary.2"
+  version "5.0.0-canary.3"
   dependencies:
     yaro-parser "*"
     yaro-plugins "*"
 
 yaro-create-cli@*:
-  version "5.0.0-canary.2"
+  version "5.0.0-canary.3"
 
 yaro-parser@*:
-  version "5.0.0-canary.2"
+  version "5.0.0-canary.3"
 
 yaro-plugins@*:
-  version "5.0.0-canary.2"
+  version "5.0.0-canary.3"
 
 yaro@*:
   version "4.0.0"

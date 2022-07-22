@@ -267,9 +267,11 @@ export default (yaroPlugins) => {
             : positionals[index];
 
           if (arg.required && !value) {
-            const cmdUsage = `${cli.name} ${cli.usage}`;
+            const cmdUsage = `${cli.name !== '_' ? cli.name : ''} ${
+              cli.usage
+            }`.trim();
             const err = new Error(
-              `missing required argument "${arg.name}" from "${cli.usage}" command`,
+              `missing required argument "${arg.name}" from "${cmdUsage}" command`,
             );
             err.cmdUsage = cmdUsage;
             throw err;
