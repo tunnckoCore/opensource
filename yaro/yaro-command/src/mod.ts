@@ -7,8 +7,8 @@ import {
   coerce,
   required,
   isRequired,
-} from 'https://esm.sh/yaro-plugins/src/index.js';
-import { yaroParser } from 'https://esm.sh/yaro-parser/src/index.js';
+} from 'https://esm.sh/yaro-plugins@canary?pin=v87';
+import { yaroParser } from 'https://esm.sh/yaro-parser?pin=v87';
 import createMain from './core.js';
 
 const { UNNAMED_COMMAND_PREFIX, command } = createMain({

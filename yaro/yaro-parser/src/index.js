@@ -112,4 +112,5 @@ export function parser(config = {}) {
     return yaro(argv, config);
   };
 }
+
 export const yaroParser = parser;
