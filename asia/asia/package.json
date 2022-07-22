@@ -1,6 +1,6 @@
 {
   "name": "asia",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "licenseStart": 2017,
   "license": "MPL-2.0",
   "description": "Modern, fast, and innovative test runner with parallelism, concurrency, caching and incremental testing. Since 2017.",
