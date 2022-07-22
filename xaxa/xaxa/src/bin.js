@@ -39,13 +39,3 @@ await createCli({
   version: pkg.version,
   name: pkg.name,
 });
-// you can pass a program (hela) instance as second argument,
-// otherwise it automatically creates a program in single command mode
-// const prog = await command({
-//   helpByDefault: false, // we want to run with the default globs patterns
-//   allowUnknownOptions: true,
-//   cliVersion: pkg.version,
-// });
-
-// // await not needed, but for safety
-// await prog.parse();
