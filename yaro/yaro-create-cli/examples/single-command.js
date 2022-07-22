@@ -36,7 +36,7 @@ await yaroCreateCli(process.argv.slice(2), {
   //     console.log('some root!');
   //     // return false;
   //   }),
-  // name: 'single-command',
+  name: 'single-command',
   version: '0.1.0',
   exit: process.exit,
   yaroParse,
