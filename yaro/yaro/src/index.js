@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MPL-2.0
 
 import proc from 'node:process';
-import { yaroCreateCli as cli } from 'yaro-create-cli';
+import { yaroCreateCli as yaroCreate } from 'yaro-create-cli';
 import { yaroParse } from 'yaro-parser';
 import { yaroCommand } from 'yaro-command';
 // import yaroBuildOutput from 'yaro-build-output'
@@ -9,9 +9,15 @@ import { yaroCommand } from 'yaro-command';
 export * from 'yaro-parser';
 export * from 'yaro-plugins';
 export * from 'yaro-command';
+export * from 'yaro-create-cli';
 
 export async function createCli(config) {
-  return cli(proc.argv.slice(2), {
+  if (Array.isArray(config)) {
+    throw new TypeError(
+      'yaro: You are trying to use `createCli` which accepts a `config` object. The `yaroCreateCli` accepts an array as the first argument.',
+    );
+  }
+  return yaroCreate(proc.argv.slice(2), {
     ...config,
     exit: proc.exit,
     yaroParse,
@@ -19,5 +25,3 @@ export async function createCli(config) {
     // buildOutput: yaroBuildOutput,
   });
 }
-
-export { yaroCreateCli } from 'yaro-create-cli';

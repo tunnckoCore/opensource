@@ -30,7 +30,7 @@ export function buildOutput(flags, meta, info) {
 
   if (err && has && !err.cmdUsage) {
     const isRootFailed = /ROOT_COMMAND_FAILED/.test(err.code);
-    const cmdErr = err.meta.matchedCommand.cli;
+    const cmdErr = err.meta.matchedCommand?.cli || meta.cliInfo;
 
     cmdErr.usage = cmdErr.usage.trim();
     cmdErr.name = cmdErr.name === '_' ? '' : cmdErr.name;
@@ -128,7 +128,12 @@ export function getAvailableCommands(meta) {
   const res = [];
 
   for (const [key, cmd] of meta.entries) {
-    const cliName = meta.rootCommand?.cli?.name || meta.config.name || 'cli';
+    let rootName = meta.rootCommand?.cli?.name || '';
+
+    if (rootName === '_') {
+      rootName = meta.config.name || 'cli';
+    }
+    const cliName = rootName || meta.config.name || 'cli';
 
     const cmdName = `${cliName} ${key}`.trim();
     res.push(`- ${cmdName} ${cmd.cli.usage}`.trim());

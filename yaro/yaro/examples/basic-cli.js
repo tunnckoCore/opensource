@@ -1,3 +1,4 @@
+import ipFilter from 'ip-filter';
 import { createCli } from '../src/index.js';
 
 // node ./examples/basic-cli.js --help
@@ -8,6 +9,8 @@ await createCli({
   commands: {
     _: (options) => {
       console.log('hello! options:', options);
+      // testing with external error
+      ipFilter('sasasasa');
     },
   },
 });

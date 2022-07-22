@@ -1,27 +1,19 @@
-import process from 'node:process';
-import { yaroCreateCli, yaroParse, yaroCommand as command } from 'yaro';
+import { createCli, command, rootWithMultipleCommands } from 'yaro';
 import * as exampleCommands from 'yaro-create-cli/examples/commands.js';
 
 const hela = command('', 'Software development and management.')
   .option('--cwd', 'Current working directory')
   .option('-c, --config', 'Path to config file', 'hela.config.js')
-  .action((globalOptions, { matchedCommand }) => {
-    // this root command can stay empty;
-    // or to merge global and command options, cuz theyare not propagated by default;
-    // or if you want to know what command is matched and called;
-    console.log('hela root command:', globalOptions);
+  .option('--foo', 'Some random flag here', true)
+  .action(rootWithMultipleCommands);
 
-    // global options always override command options
-    return async (opts) => matchedCommand({ ...opts, ...globalOptions });
-  });
+const one = command('one <a> [b]', 'Some command here').action((options) => {
+  console.log('command: one!!', options);
+});
 
-// console.log(hela);
-
-await yaroCreateCli(process.argv.slice(2), {
-  commands: { _: hela, ...exampleCommands },
+await createCli({
+  commands: { ...exampleCommands, one },
+  rootCommand: hela,
   name: 'hela',
   version: '6.0.0',
-  exit: process.exit,
-  yaroParse,
-  yaroCommand: command,
 });

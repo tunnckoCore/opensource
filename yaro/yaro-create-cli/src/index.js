@@ -6,6 +6,25 @@ import { buildOutput } from './utils.js';
 
 const UNNAMED_COMMAND_PREFIX = '___UNNAMED_COMMAND-';
 
+/**
+ * Utility function to be used when you want a cli app
+ * that includes both `config.rootCommand` and and have multiple in `config.commands`
+ */
+export function rootWithMultipleCommands(globalOptions) {
+  // Note: 1)
+  // this root command can stay empty;
+  // or to merge global and command options, cuz they are not propagated by default;
+  // or if you want to know what command is matched and called;
+  // console.log('hela root command:', globalOptions);
+
+  // Note: 2)
+  // the reason we should do this, in case we have both `rootCommand` and `commands` defined,
+  // is because we do not have access to the correct parsed `argv`, it's not full,
+  // and we cannot do it internally either.
+  return async ({ argv, matchedCommand }) =>
+    matchedCommand({ ...globalOptions, ...argv });
+}
+
 export { yaroCreateCli, UNNAMED_COMMAND_PREFIX };
 export default yaroCreateCli;
 

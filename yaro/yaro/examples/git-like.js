@@ -3,7 +3,7 @@ import { createCli, command } from '../src/index.js';
 // node ./examples/git-like.js --help
 
 const commit = command('commit [...msg]', async (options, msg) => {
-  console.log('git commit -sS', JSON.stringify(msg.join(' ')));
+  console.log('git commit -sS', JSON.stringify(msg.flat().join(' ')));
 });
 
 const add = command('add [...files]', 'git add files')
@@ -19,15 +19,19 @@ const remoteAdd = command('remote add [foo] [bar]')
     console.log('adding remote %s -> %s', foo, bar);
   });
 
-// git remote rm
-// git remote del
-// git remote remove
-// git rerm
-const remoteDelete = command('remote rm [name]')
+// git remote rm foo
+// git remote del foo
+// git remote remove foo
+// git rerm foo
+const remoteDelete = command('remote rm <name>')
   .alias('remote del', 'remote remove', 'rerm')
   .option('--dry-run', 'Call without running', false)
   .action(async (options, name) => {
-    console.log('git remote rm', name ?? '');
+    console.log('git remote rm', name);
+
+    if (!options.foo) {
+      throw new Error('some fake random error');
+    }
   });
 
 await createCli({
