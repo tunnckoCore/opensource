@@ -10,6 +10,10 @@ const xaxa = yaroCommand('qux <foo> [...bars]', 'sasass sasa').action(
   },
 );
 
+const failingCommand = yaroCommand('hoho [ha]', 'some failing cmd', () => {
+  throw new Error("some failure in matching command's action");
+});
+
 const bar = yaroCommand('<abc> [...qux]', 'sasass sasa').action(
   (options, abc, qux) => {
     console.log('bar linting', { options, abc, qux });
@@ -25,7 +29,7 @@ const simple = yaroCommand((options) => {
 });
 
 await yaroCreateCli(process.argv.slice(2), {
-  commands: { xaxa, bar, sasa, simple },
+  commands: { xaxa, bar, sasa, simple, failingCommand },
   // rootCommand: yaroCommand('hela', 'Software dev & management')
   //   .option('--cwd', 'Current working directory', process.cwd())
   //   .option('-c, --config', 'Path to configuration file', 'hela.config.js')

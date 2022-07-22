@@ -1,12 +1,15 @@
 import process from 'node:process';
 import { yaroParse } from 'yaro-parser';
 import { yaroCommand } from 'yaro-command';
+// import ipFilter from 'ip-filter';
 
-import { yaroCreateCli } from '../index.js';
+import { yaroCreateCli } from '../src/index.js';
 
 const xaxa = yaroCommand('qux <foo> [...bars]', 'sasass sasa').action(
   (options, foo, bars) => {
     console.log('xaxa linting', { options, foo, bars });
+    // trying external error
+    // ipFilter('sasasasa');
   },
 );
 

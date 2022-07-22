@@ -1,6 +1,6 @@
 {
   "name": "yaro-create-cli",
-  "version": "5.0.0-canary.3",
+  "version": "5.0.0-canary.4",
   "licenseStart": 2020,
   "license": "MPL-2.0",
   "description": "Easy way to create command line apps (CLIs) built on Yaro.",

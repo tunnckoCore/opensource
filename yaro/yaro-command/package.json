@@ -1,6 +1,6 @@
 {
   "name": "yaro-command",
-  "version": "5.0.0-canary.3",
+  "version": "5.0.0-canary.4",
   "licenseStart": 2020,
   "license": "MPL-2.0",
   "description": "A declarative API for single command mode CLI applications.",

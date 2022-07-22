@@ -53,6 +53,8 @@ async function yaroCreateCli(argv, config) {
   }
 
   if (rootCommand && meta.entries.length === 0) {
+    meta.matchedCommand = rootCommand;
+    meta.singleMode = true;
     await tryCatch('ERR_ROOT_COMMAND_FAILED', meta, rootCommand);
     return;
   }

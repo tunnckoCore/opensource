@@ -26,29 +26,63 @@ export function buildOutput(flags, meta, info) {
   }
 
   const err = info.error;
-  if (err && err.code === 'ERR_MATCHED_COMMAND_FAILURE' && !err.cmdUsage) {
+  const has = /MATCHED_COMMAND_FAIL|ROOT_COMMAND_FAIL/.test(err?.code || '');
+
+  if (err && has && !err.cmdUsage) {
+    const isRootFailed = /ROOT_COMMAND_FAILED/.test(err.code);
     const cmdErr = err.meta.matchedCommand.cli;
-    // const cmdline = `${cmdErr.name} ${cmdErr.usage}`.trim();
-    const failed = `${meta.cliInfo.name} ${cmdErr.name}`;
+
+    cmdErr.usage = cmdErr.usage.trim();
+    cmdErr.name = cmdErr.name === '_' ? '' : cmdErr.name;
+
+    let fLine = isRootFailed
+      ? meta.config.name || meta.cliInfo.name
+      : `${meta.cliInfo.name} ${cmdErr.name}`;
+
+    fLine = meta.singleMode ? meta.config.name || fLine.trim() || 'cli' : fLine;
+
     console.error(
       '%s: command "%s" failed with "%s"',
       err.code,
-      failed,
+      fLine.trim(),
       err.toString(),
     );
-    console.error('\n$ %s --verbose\n', `${failed} ${cmdErr.usage}`.trim());
 
     if (meta.argv.verbose) {
+      console.error('');
       console.error(err.stack);
     }
+
+    console.error('\n$ %s --verbose', fLine.trim());
+    console.error('');
+
     meta.config.exit(1);
     return;
   }
 
-  if (info.error) {
-    console.error('%s:', info.code, info.error.message);
-    udpateHelpLine(meta, info.error);
-    console.error('\n$ %s [options]\n', meta.cliInfo.helpLine);
+  if (err) {
+    const helpLine =
+      meta.cliInfo.helpLine === meta.cliInfo.name
+        ? `${meta.cliInfo.name} ${meta.matchedCommand?.cli?.name || ''}`
+        : meta.cliInfo.helpLine.replace(meta.cliInfo.usage, '');
+
+    // console.log('meta.cliInfo', meta.cliInfo, failed ? 'sasa' : 12);
+    const failingArgs =
+      (err.code === 'ERR_COMMAND_FAILED' && err.cmdUsage) || meta.rootCommand;
+
+    if (failingArgs) {
+      console.error('%s:', info.code, err.message);
+      // console.log('ZZZZZZZZZZZZZZZ', meta, failed);
+    } else {
+      console.error(
+        '%s: command "%s" failed with "%s"',
+        info.code,
+        meta.cliInfo.name,
+        err.message,
+      );
+    }
+    udpateHelpLine(meta, err);
+    console.error('\n$ %s --verbose\n', helpLine.trim());
     meta.config.exit(info.exitCode);
     return;
   }
@@ -65,10 +99,19 @@ export function buildOutput(flags, meta, info) {
 }
 
 function udpateHelpLine(meta, error) {
-  if (error && !meta.errorInReturned) {
+  if (error) {
     const nnn = error.meta.cliInfo.name;
-    const line = error.meta.cliInfo.helpLine.replace(nnn, error.cmdUsage);
-    meta.cliInfo.helpLine = `${nnn} ${line}`.trim();
+    const hhh = error.meta.cliInfo.helpLine;
+
+    let line = hhh === nnn ? hhh.replace(nnn, error?.cmdUsage || '') : hhh;
+    line = hhh === line ? hhh : `${hhh.startsWith(nnn) ? '' : nnn} ${line}`;
+
+    meta.cliInfo.helpLine = line.trim();
+
+    if (meta.argv.verbose) {
+      console.error('');
+      console.error(error.stack);
+    }
   } else if (meta.entries.length > 1 && meta.rootCommand) {
     const name =
       meta.cliInfo.usage === ''
