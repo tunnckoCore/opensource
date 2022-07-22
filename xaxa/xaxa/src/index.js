@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 // SPDX-License-Identifier: Apache-2.0
 
 import fs from 'node:fs/promises';
@@ -6,9 +5,7 @@ import path from 'node:path';
 import process from 'node:process';
 import { ESLint } from 'eslint';
 import globCache from 'glob-cache';
-import { yaro } from 'yaro';
 import { getESLintConfig } from 'eslint-config-xaxa/src/main.js';
-// import loadProgram from './program.js';
 
 export const DEFAULT_IGNORE = [
   '**/node_modules/**',
@@ -38,53 +35,6 @@ function arrayifiy(val) {
     return val.flat();
   }
   return [val];
-}
-
-export async function command(options, prog) {
-  if (options && options.isHela && options.isYaro) {
-    prog = options;
-    options = {};
-  }
-  const opts = { cwd: process.cwd(), ...options };
-
-  prog = prog
-    ? prog.singleMode('xaxa [...patterns] [options]')
-    : yaro('xaxa [...patterns] [options]', {
-        ...opts,
-        helpByDefault: false, // note: we want to run with the default globs patterns
-        allowUnknownOptions: true, // todo: does not respect it for some reason
-        singleMode: true,
-      })
-        .option(
-          '--cwd',
-          'Working directory, defaults to `process.cwd()`.',
-          opts.cwd,
-        )
-        .option('--verbose', 'Print more verbose output.', false);
-
-  return prog
-    .describe('Lint and format files with ESLint --fix and Prettier.')
-    .alias('lnt', 'lints', 'lin', 'lint', 'litn', 'xaxa')
-    .option('--log', 'Log per changed file', false) // todo: use for testing `allowUnknownOptions`
-    .option('-f, --force', 'Force lint, cleaning the cache.', false)
-    .option('-c, --config', 'Path to config file.', {
-      default: 'xaxa.config.js',
-      type: 'string',
-      normalize: true,
-    })
-    .option('--workspace-file', 'File path to write workspaces metadata.', {
-      default: 'hela-workspace.json',
-      type: 'string',
-      normalize: true,
-    })
-    .action(async ({ flags, patterns }, { globalOptions }) => {
-      const lintOptions = { ...globalOptions, ...flags };
-
-      if (lintOptions.verbose) {
-        console.log('[xaxa]: linting...', patterns, lintOptions);
-      }
-      await lint(patterns, lintOptions);
-    });
 }
 
 export async function lint(patterns, options) {
