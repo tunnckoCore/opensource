@@ -1,4 +1,6 @@
 import { createServer } from 'node:http';
+import { Readable } from 'node:stream';
+import fs from 'node:fs';
 import formidable from './src/index.js';
 
 initServer();
@@ -11,18 +13,23 @@ function initServer() {
       const form = formidable({ upload: '/tmp' });
 
       // Similar to WHATWG `request.fromData()`
-      const formData = await form.formData(req);
-
-      for (const [key, file] of formData) {
-        console.log('key:', key);
-        console.log('value:', file);
-      }
+      // const formData = await form.formData(req);
+      // for (const [key, value] of formData) {
+      //   console.log('key:', key);
+      //   console.log('value:', value);
+      // }
 
       // or old-school `form.parse`
       // files: Set, fields: Set
       const { files, fields } = await form.parse(req);
 
       console.log(files, fields);
+
+      for (const file of files.values()) {
+        const stream = Readable.from(file.stream());
+        stream.pipe(fs.createWriteStream(file.path));
+      }
+
       /**
       $ node example.js
         Server listening on http://localhost:8080/ ...
