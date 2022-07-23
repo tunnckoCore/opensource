@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MPL-2.0
+
 import { FormidableFile } from './FormidableFile.js';
 import { multipart } from './multipart.js';
 
@@ -28,7 +30,9 @@ export class Formidable {
     for (const hookName of hooksList) {
       const hookFn = parser[hookName];
 
+      // eslint-disable-next-line no-param-reassign
       parser[hookName] = (...args) => {
+        // eslint-disable-next-line no-unused-expressions
         hooksMap[hookName] && hooksMap[hookName](...args);
         hookFn(...args);
       };
@@ -41,7 +45,7 @@ export class Formidable {
     const result = { files: new Set(), fields: new Set() };
     const formData = await this.formData(req, this.options);
 
-    for (const [key, value] of formData.entries()) {
+    for (const [_, value] of formData.entries()) {
       const isFile = value instanceof FormidableFile;
 
       if (isFile) {

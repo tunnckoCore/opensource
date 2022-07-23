@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MPL-2.0
+
 /**
  * @typedef {import('filenamify').Options} FilenamifyOptions
  * @typedef {import('node:path').ParsedPath} ParsedPath
@@ -16,7 +18,7 @@
  * must be synchronous function
  */
 
-import { promises as fs } from 'node:fs';
+// import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import cuid from 'cuid';
 import { filenamifyPath } from 'filenamify';

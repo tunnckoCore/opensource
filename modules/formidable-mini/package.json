@@ -9,7 +9,7 @@
   "type": "module",
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MPL-2.0",
   "dependencies": {
     "cuid": "^2.1.8",
     "fetch-blob": "^3.1.5",

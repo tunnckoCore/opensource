@@ -1,3 +1,11 @@
+// SPDX-License-Identifier: Apache-2.0 OR MIT
+
+/* eslint-disable promise/prefer-await-to-callbacks */
+/* eslint-disable prefer-const */
+/* eslint-disable no-plusplus */
+/* eslint-disable max-params */
+/* eslint-disable no-bitwise */
+
 import { FormData } from 'formdata-polyfill/esm.min.js';
 import { FormidableFile } from './FormidableFile.js';
 
@@ -52,10 +60,11 @@ export class MultipartParser {
 
     this.boundaryChars = {};
 
+    // eslint-disable-next-line no-param-reassign
     boundary = `\r\n--${boundary}`;
     const ui8a = new Uint8Array(boundary.length);
     for (let i = 0; i < boundary.length; i++) {
-      ui8a[i] = boundary.charCodeAt(i);
+      ui8a[i] = boundary.codePointAt(i);
       this.boundaryChars[ui8a[i]] = true;
     }
 
@@ -72,7 +81,7 @@ export class MultipartParser {
     const length_ = data.length;
     let previousIndex = this.index;
     let { lookbehind, boundary, boundaryChars, index, state, flags } = this;
-    const boundaryLength = this.boundary.length;
+    const boundaryLength = boundary.length;
     const boundaryEnd = boundaryLength - 1;
     const bufferLength = data.length;
     let c;
@@ -92,13 +101,13 @@ export class MultipartParser {
       }
     };
 
-    const dataCallback = (name, clear) => {
+    const dataCallback = (name, shouldClear) => {
       const markSymbol = `${name}Mark`;
       if (!(markSymbol in this)) {
         return;
       }
 
-      if (clear) {
+      if (shouldClear) {
         callback(name, this[markSymbol], i, data);
         delete this[markSymbol];
       } else {
@@ -330,15 +339,16 @@ function _fileName(headerValue) {
     /\bfilename=("(.*?)"|([^\s"(),/:;<=>?@[\\\]{}]+))($|;\s)/i,
   );
   if (!m) {
-    return;
+    return null;
   }
 
   const match = m[2] || m[3] || '';
   let filename = match.slice(match.lastIndexOf('\\') + 1);
   filename = filename.replace(/%22/g, '"');
-  filename = filename.replace(/&#(\d{4});/g, (m, code) =>
-    String.fromCharCode(code),
+  filename = filename.replace(/&#(\d{4});/g, (_, code) =>
+    String.fromCodePoint(code),
   );
+
   return filename;
 }
 
@@ -366,6 +376,10 @@ export async function multipart(req, options = {}) {
   const entryChunks = [];
   const formData = new FormData();
 
+  // eslint-disable-next-line node/no-unsupported-features/node-builtins
+  const decoder = new TextDecoder('utf8');
+  decoder.decode();
+
   const onPartData = (ui8a) => {
     entryValue += decoder.decode(ui8a, { stream: true });
   };
@@ -386,10 +400,7 @@ export async function multipart(req, options = {}) {
     formData.append(entryName, entryValue);
   };
 
-  const decoder = new TextDecoder('utf-8');
-  decoder.decode();
-
-  parser.onPartBegin = function () {
+  parser.onPartBegin = () => {
     parser.onPartData = onPartData;
     parser.onPartEnd = appendEntryToFormData;
 
@@ -402,26 +413,26 @@ export async function multipart(req, options = {}) {
     entryChunks.length = 0;
   };
 
-  parser.onHeaderField = function (ui8a) {
+  parser.onHeaderField = (ui8a) => {
     headerField += decoder.decode(ui8a, { stream: true });
   };
 
-  parser.onHeaderValue = function (ui8a) {
+  parser.onHeaderValue = (ui8a) => {
     headerValue += decoder.decode(ui8a, { stream: true });
   };
 
-  parser.onHeaderEnd = function () {
+  parser.onHeaderEnd = () => {
     headerValue += decoder.decode();
     headerField = headerField.toLowerCase();
 
     if (headerField === 'content-disposition') {
       // matches either a quoted-string or a token (RFC 2616 section 19.5.1)
-      const m = headerValue.match(
+      const match = headerValue.match(
         /\bname=("([^"]*)"|([^\s"(),/:;<=>?@[\\\]{}]+))/i,
       );
 
-      if (m) {
-        entryName = m[2] || m[3] || '';
+      if (match) {
+        entryName = match[2] || match[3] || '';
       }
 
       filename = _fileName(headerValue);
@@ -455,4 +466,5 @@ export async function multipart(req, options = {}) {
     },
   };
 }
+
 export { FormData } from 'formdata-polyfill/esm.min.js';
