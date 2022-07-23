@@ -32,6 +32,7 @@
     "asia/asia-core",
     "modules/arr-includes",
     "modules/ens-collections",
+    "modules/formidable-mini",
     "modules/gitcommit",
     "modules/ip-filter",
     "modules/kind-error",
@@ -67,6 +68,7 @@
     "asia-core",
     "ens-collections",
     "eslint-config-xaxa",
+    "formidable-mini",
     "gitcommit",
     "hela",
     "ip-filter",
@@ -352,6 +354,11 @@
           "resolved": "xaxa/xaxa"
         }
       ]
+    },
+    "formidable-mini": {
+      "name": "formidable-mini",
+      "resolved": "modules/formidable-mini",
+      "license": "ISC"
     },
     "gitcommit": {
       "name": "gitcommit",
