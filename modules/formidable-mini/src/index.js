@@ -45,13 +45,13 @@ export class Formidable {
     const result = { files: new Set(), fields: new Set() };
     const formData = await this.formData(req, this.options);
 
-    for (const [_, value] of formData.entries()) {
+    for (const [name, value] of formData.entries()) {
       const isFile = value instanceof FormidableFile;
 
       if (isFile) {
         result.files.add(value);
       } else {
-        result.fields.add(value);
+        result.fields.add({ name, value });
       }
     }
 

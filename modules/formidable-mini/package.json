@@ -1,6 +1,6 @@
 {
   "name": "formidable-mini",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Your favorite `multipart/form-data` module now simpler, smaller, faster, and more spec & web-compliant",
   "main": "src/index.js",
   "scripts": {

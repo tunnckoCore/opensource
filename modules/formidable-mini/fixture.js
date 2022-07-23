@@ -5,6 +5,7 @@
  * Released under the MIT license.
  */
 
+/* eslint-disable */
 'use strict';
 
 const util = require('util');
