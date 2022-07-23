@@ -1,7 +1,8 @@
 import { createServer } from 'node:http';
 import { Readable } from 'node:stream';
 import fs from 'node:fs';
-import formidable from './src/index.js';
+import { formDataToBlob } from 'formdata-polyfill/esm.min.js';
+import { formidable, FormidableFile } from './src/index.js';
 
 initServer();
 
@@ -13,22 +14,37 @@ function initServer() {
       const form = formidable({ upload: '/tmp' });
 
       // Similar to WHATWG `request.fromData()`
-      // const formData = await form.formData(req);
-      // for (const [key, value] of formData) {
-      //   console.log('key:', key);
-      //   console.log('value:', value);
-      // }
+      const formData = await form.formData(req);
+      for (const [key, value] of formData) {
+        const isFile = value instanceof FormidableFile;
 
+        if (isFile) {
+          console.log('file:', value);
+          const stream = Readable.from(value.stream());
+          stream.pipe(fs.createWriteStream(value.path));
+        } else {
+          console.log('key:', key);
+        }
+      }
+
+      // const blob = formDataToBlob(await form.formData(req));
+      // const response = await fetch('https://httpbin.org/post', {
+      //   method: 'POST',
+      //   body: blob,
+      // });
+      // console.log(await response.json());
+
+      // note: this method loads into memory
       // or old-school `form.parse`
       // files: Set, fields: Set
-      const { files, fields } = await form.parse(req);
+      // const { files, fields } = await form.parse(req);
 
-      console.log(files, fields);
+      // console.log(files, fields);
 
-      for (const file of files.values()) {
-        const stream = Readable.from(file.stream());
-        stream.pipe(fs.createWriteStream(file.path));
-      }
+      // for (const file of files.values()) {
+      //   const stream = Readable.from(file.stream());
+      //   stream.pipe(fs.createWriteStream(file.path));
+      // }
 
       /**
       $ node example.js

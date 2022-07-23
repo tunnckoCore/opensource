@@ -62,6 +62,8 @@ export class Formidable {
 export default function formidable(options) {
   return new Formidable(options);
 }
+
+export { formidable };
 export { Blob } from 'fetch-blob';
 export { FormData, multipart, MultipartParser } from './multipart.js';
 export { File, FormidableFile } from './FormidableFile.js';
