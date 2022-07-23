@@ -6,14 +6,26 @@
     "@hela/*",
     "modules/*",
     "xaxa/*",
+    "yaro/*",
     "asia/*"
   ],
   "type": "module",
   "scripts": {
-    "cleanup": "node scripts/clean-node-modules.js && rm yarn.lock",
-    "fresh": "yarn cleanup && yarn && hela init --verbose",
+    "cleanup": "node scripts/clean-node-modules.js && rm -f package-lock.json yarn.lcok",
+    "cli": "../node_modules/.bin/hela",
+    "filter": "yarn cli filter",
+    "filter:asia": "yarn filter '*asia*'",
+    "filter:hela": "yarn filter '*hela*'",
+    "filter:xaxa": "yarn filter '*xaxa*'",
+    "filter:yaro": "yarn filter '*yaro*'",
+    "fmt": "prettier '**/*.{js,json}' --write",
+    "fresh": "yarn cleanup && npm install --force && yarn cli init",
     "lint": "xaxa --log",
     "new": "node scripts/create-package.js",
+    "pub:asia": "yarn cli publish $(yarn cli filter '*asia*') --verbose",
+    "pub:hela": "yarn cli publish $(yarn cli filter '*hela*') --verbose",
+    "pub:xaxa": "yarn cli publish $(yarn cli filter '*xaxa*') --verbose",
+    "pub:yaro": "yarn cli publish $(yarn cli filter '*yaro*') --verbose",
     "test": "asia"
   },
   "dependencies": {
@@ -32,6 +44,9 @@
   "eslintConfig": {
     "extends": [
       "xaxa"
-    ]
+    ],
+    "rules": {
+      "max-statements": "off"
+    }
   }
 }

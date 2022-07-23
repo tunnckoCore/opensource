@@ -1,6 +1,6 @@
 {
   "name": "xaxa",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "licenseStart": 2018,
   "license": "Apache-2.0",
   "description": "Zero-config linting, powered by few amazing unicorns, AirBnB & Prettier.",

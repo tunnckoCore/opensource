@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 // SPDX-License-Identifier: MPL-2.0
 
 import fs from 'node:fs';
@@ -6,7 +5,6 @@ import path from 'node:path';
 import process from 'node:process';
 import fastGlob from 'fast-glob';
 import { parallel } from 'asia-core';
-import { yaro } from 'yaro';
 
 export function readJSON(filepath) {
   return JSON.parse(fs.readFileSync(filepath, 'utf8'));
@@ -36,56 +34,6 @@ export const DEFAULT_PATTERNS = [
   '**/tests/**/*.js',
   '**/__tests__/**/*.js',
 ].concat(DEFAULT_IGNORE.map((x) => `!${x}`));
-
-export async function command(options, prog) {
-  if (options && options.isHela && options.isYaro) {
-    prog = options;
-    options = {};
-  }
-  const opts = { cwd: process.cwd(), ...options };
-
-  prog = prog
-    ? prog.singleMode('asia [...patterns] [options]')
-    : yaro('asia [...patterns] [options]', {
-        ...opts,
-        helpByDefault: false, // note: we want to run with the default globs patterns
-        allowUnknownOptions: true, // todo: does not respect it for some reason
-        singleMode: true,
-      })
-        .option(
-          '--cwd',
-          'Working directory, defaults to `process.cwd()`.',
-          opts.cwd,
-        )
-        .option('--verbose', 'Print more verbose output.', false);
-
-  return prog
-    .describe('Run tests with ASIA test framework.')
-    .alias('tst', 'test', 'tests', 'testing', 'tset', 'tste', 'tast', 'asia')
-
-    .option('-f, --force', 'Force running test without cache', false)
-    .option('--cache-clean', 'Clear the disk cache', false)
-    .option('--only-failed', 'Print only failed tests', false)
-
-    .option('-c, --config', 'Path to config file.', {
-      default: 'asia.config.js',
-      type: 'string',
-      normalize: true,
-    })
-    .option('--workspace-file', 'File path to write workspaces metadata.', {
-      default: 'hela-workspace.json',
-      type: 'string',
-      normalize: true,
-    })
-    .action(async ({ flags, patterns }, { globalOptions }) => {
-      const testOptions = { ...globalOptions, ...flags };
-
-      if (testOptions.verbose) {
-        console.log('[asia]: testing...', patterns, testOptions);
-      }
-      await runAsia(patterns, testOptions);
-    });
-}
 
 function arrayifiy(val) {
   if (!val) {
