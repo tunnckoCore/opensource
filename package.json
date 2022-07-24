@@ -34,7 +34,12 @@
     "eslint-formatter-codeframe": "^7.32.1",
     "expect": "^28.1.1",
     "fast-glob": "^3.2.11",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "mri": "*",
+    "nopt": "*",
+    "minargs": "*",
+    "minimist": "*",
+    "yargs-parser": "*"
   },
   "hela": "@hela/preset-tunnckocore",
   "contributors": [
