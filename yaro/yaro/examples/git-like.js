@@ -30,8 +30,9 @@ const remoteDelete = command('remote rm <name>')
     console.log('git remote rm', name);
 
     if (!options.foo) {
-      throw new Error('some fake random error');
+      throw new Error('some fake random error, try passing --foo');
     }
+    console.log('okkkk! foo is passed');
   });
 
 await createCli({

@@ -1,6 +1,6 @@
 {
   "name": "yaro",
-  "version": "5.0.0-canary.6",
+  "version": "5.0.0-canary.7",
   "licenseStart": 2020,
   "license": "MPL-2.0",
   "description": "Fast, minimalist, pluggable and functional command line parsing. Create CLIs easily. A wrapper package exporting everything from several Yaro packages.",
