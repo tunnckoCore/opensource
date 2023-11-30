@@ -30,7 +30,7 @@
   },
   "scripts": {},
   "dependencies": {
-    "sort-package-json": "^1.40.0"
+    "sort-package-json": "^2.0.0"
   },
   "peerDependencies": {
     "prettier": "^2.0.2"
