@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "c8": "^7.11.3",
-    "eslint": "^8.18.0",
+    "eslint": "^9.0.0",
     "eslint-formatter-codeframe": "^7.32.1",
     "expect": "^28.1.1",
     "fast-glob": "^3.2.11",
