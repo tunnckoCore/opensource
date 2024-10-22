@@ -1,5 +1,5 @@
-const { parseHeader } = require('./dist/header.cjs');
+const { parseHeader } = require('./dist/index.cjs');
 
 const str = 'fix: some commit message';
 
-console.log(parseHeader);
+console.log(str, parseHeader(str));
