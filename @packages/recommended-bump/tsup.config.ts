@@ -5,7 +5,7 @@ const cfg = {
   entry: ['src/index.ts'],
   splitting: false,
   clean: true,
-  banner: { js: '// SPDX-License-Identifier: MPL-2.0' },
+  banner: { js: '// SPDX-License-Identifier: Apache-2.0' },
   cjsInterop: false,
   dts: true,
   format: 'esm',

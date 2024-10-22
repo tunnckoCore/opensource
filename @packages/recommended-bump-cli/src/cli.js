@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import proc from 'node:process';
 import { yaro } from 'yaro';
 import { getRawCommits } from 'git-raw-commits';

@@ -1,6 +1,6 @@
 {
   "name": "recommended-bump",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "licenseStart": 2018,
   "license": "Apache-2.0",
   "description": "Calculates recommended bump (next semver version) based on given array of commit messages following Conventional Commits specification",

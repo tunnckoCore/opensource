@@ -17,7 +17,7 @@ You can also pass custom `--from`, `--to`, and `--cwd` flags. Any flags are dire
 ## License
 
 Copyright (c) 2024-present, [Charlike Mike Reagent](https://tunnckocore.com) & [contributors](#wonderful-contributors).<br> Released under the
-[MPL-2.0 License][license-url].
+[Apache-2.0 License][license-url].
 
 <!-- badges -->
 
