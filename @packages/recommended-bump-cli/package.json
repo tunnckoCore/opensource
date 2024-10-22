@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "git-raw-commits": "^5.0.0",
-    "recommended-bump": "^3.0.0",
+    "recommended-bump": "^3.0.1",
     "yaro": "^6.5.1"
   },
   "devDependencies": {
