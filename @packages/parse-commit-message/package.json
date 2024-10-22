@@ -1,6 +1,6 @@
 {
   "name": "parse-commit-message",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "licenseStart": 2018,
   "license": "MPL-2.0",
   "description": "Extensible parser for git commit messages following Conventional Commits Specification",
@@ -13,31 +13,19 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     },
-    "./header": {
-      "types": "./dist/header.d.ts",
-      "require": "./dist/header.cjs",
-      "import": "./dist/header.js"
-    },
-    "./commit": {
-      "types": "./dist/commit.d.ts",
-      "require": "./dist/commit.cjs",
-      "import": "./dist/commit.js"
-    },
-    "./utils": {
-      "types": "./dist/utils.d.ts",
-      "require": "./dist/utils.cjs",
-      "import": "./dist/utils.js"
-    },
-    "./index.ts": {
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
-    },
+    "./*.ts": "./src/*.ts",
     "./package.json": "./package.json"
   },
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "src"
