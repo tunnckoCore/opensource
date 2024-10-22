@@ -42,7 +42,7 @@
   "scripts": {
     "build": "tsup && bun cjs-dts-files.ts",
     "dev": "bun run lint && bun run test && bun run fmt && bun run docs && bun run build",
-    "docs": "bunx jest && bunx automd",
+    "docs": "rm -rf docs && bunx jest && bunx automd",
     "fmt": "bunx prettier '**/*.{js,ts,md,json}' -w",
     "gitadd": "git status --porcelain && git add -A",
     "lint": "bunx eslint@^8 '**/*.{js,mjs,ts}' --fix",

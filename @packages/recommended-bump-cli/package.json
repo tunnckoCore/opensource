@@ -25,7 +25,7 @@
     "tag": "latest"
   },
   "scripts": {
-    "docs": "bunx jest && bunx automd",
+    "docs": "rm -rf docs && bunx jest && bunx automd",
     "fmt": "bunx prettier '**/*.{js,ts,md,json}' -w",
     "gitadd": "git status --porcelain && git add -A",
     "lint": "bunx eslint@^8 '**/*.{js,mjs,ts}' --fix",
