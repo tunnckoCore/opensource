@@ -1,0 +1,114 @@
+{
+  "name": "recommended-bump-cli",
+  "version": "3.0.0",
+  "licenseStart": 2018,
+  "license": "Apache-2.0",
+  "description": "CLI for `recommended-bump` - calculates the next bump (patch/minor/major) based on Conventional Commits spec v1",
+  "author": "Charlike Mike Reagent <wgw@wgw.lol>",
+  "homepage": "https://github.com/tunnckoCore/opensource/tree/master/@packages/recommended-bump-cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@packages/recommended-bump-cli"
+  },
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "bin": "./src/cli.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "tag": "latest"
+  },
+  "scripts": {
+    "docs": "bunx jest && bunx automd",
+    "fmt": "bunx prettier '**/*.{js,ts,md,json}' -w",
+    "gitadd": "git status --porcelain && git add -A",
+    "lint": "bunx eslint@^8 '**/*.{js,mjs,ts}' --fix",
+    "prepublishOnly": "bun run test",
+    "test": "bun run lint && bun run fmt"
+  },
+  "dependencies": {
+    "git-raw-commits": "^5.0.0",
+    "recommended-bump": "^3.0.0",
+    "yaro": "^6.5.1"
+  },
+  "devDependencies": {
+    "eslint-config-tunnckocore": "^8.2.2",
+    "jest": "^29.7.0",
+    "jest-runner-docs": "^1.4.8",
+    "tsup": "^8.3.0"
+  },
+  "jest": {
+    "displayName": "docs",
+    "runner": "jest-runner-docs",
+    "testMatch": [
+      "**/src/**/*.[jt]s?(x)",
+      "!**/types.ts"
+    ]
+  },
+  "keywords": [
+    "commit message parser",
+    "commit messages",
+    "commit-message",
+    "commit-parser",
+    "commits",
+    "commits-parser",
+    "conventional",
+    "conventional-commits",
+    "conventionalcommits",
+    "developer-experience",
+    "development",
+    "recommended",
+    "bump",
+    "npm bump",
+    "npm version",
+    "dx",
+    "hela",
+    "parse commit message",
+    "parse-commit",
+    "recommended-bump",
+    "parse-commits",
+    "parser",
+    "tunnckocore-oss",
+    "tunnckocorehq"
+  ],
+  "verb": {
+    "readme": "../../readme-template.md",
+    "run": true,
+    "toc": {
+      "render": true,
+      "method": "preWrite",
+      "maxdepth": 3
+    },
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [
+      "collect-mentions",
+      "jest-runner-docs",
+      "babylon",
+      "cacache",
+      "define-property",
+      "execa",
+      "fast-glob",
+      "glob",
+      "globby",
+      "koa",
+      "koa-convert",
+      "parse-github-url",
+      "tiny-glob"
+    ],
+    "related": {
+      "list": []
+    }
+  }
+}

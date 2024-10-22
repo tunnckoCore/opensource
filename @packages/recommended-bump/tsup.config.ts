@@ -11,5 +11,9 @@ const cfg = {
   format: 'esm',
 };
 
-// @ts-expect-error bro...
-export default defineConfig([{ ...cfg }, { ...cfg, format: 'cjs', dts: false }]);
+export default defineConfig([
+  // @ts-expect-error bruh
+  { ...cfg },
+  // @ts-expect-error bruh
+  { ...cfg, format: 'cjs', dts: false },
+]);
