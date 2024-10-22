@@ -21,17 +21,17 @@ import { isBreakingChange, normalizeCommit } from '../utils.ts';
  * @param {object} options options to control the header regex and case sensitivity
  * @param {RegExp|string} options.headerRegex string regular expression or instance of RegExp
  * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
- * @returns {Commit} plus `{ increment: 'major' | 'minor' | 'patch' | '' }`
+ * @returns {Commit} plus `{ increment: 'major' | 'minor' | 'patch' }`
  * @public
  */
 export default function incrementPlugin(
   commit: Commit,
   options?: Options,
-): { increment: 'major' | 'minor' | 'patch' | '' } {
+): { increment: 'major' | 'minor' | 'patch' } {
   const opts = { normalize: true, ...options };
   const cmt: Commit = opts.normalize ? normalizeCommit(commit, opts) : commit;
   const isBreaking = isBreakingChange(cmt);
-  let commitIncrement: 'major' | 'minor' | 'patch' | '' = '';
+  let commitIncrement: 'major' | 'minor' | 'patch' | boolean = false;
 
   if (/fix|bugfix|patch/i.test(cmt.header.type)) {
     commitIncrement = 'patch';
@@ -41,6 +41,11 @@ export default function incrementPlugin(
   }
   if (isBreaking) {
     commitIncrement = 'major';
+  }
+
+  if (!commitIncrement) {
+    // @ts-expect-error bruh.. you're not accepting `void | { obj.. }` in return type while plugins can, so fvck off
+    return {};
   }
 
   return { increment: commitIncrement };

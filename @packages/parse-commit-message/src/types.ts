@@ -23,7 +23,7 @@ export type GenericCommit<T> = {
   header: T;
   body?: string | null;
   footer?: string | null;
-  increment?: string | boolean;
+  increment?: string;
   isBreaking?: boolean;
   mentions?: Array<Mention>;
 };
