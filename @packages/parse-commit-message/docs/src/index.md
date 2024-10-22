@@ -100,11 +100,11 @@ import { plugins, applyPlugins, parse } from 'parse-commit-message';
 
 console.log(plugins); // =>  [mentions, increment]
 console.log(plugins[0]); // => [Function mentions]
-console.log(plugins[0]); // => [Function increment]
+console.log(plugins[1]); // => [Function increment]
 
 const cmts = parse([
   'fix: foo @bar @qux haha',
-  'feat(cli): awesome @tunnckoCore feature\n\nSuper duper baz!'
+  'feat(cli): awesome @tunnckoCore feature\n\nSuper duper baz!',
   'fix: ooh\n\nBREAKING CHANGE: some awful api change'
 ]);
 

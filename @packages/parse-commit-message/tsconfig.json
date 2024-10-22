@@ -5,8 +5,8 @@
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
     "allowJs": true,
-    "checkJs": true
-  }
+    "checkJs": true,
+  },
   // "compilerOptions": {
   //   // Enable latest features
   //   "lib": ["ESNext", "DOM"],
