@@ -1,4 +1,4 @@
-# recommended-bump [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url] [![Libera Manifesto][libera-manifesto-img]][libera-manifesto-url]
+# recommended-bump-cli [![npm version][npmv-img]][npmv-url] [![License][license-img]][license-url] [![Libera Manifesto][libera-manifesto-img]][libera-manifesto-url]
 
 CLI for the `recommended-bump` package, calculate next version based on Conventional Commits.
 
@@ -29,11 +29,11 @@ Copyright (c) 2018-present, [Charlike Mike Reagent](https://tunnckocore.com)
 
 <!-- Heading badges -->
 
-[npmv-url]: https://www.npmjs.com/package/recommended-bump
-[npmv-img]: https://badgen.net/npm/v/recommended-bump?icon=npm
+[npmv-url]: https://www.npmjs.com/package/recommended-bump-cli
+[npmv-img]: https://badgen.net/npm/v/recommended-bump-cli?icon=npm
 
-[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/recommended-bump/LICENSE
-[license-img]: https://badgen.net/npm/license/recommended-bump?cache=300
+[license-url]: https://github.com/tunnckoCore/opensource/blob/master/packages/recommended-bump-cli/LICENSE
+[license-img]: https://badgen.net/npm/license/recommended-bump-cli?cache=300
 
 [libera-manifesto-url]: https://liberamanifesto.com
 [libera-manifesto-img]: https://badgen.net/badge/libera/manifesto/grey
@@ -63,9 +63,9 @@ Copyright (c) 2018-present, [Charlike Mike Reagent](https://tunnckocore.com)
 
 [nodejs-img]: https://badgen.net/badge/node/>=20/green?cache=300
 
-[downloads-weekly-img]: https://badgen.net/npm/dw/recommended-bump?icon=npm
-[downloads-monthly-img]: https://badgen.net/npm/dm/recommended-bump?icon=npm
-[downloads-total-img]: https://badgen.net/npm/dt/recommended-bump?icon=npm
+[downloads-weekly-img]: https://badgen.net/npm/dw/recommended-bump-cli?icon=npm
+[downloads-monthly-img]: https://badgen.net/npm/dm/recommended-bump-cli?icon=npm
+[downloads-total-img]: https://badgen.net/npm/dt/recommended-bump-cli?icon=npm
 
 [renovateapp-url]: https://renovatebot.com
 [renovateapp-img]: https://badgen.net/badge/renovate/enabled/green?cache=300
