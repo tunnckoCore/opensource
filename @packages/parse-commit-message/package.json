@@ -1,14 +1,15 @@
 {
   "name": "parse-commit-message",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "licenseStart": 2018,
   "license": "MPL-2.0",
   "description": "Extensible parser for git commit messages following Conventional Commits Specification",
   "author": "Charlike Mike Reagent <wgw@wgw.lol>",
-  "homepage": "https://github.com/tunnckoCore/parse-commit-message",
+  "homepage": "https://github.com/tunnckoCore/opensource/tree/master/@packages/parse-commit-message",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tunnckoCore/parse-commit-message.git"
+    "url": "https://github.com/tunnckoCore/opensource.git",
+    "directory": "@packages/parse-commit-message"
   },
   "type": "module",
   "exports": {
