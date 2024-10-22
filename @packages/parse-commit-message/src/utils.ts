@@ -21,6 +21,10 @@ export function isValidString(x: string) {
  * @param {boolean} options.caseSensitive whether or not to be case sensitive, defaults to `false`
  */
 export function stringToHeader(val: string, options?: Options): Header {
+  if (typeof val !== 'string') {
+    throw new TypeError('stringToHeader: expects `val` to be a string');
+  }
+
   const opts = { caseSensitive: false, ...options };
 
   const defaultRegex = opts.caseSensitive

@@ -52,6 +52,7 @@ import { errorMsg, toArray } from './utils.ts';
 export function parse(commits: PossibleCommit, options?: Options): Commit[] {
   const result = toArray(commits)
     .filter(Boolean)
+    .flat()
     .reduce((acc: any[], val) => {
       if (typeof val === 'string') {
         return acc.concat(parseCommit(val, options));
@@ -102,6 +103,7 @@ export function parse(commits: PossibleCommit, options?: Options): Commit[] {
 export function stringify(commits: PossibleCommit, options?: Options): string[] {
   const result = toArray(commits)
     .filter(Boolean)
+    .flat()
     .reduce((acc, val) => {
       const xxx = typeof val === 'string' ? { header: { value: val } } : val;
       const foo = check(xxx, options);
@@ -219,13 +221,16 @@ export function validate(commits: PossibleCommit, options?: Options): Result<Com
  * @public
  */
 export function check(commits: PossibleCommit, options?: Options): Commit[] {
-  const result = toArray<any>(commits).reduce((acc, commit) => {
-    if (typeof commit === 'string') {
-      commit = parseCommit(commit, options);
-    }
+  const result = toArray<any>(commits)
+    .filter(Boolean)
+    .flat()
+    .reduce((acc, commit) => {
+      if (typeof commit === 'string') {
+        commit = parseCommit(commit, options);
+      }
 
-    return acc.concat(checkCommit(commit as Commit, options));
-  }, []);
+      return acc.concat(checkCommit(commit as Commit, options));
+    }, []);
 
   if (result.length === 0) {
     throw new Error(errorMsg);

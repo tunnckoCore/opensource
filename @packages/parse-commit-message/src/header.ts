@@ -158,22 +158,21 @@ export function validateHeader(header: Header | SimpleHeader, options?: Options)
  * @public
  */
 export function checkHeader(header: Header | SimpleHeader, options?: Options): Header {
-  // handy trick to suppress/mute typescript
   if (header && typeof header === 'object' && 'value' in header) {
     const { value } = header;
     return stringToHeader(value, options);
   }
   // else: we have Header
 
-  if (!isValidString(header.type)) {
+  if (!isValidString(header?.type)) {
     throw new TypeError('header.type should be non empty string');
   }
-  if (!isValidString(header.subject)) {
+  if (!isValidString(header?.subject)) {
     throw new TypeError('header.subject should be non empty string');
   }
 
   const isValidScope =
-    'scope' in header && header.scope !== null ? isValidString(header.scope) : true;
+    header && 'scope' in header && header.scope !== null ? isValidString(header.scope) : true;
 
   if (!isValidScope) {
     throw new TypeError('commit.header.scope should be non empty string when given');
