@@ -227,8 +227,7 @@ consider showing your [support](#support-the-project) to them:
 
 ## License
 
-Copyright (c) 2018-present, [Charlike Mike Reagent](https://tunnckocore.com)
-`<opensource@tunnckocore.com>` & [contributors](#wonderful-contributors).<br> Released under the
+Copyright (c) 2018-present, [Charlike Mike Reagent](https://tunnckocore.com) & [contributors](#wonderful-contributors).<br> Released under the
 [MPL-2.0 License][license-url].
 
 <!-- badges -->

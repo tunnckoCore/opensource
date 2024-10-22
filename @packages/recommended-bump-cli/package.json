@@ -1,7 +1,7 @@
 {
   "name": "recommended-bump-cli",
   "version": "3.0.0",
-  "licenseStart": 2018,
+  "licenseStart": 2024,
   "license": "Apache-2.0",
   "description": "CLI for `recommended-bump` - calculates the next bump (patch/minor/major) based on Conventional Commits spec v1",
   "author": "Charlike Mike Reagent <wgw@wgw.lol>",
