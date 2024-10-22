@@ -1,6 +1,6 @@
 {
   "name": "parse-commit-message",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "licenseStart": 2018,
   "license": "MPL-2.0",
   "description": "Extensible parser for git commit messages following Conventional Commits Specification",
