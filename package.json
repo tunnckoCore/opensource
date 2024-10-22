@@ -12,7 +12,7 @@
   "type": "module",
   "scripts": {
     "cleanup": "node scripts/clean-node-modules.js && rm -f package-lock.json yarn.lcok",
-    "cli": "../node_modules/.bin/hela",
+    "cli": "npx @hela/cli@latest",
     "filter": "yarn cli filter",
     "filter:asia": "yarn filter '*asia*'",
     "filter:hela": "yarn filter '*hela*'",
@@ -34,11 +34,11 @@
     "eslint-formatter-codeframe": "^7.32.1",
     "expect": "^28.1.1",
     "fast-glob": "^3.2.11",
-    "prettier": "^2.7.1",
-    "mri": "*",
-    "nopt": "*",
     "minargs": "*",
     "minimist": "*",
+    "mri": "*",
+    "nopt": "*",
+    "prettier": "^2.7.1",
     "yargs-parser": "*"
   },
   "hela": "@hela/preset-tunnckocore",

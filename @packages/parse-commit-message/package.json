@@ -1,39 +1,73 @@
 {
   "name": "parse-commit-message",
-  "version": "4.0.0-canary.20200124.9",
+  "version": "5.0.0",
   "licenseStart": 2018,
   "license": "MPL-2.0",
   "description": "Extensible parser for git commit messages following Conventional Commits Specification",
-  "author": "Charlike Mike Reagent <opensource@tunnckocore.com> (https://tunnckocore.com)",
-  "homepage": "https://tunnckocore.com/opensource",
-  "funding": [
-    "https://ko-fi.com/tunnckoCore/commissions",
-    "https://github.com/sponsors/tunnckoCore",
-    "https://patreon.com/tunnckoCore"
-  ],
+  "author": "Charlike Mike Reagent <wgw@wgw.lol>",
+  "homepage": "https://github.com/tunnckoCore/parse-commit-message",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tunnckoCore/opensource.git",
-    "directory": "@packages/parse-commit-message"
+    "url": "https://github.com/tunnckoCore/parse-commit-message.git"
   },
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "typings": "index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./header": {
+      "types": "./dist/header.d.ts",
+      "require": "./dist/header.cjs",
+      "import": "./dist/header.js"
+    },
+    "./commit": {
+      "types": "./dist/commit.d.ts",
+      "require": "./dist/commit.cjs",
+      "import": "./dist/commit.js"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "require": "./dist/utils.cjs",
+      "import": "./dist/utils.js"
+    },
+    "./index.ts": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist",
-    "index.d.ts"
+    "src"
   ],
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=20"
   },
   "publishConfig": {
     "access": "public",
-    "tag": "canary"
+    "registry": "https://registry.npmjs.org",
+    "tag": "latest"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "tsup && bun cjs-dts-files.ts",
+    "docs": "bunx jest && bunx automd",
+    "fmt": "bunx prettier '**/*.{js,ts,md,json}' -w",
+    "gitadd": "git status --porcelain && git add -A",
+    "lint": "bunx eslint@^8 '**/*.{js,mjs,ts}' --fix",
+    "prepublishOnly": "bun run build",
+    "test": "bun test ./test/**/*.ts"
+  },
   "dependencies": {
-    "collect-mentions": "^1.0.2",
+    "collect-mentions": "^2.0.1",
     "mixin-deep": "^2.0.1"
+  },
+  "devDependencies": {
+    "eslint-config-tunnckocore": "^8.2.2",
+    "jest": "^29.7.0",
+    "jest-runner-docs": "^1.4.8",
+    "tsup": "^8.3.0"
   },
   "jest": {
     "coverageThreshold": {
@@ -43,7 +77,13 @@
         "functions": 0,
         "lines": 50
       }
-    }
+    },
+    "displayName": "docs",
+    "runner": "jest-runner-docs",
+    "testMatch": [
+      "**/src/**/*.[jt]s?(x)",
+      "!**/types.ts"
+    ]
   },
   "cov": {
     "value": 65.61,
