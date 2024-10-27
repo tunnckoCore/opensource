@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "execa": "^6.1.0",
-    "p-map": "^5.5.0"
+    "p-map": "^7.0.2"
   },
   "keywords": [
     "bin",
