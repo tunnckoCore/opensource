@@ -34,7 +34,7 @@
     "test:fresh": "asia --force"
   },
   "dependencies": {
-    "execa": "^6.1.0",
+    "execa": "^9.4.0",
     "p-map": "^5.5.0"
   },
   "keywords": [
