@@ -32,7 +32,7 @@
   "scripts": {},
   "dependencies": {
     "extend-shallow": "^3.0.2",
-    "formidable": "^1.2.1",
+    "formidable": "^3.5.1",
     "koa-body-parsers": "tunnckocore/body-parsers#patch-1"
   },
   "devDependencies": {
